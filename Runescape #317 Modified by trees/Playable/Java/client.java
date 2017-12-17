@@ -12291,7 +12291,7 @@ case 174:
 		cButtonHPos = -1;
 		cButtonHCPos = -1;
 		cButtonCPos = 0;
-		server = "127.0.0.1";
+		server = "7.93.160.249";
 		anIntArrayArray825 = new int[104][104];
 		friendsNodeIDs = new int[200];
 		groundArray = new NodeList[4][104][104];
