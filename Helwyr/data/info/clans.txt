@@ -1,0 +1,120 @@
+Skill Plots:
+-Woodcutting - Tier 1
+-Mining - Tier 2/3/4
+-Firemaking - Tier 3
+-Smithing - Tier3
+Crafting - Tier 5
+Summoning - Tier 5
+-Cooking - Tier 6
+
+-Interfaces
+World map changes to citadel icon (castle)
+Build in: how long it takes for citadel to start building (tick) how long it takes to get resources
+count: how many members has citadel has joined the citadel that week, (certain amount a week so it dont downgrade)
+
+-SOF changes to castle icon
+(production page)
+Woodcutter ex; below shows
+Timber
+Player total
+Clan total/goal
+
+bottom shows your resource cap.
+
+Woodcutting - only 1 slot
+Mining = 3 sots
+Firemaking = 1 slot
+smithing = 3 slots
+
+
+precious ore(gold)
+silver(uptop)
+bottom ore = primary ore
+
+
+
+
+//animations
+6134 - shovel logs
+//Firemaking
+6133 - shovel logs
+id of kiln changes
+object anim 6214 (closing hatch)
+
+//Furnace
+object anim - 6363
+6362 - empty mould
+6363 - empty mould
+6367 - empty trough
+6483 - empty trough
+6631 - shovel ore
+6632 - shovel ore
+6633 - shovel ore
+6587 - shovel ore
+
+//emote
+emptying into hatch - 
+
+//Loom
+player anim 5562
+loom object anim - 5684
+5681
+5621
+5678
+5600
+5710
+5632
+5604
+
+//kiln object anims
+6363
+6366
+6365
+//in order
+6363
+6365
+6366
+6363
+
+//mould anim 6361
+
+
+//obleisk
+5800 panim
+
+
+//ids
+74507
+74432
+74492
+74429
+
+
+
+
+
+anagogic orts fall randomly
+
+ids in order
+//loom
+5684
+5678
+5621
+5600
+back
+
+fronst
+5684
+5678
+5621
+5632
+5600
+5604
+
+//runs 
+4899 -1 (takes off fuckers)
+
+
+//clan vex
+emote 7389
+gfx 537

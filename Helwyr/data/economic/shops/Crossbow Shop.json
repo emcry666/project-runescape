@@ -1,0 +1,31 @@
+/ Shop System Written By ' JTlr Frost ' /
+
+/[Store Key]/
+key=154
+
+/[General Store]/
+general=false
+
+/[Currency Id]/
+currency=995
+
+/[Item Name :: Main Stock :: Quanity]/
+Bronze crossbow -> 9174::0
+Iron crossbow -> 9177::0
+Steel crossbow -> 9179::0
+Mith crossbow -> 9181::0
+Adamant crossbow -> 9183::0
+Rune crossbow -> 9185::0
+Bronze limbs -> 9420::7
+Iron limbs -> 9423::10
+Steel limbs -> 9425::10
+Mithril limbs -> 9427::10
+Adamantite limbs -> 9429::10
+Runite limbs -> 9431::0
+Wooden stock -> 9440::10
+Oak stock -> 9442::10
+Willow stock -> 9444::10
+Teak stock -> 9446::10
+Maple stock -> 9448::10
+Mahogany stock -> 9450::10
+Yew stock -> 9452::10

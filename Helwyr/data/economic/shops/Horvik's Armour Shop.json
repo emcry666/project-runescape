@@ -1,0 +1,27 @@
+/ Shop System Written By ' JTlr Frost ' /
+
+/[Store Key]/
+key=8
+
+/[General Store]/
+general=false
+
+/[Currency Id]/
+currency=995
+
+/[Item Name :: Main Stock :: Quanity]/
+Bronze chainbody -> 1103::10
+Iron chainbody -> 1101::10
+Bronze full helm -> 1155::100
+Iron full helm -> 1153::100
+Bronze platebody -> 1117::100
+Iron platebody -> 1115::100
+Bronze sq shield -> 1173::10
+Iron sq shield -> 1175::10
+Bronze platelegs -> 1075::100
+Iron platelegs -> 1067::100
+Bronze plateskirt -> 1087::10
+Iron plateskirt -> 1081::10
+Steel platebody -> 1119::100
+Black platebody -> 1125::10
+Mithril platebody -> 1121::100

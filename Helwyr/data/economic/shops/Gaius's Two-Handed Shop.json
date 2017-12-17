@@ -1,0 +1,18 @@
+/ Shop System Written By ' JTlr Frost ' /
+
+/[Store Key]/
+key=52
+
+/[General Store]/
+general=false
+
+/[Currency Id]/
+currency=995
+
+/[Item Name :: Main Stock :: Quanity]/
+Bronze 2h sword -> 1307::10
+Iron 2h sword -> 1309::10
+Steel 2h sword -> 1311::10
+Black 2h sword -> 1313::10
+Mithril 2h sword -> 1315::10
+Adamant 2h sword -> 1317::10

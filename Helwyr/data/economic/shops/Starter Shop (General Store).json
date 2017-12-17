@@ -1,0 +1,28 @@
+/ Shop System Written By ' JTlr Frost ' /
+
+/[Store Key]/
+key=181
+
+/[General Store]/
+general=true
+
+/[Currency Id]/
+currency=995
+
+/[Item Name :: Main Stock :: Quanity]/
+Anti-dragon shield -> 1540::100
+Ava's accumulator -> 10499::100
+Saradomin's Book of Wisdom -> 3840::100
+Zamorak's Book of Chaos -> 3842::100
+Guthix's Book of Balance -> 3844::100
+Silverlight -> 2402::100
+Darklight -> 6746::100
+Small pouch -> 5509::100
+Medium pouch -> 5510::100
+Large pouch -> 5512::100
+Giant pouch -> 5514::100
+Royal dragonhide set -> 24386::100
+Watch -> 2575::100
+Chart -> 2576::100
+Sextant -> 2574::100
+Magic notepaper -> 30372::100000

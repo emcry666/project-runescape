@@ -1,0 +1,39 @@
+/ Shop System Written By ' JTlr Frost ' /
+
+/[Store Key]/
+key=107
+
+/[General Store]/
+general=false
+
+/[Currency Id]/
+currency=995
+
+/[Item Name :: Main Stock :: Quanity]/
+Empty pot -> 1931::30
+Jug -> 1935::10
+Shears -> 1735::10
+Bucket -> 1925::30
+Bowl -> 1923::10
+Cake tin -> 1887::10
+Tinderbox -> 590::10
+Chisel -> 1755::10
+Hammer -> 2347::10
+Newcomer map -> 550::10
+Security book -> 9003::10
+Rope -> 954::10
+Knife -> 946::10
+Pineapple -> 2114::0
+Banana -> 1963::10
+Orange -> 2108::0
+Glassblowing pipe -> 1785::10
+Bucket of sand -> 1783::0
+Seaweed -> 401::0
+Ashes -> 592::0
+Lobster pot -> 301::10
+Fishing rod -> 307::10
+Swamp paste -> 1941::10
+Tyras helm -> 9629::10
+Raw rabbit -> 3226::10
+Eye patch -> 1025::10
+Rosemary -> 6014::0

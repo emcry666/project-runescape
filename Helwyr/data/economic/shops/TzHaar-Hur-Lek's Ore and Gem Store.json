@@ -1,0 +1,19 @@
+/ Shop System Written By ' JTlr Frost ' /
+
+/[Store Key]/
+key=112
+
+/[General Store]/
+general=false
+
+/[Currency Id]/
+currency=995
+
+/[Item Name :: Main Stock :: Quanity]/
+Tin ore -> 438::5
+Copper ore -> 436::5
+Iron ore -> 440::2
+Uncut sapphire -> 1623::1
+Uncut emerald -> 1621::1
+Uncut onyx -> 6571::1
+Onyx bolt tips -> 9194::50

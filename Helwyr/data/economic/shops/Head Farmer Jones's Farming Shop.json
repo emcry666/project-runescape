@@ -1,0 +1,24 @@
+/ Shop System Written By ' JTlr Frost ' /
+
+/[Store Key]/
+key=167
+
+/[General Store]/
+general=false
+
+/[Currency Id]/
+currency=995
+
+/[Item Name :: Main Stock :: Quanity]/
+Potato seed -> 5318::10
+Potato seed -> 5318::10
+Watering can -> 5331::30
+Compost -> 6032::300
+Seed dibber -> 5343::10
+Gardening trowel -> 5325::10
+Spade -> 952::10
+Secateurs -> 5329::10
+Rake -> 5341::10
+Bucket -> 1925::100
+Plant cure -> 6036::10
+Shears -> 1735::20

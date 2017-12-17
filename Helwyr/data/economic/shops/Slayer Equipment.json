@@ -1,0 +1,32 @@
+/ Shop System Written By ' JTlr Frost ' /
+
+/[Store Key]/
+key=54
+
+/[General Store]/
+general=false
+
+/[Currency Id]/
+currency=995
+
+/[Item Name :: Main Stock :: Quanity]/
+Enchanted gem -> 4155::300
+Mirror shield -> 4156::10
+Leaf-bladed spear -> 4158::10
+Broad arrows -> 4150::3000
+Bag of salt -> 4161::1000
+Rock hammer -> 4162::10
+Face mask -> 4164::10
+Earmuffs -> 4166::10
+Nose peg -> 4168::10
+Slayer's staff -> 4170::10
+Spiny helmet -> 4551::10
+Fishing explosive -> 6664::1000
+Ice cooler -> 6696::1000
+Slayer gloves -> 6708::10
+Unlit bug lantern -> 7051::10
+Insulated boots -> 7159::10
+Fungicide spray 10 -> 7421::10
+Fungicide -> 7432::1000
+Witchwood icon -> 8923::10
+Slayer bell -> 10952::10

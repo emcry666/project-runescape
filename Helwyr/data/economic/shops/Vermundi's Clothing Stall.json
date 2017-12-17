@@ -1,0 +1,18 @@
+/ Shop System Written By ' JTlr Frost ' /
+
+/[Store Key]/
+key=153
+
+/[General Store]/
+general=false
+
+/[Currency Id]/
+currency=995
+
+/[Item Name :: Main Stock :: Quanity]/
+Shirt -> 5030::10
+Shorts -> 5042::10
+Silk -> 950::10
+Skirt -> 5048::10
+Trousers -> 5036::10
+Woven top -> 5024::10

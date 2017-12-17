@@ -1,0 +1,15 @@
+[Legendary Pets Overall Benefits]
+- 5% experience boost per level.
+- Passively a charm collector.
+- Now sends you home and heals you for 10% of your maximum health
+when you are below 20% of your maximum health.
+- Automatically collects coins from killed monsters, and puts into
+inventory/money pouch.
+- Now automatically adds items into your inventory from monster drops
+if the value is greater than your lootbeam threshold.
+[Using an item on legendary pet]
+ *Alching*
+- When alching items from your pets abilities, he will note noted/non noted items.
+if you alch noted items in your inventory, he will alch the entire amount of the noted items.
+ *Noting*
+- When using the note item ability, he notes all of the items in your inventory, instead of just the one item.

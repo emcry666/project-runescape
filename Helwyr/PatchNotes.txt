@@ -1,0 +1,46 @@
+
+
+--Latest Updates--
+
+[Shop Changes]
+- Trivia shop master is now 'barker' north of home bank.
+- Starter Supplies/shop is now North east (tannery shop)
+- Malak is now the achievement master and skillcape shops
+ (Inside the pub)
+- Canafis lodestone replaced the old lodestone teleports.
+
+- Vorago has been added. (Required 3-5 players).
+- Araxxor has been added (Required 2-4 Players).
+- Ascension crossbow making has been added.
+- Server stability has drastically increased.
+- Common and uncommon drop table chances have been increased.
+- Spinning has been added for leveling crafting.
+- Crafting urns have been added.
+- Daily tasks have now been added for faster leveling.
+- Barbarian adv agility has been nerfed.
+- Catching implings has been added for training hunter.
+- Eleven workers have been added for thieving.
+- Slayer masters have been fixed at home.
+- Kalphite King no longer heals for 1/2 of his full health.
+- Araxxor multi has been fixed, and does not use his special
+attacks as often.
+- Araxxor's healing has been nerfed by 500.
+- Teleport to task has been added to slayer masters.
+- Vorago's damage has been nerfed to rs2 health style.
+- Voting has been redone/reworked. Advertising will 
+be our main focus to gain more players. :)
+- A zamorak mage has been added for home for a less run
+for overall teleports around the world.
+- Vorag's red bomb no longer hits 2100's
+- Kalphite has been added for task teleports (teleport to task).
+- We have been added onto Rune-Server, Top100Arena, TopG, MoparScape,
+RSPSList, Runelocus, and Rune-Script toplists.
+- Araxxor cave has been added to home.
+- Pickpocketing npcs now give alot more gp.
+- Grand exchange no longer makes the server lag.
+- Gemcutting has been fixed for 'craft' option and has been more
+profitable.
+- Shops no longer sell items for under ge price.
+- Clanwars has been fixed (and re-enabled)
+- While doing slayer, you have a chance to get a single sof token
+or a double sof token spin.

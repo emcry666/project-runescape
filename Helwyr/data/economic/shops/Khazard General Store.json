@@ -1,0 +1,25 @@
+/ Shop System Written By ' JTlr Frost ' /
+
+/[Store Key]/
+key=109
+
+/[General Store]/
+general=true
+
+/[Currency Id]/
+currency=995
+
+/[Item Name :: Main Stock :: Quanity]/
+Bronze pickaxe -> 1265::10
+Empty pot -> 1931::30
+Jug -> 1935::10
+Shears -> 1735::10
+Bucket -> 1925::30
+Tinderbox -> 590::10
+Chisel -> 1755::10
+Hammer -> 2347::10
+Rope -> 954::10
+Pot of flour -> 1933::500
+Bailing bucket -> 583::10
+Swamp paste -> 1941::1000
+Knife -> 946::10

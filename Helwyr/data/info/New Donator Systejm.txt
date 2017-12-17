@@ -1,0 +1,29 @@
+-> Regular Donator Features -> : $10
+	
+	Access to donator zone
+	Ability to donator commands
+	*title
+	*yell
+	*blueskin
+	*greenskin
+	Exclusive access to 3 more shops
+	Granted permission to use donator ring exp scale from * 1 to * 1.2
+	Access to use the Royal Dwarf Cannon
+	
+	
+-> Super Donator Features -> : $25
+
+	All listed Regular Donator Features
+	Ability to use extended commands
+	*bank
+	Granted permsision to use the upgraded donator ring exp scale from * 1.2 to * 1.4
+	Ability to use wing auras and special tier auras.
+	Access to use the Golden Dwarf Cannon
+	
+	
+-> Extreme Donator Features -> : $50
+
+	All listed Super/Regular Donator Features
+	Access to use the 
+	
+

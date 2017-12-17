@@ -1,0 +1,24 @@
+/ Shop System Written By ' JTlr Frost ' /
+
+/[Store Key]/
+key=159
+
+/[General Store]/
+general=false
+
+/[Currency Id]/
+currency=995
+
+/[Item Name :: Main Stock :: Quanity]/
+Bucket -> 1925::30
+Candle -> 36::10
+Charcoal -> 973::10
+Chisel -> 1755::10
+Hammer -> 2347::10
+Jug -> 1935::10
+Leather gloves -> 1059::10
+Pestle and mortar -> 233::10
+Rope -> 954::10
+Tinderbox -> 590::10
+Unlit torch -> 596::10
+Vial -> 229::300

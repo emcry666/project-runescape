@@ -1,0 +1,17 @@
+- Clan Citadels / Clan Leveling
+- Throne of miscellania dialogue finished + all options handled + resetting peoples instance
+- Grand Exchange on website
+- New Donation Store working
+- Pay fox for website integration for ipb
+
+** MUST DO CHANGES**
+- Finished adventure logs saving to website.
+- Finish home changes + teleport revamping.
+- Throne of miscellania dialogue finished + all options handled + resetting peoples instance
+- Boss instances fixes
+
+
+*** TODO CONTENT ***
+
+- Player Perks
+- Player owned Lands

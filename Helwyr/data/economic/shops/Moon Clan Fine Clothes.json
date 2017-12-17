@@ -1,0 +1,21 @@
+/ Shop System Written By ' JTlr Frost ' /
+
+/[Store Key]/
+key=82
+
+/[General Store]/
+general=false
+
+/[Currency Id]/
+currency=995
+
+/[Item Name :: Main Stock :: Quanity]/
+Moonclan helm -> 9068::10
+Moonclan hat -> 9069::10
+Moonclan armour -> 9070::10
+Moonclan skirt -> 9071::10
+Moonclan gloves -> 9072::10
+Moonclan boots -> 9073::10
+Moonclan cape -> 9074::10
+Needle -> 1733::10
+Thread -> 1734::1000

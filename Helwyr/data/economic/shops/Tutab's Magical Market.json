@@ -1,0 +1,20 @@
+/ Shop System Written By ' JTlr Frost ' /
+
+/[Store Key]/
+key=145
+
+/[General Store]/
+general=false
+
+/[Currency Id]/
+currency=995
+
+/[Item Name :: Main Stock :: Quanity]/
+Air rune -> 556::1000
+Earth rune -> 557::1000
+Eye of gnome -> 4008::10
+Fire rune -> 554::1000
+Law rune -> 563::100
+Monkey dentures -> 4006::10
+Monkey talisman -> 4023::10
+Water rune -> 555::1000

@@ -1,0 +1,12 @@
+[Mon 01.30.2017 at 09:54:53 PM CET] lee991 (109.158.182.59)  traded with soul_dog (98.196.105.118) 
+	INPUT FROM - lee991 (109.158.182.59) 
+		1x Dragon scimitar - ID = 4587
+
+	INPUT FROM - soul_dog (98.196.105.118) 		1x Monkfish - ID = 7946
+
+*END*
+[Mon 01.30.2017 at 09:54:53 PM CET] lee991 (109.158.182.59)  traded with soul_dog (98.196.105.118) 
+	INPUT FROM - lee991 (109.158.182.59) 
+
+	INPUT FROM - soul_dog (98.196.105.118) 
+*END*

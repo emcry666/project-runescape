@@ -1,0 +1,30 @@
+/ Shop System Written By ' JTlr Frost ' /
+
+/[Store Key]/
+key=179
+
+/[General Store]/
+general=false
+
+/[Currency Id]/
+currency=7478
+
+/[Item Name :: Main Stock :: Quanity]/
+Fighter hat -> 10548::100
+Fighter torso -> 10551::100
+Void knight top -> 8839::100
+Void knight top -> 10611::100
+Void knight robe -> 8840::100
+Void knight mace -> 8841::100
+Void knight gloves -> 8842::100
+Void knight mage helm -> 11663::100
+Void knight ranger helm -> 11664::100
+Void knight melee helm -> 11665::100
+Culinaromancer's gloves 10 -> 7462::100
+Culinaromancer's gloves 9 -> 7461::100
+Ava's accumulator -> 10499::100
+Rune defender -> 8850::100
+Dragon defender -> 20072::100
+Goliath gloves (black) -> 22358::100
+Spellcaster gloves (black) -> 22366::100
+Swift gloves (black) -> 22362::100

@@ -1,0 +1,18 @@
+/ Shop System Written By ' JTlr Frost ' /
+
+/[Store Key]/
+key=91
+
+/[General Store]/
+general=false
+
+/[Currency Id]/
+currency=995
+
+/[Item Name :: Main Stock :: Quanity]/
+Tuna -> 361::0
+Salmon -> 329::10
+Cod -> 339::10
+Lobster -> 379::0
+Swordfish -> 373::0
+Shark -> 385::0

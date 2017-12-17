@@ -1,0 +1,24 @@
+/ Shop System Written By ' JTlr Frost ' /
+
+/[Store Key]/
+key=42
+
+/[General Store]/
+general=false
+
+/[Currency Id]/
+currency=995
+
+/[Item Name :: Main Stock :: Quanity]/
+Waterskin (4) -> 1823::30
+Waterskin (0) -> 1831::30
+Jug of water -> 1937::10
+Bowl of water -> 1921::10
+Bucket of water -> 1929::10
+Jug -> 1935::10
+Bowl -> 1923::10
+Bucket -> 1925::30
+Desert boots -> 1837::10
+Desert shirt -> 1833::10
+Desert robe -> 1835::10
+Knife -> 946::10

@@ -1,0 +1,5 @@
+[Tue 01.31.2017 at 07:35:46 PM CET] [24.155.157.86] picked up 0x Wolf bones - ID = 2859 at [3488, 3488, 0] 
+[Tue 01.31.2017 at 07:35:50 PM CET] [24.155.157.86] picked up 0x Blue charm - ID = 12163 at [3488, 3488, 0] 
+[Tue 01.31.2017 at 07:39:59 PM CET] [24.155.157.86] picked up 0x Rune helm - ID = 1147 at [3488, 3490, 0] 
+[Tue 01.31.2017 at 07:39:59 PM CET] [24.155.157.86] picked up 0x Wolf bones - ID = 2859 at [3488, 3490, 0] 
+[Tue 01.31.2017 at 07:40:04 PM CET] [24.155.157.86] picked up 0x Green charm - ID = 12159 at [3488, 3490, 0] 

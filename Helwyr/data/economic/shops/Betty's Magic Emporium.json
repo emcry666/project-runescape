@@ -1,0 +1,23 @@
+/ Shop System Written By ' JTlr Frost ' /
+
+/[Store Key]/
+key=34
+
+/[General Store]/
+general=false
+
+/[Currency Id]/
+currency=995
+
+/[Item Name :: Main Stock :: Quanity]/
+Fire rune -> 554::300
+Water rune -> 555::300
+Air rune -> 556::300
+Earth rune -> 557::300
+Mind rune -> 558::100
+Body rune -> 559::100
+Chaos rune -> 562::30
+Death rune -> 560::10
+Eye of newt -> 221::300
+Wizard hat -> 579::10
+Wizard hat -> 1017::10

@@ -1,0 +1,37 @@
+/ Shop System Written By ' JTlr Frost ' /
+
+/[Store Key]/
+key=62
+
+/[General Store]/
+general=false
+
+/[Currency Id]/
+currency=995
+
+/[Item Name :: Main Stock :: Quanity]/
+Spinach roll -> 1969::10
+Cocktail guide -> 2023::10
+Blue hat -> 740::10
+Dragon dagger -> 1215::30
+Newcomer map -> 550::10
+Bucket -> 1925::10
+Swamp paste -> 1941::10
+Poison -> 273::10
+Papyrus -> 970::10
+Machete -> 975::10
+Holy mould -> 1599::10
+Sickle mould -> 2976::10
+Waterskin (4) -> 1823::30
+Desert boots -> 1837::10
+Shantay pass -> 1854::300
+Toy horsey -> 2524::10
+Sample bottle -> 3377::10
+Boots -> 2894::10
+Greenman's ale -> 1909::10
+Fremennik cloak -> 3787::10
+Keg of beer -> 3711::10
+Flamtaer hammer -> 3678::10
+Olive oil (3) -> 3424::10
+Limestone brick -> 3420::10
+Instruction manual -> 5::10

@@ -1,0 +1,15 @@
+/ Shop System Written By ' JTlr Frost ' /
+
+/[Store Key]/
+key=49
+
+/[General Store]/
+general=false
+
+/[Currency Id]/
+currency=995
+
+/[Item Name :: Main Stock :: Quanity]/
+Strength potion (3) -> 115::10
+Attack potion (3) -> 121::10
+Defence potion (3) -> 133::10

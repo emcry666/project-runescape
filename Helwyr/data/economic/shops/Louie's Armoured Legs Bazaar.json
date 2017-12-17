@@ -1,0 +1,18 @@
+/ Shop System Written By ' JTlr Frost ' /
+
+/[Store Key]/
+key=37
+
+/[General Store]/
+general=false
+
+/[Currency Id]/
+currency=995
+
+/[Item Name :: Main Stock :: Quanity]/
+Bronze platelegs -> 1075::10
+Iron platelegs -> 1067::10
+Steel platelegs -> 1069::10
+Black platelegs -> 1077::10
+Mithril platelegs -> 1071::10
+Adamant platelegs -> 1073::10

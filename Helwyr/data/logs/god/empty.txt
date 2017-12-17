@@ -1,0 +1,98 @@
+[Sun 01.29.2017 at 03:28:21 AM CET] [24.202.5.239] EMPTIED ITEMS:
+	1x Super prayer renewal potion (6) - ID = 33186
+	1x Super prayer renewal potion (6) - ID = 33186
+	1x Super prayer renewal potion (6) - ID = 33186
+	1x Super prayer renewal potion (6) - ID = 33186
+	1x Super prayer renewal potion (6) - ID = 33186
+	1x Super prayer renewal potion (6) - ID = 33186
+	1x Super prayer renewal potion (6) - ID = 33186
+	1x Super prayer renewal potion (6) - ID = 33186
+	1x Super prayer renewal potion (6) - ID = 33186
+	1x Super prayer renewal potion (6) - ID = 33186
+	1x Super prayer renewal potion (6) - ID = 33186
+	1x Super prayer renewal potion (6) - ID = 33186
+	1x Super prayer renewal potion (6) - ID = 33186
+	1x Super prayer renewal potion (6) - ID = 33186
+	1x Super prayer renewal potion (6) - ID = 33186
+	1x Super prayer renewal potion (6) - ID = 33186
+	1x Super prayer renewal potion (6) - ID = 33186
+	1x Super prayer renewal potion (6) - ID = 33186
+	1x Super prayer renewal potion (6) - ID = 33186
+	1x Super prayer renewal potion (6) - ID = 33186
+	1x Super prayer renewal potion (6) - ID = 33186
+	1x Super prayer renewal potion (6) - ID = 33186
+	1x Super prayer renewal potion (6) - ID = 33186
+	1x Super prayer renewal potion (6) - ID = 33186
+	1x Super prayer renewal potion (6) - ID = 33186
+	1x Super prayer renewal potion (6) - ID = 33186
+	1x Super prayer renewal potion (6) - ID = 33186
+	1x Super prayer renewal potion (6) - ID = 33186
+*END*
+[Sun 01.29.2017 at 09:59:16 PM CET] [24.202.5.239] EMPTIED ITEMS:
+	1972x Super prayer renewal potion (6) - ID = 33187
+*END*
+[Sun 01.29.2017 at 09:59:44 PM CET] [24.202.5.239] EMPTIED ITEMS:
+	1x Cupid's halo - ID = 34007
+*END*
+[Sun 01.29.2017 at 11:22:46 PM CET] [24.202.5.239] EMPTIED ITEMS:
+	6213710x Coins - ID = 995
+	1x Saradomin sword - ID = 11730
+	1x Frost dragon bones - ID = 18830
+	1x Guthix chaps - ID = 10380
+	1x Saradomin cloak - ID = 10446
+	1x Clue scroll (easy) - ID = 2688
+	1x Black cavalier - ID = 2643
+	1x Guthix kiteshield - ID = 2675
+	1x Crystal key - ID = 989
+	1x Crystal key - ID = 989
+	1x Crystal key - ID = 989
+	1x Crystal key - ID = 989
+	1x Crystal key - ID = 989
+	1x Crystal key - ID = 989
+	1x Crystal key - ID = 989
+	1x Crystal key - ID = 989
+	1x Crystal key - ID = 989
+	1x Crystal key - ID = 989
+	1x Crystal key - ID = 989
+	1x Crystal key - ID = 989
+	1x Crystal key - ID = 989
+	1x Crystal key - ID = 989
+	1x Crystal key - ID = 989
+	1x Crystal key - ID = 989
+	1x Crystal key - ID = 989
+	1x Crystal key - ID = 989
+	1x Crystal key - ID = 989
+	1x Crystal key - ID = 989
+*END*
+[Wed 02.01.2017 at 03:06:00 AM CET] [24.202.5.239] EMPTIED ITEMS:
+	1x Magic logs - ID = 1513
+	1x Magic logs - ID = 1513
+	1x Magic logs - ID = 1513
+	1x Magic logs - ID = 1513
+	1x Magic logs - ID = 1513
+	1x Magic logs - ID = 1513
+	1x Magic logs - ID = 1513
+	1x Magic logs - ID = 1513
+	1x Magic logs - ID = 1513
+	1x Magic logs - ID = 1513
+*END*
+[Wed 02.01.2017 at 03:06:11 AM CET] [24.202.5.239] EMPTIED ITEMS:
+	26160x Coins - ID = 995
+	1x Pernix body - ID = 20151
+	1x Pernix chaps - ID = 20155
+*END*
+[Wed 02.01.2017 at 03:07:40 AM CET] [24.202.5.239] EMPTIED ITEMS:
+	1x Guthan's platebody - ID = 4728
+	1x Guthan's chainskirt - ID = 4730
+*END*
+[Wed 02.01.2017 at 03:18:52 AM CET] [24.202.5.239] EMPTIED ITEMS:
+	1x Armadyl gloves - ID = 25016
+	1x Armadyl boots - ID = 25010
+	1x Dragon claw - ID = 14484
+	1x Dragon claw - ID = 14484
+	1x Off-hand dragon claw - ID = 25555
+	199x Prayer renewal flask (6) - ID = 23610
+	1x Anti-dragon shield - ID = 1541
+	19980x Red chinchompa - ID = 10034
+	1x Prayer renewal flask (3) - ID = 23616
+*END*

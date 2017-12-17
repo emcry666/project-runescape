@@ -1,0 +1,17 @@
+/ Shop System Written By ' JTlr Frost ' /
+
+/[Store Key]/
+key=47
+
+/[General Store]/
+general=false
+
+/[Currency Id]/
+currency=995
+
+/[Item Name :: Main Stock :: Quanity]/
+Bronze chainbody -> 1103::10
+Iron chainbody -> 1101::10
+Steel chainbody -> 1105::10
+Black chainbody -> 1107::10
+Mithril chainbody -> 1109::10

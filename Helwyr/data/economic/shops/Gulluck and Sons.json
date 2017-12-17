@@ -1,0 +1,32 @@
+/ Shop System Written By ' JTlr Frost ' /
+
+/[Store Key]/
+key=67
+
+/[General Store]/
+general=false
+
+/[Currency Id]/
+currency=995
+
+/[Item Name :: Main Stock :: Quanity]/
+Bronze arrow -> 882::1000
+Bronze bolts -> 877::300
+Pearl bolts -> 880::0
+Shortbow -> 841::10
+Shieldbow -> 839::10
+Crossbow -> 837::10
+Bronze arrowheads -> 39::100
+Iron arrowheads -> 40::100
+Steel arrowheads -> 41::100
+Mithril arrowheads -> 42::100
+Iron hatchet -> 1349::100
+Steel hatchet -> 1353::100
+Iron battleaxe -> 1363::100
+Steel battleaxe -> 1365::100
+Mithril battleaxe -> 1369::100
+Bronze 2h sword -> 1307::100
+Iron 2h sword -> 1309::100
+Steel 2h sword -> 1311::100
+Black 2h sword -> 1313::100
+Mithril 2h sword -> 1315::100

@@ -1,0 +1,20 @@
+/ Shop System Written By ' JTlr Frost ' /
+
+/[Store Key]/
+key=111
+
+/[General Store]/
+general=false
+
+/[Currency Id]/
+currency=995
+
+/[Item Name :: Main Stock :: Quanity]/
+Fire rune -> 554::1000
+Water rune -> 555::1000
+Air rune -> 556::1000
+Earth rune -> 557::1000
+Mind rune -> 558::1000
+Body rune -> 559::1000
+Chaos rune -> 562::300
+Death rune -> 560::100

@@ -1,0 +1,15 @@
+/ Shop System Written By ' JTlr Frost ' /
+
+/[Store Key]/
+key=97
+
+/[General Store]/
+general=false
+
+/[Currency Id]/
+currency=995
+
+/[Item Name :: Main Stock :: Quanity]/
+Jug of wine -> 1993::10
+Jug -> 1935::10
+Bottle of wine -> 7919::10

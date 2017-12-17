@@ -1,0 +1,20 @@
+/ Shop System Written By ' JTlr Frost ' /
+
+/[Store Key]/
+key=180
+
+/[General Store]/
+general=false
+
+/[Currency Id]/
+currency=995
+
+/[Item Name :: Main Stock :: Quanity]/
+Ninja monkey greegree -> 4024::100
+Ninja monkey greegree -> 4025::100
+Gorilla greegree -> 4026::100
+Gorilla greegree -> 4027::100
+Gorilla greegree -> 4028::100
+Zombie monkey greegree -> 4029::100
+Zombie monkey greegree -> 4030::100
+Monkey greegree -> 4031::100

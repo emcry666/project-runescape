@@ -1,0 +1,14 @@
+/ Shop System Written By ' JTlr Frost ' /
+
+/[Store Key]/
+key=164
+
+/[General Store]/
+general=false
+
+/[Currency Id]/
+currency=995
+
+/[Item Name :: Main Stock :: Quanity]/
+Spirit shards -> 12183::65000
+Pouch -> 12155::50000

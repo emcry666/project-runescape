@@ -1,0 +1,39 @@
+/ Shop System Written By ' JTlr Frost ' /
+
+/[Store Key]/
+key=182
+
+/[General Store]/
+general=false
+
+/[Currency Id]/
+currency=995
+
+/[Item Name :: Main Stock :: Quanity]/
+Attack master cape -> 31268::50
+Strength master cape -> 31269::50
+Defence master cape -> 31270::50
+Ranged master cape -> 31271::50
+Prayer master cape -> 31272::50
+Magic master cape -> 31273::50
+Runecrafting master cape -> 31274::50
+Construction master cape -> 31275::50
+Constitution master cape -> 31276::50
+Agility master cape -> 31277::50
+Herblore master cape -> 31278::50
+Thieving master cape -> 31279::50
+Crafting master cape -> 31280::50
+Fletching master cape -> 31281::50
+Slayer master cape -> 31282::50
+Hunter master cape -> 31283::50
+Divination master cape -> 31284::50
+Mining master cape -> 31285::50
+Smithing master cape -> 31286::50
+Fishing master cape -> 31287::50
+Cooking master cape -> 31288::50
+Firemaking master cape -> 31289::50
+Woodcutting master cape -> 31290::50
+Farming master cape -> 31291::50
+Summoning master cape -> 31292::50
+Dungeoneering master cape -> 19709::50
+Divination master cape -> 31284::50

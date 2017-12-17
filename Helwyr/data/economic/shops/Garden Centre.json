@@ -1,0 +1,35 @@
+/ Shop System Written By ' JTlr Frost ' /
+
+/[Store Key]/
+key=48
+
+/[General Store]/
+general=false
+
+/[Currency Id]/
+currency=995
+
+/[Item Name :: Main Stock :: Quanity]/
+Bagged dead tree -> 8417::10
+Bagged nice tree -> 8419::10
+Bagged oak tree -> 8421::10
+Bagged willow tree -> 8423::10
+Bagged maple tree -> 8425::10
+Bagged yew tree -> 8427::10
+Bagged magic tree -> 8429::10
+Bagged plant 1 -> 8431::10
+Bagged plant 2 -> 8433::10
+Bagged plant 3 -> 8435::10
+Bagged rosemary -> 8451::10
+Bagged daffodils -> 8453::10
+Bagged bluebells -> 8455::10
+Bagged sunflower -> 8457::10
+Bagged marigolds -> 8459::10
+Bagged roses -> 8461::10
+Thorny hedge -> 8437::10
+Nice hedge -> 8439::10
+Small box hedge -> 8441::10
+Topiary hedge -> 8443::10
+Fancy hedge -> 8445::10
+Tall fancy hedge -> 8447::10
+Tall box hedge -> 8449::10

@@ -1,0 +1,34 @@
+/ Shop System Written By ' JTlr Frost ' /
+
+/[Store Key]/
+key=116
+
+/[General Store]/
+general=true
+
+/[Currency Id]/
+currency=995
+
+/[Item Name :: Main Stock :: Quanity]/
+Tinderbox -> 590::10
+Vial -> 229::10
+Pestle and mortar -> 233::10
+Empty pot -> 1931::30
+Bronze hatchet -> 1351::10
+Bronze pickaxe -> 1265::10
+Iron hatchet -> 1349::10
+Leather body -> 1129::10
+Leather gloves -> 1059::10
+Leather boots -> 1061::10
+Cooked meat -> 2142::10
+Bread -> 2309::10
+Spade -> 952::10
+Candle -> 36::10
+Unlit torch -> 596::10
+Chisel -> 1755::10
+Hammer -> 2347::10
+Papyrus -> 970::10
+Charcoal -> 973::10
+Vial of water -> 227::10
+Machete -> 975::10
+Rope -> 954::10

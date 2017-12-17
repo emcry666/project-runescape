@@ -1,0 +1,32 @@
+/ Shop System Written By ' JTlr Frost ' /
+
+/[Store Key]/
+key=32
+
+/[General Store]/
+general=false
+
+/[Currency Id]/
+currency=995
+
+/[Item Name :: Main Stock :: Quanity]/
+Gold ring -> 1635::0
+Sapphire ring -> 1637::0
+Emerald ring -> 1639::0
+Ruby ring -> 1641::0
+Diamond ring -> 1643::0
+Gold necklace -> 1654::0
+Sapphire necklace -> 1656::0
+Emerald necklace -> 1658::0
+Ruby necklace -> 1660::0
+Diamond necklace -> 1662::0
+Gold amulet -> 1692::0
+Sapphire amulet -> 1694::0
+Emerald amulet -> 1696::0
+Ruby amulet -> 1698::0
+Diamond amulet -> 1700::0
+Gold bracelet -> 11069::0
+Sapphire bracelet -> 11072::0
+Emerald bracelet -> 11076::0
+Ruby bracelet -> 11085::0
+Diamond bracelet -> 11092::0

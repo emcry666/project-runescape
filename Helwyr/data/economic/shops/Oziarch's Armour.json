@@ -1,0 +1,14 @@
+/ Shop System Written By ' JTlr Frost ' /
+
+/[Store Key]/
+key=69
+
+/[General Store]/
+general=false
+
+/[Currency Id]/
+currency=995
+
+/[Item Name :: Main Stock :: Quanity]/
+Rune platebody -> 1127::10
+Green d'hide body -> 1135::10

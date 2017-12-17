@@ -1,0 +1,15 @@
+/ Shop System Written By ' JTlr Frost ' /
+
+/[Store Key]/
+key=55
+
+/[General Store]/
+general=false
+
+/[Currency Id]/
+currency=995
+
+/[Item Name :: Main Stock :: Quanity]/
+Vial -> 229::10
+Pestle and mortar -> 233::10
+Eye of newt -> 221::10

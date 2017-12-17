@@ -1,0 +1,23 @@
+/ Shop System Written By ' JTlr Frost ' /
+
+/[Store Key]/
+key=57
+
+/[General Store]/
+general=false
+
+/[Currency Id]/
+currency=995
+
+/[Item Name :: Main Stock :: Quanity]/
+Rope -> 954::10
+Lockpick -> 1523::10
+Chisel -> 1755::10
+Knife -> 946::10
+Stethoscope -> 5560::10
+Bronze knife -> 864::100
+Iron knife -> 863::100
+Steel knife -> 865::100
+Bronze claw -> 3095::100
+Iron claw -> 3096::100
+Steel claw -> 3097::100

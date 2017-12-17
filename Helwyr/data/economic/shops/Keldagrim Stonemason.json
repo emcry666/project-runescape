@@ -1,0 +1,16 @@
+/ Shop System Written By ' JTlr Frost ' /
+
+/[Store Key]/
+key=158
+
+/[General Store]/
+general=false
+
+/[Currency Id]/
+currency=995
+
+/[Item Name :: Main Stock :: Quanity]/
+Gold leaf -> 8784::30
+Limestone brick -> 3420::500
+Magic stone -> 8788::30
+Marble block -> 8786::30

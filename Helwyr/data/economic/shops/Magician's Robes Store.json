@@ -1,0 +1,17 @@
+/ Shop System Written By ' JTlr Frost ' /
+
+/[Store Key]/
+key=14
+
+/[General Store]/
+general=false
+
+/[Currency Id]/
+currency=995
+
+/[Item Name :: Main Stock :: Quanity]/
+Mystic hat -> 4089::100
+Mystic robe top -> 4091::100
+Mystic robe bottom -> 4093::100
+Mystic gloves -> 4095::100
+Mystic boots -> 4097::100

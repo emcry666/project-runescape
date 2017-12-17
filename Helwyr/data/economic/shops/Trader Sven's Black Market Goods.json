@@ -1,0 +1,18 @@
+/ Shop System Written By ' JTlr Frost ' /
+
+/[Store Key]/
+key=118
+
+/[General Store]/
+general=false
+
+/[Currency Id]/
+currency=995
+
+/[Item Name :: Main Stock :: Quanity]/
+Citizen shoes -> 9644::10
+Citizen top -> 9640::10
+Citizen trousers -> 9642::10
+Vyrewatch legs -> 9636::10
+Vyrewatch shoes -> 9638::10
+Vyrewatch top -> 9634::10

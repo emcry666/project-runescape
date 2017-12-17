@@ -1,0 +1,29 @@
+/ Shop System Written By ' JTlr Frost ' /
+
+/[Store Key]/
+key=84
+
+/[General Store]/
+general=false
+
+/[Currency Id]/
+currency=995
+
+/[Item Name :: Main Stock :: Quanity]/
+Tinderbox -> 590::10
+Rope -> 954::10
+Pestle and mortar -> 233::10
+Empty pot -> 1931::30
+Cooked meat -> 2142::10
+Bread -> 2309::10
+Spade -> 952::10
+Candle -> 36::10
+Chisel -> 1755::10
+Hammer -> 2347::10
+Vial -> 229::10
+Vial of water -> 227::10
+Bucket -> 1925::30
+Bucket of water -> 1929::10
+Egg -> 1944::10
+Raw potato -> 1942::10
+Cabbage -> 1965::10

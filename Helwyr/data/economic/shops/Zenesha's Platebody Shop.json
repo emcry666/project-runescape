@@ -1,0 +1,17 @@
+/ Shop System Written By ' JTlr Frost ' /
+
+/[Store Key]/
+key=28
+
+/[General Store]/
+general=false
+
+/[Currency Id]/
+currency=995
+
+/[Item Name :: Main Stock :: Quanity]/
+Bronze platebody -> 1117::10
+Iron platebody -> 1115::10
+Steel platebody -> 1119::10
+Black platebody -> 1125::10
+Mithril platebody -> 1121::10

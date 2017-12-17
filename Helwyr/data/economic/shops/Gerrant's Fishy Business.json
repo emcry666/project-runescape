@@ -1,0 +1,29 @@
+/ Shop System Written By ' JTlr Frost ' /
+
+/[Store Key]/
+key=31
+
+/[General Store]/
+general=false
+
+/[Currency Id]/
+currency=995
+
+/[Item Name :: Main Stock :: Quanity]/
+Small fishing net -> 303::10
+Fishing rod -> 307::10
+Fly fishing rod -> 309::10
+Harpoon -> 311::1000
+Lobster pot -> 301::10
+Fishing bait -> 313::1000
+Feather -> 314::1000
+Raw shrimps -> 317::0
+Raw sardine -> 327::10
+Raw herring -> 345::0
+Raw anchovies -> 321::0
+Raw trout -> 335::0
+Raw pike -> 349::0
+Raw salmon -> 331::0
+Raw tuna -> 359::0
+Raw lobster -> 377::0
+Raw swordfish -> 371::0

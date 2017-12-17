@@ -1,0 +1,16 @@
+/ Shop System Written By ' JTlr Frost ' /
+
+/[Store Key]/
+key=151
+
+/[General Store]/
+general=false
+
+/[Currency Id]/
+currency=995
+
+/[Item Name :: Main Stock :: Quanity]/
+Sapphire -> 1607::0
+Emerald -> 1605::0
+Ruby -> 1603::0
+Diamond -> 1601::0

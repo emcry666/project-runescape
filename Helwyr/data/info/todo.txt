@@ -1,0 +1,43 @@
+- Quest duplicate entries for some reason.
+- ibans staff dont work
+- equipment stat bug, interface not opening back (need to relog)
+- give thanks emote, able to walk being a chicken lol
+- deposit box, when deposit worn items they are invisible when going in the bank
+- barrows npcs defence is too high
+- laurpia suit (hunter) give increased xp
+- philldip hills teleport
+- normal dagganoth teleports
+-dragon platebody making (ruined dragon armour piece 1x lump, 1x slice, 1x shard)
+-mudy keys 
+useing chisel on rubies to make bolt tips dont work when u click all
+Dung boss's health r to high due to RS3 cache
+Bonfires on normal fires dont work
+Gano beasts have WAY TO MUCH HEALTH
+slayer tower Stairs dont work
+Ape atoll LAdder inside house/castle dont work
+Crafting - battlesstaves >dragon hide> molten glass dont work
+Diamonds shud be insta buy on ge
+Big Loud noise when logging in (IDK) MANY PLAYER EXPERIENCED IT
+prayer is draining way to fast when using protection prayers
+pathfinding on gano drops r broken drops appear 10 steps away from where they shud be
+boss pets added
+Dreadnips dont work + need adding to pvm store ( suggestion)
+
+
+Make Cannon work at:
+-Ganos
+- SLayer tower
+- Jadinkos
+- glacors
+
+Fix ape atoll tele to tp u skel monkeys
+Fix teleport to ganos to bring u to gano beasts instead of climbing,
+Clues dont work you cant open to read them
+Green wall spikes are not at hunter location
+Experiments r missing
+
+
+
+Suggestions:
+Toggleable x10/x1 hit looks
+Split highscores up to donators/nondonators

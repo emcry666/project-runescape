@@ -1,0 +1,35 @@
+/ Shop System Written By ' JTlr Frost ' /
+
+/[Store Key]/
+key=7
+
+/[General Store]/
+general=false
+
+/[Currency Id]/
+currency=995
+
+/[Item Name :: Main Stock :: Quanity]/
+Bronze arrow -> 882::1000
+Iron arrow -> 884::100
+Steel arrow -> 886::100
+Mithril arrow -> 888::100
+Adamant arrow -> 890::30
+Bronze bolts -> 877::300
+Shortbow -> 841::10
+Shieldbow -> 839::10
+Oak shortbow -> 843::10
+Oak shieldbow -> 845::10
+Willow shortbow -> 849::10
+Oak shortbow -> 843::10
+Willow shortbow -> 849::10
+Willow shieldbow -> 847::10
+Maple shortbow -> 853::10
+Maple shieldbow -> 851::10
+Leather body -> 1129::10
+Leather gloves -> 1059::100
+Leather boots -> 1061::10
+Leather chaps -> 1095::10
+Studded body -> 1133::10
+Studded chaps -> 1097::10
+Hard leather body -> 1131::10

@@ -1,0 +1,18 @@
+/ Shop System Written By ' JTlr Frost ' /
+
+/[Store Key]/
+key=94
+
+/[General Store]/
+general=false
+
+/[Currency Id]/
+currency=995
+
+/[Item Name :: Main Stock :: Quanity]/
+Cannon base -> 6::10
+Cannon stand -> 8::10
+Cannon barrels -> 10::10
+Cannon furnace -> 12::10
+Instruction manual -> 5::10
+Ammo mould -> 4::10

@@ -1,0 +1,25 @@
+/ Shop System Written By ' JTlr Frost ' /
+
+/[Store Key]/
+key=66
+
+/[General Store]/
+general=false
+
+/[Currency Id]/
+currency=995
+
+/[Item Name :: Main Stock :: Quanity]/
+Premade veg batta -> 2227::10
+Premade w'm batta -> 2219::10
+Premade t'd batta -> 2221::10
+Premade fr't batta -> 2225::10
+Premade c+t batta -> 2223::10
+Premade worm hole -> 2233::10
+Tangled toads' legs -> 2187::10
+Veg ball -> 2195::10
+Chocolate bomb -> 2185::10
+Worm crunchies -> 2205::10
+Toad crunchies -> 2217::10
+Chocchip crunchies -> 2209::10
+Premade s'y crunch -> 2241::10

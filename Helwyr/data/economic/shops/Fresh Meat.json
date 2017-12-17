@@ -1,0 +1,32 @@
+/ Shop System Written By ' JTlr Frost ' /
+
+/[Store Key]/
+key=81
+
+/[General Store]/
+general=false
+
+/[Currency Id]/
+currency=995
+
+/[Item Name :: Main Stock :: Quanity]/
+Cooked chicken -> 2140::10
+Cooked chompy -> 2878::0
+Rotten food -> 7228::0
+Cooked meat -> 2142::10
+Cooked rabbit -> 3228::10
+Raw bear meat -> 2136::300
+Raw beast meat -> 9986::0
+Raw beef -> 2132::300
+Raw bird meat -> 9978::10
+Raw chicken -> 2138::10
+Raw chompy -> 2876::0
+Raw jubbly -> 7566::0
+Raw oomlie -> 2337::0
+Raw rabbit -> 3226::100
+Roast beast meat -> 9988::0
+Roast bird meat -> 9980::0
+Skewered beast -> 9992::0
+Skewered bird meat -> 9984::0
+Skewered chompy -> 7230::0
+Skewered rabbit -> 7224::0

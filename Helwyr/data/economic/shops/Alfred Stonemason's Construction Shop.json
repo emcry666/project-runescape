@@ -1,0 +1,13 @@
+/ Shop System Written By ' JTlr Frost ' /
+
+/[Store Key]/
+key=166
+
+/[General Store]/
+general=false
+
+/[Currency Id]/
+currency=995
+
+/[Item Name :: Main Stock :: Quanity]/
+Hammer -> 2347::10

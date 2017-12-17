@@ -1,0 +1,52 @@
+/ Shop System Written By ' JTlr Frost ' /
+
+/[Store Key]/
+key=51
+
+/[General Store]/
+general=false
+
+/[Currency Id]/
+currency=995
+
+/[Item Name :: Main Stock :: Quanity]/
+Iron battleaxe -> 1363::10
+Steel battleaxe -> 1365::10
+Mithril battleaxe -> 1369::10
+Bronze sword -> 1277::10
+Iron sword -> 1279::10
+Steel sword -> 1281::10
+Black sword -> 1283::10
+Mithril sword -> 1285::10
+Adamant sword -> 1287::10
+Bronze longsword -> 1291::10
+Iron longsword -> 1293::10
+Steel longsword -> 1295::10
+Black longsword -> 1297::10
+Mithril longsword -> 1299::10
+Adamant longsword -> 1301::10
+Bronze dagger -> 1205::10
+Iron dagger -> 1203::10
+Steel dagger -> 1207::10
+Mithril dagger -> 1209::10
+Steel dagger -> 1207::10
+Black dagger -> 1217::10
+Mithril dagger -> 1209::10
+Adamant dagger -> 1211::10
+Bronze mace -> 1422::10
+Iron mace -> 1420::10
+Steel mace -> 1424::10
+Mithril mace -> 1428::10
+Adamant mace -> 1430::10
+Bronze 2h sword -> 1307::10
+Iron 2h sword -> 1309::10
+Steel 2h sword -> 1311::10
+Black 2h sword -> 1313::10
+Mithril 2h sword -> 1315::10
+Adamant 2h sword -> 1317::10
+Bronze chainbody -> 1103::10
+Iron chainbody -> 1101::10
+Steel chainbody -> 1105::10
+Bronze helm -> 1139::10
+Iron helm -> 1137::10
+Steel helm -> 1141::10

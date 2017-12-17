@@ -1,0 +1,35 @@
+Bandos.org Noticeboard <where ingame time sits stm
+
+-- Bandos.org -- 
+- Server time: 
+- Players online: 
+- Staff online:
+- Wilderness:
+- EXP event:
+- Shooting Star:
+- Evil Tree:
+
+--Player--
+- Name:
+- Rank: Player/staff rank not donator
+- Subscription: donator logo here
+- Time Online: 1D:12H:36M <ECT
+
+--Statistics--
+- Donated: $0 <ECT
+- Donation points:
+- Voted: 10 Times <ECT
+- Slayer points:
+- Trivia points:
+- Dung points:
+- PC points: < pest control
+- PvP points: 
+- SW points: <soul wars
+
+
+- Home Location
+-Comp Req ( opens up the tasks so you can see wut u have done)
+- Clan: Cowbells
+- Citadel LEvel
+- Bosslogs ( when clicked opens up a bosslog)
+- Pvp KDR

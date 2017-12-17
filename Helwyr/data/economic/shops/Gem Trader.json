@@ -1,0 +1,20 @@
+/ Shop System Written By ' JTlr Frost ' /
+
+/[Store Key]/
+key=35
+
+/[General Store]/
+general=false
+
+/[Currency Id]/
+currency=995
+
+/[Item Name :: Main Stock :: Quanity]/
+Uncut sapphire -> 1623::0
+Uncut emerald -> 1621::0
+Uncut ruby -> 1619::0
+Uncut diamond -> 1617::0
+Sapphire -> 1607::0
+Emerald -> 1605::0
+Ruby -> 1603::0
+Diamond -> 1601::0

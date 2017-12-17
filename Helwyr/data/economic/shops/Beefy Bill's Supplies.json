@@ -1,0 +1,26 @@
+/ Shop System Written By ' JTlr Frost ' /
+
+/[Store Key]/
+key=135
+
+/[General Store]/
+general=false
+
+/[Currency Id]/
+currency=995
+
+/[Item Name :: Main Stock :: Quanity]/
+Bronze arrow -> 882::30
+Bronze sq shield -> 1173::10
+Bronze sword -> 1277::10
+Bucket of water -> 1929::10
+Cake tin -> 1887::10
+Chef's hat -> 1949::10
+Empty pot -> 1931::30
+Jug of water -> 1937::10
+Pie dish -> 2313::10
+Redberries -> 1951::10
+Shears -> 1735::10
+Shortbow -> 841::10
+Spinach roll -> 1969::10
+Tinderbox -> 590::10

@@ -1,0 +1,79 @@
+Regular Donator Features-$10 
+Access to the extremely awesome Donator Zone. ::dz
+Ability to set a custom title. ::title
+Ability to use custom yell colors. ::title
+Ability to change the color of your skin. ::blueskin ::greenskin
+Ability to bank anywhere EXCEPT in minigames/most boss rooms. ::bank
+Access to use the following commands: ::swapbook/::curses
+::ge/::cb/::cchat (0-3)/ ::lie / ::swim/ ::yell/ 
+Access to 5 more exclusive shops.
+Ability to imbue berserker/archer/seers rings.
+Increased EXP Rates/game points from 1 to 1.2.
+10% Drop-rate increase
+
+Extreme Donator Features - 25$
+Get all the features of a Regular Donator.
+Increased EXP Rates/game points from 1 to 1.4
+Ability to use 5 new pets, such as TzRek Jad.
+Access to the Extreme Donator cape.
+Ability to use wing auras and special tier auras.
+Slightly increased drop rates compared to a Regular Donator.
+Access to an awesome and exclusive shop.
+Access to the following commands ::sound / ::music
+Access to ::yelltitle command to change your title to a custom title.
+20% Drop-rate increase.
+
+Legendary Donator Features- $50
+
+Get all the features from previous donator ranks.
+Increased EXP Rates/game points from 1 to 2.
+Access to the Legendary Donator Shop
+Access to the ::gfx command
+Access to the Gold Dwarf-Multicannon
+Access to a Second bank!
+30% Drop-rate increase.
+
+Divine Donator Features - 100$
+
+Get all the features from previous donator ranks.
+Increased EXP Rates/game points from 2 to 2.5.
+Access to the Divine Donator Shop
+Unlimited supply of Supreme Harmony auras.
+Praise from all the players, you will stand out
+Ability to have any pet with the :et (ID) command
+Access to the ::emote command!
+Access to bloodwood trees.
+50% Drop increase.
+
+Angelic Donator Features - 200$
+Get all the features from previous donator ranks.
+Increased EXP Rates/game points from 2.5 to 3.
+Access to the Angelic Donator Shop.
+Access to the commands: ::remote/::re and ::fly
+The ability to run infinite! 
+Unlimited supply of Supreme Salvation auras
+Praise from all the players, you will stand out!
+60% Drop increase.
+
+Heroic Donator Features - 300$
+
+Get all the features from previous donator ranks.
+Increased EXP Rates/game points from 3 to 4.
+Unlimited supply of Supreme Corruption auras.
+Praise from all the players, you will stand out.
+Higher barrows loot rate.
+The ability to turn into NPC's with the ::tonpc command!
+Suggest more benefits for this rank to Notepad!
+
+Mythic Donator Features - 400$
+Get all the features from previous donator ranks.
+Increased EXP Rates/game points from 4 to 5.
+Praise from all the players, you will stand out.
+Access to a unique custom item, only usable by Mythic Donators.
+Suggest more benefits for this rank to Notepad!
+100% Drop increase, the highest drop rate!
+
+
+
+
+

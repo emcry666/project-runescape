@@ -1,0 +1,18 @@
+/ Shop System Written By ' JTlr Frost ' /
+
+/[Store Key]/
+key=155
+
+/[General Store]/
+general=false
+
+/[Currency Id]/
+currency=995
+
+/[Item Name :: Main Stock :: Quanity]/
+Bronze warhammer -> 1337::10
+Iron warhammer -> 1335::10
+Steel warhammer -> 1339::10
+Black warhammer -> 1341::10
+Mithril warhammer -> 1343::10
+Adamant warhammer -> 1345::10

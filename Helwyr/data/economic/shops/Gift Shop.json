@@ -1,0 +1,22 @@
+/ Shop System Written By ' JTlr Frost ' /
+
+/[Store Key]/
+key=80
+
+/[General Store]/
+general=false
+
+/[Currency Id]/
+currency=995
+
+/[Item Name :: Main Stock :: Quanity]/
+Bronze hatchet -> 1351::10
+Bucket -> 1925::30
+Cooked chompy -> 2878::10
+Empty pot -> 1931::30
+Feather -> 314::1000
+Hammer -> 2347::10
+Knife -> 946::10
+Ogre arrow -> 2866::100
+Rope -> 954::10
+Tinderbox -> 590::10

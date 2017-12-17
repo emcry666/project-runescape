@@ -1,0 +1,18 @@
+/ Shop System Written By ' JTlr Frost ' /
+
+/[Store Key]/
+key=114
+
+/[General Store]/
+general=false
+
+/[Currency Id]/
+currency=995
+
+/[Item Name :: Main Stock :: Quanity]/
+Herring -> 347::10
+Cod -> 339::10
+Tuna -> 361::10
+Lobster -> 379::10
+Swordfish -> 373::10
+Cooked karambwan -> 3144::10

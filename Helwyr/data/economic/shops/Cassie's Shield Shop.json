@@ -1,0 +1,20 @@
+/ Shop System Written By ' JTlr Frost ' /
+
+/[Store Key]/
+key=45
+
+/[General Store]/
+general=false
+
+/[Currency Id]/
+currency=995
+
+/[Item Name :: Main Stock :: Quanity]/
+Wooden shield -> 1171::10
+Bronze sq shield -> 1173::10
+Bronze kiteshield -> 1189::10
+Iron sq shield -> 1175::10
+Iron kiteshield -> 1191::10
+Steel sq shield -> 1177::10
+Steel kiteshield -> 1193::10
+Mithril sq shield -> 1181::10

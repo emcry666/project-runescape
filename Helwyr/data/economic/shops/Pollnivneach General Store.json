@@ -1,0 +1,25 @@
+/ Shop System Written By ' JTlr Frost ' /
+
+/[Store Key]/
+key=70
+
+/[General Store]/
+general=true
+
+/[Currency Id]/
+currency=995
+
+/[Item Name :: Main Stock :: Quanity]/
+Empty pot -> 1931::30
+Jug -> 1935::10
+Waterskin (4) -> 1823::30
+Desert shirt -> 1833::10
+Desert boots -> 1837::10
+Bucket -> 1925::10
+Fake beard -> 4593::10
+Kharidian headpiece -> 4591::10
+Cheese -> 1985::10
+Lime -> 2120::10
+Tomato -> 1982::10
+Jug of water -> 1937::10
+Bowl of water -> 1921::10

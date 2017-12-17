@@ -1,0 +1,23 @@
+/ Shop System Written By ' JTlr Frost ' /
+
+/[Store Key]/
+key=141
+
+/[General Store]/
+general=false
+
+/[Currency Id]/
+currency=995
+
+/[Item Name :: Main Stock :: Quanity]/
+Coif -> 1169::10
+Hard leather body -> 1131::10
+Leather body -> 1129::10
+Leather chaps -> 1095::10
+Leather cowl -> 1167::10
+Leather vambraces -> 1063::10
+Studded body -> 1133::10
+Studded chaps -> 1097::10
+Ranging hood -> 9758::1
+Ranging cape -> 9756::1
+Ranging cape (t) -> 9757::1
