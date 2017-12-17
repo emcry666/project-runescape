@@ -1,4 +1,0 @@
-[Mon 01.30.2017 at 10:33:49 AM CET] [109.158.182.59] dropped 2499984x Coins - ID = 995 at [3499, 3485, 0] 
-[Mon 01.30.2017 at 10:34:33 AM CET] [109.158.182.59] dropped 1x Christmas cracker - ID = 962 at [3498, 3485, 0] 
-[Mon 01.30.2017 at 10:34:35 AM CET] [109.158.182.59] dropped 1x Off-hand dragon scimitar - ID = 25758 at [3498, 3485, 0] 
-[Mon 01.30.2017 at 10:35:12 AM CET] [109.158.182.59] dropped 1x Christmas cracker - ID = 962 at [3498, 3485, 0] 
