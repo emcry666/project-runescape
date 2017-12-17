@@ -1,3 +1,0 @@
-RareDropTable=false
-952, 1, 1, 0
-18778, 1, 1, 4
