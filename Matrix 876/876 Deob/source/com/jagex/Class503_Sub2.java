@@ -1,0 +1,179 @@
+/* Class503_Sub2 - Decompiled by JODE
+ * Visit http://jode.sourceforge.net/
+ */
+package com.jagex;
+
+import jaclib.nanotime.QueryPerformanceCounter;
+
+public class Class503_Sub2 extends Class503 {
+	int anInt10300;
+	long aLong10301;
+	long aLong10302;
+	long[] aLongArray10303;
+	int anInt10304;
+	long aLong10305 = 0L;
+
+	Class503_Sub2() {
+		aLong10302 = 0L;
+		aLong10301 = 0L;
+		aLongArray10303 = new long[10];
+		anInt10304 = 0;
+		anInt10300 = -589865697;
+		aLong10302 = ((aLong10305 = QueryPerformanceCounter.nanoTime() * 1250321843094433491L) * -7881300158385019725L);
+		if (0L == -1883481614758291109L * aLong10305)
+			throw new RuntimeException();
+	}
+
+	void method8165(int i) {
+		aLong10301 = 0L;
+		if (aLong10302 * -7096888096773251911L > aLong10305 * -1883481614758291109L)
+			aLong10305 += -2521902236029670789L * aLong10302 - aLong10305 * 1L;
+	}
+
+	long method8162(short i) {
+		aLong10305 += method15792(-379636651) * 1250321843094433491L;
+		if (-7096888096773251911L * aLong10302 > -1883481614758291109L * aLong10305)
+			return ((-7096888096773251911L * aLong10302 - aLong10305 * -1883481614758291109L) / 1000000L);
+		return 0L;
+	}
+
+	int method8170(long l) {
+		if (aLong10302 * -7096888096773251911L > -1883481614758291109L * aLong10305) {
+			aLong10301 += (aLong10302 * 7397394586079780751L - aLong10305 * -5569851947014722307L);
+			aLong10305 += aLong10302 * -2521902236029670789L - aLong10305 * 1L;
+			aLong10302 += l * 8590440609974675849L;
+			return 1;
+		}
+		int i = 0;
+		do {
+			i++;
+			aLong10302 += l * 8590440609974675849L;
+		} while (i < 10 && (aLong10302 * -7096888096773251911L < aLong10305 * -1883481614758291109L));
+		if (-7096888096773251911L * aLong10302 < -1883481614758291109L * aLong10305)
+			aLong10302 = aLong10305 * -7881300158385019725L;
+		return i;
+	}
+
+	long method8167(int i) {
+		return aLong10305 * -1883481614758291109L;
+	}
+
+	long method8172() {
+		aLong10305 += method15792(1654000944) * 1250321843094433491L;
+		if (-7096888096773251911L * aLong10302 > -1883481614758291109L * aLong10305)
+			return ((-7096888096773251911L * aLong10302 - aLong10305 * -1883481614758291109L) / 1000000L);
+		return 0L;
+	}
+
+	long method15792(int i) {
+		long l = QueryPerformanceCounter.nanoTime();
+		long l_0_ = l - -5454431704420164809L * aLong10301;
+		aLong10301 = -1653057964896531833L * l;
+		if (l_0_ > -5000000000L && l_0_ < 5000000000L) {
+			aLongArray10303[anInt10304 * 1763095487] = l_0_;
+			anInt10304 = (1 + 1763095487 * anInt10304) % 10 * -1661518785;
+			if (anInt10300 * 683400927 < 1)
+				anInt10300 += -589865697;
+		}
+		long l_1_ = 0L;
+		for (int i_2_ = 1; i_2_ <= 683400927 * anInt10300; i_2_++)
+			l_1_ += (aLongArray10303[(10 + (1763095487 * anInt10304 - i_2_)) % 10]);
+		return l_1_ / (long) (683400927 * anInt10300);
+	}
+
+	long method8180() {
+		aLong10305 += method15792(1294352667) * 1250321843094433491L;
+		if (-7096888096773251911L * aLong10302 > -1883481614758291109L * aLong10305)
+			return ((-7096888096773251911L * aLong10302 - aLong10305 * -1883481614758291109L) / 1000000L);
+		return 0L;
+	}
+
+	int method8160(long l) {
+		if (aLong10302 * -7096888096773251911L > -1883481614758291109L * aLong10305) {
+			aLong10301 += (aLong10302 * 7397394586079780751L - aLong10305 * -5569851947014722307L);
+			aLong10305 += aLong10302 * -2521902236029670789L - aLong10305 * 1L;
+			aLong10302 += l * 8590440609974675849L;
+			return 1;
+		}
+		int i = 0;
+		do {
+			i++;
+			aLong10302 += l * 8590440609974675849L;
+		} while (i < 10 && (aLong10302 * -7096888096773251911L < aLong10305 * -1883481614758291109L));
+		if (-7096888096773251911L * aLong10302 < -1883481614758291109L * aLong10305)
+			aLong10302 = aLong10305 * -7881300158385019725L;
+		return i;
+	}
+
+	void method8164() {
+		aLong10301 = 0L;
+		if (aLong10302 * -7096888096773251911L > aLong10305 * -1883481614758291109L)
+			aLong10305 += -2521902236029670789L * aLong10302 - aLong10305 * 1L;
+	}
+
+	long method8173() {
+		return aLong10305 * -1883481614758291109L;
+	}
+
+	int method8169(long l) {
+		if (aLong10302 * -7096888096773251911L > -1883481614758291109L * aLong10305) {
+			aLong10301 += (aLong10302 * 7397394586079780751L - aLong10305 * -5569851947014722307L);
+			aLong10305 += aLong10302 * -2521902236029670789L - aLong10305 * 1L;
+			aLong10302 += l * 8590440609974675849L;
+			return 1;
+		}
+		int i = 0;
+		do {
+			i++;
+			aLong10302 += l * 8590440609974675849L;
+		} while (i < 10 && (aLong10302 * -7096888096773251911L < aLong10305 * -1883481614758291109L));
+		if (-7096888096773251911L * aLong10302 < -1883481614758291109L * aLong10305)
+			aLong10302 = aLong10305 * -7881300158385019725L;
+		return i;
+	}
+
+	int method8179(long l) {
+		if (aLong10302 * -7096888096773251911L > -1883481614758291109L * aLong10305) {
+			aLong10301 += (aLong10302 * 7397394586079780751L - aLong10305 * -5569851947014722307L);
+			aLong10305 += aLong10302 * -2521902236029670789L - aLong10305 * 1L;
+			aLong10302 += l * 8590440609974675849L;
+			return 1;
+		}
+		int i = 0;
+		do {
+			i++;
+			aLong10302 += l * 8590440609974675849L;
+		} while (i < 10 && (aLong10302 * -7096888096773251911L < aLong10305 * -1883481614758291109L));
+		if (-7096888096773251911L * aLong10302 < -1883481614758291109L * aLong10305)
+			aLong10302 = aLong10305 * -7881300158385019725L;
+		return i;
+	}
+
+	int method8171(long l) {
+		if (aLong10302 * -7096888096773251911L > -1883481614758291109L * aLong10305) {
+			aLong10301 += (aLong10302 * 7397394586079780751L - aLong10305 * -5569851947014722307L);
+			aLong10305 += aLong10302 * -2521902236029670789L - aLong10305 * 1L;
+			aLong10302 += l * 8590440609974675849L;
+			return 1;
+		}
+		int i = 0;
+		do {
+			i++;
+			aLong10302 += l * 8590440609974675849L;
+		} while (i < 10 && (aLong10302 * -7096888096773251911L < aLong10305 * -1883481614758291109L));
+		if (-7096888096773251911L * aLong10302 < -1883481614758291109L * aLong10305)
+			aLong10302 = aLong10305 * -7881300158385019725L;
+		return i;
+	}
+
+	long method8161() {
+		return aLong10305 * -1883481614758291109L;
+	}
+
+	long method8168() {
+		aLong10305 += method15792(1922528908) * 1250321843094433491L;
+		if (-7096888096773251911L * aLong10302 > -1883481614758291109L * aLong10305)
+			return ((-7096888096773251911L * aLong10302 - aLong10305 * -1883481614758291109L) / 1000000L);
+		return 0L;
+	}
+}

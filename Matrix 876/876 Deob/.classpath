@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="source"/>
+	<classpathentry kind="lib" path="client.jar"/>
+	<classpathentry kind="lib" path="clientDeob.jar"/>
+	<classpathentry kind="lib" path="gamepackL-BuKv1YH297dA7u8UyAcPegW_aoU4Ia_9232096.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>
