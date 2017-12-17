@@ -12438,7 +12438,7 @@ case 174:
 		rsAlreadyLoaded = false;
 		welcomeScreenRaised = false;
 		messagePromptRaised = false;
-		loginMessage1 = "";
+		loginMessage1 = "Welcome";
 		loginMessage2 = "";
 		backDialogID = -1;
 		anInt1279 = 2;

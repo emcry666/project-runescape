@@ -16,7 +16,7 @@ public class Config {
 												// clients have more items like
 												// silab which goes past 15000
 	public static final int MAXITEM_AMOUNT = Integer.MAX_VALUE;
-	public static final int BANK_SIZE = 352;
+	public static final int BANK_SIZE = 1000;
 	public static final int MAX_PLAYERS = 1024;
 	public static final boolean TARGETS = true; // Wildy targets on?
 
@@ -100,7 +100,7 @@ public class Config {
 	public static final int MELEE_EXP_RATE = 0; // damage * exp rate
 	public static final int RANGE_EXP_RATE = 0;
 	public static final int MAGIC_EXP_RATE = 0;
-	public static final double SERVER_EXP_BONUS = 1;
+	public static final double SERVER_EXP_BONUS = 20;
 
 	public static final int INCREASE_SPECIAL_AMOUNT = 17500; // how fast your
 																// special bar
