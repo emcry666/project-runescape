@@ -1,2 +1,0 @@
-[Mon 01.30.2017 at 11:00:36 AM CET] [109.158.182.59] dropped 2500000x Coins - ID = 995 at [3496, 3483, 0] 
-[Mon 01.30.2017 at 11:00:38 AM CET] [109.158.182.59] dropped 1x Frost dragon bones - ID = 18830 at [3496, 3483, 0] 
