@@ -5,8 +5,8 @@ public class Config {
 	public static final boolean SERVER_DEBUG = false;// needs to be false for
 														// Real world to work
 
-	public static final String SERVER_NAME = "";
-	public static final String WELCOME_MESSAGE = "None";
+	public static final String SERVER_NAME = "Test Server";
+	public static final String WELCOME_MESSAGE = "Hello World";
 	public static final String FORUMS = "Unavailable";
 
 	public static final int CLIENT_VERSION = 999999;

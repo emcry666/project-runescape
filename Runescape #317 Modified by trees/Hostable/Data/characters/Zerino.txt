@@ -1,11 +1,11 @@
 [ACCOUNT]
 character-username = Zerino
-character-password = MonSteR78529438
+character-password = 1091111101151161011145556535057525156
 
 [CHARACTER]
 character-height = 0
-character-posx = 3094
-character-posy = 3495
+character-posx = 3093
+character-posy = 3494
 character-rights = 2
 crystal-bow-shots = 3
 skull-timer = -1
@@ -36,7 +36,7 @@ pkPoints = 0
 memberStatus = 0
 
 [EQUIPMENT]
-character-equip = 0	-1	1	
+character-equip = 0	1038	1	
 character-equip = 1	6570	1	
 character-equip = 2	-1	1	
 character-equip = 3	1231	1	
@@ -52,19 +52,19 @@ character-equip = 12	-1	1
 character-equip = 13	892	9957	
 
 [LOOK]
-character-look = 0	0
-character-look = 1	0
-character-look = 2	20
-character-look = 3	26
-character-look = 4	34
-character-look = 5	36
-character-look = 6	42
-character-look = 7	11
-character-look = 8	4
-character-look = 9	2
-character-look = 10	14
-character-look = 11	1
-character-look = 12	1
+character-look = 0	1
+character-look = 1	48
+character-look = 2	56
+character-look = 3	61
+character-look = 4	68
+character-look = 5	70
+character-look = 6	79
+character-look = 7	-1
+character-look = 8	2
+character-look = 9	1
+character-look = 10	2
+character-look = 11	3
+character-look = 12	0
 
 [SKILLS]
 character-skill = 0	1	0
