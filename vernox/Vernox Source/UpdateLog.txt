@@ -1,0 +1,30 @@
+Fixed Divination harvesting bug
+Fixed summoning shops 
+Added SurgeonHealer to home (not finished, no dialogue)
+Nerfed dungeoneering EXP
+Added guam seed
+Buffed summoning shop
+Buffed barrows a bit 
+Added Poision Waste Dungeon
+Buffed summoning EXP
+Added basic herblore & farming into shops to get started
+Nerfed warped tortoise drop rates
+Added Crystal chest
+Ironmen restrictions
+Add bonfire to work at home
+Phoenix necklace added
+Ring of recoil added
+Ring of life added
+Added Monkey Knife Fighters to Ape Atoll
+Added Mystery Box Rewards
+
+
+
+Need to: 
+mystery boxes added to store, Skilling M box like $5 each, PVM M box lke $10 each. Nohting better than GDW items
+add experience req for 120m xp capes
+Ironman only shop
+Add deathtouched darts
+fix god so it will 1 hit any npc
+the crystal chest dissapears when you use it
+Crafting gold items, rings bracelets, etc
