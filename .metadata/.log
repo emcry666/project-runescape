@@ -1625,3 +1625,21 @@ Java Model Exception: Java Model Status [C:\Program Files\Java\jre1.8.0_144\lib\
 	at org.eclipse.jface.text.TextViewerHoverManager$4.run(TextViewerHoverManager.java:165)
 !SUBENTRY 1 org.eclipse.jdt.core 4 1006 2017-12-18 10:02:25.469
 !MESSAGE C:\Program Files\Java\jre1.8.0_144\lib\rt.jar is not on its project's build path
+
+!ENTRY ro.amiq.dvt 1 0 2017-12-18 11:25:03.734
+!MESSAGE DVT Logger: << Ended EDT Plugin.
+
+!ENTRY ro.amiq.dvt 1 0 2017-12-18 11:25:03.735
+!MESSAGE DVT Logger: << Ended SLNDT Plugin.
+
+!ENTRY ro.amiq.dvt 1 0 2017-12-18 11:25:03.735
+!MESSAGE DVT Logger: << Ended EDT Base Plugin.
+
+!ENTRY ro.amiq.dvt 1 0 2017-12-18 11:25:03.736
+!MESSAGE DVT Logger: << Ended VHDLDT Plugin.
+
+!ENTRY ro.amiq.dvt 1 0 2017-12-18 11:25:03.737
+!MESSAGE DVT Logger: << Ended VLOGDT Plugin.
+
+!ENTRY ro.amiq.dvt 1 0 2017-12-18 11:25:03.739
+!MESSAGE DVT Logger: << Ended DVT Plugin.
