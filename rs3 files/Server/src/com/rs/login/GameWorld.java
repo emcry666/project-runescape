@@ -29,7 +29,7 @@ public class GameWorld {
 
 	public GameWorld(WorldInformation information) {
 		this.information = information;
-		this.loginAddress = new InetSocketAddress(Settings.HOSTED ? information.getIp() : "7.93.160.237", Settings.LOGIN_CLIENT_ADDRESS_BASE.getPort() + information.getId());
+		this.loginAddress = new InetSocketAddress(Settings.HOSTED ? information.getIp() : "7.93.160.249", Settings.LOGIN_CLIENT_ADDRESS_BASE.getPort() + information.getId());
 		this.lobbyPlayers = new ArrayList<Account>();
 		this.gamePlayers = new ArrayList<Account>();
 	}
