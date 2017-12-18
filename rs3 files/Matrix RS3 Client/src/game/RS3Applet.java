@@ -43,13 +43,13 @@ public class RS3Applet extends Applet implements AppletStub {
 	 */
 	public static boolean MODS = USING_ISAAC;
 
-	public static boolean HOSTED = true;
+	public static boolean HOSTED = false;
 
-	public static String LOBBY_ADDR = "7.93.160.237";//"73.195.229.254";//"192.184.11.146"; 178.33.229.142
+	public static String LOBBY_ADDR = "7.93.160.249";//"73.195.229.254";//"192.184.11.146"; 178.33.229.142
 	/**
 	 * Address of lobby server.
 	 */
-	public static String WEB_STREAM_ADDR = "7.93.160.237";//"192.184.11.146";
+	public static String WEB_STREAM_ADDR = "7.93.160.249";//"192.184.11.146";
 	/**
 	 * Chooses the Host
 	 */

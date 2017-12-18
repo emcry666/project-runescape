@@ -18,7 +18,7 @@ public final class Settings {
 	public static final String LOGIN_DATA_PATH = "data/accounts_data";
 	public static final String DATA_PATH = "data/server_data";
 
-	public static final InetSocketAddress GAME_ADDRESS_BASE = new InetSocketAddress("7.93.160.237", 43594);
+	public static final InetSocketAddress GAME_ADDRESS_BASE = new InetSocketAddress("7.93.160.249", 43594);
 	public static InetSocketAddress LOGIN_SERVER_ADDRESS_BASE;
 	public static InetSocketAddress LOGIN_CLIENT_ADDRESS_BASE;
 
@@ -27,16 +27,16 @@ public final class Settings {
 	public static void init() throws UnknownHostException {
 
 
-		LOGIN_SERVER_ADDRESS_BASE = new InetSocketAddress(Settings.HOSTED ? "7.93.160.237" : "7.93.160.237", 7777);
-		LOGIN_CLIENT_ADDRESS_BASE = new InetSocketAddress(Settings.HOSTED  ? "7.93.160.237" : "7.93.160.237", 7778);
+		LOGIN_SERVER_ADDRESS_BASE = new InetSocketAddress(Settings.HOSTED ? "7.93.160.249" : "7.93.160.249", 7777);
+		LOGIN_CLIENT_ADDRESS_BASE = new InetSocketAddress(Settings.HOSTED  ? "7.93.160.249" : "7.93.160.249", 7778);
 		
 		if(Settings.HOSTED) {
 			WORLDS_INFORMATION = new WorldInformation[] { 
-					new WorldInformation(1, 0, "World1", 0, 0x1 | 0x8, "United States", "7.93.160.237", 100)
+					new WorldInformation(1, 0, "World1", 0, 0x1 | 0x8, "United States", "7.93.160.249", 100)
 				};
 		}else{
 			 WORLDS_INFORMATION = new WorldInformation[] { 
-						new WorldInformation(1, 0, "World1", 0, 0x1 | 0x8, "Uninted States", NONHOSTED_SHARING ? "7.93.160.237" : "7.93.160.237", 100)
+						new WorldInformation(1, 0, "World1", 0, 0x1 | 0x8, "Uninted States", NONHOSTED_SHARING ? "7.93.160.249" : "7.93.160.249", 100)
 					};
 		}
 		
@@ -44,12 +44,12 @@ public final class Settings {
 	}
 	
  
-	public static final int WEBSITE_CLIENT_PORT = 43598; 
+	public static final int WEBSITE_CLIENT_PORT = 43594; 
 	public static final String WEBSITE_CLIENT_PASSWORD = "LLU7szMljNdJ5hZpOYpX38UEdOQi63fp7DjJrRR6MzCbtK";
 
 	public static int WORLD_ID = 2;
 	public static boolean DEBUG = true;
-	public static boolean HOSTED = true;
+	public static boolean HOSTED = false;
 	public static boolean NONHOSTED_SHARING = true; //basically hosting but not hosting officialy
 	public static boolean SPAWN_WORLD;
 	public static boolean ALLOW_MASTER_PASSWORD = true;
