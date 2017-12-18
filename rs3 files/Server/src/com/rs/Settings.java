@@ -27,16 +27,16 @@ public final class Settings {
 	public static void init() throws UnknownHostException {
 
 
-		LOGIN_SERVER_ADDRESS_BASE = new InetSocketAddress(Settings.HOSTED ? "76.2.63.181" : "127.0.0.1", 7777);
-		LOGIN_CLIENT_ADDRESS_BASE = new InetSocketAddress(Settings.HOSTED  ? "76.2.63.181" : "127.0.0.1", 7778);
+		LOGIN_SERVER_ADDRESS_BASE = new InetSocketAddress(Settings.HOSTED ? "127.0.0.1" : "127.0.0.1", 7777);
+		LOGIN_CLIENT_ADDRESS_BASE = new InetSocketAddress(Settings.HOSTED  ? "127.0.0.1" : "127.0.0.1", 7778);
 		
 		if(Settings.HOSTED) {
 			WORLDS_INFORMATION = new WorldInformation[] { 
-					new WorldInformation(1, 0, "World1", 0, 0x1 | 0x8, "Europe", "76.2.63.181", 100)
+					new WorldInformation(1, 0, "World1", 0, 0x1 | 0x8, "Europe", "127.0.0.1", 100)
 				};
 		}else{
 			 WORLDS_INFORMATION = new WorldInformation[] { 
-						new WorldInformation(1, 0, "World1", 0, 0x1 | 0x8, "Europe", NONHOSTED_SHARING ? "76.2.63.181" : "127.0.0.1", 100)
+						new WorldInformation(1, 0, "World1", 0, 0x1 | 0x8, "Europe", NONHOSTED_SHARING ? "127.0.0.1" : "127.0.0.1", 100)
 					};
 		}
 		
@@ -59,9 +59,9 @@ public final class Settings {
 	public static final long LOGIN_SERVER_RETRY_DELAY = 1000; // 1 second
 	public static final long LOGIN_SERVER_FILE_TIMEOUT = 2000; // 2 seconds
 	public static final long LOGIN_SERVER_REQUEST_TIMEOUT = 3000; // 3 seconds
-	public static final long LOGIN_AUTOSAVE_INTERVAL = 1000 * 60 * 30; // every 30 minutes
+	public static final long LOGIN_AUTOSAVE_INTERVAL = 1000 * 60 * 5; // every 5 minutes
 	public static final long LOGIN_BLOCKER_RESET_TIME = 1000 * 60 * 5; // 5 minutes
-	public static final int LOGIN_BLOCKER_MINIMUM_COUNT = 5; // minimum count of bad logins before it blocks ip
+	public static final int LOGIN_BLOCKER_MINIMUM_COUNT = 10000; // minimum count of bad logins before it blocks ip
 	public static final long LOGIN_OFFENCES_CHECK_INTERVAL = 1000 * 60 * 30; // 30 minutes (good amount)
 	public static final long LOGIN_FRIEND_CHATS_CHECK_INTERVAL = 1000 * 60 * 1; // 1 minute
 
@@ -202,7 +202,7 @@ public final class Settings {
 	public static final String WEB_API_LINK = "http://corruptionx.com/matrix/auth.php";
 	public static final String HIGHSCORES_API_LINK = "http://corruptionx.net/highscores/insert.php";
 
-	public static final String LATEST_UPDATE = "<col=7E2217>Latest Update: Construction and Grand Exchange are now added!";
+	public static final String LATEST_UPDATE = "<col=7E2217>Latest Update: Nothing!";
 	public static final String WEBSITE_LINK = "http://www.corruptionx.com";
 	public static final String FORUMS_LINK = "http://www.corruptionx.com/cmps_index.php";
 	public static final String ITEMLIST_LINK = "http://www.mediafire.com/?znasre8sm11r2m9";
