@@ -11,32 +11,7 @@ import com.rs.utils.Utils;
 
 public class CrystalChest {
 
-	private final static Item REWARDS[][] =
-	{
-		{ new Item(1631), new Item(1969), new Item(995, 2000) },
-		{ new Item(1631) },
-		{
-			new Item(1631),
-			new Item(554, 50),
-			new Item(556, 50),
-			new Item(555, 50),
-			new Item(557, 50),
-			new Item(559, 50),
-			new Item(558, 50),
-			new Item(560, 10),
-			new Item(561, 10),
-			new Item(562, 10),
-			new Item(563, 10),
-			new Item(564, 10) },
-		{ new Item(1631), new Item(2363, 10) },
-		{ new Item(1631), new Item(454, 100) },
-		{ new Item(1631), new Item(441, 150) },
-		{ new Item(1631), new Item(1603, 2), new Item(1601, 2) },
-		{ new Item(1631), new Item(371, 5), new Item(995, 1000) },
-		{ new Item(1631), new Item(987), new Item(995, 750) },
-		{ new Item(1631), new Item(985), new Item(995, 750) },
-		{ new Item(1631), new Item(1183) },
-		{ new Item(1631), new Item(1079), new Item(1093) } };
+	private final static Item REWARDS[][] = { { new Item(1631), new Item(1969), new Item(995, 2000) }, { new Item(1631) }, { new Item(1631), new Item(554, 50), new Item(556, 50), new Item(555, 50), new Item(557, 50), new Item(559, 50), new Item(558, 50), new Item(560, 10), new Item(561, 10), new Item(562, 10), new Item(563, 10), new Item(564, 10) }, { new Item(1631), new Item(2363, 10) }, { new Item(1631), new Item(454, 100) }, { new Item(1631), new Item(441, 150) }, { new Item(1631), new Item(1603, 2), new Item(1601, 2) }, { new Item(1631), new Item(371, 5), new Item(995, 1000) }, { new Item(1631), new Item(987), new Item(995, 750) }, { new Item(1631), new Item(985), new Item(995, 750) }, { new Item(1631), new Item(1183) }, { new Item(1631), new Item(1079), new Item(1093) } };
 
 	public static void openChest(final Player player, final WorldObject object) {
 		player.getInventory().deleteItem(989, 1);

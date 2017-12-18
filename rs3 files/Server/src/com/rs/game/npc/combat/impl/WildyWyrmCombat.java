@@ -64,8 +64,8 @@ public class WildyWyrmCombat extends CombatScript {
 			final WorldTile to = npc.getMiddleWorldTile();
 			for (final Entity t : possibleTargets) {
 				if (t.withinDistance(target, 1)) {
-					//	t.setNextAnimation(new Animation(14388));
-					//t.setNextGraphics(new Graphics(2767));
+					// t.setNextAnimation(new Animation(14388));
+					// t.setNextGraphics(new Graphics(2767));
 					t.setNextForceMovement(new NewForceMovement(t, 0, to, 2, Utils.getAngle(to.getX() - t.getX(), to.getY() - t.getY())));
 					t.setBoundDelay(2);
 					t.resetWalkSteps();
@@ -73,7 +73,7 @@ public class WildyWyrmCombat extends CombatScript {
 						@Override
 						public void run() {
 							t.setNextWorldTile(to);
-							
+
 						}
 					}, 1);
 				}
@@ -82,33 +82,33 @@ public class WildyWyrmCombat extends CombatScript {
 		}
 		int attackStyle = Utils.random(Utils.isOnRange(npc.getX(), npc.getY(), size, target.getX(), target.getY(), target.getSize(), 0) ? 3 : 2);
 		switch (attackStyle) {
-			case 0: //magic
-				npc.setNextAnimation(new Animation(12794));
-				attackMageTarget(new WorldTile(target), new ArrayList<Player>(), npc, npc, target, 2731, 2738, Utils.random(300) + 300);
-				break;
-			case 1://range
-				final WorldTile tile = new WorldTile(target);
-				npc.setNextAnimation(new Animation(12794));
-				final Projectile projectile = World.sendProjectileNew(npc, target, 2735, 100, 25, 35, 3, 10, 0);
-				WorldTasksManager.schedule(new WorldTask() {
-					@Override
-					public void run() {
-						for (Entity t : possibleTargets) {
-							if (!t.withinDistance(tile, 5))
-								continue;
-							Projectile p = World.sendProjectileNew(tile, t, 2735, 0, 16, projectile.getEndTime(), 2, 10, 0);
-							delayHit(npc, Utils.projectileTimeToCycles(p.getEndTime()) - 1, t, getRangeHit(npc, Utils.random(1001) + 3000));
-						}
+		case 0: // magic
+			npc.setNextAnimation(new Animation(12794));
+			attackMageTarget(new WorldTile(target), new ArrayList<Player>(), npc, npc, target, 2731, 2738, Utils.random(300) + 300);
+			break;
+		case 1:// range
+			final WorldTile tile = new WorldTile(target);
+			npc.setNextAnimation(new Animation(12794));
+			final Projectile projectile = World.sendProjectileNew(npc, target, 2735, 100, 25, 35, 3, 10, 0);
+			WorldTasksManager.schedule(new WorldTask() {
+				@Override
+				public void run() {
+					for (Entity t : possibleTargets) {
+						if (!t.withinDistance(tile, 5))
+							continue;
+						Projectile p = World.sendProjectileNew(tile, t, 2735, 0, 16, projectile.getEndTime(), 2, 10, 0);
+						delayHit(npc, Utils.projectileTimeToCycles(p.getEndTime()) - 1, t, getRangeHit(npc, Utils.random(1001) + 3000));
 					}
-				});
-				break;
-			default: //melee
-				npc.setNextAnimation(new Animation(defs.getAttackEmote()));
-				for (Entity t : possibleTargets) {
-					if (t.withinDistance(target, 1))
-						delayHit(npc, 0, t, getMeleeHit(npc, getMaxHit(npc, 2000, NPCCombatDefinitions.MELEE, t)));
 				}
-				break;
+			});
+			break;
+		default: // melee
+			npc.setNextAnimation(new Animation(defs.getAttackEmote()));
+			for (Entity t : possibleTargets) {
+				if (t.withinDistance(target, 1))
+					delayHit(npc, 0, t, getMeleeHit(npc, getMaxHit(npc, 2000, NPCCombatDefinitions.MELEE, t)));
+			}
+			break;
 		}
 		return npc.getAttackSpeed();
 	}

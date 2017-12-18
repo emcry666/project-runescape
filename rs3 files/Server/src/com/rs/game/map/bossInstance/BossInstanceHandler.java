@@ -20,17 +20,11 @@ import com.rs.utils.Utils;
 
 public class BossInstanceHandler {
 
-	//to make sure no issues
+	// to make sure no issues
 	public static final Object LOCK = new Object();
 
 	public static enum Boss {
-		King_Black_Dragon(KingBlackDragonInstance.class, 50000, 200, false, true, new WorldTile(3051, 3520, 0), new WorldTile(2273, 4681, 0), null, "BossInstanceController", 14)
-		, Kalphite_Queen(KalphiteQueenInstance.class, 100000, 200, false, true, new WorldTile(3446, 9496, 0), new WorldTile(3508, 9494, 0), null, "KalphiteQueenInstanceController", 212)
-		, Exiled_Kalphite_Queen(ExiledKalphiteQueenInstance.class, 100000, 200, false, true, new WorldTile(2995, 1617, 0), new WorldTile(2967, 1711, 0), null, "KalphiteQueenInstanceController", 212)
-		, Dagannoth_Kings(DagannothKingsInstance.class, 150000, 200, false, true, new WorldTile(1912, 4367, 0), new WorldTile(2900, 4449, 0), null, "DagannothKingsInstanceController", 365)
-		, Corporeal_Beast(CorporealBeastInstance.class, 300000, 200, false, true, new WorldTile(2970, 4384, 2), new WorldTile(2974, 4384, 2), null, "CorporealBeastInstanceController", 617)
-		, Kalphite_King(KalphiteKingInstance.class, 0, 200, false, false, new WorldTile(2971, 1656, 0), new WorldTile(2974, 1746, 0), null, "KalphiteKingInstanceController", 1140)
-		, Vorago(VoragoInstance.class, 1000000, 50, true, true, new WorldTile(2972, 3431, 0), new WorldTile(3043, 6100, 0), new WorldTile(3072, 6176, 0), "VoragoInstanceController", 1155)
+		King_Black_Dragon(KingBlackDragonInstance.class, 50000, 200, false, true, new WorldTile(3051, 3520, 0), new WorldTile(2273, 4681, 0), null, "BossInstanceController", 14), Kalphite_Queen(KalphiteQueenInstance.class, 100000, 200, false, true, new WorldTile(3446, 9496, 0), new WorldTile(3508, 9494, 0), null, "KalphiteQueenInstanceController", 212), Exiled_Kalphite_Queen(ExiledKalphiteQueenInstance.class, 100000, 200, false, true, new WorldTile(2995, 1617, 0), new WorldTile(2967, 1711, 0), null, "KalphiteQueenInstanceController", 212), Dagannoth_Kings(DagannothKingsInstance.class, 150000, 200, false, true, new WorldTile(1912, 4367, 0), new WorldTile(2900, 4449, 0), null, "DagannothKingsInstanceController", 365), Corporeal_Beast(CorporealBeastInstance.class, 300000, 200, false, true, new WorldTile(2970, 4384, 2), new WorldTile(2974, 4384, 2), null, "CorporealBeastInstanceController", 617), Kalphite_King(KalphiteKingInstance.class, 0, 200, false, false, new WorldTile(2971, 1656, 0), new WorldTile(2974, 1746, 0), null, "KalphiteKingInstanceController", 1140), Vorago(VoragoInstance.class, 1000000, 50, true, true, new WorldTile(2972, 3431, 0), new WorldTile(3043, 6100, 0), new WorldTile(3072, 6176, 0), "VoragoInstanceController", 1155)
 
 		;
 		private final Map<String, BossInstance> cachedInstances = Collections.synchronizedMap(new HashMap<String, BossInstance>());
@@ -117,13 +111,15 @@ public class BossInstanceHandler {
 					}
 					instance = settings.getBoss().instance.getDeclaredConstructor(Player.class, InstanceSettings.class).newInstance(player, settings);
 					settings.getBoss().cachedInstances.put(key, instance);
-				}
-				else {//recreating the instance but not gonna replace settings since already exists(instead, increase time)
+				} else {// recreating the instance but not gonna replace
+					// settings since already exists(instead, increase time)
 					settings.setCreationTime(Utils.currentTimeMillis());
-					joinInstance(player, settings.getBoss(), key, false); //enter the instance normally
+					joinInstance(player, settings.getBoss(), key, false); // enter
+					// the
+					// instance
+					// normally
 				}
-			}
-			catch (Throwable e) {
+			} catch (Throwable e) {
 				Logger.handle(e);
 			}
 
@@ -131,13 +127,14 @@ public class BossInstanceHandler {
 	}
 
 	/*
-	 * login means reloging in a public instance(u cant login into private, but lets keep this in case rs lets u in future)
+	 * login means reloging in a public instance(u cant login into private, but lets keep this in case rs lets u in
+	 * future)
 	 */
 	public static BossInstance joinInstance(Player player, Boss boss, String key, boolean login) {
 		synchronized (LOCK) {
 
 			BossInstance instance = findInstance(boss, key);
-			if (instance == null) { //not username
+			if (instance == null) { // not username
 				Player owner = World.getPlayerByDisplayName(key);
 				if (owner != null) {
 					key = owner.getUsername();
@@ -146,14 +143,14 @@ public class BossInstanceHandler {
 			}
 
 			if (instance == null) {
-				if (key.equals("")) { //supposed to be public instance
+				if (key.equals("")) { // supposed to be public instance
 					player.getPackets().sendGameMessage("This boss has no public instance.");
 					return null;
 				}
 				player.getPackets().sendGameMessage("That player is offline, or has privacy mode enabled.");
 				return null;
 			}
-			//loading
+			// loading
 			if (!instance.isInstanceReady())
 				return null;
 			if (!key.equals("") && !player.getUsername().equals(key)) {
@@ -190,8 +187,7 @@ public class BossInstanceHandler {
 				continue;
 			try {
 				createInstance(null, boss, boss.maxPlayers, 1, BossInstance.STANDARD, BossInstance.FFA, false, false);
-			}
-			catch (Throwable e) {
+			} catch (Throwable e) {
 				Logger.handle(e);
 			}
 		}

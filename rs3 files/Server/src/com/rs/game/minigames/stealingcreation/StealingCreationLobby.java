@@ -12,10 +12,8 @@ import com.rs.utils.Utils;
 
 public class StealingCreationLobby {
 
-	private static final int[] TOTAL_SKILL_IDS =
-	{ Skills.WOODCUTTING, Skills.MINING, Skills.FISHING, Skills.HUNTER, Skills.COOKING, Skills.HERBLORE, Skills.CRAFTING, Skills.SMITHING, Skills.FLETCHING, Skills.RUNECRAFTING, Skills.CONSTRUCTION };
-	private static final int[] TOTAL_COMBAT_IDS =
-	{ Skills.ATTACK, Skills.STRENGTH, Skills.DEFENCE, Skills.HITPOINTS, Skills.RANGE, Skills.MAGIC, Skills.PRAYER, Skills.SUMMONING };
+	private static final int[] TOTAL_SKILL_IDS = { Skills.WOODCUTTING, Skills.MINING, Skills.FISHING, Skills.HUNTER, Skills.COOKING, Skills.HERBLORE, Skills.CRAFTING, Skills.SMITHING, Skills.FLETCHING, Skills.RUNECRAFTING, Skills.CONSTRUCTION };
+	private static final int[] TOTAL_COMBAT_IDS = { Skills.ATTACK, Skills.STRENGTH, Skills.DEFENCE, Skills.HITPOINTS, Skills.RANGE, Skills.MAGIC, Skills.PRAYER, Skills.SUMMONING };
 	private static List<Player> redTeam, blueTeam;
 	private static LobbyTimer lobbyTask;
 	private static final int REQUIRED_PLAYERS = 5;
@@ -55,7 +53,6 @@ public class StealingCreationLobby {
 			reset();
 		}
 	}
-	
 
 	public static void reset() {
 		redTeam = new ArrayList<Player>();

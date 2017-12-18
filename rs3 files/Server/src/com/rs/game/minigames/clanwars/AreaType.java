@@ -88,26 +88,16 @@ public enum AreaType {
 	/**
 	 * Constructs a new {@code AreaType.java} {@code Object}.
 	 * 
-	 * @param southWestTile
-	 *            The south western tile.
-	 * @param northEastTile
-	 *            The north east tile.
-	 * @param firstSpawnOffsetX
-	 *            The first team's x spawn offset.
-	 * @param firstSpawnOffsetY
-	 *            The first team's y spawn offset.
-	 * @param secondSpawnOffsetX
-	 *            The second team's x spawn offset.
-	 * @param secondSpawnOffsetY
-	 *            The second team's y spawn offset.
-	 * @param firstDeathOffsetX
-	 *            The first team's x death offset.
-	 * @param firstDeathOffsetY
-	 *            The first team's y death offset.
-	 * @param secondDeathOffsetX
-	 *            The second team's x death offset.
-	 * @param secondDeathOffsetY
-	 *            The second team's y death offset.
+	 * @param southWestTile The south western tile.
+	 * @param northEastTile The north east tile.
+	 * @param firstSpawnOffsetX The first team's x spawn offset.
+	 * @param firstSpawnOffsetY The first team's y spawn offset.
+	 * @param secondSpawnOffsetX The second team's x spawn offset.
+	 * @param secondSpawnOffsetY The second team's y spawn offset.
+	 * @param firstDeathOffsetX The first team's x death offset.
+	 * @param firstDeathOffsetY The first team's y death offset.
+	 * @param secondDeathOffsetX The second team's x death offset.
+	 * @param secondDeathOffsetY The second team's y death offset.
 	 */
 	private AreaType(WorldTile southWestTile, WorldTile northEastTile, int firstSpawnOffsetX, int firstSpawnOffsetY, int secondSpawnOffsetX, int secondSpawnOffsetY, int firstDeathOffsetX, int firstDeathOffsetY, int secondDeathOffsetX, int secondDeathOffsetY) {
 		this.southWestTile = southWestTile;

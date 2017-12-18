@@ -101,13 +101,13 @@ public final class World {
 	private static final List<Player> lobbyPlayers = new ArrayList<Player>(Settings.PLAYERS_LIMIT);
 	private static final EntityList<NPC> npcs = new EntityList<NPC>(Settings.NPCS_LIMIT, false);
 	private static final Map<Integer, Region> regions = Collections.synchronizedMap(new HashMap<Integer, Region>());
-	
+
 	public static final void init() {
 
 		addDonationAnnouncmentTask();
 		addWorldAnnouncementTask();
-		//dont, i made it refresh when u open tab
-	//	addQuestTabUpdateTask();w
+		// dont, i made it refresh when u open tab
+		// addQuestTabUpdateTask();w
 		addRestoreRunEnergyTask();
 		addDrainPrayerTask();
 		addRefreshTargetBuffsTask();
@@ -127,7 +127,7 @@ public final class World {
 		ShootingStars.init();
 		DropEvent.init();
 		ActionBar.addActionBarTask();
-		//SlaughterFieldsControler.load();
+		// SlaughterFieldsControler.load();
 	}
 
 	private static void addWorldAnnouncementTask() {
@@ -232,12 +232,12 @@ public final class World {
 			}
 		}, 0, 30000);
 	}
-	
+
 	private static final void addRestoreHitPointsTask() {
 		GameExecutorManager.fastExecutor.schedule(new TimerTask() {
-			
+
 			private long cycle;
-			
+
 			@Override
 			public void run() {
 				try {
@@ -258,28 +258,28 @@ public final class World {
 			}
 		}, 0, 600);
 	}
-	
+
 	private static final void addRestoreRunEnergyTask() {
 		GameExecutorManager.fastExecutor.schedule(new TimerTask() {
-			
+
 			private long cycle;
-			
+
 			@Override
 			public void run() {
 				try {
-					for (Player player : getPlayers()) {	
-			
+					for (Player player : getPlayers()) {
+
 						if (player == null || player.isDead() || !player.isRunning())
 							continue;
-						if(player.getNextRunDirection() == -1) {
+						if (player.getNextRunDirection() == -1) {
 							int r = player.isResting() ? 3 : ((180 - player.getSkills().getLevel(Skills.AGILITY)) / 10);
-							if(cycle % r != 0)
+							if (cycle % r != 0)
 								continue;
 							player.restoreRunEnergy();
-						}else{
+						} else {
 							double weight = player.getWeight();
 							int r = weight >= 270 || player.getEffectsManager().hasActiveEffect(EffectType.MORRIGAN_AXE) ? 1 : (int) (10 - (weight / (weight < 0 ? 10 : 30)));
-							if(cycle % r != 0)
+							if (cycle % r != 0)
 								continue;
 							player.drainRunEnergy();
 						}
@@ -291,24 +291,24 @@ public final class World {
 			}
 		}, 0, 100);
 	}
-	
 
 	private static final void addDrainPrayerTask() {
 		GameExecutorManager.fastExecutor.schedule(new TimerTask() {
-			
+
 			private int curseTimer;
-			
+
 			@Override
 			public void run() {
 				try {
-					boolean decreaseLeechs = curseTimer++ % 100 == 0; //every 1min
+					boolean decreaseLeechs = curseTimer++ % 100 == 0; // every
+					// 1min
 					for (Player player : getPlayers()) {
 						if (player == null || player.isDead() || !player.isRunning())
 							continue;
 						player.getPrayer().processPrayerDrain();
-						if(decreaseLeechs)
+						if (decreaseLeechs)
 							player.getPrayer().decreaseLeechBonus();
-						
+
 					}
 				} catch (Throwable e) {
 					Logger.handle(e);
@@ -316,7 +316,7 @@ public final class World {
 			}
 		}, 0, 600);
 	}
-	
+
 	private static final void addRestoreNPCBonusesTask() {
 		GameExecutorManager.fastExecutor.schedule(new TimerTask() {
 			@Override
@@ -333,7 +333,7 @@ public final class World {
 			}
 		}, 0, 3000);
 	}
-	
+
 	private static final void addRefreshTargetBuffsTask() {
 		GameExecutorManager.fastExecutor.schedule(new TimerTask() {
 			@Override
@@ -351,7 +351,7 @@ public final class World {
 		}, 0, 600);
 
 	}
-	
+
 	private static final void addRestoreSkillsTask() {
 		GameExecutorManager.fastExecutor.schedule(new TimerTask() {
 			@Override
@@ -409,10 +409,10 @@ public final class World {
 			region.checkLoadMap();
 		return region;
 	}
-	
+
 	public static void removeProjectiles() {
 		synchronized (getRegions()) {
-			for(Region region : getRegions().values())
+			for (Region region : getRegions().values())
 				region.removeProjectiles();
 		}
 	}
@@ -444,7 +444,7 @@ public final class World {
 	public static final void removeNPC(NPC npc) {
 		npcs.remove(npc);
 	}
-	
+
 	public static final NPC spawnNPC(int id, WorldTile tile, int mapAreaNameHash, boolean canBeAttackFromOutOfArea, boolean spawned) {
 		NPC n = null;
 		if (id >= 5533 && id <= 5558)
@@ -453,7 +453,7 @@ public final class World {
 			n = new DagannothFledeling(id, tile, mapAreaNameHash, canBeAttackFromOutOfArea, spawned);
 		else if (id == 2440 || id == 2443 || id == 2446)
 			n = new DoorSupport(id, tile);
-		else if(id == 15976)
+		else if (id == 15976)
 			n = new MaxTheMaxed(id, tile, mapAreaNameHash, canBeAttackFromOutOfArea, spawned);
 		else if (id == 5079)
 			n = new HunterTrapNPC(HunterNPC.GREY_CHINCHOMPA, id, tile, mapAreaNameHash, canBeAttackFromOutOfArea, spawned);
@@ -578,7 +578,7 @@ public final class World {
 		else if (id == 14849)
 			n = new ConditionalDeath(23035, null, false, id, tile, mapAreaNameHash, canBeAttackFromOutOfArea);
 		else if (id == 1627 || id == 1628 || id == 1629 || id == 1630)
-			n = new ConditionalDeath(new int[] {13290, 4158}, null, false, id, tile, mapAreaNameHash, canBeAttackFromOutOfArea);
+			n = new ConditionalDeath(new int[] { 13290, 4158 }, null, false, id, tile, mapAreaNameHash, canBeAttackFromOutOfArea);
 		else if (id >= 2803 && id <= 2808)
 			n = new ConditionalDeath(6696, null, true, id, tile, mapAreaNameHash, canBeAttackFromOutOfArea);
 		else if (id == 1609 || id == 1610)
@@ -595,21 +595,21 @@ public final class World {
 			n = new TheDarkOracle(id, tile, mapAreaNameHash, canBeAttackFromOutOfArea, spawned);
 		else if (id >= 18150 && id <= 18172)
 			n = new Wisp(id, tile, mapAreaNameHash, canBeAttackFromOutOfArea);
-		else if (com.rs.game.player.content.EconomyManager.isEconomyManagerNpc(id)) 
+		else if (com.rs.game.player.content.EconomyManager.isEconomyManagerNpc(id))
 			n = new EconomyManager(id, tile, mapAreaNameHash, canBeAttackFromOutOfArea, spawned);
-		 else if (id == 2417)
+		else if (id == 2417)
 			n = new WildyWyrm(id, tile, mapAreaNameHash, canBeAttackFromOutOfArea, spawned);
-		 else if (id == 16697 || id == 16698 || id == 16699)
-			 n = new KalphiteKing(id, tile, mapAreaNameHash, canBeAttackFromOutOfArea, spawned);
-		 else {
+		else if (id == 16697 || id == 16698 || id == 16699)
+			n = new KalphiteKing(id, tile, mapAreaNameHash, canBeAttackFromOutOfArea, spawned);
+		else {
 			n = new NPC(id, tile, mapAreaNameHash, canBeAttackFromOutOfArea, spawned);
-			 if (id == 1131 || id == 1132 || id == 1133 || id == 1134) 
-				 n.setForceAgressive(true);
-			 else if(id == 5445 || id == DonatorZone.DONATOR_ZONE_GUIDE) { //dz
-				 n.setDirection(Utils.getAngle(0, -1));
-				 if(id == DonatorZone.DONATOR_ZONE_GUIDE)
-					 n.setName("DZ Guide");
-			 }
+			if (id == 1131 || id == 1132 || id == 1133 || id == 1134)
+				n.setForceAgressive(true);
+			else if (id == 5445 || id == DonatorZone.DONATOR_ZONE_GUIDE) { // dz
+				n.setDirection(Utils.getAngle(0, -1));
+				if (id == DonatorZone.DONATOR_ZONE_GUIDE)
+					n.setName("DZ Guide");
+			}
 		}
 		return n;
 	}
@@ -723,11 +723,9 @@ public final class World {
 		int xOffset = Utils.DIRECTION_DELTA_X[dir];
 		int yOffset = Utils.DIRECTION_DELTA_Y[dir];
 		/*
-		 * int rotation = getRotation(plane,x+xOffset,y+yOffset); if(rotation !=
-		 * 0) { dir += rotation; if(dir >= Utils.DIRECTION_DELTA_X.length) dir =
-		 * dir - (Utils.DIRECTION_DELTA_X.length-1); xOffset =
-		 * Utils.DIRECTION_DELTA_X[dir]; yOffset = Utils.DIRECTION_DELTA_Y[dir];
-		 * }
+		 * int rotation = getRotation(plane,x+xOffset,y+yOffset); if(rotation != 0) { dir += rotation; if(dir >=
+		 * Utils.DIRECTION_DELTA_X.length) dir = dir - (Utils.DIRECTION_DELTA_X.length-1); xOffset =
+		 * Utils.DIRECTION_DELTA_X[dir]; yOffset = Utils.DIRECTION_DELTA_Y[dir]; }
 		 */
 		if (size == 1) {
 			int mask = getClipedOnlyMask(plane, x + Utils.DIRECTION_DELTA_X[dir], y + Utils.DIRECTION_DELTA_Y[dir]);
@@ -1040,7 +1038,11 @@ public final class World {
 					if (before != null)
 						spawnObject(before);
 					else
-						removeObject(object); //this method allows to remove object with just tile and type actualy so the removing object may be diferent and still gets removed
+						removeObject(object); // this method allows to remove
+					// object with just tile and type
+					// actualy so the removing object
+					// may be diferent and still gets
+					// removed
 				} catch (Throwable e) {
 					Logger.handle(e);
 				}
@@ -1109,27 +1111,21 @@ public final class World {
 		addGroundItem(item, tile, null, false, -1, 2, -1);
 	}
 
-	public static final void addGroundItem(final Item item, final WorldTile tile, final Player owner/*
-																									* null
-																									* for
-																									* default
-																									*/, boolean invisible, long hiddenTime/*
-																																			* default
-																																			* 3
-																																			* minutes
-																																			*/) {
+	public static final void addGroundItem(final Item item, final WorldTile tile,
+			final Player owner/*
+								 * null for default
+								 */, boolean invisible, long hiddenTime/*
+																	 * default 3 minutes
+																	 */) {
 		addGroundItem(item, tile, owner, invisible, hiddenTime, 2, 150);
 	}
 
-	public static final FloorItem addGroundItem(final Item item, final WorldTile tile, final Player owner/*
-																											* null
-																											* for
-																											* default
-																											*/, boolean invisible, long hiddenTime/*
-																																					* default
-																																					* 3
-																																					* minutes
-																																					*/, int type) {
+	public static final FloorItem addGroundItem(final Item item, final WorldTile tile,
+			final Player owner/*
+								 * null for default
+								 */, boolean invisible, long hiddenTime/*
+																	 * default 3 minutes
+																	 */, int type) {
 		return addGroundItem(item, tile, owner, invisible, hiddenTime, type, 150);
 	}
 
@@ -1174,21 +1170,18 @@ public final class World {
 	}
 
 	/*
-	 * type 0 - gold if not tradeable
-	 * type 1 - gold if destroyable
-	 * type 2 - no gold
+	 * type 0 - gold if not tradeable type 1 - gold if destroyable type 2 - no gold
 	 */
-	public static final FloorItem addGroundItem(final Item item, final WorldTile tile, final Player owner, boolean invisible, long hiddenTime/*
-																																				* default
-																																				* 3
-																																				* minutes
-																																				
-																																				
-																																				
-																																				
-																																				
-																																				
-																																				*/, int type, final int publicTime) {
+	public static final FloorItem addGroundItem(final Item item, final WorldTile tile, final Player owner, boolean invisible,
+			long hiddenTime/*
+							 * default 3 minutes
+							 * 
+							 * 
+							 * 
+							 * 
+							 * 
+							 * 
+							 */, int type, final int publicTime) {
 		if (type != 2) {
 			if ((type == 0 && !ItemConstants.isTradeable(item)) || type == 1 && ItemConstants.isDestroy(item)) {
 
@@ -1376,36 +1369,32 @@ public final class World {
 	public static final Projectile sendProjectileNew(WorldTile from, WorldTile to, int graphicId, int startHeight, int endHeight, int startTime, double speed, int angle, int slope) {
 		return sendProjectile(from, to, false, false, 0, graphicId, startHeight, endHeight, startTime, speed, angle, slope);
 	}
-	
+
 	public static final Projectile sendProjectile(WorldTile from, WorldTile to, boolean adjustFlyingHeight, boolean adjustSenderHeight, int senderBodyPartId, int graphicId, int startHeight, int endHeight, int startTime, double speed, int angle, int slope) {
 		int fromSizeX, fromSizeY;
-		if(from instanceof Entity) 
+		if (from instanceof Entity)
 			fromSizeX = fromSizeY = ((Entity) from).getSize();
-		else if(from instanceof WorldObject) {
+		else if (from instanceof WorldObject) {
 			ObjectDefinitions defs = ((WorldObject) from).getDefinitions();
 			fromSizeX = defs.getSizeX();
 			fromSizeY = defs.getSizeY();
-		}else
+		} else
 			fromSizeX = fromSizeY = 1;
 		int toSizeX, toSizeY;
-		if(to instanceof Entity) 
+		if (to instanceof Entity)
 			toSizeX = toSizeY = ((Entity) to).getSize();
-		else if(to instanceof WorldObject) {
+		else if (to instanceof WorldObject) {
 			ObjectDefinitions defs = ((WorldObject) to).getDefinitions();
 			toSizeX = defs.getSizeX();
 			toSizeY = defs.getSizeY();
-		}else
+		} else
 			toSizeX = toSizeY = 1;
-		
-		Projectile projectile = new Projectile(from, to, adjustFlyingHeight, adjustSenderHeight, senderBodyPartId, graphicId, startHeight, endHeight, startTime, 
-				startTime + (speed == -1 ?
-						Utils.getProjectileTimeSoulsplit(from, fromSizeX, fromSizeY, to, toSizeX, toSizeY) : 
-				Utils.getProjectileTimeNew(from, fromSizeX, fromSizeY, to, toSizeX, toSizeY, speed)), slope, angle);
+
+		Projectile projectile = new Projectile(from, to, adjustFlyingHeight, adjustSenderHeight, senderBodyPartId, graphicId, startHeight, endHeight, startTime, startTime + (speed == -1 ? Utils.getProjectileTimeSoulsplit(from, fromSizeX, fromSizeY, to, toSizeX, toSizeY) : Utils.getProjectileTimeNew(from, fromSizeX, fromSizeY, to, toSizeX, toSizeY, speed)), slope, angle);
 		getRegion(from.getRegionId()).addProjectile(projectile);
 		return projectile;
 	}
-	
-	
+
 	public static final Projectile sendProjectile(Entity shooter, WorldTile startTile, WorldTile receiver, int gfxId, int startHeight, int endHeight, int speed, int startTime, int curve, int startDistanceOffset) {
 		return sendProjectileNew(shooter, receiver, gfxId, startHeight, endHeight, startTime, Math.round(speed / 10), curve, Utils.random(5));
 	}
@@ -1428,7 +1417,7 @@ public final class World {
 
 	public static void sendWorldMessage(String message, boolean forStaff) {
 		for (Player p : World.getPlayers()) {
-			if (p == null || !p.isRunning() || p.isYellOff() || (forStaff && p.getRights() == 0) )
+			if (p == null || !p.isRunning() || p.isYellOff() || (forStaff && p.getRights() == 0))
 				continue;
 			p.getPackets().sendGameMessage(message);
 		}
@@ -1437,14 +1426,12 @@ public final class World {
 	public static final int WORLD_NEWS = 0, SERVER_NEWS = 1, FRIEND_NEWS = 2, GAME_NEWS = 3;
 
 	public static void sendNews(String message, int type) {
-		sendNews(null, message, type); //dont use type 2(FRIEND_NEWS) with this one
+		sendNews(null, message, type); // dont use type 2(FRIEND_NEWS) with this
+		// one
 	}
 
 	/*
-	 * 0 - all worlds
-	 * 1 - just this world
-	 * 2 - friend
-	 * 3 - game news
+	 * 0 - all worlds 1 - just this world 2 - friend 3 - game news
 	 */
 	public static void sendNews(Player from, String message, int type) {
 		String m = "<shad=000>News: " + message + "</shad></col>";
@@ -1466,7 +1453,7 @@ public final class World {
 
 	public static void sendIgnoreableWorldMessage(Player sender, String message, boolean forStaff) {
 		for (Player p : World.getPlayers()) {
-			if (p == null || !p.isRunning() || p.isYellOff() || (forStaff && p.getRights() == 0) || p.getFriendsIgnores().isIgnore(sender.getDisplayName()) )
+			if (p == null || !p.isRunning() || p.isYellOff() || (forStaff && p.getRights() == 0) || p.getFriendsIgnores().isIgnore(sender.getDisplayName()))
 				continue;
 			p.getPackets().sendGameMessage(message);
 		}
@@ -1488,14 +1475,14 @@ public final class World {
 	public static void executeAfterLoadRegion(final int regionId, long startTime, final Runnable event) {
 		executeAfterLoadRegion(regionId, startTime, 10000, event);
 	}
-	
-	
-	public static void executeAfterLoadRegion(final int fromRegionX, final int fromRegionY, final int toRegionX, final int toRegionY,  long startTime, final long expireTime, final Runnable event) {
+
+	public static void executeAfterLoadRegion(final int fromRegionX, final int fromRegionY, final int toRegionX, final int toRegionY, long startTime, final long expireTime, final Runnable event) {
 		final long start = Utils.currentTimeMillis();
-		for(int x = fromRegionX; x <= toRegionX; x++) {
-			for(int y = fromRegionY; y <= toRegionY; y++) {
+		for (int x = fromRegionX; x <= toRegionX; x++) {
+			for (int y = fromRegionY; y <= toRegionY; y++) {
 				int regionId = MapUtils.encode(Structure.REGION, x, y);
-				World.getRegion(regionId, true); //forces check load if not loaded
+				World.getRegion(regionId, true); // forces check load if not
+				// loaded
 			}
 		}
 		GameExecutorManager.fastExecutor.schedule(new TimerTask() {
@@ -1503,8 +1490,8 @@ public final class World {
 			@Override
 			public void run() {
 				try {
-					for(int x = fromRegionX; x <= toRegionX; x++) {
-						for(int y = fromRegionY; y <= toRegionY; y++) {
+					for (int x = fromRegionX; x <= toRegionX; x++) {
+						for (int y = fromRegionY; y <= toRegionY; y++) {
 							int regionId = MapUtils.encode(Structure.REGION, x, y);
 							if (!World.isRegionLoaded(regionId) && Utils.currentTimeMillis() - start < expireTime)
 								return;
@@ -1521,11 +1508,11 @@ public final class World {
 	}
 
 	/*
-	 *TODO make this use code from above to save lines lo, they do same
+	 * TODO make this use code from above to save lines lo, they do same
 	 */
 	public static void executeAfterLoadRegion(final int regionId, long startTime, final long expireTime, final Runnable event) {
 		final long start = Utils.currentTimeMillis();
-		World.getRegion(regionId, true); //forces check load if not loaded
+		World.getRegion(regionId, true); // forces check load if not loaded
 		GameExecutorManager.fastExecutor.schedule(new TimerTask() {
 
 			@Override
@@ -1542,39 +1529,89 @@ public final class World {
 
 		}, startTime, 600);
 	}
-	
+
 	public static boolean isSafeZone(WorldTile tile) {
-		return (tile.getY() >= 3470 && tile.getY() <= 3513 && tile.getX() >= 3143 && tile.getX() <= 3186)//Grand Exchange
-				|| (tile.getX() >= 2801 && tile.getY() >= 3325 && tile.getX() <= 2875 && tile.getY() <= 3395) //Entrana
-				|| (tile.getX() >= 3044 && tile.getY() >= 3482 && tile.getX() <= 3059 && tile.getY() <= 3498 && tile.getPlane() == 1) //Top level of Monastery
-				|| (tile.getX() >= 3201 && tile.getY() >= 3201 && tile.getX() <= 3229 && tile.getY() <= 3236) //Lumbridge Castle
-				|| (tile.getX() >= 2952 && tile.getY() >= 3324 && tile.getX() <= 3000 && tile.getY() <= 3354) //Falador Castle
-				|| (tile.getX() >= 3091 && tile.getY() >= 3488 && tile.getX() <= 3098 && tile.getY() <= 3499) //Edgeville Bank
-				|| (tile.getX() >= 3179 && tile.getY() >= 3432 && tile.getX() <= 3194 && tile.getY() <= 3446) //Varrock West Bank
-				|| (tile.getX() >= 3250 && tile.getY() >= 3416 && tile.getX() <= 3257 && tile.getY() <= 3423) //Varrock East Bank
-				|| (tile.getX() >= 2943 && tile.getY() >= 3368 && tile.getX() <= 2949 && tile.getY() <= 3369) //Falador West Bank Part1
-				|| (tile.getX() >= 2943 && tile.getY() >= 3370 && tile.getX() <= 2947 && tile.getY() <= 3373) //Falador West Bank Part2
-				|| (tile.getX() >= 3009 && tile.getY() >= 3353 && tile.getX() <= 3018 && tile.getY() <= 3358) //Falador East Bank
-				|| (tile.getX() >= 3088 && tile.getY() >= 3240 && tile.getX() <= 3097 && tile.getY() <= 3246) //Draynor Village Bank
-				|| (tile.getX() >= 3268 && tile.getY() >= 3161 && tile.getX() <= 3272 && tile.getY() <= 3171) //AlKharid Bank
-				|| (tile.getX() >= 3300 && tile.getY() >= 3118 && tile.getX() <= 3310 && tile.getY() <= 3132) //Shanty Pass Bank
-				|| (tile.getX() >= 3508 && tile.getY() >= 3474 && tile.getX() <= 3516 && tile.getY() <= 3483) //Canafis Bank
-				|| (tile.getX() >= 3686 && tile.getY() >= 3461 && tile.getX() <= 3699 && tile.getY() <= 3471) //Port Phanta Bank
-				|| (tile.getX() >= 2609 && tile.getY() >= 3088 && tile.getX() <= 2616 && tile.getY() <= 3097) //Yannile Bank
-				|| (tile.getX() >= 2437 && tile.getY() >= 3082 && tile.getX() <= 2447 && tile.getY() <= 3098) //Castle Wars Bank
-				|| (tile.getX() >= 1853 && tile.getY() >= 3145 && tile.getX() <= 1926 && tile.getY() <= 3191) //Soul Wars
-				|| (tile.getX() >= 2872 && tile.getY() >= 3414 && tile.getX() <= 2878 && tile.getY() <= 3420) //Taverly bank
-				|| (tile.getX() >= 2806 && tile.getY() >= 3438 && tile.getX() <= 2812 && tile.getY() <= 3445) //Catherbay bank
-				|| (tile.getX() >= 2721 && tile.getY() >= 3490 && tile.getX() <= 2730 && tile.getY() <= 3497) //Seers Village bank Part1
-				|| (tile.getX() >= 2724 && tile.getY() >= 3487 && tile.getX() <= 2727 && tile.getY() <= 3489) //Seers Village bank Part2
-				|| (tile.getX() >= 2612 && tile.getY() >= 3330 && tile.getX() <= 2621 && tile.getY() <= 3335) //Ardougne West Bank
-				|| (tile.getX() >= 2649 && tile.getY() >= 3280 && tile.getX() <= 2658 && tile.getY() <= 3287) //Ardougne East Bank
-				|| (tile.getX() >= 2334 && tile.getY() >= 3805 && tile.getX() <= 2339 && tile.getY() <= 3808) //Neitiznot Bank
-				|| (tile.getX() >= 2414 && tile.getY() >= 3801 && tile.getX() <= 2418 && tile.getY() <= 3803) //Jatizso Bank
-				|| (tile.getX() == 2619 && tile.getY() >= 3893 && tile.getY() <= 3896) //Etceteria Bank
-				|| (tile.getX() >= 2097 && tile.getY() >= 3917 && tile.getX() <= 2104 && tile.getY() <= 3921) //Lunar Isle Bank
-				|| (tile.getX() >= 2528 && tile.getY() >= 4710 && tile.getX() <= 2549 && tile.getY() <= 4723) //Mage Bank
-				|| (tile.getRegionId() == 10658) || (tile.getRegionId() == 11927) || (tile.getRegionId() == 13625 || tile.getRegionId() == 13626) || (tile.getX() >= 2952 && tile.getY() >= 3220 && tile.getX() <= 2959 && tile.getY() <= 3227) //ridmigton poh
+		return (tile.getY() >= 3470 && tile.getY() <= 3513 && tile.getX() >= 3143 && tile.getX() <= 3186)// Grand
+				// Exchange
+				|| (tile.getX() >= 2801 && tile.getY() >= 3325 && tile.getX() <= 2875 && tile.getY() <= 3395) // Entrana
+				|| (tile.getX() >= 3044 && tile.getY() >= 3482 && tile.getX() <= 3059 && tile.getY() <= 3498 && tile.getPlane() == 1) // Top
+																																		// level
+																																		// of
+																																		// Monastery
+				|| (tile.getX() >= 3201 && tile.getY() >= 3201 && tile.getX() <= 3229 && tile.getY() <= 3236) // Lumbridge
+				// Castle
+				|| (tile.getX() >= 2952 && tile.getY() >= 3324 && tile.getX() <= 3000 && tile.getY() <= 3354) // Falador
+				// Castle
+				|| (tile.getX() >= 3091 && tile.getY() >= 3488 && tile.getX() <= 3098 && tile.getY() <= 3499) // Edgeville
+				// Bank
+				|| (tile.getX() >= 3179 && tile.getY() >= 3432 && tile.getX() <= 3194 && tile.getY() <= 3446) // Varrock
+				// West
+				// Bank
+				|| (tile.getX() >= 3250 && tile.getY() >= 3416 && tile.getX() <= 3257 && tile.getY() <= 3423) // Varrock
+				// East
+				// Bank
+				|| (tile.getX() >= 2943 && tile.getY() >= 3368 && tile.getX() <= 2949 && tile.getY() <= 3369) // Falador
+				// West
+				// Bank
+				// Part1
+				|| (tile.getX() >= 2943 && tile.getY() >= 3370 && tile.getX() <= 2947 && tile.getY() <= 3373) // Falador
+				// West
+				// Bank
+				// Part2
+				|| (tile.getX() >= 3009 && tile.getY() >= 3353 && tile.getX() <= 3018 && tile.getY() <= 3358) // Falador
+				// East
+				// Bank
+				|| (tile.getX() >= 3088 && tile.getY() >= 3240 && tile.getX() <= 3097 && tile.getY() <= 3246) // Draynor
+				// Village
+				// Bank
+				|| (tile.getX() >= 3268 && tile.getY() >= 3161 && tile.getX() <= 3272 && tile.getY() <= 3171) // AlKharid
+				// Bank
+				|| (tile.getX() >= 3300 && tile.getY() >= 3118 && tile.getX() <= 3310 && tile.getY() <= 3132) // Shanty
+				// Pass
+				// Bank
+				|| (tile.getX() >= 3508 && tile.getY() >= 3474 && tile.getX() <= 3516 && tile.getY() <= 3483) // Canafis
+				// Bank
+				|| (tile.getX() >= 3686 && tile.getY() >= 3461 && tile.getX() <= 3699 && tile.getY() <= 3471) // Port
+				// Phanta
+				// Bank
+				|| (tile.getX() >= 2609 && tile.getY() >= 3088 && tile.getX() <= 2616 && tile.getY() <= 3097) // Yannile
+				// Bank
+				|| (tile.getX() >= 2437 && tile.getY() >= 3082 && tile.getX() <= 2447 && tile.getY() <= 3098) // Castle
+				// Wars
+				// Bank
+				|| (tile.getX() >= 1853 && tile.getY() >= 3145 && tile.getX() <= 1926 && tile.getY() <= 3191) // Soul
+				// Wars
+				|| (tile.getX() >= 2872 && tile.getY() >= 3414 && tile.getX() <= 2878 && tile.getY() <= 3420) // Taverly
+				// bank
+				|| (tile.getX() >= 2806 && tile.getY() >= 3438 && tile.getX() <= 2812 && tile.getY() <= 3445) // Catherbay
+				// bank
+				|| (tile.getX() >= 2721 && tile.getY() >= 3490 && tile.getX() <= 2730 && tile.getY() <= 3497) // Seers
+				// Village
+				// bank
+				// Part1
+				|| (tile.getX() >= 2724 && tile.getY() >= 3487 && tile.getX() <= 2727 && tile.getY() <= 3489) // Seers
+				// Village
+				// bank
+				// Part2
+				|| (tile.getX() >= 2612 && tile.getY() >= 3330 && tile.getX() <= 2621 && tile.getY() <= 3335) // Ardougne
+				// West
+				// Bank
+				|| (tile.getX() >= 2649 && tile.getY() >= 3280 && tile.getX() <= 2658 && tile.getY() <= 3287) // Ardougne
+				// East
+				// Bank
+				|| (tile.getX() >= 2334 && tile.getY() >= 3805 && tile.getX() <= 2339 && tile.getY() <= 3808) // Neitiznot
+				// Bank
+				|| (tile.getX() >= 2414 && tile.getY() >= 3801 && tile.getX() <= 2418 && tile.getY() <= 3803) // Jatizso
+				// Bank
+				|| (tile.getX() == 2619 && tile.getY() >= 3893 && tile.getY() <= 3896) // Etceteria
+				// Bank
+				|| (tile.getX() >= 2097 && tile.getY() >= 3917 && tile.getX() <= 2104 && tile.getY() <= 3921) // Lunar
+				// Isle
+				// Bank
+				|| (tile.getX() >= 2528 && tile.getY() >= 4710 && tile.getX() <= 2549 && tile.getY() <= 4723) // Mage
+				// Bank
+				|| (tile.getRegionId() == 10658) || (tile.getRegionId() == 11927) || (tile.getRegionId() == 13625 || tile.getRegionId() == 13626) || (tile.getX() >= 2952 && tile.getY() >= 3220 && tile.getX() <= 2959 && tile.getY() <= 3227) // ridmigton
+		// poh
 		;
 	}
 

@@ -21,372 +21,357 @@ public class CosmeticsManager implements Serializable {
 	private static final long serialVersionUID = -6960190414485444043L;
 
 	public static final int COSMETIC_TYPE_MENU_VARBIT = 673;
-	
+
 	private static final Map<Integer, Integer> cosmeticsVars1 = new HashMap<Integer, Integer>();
 	private static final Map<Integer, Integer> cosmeticsVars2 = new HashMap<Integer, Integer>();
 
-	
 	static {
 		setVars();
 	}
-	
-	// autounlocked, no var. blame rs XD, book of faces, the stuffed title, hide all(invisbile item)
-	private static final int[] FREE_COSMETICS = {14289, 14538, 5692, 19139, 19140, 21095, 21096, 21097, 21103, 21102};
-	
-	
+
+	// autounlocked, no var. blame rs XD, book of faces, the stuffed title, hide
+	// all(invisbile item)
+	private static final int[] FREE_COSMETICS = { 14289, 14538, 5692, 19139, 19140, 21095, 21096, 21097, 21103, 21102 };
+
 	public static enum CosmeticType {
-		APPEARENCE(1),
-		WARDROBE(2),
-		TITLE(3),
-		ANIMATION(4),
-		PET(5);
-		
+		APPEARENCE(1), WARDROBE(2), TITLE(3), ANIMATION(4), PET(5);
+
 		private int type;
-		
+
 		private CosmeticType(int type) {
 			this.type = type;
 		}
 	}
-	
+
 	private transient Player player;
 	private transient Item[] cosmeticPreview;
-	
+
 	private boolean showingAllItems;
 	private List<Integer> unlockedCosmetics;
-	
+
 	public CosmeticsManager() {
 		resetUnlockedCosmetics();
 		showingAllItems = true;
 	}
-	
+
 	public void init() {
 		refreshVars();
 		refreshShowingAllItems();
 	}
-	
+
 	public void setPlayer(Player player) {
 		this.player = player;
-		if(unlockedCosmetics == null) //temporary
+		if (unlockedCosmetics == null) // temporary
 			resetUnlockedCosmetics();
 	}
-	
 
 	private void resetUnlockedCosmetics() {
 		unlockedCosmetics = new ArrayList<Integer>();
-		for(int data : FREE_COSMETICS)
-			unlockedCosmetics.add(data); 
+		for (int data : FREE_COSMETICS)
+			unlockedCosmetics.add(data);
 	}
-	
-	//save unlocked cosmetics and so on here.
-	
-	
+
+	// save unlocked cosmetics and so on here.
+
 	public void open(CosmeticType type) {
 		player.getVarsManager().setVarBit(COSMETIC_TYPE_MENU_VARBIT, type.type);
-		player.getPackets().sendExecuteScript(6460, type.type); //does same send var but also clears up
+		player.getPackets().sendExecuteScript(6460, type.type); // does same
+		// send var but
+		// also clears
+		// up
 		sendPreviewTitle(player.getAppearence().getTitleId());
-		for(int i = 0; i < MENUS_COMPONENT_IDS.length; i++)
+		for (int i = 0; i < MENUS_COMPONENT_IDS.length; i++)
 			player.getPackets().sendUnlockIComponentOptionSlots(1311, MENUS_COMPONENT_IDS[i], 0, 1000, 0, 1);
-		if(type == CosmeticType.WARDROBE) {
+		if (type == CosmeticType.WARDROBE) {
 			player.getPackets().sendUnlockIComponentOptionSlots(1351, 234, 0, 3, 0);
 			cosmeticPreview = player.getEquipment().getCosmeticItems().getItemsCopy();
 			refreshCosmeticsPreview();
 		}
 		sendRenderAnimation();
 	}
-	
+
 	private void sendRenderAnimation() {
 		Item weapon = cosmeticPreview == null ? null : cosmeticPreview[Equipment.SLOT_WEAPON];
-		if(weapon == null)
+		if (weapon == null)
 			weapon = player.getEquipment().getItem(Equipment.SLOT_WEAPON);
-		
+
 		player.getPackets().sendCSVarInteger(779, weapon == null ? 2697 : weapon.getDefinitions().getRenderAnimId());
 	}
-	
+
 	private void revert() {
 		CosmeticType type = getCurrentCosmeticType();
-		if(type == CosmeticType.WARDROBE) {
+		if (type == CosmeticType.WARDROBE) {
 			cosmeticPreview = player.getEquipment().getCosmeticItems().getItemsCopy();
 			player.getPackets().sendAppearenceLook();
-		}else if (type == CosmeticType.TITLE)
+		} else if (type == CosmeticType.TITLE)
 			sendPreviewTitle(player.getAppearence().getTitleId());
 		else if (type == CosmeticType.ANIMATION)
 			sendPreviewAnimation(-1);
 		sendPreviewOptions(-1, true);
 	}
-	
+
 	private void sendPreviewTitle(int titleId) {
 		String title = Appearence.getTitle(player.getAppearence().isMale(), titleId);
 		player.getPackets().sendExecuteScript(6453, Appearence.isTitleAfterName(titleId) ? 0 : 1, title == null ? "" : title);
 	}
-	
+
 	public void close() {
-		if(getCurrentCosmeticType() == CosmeticType.WARDROBE) {
+		if (getCurrentCosmeticType() == CosmeticType.WARDROBE) {
 			player.getPackets().sendAppearenceLook();
 			player.getAppearence().generateAppearenceData();
 			cosmeticPreview = null;
 		}
 		player.getVarsManager().sendVarBit(COSMETIC_TYPE_MENU_VARBIT, 0);
 	}
-	
+
 	private void setCosmetic(ClientScriptMap map, int slot, boolean preview) {
 		int itemId = map.getIntValue(slot);
-		if(itemId == -1)
+		if (itemId == -1)
 			return;
 		Item item = new Item(itemId);
-		//no model <.<
-		if(item.getDefinitions().equipSlot != -1 && (player.getAppearence().isMale() ?
-				item.getDefinitions().getMaleWornModelId1() == -1
-				:
-				item.getDefinitions().getFemaleWornModelId1() == -1)) {
+		// no model <.<
+		if (item.getDefinitions().equipSlot != -1 && (player.getAppearence().isMale() ? item.getDefinitions().getMaleWornModelId1() == -1 : item.getDefinitions().getFemaleWornModelId1() == -1)) {
 			return;
 		}
-		
+
 		cosmeticPreview[slot] = item;
-		
-		
-		if(!preview) {
+
+		if (!preview) {
 			Item oldItem = player.getEquipment().getCosmeticItems().get(slot);
 			boolean remove = oldItem != null && oldItem.getId() == item.getId();
 			player.getEquipment().getCosmeticItems().set(slot, remove ? null : item);
-			
+
 		}
 	}
-	
-	
+
 	private void sendPreviewOptions(int id, boolean hide) {
-		if(id == -1 || hide)
+		if (id == -1 || hide)
 			player.getTemporaryAttributtes().remove(Key.CURRENT_COSMETIC);
 		else
 			player.getTemporaryAttributtes().put(Key.CURRENT_COSMETIC, id);
-		
+
 		boolean canBuy = (isAutoUnlocked(id) || hasCosmeticVar(id, true));
-		
+
 		player.getPackets().sendHideIComponent(1311, 174, hide || canBuy);
 		player.getPackets().sendHideIComponent(1311, 194, hide || !canBuy);
-		if(!hide && canBuy)
+		if (!hide && canBuy)
 			player.getPackets().sendIComponentText(1311, 681, unlockedCosmetics.contains(id) ? "Apply" : "Buy");
 	}
-	
+
 	private void setCosmetic(GeneralRequirementMap data, boolean preview) {
 		ClientScriptMap map = ClientScriptMap.getMap(data.getIntValue(2542));
-		if(data.getIntValue(2532) == 20) {
+		if (data.getIntValue(2532) == 20) {
 			cosmeticPreview = new Item[BodyDefinitions.getEquipmentContainerSize()];
-			if(!preview)
+			if (!preview)
 				player.getEquipment().getCosmeticItems().reset();
-			for(Long slot : map.getValues().keySet()) 
+			for (Long slot : map.getValues().keySet())
 				setCosmetic(map, slot.intValue(), preview);
-		}else{
+		} else {
 			int slot = data.getIntValue(2532);
 			cosmeticPreview[slot] = null;
 			setCosmetic(map, slot, preview);
 		}
 		refreshCosmeticsPreview();
 		sendRenderAnimation();
-		if(preview)
+		if (preview)
 			sendPreviewOptions(data.getId(), !preview);
 	}
+
 	private void refreshCosmeticsPreview() {
 		player.getPackets().sendAppearanceLook(cosmeticPreview, player.getAppearence().getLook());
 		player.getPackets().sendItems(670, player.getEquipment().getCosmeticItems());
 		player.getPackets().sendItems(671, cosmeticPreview);
 	}
-	
-	
-	//-1 means TODO that menu type(22 menus, im adding them as i need them)
-	private static final int[] MENUS_COMPONENT_IDS = {217, 242, 243, 244, 245, 246, 247, 248, 249, 250, 251, 252, 253, 254, 255, 256, 257, 258, 259, 260, 261, 262};
-	
-	//data.getIntValue(2547) (boolean cant preview/buy such as event)
-	
-	//menu id - related to componentId
+
+	// -1 means TODO that menu type(22 menus, im adding them as i need them)
+	private static final int[] MENUS_COMPONENT_IDS = { 217, 242, 243, 244, 245, 246, 247, 248, 249, 250, 251, 252, 253, 254, 255, 256, 257, 258, 259, 260, 261, 262 };
+
+	// data.getIntValue(2547) (boolean cant preview/buy such as event)
+
+	// menu id - related to componentId
 	private Integer[] getCosmeticIds(CosmeticType type, int menuId) {
 		ArrayList<Integer> ids = new ArrayList<Integer>();
-		
-		for(int index = 0; index <  getCosmeticsIds(type).getSize(); index++) {
+
+		for (int index = 0; index < getCosmeticsIds(type).getSize(); index++) {
 			GeneralRequirementMap data = getCosmeticData(type, index);
-			if(
-					data.getIntValue(2532) == menuId 
-					&&
-					((showingAllItems && data.getIntValue(2547) == 0)
-					|| isAutoUnlocked(data.getId())
-					|| unlockedCosmetics.contains(data.getId()) && hasCosmeticVar(data.getId(), data.getIntValue(2546) == 1))
-					) {
+			if (data.getIntValue(2532) == menuId && ((showingAllItems && data.getIntValue(2547) == 0) || isAutoUnlocked(data.getId()) || unlockedCosmetics.contains(data.getId()) && hasCosmeticVar(data.getId(), data.getIntValue(2546) == 1))) {
 				ids.add(index);
 			}
-		}	
+		}
 		return ids.toArray(new Integer[ids.size()]);
 	}
-	
-	//if no cosmetic var, dont let it buy as cant display for now(resuming not available)
+
+	// if no cosmetic var, dont let it buy as cant display for now(resuming not
+	// available)
 	private boolean hasCosmeticVar(int id, boolean loyality) {
-		return cosmeticsVars1.get(id) != null || (loyality && cosmeticsVars2.get(id) != null );
+		return cosmeticsVars1.get(id) != null || (loyality && cosmeticsVars2.get(id) != null);
 	}
-	
+
 	private static boolean isAutoUnlocked(int id) {
-		for(int i : FREE_COSMETICS)
-			if(i == id)
+		for (int i : FREE_COSMETICS)
+			if (i == id)
 				return true;
 		return false;
 	}
-	
 
-	
-	//now the hell part :SSSSSS. also need newer vars after rs, or unlocking will simply bug the list(to prevent that, ima force to check player vars)
+	// now the hell part :SSSSSS. also need newer vars after rs, or unlocking
+	// will simply bug the list(to prevent that, ima force to check player vars)
 	public void refreshVars() {
-		for(int cosmeticId : unlockedCosmetics) {
+		for (int cosmeticId : unlockedCosmetics) {
 			Integer varbitId = cosmeticsVars1.get(cosmeticId);
-			if(varbitId == null)
-				varbitId = cosmeticsVars2.get(cosmeticId);	
-			if(varbitId != null)
+			if (varbitId == null)
+				varbitId = cosmeticsVars2.get(cosmeticId);
+			if (varbitId != null)
 				player.getVarsManager().sendVarBit(varbitId, 1);
 		}
 	}
-	
+
 	private void unlockOutfit(int outfitId) {
-		for(int menuId = 0; menuId < BodyDefinitions.getEquipmentContainerSize(); menuId++) {
+		for (int menuId = 0; menuId < BodyDefinitions.getEquipmentContainerSize(); menuId++) {
 			int mapId = ClientScriptMap.getMap(8464).getIntValue(menuId);
-			if(mapId == -1)
+			if (mapId == -1)
 				continue;
 			ClientScriptMap map = ClientScriptMap.getMap(mapId);
-			for(Object id : map.getValues().values()) {
+			for (Object id : map.getValues().values()) {
 				GeneralRequirementMap data = GeneralRequirementMap.getMap((int) id);
-				if(data.getIntValue(4419) == outfitId) {
+				if (data.getIntValue(4419) == outfitId) {
 					unlockedCosmetics.add(data.getId());
 				}
 			}
 		}
 		unlockedCosmetics.add(outfitId);
 	}
-	
+
 	/*
 	 * unlocks whole outfit items if its outfit or part of one, else jut item itself
 	 */
 	private void unlockItem(GeneralRequirementMap data) {
-		if(data.getIntValue(2532) == 20) 
+		if (data.getIntValue(2532) == 20)
 			unlockOutfit(data.getId());
 		else {
 			int outfitId = data.getIntValue(4419);
-			if(outfitId > 0)
+			if (outfitId > 0)
 				unlockOutfit(outfitId);
 			else
 				unlockedCosmetics.add(data.getId());
 		}
 	}
-	
+
 	/*
 	 * -1 all
 	 */
 	private void clearCosmetic(boolean preview, int slot) {
-		if(preview) {
-			if(slot == -1)
+		if (preview) {
+			if (slot == -1)
 				cosmeticPreview = new Item[BodyDefinitions.getEquipmentContainerSize()];
 			else
 				cosmeticPreview[slot] = null;
-		}else{
-			if(slot == -1)
+		} else {
+			if (slot == -1)
 				player.getEquipment().getCosmeticItems().reset();
 			else
 				player.getEquipment().getCosmeticItems().set(slot, null);
 		}
 		refreshCosmeticsPreview();
-			
+
 	}
-	
+
 	public void handleButtons(int componentId, int slotId, int slotId2, int packetId) {
-		if(componentId == 669)
+		if (componentId == 669)
 			switchShowingAllItems();
 		else if (componentId == 686)
 			revert();
-		else if (componentId == 678){ //buy /  apply
+		else if (componentId == 678) { // buy / apply
 			Integer id = (Integer) player.getTemporaryAttributtes().remove(Key.CURRENT_COSMETIC);
-			if(id == null)
+			if (id == null)
 				return;
 			apply(id);
-		}else{
-			for(int menuId = 0; menuId < MENUS_COMPONENT_IDS.length; menuId++) {
-				if(MENUS_COMPONENT_IDS[menuId] == componentId) {
+		} else {
+			for (int menuId = 0; menuId < MENUS_COMPONENT_IDS.length; menuId++) {
+				if (MENUS_COMPONENT_IDS[menuId] == componentId) {
 					CosmeticType type = getCurrentCosmeticType();
-					if(type == null) //impossible unless you open inter manualy
+					if (type == null) // impossible unless you open inter
+						// manualy
 						return;
 					int index = slotId / 3;
-					if(type == CosmeticType.WARDROBE) {
-						
-						if(menuId == 19) {//TODO custom slots
-							
+					if (type == CosmeticType.WARDROBE) {
+
+						if (menuId == 19) {// TODO custom slots
+
 							return;
 						}
-						
-						if(menuId == 21) {//clear all
-							if(index == 0)
+
+						if (menuId == 21) {// clear all
+							if (index == 0)
 								clearCosmetic(packetId == WorldPacketsDecoder.ACTION_BUTTON1_PACKET, -1);
-							else if(index == 1)
+							else if (index == 1)
 								clearCosmetic(packetId == WorldPacketsDecoder.ACTION_BUTTON1_PACKET, Equipment.SLOT_HAT);
-							else if(index == 2)
+							else if (index == 2)
 								clearCosmetic(packetId == WorldPacketsDecoder.ACTION_BUTTON1_PACKET, Equipment.SLOT_CAPE);
-							else if(index == 3)
+							else if (index == 3)
 								clearCosmetic(packetId == WorldPacketsDecoder.ACTION_BUTTON1_PACKET, Equipment.SLOT_AMULET);
-							else if(index == 4)
+							else if (index == 4)
 								clearCosmetic(packetId == WorldPacketsDecoder.ACTION_BUTTON1_PACKET, Equipment.SLOT_WEAPON);
-							else if(index == 5)
+							else if (index == 5)
 								clearCosmetic(packetId == WorldPacketsDecoder.ACTION_BUTTON1_PACKET, Equipment.SLOT_CHEST);
-							else if(index == 6)
+							else if (index == 6)
 								clearCosmetic(packetId == WorldPacketsDecoder.ACTION_BUTTON1_PACKET, Equipment.SLOT_SHIELD);
-							else if(index == 7)
+							else if (index == 7)
 								clearCosmetic(packetId == WorldPacketsDecoder.ACTION_BUTTON1_PACKET, Equipment.SLOT_LEGS);
-							else if(index == 8)
+							else if (index == 8)
 								clearCosmetic(packetId == WorldPacketsDecoder.ACTION_BUTTON1_PACKET, Equipment.SLOT_HANDS);
-							else if(index == 9)
+							else if (index == 9)
 								clearCosmetic(packetId == WorldPacketsDecoder.ACTION_BUTTON1_PACKET, Equipment.SLOT_FEET);
-							else if(index == 10)
+							else if (index == 10)
 								clearCosmetic(packetId == WorldPacketsDecoder.ACTION_BUTTON1_PACKET, Equipment.SLOT_AURA);
-							else if(index == 11)
+							else if (index == 11)
 								clearCosmetic(packetId == WorldPacketsDecoder.ACTION_BUTTON1_PACKET, Equipment.SLOT_WINGS);
 							sendPreviewOptions(-1, true);
 							return;
 						}
-						
+
 						int dataId = ClientScriptMap.getMap(ClientScriptMap.getMap(8464).getIntValue(menuId)).getIntValue(slotId / 3);
-						if(dataId == -1)
+						if (dataId == -1)
 							return;
 						GeneralRequirementMap data = GeneralRequirementMap.getMap(dataId);
-						
-						if(!(isAutoUnlocked(data.getId()) || hasCosmeticVar(data.getId(), data.getIntValue(2546) == 1))) 
-							player.getPackets().sendGameMessage("This cosmetic var is not currently added. Name: "+data.getValue(2533));
-						
-						if(packetId == WorldPacketsDecoder.ACTION_BUTTON1_PACKET) {
-							setCosmetic(data, true); //preview cosmetic
-						}else if (packetId == WorldPacketsDecoder.ACTION_BUTTON2_PACKET)
-							apply(data.getId()); 
-						
+
+						if (!(isAutoUnlocked(data.getId()) || hasCosmeticVar(data.getId(), data.getIntValue(2546) == 1)))
+							player.getPackets().sendGameMessage("This cosmetic var is not currently added. Name: " + data.getValue(2533));
+
+						if (packetId == WorldPacketsDecoder.ACTION_BUTTON1_PACKET) {
+							setCosmetic(data, true); // preview cosmetic
+						} else if (packetId == WorldPacketsDecoder.ACTION_BUTTON2_PACKET)
+							apply(data.getId());
+
 					} else if (type == CosmeticType.APPEARENCE) {
-						
-						
+
 						Integer[] listIds = getCosmeticIds(type, menuId);
-						if(index >= listIds.length) //cant happen
+						if (index >= listIds.length) // cant happen
 							return;
-						
+
 						GeneralRequirementMap data = getCosmeticData(type, listIds[index]);
-						if(menuId == 2 || menuId == 5) {
+						if (menuId == 2 || menuId == 5) {
 							int beardId = ClientScriptMap.getMap(703).getIntValue(data.getIntValue(2772));
-							
-							if(menuId != 2 && !(isAutoUnlocked(data.getId()) || hasCosmeticVar(data.getId(), data.getIntValue(2546) == 1))) 
+
+							if (menuId != 2 && !(isAutoUnlocked(data.getId()) || hasCosmeticVar(data.getId(), data.getIntValue(2546) == 1)))
 								player.getPackets().sendGameMessage("This cosmetic var is not currently added.");
-							//		player.getAppearence().setBeardStyle(beardId);
-						}else{
-				
+							// player.getAppearence().setBeardStyle(beardId);
+						} else {
+
 							int dataId = ClientScriptMap.getMap(player.getAppearence().isMale() ? 2338 : 2341).getIntValue(data.getIntValue(2772));
-							if(dataId == -1)
+							if (dataId == -1)
 								return;
 							GeneralRequirementMap data2 = GeneralRequirementMap.getMap(dataId);
-							if(menuId != 1 && !(isAutoUnlocked(data.getId()) || hasCosmeticVar(data.getId(),data.getIntValue(2546) == 1))) 
-								player.getPackets().sendGameMessage("This cosmetic var is not currently added. Name: "+ data2.getValue(792)+", "+data.getId());
-							//		appearence.setHairStyle(data2.getIntValue(788));
+							if (menuId != 1 && !(isAutoUnlocked(data.getId()) || hasCosmeticVar(data.getId(), data.getIntValue(2546) == 1)))
+								player.getPackets().sendGameMessage("This cosmetic var is not currently added. Name: " + data2.getValue(792) + ", " + data.getId());
+							// appearence.setHairStyle(data2.getIntValue(788));
 						}
-						if(packetId == WorldPacketsDecoder.ACTION_BUTTON1_PACKET) 
+						if (packetId == WorldPacketsDecoder.ACTION_BUTTON1_PACKET)
 							sendPreviewOptions(data.getId(), false);
-					}else{
-						if(type == CosmeticType.TITLE && menuId == 20) { //clear
+					} else {
+						if (type == CosmeticType.TITLE && menuId == 20) { // clear
 							sendPreviewTitle(0);
-							if(packetId == WorldPacketsDecoder.ACTION_BUTTON2_PACKET) {
+							if (packetId == WorldPacketsDecoder.ACTION_BUTTON2_PACKET) {
 								player.getAppearence().setTitle(0);
 								player.getPackets().sendGameMessage("Your title has been cleared.");
 								sendPreviewOptions(-1, true);
@@ -394,35 +379,35 @@ public class CosmeticsManager implements Serializable {
 							return;
 						}
 						Integer[] listIds = getCosmeticIds(type, menuId);
-						if(index >= listIds.length) //cant happen
+						if (index >= listIds.length) // cant happen
 							return;
 						GeneralRequirementMap data = getCosmeticData(type, listIds[index]);
-						if(type == CosmeticType.ANIMATION) {
-							if(packetId == WorldPacketsDecoder.ACTION_BUTTON1_PACKET) {
+						if (type == CosmeticType.ANIMATION) {
+							if (packetId == WorldPacketsDecoder.ACTION_BUTTON1_PACKET) {
 								sendPreviewAnimation(data.getId());
 								sendPreviewOptions(data.getId(), false);
 							}
-						}else if(type == CosmeticType.TITLE) {
-							if(packetId == WorldPacketsDecoder.ACTION_BUTTON1_PACKET) {
+						} else if (type == CosmeticType.TITLE) {
+							if (packetId == WorldPacketsDecoder.ACTION_BUTTON1_PACKET) {
 								sendPreviewTitle(data.getIntValue(2543));
 								sendPreviewOptions(data.getId(), false);
-							}else if(packetId == WorldPacketsDecoder.ACTION_BUTTON2_PACKET) 
+							} else if (packetId == WorldPacketsDecoder.ACTION_BUTTON2_PACKET)
 								apply(data.getId());
 						}
-						
-						if(menuId != 20 && !(isAutoUnlocked(data.getId()) || hasCosmeticVar(data.getId(), data.getIntValue(2546) == 1))) 
-							player.getPackets().sendGameMessage("This cosmetic var is not currently added. Name: "+data.getValue(2533));
-						
+
+						if (menuId != 20 && !(isAutoUnlocked(data.getId()) || hasCosmeticVar(data.getId(), data.getIntValue(2546) == 1)))
+							player.getPackets().sendGameMessage("This cosmetic var is not currently added. Name: " + data.getValue(2533));
+
 					}
 					break;
 				}
 			}
 		}
 	}
-	
+
 	public void buy(int id, CosmeticType type) {
-		if(player.getRights() >= 2) {
-			if(type == CosmeticType.WARDROBE)
+		if (player.getRights() >= 2) {
+			if (type == CosmeticType.WARDROBE)
 				unlockItem(GeneralRequirementMap.getMap(id));
 			else
 				unlockedCosmetics.add(id);
@@ -431,69 +416,70 @@ public class CosmeticsManager implements Serializable {
 			player.getPackets().sendGameMessage("Bought cosmetic, please reopen interface again.");
 		}
 	}
-	
+
 	public void apply(int id) {
 		CosmeticType type = getCurrentCosmeticType();
-		
+
 		GeneralRequirementMap data = GeneralRequirementMap.getMap(id);
-		
-		if(type == CosmeticType.TITLE) {
-			if(unlockedCosmetics.contains(id)) {
+
+		if (type == CosmeticType.TITLE) {
+			if (unlockedCosmetics.contains(id)) {
 				int titleId = data.getIntValue(2543);
 				player.getAppearence().setTitle(player.getAppearence().getTitleId() == titleId ? 0 : titleId);
-				player.getPackets().sendGameMessage(player.getAppearence().getTitleId() == 0 ? "Your title has been cleared." :  "Your title has been changed to: "+player.getAppearence().getTitle()+".");
+				player.getPackets().sendGameMessage(player.getAppearence().getTitleId() == 0 ? "Your title has been cleared." : "Your title has been changed to: " + player.getAppearence().getTitle() + ".");
 				//
-			}else { 
+			} else {
 				buy(id, type);
 			}
-		}else if(type == CosmeticType.WARDROBE) {
-			if(unlockedCosmetics.contains(id)) {
+		} else if (type == CosmeticType.WARDROBE) {
+			if (unlockedCosmetics.contains(id)) {
 				setCosmetic(data, false);
-			}else
+			} else
 				buy(id, type);
 		}
 		revert();
-		
+
 	}
-	
+
 	public static GeneralRequirementMap getCosmeticData(CosmeticType type, int cosmeticId) {
 		int dataId = getCosmeticsIds(type).getIntValue(cosmeticId);
-		if(dataId == -1) //shouldnt happen but lets be safe
+		if (dataId == -1) // shouldnt happen but lets be safe
 			return null;
 		return GeneralRequirementMap.getMap(dataId);
 	}
-	
+
 	public void refreshShowingAllItems() {
 		player.getVarsManager().sendVarBit(678, showingAllItems ? 1 : 0);
 	}
-	
+
 	public void switchShowingAllItems() {
 		showingAllItems = !showingAllItems;
 		refreshShowingAllItems();
 	}
-	
+
 	public CosmeticType getCurrentCosmeticType() {
 		int id = player.getVarsManager().getBitValue(COSMETIC_TYPE_MENU_VARBIT);
-		for(CosmeticType type : CosmeticType.values())
-			if(type.type == id)
+		for (CosmeticType type : CosmeticType.values())
+			if (type.type == id)
 				return type;
 		return null;
 	}
-	
+
 	public static ClientScriptMap getCosmeticsIds(CosmeticType type) {
 		return ClientScriptMap.getMap(ClientScriptMap.getMap(5958).getIntValue(type.type));
 	}
+
 	/*
 	 * animation and so on
 	 */
 	public void sendPreviewAnimation(int id) {
 		player.getPackets().sendExecuteScript(2716, id);
 	}
-	
-	//dataId - varId
-	
-	//script 6488 - vars for cosmeticVars1
-	//script 6214 - vars for cosmeticVars2
+
+	// dataId - varId
+
+	// script 6488 - vars for cosmeticVars1
+	// script 6214 - vars for cosmeticVars2
 	private static void setVars() {
 		cosmeticsVars1.put(11113, 860);
 		cosmeticsVars1.put(11114, 861);

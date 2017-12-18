@@ -60,34 +60,34 @@ public class CorporealBeast extends NPC {
 		reduceHit(hit);
 		super.handleIngoingHit(hit);
 	}
-	
+
 	public void reduceHit(Hit hit) {
 		if (!(hit.getSource() instanceof Player) || (hit.getLook() != HitLook.MELEE_DAMAGE && hit.getLook() != HitLook.RANGE_DAMAGE && hit.getLook() != HitLook.MAGIC_DAMAGE))
 			return;
 		Player from = (Player) hit.getSource();
 		int weaponId = from.getEquipment().getWeaponId();
 		String name = weaponId == -1 ? "null" : ItemDefinitions.getItemDefinitions(weaponId).getName().toLowerCase();
-		if(hit.getLook() != HitLook.MELEE_DAMAGE || !name.contains("spear")) 
-			hit.setDamage(hit.getDamage()/2);
-		
+		if (hit.getLook() != HitLook.MELEE_DAMAGE || !name.contains("spear"))
+			hit.setDamage(hit.getDamage() / 2);
+
 	}
-	
+
 	@Override
 	public double getMagePrayerMultiplier() {
 		return 0.8;
 	}
-	
+
 	@Override
 	public double getMeleePrayerMultiplier() {
 		return 0.8;
 	}
 
 	public boolean canSpawnCore(int size) {
-		double modifier = 0.5;//50 % HP
+		double modifier = 0.5;// 50 % HP
 		if (size >= 5)
-			modifier = 0.85;//85 % HP
+			modifier = 0.85;// 85 % HP
 		else if (size >= 2)
-			modifier = 0.75;//75 % HP
+			modifier = 0.75;// 75 % HP
 		return getHitpoints() < (getMaxHitpoints() * modifier);
 	}
 }

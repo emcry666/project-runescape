@@ -15,17 +15,11 @@ public final class MusicsManager implements Serializable {
 
 	private static final long serialVersionUID = 1020415702861567375L;
 
-	private static final int[] CONFIG_IDS = new int[]
-			{ 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, -1, 64, 65, 66, 67, 68, 69, 70, 71, 3551, 3691, 4359 };
-			
+	private static final int[] CONFIG_IDS = new int[] { 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, -1, 64, 65, 66, 67, 68, 69, 70, 71, 3551, 3691, 4359 };
 
 	public static final int DEATH_MUSIC_EFFECT = 148;
-	
-	
-	private static final int[] PLAY_LIST_CONFIG_IDS = new int[]
-	{ 76, 77, 78, 79, 80, 81 };
-	
-	
+
+	private static final int[] PLAY_LIST_CONFIG_IDS = new int[] { 76, 77, 78, 79, 80, 81 };
 
 	private transient Player player;
 	private transient int playingMusic;
@@ -39,26 +33,23 @@ public final class MusicsManager implements Serializable {
 	private transient boolean playListOn;
 	private transient int nextPlayListMusic;
 
-
-	
 	public MusicsManager() {
 		unlockedMusics = new ArrayList<Integer>();
 		playList = new ArrayList<Integer>(12);
 		unlockMusics();
 	}
-	
-	private static final int[] AUTO_UNLOCKED_MUSICS = {200, 517, 518, 519, 323, 1176, 931, 316, 336, 151, 411, 350, 360, 89, 321, 412, 1177, 377, 150, 1179, 103, 153, 152, 602, 717, 482, 650, 520, 611, 318, 196, 514};
-	
+
+	private static final int[] AUTO_UNLOCKED_MUSICS = { 200, 517, 518, 519, 323, 1176, 931, 316, 336, 151, 411, 350, 360, 89, 321, 412, 1177, 377, 150, 1179, 103, 153, 152, 602, 717, 482, 650, 520, 611, 318, 196, 514 };
+
 	private void unlockMusics() {
-		for(int id : AUTO_UNLOCKED_MUSICS)
+		for (int id : AUTO_UNLOCKED_MUSICS)
 			unlockedMusics.add(id);
 		int[] startZoneMusics = World.getRegion(Settings.START_PLAYER_LOCATION.getRegionId()).getMusicIds();
-		if(startZoneMusics != null)
-			for(int musicId : startZoneMusics)
-				if(musicId >= 0)
+		if (startZoneMusics != null)
+			for (int musicId : startZoneMusics)
+				if (musicId >= 0)
 					unlockedMusics.add(musicId);
 	}
-
 
 	public boolean hasMusic(int id) {
 		return unlockedMusics.contains(id);
@@ -75,30 +66,30 @@ public final class MusicsManager implements Serializable {
 		}
 		shuffleOn = !shuffleOn;
 		refreshShuffle();
-		player.getPackets().sendGameMessage("Music Mode: "+(shuffleOn ? "<col=FF9900>Shuffle" :  "<col=00FF00>Default"));
+		player.getPackets().sendGameMessage("Music Mode: " + (shuffleOn ? "<col=FF9900>Shuffle" : "<col=00FF00>Default"));
 	}
-	
+
 	public void refreshShuffle() {
 		player.getPackets().sendCSVarInteger(2746, shuffleOn ? 1 : 0);
 	}
 
 	public void skipMusic() {
-		if(!shuffleOn)
+		if (!shuffleOn)
 			return;
-		if(Utils.currentTimeMillis() - playingMusicDelay < 3000) {
+		if (Utils.currentTimeMillis() - playingMusicDelay < 3000) {
 			player.getPackets().sendGameMessage("You have to wait a little while to do that again.");
 			return;
 		}
 		replayMusic();
 	}
-	
+
 	public void switchPlayListOn() {
 		if (playListOn) {
 			playListOn = false;
 			shuffleOn = false;
 			refreshPlayListConfigs();
 		} else {
-			if(playList.isEmpty()) {
+			if (playList.isEmpty()) {
 				player.getPackets().sendGameMessage("There are no songs in your playlist.");
 				return;
 			}
@@ -106,7 +97,7 @@ public final class MusicsManager implements Serializable {
 			nextPlayListMusic = 0;
 			replayMusic();
 		}
-		player.getPackets().sendGameMessage("Music Mode: "+(playListOn ? "<col=0099FF>Playlist" : "<col=00FF00>Default"));
+		player.getPackets().sendGameMessage("Music Mode: " + (playListOn ? "<col=0099FF>Playlist" : "<col=00FF00>Default"));
 	}
 
 	public void clearPlayList() {
@@ -119,15 +110,14 @@ public final class MusicsManager implements Serializable {
 	public void addPlayingMusicToPlayList() {
 		addToPlayList(playingMusic);
 	}
-	
+
 	public int getArchiveId(int musicId) {
 		return ClientScriptMap.getMap(1351).getIntValue((long) musicId);
 	}
-	
+
 	public int getMusicId(int archiveId) {
 		return (int) ClientScriptMap.getMap(1351).getKeyForValue(archiveId);
 	}
-	
 
 	public void addToPlayList(int musicId) {
 		if (playList.size() == PLAY_LIST_CONFIG_IDS.length * 2)
@@ -155,7 +145,7 @@ public final class MusicsManager implements Serializable {
 
 	public void removeFromPlayList(int musicId) {
 		if (musicId != -1 && unlockedMusics.contains(musicId) && playList.contains(musicId)) {
-			playList.remove((Integer)musicId);
+			playList.remove((Integer) musicId);
 			if (playListOn)
 				switchPlayListOn();
 			else
@@ -219,13 +209,16 @@ public final class MusicsManager implements Serializable {
 	}
 
 	public void sendAudioSettings() {
-		player.getPackets().sendExecuteScript(8045, globalMute ? 1 : 0); //turns music on ^^
+		player.getPackets().sendExecuteScript(8045, globalMute ? 1 : 0); // turns
+		// music
+		// on
+		// ^^
 	}
-	
+
 	public void switchGlobalMute() {
 		globalMute = !globalMute;
 	}
-	
+
 	private static final long MUSIC_DELAY = 180000;
 
 	public boolean musicEnded() {
@@ -242,10 +235,10 @@ public final class MusicsManager implements Serializable {
 				playingMusic = playList.get(nextPlayListMusic++);
 			}
 		} else if (unlockedMusics.size() > 0) {// random music
-			if(shuffleOn)
+			if (shuffleOn)
 				playingMusic = unlockedMusics.get(Utils.random(unlockedMusics.size()));
 			else
-				playingMusic = getGenreMusic(); 
+				playingMusic = getGenreMusic();
 		}
 		playMusic(playingMusic);
 	}
@@ -253,48 +246,47 @@ public final class MusicsManager implements Serializable {
 	private static String[] getHint(int id) {
 		String hint = MusicHints.getHint(id).replace(".", "");
 		String[] words = hint.split(" ");
-		if(words.length == 0)
+		if (words.length == 0)
 			return null;
-		String s = "";;
-		for(String w : words) {
-			if(Character.isUpperCase(w.charAt(0)))
+		String s = "";
+		;
+		for (String w : words) {
+			if (Character.isUpperCase(w.charAt(0)))
 				s += w + " ";
 		}
 		return s.split(" ");
 	}
-	
 
-	
 	/*
 	 * might be too slow. if so improve
 	 */
 	public int getGenreMusic() {
-		if(playingMusic > -1) {
-			//int currentMusic = playingMusic;
+		if (playingMusic > -1) {
+			// int currentMusic = playingMusic;
 			String[] hints = getHint(playingMusic);
-			if(hints.length > 0) {
+			if (hints.length > 0) {
 				List<Integer> combs = new ArrayList<Integer>();
-				for(int id : unlockedMusics) {
+				for (int id : unlockedMusics) {
 					String[] hint = getHint(id);
-					if(hint.length == 0)
+					if (hint.length == 0)
 						continue;
-					l: for(String h : hint) {
-						for(String h2 : hints) {
-							if(h2.equals(h)) {
+					l: for (String h : hint) {
+						for (String h2 : hints) {
+							if (h2.equals(h)) {
 								combs.add(id);
 								break l;
 							}
 						}
 					}
 				}
-				if(combs.size() > 0)
+				if (combs.size() > 0)
 					return combs.get(Utils.random(combs.size()));
 			}
 		}
 		return unlockedMusics.get(Utils.random(unlockedMusics.size()));
-			
+
 	}
-	
+
 	public void checkMusic(int requestMusicId) {
 		if (playListOn || settedMusic && playingMusicDelay + MUSIC_DELAY >= Utils.currentTimeMillis())
 			return;
@@ -312,7 +304,6 @@ public final class MusicsManager implements Serializable {
 		settedMusic = false;
 		player.getMusicsManager().checkMusic(World.getRegion(player.getRegionId()).getRandomMusicId());
 	}
-	
 
 	public void sendHint(int musicId) {
 		if (musicId != -1) {
@@ -340,45 +331,44 @@ public final class MusicsManager implements Serializable {
 	public void refreshMusicInterface(boolean settings) {
 		player.getPackets().sendIComponentText(settings ? 187 : 1416, settings ? 4 : 6, getMusicName());
 	}
-	
+
 	public String getMusicName() {
-		if (playingMusic == -2) 
+		if (playingMusic == -2)
 			return "";
 		return ClientScriptMap.getMap(1345).getStringValue(playingMusic);
 	}
-	
+
 	public void playMusicByArchive(int archiveId) {
 		int musicId = getMusicId(archiveId);
-		if(playingMusic != musicId)
+		if (playingMusic != musicId)
 			return;
 		playMusic(musicId);
 	}
-	
+
 	public void resetMusicDelay(int musicId) {
-		if(musicId != playingMusic)
+		if (musicId != playingMusic)
 			return;
 		playingMusicDelay = Utils.currentTimeMillis();
 		player.getPackets().sendMusic(getArchiveId(musicId), 255);
 	}
-	
+
 	public void playMusicEffect(int effectId) {
 		player.getPackets().sendMusicEffect(MusicEffects.getArchiveId(effectId), 255);
 	}
-	
-	
-	
+
 	private void refreshMusicInterface() {
 		refreshMusicInterface(false);
-		if(player.getInterfaceManager().containsInterface(187))
+		if (player.getInterfaceManager().containsInterface(187))
 			refreshMusicInterface(true);
 	}
+
 	/*
 	 * music should never be -1
 	 */
 	public void playMusic(int musicId) {
 		if (!player.hasStarted() || musicId == -1)
 			return;
-	
+
 		playingMusicDelay = Utils.currentTimeMillis();
 		if (musicId == -2) {
 			playingMusic = musicId;
@@ -395,7 +385,6 @@ public final class MusicsManager implements Serializable {
 			player.getPackets().sendGameMessage("<col=ff0000>You have unlocked a new music track: " + musicName + ".");
 		}
 	}
-
 
 	public void searchMusic() {
 		player.getInterfaceManager().sendInputTextInterface();

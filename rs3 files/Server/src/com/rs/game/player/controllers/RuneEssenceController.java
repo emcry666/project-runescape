@@ -12,8 +12,7 @@ import com.rs.utils.Utils;
 
 public class RuneEssenceController extends Controller {
 
-	private static final WorldTile[] ESSENCE_COORDS = new WorldTile[]
-	{ new WorldTile(2911, 4832, 0), new WorldTile(2924, 4818, 0), new WorldTile(2900, 4818, 0), new WorldTile(2900, 4843, 0), new WorldTile(2922, 4844, 0) };
+	private static final WorldTile[] ESSENCE_COORDS = new WorldTile[] { new WorldTile(2911, 4832, 0), new WorldTile(2924, 4818, 0), new WorldTile(2900, 4818, 0), new WorldTile(2900, 4843, 0), new WorldTile(2922, 4844, 0) };
 
 	@Override
 	public void start() {

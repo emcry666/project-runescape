@@ -19,7 +19,7 @@ public class TzTok_Jad extends FightCavesNPC {
 		super(id, tile);
 		this.controler = controler;
 	}
-	
+
 	@Override
 	public double getMagePrayerMultiplier() {
 		return 0;
@@ -34,10 +34,10 @@ public class TzTok_Jad extends FightCavesNPC {
 	public double getMeleePrayerMultiplier() {
 		return 0;
 	}
-	
+
 	@Override
 	public boolean isStunImmune() {
-		return true; //as not setted imune yet it is
+		return true; // as not setted imune yet it is
 	}
 
 	@Override

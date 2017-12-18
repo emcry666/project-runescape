@@ -23,11 +23,11 @@ public class DoorSupport extends NPC {
 	public void processNPC() {
 		cancelFaceEntityNoCheck();
 	}
-	
+
 	public boolean canDestroy(Player player) {
-		if(getId() == 2446)
+		if (getId() == 2446)
 			return player.getY() < getY();
-		if(getId() == 2440)
+		if (getId() == 2440)
 			return player.getY() > getY();
 		return player.getX() > getX();
 	}
@@ -36,7 +36,7 @@ public class DoorSupport extends NPC {
 	public void sendDeath(Entity killer) {
 		setNextNPCTransformation(getId() + 1);
 		final WorldObject door = World.getObjectWithId(this, 8967);
-		if(door != null)
+		if (door != null)
 			World.removeObject(door);
 		GameExecutorManager.slowExecutor.schedule(new Runnable() {
 			@Override
@@ -44,7 +44,7 @@ public class DoorSupport extends NPC {
 				try {
 					setNextNPCTransformation(getId() - 1);
 					reset();
-					if(door != null)
+					if (door != null)
 						World.spawnObject(door);
 				} catch (Throwable e) {
 					Logger.handle(e);
@@ -53,5 +53,5 @@ public class DoorSupport extends NPC {
 
 		}, 60, TimeUnit.SECONDS);
 	}
-	
+
 }

@@ -7,8 +7,7 @@ public class Man extends Dialogue {
 
 	int npcId;
 
-	private static final String[] SALUTATIONS =
-	{ "Hello there.", "Salutations!", "Nice to meet you.", "Howdy.", "Good day.", "Greetings." };
+	private static final String[] SALUTATIONS = { "Hello there.", "Salutations!", "Nice to meet you.", "Howdy.", "Good day.", "Greetings." };
 
 	@Override
 	public void start() {

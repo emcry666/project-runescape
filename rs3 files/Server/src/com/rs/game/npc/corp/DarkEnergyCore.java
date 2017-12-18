@@ -24,15 +24,15 @@ public class DarkEnergyCore extends NPC {
 		super(8127, beast.getMiddleWorldTile(), -1, true, true);
 		this.beast = beast;
 		tile = new WorldTile(beast);
-		for(int i = 0; i < 10; i++) {
+		for (int i = 0; i < 10; i++) {
 			WorldTile t = new WorldTile(beast, 10);
-			if(World.isTileFree(t.getPlane(), t.getX(), t.getY(), 1)) {
+			if (World.isTileFree(t.getPlane(), t.getX(), t.getY(), 1)) {
 				tile = t;
 				break;
 			}
 		}
 		setNPCHidden(true);
-		delay = Utils.projectileTimeToCycles(World.sendProjectileNew(this, tile, 1828, 40, 0, 0, 0.7, 20, 0).getEndTime()) -1;
+		delay = Utils.projectileTimeToCycles(World.sendProjectileNew(this, tile, 1828, 40, 0, 0, 0.7, 20, 0).getEndTime()) - 1;
 		setNextFaceWorldTile(tile);
 	}
 
@@ -50,16 +50,16 @@ public class DarkEnergyCore extends NPC {
 	}
 
 	private void processTargetChange() {
-		
-		if(getId() == 8127) { //not hidden
-			if(delay == -1) {
+
+		if (getId() == 8127) { // not hidden
+			if (delay == -1) {
 				setNPCHidden(true);
 				delay = Utils.projectileTimeToCycles(World.sendProjectileNew(this, tile, 1828, 30, 0, 0, 0.7, 20, 0).getEndTime()) - 1;
 				return;
 			}
 			if (target == null || !withinDistance(target, 1)) {
 				target = getNextTarget();
-				if(target == null)
+				if (target == null)
 					return;
 				setNextAnimation(new Animation(10393));
 				tile = new WorldTile(target, 1);
@@ -68,7 +68,7 @@ public class DarkEnergyCore extends NPC {
 				return;
 			}
 			applyCoreEffect();
-		}else{
+		} else {
 			setNPCHidden(false);
 			setNextWorldTile(tile);
 			delay = 3;
@@ -76,7 +76,7 @@ public class DarkEnergyCore extends NPC {
 	}
 
 	private void setNPCHidden(boolean hidden) {
-		if(getId() == (hidden ? 1957 : 8127))
+		if (getId() == (hidden ? 1957 : 8127))
 			return;
 		setNextNPCTransformation(hidden ? 1957 : 8127);
 	}

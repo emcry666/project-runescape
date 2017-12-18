@@ -18,42 +18,10 @@ import com.rs.utils.Utils;
 @SuppressWarnings("serial")
 public class Blink extends DungeonBoss {
 
-	private static final int[][] RUSH_COORDINATES =
-	{
-	{ 2, 3, 13, 3 },
-	{ 2, 6, 13, 6 },
-	{ 2, 9, 13, 9 },
-	{ 2, 12, 13, 12 },
-	{ 3, 2, 3, 13 },
-	{ 6, 2, 6, 13 },
-	{ 9, 2, 9, 13 },
-	{ 12, 2, 12, 13 }, };
-	private static final int[] FAILURE_SOUNDS = new int[]
-	{ 3005, 3006, 3010, 3014, 3048, 2978 };
-	private static final int[] RUSH_SOUNDS =
-	{ 2982, 2987, 2988, 2989, 2990, 2992, 2998, 3002, 3004, 3009, 3015, 3017, 3018, 3021, 3026, 3027, 3031, 3042, 3043, 3047, 3049 };
-	private static final String[] RUSH_MESSAGES =
-	{
-		"Grrrr...",
-		"More t...tea Alice?",
-		"Where...who?",
-		"H..here it comes!",
-		"See you all next year!",
-		"",
-		"",
-		"",
-		"Coo-coo-ca-choo!",
-		"Ah! Grrrr...",
-		"Aha! Huh? Ahaha!",
-		"",
-		"",
-		"A face! A huuuge face!",
-		"Aaahaahaha!",
-		"C...can't catch me!",
-		"A whole new world!",
-		"Over here!",
-		"There's no place like home.",
-		"The...spire...doors...everywhere..." };
+	private static final int[][] RUSH_COORDINATES = { { 2, 3, 13, 3 }, { 2, 6, 13, 6 }, { 2, 9, 13, 9 }, { 2, 12, 13, 12 }, { 3, 2, 3, 13 }, { 6, 2, 6, 13 }, { 9, 2, 9, 13 }, { 12, 2, 12, 13 }, };
+	private static final int[] FAILURE_SOUNDS = new int[] { 3005, 3006, 3010, 3014, 3048, 2978 };
+	private static final int[] RUSH_SOUNDS = { 2982, 2987, 2988, 2989, 2990, 2992, 2998, 3002, 3004, 3009, 3015, 3017, 3018, 3021, 3026, 3027, 3031, 3042, 3043, 3047, 3049 };
+	private static final String[] RUSH_MESSAGES = { "Grrrr...", "More t...tea Alice?", "Where...who?", "H..here it comes!", "See you all next year!", "", "", "", "Coo-coo-ca-choo!", "Ah! Grrrr...", "Aha! Huh? Ahaha!", "", "", "A face! A huuuge face!", "Aaahaahaha!", "C...can't catch me!", "A whole new world!", "Over here!", "There's no place like home.", "The...spire...doors...everywhere..." };
 
 	private int rushCount, rushStage;
 	private int[] selectedPath;
@@ -93,7 +61,7 @@ public class Blink extends DungeonBoss {
 	}
 
 	private void stopRushAttack() {
-		rushCount = -1;//stops the rush
+		rushCount = -1;// stops the rush
 		playSoundEffect(FAILURE_SOUNDS[Utils.random(FAILURE_SOUNDS.length)]);
 		setNextForceTalk(new ForceTalk("Oof!"));
 		setNextAnimation(new Animation(14946));
@@ -157,7 +125,7 @@ public class Blink extends DungeonBoss {
 			} else if (rushCount == 11) {
 				setNextGraphics(new Graphics(2869));
 				for (Player player : getManager().getParty().getTeam()) {
-					if(!getManager().getCurrentRoomReference(this).equals(getManager().getCurrentRoomReference(player))) {
+					if (!getManager().getCurrentRoomReference(this).equals(getManager().getCurrentRoomReference(player))) {
 						continue;
 					}
 					if (!Utils.isOnRange(player.getX(), player.getY(), 1, getX(), getY(), 1, 4))
@@ -181,7 +149,7 @@ public class Blink extends DungeonBoss {
 
 	public void raisePillar(WorldObject selectedPillar) {
 		final WorldObject newPillar = new WorldObject(selectedPillar);
-		newPillar.setId(32196);//Our little secret :D
+		newPillar.setId(32196);// Our little secret :D
 		activePillar = new WorldTile(selectedPillar);
 		World.spawnObjectTemporary(newPillar, 2500, true, true);
 		WorldTasksManager.schedule(new WorldTask() {

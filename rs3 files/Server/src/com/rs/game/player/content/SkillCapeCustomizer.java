@@ -11,7 +11,7 @@ public final class SkillCapeCustomizer {
 	private SkillCapeCustomizer() {
 
 	}
-	
+
 	public static void resetSkillCapes(Player player) {
 		player.setMaxedCapeCustomized(Arrays.copyOf(ItemDefinitions.getItemDefinitions(20767).originalModelColors, 4));
 		player.setCompletionistCapeCustomized(Arrays.copyOf(ItemDefinitions.getItemDefinitions(20769).originalModelColors, 4));
@@ -31,12 +31,12 @@ public final class SkillCapeCustomizer {
 		player.getInterfaceManager().sendCentralInterface(19);
 		player.getVarsManager().sendVar(426, player.getEquipment().getCostumeColor());
 	}
-	
+
 	public static void handleCostumeColor(Player player, int color) {
 		player.closeInterfaces();
 		player.getEquipment().setCostumeColor(color);
 	}
-	
+
 	public static int getCapeId(Player player) {
 		Integer id = (Integer) player.getTemporaryAttributtes().get("SkillcapeCustomizeId");
 		if (id == null)

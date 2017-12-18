@@ -22,6 +22,6 @@ public class PKPShopD extends Dialogue {
 
 	@Override
 	public void finish() {
-		
+
 	}
 }

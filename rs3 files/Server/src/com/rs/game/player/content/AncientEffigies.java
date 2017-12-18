@@ -15,14 +15,12 @@ public class AncientEffigies {
 	/**
 	 * First skill to be nourished.
 	 */
-	public static int[] SKILL_1 =
-	{ Skills.AGILITY, Skills.CONSTRUCTION, Skills.COOKING, Skills.FISHING, Skills.FLETCHING, Skills.HERBLORE, Skills.MINING, Skills.SUMMONING };
+	public static int[] SKILL_1 = { Skills.AGILITY, Skills.CONSTRUCTION, Skills.COOKING, Skills.FISHING, Skills.FLETCHING, Skills.HERBLORE, Skills.MINING, Skills.SUMMONING };
 
 	/**
 	 * Second skill to be nourished.
 	 */
-	public static int[] SKILL_2 =
-	{ Skills.CRAFTING, Skills.THIEVING, Skills.FIREMAKING, Skills.FARMING, Skills.WOODCUTTING, Skills.HUNTER, Skills.SMITHING, Skills.RUNECRAFTING };
+	public static int[] SKILL_2 = { Skills.CRAFTING, Skills.THIEVING, Skills.FIREMAKING, Skills.FARMING, Skills.WOODCUTTING, Skills.HUNTER, Skills.SMITHING, Skills.RUNECRAFTING };
 
 	/**
 	 * Ancient effigies' item ids.
@@ -32,8 +30,7 @@ public class AncientEffigies {
 	/**
 	 * Getting the required level for each effigy.
 	 * 
-	 * @param id
-	 *            The effigy's item id.
+	 * @param id The effigy's item id.
 	 * @return Required level.
 	 */
 	public static int getRequiredLevel(int id) {
@@ -53,8 +50,7 @@ public class AncientEffigies {
 	/**
 	 * Getting the message.
 	 * 
-	 * @param skill
-	 *            The skill
+	 * @param skill The skill
 	 * @return message
 	 */
 	public static String getMessage(int skill) {
@@ -82,8 +78,7 @@ public class AncientEffigies {
 	/**
 	 * Getting the experience amount.
 	 * 
-	 * @param itemId
-	 *            The effigy's item id.
+	 * @param itemId The effigy's item id.
 	 * @return The amount of experience.
 	 */
 	public static int getExp(int itemId) {
@@ -103,10 +98,8 @@ public class AncientEffigies {
 	/**
 	 * Investigation of an effigy.
 	 * 
-	 * @param player
-	 *            The player who is doing investigation.
-	 * @param id
-	 *            The effigy item id.
+	 * @param player The player who is doing investigation.
+	 * @param id The effigy item id.
 	 */
 	public static void effigyInvestigation(Player player, int id) {
 		Inventory inv = player.getInventory();

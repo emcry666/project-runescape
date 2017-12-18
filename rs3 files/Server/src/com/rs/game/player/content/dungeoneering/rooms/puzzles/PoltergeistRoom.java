@@ -21,24 +21,11 @@ public class PoltergeistRoom extends PuzzleRoom {
 	public static final int POLTERGEIST_ID = 11245;
 
 	public static final int CONSECRATED_HERB = 19659;
-	public static final int[] HERBS =
-	{ 19653, 19654, 19655, 19656, 19657, 19658 };
+	public static final int[] HERBS = { 19653, 19654, 19655, 19656, 19657, 19658 };
 
-	private static final int[][] CENSERS =
-	{
-	{ -1, -1, -1 },
-	{ 54095, 54099, 54103 },
-	{ 54096, 54100, 54104 },
-	{ 54097, 54101, 54105 },
-	{ 39847, 39850, 39851 }, };
+	private static final int[][] CENSERS = { { -1, -1, -1 }, { 54095, 54099, 54103 }, { 54096, 54100, 54104 }, { 54097, 54101, 54105 }, { 39847, 39850, 39851 }, };
 
-	private static final int[][] SARCOPHAGUS =
-	{
-	{ -1, -1, -1 },
-	{ 54079, 54083 },
-	{ 54080, 54084 },
-	{ 54081, 54085 },
-	{ 39526, 39840 }, };
+	private static final int[][] SARCOPHAGUS = { { -1, -1, -1 }, { 54079, 54083 }, { 54080, 54084 }, { 54081, 54085 }, { 39526, 39840 }, };
 
 	private NPC poltergeist;
 	private Item requiredHerb;

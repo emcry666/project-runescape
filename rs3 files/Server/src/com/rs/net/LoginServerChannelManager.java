@@ -40,8 +40,7 @@ public class LoginServerChannelManager {
 	 */
 	private static long[] lastSync;
 	/**
-	 * Number of the last packet that our client successfully received from the
-	 * server.
+	 * Number of the last packet that our client successfully received from the server.
 	 */
 	private static long[] in_syncnum;
 	/**
@@ -208,7 +207,15 @@ public class LoginServerChannelManager {
 			DatagramPacket packet = device.read();
 			// first, find from which world this packet came
 			GameWorld world = Login.getWorld(packet.getPort() - Settings.LOGIN_CLIENT_ADDRESS_BASE.getPort());
-			if (packet.getLength() < 9 || world == null || !Arrays.equals(world.getLoginAddress().getAddress().getAddress(), packet.getAddress().getAddress())) { // the world doesn't exist or the ip doesn't match
+			if (packet.getLength() < 9 || world == null || !Arrays.equals(world.getLoginAddress().getAddress().getAddress(), packet.getAddress().getAddress())) { // the
+				// world
+				// doesn't
+				// exist
+				// or
+				// the
+				// ip
+				// doesn't
+				// match
 				if (Settings.DEBUG)
 					Logger.log(LoginServerChannelManager.class, "Game->Login packet was rejected");
 				continue; // discard it
@@ -247,11 +254,13 @@ public class LoginServerChannelManager {
 			case LoginProtocol.MSG_DATA_PACKET_R: // reliable packet
 				long datasyncnum = stream.readLong() - in_syncnum[world.getId()];
 				if (datasyncnum != 1) {
-					// some packets need to arrive first before this packet, so drop it
+					// some packets need to arrive first before this packet, so
+					// drop it
 					break;
 				}
 				lastSync[world.getId()] = Utils.currentTimeMillis();
-				in_syncnum[world.getId()] += 1; // increase our syncnum so next packets can go thru
+				in_syncnum[world.getId()] += 1; // increase our syncnum so next
+				// packets can go thru
 				try {
 					Login.getDecoderLock().lock();
 					LoginServerPacketsDecoder.decodeIncomingPacket(world, stream);

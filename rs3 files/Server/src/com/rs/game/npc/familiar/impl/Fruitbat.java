@@ -12,8 +12,7 @@ import com.rs.utils.Utils;
 
 public class Fruitbat extends Familiar {
 
-	private static final transient int[] FRUITS = new int[]
-	{ 5972, 5974, 2102, 2120, 1963, 2108, 5982 };
+	private static final transient int[] FRUITS = new int[] { 5972, 5974, 2102, 2120, 1963, 2108, 5982 };
 	private static final long serialVersionUID = 7999065876579183257L;
 
 	private int fruitTicks;

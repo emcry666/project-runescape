@@ -25,22 +25,24 @@ import com.rs.utils.Utils;
 public class ToxinMaze extends PuzzleRoom {
 
 	private static final int TICK_SPEED = 5;
-	private static final int TOTAL_TICKS = 80; //48 secs
+	private static final int TOTAL_TICKS = 80; // 48 secs
 
 	private static final int BARRIER = 49341;
 	private static final int BARRIER_ENTRANCE = 49344;
 
-	private static final int[] SWITCH_DOWN =
-	{ 49384, 49385, 49386, 49386, 49386 //TODO: down of 54333, 33675
+	private static final int[] SWITCH_DOWN = { 49384, 49385, 49386, 49386, 49386 // TODO:
+			// down
+			// of
+			// 54333,
+			// 33675
 	};
 
-	private static final int[][] OBSTACLES =
-	{ //
-	{ 49370, 49371, 49372, 49373, 49374 }, //Frozen
-		{ 49360, 49361, 49362, 49363, 49364 }, //Aba?
-		{ 49365, 49366, 49367, 49368, 49369 }, //Furnished?
-		{ 54412, 54413, 54414, 54415, 54416 }, //Occult?
-		{ 55853, 55854, 55855, 55856, 55857 }, //Warped?
+	private static final int[][] OBSTACLES = { //
+			{ 49370, 49371, 49372, 49373, 49374 }, // Frozen
+			{ 49360, 49361, 49362, 49363, 49364 }, // Aba?
+			{ 49365, 49366, 49367, 49368, 49369 }, // Furnished?
+			{ 54412, 54413, 54414, 54415, 54416 }, // Occult?
+			{ 55853, 55854, 55855, 55856, 55857 }, // Warped?
 	};
 
 	private boolean expired;
@@ -61,7 +63,7 @@ public class ToxinMaze extends PuzzleRoom {
 			player.setNextAnimation(new Animation(832));
 			toxinTask = new ToxinTask();
 			WorldTasksManager.schedule(toxinTask, 0, TICK_SPEED);
-			setComplete(); //doors are unlocked instantly
+			setComplete(); // doors are unlocked instantly
 			return false;
 		}
 		if (object.getDefinitions().name.equals("Locked chest")) {
@@ -72,8 +74,9 @@ public class ToxinMaze extends PuzzleRoom {
 				}
 			}
 			if (!expired) {
-				manager.getRoom(reference).setThiefChest(0); //Chest with lvl 1 requirement
-				//fall through to default chest handler
+				manager.getRoom(reference).setThiefChest(0); // Chest with lvl 1
+				// requirement
+				// fall through to default chest handler
 				return true;
 			} else {
 				replaceObject(object, DungeonConstants.THIEF_CHEST_OPEN[type]);
@@ -108,7 +111,8 @@ public class ToxinMaze extends PuzzleRoom {
 					WorldTile fromTile = new WorldTile(player.getX(), player.getY(), player.getPlane());
 					player.setNextWorldTile(target_);
 					player.setNextForceMovement(new ForceMovement(fromTile, 0, target_, 1, Helper.getFaceDirection(target_, player)));
-					player.setNextAnimation(new Animation(9516)); //10584 faster
+					player.setNextAnimation(new Animation(9516)); // 10584
+					// faster
 					player.setNextGraphics(new Graphics(2609));
 				}
 			}, delay);
@@ -126,11 +130,11 @@ public class ToxinMaze extends PuzzleRoom {
 		public void run() {
 			if (toxinTask == null) {
 				if (ticks > 0) {
-					//Maze finished before timer ran out
+					// Maze finished before timer ran out
 					manager.message(reference, "The ticking sound from beneath the floor is suddenly silenced.");
 					manager.hideBar(reference);
 				} else {
-					//Maze finished after timer ran out
+					// Maze finished after timer ran out
 					manager.message(reference, "The toxin in the room seems to have dispersed.");
 				}
 				return;
@@ -158,7 +162,7 @@ public class ToxinMaze extends PuzzleRoom {
 	public String getCompleteMessage() {
 		return "You press the switch, and both the chest in the center of the room and the door next to you unlock. A strange ticking sound comes from beneath the floor.";
 	}
-	
+
 	@Override
 	public void destroy() {
 		if (toxinTask != null) {
@@ -181,10 +185,9 @@ public class ToxinMaze extends PuzzleRoom {
 
 	public void generate() {
 
-		//MAZE GRAPH DO NOT CHANGE, YOU WILL HORRIBLY FUCK THINGS UP
+		// MAZE GRAPH DO NOT CHANGE, YOU WILL HORRIBLY FUCK THINGS UP
 
-		int[] doorsPerLayer =
-		{ 6, 3, 3, 2, 2 };
+		int[] doorsPerLayer = { 6, 3, 3, 2, 2 };
 
 		layers = new Barrier[doorsPerLayer.length][];
 		for (int i = 0; i < layers.length; i++) {
@@ -194,25 +197,26 @@ public class ToxinMaze extends PuzzleRoom {
 			}
 		}
 
-		BarrierSide south = new Barrier(0).outer; //Not counting the entrance bit
+		BarrierSide south = new Barrier(0).outer; // Not counting the entrance
+		// bit
 		BarrierSide east = new Barrier(-1).outer;
-		BarrierSide north = layers[0][2].outer; //directly connected
+		BarrierSide north = layers[0][2].outer; // directly connected
 		BarrierSide west = new Barrier(-1).outer;
 
-		//Visual maze graph
-		//_________|______|___
-		//______|_______|_____
-		//____|____|__|_______
-		//_____|_|_______|____
-		//_|_S__|__|_|_|___|__
-		//        E  N   W
-		//Connect everything with its clockwise neighbor
-		//Exits
+		// Visual maze graph
+		// _________|______|___
+		// ______|_______|_____
+		// ____|____|__|_______
+		// _____|_|_______|____
+		// _|_S__|__|_|_|___|__
+		// E N W
+		// Connect everything with its clockwise neighbor
+		// Exits
 		new Connector(south, layers[1][0].outer, 9, 2);
 		new Connector(east, layers[0][1].outer, 14, 9);
 		new Connector(west, layers[0][4].outer, 1, 5);
 
-		//Ring 1
+		// Ring 1
 		new Connector(layers[0][0].outer, east, 14, 5);
 		new Connector(layers[0][0].inner, layers[1][1].outer, 13, 5);
 		new Connector(layers[0][1].outer, layers[0][2].outer, 13, 14);
@@ -225,7 +229,7 @@ public class ToxinMaze extends PuzzleRoom {
 		new Connector(layers[0][4].inner, layers[0][5].inner, 3, 2);
 		new Connector(layers[0][5].inner, south, 6, 2);
 
-		//Ring 2
+		// Ring 2
 		new Connector(layers[1][0].outer, layers[0][0].inner, 12, 2);
 		new Connector(layers[1][0].inner, layers[1][1].inner, 12, 4);
 		new Connector(layers[1][1].outer, layers[0][1].inner, 13, 8);
@@ -233,7 +237,7 @@ public class ToxinMaze extends PuzzleRoom {
 		new Connector(layers[1][2].outer, layers[0][4].inner, 2, 6);
 		new Connector(layers[1][2].inner, layers[2][0].outer, 3, 4);
 
-		//Ring 3
+		// Ring 3
 		new Connector(layers[2][0].outer, layers[1][0].inner, 7, 3);
 		new Connector(layers[2][0].inner, layers[3][0].outer, 11, 6);
 		new Connector(layers[2][1].outer, layers[2][2].outer, 8, 12);
@@ -241,13 +245,13 @@ public class ToxinMaze extends PuzzleRoom {
 		new Connector(layers[2][2].outer, layers[1][2].inner, 3, 11);
 		new Connector(layers[2][2].inner, layers[3][1].outer, 4, 9);
 
-		//Ring 4
+		// Ring 4
 		new Connector(layers[3][0].outer, layers[2][1].inner, 11, 10);
 		new Connector(layers[3][0].inner, layers[4][0].outer, 9, 10);
 		new Connector(layers[3][1].outer, layers[2][0].inner, 4, 5);
 		new Connector(layers[3][1].inner, layers[4][1].outer, 6, 5);
 
-		//Ring 5
+		// Ring 5
 		new Connector(layers[4][0].outer, layers[3][1].inner, 6, 10);
 		new Connector(layers[4][1].outer, layers[3][0].inner, 9, 5);
 
@@ -255,7 +259,7 @@ public class ToxinMaze extends PuzzleRoom {
 
 		south.door.visited = true;
 		generatePath(south, 1, Math.random() > 0.5);
-		//Make sure exits are reachable
+		// Make sure exits are reachable
 		if (!north.door.visited) {
 			connectExit(north);
 		}
@@ -269,7 +273,7 @@ public class ToxinMaze extends PuzzleRoom {
 			connectExit(west);
 		}
 
-		//Block ALL non critical connectors
+		// Block ALL non critical connectors
 		for (Connector connector : connectors) {
 			if (!connector.critical) {
 				connector.blocked = true;
@@ -278,7 +282,7 @@ public class ToxinMaze extends PuzzleRoom {
 		layers[4][0].visited = true;
 		layers[4][1].visited = true;
 
-		//Determine which ones can be unblocked without connecting to crit path
+		// Determine which ones can be unblocked without connecting to crit path
 		boolean progress = true;
 		while (progress) {
 			progress = false;
@@ -290,7 +294,8 @@ public class ToxinMaze extends PuzzleRoom {
 							connector.left.door.visited = true;
 							connector.right.door.visited = true;
 							progress = true;
-							//System.out.println("unblocked: "+connector.x+" "+connector.y);
+							// System.out.println("unblocked: "+connector.x+"
+							// "+connector.y);
 						}
 					}
 				}
@@ -316,28 +321,47 @@ public class ToxinMaze extends PuzzleRoom {
 		} else {
 			next = current.left;
 		}
-		//next can be null due to the default lever obstacles etc
+		// next can be null due to the default lever obstacles etc
 		while (next != null) {
-			if (next.door.layer != -1) { //Skip exits
+			if (next.door.layer != -1) { // Skip exits
 				if (next.door.visited) {
-					//can't go further or paths will connect
+					// can't go further or paths will connect
 					break;
 				}
 				if (layer > next.door.layer) {
-					//Door goes back to the outer ring
+					// Door goes back to the outer ring
 					choicesDown++;
-					if (availableDoors[next.door.layer] - choicesDown > 0) { //There needs to be atleast 1 more door on this layer so we can go back to the inner ring
+					if (availableDoors[next.door.layer] - choicesDown > 0) { // There
+						// needs
+						// to
+						// be
+						// atleast
+						// 1
+						// more
+						// door
+						// on
+						// this
+						// layer
+						// so
+						// we
+						// can
+						// go
+						// back
+						// to
+						// the
+						// inner
+						// ring
 						options.add(next);
 					}
 				} else {
 					choicesUp++;
 					options.add(next);
 					if (layer == 4) {
-						//solved
+						// solved
 						break;
 					}
 					if (availableDoors[next.door.layer] - choicesUp == 0) {
-						//last door, going further is useless
+						// last door, going further is useless
 						break;
 					}
 				}
@@ -349,20 +373,21 @@ public class ToxinMaze extends PuzzleRoom {
 			}
 		}
 		if (options.isEmpty()) {
-			//backtrack condition
+			// backtrack condition
 			return false;
 		}
 		Collections.shuffle(options);
-		//Priorize going down (makes mazes longer crit path although going down as much as possible will make the maze have very few dead ends)
-		/*Collections.sort(options, new Comparator<BarrierSide>() {
-			@Override
-			public int compare(BarrierSide o1, BarrierSide o2) {
-				return o1.door.layer - o2.door.layer;
-			}
-		});*/
+		// Priorize going down (makes mazes longer crit path although going down
+		// as much as possible will make the maze have very few dead ends)
+		/*
+		 * Collections.sort(options, new Comparator<BarrierSide>() {
+		 * 
+		 * @Override public int compare(BarrierSide o1, BarrierSide o2) { return o1.door.layer - o2.door.layer; }
+		 * });
+		 */
 		for (BarrierSide option : options) {
 			next = current;
-			//Apply new maze state
+			// Apply new maze state
 			do {
 				if (goRight) {
 					next.rightCon.critical = true;
@@ -378,17 +403,17 @@ public class ToxinMaze extends PuzzleRoom {
 			if (layer == 4) {
 				return true;
 			}
-			//Recursive calculation
+			// Recursive calculation
 			boolean rightFirst = Math.random() > 0.5;
 			if (!generatePath(next.otherSide, layer + (layer > next.door.layer ? -1 : 1), rightFirst)) {
-				//Check both directions
+				// Check both directions
 				if (generatePath(next.otherSide, layer + (layer > next.door.layer ? -1 : 1), !rightFirst)) {
 					return true;
 				}
 			} else {
 				return true;
 			}
-			//Backtrack, undo state changes
+			// Backtrack, undo state changes
 			next = current;
 			do {
 				if (goRight) {
@@ -408,14 +433,14 @@ public class ToxinMaze extends PuzzleRoom {
 
 	public void connectExit(BarrierSide curr) {
 		while (true) {
-			//Keep moving to the right until we find something connected
+			// Keep moving to the right until we find something connected
 			curr.door.visited = true;
 			curr.rightCon.critical = true;
 			curr = curr.right;
 			if (curr.door.visited) {
 				break;
 			} else if (curr.layer() != 1 && curr.otherSide.layer() > curr.layer()) {
-				//Attempt to move up to layer 1
+				// Attempt to move up to layer 1
 				curr = curr.otherSide;
 			}
 		}
@@ -530,8 +555,7 @@ public class ToxinMaze extends PuzzleRoom {
 		public BarrierSide right;
 
 		/**
-		 * Creates a connector and sets the links between objects so we can
-		 * traverse them
+		 * Creates a connector and sets the links between objects so we can traverse them
 		 */
 		public Connector(BarrierSide left, BarrierSide right, int x, int y) {
 			this.left = left;

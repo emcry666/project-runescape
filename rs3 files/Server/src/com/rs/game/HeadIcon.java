@@ -1,9 +1,9 @@
 package com.rs.game;
 
 public class HeadIcon {
-	
+
 	private int spriteId, fileId;
-	
+
 	public HeadIcon(int spriteId, int fileId) {
 		this.spriteId = spriteId;
 		this.fileId = fileId;

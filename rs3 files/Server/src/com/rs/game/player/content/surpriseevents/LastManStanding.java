@@ -14,7 +14,7 @@ import com.rs.utils.Logger;
 import com.rs.utils.Utils;
 
 public class LastManStanding implements SurpriseEvent {
-	
+
 	/**
 	 * 3 minutes before the event starts.
 	 */
@@ -23,8 +23,7 @@ public class LastManStanding implements SurpriseEvent {
 	 * Maximum game time.
 	 */
 	public static final int GAME_MINS = 15;
-	
-	
+
 	/**
 	 * Cash for event winner.
 	 */
@@ -33,7 +32,7 @@ public class LastManStanding implements SurpriseEvent {
 	 * Spins for event winner.
 	 */
 	public static final int REWARD_SPINS_FINAL = 10;
-	
+
 	/**
 	 * Drop rate modifier.
 	 */
@@ -42,18 +41,12 @@ public class LastManStanding implements SurpriseEvent {
 	 * Cash reward for single kill.
 	 */
 	public static final int REWARD_CASH_PER_KILL = 300000;
-	
 
 	/**
-	 * Phases...
-	 * 0 - Pre-start
-	 * 1 - Initializing area
-	 * 2 - Accepting players/waiting till game
-	 * 3 - Game
-	 * 4 - Shutdown
+	 * Phases... 0 - Pre-start 1 - Initializing area 2 - Accepting players/waiting till game 3 - Game 4 - Shutdown
 	 */
 	private int phase = 0;
-	
+
 	/**
 	 * Our arena.
 	 */
@@ -62,29 +55,27 @@ public class LastManStanding implements SurpriseEvent {
 	 * Our task.
 	 */
 	private TimerTask task;
-	
-	
+
 	/**
 	 * When we will start game and end game.
 	 */
 	private long startTime, endTime;
-	
+
 	/**
 	 * Our lock
 	 */
 	private Object lock = new Object();
-	
+
 	/**
 	 * List of all players.
 	 */
 	private List<Player> players = new ArrayList<Player>();
-	
+
 	/**
 	 * Alive players.
 	 */
 	private List<Player> alive = new ArrayList<Player>();
-	
-	
+
 	public void start() {
 		if (phase != 0)
 			return;
@@ -98,7 +89,7 @@ public class LastManStanding implements SurpriseEvent {
 					else if (phase == 4) {
 						task.cancel();
 						task = null;
-						
+
 						GameExecutorManager.slowExecutor.execute(new Runnable() {
 							@Override
 							public void run() {
@@ -112,7 +103,7 @@ public class LastManStanding implements SurpriseEvent {
 				}
 			}
 		}, 0L, 1000);
-		
+
 		GameExecutorManager.slowExecutor.execute(new Runnable() {
 			@Override
 			public void run() {
@@ -123,15 +114,12 @@ public class LastManStanding implements SurpriseEvent {
 			}
 		});
 	}
-	
 
 	private void timerinit() {
 		startTime = Utils.currentTimeMillis() + (1000 * 60 * PREP_MINS);
 		endTime = startTime + (1000 * 60 * GAME_MINS);
 		World.sendNews(null, "Last man standing event will start in " + PREP_MINS + " minute! Talk to oracle to get there.", World.WORLD_NEWS);
 	}
-	
-	
 
 	private void run() {
 		if (phase == 2 && canBegin())
@@ -139,7 +127,7 @@ public class LastManStanding implements SurpriseEvent {
 		else if (phase == 3 && canEnd())
 			end();
 	}
-	
+
 	private boolean canBegin() {
 		synchronized (lock) {
 			if (players.size() < 2)
@@ -147,7 +135,7 @@ public class LastManStanding implements SurpriseEvent {
 		}
 		return Utils.currentTimeMillis() >= startTime;
 	}
-	
+
 	private void begin() {
 		phase = 3;
 		synchronized (lock) {
@@ -158,33 +146,32 @@ public class LastManStanding implements SurpriseEvent {
 		}
 		World.sendNews(null, "Last man standing event has started!", World.WORLD_NEWS);
 	}
-	
+
 	private boolean canEnd() {
 		synchronized (lock) {
 			return Utils.currentTimeMillis() >= endTime || players.size() < 1 || alive.size() < 2;
 		}
 	}
-	
+
 	private void end() {
 		phase = 4;
-		
-		synchronized (lock) {	
+
+		synchronized (lock) {
 			if (alive.size() == 1) {
 				Player winner = alive.iterator().next();
 				World.sendNews(null, "Last man standing event has ended, winner: " + winner.getDisplayName(), World.WORLD_NEWS);
-				
+
 				winner.getSquealOfFortune().giveEarnedSpins(REWARD_SPINS_FINAL);
 				winner.getInventory().addItemDrop(995, REWARD_CASH_FINAL);
-			}
-			else {
+			} else {
 				World.sendNews(null, "Last man standing event has ended without winner.", World.WORLD_NEWS);
 			}
-			
+
 			List<Player> ps = new ArrayList<Player>(players);
 			for (Player player : ps)
 				player.getControlerManager().forceStop();
 		}
-	
+
 	}
 
 	public void forceleave(final Player player) {
@@ -195,21 +182,21 @@ public class LastManStanding implements SurpriseEvent {
 			player.getAppearence().setHidden(false);
 			player.getAppearence().setIdentityHide(false);
 			player.useStairs(-1, Settings.START_PLAYER_LOCATION, 0, 1);
-			
+
 			players.remove(player);
 			alive.remove(player);
 		}
 	}
-	
+
 	@Override
 	public void tryJoin(final Player player) {
 		if (phase != 2)
 			return;
-		
+
 		synchronized (lock) {
 			players.add(player);
 		}
-		
+
 		player.stopAll();
 		player.reset();
 		player.getAppearence().setHidden(false);
@@ -224,32 +211,31 @@ public class LastManStanding implements SurpriseEvent {
 			}
 		}, 1);
 	}
-	
-	
+
 	public int getPhase() {
 		return phase;
 	}
-	
+
 	public long startTime() {
 		return startTime;
 	}
-	
+
 	public long endTime() {
 		return endTime;
 	}
-	
+
 	public Object getLock() {
 		return lock;
 	}
-	
+
 	public List<Player> getPlayers() {
 		return players;
 	}
-	
+
 	public List<Player> getAlive() {
 		return alive;
 	}
-	
+
 	public EventArena getArena() {
 		return arena;
 	}

@@ -33,12 +33,9 @@ public class Session {
 	protected byte[] ipdata = null;
 	protected InetSocketAddress client = null;
 	// ----------------
-	
+
 	protected byte[] buffer = new byte[0];
 	protected int bufferOffset = 0;
-	
-	
-	
 
 	public Session(Channel channel) {
 		this.channel = channel;
@@ -48,8 +45,7 @@ public class Session {
 	public final ChannelFuture write(OutputStream outStream) {
 		if (outStream == null || !channel.isConnected())
 			return null;
-		return channel.write(ChannelBuffers.copiedBuffer(outStream.getBuffer(),
-				0, outStream.getOffset()));
+		return channel.write(ChannelBuffers.copiedBuffer(outStream.getBuffer(), 0, outStream.getOffset()));
 	}
 
 	public final ChannelFuture write(ChannelBuffer outStream) {
@@ -142,11 +138,9 @@ public class Session {
 				return null;
 			return client.getAddress().getHostAddress();
 		} else {
-			if (channel == null
-					|| !(channel.getRemoteAddress() instanceof InetSocketAddress))
+			if (channel == null || !(channel.getRemoteAddress() instanceof InetSocketAddress))
 				return null;
-			InetSocketAddress addr = (InetSocketAddress) channel
-					.getRemoteAddress();
+			InetSocketAddress addr = (InetSocketAddress) channel.getRemoteAddress();
 			return addr.getAddress().getHostAddress();
 		}
 	}

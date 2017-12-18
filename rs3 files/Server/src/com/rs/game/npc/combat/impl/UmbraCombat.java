@@ -18,8 +18,7 @@ public class UmbraCombat extends CombatScript {
 
 	@Override
 	public Object[] getKeys() {
-		return new Object[]
-		{ 13452 };
+		return new Object[] { 13452 };
 	}
 
 	@Override

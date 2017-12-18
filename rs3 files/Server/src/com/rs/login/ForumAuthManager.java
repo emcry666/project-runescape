@@ -82,8 +82,8 @@ public class ForumAuthManager {
 							account.syncRanksFromForumGroups(response.substring(3));
 						} else if (response.equals("notauthed") || response.equals("gusermismatch")) {
 							account.setForumAuthId(-1);
-							account.syncRanksFromForumGroups(new int[]
-							{ 2 }); // standart users.
+							account.syncRanksFromForumGroups(new int[] { 2 }); // standart
+							// users.
 							LoginServerChannelManager.sendUnreliablePacket(account.getWorld(), LoginChannelsPacketEncoder.encodePlayerGameMessage(account.getUsername(), "Your forum account was unauthorised automatically.").getBuffer());
 						} else {
 							LoginServerChannelManager.sendUnreliablePacket(account.getWorld(), LoginChannelsPacketEncoder.encodePlayerGameMessage(account.getUsername(), "An unknown response was received while trying to verify your forum account auth key.").getBuffer());
@@ -98,8 +98,7 @@ public class ForumAuthManager {
 		} else {
 			boolean donator = account.hasRank(Account.RANK_DONATOR);
 			boolean extremeDonator = account.hasRank(Account.RANK_EXTREME_DONATOR);
-			account.syncRanksFromForumGroups(new int[]
-			{ 2 });
+			account.syncRanksFromForumGroups(new int[] { 2 });
 			if (donator)
 				account.setRank(Account.RANK_DONATOR, true);
 			if (extremeDonator)

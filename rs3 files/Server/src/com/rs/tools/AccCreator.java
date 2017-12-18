@@ -59,7 +59,7 @@ public class AccCreator {
 
 			player.getMoneyPouch().setCoinsAmount(acc.pouch);
 
-			//player.setGeManager(acc.ge);
+			// player.setGeManager(acc.ge);
 
 			player.getSkills().setXp(acc.exp);
 

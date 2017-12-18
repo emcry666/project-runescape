@@ -8,7 +8,6 @@ import com.rs.utils.ReportAbuse;
 
 public class PlayerExamineManager implements Serializable {
 
-
 	private static final long serialVersionUID = 6506692526193840181L;
 
 	private transient Player player;
@@ -43,32 +42,31 @@ public class PlayerExamineManager implements Serializable {
 		this.status = (byte) status;
 		refreshStatus();
 	}
-	
+
 	public void clearPersonalMessage() {
 		personalMessage = null;
 		refreshPersonalMessage();
 	}
-	
+
 	private void refreshPersonalMessage() {
 		player.getPackets().sendCSVarString(4670, personalMessage == null ? "" : personalMessage);
 	}
-	
-	
+
 	public void setPersonalMessage() {
 		player.getPackets().sendInputLongTextScript("Enter new personal message here:");
 		player.getTemporaryAttributtes().put(Key.PERSONAL_MESSAGE, Boolean.TRUE);
 	}
-	
+
 	public void setPersonalMessage(String message) {
 		personalMessage = message;
 		refreshPersonalMessage();
 	}
-	
+
 	public void switchPrivacyOn() {
 		privacyOn = !privacyOn;
 		refreshPrivacyOn();
 	}
-	
+
 	public void refreshStatus() {
 		player.getVarsManager().sendVarBit(26169, status);
 	}
@@ -80,7 +78,7 @@ public class PlayerExamineManager implements Serializable {
 	public void openExamineDetails(Player target) {
 		player.getInterfaceManager().setWindowInterface(InterfaceManager.PLAYER_EXAMINE_COMPONENT_ID, 1560);
 		boolean privacyOn = target.getPlayerExamineManager().privacyOn;
-		if(!privacyOn) {
+		if (!privacyOn) {
 			for (int varbit = 26071; varbit < 26123; varbit++) {
 				int skill = Skills.FIXED_SLOTS[(varbit - 26071) / 2];
 				player.getVarsManager().sendVarBit(varbit, varbit % 2 != 0 ? target.getSkills().getLevel(skill) : target.getSkills().getLevelForXp(skill));
@@ -112,13 +110,15 @@ public class PlayerExamineManager implements Serializable {
 			player.getVarsManager().sendVar(4958, (int) target.getSkills().getXp(Skills.FARMING));
 			player.getVarsManager().sendVar(4959, (int) target.getSkills().getXp(Skills.SUMMONING));
 
-			player.getVarsManager().sendVar(4960, target.isLegacyMode() ? 1 : 2);//Enables something
-			player.getVarsManager().sendVar(4961, target.getCombatDefinitions().getStats()[11]);//PvE Dmg reduction
+			player.getVarsManager().sendVar(4960, target.isLegacyMode() ? 1 : 2);// Enables
+			// something
+			player.getVarsManager().sendVar(4961, target.getCombatDefinitions().getStats()[11]);// PvE
+			// Dmg
+			// reduction
 			player.getVarsManager().sendVar(4962, target.getHitpoints());
 			player.getVarsManager().sendVar(4963, target.getPrayer().getPrayerpoints() * 10);
 			player.getVarsManager().sendVar(4964, target.getCombatDefinitions().getHandDamage(false) / 10);
 			player.getVarsManager().sendVar(4965, target.getCombatDefinitions().getStats()[5]);
-
 
 			player.getInterfaceManager().setInterface(true, 1560, 18, 1557);
 			player.getInterfaceManager().setInterface(true, 1560, 17, 1559);
@@ -127,7 +127,7 @@ public class PlayerExamineManager implements Serializable {
 		player.getInterfaceManager().setInterface(true, 1560, 16, 1558);
 
 		Item[] items = target.getEquipment().getItems().getItemsCopy();
-		if(privacyOn) {
+		if (privacyOn) {
 			items[Equipment.SLOT_RING] = null;
 			items[Equipment.SLOT_ARROWS] = null;
 			items[Equipment.SLOT_AURA] = null;
@@ -135,26 +135,31 @@ public class PlayerExamineManager implements Serializable {
 			items[Equipment.SLOT_WINGS] = null;
 		}
 		player.getPackets().sendItems(742, items);
-		player.getPackets().sendItems(743, privacyOn ? items : target.getEquipment().getCosmeticItems().getItems()); 
-		player.getPackets().sendIComponentSettings(1558, 16, 0, 18, 2046); //allows to click items
+		player.getPackets().sendItems(743, privacyOn ? items : target.getEquipment().getCosmeticItems().getItems());
+		player.getPackets().sendIComponentSettings(1558, 16, 0, 18, 2046); // allows
+		// to
+		// click
+		// items
 		player.getPackets().sendCSVarString(4669, target.getDisplayName());
 		String personalMessage = target.getPlayerExamineManager().personalMessage;
-		player.getPackets().sendCSVarString(4671, personalMessage == null ? "" : personalMessage);//Personal message TODO
+		player.getPackets().sendCSVarString(4671, personalMessage == null ? "" : personalMessage);// Personal
+		// message
+		// TODO
 		player.getPackets().sendCSVarString(4672, target.getClanManager() != null ? target.getClanName() : "");
 
-		player.getVarsManager().sendVarBit(26172, target.getPlayerExamineManager().status);//Status
+		player.getVarsManager().sendVarBit(26172, target.getPlayerExamineManager().status);// Status
 		player.getVarsManager().sendVarBit(26173, target.getAppearence().getTitleId());
 		player.getVarsManager().sendVar(4985, target.getPlayerExamineManager().privacyOn ? 1 : 0);
 
-
-		//slot 0 - 18
-		for(int i = 4986; i <= 5004; i++) 
-			player.getVarsManager().sendVar(i, -1); //slot stop flashing, but also removes purcharse option
+		// slot 0 - 18
+		for (int i = 4986; i <= 5004; i++)
+			player.getVarsManager().sendVar(i, -1); // slot stop flashing, but
+		// also removes purcharse
+		// option
 		player.getPackets().sendOtherPlayerOnIComponent(1558, 19, target);
 		player.getVarsManager().sendVar(5005, target.getAppearence().getRenderEmote());
-		
-		
-		//player.getPackets().sendAppearanceLook2();
+
+		// player.getPackets().sendAppearanceLook2();
 		player.getTemporaryAttributtes().put(Key.PLAYER_EXAMINE, target.getDisplayName());
 	}
 
@@ -162,19 +167,16 @@ public class PlayerExamineManager implements Serializable {
 		player.getInterfaceManager().removeWindowInterface(InterfaceManager.PLAYER_EXAMINE_COMPONENT_ID);
 		player.getTemporaryAttributtes().remove(Key.PLAYER_EXAMINE);
 	}
-	
+
 	public void reportPlayer() {
 		String report = (String) player.getTemporaryAttributtes().get(Key.PLAYER_EXAMINE);
-		if(report == null)
+		if (report == null)
 			return;
-		
+
 		if (player.getRights() >= 1)
 			player.getDialogueManager().startDialogue("AddOffenceD", report);
 		else
 			ReportAbuse.report(player, report);
 	}
-	
+
 }
-
-
-

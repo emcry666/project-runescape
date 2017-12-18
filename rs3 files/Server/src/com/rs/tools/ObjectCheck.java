@@ -9,12 +9,11 @@ public class ObjectCheck {
 
 	public static void main(String[] args) throws IOException {
 		Cache.init();
-		/*for (int i = 0; i < Utils.getObjectDefinitionsSize(); i++) {
-		    ObjectDefinitions def = ObjectDefinitions.getObjectDefinitions(i);
-		    if (def.containsOption("Steal-from")) {
-			System.out.println(def.id + " - " + def.name);
-		    }
-		}*/
+		/*
+		 * for (int i = 0; i < Utils.getObjectDefinitionsSize(); i++) { ObjectDefinitions def =
+		 * ObjectDefinitions.getObjectDefinitions(i); if (def.containsOption("Steal-from")) {
+		 * System.out.println(def.id + " - " + def.name); } }
+		 */
 		int minX = 3033;
 		int minY = 3426;
 		int maxX = 3308;

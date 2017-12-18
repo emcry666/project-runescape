@@ -22,7 +22,7 @@ public class NexCutScene extends Cutscene {
 	public boolean hiddenMinimap() {
 		return false;
 	}
-	
+
 	@Override
 	public boolean allowSkipCutscene() {
 		return false;

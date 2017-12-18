@@ -10,8 +10,7 @@ public class DicingMaster extends Dialogue {
 	@Override
 	public void start() {
 		npcId = (Integer) parameters[0];
-		sendEntityDialogue(SEND_2_TEXT_CHAT, new String[]
-		{ NPCDefinitions.getNPCDefinitions(npcId).name, "Hello, would you like to do a dice game?" }, IS_NPC, npcId, 9827);
+		sendEntityDialogue(SEND_2_TEXT_CHAT, new String[] { NPCDefinitions.getNPCDefinitions(npcId).name, "Hello, would you like to do a dice game?" }, IS_NPC, npcId, 9827);
 	}
 
 	@Override

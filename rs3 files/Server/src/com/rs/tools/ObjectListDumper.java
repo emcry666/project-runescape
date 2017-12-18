@@ -20,14 +20,14 @@ public class ObjectListDumper {
 			file.createNewFile();
 		BufferedWriter writer = new BufferedWriter(new FileWriter(file));
 		// writer.append("//Version = 667.704\n");
-		//writer.flush();
-	for (int id = 0; id < Utils.getObjectDefinitionsSize(); id++) {
+		// writer.flush();
+		for (int id = 0; id < Utils.getObjectDefinitionsSize(); id++) {
 			ObjectDefinitions def = ObjectDefinitions.getObjectDefinitions(id);
 			// writer.append("FORMAT1"+id+"FORMAT2"+def.name.replaceAll("`",
 			// "")+"FORMAT3\n");
 			writer.append(id + " - " + def.name);
 			writer.newLine();
-//
+			//
 			writer.flush();
 		}
 		writer.close();

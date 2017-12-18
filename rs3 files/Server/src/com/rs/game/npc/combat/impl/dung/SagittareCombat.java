@@ -25,8 +25,7 @@ public class SagittareCombat extends CombatScript {
 
 	@Override
 	public Object[] getKeys() {
-		return new Object[]
-		{ 9753 };
+		return new Object[] { 9753 };
 	}
 
 	@Override
@@ -38,9 +37,9 @@ public class SagittareCombat extends CombatScript {
 		}
 		int attack = Utils.random(5);
 		switch (attack) {
-		case 0://Normal range
-		case 1://Normal magic
-		case 2://Multi magic
+		case 0:// Normal range
+		case 1:// Normal magic
+		case 2:// Multi magic
 			npc.setNextAnimation(new Animation(13271));
 			npc.setNextGraphics(new Graphics(attack == 0 ? 2532 : 2534, 0, 96));
 			for (Entity t : npc.getPossibleTargets()) {
@@ -53,7 +52,7 @@ public class SagittareCombat extends CombatScript {
 					delayHit(npc, 1, t, getMagicHit(npc, getMaxHit(npc, NPCCombatDefinitions.MAGE, t)));
 			}
 			break;
-		case 3://Bind attacks
+		case 3:// Bind attacks
 		case 4:
 			boolean isMagicAttack = attack == 3;
 			npc.setNextAnimation(new Animation(13271));
@@ -71,7 +70,7 @@ public class SagittareCombat extends CombatScript {
 						bindTarget = true;
 					delayHit(npc, 1, t, getMagicHit(npc, getMaxHit(npc, NPCCombatDefinitions.MAGE, t)));
 				} else {
-					bindTarget = Utils.random(2) == 0;//50/50
+					bindTarget = Utils.random(2) == 0;// 50/50
 					delayHit(npc, 1, t, getMagicHit(npc, getMaxHit(npc, NPCCombatDefinitions.MAGE, t)));
 				}
 				if (bindTarget) {
@@ -122,18 +121,24 @@ public class SagittareCombat extends CombatScript {
 
 					if (stage != 1 && stage != -1) {
 						int corner = Utils.random(4);
-						if (corner == 0)//this is good
-							teleport = manager.getTile(rRef, 1, Utils.random(14) + 1);//1,1 14, 1, 14, 14, 2, 14
-						else if (corner == 1)//this is good
+						if (corner == 0)// this is good
+							teleport = manager.getTile(rRef, 1, Utils.random(14) + 1);// 1,1
+						// 14,
+						// 1,
+						// 14,
+						// 14,
+						// 2,
+						// 14
+						else if (corner == 1)// this is good
 							teleport = manager.getTile(rRef, 14 - Utils.random(14), 1);
-						else if (corner == 2)//this is good
+						else if (corner == 2)// this is good
 							teleport = manager.getTile(rRef, 14, 14 - Utils.random(14));
 						else
-							//this is good
+							// this is good
 							teleport = manager.getTile(rRef, Utils.random(14) + 1, 14);
 					}
 
-					for (int x = -1; x < 2; x++) {//3x3 area
+					for (int x = -1; x < 2; x++) {// 3x3 area
 						for (int y = -1; y < 2; y++) {
 							World.sendProjectile(boss, center.transform(x, y, 0), 2533, 250, 0, 40, 0, 0, 0);
 						}
@@ -146,7 +151,7 @@ public class SagittareCombat extends CombatScript {
 						if (!(target instanceof Player))
 							continue;
 						Player player = (Player) target;
-						for (int x = -1; x < 2; x++) {//3x3 area
+						for (int x = -1; x < 2; x++) {// 3x3 area
 							for (int y = -1; y < 2; y++) {
 								WorldTile projectileTile = center.transform(x, y, 0);
 								if (player.getX() != projectileTile.getX() || player.getY() != projectileTile.getY())

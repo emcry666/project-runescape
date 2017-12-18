@@ -14,13 +14,13 @@ public class LentItem {
 	private int lentItemId;// the id of the item
 	private long lendDelay;// the length of time it is borrowed
 
-	//if either player logs out, removeLentItem should be called. 
+	// if either player logs out, removeLentItem should be called.
 
 	public void logoutAction() {
 		removeLentItem(false);
 	}
 
-	//TODO find usage for this
+	// TODO find usage for this
 	public void removeLentItem(boolean forceRequest) { // hardest part
 		if (lentItemId != -1 && lendDelay < Utils.currentTimeMillis()) {
 			int actualLentId = ItemDefinitions.getItemDefinitions(lentItemId).getLendId();

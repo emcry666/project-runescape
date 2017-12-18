@@ -30,12 +30,7 @@ public final class TorturedSoul extends NPC {
 	/**
 	 * The messages the NPC can say.
 	 */
-	private static final ForceTalk[] FORCE_MESSAGES =
-	{
-		new ForceTalk("NO MORE! RELEASE ME, MY QUEEN! I BEG YOU!"),
-		new ForceTalk("We lost our free will long ago..."),
-		new ForceTalk("How long has it been since I was taken..."),
-		new ForceTalk("The cycle is never ending, mortal...") };
+	private static final ForceTalk[] FORCE_MESSAGES = { new ForceTalk("NO MORE! RELEASE ME, MY QUEEN! I BEG YOU!"), new ForceTalk("We lost our free will long ago..."), new ForceTalk("How long has it been since I was taken..."), new ForceTalk("The cycle is never ending, mortal...") };
 
 	/**
 	 * The teleport graphic.
@@ -80,12 +75,9 @@ public final class TorturedSoul extends NPC {
 	/**
 	 * Constructs a new {@code TorturedSoul} {@code Object}.
 	 * 
-	 * @param dragon
-	 *            The queen black dragon reference.
-	 * @param victim
-	 *            The player victim.
-	 * @param spawn
-	 *            The spawn location.
+	 * @param dragon The queen black dragon reference.
+	 * @param victim The player victim.
+	 * @param spawn The spawn location.
 	 */
 	public TorturedSoul(QueenBlackDragon dragon, Player victim, WorldTile spawn) {
 		super(15510, spawn, -1, true, false);

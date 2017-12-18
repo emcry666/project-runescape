@@ -30,8 +30,7 @@ public class MinotaurCombat extends CombatScript {
 			Projectile projectile = World.sendProjectileNew(npc, target, 1497, 34, 16, 35, 2, 16, 0);
 			delayHit(npc, Utils.projectileTimeToCycles(projectile.getEndTime()) - 1, target, getMagicHit(npc, getMaxHit(npc, NPCCombatDefinitions.MAGE, target)));
 			npc.setNextGraphics(new Graphics(1408, projectile.getEndTime(), 0));
-		}
-		else {
+		} else {
 			npc.setNextAnimation(new Animation(8024));
 			delayHit(npc, 1, target, getMagicHit(npc, (int) (getMaxHit(npc, NPCCombatDefinitions.MAGE, target) * 0.85)));
 		}

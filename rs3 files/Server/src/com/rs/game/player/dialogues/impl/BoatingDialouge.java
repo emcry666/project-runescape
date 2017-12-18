@@ -66,64 +66,45 @@ public class BoatingDialouge extends Dialogue {
 		case 376:
 		case 377:
 		case 378:
-			return new Object[]
-			{ Carrier.Karamja_Fare, false };
+			return new Object[] { Carrier.Karamja_Fare, false };
 		case 381:
-			return new Object[]
-			{ Carrier.Karamja_Fare, true };
+			return new Object[] { Carrier.Karamja_Fare, true };
 		case 744:
-			return new Object[]
-			{ Carrier.Cranador_Fare, false };
+			return new Object[] { Carrier.Cranador_Fare, false };
 		case 2728:
 		case 2729:
 		case 657:
-			return new Object[]
-			{ Carrier.Etrana_Fare, false };
+			return new Object[] { Carrier.Etrana_Fare, false };
 		case 2730:
-			return new Object[]
-			{ Carrier.Etrana_Fare, true };
+			return new Object[] { Carrier.Etrana_Fare, true };
 		case 3801:
-			return new Object[]
-			{ Carrier.Void_Outpost_Fare, false };
+			return new Object[] { Carrier.Void_Outpost_Fare, false };
 		case 3800:
-			return new Object[]
-			{ Carrier.Void_Outpost_Fare, true };
+			return new Object[] { Carrier.Void_Outpost_Fare, true };
 		case 4962:
-			return new Object[]
-			{ Carrier.Brimhaven_Fare, false };
+			return new Object[] { Carrier.Brimhaven_Fare, false };
 		case 380:
-			return new Object[]
-			{ Carrier.Brimhaven_Fare, true };
+			return new Object[] { Carrier.Brimhaven_Fare, true };
 		case 5482:
-			return new Object[]
-			{ Carrier.Jatizo, true };
+			return new Object[] { Carrier.Jatizo, true };
 		case 5481:
-			return new Object[]
-			{ Carrier.Jatizo, false };
+			return new Object[] { Carrier.Jatizo, false };
 		case 5508:
-			return new Object[]
-			{ Carrier.Neitznot, false };
+			return new Object[] { Carrier.Neitznot, false };
 		case 5507:
-			return new Object[]
-			{ Carrier.Neitznot, true };
+			return new Object[] { Carrier.Neitznot, true };
 		case 1304:
-			return new Object[]
-			{ Carrier.Miscellenia, false };
+			return new Object[] { Carrier.Miscellenia, false };
 		case 1385:
-			return new Object[]
-			{ Carrier.Miscellenia, true };
+			return new Object[] { Carrier.Miscellenia, true };
 		case 413:
-			return new Object[]
-			{ Carrier.Pirates_Cove, false };
+			return new Object[] { Carrier.Pirates_Cove, false };
 		case 4537:
-			return new Object[]
-			{ Carrier.Pirates_Cove, true };
+			return new Object[] { Carrier.Pirates_Cove, true };
 		case 2437:
-			return new Object[]
-			{ Carrier.Waterbirth, false };
+			return new Object[] { Carrier.Waterbirth, false };
 		case 2438:
-			return new Object[]
-			{ Carrier.Waterbirth, true };
+			return new Object[] { Carrier.Waterbirth, true };
 		case 7066:
 		}
 		return null;

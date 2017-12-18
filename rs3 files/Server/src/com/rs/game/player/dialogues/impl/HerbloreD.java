@@ -26,8 +26,7 @@ public class HerbloreD extends Dialogue {
 			if (amount > player.getInventory().getItems().getNumberOf(second.getId()))
 				amount = player.getInventory().getItems().getNumberOf(second.getId());
 		}
-		SkillsDialogueOld.sendSkillsDialogue(player, SkillsDialogueOld.MAKE, "Choose how many you wish to make,<br>then click on the item to begin.", amount, new int[]
-		{ items }, null);
+		SkillsDialogueOld.sendSkillsDialogue(player, SkillsDialogueOld.MAKE, "Choose how many you wish to make,<br>then click on the item to begin.", amount, new int[] { items }, null);
 
 	}
 

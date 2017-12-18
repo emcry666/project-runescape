@@ -28,18 +28,18 @@ public class NewPlayerController extends Controller {
 		player.getMusicsManager().forcePlayMusic(89);
 		player.getInterfaceManager().setRootInterface(1507, false);
 	}
-	
+
 	@Override
 	public boolean processButtonClick(int interfaceId, int componentId, int slotId, int slotId2, int packetId) {
-		if(interfaceId == 1507) {
-			if(componentId == 8 || componentId == 5) {
-				if(player.isLegacyMode() != (componentId == 8))
+		if (interfaceId == 1507) {
+			if (componentId == 8 || componentId == 5) {
+				if (player.isLegacyMode() != (componentId == 8))
 					player.switchLegacyMode();
 				player.getInterfaceManager().setRootInterface(548, false);
 			}
 			return false;
-		}else if(interfaceId == 548 && componentId == 4) 
-				startSceneDelay = 60;
+		} else if (interfaceId == 548 && componentId == 4)
+			startSceneDelay = 60;
 		return true;
 	}
 
@@ -160,16 +160,16 @@ public class NewPlayerController extends Controller {
 				player.getHintIconsManager().addHintIcon(closest, 0, -1, false);
 				stage = 1;
 			}
-		}else if (player.getInterfaceManager().getWindowsPane() == 548) {
+		} else if (player.getInterfaceManager().getWindowsPane() == 548) {
 			startSceneDelay++;
-			if(startSceneDelay >= 60) {
+			if (startSceneDelay >= 60) {
 				player.getInterfaceManager().setDefaultRootInterface();
 				stage = 2;
 			}
 		} else if (stage == 2) {
-			//if (Settings.HOSTED)
-				player.stopAll();
-				player.getCutscenesManager().play("HomeCutScene3");
+			// if (Settings.HOSTED)
+			player.stopAll();
+			player.getCutscenesManager().play("HomeCutScene3");
 			stage = 3;
 		} else if (stage == 3 && !player.getCutscenesManager().hasCutscene()) {
 			player.getDialogueManager().startDialogue(getStartDialogue());

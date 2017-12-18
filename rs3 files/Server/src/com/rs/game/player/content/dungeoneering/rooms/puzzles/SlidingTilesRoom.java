@@ -20,32 +20,11 @@ import com.rs.utils.Utils;
 
 public class SlidingTilesRoom extends PuzzleRoom {
 
-	private static final int[] BASE_TILE =
-	{ 12125, 12133, 12141, 12149, 12963 };
+	private static final int[] BASE_TILE = { 12125, 12133, 12141, 12149, 12963 };
 
-	private static final int[][] TILE_COORDS =
-	{
-	{ 5, 9 },
-	{ 7, 9 },
-	{ 9, 9 },
-	{ 5, 7 },
-	{ 7, 7 },
-	{ 9, 7 },
-	{ 5, 5 },
-	{ 7, 5 },
-	{ 9, 5 }, };
+	private static final int[][] TILE_COORDS = { { 5, 9 }, { 7, 9 }, { 9, 9 }, { 5, 7 }, { 7, 7 }, { 9, 7 }, { 5, 5 }, { 7, 5 }, { 9, 5 }, };
 
-	private static final int[][] VALID_MOVES =
-	{
-	{ 1, 3 },
-	{ 0, 2, 4 },
-	{ 1, 5 },
-	{ 0, 4, 6 },
-	{ 1, 3, 5, 7 },
-	{ 2, 4, 8 },
-	{ 3, 7 },
-	{ 4, 6, 8 },
-	{ 5, 7 } };
+	private static final int[][] VALID_MOVES = { { 1, 3 }, { 0, 2, 4 }, { 1, 5 }, { 0, 4, 6 }, { 1, 3, 5, 7 }, { 2, 4, 8 }, { 3, 7 }, { 4, 6, 8 }, { 5, 7 } };
 
 	private DungeonNPC[] tiles;
 	private int freeIndex = 8;
@@ -59,11 +38,11 @@ public class SlidingTilesRoom extends PuzzleRoom {
 		for (int i = 0; i < npcCount; i++) {
 			int x = Utils.random(2) + 1;
 			int y = Utils.random(2) + 1;
-			if (Utils.random(2) == 0) { //vertical spawn
-				x += Utils.random(2) == 0 ? 0 : 11; //left or right side
+			if (Utils.random(2) == 0) { // vertical spawn
+				x += Utils.random(2) == 0 ? 0 : 11; // left or right side
 				y = Utils.random(14) + 1;
-			} else { //horizontal spawn
-				y += Utils.random(2) == 0 ? 0 : 11; //bottom or top
+			} else { // horizontal spawn
+				y += Utils.random(2) == 0 ? 0 : 11; // bottom or top
 				x = Utils.random(14) + 1;
 			}
 
@@ -144,7 +123,8 @@ public class SlidingTilesRoom extends PuzzleRoom {
 					puzzle.solveIndex--;
 					if (puzzle.solveIndex == 0) {
 						puzzle.setComplete();
-						//players can keep clicking after it's done but will take damage
+						// players can keep clicking after it's done but will
+						// take damage
 						puzzle.solveIndex = 1;
 						puzzle.solveOrder[0] = -1;
 					}
@@ -169,7 +149,7 @@ public class SlidingTilesRoom extends PuzzleRoom {
 
 	@Override
 	public String getCompleteMessage() {
-		return "You hear a click as a nearby door unlocks.";//This is correct
+		return "You hear a click as a nearby door unlocks.";// This is correct
 	}
 
 }

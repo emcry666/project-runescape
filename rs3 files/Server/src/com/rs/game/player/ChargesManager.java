@@ -69,18 +69,18 @@ public class ChargesManager implements Serializable {
 			}
 		} else {
 			for (int slot : slots) {
-				if (slot >= (BodyDefinitions.getEquipmentContainerSize()+1)) {
-					if (invItems[slot - (BodyDefinitions.getEquipmentContainerSize()+1)] != null && degradeCompletly(invItems[slot - (BodyDefinitions.getEquipmentContainerSize()+1)]))
-						player.getInventory().getItems().set(slot - (BodyDefinitions.getEquipmentContainerSize()+1), null);
+				if (slot >= (BodyDefinitions.getEquipmentContainerSize() + 1)) {
+					if (invItems[slot - (BodyDefinitions.getEquipmentContainerSize() + 1)] != null && degradeCompletly(invItems[slot - (BodyDefinitions.getEquipmentContainerSize() + 1)]))
+						player.getInventory().getItems().set(slot - (BodyDefinitions.getEquipmentContainerSize() + 1), null);
 				} else {
 					if (equipItems[slot - 1] != null && degradeCompletly(equipItems[slot - 1]))
 						player.getEquipment().getItems().set(slot - 1, null);
 				}
 			}
 			for (int slot : slots2) {
-				if (slot >= (BodyDefinitions.getEquipmentContainerSize()+1)) {
-					if (invItems[slot - (BodyDefinitions.getEquipmentContainerSize()+1)] != null && degradeCompletly(invItems[slot - (BodyDefinitions.getEquipmentContainerSize()+1)]))
-						player.getInventory().getItems().set(slot - (BodyDefinitions.getEquipmentContainerSize()+1), null);
+				if (slot >= (BodyDefinitions.getEquipmentContainerSize() + 1)) {
+					if (invItems[slot - (BodyDefinitions.getEquipmentContainerSize() + 1)] != null && degradeCompletly(invItems[slot - (BodyDefinitions.getEquipmentContainerSize() + 1)]))
+						player.getInventory().getItems().set(slot - (BodyDefinitions.getEquipmentContainerSize() + 1), null);
 				} else {
 					if (equipItems[slot - 1] != null && degradeCompletly(equipItems[slot - 1]))
 						player.getEquipment().getItems().set(slot - 1, null);
@@ -97,10 +97,10 @@ public class ChargesManager implements Serializable {
 		int percentage = reverse ? (charges == 0 ? 0 : (100 - (charges * 100 / maxCharges))) : charges == 0 ? 100 : (charges * 100 / maxCharges);
 		player.getPackets().sendGameMessage(message.replace(REPLACE, String.valueOf(percentage)));
 	}
-	
+
 	public boolean checkCharges(Item item) {
 		if (item.getDefinitions().containsInventoryOption(2, "Inspect") || item.getDefinitions().containsInventoryOption(2, "Check") || item.getDefinitions().containsInventoryOption(2, "Check state") || item.getDefinitions().containsInventoryOption(2, "Check-charges") || item.getDefinitions().containsInventoryOption(2, "Check charges")) {
-			//exeptions.
+			// exeptions.
 			if (item.getId() == 11284)
 				player.getDialogueManager().startDialogue("SimpleMessage", "There are no charges left within this shield.");
 			else if (item.getId() == 11283)
@@ -114,7 +114,7 @@ public class ChargesManager implements Serializable {
 			else if (item.getId() == 20171 || item.getId() == 20173)
 				checkPercentage(item.getName() + ": has " + getCharges(item.getId()) + " shots left.", item.getId(), false);
 			else
-				//default, add exeption if not same message in rs.
+				// default, add exeption if not same message in rs.
 				checkPercentage("Your " + item.getName().toLowerCase() + " has " + REPLACE + "% of its charges left.", item.getId(), false);
 			return true;
 		}

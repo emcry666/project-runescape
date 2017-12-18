@@ -104,13 +104,13 @@ public final class NPCCombatDefinitionsL {
 				int npcId = buffer.getShort() & 0xffff;
 				int hitpoints = buffer.getInt();
 				int attackAnim = buffer.getShort() & 0xffff;
-				if(attackAnim == 65535)
+				if (attackAnim == 65535)
 					attackAnim = -1;
 				int defenceAnim = buffer.getShort() & 0xffff;
-				if(defenceAnim == 65535)
+				if (defenceAnim == 65535)
 					defenceAnim = -1;
 				int deathAnim = buffer.getShort() & 0xffff;
-				if(deathAnim == 65535)
+				if (deathAnim == 65535)
 					deathAnim = -1;
 				int respawnDelay = buffer.getInt();
 				int attackGfx = buffer.getShort() & 0xffff;

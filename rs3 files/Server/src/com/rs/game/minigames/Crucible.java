@@ -65,8 +65,7 @@ public class Crucible {
 					playersInside.add(crucibleControler.getTarget());
 				}
 				crucibleControler.setTarget(null);
-			}
-			else
+			} else
 				playersInside.remove(player);
 		}
 	}
@@ -192,8 +191,7 @@ public class Crucible {
 				player.getPackets().sendIComponentText(1298, 7, "0");
 				player.getTemporaryAttributtes().put("crucibleBounty", fissure);
 			}
-		}
-		else {
+		} else {
 			travel(player, fissure.tile);
 			if (isBankFissure(fissure))
 				Crucible.removePlayer(player, controler, false);

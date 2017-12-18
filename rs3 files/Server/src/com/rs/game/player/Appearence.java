@@ -35,10 +35,9 @@ public class Appearence implements Serializable {
 	private transient short transformedNpcId;
 	private transient boolean hidePlayer;
 	private transient boolean identityHide;
-	private transient int forcedWeapon, forcedShield, forcedAmulet, forcedCape;
+	private transient int forcedWeapon, forcedShield, forcedAmulet;
 
 	private transient Player player;
-
 
 	public Appearence() {
 		male = Utils.random(2) == 1;
@@ -57,7 +56,7 @@ public class Appearence implements Serializable {
 		this.player = player;
 		transformedNpcId = -1;
 		renderEmote = -1;
-		forcedWeapon = forcedShield = forcedAmulet = forcedCape = -1;
+		forcedWeapon = forcedShield = forcedAmulet = -1;
 	}
 
 	public void transformIntoNPC(int id) {
@@ -81,7 +80,6 @@ public class Appearence implements Serializable {
 	}
 
 	public void setForcedCape(int cape) {
-		forcedCape = cape;
 		generateAppearenceData();
 	}
 
@@ -102,7 +100,7 @@ public class Appearence implements Serializable {
 	}
 
 	public static String getTitle(boolean male, int title) {
-		return title == 0 ? null : ClientScriptMap.getMap(male ? 1093  : 3872).getStringValue(title);
+		return title == 0 ? null : ClientScriptMap.getMap(male ? 1093 : 3872).getStringValue(title);
 	}
 
 	public int getTitleId() {
@@ -112,7 +110,6 @@ public class Appearence implements Serializable {
 	public boolean isTitleAfterName() {
 		return isTitleAfterName(title);
 	}
-
 
 	public static boolean isTitleAfterName(int title) {
 		return title >= 32 && title <= 37;
@@ -126,7 +123,7 @@ public class Appearence implements Serializable {
 		if (transformedNpcId >= 0 && NPCDefinitions.getNPCDefinitions(transformedNpcId).aBoolean3190)
 			flag |= 0x2;
 		boolean showSkillLevel = !player.getCombatDefinitions().isCombatStance() && player.getCombatDefinitions().isSheathe();
-		if(showSkillLevel)
+		if (showSkillLevel)
 			flag |= 0x4;
 		String title = getTitle();
 		if (title != null)
@@ -146,13 +143,16 @@ public class Appearence implements Serializable {
 		stream.writeString(player.getDisplayName());
 		boolean separateSummonLevel = player.isCanPvp() && player.getControlerManager().getControler() instanceof Wilderness && player.getFamiliar() == null;
 		stream.writeByte(separateSummonLevel ? player.getSkills().getCombatLevel() : player.getSkills().getCombatLevelWithSummoning());
-		if(showSkillLevel) 
+		if (showSkillLevel)
 			stream.writeShort(player.getSkills().getTotalLevel());
-		else{
+		else {
 			stream.writeByte(separateSummonLevel ? player.getSkills().getCombatLevelWithSummoning() : 0);
 			stream.writeByte(-1); // higher level acc name appears in front :P
-			/*	stream.writeByte(pvpArea ? player.getSkills().getCombatLevel() : player.getSkills().getCombatLevelWithSummoning());
-			stream.writeByte(pvpArea ? player.getSkills().getCombatLevelWithSummoning() : 0);*/
+			/*
+			 * stream.writeByte(pvpArea ? player.getSkills().getCombatLevel() :
+			 * player.getSkills().getCombatLevelWithSummoning()); stream.writeByte(pvpArea ?
+			 * player.getSkills().getCombatLevelWithSummoning() : 0);
+			 */
 		}
 		boolean useNPCDetails = transformedNpcId >= 0;
 		if (transformedNpcId >= 0) {
@@ -181,10 +181,11 @@ public class Appearence implements Serializable {
 		md5AppeareanceDataHash = md5Hash;
 	}
 
-	/*public byte[] getAppearenceLook(Items items) {
-
-	}*/
-
+	/*
+	 * public byte[] getAppearenceLook(Items items) {
+	 * 
+	 * }
+	 */
 
 	public byte[] getAppearenceLook() {
 		return getAppearenceLook(player.getEquipment().getCosmeticItems().getItems(), look);
@@ -192,15 +193,14 @@ public class Appearence implements Serializable {
 
 	public byte[] getAppearenceLook(Item[] cosmetics, int[] look) {
 		OutputStream stream = new OutputStream();
-		//player data
+		// player data
 		// npc
 		if (transformedNpcId >= 0) {
 			stream.writeShort(-1); // 65535 tells it a npc
 			stream.writeBigSmart(transformedNpcId);
 			Item cape = player.getEquipment().getItem(Equipment.SLOT_CAPE);
-			stream.writeByte(cape != null ? cape.getDefinitions().getTeamId() : 0); //team
+			stream.writeByte(cape != null ? cape.getDefinitions().getTeamId() : 0); // team
 		} else {
-
 
 			Item[] items = new Item[BodyDefinitions.getEquipmentContainerSize()];
 			boolean[] skipLook = new boolean[items.length];
@@ -208,27 +208,29 @@ public class Appearence implements Serializable {
 			for (int index = 0; index < items.length; index++) {
 				Item item = player.getEquipment().isCanDisplayCosmetic() ? cosmetics[index] : null;
 
-				//if original one
-				if((index == 3 || index == 5) && item != null && player.getEquipment().getCosmeticItems().getItems() == cosmetics) {
-					Item originalWeapon = player.getEquipment().getItem(index); //if diff style weapon
-					if(originalWeapon == null || originalWeapon.getDefinitions().getRenderAnimId() != item.getDefinitions().getRenderAnimId()) {
+				// if original one
+				if ((index == 3 || index == 5) && item != null && player.getEquipment().getCosmeticItems().getItems() == cosmetics) {
+					Item originalWeapon = player.getEquipment().getItem(index); // if
+					// diff
+					// style
+					// weapon
+					if (originalWeapon == null || originalWeapon.getDefinitions().getRenderAnimId() != item.getDefinitions().getRenderAnimId()) {
 						item = null;
 					}
 				}
 
 				if (item == null)
 					item = player.getEquipment().getItems().get(index);
-				if(item != null) {
+				if (item != null) {
 					items[index] = item;
 					int skipSlotLook = item.getDefinitions().getEquipLookHideSlot();
-					if(skipSlotLook != -1)
+					if (skipSlotLook != -1)
 						skipLook[skipSlotLook] = true;
 					int skipSlotLook2 = item.getDefinitions().getEquipLookHideSlot2();
-					if(skipSlotLook2 != -1)
+					if (skipSlotLook2 != -1)
 						skipLook[skipSlotLook2] = true;
 				}
 			}
-
 
 			for (int index = 0; index < items.length; index++) {
 				if (BodyDefinitions.disabledSlots[index] != 0)
@@ -237,28 +239,41 @@ public class Appearence implements Serializable {
 					stream.writeShort(16384 + items[index].getId());
 					continue;
 				}
-				if(!skipLook[index]) {
+				if (!skipLook[index]) {
 					int lookIndex = -1;
 
-					switch(index) {
-						case 4: lookIndex = 2; break;
-						case 6: lookIndex = 3; break;
-						case 7: lookIndex = 5; break;
-						case 8: lookIndex = 0; break;
-						case 9: lookIndex = 4; break;
-						case 10: lookIndex = 6; break;
-						case 11: lookIndex = 1; break;
+					switch (index) {
+					case 4:
+						lookIndex = 2;
+						break;
+					case 6:
+						lookIndex = 3;
+						break;
+					case 7:
+						lookIndex = 5;
+						break;
+					case 8:
+						lookIndex = 0;
+						break;
+					case 9:
+						lookIndex = 4;
+						break;
+					case 10:
+						lookIndex = 6;
+						break;
+					case 11:
+						lookIndex = 1;
+						break;
 
 					}
 
-					if(lookIndex != -1 && look[lookIndex] > 0) {
+					if (lookIndex != -1 && look[lookIndex] > 0) {
 						stream.writeShort(0x100 + look[lookIndex]);
 						continue;
 					}
 				}
 				stream.writeByte(0);
 			}
-
 
 			OutputStream streamModify = new OutputStream();
 			int modifyFlag = 0;
@@ -274,29 +289,29 @@ public class Appearence implements Serializable {
 				modifyFlag |= 1 << slotIndex;
 				int itemFlag = 0;
 				OutputStream streamItem = new OutputStream();
-				if(im.maleModelId1 != -1 || im.femaleModelId1 != -1) {
+				if (im.maleModelId1 != -1 || im.femaleModelId1 != -1) {
 					itemFlag |= 0x1;
 					streamItem.writeBigSmart(im.maleModelId1);
 					streamItem.writeBigSmart(im.femaleModelId1);
-					if(im.maleModelId2 != -2 || im.femaleModelId2 != -2) {
+					if (im.maleModelId2 != -2 || im.femaleModelId2 != -2) {
 						streamItem.writeBigSmart(im.maleModelId2);
 						streamItem.writeBigSmart(im.femaleModelId2);
 					}
-					if(im.maleModelId3 != -2 || im.femaleModelId3 != -2) {
+					if (im.maleModelId3 != -2 || im.femaleModelId3 != -2) {
 						streamItem.writeBigSmart(im.maleModelId3);
 						streamItem.writeBigSmart(im.femaleModelId3);
 					}
 				}
-				if(im.colors != null) {
+				if (im.colors != null) {
 					itemFlag |= 0x4;
-					streamItem.writeShort(0 | 1 << 4 | 2 << 8 | 3 << 12);
-					for(int i = 0; i < 4; i++)
+					streamItem.writeShort(1 << 4 | 2 << 8 | 3 << 12);
+					for (int i = 0; i < 4; i++)
 						streamItem.writeShort(im.colors[i]);
 				}
-				if(im.textures != null) {
+				if (im.textures != null) {
 					itemFlag |= 0x8;
-					streamItem.writeByte(0 | 1 << 4);
-					for(int i = 0; i < 2; i++)
+					streamItem.writeByte(1 << 4);
+					for (int i = 0; i < 2; i++)
 						streamItem.writeShort(im.textures[i]);
 				}
 				streamModify.writeByte(itemFlag);
@@ -305,26 +320,30 @@ public class Appearence implements Serializable {
 			stream.writeShort(modifyFlag);
 			stream.writeBytes(streamModify.getBuffer(), 0, streamModify.getOffset());
 		}
+		for (byte aColour : colour)
+			stream.writeByte(aColour);
 
-		for (int index = 0; index < colour.length; index++)
-			// colour length 10
-			stream.writeByte(colour[index]);
+		for (int i = 0; i < 10; i++) {
+			stream.writeByte(0);// new in 876
+		}
 
 		int renderEmote = getRenderEmote();
 		stream.writeShort(renderEmote);
+
 		player.getPackets().sendCSVarInteger(779, renderEmote);
+
 		byte[] data = new byte[stream.getOffset()];
 		System.arraycopy(stream.getBuffer(), 0, data, 0, data.length);
 		return data;
 	}
 
 	public HeadIcon[] getIcons() {
-		List<HeadIcon> icons = new ArrayList<HeadIcon>();
+		List<HeadIcon> icons = new ArrayList<>();
 
-		if(player.hasSkull())
+		if (player.hasSkull())
 			icons.add(new HeadIcon(439, player.getSkullId()));
 		int prayerIcon = player.getPrayer().getPrayerHeadIcon();
-		if(prayerIcon >= 0)
+		if (prayerIcon >= 0)
 			icons.add(new HeadIcon(440, prayerIcon));
 
 		return icons.toArray(new HeadIcon[icons.size()]);
@@ -334,10 +353,10 @@ public class Appearence implements Serializable {
 		OutputStream stream = new OutputStream();
 		HeadIcon[] icons = getIcons();
 		int mask = 0;
-		for(int i = 0; i < icons.length; i++)
+		for (int i = 0; i < icons.length; i++)
 			mask |= 1 << i;
 		stream.writeByte(mask);
-		for(HeadIcon icon : icons) {
+		for (HeadIcon icon : icons) {
 			stream.writeByte(icon.getFileId());
 			stream.writeShort(icon.getSpriteId());
 		}
@@ -350,11 +369,10 @@ public class Appearence implements Serializable {
 
 	private ItemModify[] generateItemModify(Item[] items, Item[] cosmetics) {
 		ItemModify[] modify = new ItemModify[BodyDefinitions.getEquipmentContainerSize()];
-		for(int slotId = 0; slotId  < modify.length; slotId++) {
-			if((slotId == Equipment.SLOT_WEAPON || slotId == Equipment.SLOT_SHIELD)
-					&& player.getCombatDefinitions().isSheathe()  && player.getEquipment().getCosmeticItems().getItems() == cosmetics) {
+		for (int slotId = 0; slotId < modify.length; slotId++) {
+			if ((slotId == Equipment.SLOT_WEAPON || slotId == Equipment.SLOT_SHIELD) && player.getCombatDefinitions().isSheathe() && player.getEquipment().getCosmeticItems().getItems() == cosmetics) {
 				Item item = items[slotId];
-				if(item != null) {
+				if (item != null) {
 					int modelId = items[slotId].getDefinitions().getSheatheModelId();
 					setItemModifyModel(items[slotId], slotId, modify, modelId, modelId, -1, -1, -1, -1);
 				}
@@ -366,21 +384,18 @@ public class Appearence implements Serializable {
 				colors[2] = colors[1] + 12;
 				colors[3] = colors[2] + 12;
 				setItemModifyColor(items[slotId], slotId, modify, colors);
-			}else {
+			} else {
 				int id = items[slotId] == null ? -1 : items[slotId].getId();
-				if (id == 32152 || id == 32153 || id == 20768 || id == 20770 ||id == 20772
-						|| id == 20767 || id == 20769 || id == 20771) 
-					setItemModifyColor(items[slotId], slotId, modify
-							, id == 32151 || id == 20768 || id == 20767 ? player.getMaxedCapeCustomized() : player.getCompletionistCapeCustomized());
+				if (id == 32152 || id == 32153 || id == 20768 || id == 20770 || id == 20772 || id == 20767 || id == 20769 || id == 20771)
+					setItemModifyColor(items[slotId], slotId, modify, id == 32151 || id == 20768 || id == 20767 ? player.getMaxedCapeCustomized() : player.getCompletionistCapeCustomized());
 				else if (id == 20708 || id == 20709) {
 					ClansManager manager = player.getClanManager();
 					if (manager == null)
 						continue;
 					int[] colors = manager.getClan().getMottifColors();
 					setItemModifyColor(items[slotId], slotId, modify, colors);
-					setItemModifyTexture(items[slotId], slotId, modify
-							, new short[] {(short) ClansManager.getMottifTexture(manager.getClan().getMottifTop()), (short) ClansManager.getMottifTexture(manager.getClan().getMottifBottom())});
-				}else if(player.getAuraManager().isActivated() && slotId == Equipment.SLOT_AURA) {
+					setItemModifyTexture(items[slotId], slotId, modify, new short[] { (short) ClansManager.getMottifTexture(manager.getClan().getMottifTop()), (short) ClansManager.getMottifTexture(manager.getClan().getMottifBottom()) });
+				} else if (player.getAuraManager().isActivated() && slotId == Equipment.SLOT_AURA) {
 					int auraId = player.getEquipment().getAuraId();
 					if (auraId == -1)
 						continue;
@@ -398,7 +413,7 @@ public class Appearence implements Serializable {
 		ItemDefinitions defs = item.getDefinitions();
 		if (defs.getMaleWornModelId1() == -1 || defs.getFemaleWornModelId1() == -1)
 			return;
-		if(modify[slotId] == null)
+		if (modify[slotId] == null)
 			modify[slotId] = new ItemModify();
 		modify[slotId].maleModelId1 = maleModelId1;
 		modify[slotId].femaleModelId1 = femaleModelId1;
@@ -418,7 +433,7 @@ public class Appearence implements Serializable {
 			return;
 		if (Arrays.equals(textures, defs.originalTextureColors))
 			return;
-		if(modify[slotId] == null)
+		if (modify[slotId] == null)
 			modify[slotId] = new ItemModify();
 		modify[slotId].textures = textures;
 	}
@@ -429,7 +444,7 @@ public class Appearence implements Serializable {
 			return;
 		if (Arrays.equals(colors, defs.originalModelColors))
 			return;
-		if(modify[slotId] == null)
+		if (modify[slotId] == null)
 			modify[slotId] = new ItemModify();
 		modify[slotId].colors = colors;
 	}
@@ -472,16 +487,16 @@ public class Appearence implements Serializable {
 			if (data != null && !data.containsKey(2805))
 				return defs.renderEmote;
 		}
-		if(player.getCombatDefinitions().isSheathe() && !player.getCombatDefinitions().isCombatStance())
-			return 2699;
+		if (player.getCombatDefinitions().isSheathe() && !player.getCombatDefinitions().isCombatStance())
+			return 3527/* 2699 */;
 		return player.getEquipment().getWeaponStance();
 	}
 
 	public void resetAppearence() {
 		look = new int[7];
 		colour = new byte[10];
-		if(male)
-			male();	
+		if (male)
+			male();
 		else
 			female();
 	}
@@ -546,7 +561,7 @@ public class Appearence implements Serializable {
 
 	public void setLook(int i, int i2) {
 		look[i] = i2;
-		if(!male && i == 0)
+		if (!male && i == 0)
 			look[1] = -1;
 	}
 
@@ -556,7 +571,7 @@ public class Appearence implements Serializable {
 
 	public void setHairStyle(int i) {
 		look[0] = i;
-		if(!male)
+		if (!male)
 			look[1] = -1;
 	}
 

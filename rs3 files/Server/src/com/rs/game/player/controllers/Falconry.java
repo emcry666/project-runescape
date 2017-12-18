@@ -15,12 +15,9 @@ import com.rs.utils.Utils;
 
 public class Falconry extends Controller {
 
-	public int[] xp =
-	{ 103, 132, 156 };
-	public int[] furRewards =
-	{ 10125, 10115, 10127 };
-	public int[] levels =
-	{ 43, 57, 69 };
+	public int[] xp = { 103, 132, 156 };
+	public int[] furRewards = { 10125, 10115, 10127 };
+	public int[] levels = { 43, 57, 69 };
 
 	public static void beginFalconry(Player player) {
 		if ((player.getEquipment().getItem(3) != null && player.getEquipment().getItem(3).getId() == -1) || (player.getEquipment().getItem(5) != null && player.getEquipment().getItem(5).getId() == -1)) {

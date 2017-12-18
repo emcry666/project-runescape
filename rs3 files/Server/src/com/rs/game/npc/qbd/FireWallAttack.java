@@ -23,8 +23,7 @@ public final class FireWallAttack implements QueenAttack {
 	/**
 	 * The wall graphic ids.
 	 */
-	private static final int[] WALL_GRAPHIC_IDS =
-	{ 3158, 3159, 3160 };
+	private static final int[] WALL_GRAPHIC_IDS = { 3158, 3159, 3160 };
 
 	/**
 	 * The animation.

@@ -8,8 +8,7 @@ public class BarricadeCombat extends CombatScript {
 
 	@Override
 	public Object[] getKeys() {
-		return new Object[]
-		{ "Barricade" };
+		return new Object[] { "Barricade" };
 	}
 
 	/**

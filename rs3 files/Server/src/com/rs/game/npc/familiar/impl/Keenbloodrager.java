@@ -41,7 +41,7 @@ public class Keenbloodrager extends Familiar {
 	}
 
 	@Override
-	public boolean submitSpecial(Object object) {//COMBAT SPECIAL
+	public boolean submitSpecial(Object object) {// COMBAT SPECIAL
 		getOwner().setNextGraphics(new Graphics(1316));
 		getOwner().setNextAnimation(new Animation(7660));
 		return true;

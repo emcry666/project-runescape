@@ -15,8 +15,7 @@ public class WorldGorgerShukarhazhCombat extends CombatScript {
 
 	@Override
 	public Object[] getKeys() {
-		return new Object[]
-		{ 12478 };
+		return new Object[] { 12478 };
 	}
 
 	@Override

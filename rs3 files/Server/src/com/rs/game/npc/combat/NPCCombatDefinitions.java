@@ -36,7 +36,7 @@ public class NPCCombatDefinitions {
 		this.followClose = followClose;
 		this.poisonous = poisonous;
 		this.poisonImmune = poisonImmune;
-	} 
+	}
 
 	public int getRespawnDelay() {
 		return respawnDelay;
@@ -70,7 +70,7 @@ public class NPCCombatDefinitions {
 		this.hitpoints = amount;
 	}
 
-	public int getHitpoints() { //or else they die too fast. keep this for now
+	public int getHitpoints() { // or else they die too fast. keep this for now
 		return hitpoints;
 	}
 
@@ -97,7 +97,7 @@ public class NPCCombatDefinitions {
 	public boolean isPoisonous() {
 		return poisonous;
 	}
-	
+
 	public static int getBestBonus(int melee, int range, int magic) {
 		int bonus = melee;
 		if (range > bonus)

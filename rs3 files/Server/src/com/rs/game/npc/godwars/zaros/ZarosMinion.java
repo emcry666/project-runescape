@@ -22,13 +22,8 @@ public class ZarosMinion extends NPC {
 	 */
 	private static final int CAP_BONUS = 200;
 
-	//melee, melee, melee, magic, range
-	private static final int[][] BONUS_IDXS =
-	{
-	{ 5, 6, 7 },
-	{ 9 },
-	{},
-	{ 8 } };
+	// melee, melee, melee, magic, range
+	private static final int[][] BONUS_IDXS = { { 5, 6, 7 }, { 9 }, {}, { 8 } };
 
 	public ZarosMinion(int id, WorldTile tile, int mapAreaNameHash, boolean canBeAttackFromOutOfArea) {
 		super(id, tile, mapAreaNameHash, canBeAttackFromOutOfArea);

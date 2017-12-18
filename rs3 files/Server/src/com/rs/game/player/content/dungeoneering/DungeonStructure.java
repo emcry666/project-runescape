@@ -25,7 +25,7 @@ public class DungeonStructure {
 	private boolean keyshare;
 	private int complexity;
 	private int size;
-	
+
 	public DungeonStructure(int size, Random random, int complexity, boolean keyshare) {
 		this.complexity = complexity;
 		this.size = size;
@@ -51,15 +51,16 @@ public class DungeonStructure {
 		queue.add(new Point(getBase().x, getBase().y - 1));
 		queue.add(new Point(getBase().x, getBase().y + 1));
 
-		//Generate full dungeon
+		// Generate full dungeon
 		while (!queue.isEmpty()) {
 			Point next = random(queue);
-			//Ensure the edge is within the dungeon boundary and it doesn't already exist
+			// Ensure the edge is within the dungeon boundary and it doesn't
+			// already exist
 			if (next.x < 0 || next.y < 0 || next.x >= rooms.length || next.y >= rooms[0].length || getRoom(next.x, next.y) != null) {
 				continue;
 			}
 
-			//Connect this edge to a random neighboring room
+			// Connect this edge to a random neighboring room
 			RoomNode parent = randomParent(next.x, next.y);
 
 			RoomNode room = new RoomNode(parent, next.x, next.y);
@@ -78,16 +79,17 @@ public class DungeonStructure {
 		minSize *= multiplier;
 		if (Settings.DEBUG)
 			System.out.println("max: " + maxSize + ", min: " + minSize + ", " + multiplier);
-		//Create gaps by removing random DE's
-		int remove = rooms.length * rooms[0].length - maxSize +  random.nextInt(maxSize - minSize);
+		// Create gaps by removing random DE's
+		int remove = rooms.length * rooms[0].length - maxSize + random.nextInt(maxSize - minSize);
 		for (int i = 0; i < remove; i++) {
 			removeRoom(shuffledRooms().filter(r -> r.children.isEmpty()).findFirst().get());
 		}
 
 		RoomNode boss;
-		//Choose crit
+		// Choose crit
 		while (true) {
-			//Sets only have distinct elements so no need to worry about overlapping paths
+			// Sets only have distinct elements so no need to worry about
+			// overlapping paths
 			Set<RoomNode> critPath = new HashSet<RoomNode>();
 			boss = shuffledRooms().filter(r -> r.children.isEmpty()).findFirst().get();
 			critPath.addAll(boss.pathToBase());
@@ -105,21 +107,29 @@ public class DungeonStructure {
 			}
 		}
 
-		//Move the base somewhere randomly on crit, base can't be a straight 2 way though
-		setBase(shuffledRooms().filter(r -> !r.isBoss && r.isCritPath && !(r.west() == true && r.east() == true && r.north() == false && r.south() == false)  && !(r.west() == false && r.east() == false && r.north() == true && r.south() == true)).findFirst().get());
+		// Move the base somewhere randomly on crit, base can't be a straight 2
+		// way though
+		setBase(shuffledRooms().filter(r -> !r.isBoss && r.isCritPath && !(r.west() == true && r.east() == true && r.north() == false && r.south() == false) && !(r.west() == false && r.east() == false && r.north() == true && r.south() == true)).findFirst().get());
 
-		//Crit DE locks, if we do these first these can't 'fail', and this mathematically ensures crit is actually crit because each branch will lock out another branch
+		// Crit DE locks, if we do these first these can't 'fail', and this
+		// mathematically ensures crit is actually crit because each branch will
+		// lock out another branch
 		rooms().filter(r -> !r.isBoss && r.children.stream().noneMatch(c -> c.isCritPath) && r.isCritPath).forEach(r -> assignKey(r, true));
 
-		//Some extra crit locks, to make things more interesting, these may 'fail' to add, but it doesn't matter
-		shuffledRooms().filter(r -> !r.isBoss && r.isCritPath && r.key == -1).limit((size * 2) +1).forEach(r -> assignKey(r, true));
+		// Some extra crit locks, to make things more interesting, these may
+		// 'fail' to add, but it doesn't matter
+		shuffledRooms().filter(r -> !r.isBoss && r.isCritPath && r.key == -1).limit((size * 2) + 1).forEach(r -> assignKey(r, true));
 
 		if (boss.lock == -1) {
-			//Should we force a lock on the boss? RS has a lock about 95% of the time
-			//We could put the key anywhere on crit, because the lock doesn't actually lock out anything at all, and is redundant with keyshare on
+			// Should we force a lock on the boss? RS has a lock about 95% of
+			// the time
+			// We could put the key anywhere on crit, because the lock doesn't
+			// actually lock out anything at all, and is redundant with keyshare
+			// on
 		}
 
-		//Bonus keys can be found anywhere that isn't the boss or has a key already
+		// Bonus keys can be found anywhere that isn't the boss or has a key
+		// already
 		long bonusLockCount = rooms().filter(r -> !r.isCritPath).count() / 4 + random.nextInt((size + 1) * 2);
 		shuffledRooms().filter(r -> !r.isBoss && r.key == -1).limit(bonusLockCount).forEach(r -> assignKey(r, false));
 
@@ -131,7 +141,8 @@ public class DungeonStructure {
 		neighbors.add(getRoom(x + 1, y));
 		neighbors.add(getRoom(x, y - 1));
 		neighbors.add(getRoom(x, y + 1));
-		neighbors.removeIf(r -> r == null || r.isBoss); //These are not valid parents
+		neighbors.removeIf(r -> r == null || r.isBoss); // These are not valid
+		// parents
 		return (RoomNode) neighbors.toArray()[random.nextInt(neighbors.size())];
 	}
 
@@ -194,7 +205,10 @@ public class DungeonStructure {
 		List<RoomNode> candidates = rooms().filter(r -> r.isCritPath == critLock && r.lock == -1).collect(Collectors.toList());
 		candidates.retainAll(unrelated);
 		if (keyshare) {
-			candidates.removeAll(children); //Not required, but makes for more interesting dungeons with keyshare, removes all keys directly on path to boss
+			candidates.removeAll(children); // Not required, but makes for more
+			// interesting dungeons with
+			// keyshare, removes all keys
+			// directly on path to boss
 		}
 		if (!candidates.isEmpty()) {
 			RoomNode lockRoom = random(candidates);

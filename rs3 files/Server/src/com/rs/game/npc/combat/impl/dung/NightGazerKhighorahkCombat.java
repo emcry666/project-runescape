@@ -25,8 +25,7 @@ public class NightGazerKhighorahkCombat extends CombatScript {
 
 	@Override
 	public Object[] getKeys() {
-		return new Object[]
-		{ "Night-gazer Khighorahk" };
+		return new Object[] { "Night-gazer Khighorahk" };
 	}
 
 	public void sendRangeAoe(final NightGazerKhighorahk gazer) {
@@ -70,7 +69,7 @@ public class NightGazerKhighorahkCombat extends CombatScript {
 					if (!success)
 						success = true;
 					npc.setNextAnimation(new Animation(gazer.isSecondStage() ? 13427 : 13429));
-					npc.setNextGraphics(new Graphics(/*gazer.isSecondStage() ? 2391 : */2390));
+					npc.setNextGraphics(new Graphics(/* gazer.isSecondStage() ? 2391 : */2390));
 					gazer.setUsedSpecial(true);
 				}
 			}
@@ -125,7 +124,7 @@ public class NightGazerKhighorahkCombat extends CombatScript {
 		} else
 			gazer.setUsedSpecial(false);
 
-		if (Utils.random(10) == 0) { //range aoe
+		if (Utils.random(10) == 0) { // range aoe
 			if (!gazer.isSecondStage()) {
 				npc.setNextAnimation(new Animation(13423));
 				WorldTasksManager.schedule(new WorldTask() {
@@ -142,12 +141,12 @@ public class NightGazerKhighorahkCombat extends CombatScript {
 				return npc.getAttackSpeed() + 1;
 			}
 		} else {
-			if (Utils.random(3) == 0) { //range single target
+			if (Utils.random(3) == 0) { // range single target
 				npc.setNextAnimation(new Animation(gazer.isSecondStage() ? 13433 : 13434));
 				World.sendProjectile(npc, target, 2385, gazer.isSecondStage() ? 60 : 40, 16, 41, 90, 0, 0);
 				delayHit(npc, 3, target, getRangeHit(npc, getMaxHit(npc, NPCCombatDefinitions.RANGE, target)));
 				return npc.getAttackSpeed() + 1;
-			} else { //magic
+			} else { // magic
 				npc.setNextAnimation(new Animation(gazer.isSecondStage() ? 13430 : 13431));
 				World.sendProjectile(npc, target, 2385, gazer.isSecondStage() ? 60 : 40, 16, 41, 30, 0, 0);
 				target.setNextGraphics(new Graphics(2386, 70, 100));

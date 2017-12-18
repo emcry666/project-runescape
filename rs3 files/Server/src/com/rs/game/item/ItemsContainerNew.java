@@ -10,7 +10,15 @@ import com.rs.cache.loaders.ItemDefinitions;
  */
 public class ItemsContainerNew implements Serializable {
 
-	private static final long serialVersionUID = 1099313426737026107L;// same serial so once it get's replaced serializer wont spike
+	private static final long serialVersionUID = 1099313426737026107L;// same
+	// serial
+	// so once
+	// it
+	// get's
+	// replaced
+	// serializer
+	// wont
+	// spike
 
 	/**
 	 * Items data.
@@ -98,8 +106,7 @@ public class ItemsContainerNew implements Serializable {
 	}
 
 	/**
-	 * Replace's item in specific slot with new item. Returns true if operation
-	 * performed succesfully.
+	 * Replace's item in specific slot with new item. Returns true if operation performed succesfully.
 	 */
 	public boolean replace(int slot, int id, int amount) {
 		if (slot < 0 || slot >= data.length)
@@ -169,7 +176,8 @@ public class ItemsContainerNew implements Serializable {
 	 * Whether container contains all of those items.
 	 */
 	public boolean containsAll(Item[] items) {
-		// this is costly method, but we can't do anything, we NEED to copy ids and amounts.
+		// this is costly method, but we can't do anything, we NEED to copy ids
+		// and amounts.
 		int[] ids = new int[data.length];
 		int[] amts = new int[data.length];
 		for (int i = 0; i < data.length; i++) {
@@ -222,7 +230,8 @@ public class ItemsContainerNew implements Serializable {
 	 * Whether container contains all of those items.
 	 */
 	public boolean containsAll(ItemsContainerNew items) {
-		// this is costly method, but we can't do anything, we NEED to copy ids and amounts.
+		// this is costly method, but we can't do anything, we NEED to copy ids
+		// and amounts.
 		int[] ids = new int[data.length];
 		int[] amts = new int[data.length];
 		for (int i = 0; i < data.length; i++) {
@@ -276,7 +285,8 @@ public class ItemsContainerNew implements Serializable {
 	 * Whether we have space for given items.
 	 */
 	public boolean hasSpaceFor(Item[] items) {
-		// this is costly method, but we can't do anything, we NEED to copy ids and amounts.
+		// this is costly method, but we can't do anything, we NEED to copy ids
+		// and amounts.
 		int[] ids = new int[data.length];
 		int[] amts = new int[data.length];
 		for (int i = 0; i < data.length; i++) {
@@ -331,7 +341,8 @@ public class ItemsContainerNew implements Serializable {
 	 * Whether we have space for given items.
 	 */
 	public boolean hasSpaceFor(ItemsContainerNew items) {
-		// this is costly method, but we can't do anything, we NEED to copy ids and amounts.
+		// this is costly method, but we can't do anything, we NEED to copy ids
+		// and amounts.
 		int[] ids = new int[data.length];
 		int[] amts = new int[data.length];
 		for (int i = 0; i < data.length; i++) {
@@ -575,7 +586,8 @@ public class ItemsContainerNew implements Serializable {
 	public void resetUpdates() {
 		if (updates == null)
 			return;
-		Arrays.fill(updates, false); // better than setting updates to null then later reallocating
+		Arrays.fill(updates, false); // better than setting updates to null then
+		// later reallocating
 	}
 
 	public int getSize() {

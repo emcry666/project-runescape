@@ -28,22 +28,22 @@ public final class Notes implements Serializable {
 	}
 
 	public void unlockNotes(boolean menuInterface) {
-		player.getPackets().sendIComponentSettings(menuInterface ? 34 : 1417, menuInterface ? 16 : 16, 0, 30, 2621470); //notes options
-		player.getPackets().sendHideIComponent(menuInterface ? 34 : 1417, menuInterface ? 7 : 6, false); //button
+		player.getPackets().sendIComponentSettings(menuInterface ? 34 : 1417, menuInterface ? 16 : 16, 0, 30, 2621470); // notes
+		// options
+		player.getPackets().sendHideIComponent(menuInterface ? 34 : 1417, menuInterface ? 7 : 6, false); // button
 		refreshNotesText();
 	}
-	
-	
+
 	public void refreshNotesText() {
 		for (int i = 0; i < 30; i++)
 			player.getPackets().sendCSVarString(2254 + i, notes.size() <= i ? "" : notes.get(i).text);
 	}
-	
+
 	private void refresh() {
 		player.getVarsManager().sendVar(99, getPrimaryColour(this));
 		player.getVarsManager().sendVar(100, getSecondaryColour(this));
 	}
-	
+
 	private void enable() {
 		player.getVarsManager().sendVar(97, 1); // unlocks notes
 	}
@@ -54,12 +54,11 @@ public final class Notes implements Serializable {
 			return -1;
 		return note;
 	}
-	
+
 	/*
-	 * BitConfig: 6371, from bitshift:0, till bitshift: 7, 98
-BitConfig: 6372, from bitshift:8, till bitshift: 15, 98
-BitConfig: 6373, from bitshift:16, till bitshift: 23, 98
-BitConfig: 6374, from bitshift:24, till bitshift: 31, 98
+	 * BitConfig: 6371, from bitshift:0, till bitshift: 7, 98 BitConfig: 6372, from bitshift:8, till bitshift: 15,
+	 * 98 BitConfig: 6373, from bitshift:16, till bitshift: 23, 98 BitConfig: 6374, from bitshift:24, till
+	 * bitshift: 31, 98
 	 */
 
 	public void setCurrentNote(int id) {
@@ -114,11 +113,11 @@ BitConfig: 6374, from bitshift:24, till bitshift: 31, 98
 	}
 
 	public void switchNotes(int from, int to) {
-		if(to == 65535) {
+		if (to == 65535) {
 			delete(from);
 			return;
 		}
-		if (notes.size() <= from || notes.size() <=  to)
+		if (notes.size() <= from || notes.size() <= to)
 			return;
 		notes.set(to, notes.set(from, notes.get(to)));
 		refresh();
@@ -148,8 +147,7 @@ BitConfig: 6374, from bitshift:24, till bitshift: 31, 98
 	/**
 	 * Gets the primary colour of the notes.
 	 * 
-	 * @param notes
-	 *            The notes.
+	 * @param notes The notes.
 	 * @return
 	 */
 	public static int getPrimaryColour(Notes notes) {
@@ -165,8 +163,7 @@ BitConfig: 6374, from bitshift:24, till bitshift: 31, 98
 	/**
 	 * Gets the secondary colour of the notes.
 	 * 
-	 * @param notes
-	 *            The notes.
+	 * @param notes The notes.
 	 * @return
 	 */
 	public static int getSecondaryColour(Notes notes) {

@@ -23,8 +23,7 @@ public class NecroLordCombat extends CombatScript {
 
 	@Override
 	public Object[] getKeys() {
-		return new Object[]
-		{ 11737 };
+		return new Object[] { 11737 };
 	}
 
 	@Override
@@ -59,7 +58,7 @@ public class NecroLordCombat extends CombatScript {
 
 		final int attack = Utils.random(4);
 		switch (attack) {
-		case 0://main attack
+		case 0:// main attack
 		case 1:
 			npc.setNextAnimation(new Animation(14209));
 			npc.setNextGraphics(new Graphics(2716));

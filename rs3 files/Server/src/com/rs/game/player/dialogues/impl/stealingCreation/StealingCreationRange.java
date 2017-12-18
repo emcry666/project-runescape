@@ -29,8 +29,7 @@ public class StealingCreationRange extends Dialogue {
 				player.getTemporaryAttributtes().put("sc_request", 14200);
 			}
 			end();
-			player.getPackets().sendExecuteScriptReverse(108, new Object[]
-			{ "Enter Amount:" });
+			player.getPackets().sendExecuteScriptReverse(108, new Object[] { "Enter Amount:" });
 		} else if (stage == 1) {
 			if (componentId == OPTION_1) {
 				player.getTemporaryAttributtes().put("sc_request", 14202);
@@ -44,8 +43,7 @@ public class StealingCreationRange extends Dialogue {
 				player.getTemporaryAttributtes().put("sc_request", 14206);
 			}
 			end();
-			player.getPackets().sendExecuteScriptReverse(108, new Object[]
-			{ "Enter Amount:" });
+			player.getPackets().sendExecuteScriptReverse(108, new Object[] { "Enter Amount:" });
 		}
 	}
 

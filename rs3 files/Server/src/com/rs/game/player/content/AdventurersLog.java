@@ -6,27 +6,7 @@ import com.rs.game.player.Skills;
 
 public final class AdventurersLog {
 
-	private static String[] REQUIREMENTS =
-	{
-		"120 in Dungeoneering",
-		"99 in all other skills",
-		"50 PvP Kills",
-		"One WildyWyrm Kill",
-		"Win one game of Stealing Creations",
-		"Win one game of Fight Pits",
-		"Completed one game of Castle Wars",
-		"Capture a flag in Castle Wars",
-		"Complete Fight Caves",
-		"Complete Fight Kiln",
-		"Kill the Queen Black Dragon once",
-		"Finished 'Lost City' Mini-quest",
-		"Finished 'Nomad's requirement'",
-		"[Trim] 100 PVP Kills",
-		"[Trim] 100 Dominion Tower Kills",
-		"[Trim] 25 Castlewars Games",
-		"[Trim] 25 Stealing Creation Games",
-		"",
-		"" };
+	private static String[] REQUIREMENTS = { "120 in Dungeoneering", "99 in all other skills", "50 PvP Kills", "One WildyWyrm Kill", "Win one game of Stealing Creations", "Win one game of Fight Pits", "Completed one game of Castle Wars", "Capture a flag in Castle Wars", "Complete Fight Caves", "Complete Fight Kiln", "Kill the Queen Black Dragon once", "Finished 'Lost City' Mini-quest", "Finished 'Nomad's requirement'", "[Trim] 100 PVP Kills", "[Trim] 100 Dominion Tower Kills", "[Trim] 25 Castlewars Games", "[Trim] 25 Stealing Creation Games", "", "" };
 
 	private static boolean hasRequirement(Player player, int idx) {
 		switch (idx) {

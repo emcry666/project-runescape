@@ -67,26 +67,33 @@ public class SquealOfFortune implements Serializable {
 		} else if (interfaceId == 1252) { // squeal overlay
 			if (componentId == 5) {
 				player.getPackets().sendGameMessage("You can access the Squeal of Fortune from the side panel, and you can show the button again by logging out and back in.");
-				player.getInterfaceManager().closeSquealOverlay();
 			} else {
 				openSpinInterface();
 			}
 		} else if (interfaceId == 1253) { // squeal main
 			if (componentId == 106 || componentId == 258) { // hide/close button
 				player.getInterfaceManager().setDefaultRootInterface();
-			} else if (componentId == 7 || componentId == 321) { // buy spins on main/reward
+			} else if (componentId == 7 || componentId == 321) { // buy spins on
+				// main/reward
 				player.getPackets().sendOpenURL(Settings.STORE_LINK);
-			} else if (componentId == 93 && jackpotSlot != -1 && rewardSlot == -1) { // spin button
+			} else if (componentId == 93 && jackpotSlot != -1 && rewardSlot == -1) { // spin
+				// button
 				pickReward();
 			}
-			//else if (componentId == 93 && rewardSlot != -1) { // they double clicked spin button
-			// in rs, it was made that if you double click the spin button it will show rewards instantly
-			//	player.getPackets().sendGlobalConfig(1781, -1); // disable spinning
-			//	player.getPackets().sendRunScript(5906); // force call to sof_displayPrize();
-			//   }
-			else if ((componentId == 192 || componentId == 239) && rewardSlot != -1) { // picking reward
+			// else if (componentId == 93 && rewardSlot != -1) { // they double
+			// clicked spin button
+			// in rs, it was made that if you double click the spin button it
+			// will show rewards instantly
+			// player.getPackets().sendGlobalConfig(1781, -1); // disable
+			// spinning
+			// player.getPackets().sendRunScript(5906); // force call to
+			// sof_displayPrize();
+			// }
+			else if ((componentId == 192 || componentId == 239) && rewardSlot != -1) { // picking
+				// reward
 				obtainReward(componentId == 239);
-			} else if (componentId == 273 && jackpotSlot == -1 && getTotalSpins() > 0) { // play again
+			} else if (componentId == 273 && jackpotSlot == -1 && getTotalSpins() > 0) { // play
+				// again
 				generateRewards(getNextSpinType());
 				player.getVarsManager().forceSendVarBitOld(11155, jackpotSlot + 1);
 				player.getPackets().sendItems(665, rewards);
@@ -98,7 +105,8 @@ public class SquealOfFortune implements Serializable {
 	}
 
 	public void processItemClick(int slotId, int itemId, Item item) {
-		if (itemId == 24154 || itemId == 24155) { // spin ticket and double spin ticket
+		if (itemId == 24154 || itemId == 24155) { // spin ticket and double spin
+			// ticket
 			player.getInventory().deleteItem(item);
 			giveEarnedSpins(itemId == 24154 ? 1 : 2);
 		}
@@ -130,7 +138,8 @@ public class SquealOfFortune implements Serializable {
 		}
 
 		player.getVarsManager().forceSendVarBitOld(10860, rewardSlot);
-		player.getVarsManager().forceSendVarBitOld(10861, 1); // block spin & set reward
+		player.getVarsManager().forceSendVarBitOld(10861, 1); // block spin &
+		// set reward
 		player.getPackets().sendCSVarInteger(1790, getRewardStatusType());
 		player.getPackets().sendCSVarInteger(1781, getBestRewardSpoofSlot());
 
@@ -141,7 +150,8 @@ public class SquealOfFortune implements Serializable {
 		if ((discard && type == SOF_STATUS_DISABLED) || (!discard && type != SOF_STATUS_CLAIMINVOK && type != SOF_STATUS_CLAIMPOUCHOK && type != SOF_STATUS_CLAIMBANKOK))
 			return;
 
-		player.getVarsManager().forceSendVarBitOld(10861, 0); // prepare for next spin
+		player.getVarsManager().forceSendVarBitOld(10861, 0); // prepare for
+		// next spin
 		player.getPackets().sendCSVarInteger(1790, 0);
 		player.getPackets().sendItems(665, new Item[13]);
 
@@ -179,9 +189,9 @@ public class SquealOfFortune implements Serializable {
 			player.getPackets().sendGameMessage("You can't open Squeal of Fortune in this area.");
 			return;
 		}
-		
+
 		player.stopAll();
-		
+
 		if (version != Settings.SOF_VERSION) {
 			dailySpins = Math.min(dailySpins, 3);
 			earnedSpins = Math.min(earnedSpins, 20);
@@ -189,7 +199,7 @@ public class SquealOfFortune implements Serializable {
 			rewardSlot = -1;
 			jackpotSlot = -1;
 			rewards = null;
-			
+
 			version = Settings.SOF_VERSION;
 			player.getPackets().sendGameMessage("Squeal of fortune has been updated, and spins have been reduced to 20.");
 		}
@@ -205,13 +215,29 @@ public class SquealOfFortune implements Serializable {
 	}
 
 	private void openExistingReward() {
-		player.getVarsManager().forceSendVarBitOld(11155, jackpotSlot + 1); // need to send all items because otherwise it will set wrong color for rarity etc
+		player.getVarsManager().forceSendVarBitOld(11155, jackpotSlot + 1); // need
+		// to
+		// send
+		// all
+		// items
+		// because
+		// otherwise
+		// it
+		// will
+		// set
+		// wrong
+		// color
+		// for
+		// rarity
+		// etc
 		player.getPackets().sendItems(665, rewards);
 		player.getPackets().sendRootInterface(1253, 0);
 		player.getVarsManager().forceSendVarBitOld(10860, rewardSlot);
-		player.getVarsManager().forceSendVarBitOld(10861, 1); // block spin & set reward
+		player.getVarsManager().forceSendVarBitOld(10861, 1); // block spin &
+		// set reward
 		player.getPackets().sendCSVarInteger(1790, getRewardStatusType());
-		player.getPackets().sendExecuteScriptReverse(5906); // force call to sof_displayPrize();
+		player.getPackets().sendExecuteScriptReverse(5906); // force call to
+		// sof_displayPrize();
 
 	}
 
@@ -221,7 +247,8 @@ public class SquealOfFortune implements Serializable {
 		player.getPackets().sendRootInterface(1253, 0);
 		player.getVarsManager().forceSendVarBitOld(10861, 0);
 		player.getPackets().sendCSVarInteger(1790, 0);
-		player.getPackets().sendExecuteScriptReverse(5906); // force call to sof_displayPrize();
+		player.getPackets().sendExecuteScriptReverse(5906); // force call to
+		// sof_displayPrize();
 	}
 
 	private void openSpin() {
@@ -232,7 +259,8 @@ public class SquealOfFortune implements Serializable {
 		player.getVarsManager().forceSendVarBitOld(11155, jackpotSlot + 1);
 		player.getPackets().sendItems(665, rewards);
 		player.getPackets().sendRootInterface(1253, 0);
-		player.getVarsManager().forceSendVarBitOld(10861, 0); // force allow spin
+		player.getVarsManager().forceSendVarBitOld(10861, 0); // force allow
+		// spin
 	}
 
 	public void sendSpinCounts() {
@@ -299,7 +327,11 @@ public class SquealOfFortune implements Serializable {
 		if (reward.getId() == 995) { // coins go to pouch
 			long amt = player.getMoneyPouch().getCoinsAmount() + reward.getAmount();
 			return amt > Integer.MAX_VALUE || amt <= 0 ? SOF_STATUS_CLAIMPOUCHBAD : SOF_STATUS_CLAIMPOUCHOK;
-		} else if (!reward.getDefinitions().isStackable() && !reward.getDefinitions().isNoted() && reward.getAmount() == 1) { // non stackable items to inv
+		} else if (!reward.getDefinitions().isStackable() && !reward.getDefinitions().isNoted() && reward.getAmount() == 1) { // non
+																																// stackable
+																																// items
+																																// to
+																																// inv
 			return player.getInventory().hasFreeSlots() ? SOF_STATUS_CLAIMINVOK : SOF_STATUS_CLAIMINVBAD;
 		} else { // other items go to bank
 			if (player.getBank().getItem(reward.getId()) != null) {
@@ -360,7 +392,8 @@ public class SquealOfFortune implements Serializable {
 		case 4:
 		case 8:
 			return RARITY_RARE;
-		default: // default case added so compiler can add tableswitch instruction instead of lookupswitch
+		default: // default case added so compiler can add tableswitch
+			// instruction instead of lookupswitch
 			throw new RuntimeException("Bad slot");
 		}
 	}
@@ -399,7 +432,8 @@ public class SquealOfFortune implements Serializable {
 	 * Give's daily spins for donators, only if daily spins < 2.
 	 */
 	public void giveDailySpins() {
-		if (player.hasEmailRestrictions() || (Utils.currentTimeMillis() - lastDailySpinsGiveaway) < (12 * 60 * 60 * 1000)) // 12 hours
+		if (player.hasEmailRestrictions() || (Utils.currentTimeMillis() - lastDailySpinsGiveaway) < (12 * 60 * 60 * 1000)) // 12
+			// hours
 			return;
 		lastDailySpinsGiveaway = Utils.currentTimeMillis();
 		int previous = dailySpins;

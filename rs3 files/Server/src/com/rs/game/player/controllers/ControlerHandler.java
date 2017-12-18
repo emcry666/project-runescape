@@ -89,15 +89,17 @@ public class ControlerHandler {
 			handledControlers.put("NewSpawnPlayerController", (Class<Controller>) Class.forName(NewSpawnPlayerController.class.getCanonicalName()));
 			handledControlers.put("LastManStandingController", LastManStandingController.class);
 			handledControlers.put("TeamVsTeamController", TeamVsTeamController.class);
-			//boss instance
+			// boss instance
 			handledControlers.put("BossInstanceController", BossInstanceController.class);
 			handledControlers.put("KalphiteQueenInstanceController", KalphiteQueenInstanceController.class);
 			handledControlers.put("DagannothKingsInstanceController", DagannothKingsInstanceController.class);
 			handledControlers.put("CorporealBeastInstanceController", CorporealBeastInstanceController.class);
 			handledControlers.put("KalphiteKingInstanceController", KalphiteKingInstanceController.class);
 			handledControlers.put("VoragoInstanceController", VoragoInstanceController.class);
-			
-			// handledControlers.put("SlaughterFieldsControler", (Class<Controller>) Class.forName(SlaughterFieldsControler.class.getCanonicalName()));
+
+			// handledControlers.put("SlaughterFieldsControler",
+			// (Class<Controller>)
+			// Class.forName(SlaughterFieldsControler.class.getCanonicalName()));
 		} catch (Throwable e) {
 			Logger.handle(e);
 		}

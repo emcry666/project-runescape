@@ -18,13 +18,11 @@ public class DagannothKing extends NPC {
 	public void handleIngoingHit(Hit hit) {
 		if (hit.getLook() != HitLook.MELEE_DAMAGE && hit.getLook() != HitLook.RANGE_DAMAGE && hit.getLook() != HitLook.MAGIC_DAMAGE)
 			return;
-		if((getId() == 2881 && hit.getLook() != HitLook.MELEE_DAMAGE)
-				|| (getId() == 2882 && hit.getLook() != HitLook.RANGE_DAMAGE)
-				|| (getId() == 2883 && hit.getLook() != HitLook.MAGIC_DAMAGE))
+		if ((getId() == 2881 && hit.getLook() != HitLook.MELEE_DAMAGE) || (getId() == 2882 && hit.getLook() != HitLook.RANGE_DAMAGE) || (getId() == 2883 && hit.getLook() != HitLook.MAGIC_DAMAGE))
 			hit.setDamage(0);
 		super.handleIngoingHit(hit);
 	}
-	
+
 	@Override
 	public void sendDeath(final Entity source) {
 		increaseKills(RecordKey.DAGANNOTH_KINGS, false);

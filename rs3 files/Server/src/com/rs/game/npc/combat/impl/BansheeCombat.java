@@ -14,8 +14,7 @@ public class BansheeCombat extends CombatScript {
 
 	@Override
 	public Object[] getKeys() {
-		return new Object[]
-		{ "Banshee", "Mighty banshee" };
+		return new Object[] { "Banshee", "Mighty banshee" };
 	}
 
 	@Override
@@ -31,7 +30,7 @@ public class BansheeCombat extends CombatScript {
 				npc.setNextForceTalk(new ForceTalk("*EEEEHHHAHHH*"));
 			}
 			delayHit(npc, 0, target, getMeleeHit(npc, targetPlayer.getMaxHitpoints() / 10));
-			//TODO player emote hands on ears
+			// TODO player emote hands on ears
 		} else
 			delayHit(npc, 0, target, getMeleeHit(npc, getMaxHit(npc, npc.getAttackStyle(), target)));
 		npc.setNextAnimation(new Animation(def.getAttackEmote()));

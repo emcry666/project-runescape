@@ -11,8 +11,7 @@ public class SapGlacite extends CombatScript {
 
 	@Override
 	public Object[] getKeys() {
-		return new Object[]
-		{ 14303 };
+		return new Object[] { 14303 };
 	}
 
 	@Override

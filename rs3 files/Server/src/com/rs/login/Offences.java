@@ -213,8 +213,7 @@ public class Offences implements Serializable {
 	}
 
 	/**
-	 * Metadata for offence. None of the fields inside are guaranteed to be
-	 * filled.
+	 * Metadata for offence. None of the fields inside are guaranteed to be filled.
 	 */
 	public static class Metadata implements Serializable {
 		/**
@@ -223,8 +222,7 @@ public class Offences implements Serializable {
 		private static final long serialVersionUID = -5082795333477460692L;
 
 		/**
-		 * Target username who was taken action against. (Even if it was ipban
-		 * or ipmute)
+		 * Target username who was taken action against. (Even if it was ipban or ipmute)
 		 */
 		private String username;
 		/**

@@ -27,8 +27,8 @@ public final class GameChannelsManager extends SimpleChannelHandler {
 
 	public static final void init() {
 		channels = new DefaultChannelGroup();
-		workerExecutor = new OrderedMemoryAwareThreadPoolExecutor(2, 0, 0);//Executors.newFixedThreadPool(2);
-		bossExecutor = new OrderedMemoryAwareThreadPoolExecutor(1, 0, 0);//Executors.newSingleThreadExecutor();
+		workerExecutor = new OrderedMemoryAwareThreadPoolExecutor(2, 0, 0);// Executors.newFixedThreadPool(2);
+		bossExecutor = new OrderedMemoryAwareThreadPoolExecutor(1, 0, 0);// Executors.newSingleThreadExecutor();
 		bootstrap = new ServerBootstrap(new NioServerSocketChannelFactory(bossExecutor, workerExecutor, 2));
 		bootstrap.getPipeline().addLast("handler", new GameChannelsManager());
 
@@ -36,7 +36,7 @@ public final class GameChannelsManager extends SimpleChannelHandler {
 		bootstrap.setOption("child.tcpNoDelay", true);
 		bootstrap.setOption("child.sendBufferSize", Settings.WRITE_BUFFER_SIZE);
 		bootstrap.setOption("child.receiveBufferSize", Settings.READ_BUFFER_SIZE);
-		
+
 		bootstrap.bind(new InetSocketAddress(Settings.GAME_ADDRESS_BASE.getAddress(), Settings.GAME_ADDRESS_BASE.getPort() + Settings.WORLD_ID));
 	}
 
@@ -62,12 +62,10 @@ public final class GameChannelsManager extends SimpleChannelHandler {
 	public void channelConnected(ChannelHandlerContext ctx, ChannelStateEvent e) {
 		ctx.setAttachment(new Session(e.getChannel()));
 	}
-	
+
 	@Override
 	public void channelDisconnected(ChannelHandlerContext ctx, ChannelStateEvent e) {
 	}
-	
-
 
 	@Override
 	public void messageReceived(ChannelHandlerContext ctx, MessageEvent e) {
@@ -102,19 +100,19 @@ public final class GameChannelsManager extends SimpleChannelHandler {
 			if (session.getDecoder() == null) {
 				return;
 			}
-			
+
 			byte[] b = new byte[(session.buffer.length - session.bufferOffset) + buf.readableBytes()];
 			if ((session.buffer.length - session.bufferOffset) > 0)
 				System.arraycopy(session.buffer, session.bufferOffset, b, 0, session.buffer.length - session.bufferOffset);
 			buf.readBytes(b, session.buffer.length - session.bufferOffset, b.length - (session.buffer.length - session.bufferOffset));
-			
+
 			session.buffer = b;
 			session.bufferOffset = 0;
-					
+
 			try {
 				InputStream is = new InputStream(b);
 				session.bufferOffset = session.getDecoder().decode(is);
-				if (session.bufferOffset < 0) { // drop 
+				if (session.bufferOffset < 0) { // drop
 					session.buffer = new byte[0];
 					session.bufferOffset = 0;
 				}

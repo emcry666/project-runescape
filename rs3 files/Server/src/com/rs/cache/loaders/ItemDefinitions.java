@@ -112,20 +112,20 @@ public final class ItemDefinitions {
 			itemsDefinitions.put(itemId, def = new ItemDefinitions(itemId));
 		return def;
 	}
-	
+
 	public boolean hasSpecialAttack() {
 		return getCSOpcode(4329) == 1;
 	}
-	
+
 	public int getSpecialAmmount() {
 		int original = getOriginalItemSpec();
-		return	original == 0 ? getCSOpcode(4332) / 10 : getItemDefinitions(original).getSpecialAmmount();
+		return original == 0 ? getCSOpcode(4332) / 10 : getItemDefinitions(original).getSpecialAmmount();
 	}
-	
+
 	public boolean isDungeoneeringItem() {
 		return getCSOpcode(1047) == 1;
 	}
-	
+
 	public boolean isStealingCreationItem() {
 		return getCSOpcode(59) == 1;
 	}
@@ -154,8 +154,8 @@ public final class ItemDefinitions {
 	}
 
 	public final void loadItemDefinitions() {
-		//change this when uw anna use price editor.
-		byte [] data = Cache.STORE.getIndexes()[Constants.ITEM_DEFINITIONS_INDEX].getFile(getArchiveId(), getFileId());
+		// change this when uw anna use price editor.
+		byte[] data = Cache.STORE.getIndexes()[Constants.ITEM_DEFINITIONS_INDEX].getFile(getArchiveId(), getFileId());
 		if (data == null) {
 			// System.out.println("Failed loading Item " + id+".");
 			return;
@@ -274,16 +274,15 @@ public final class ItemDefinitions {
 		return inventoryOptions[i].equals(option);
 	}
 
-
 	public boolean containsEquipmentOption(int optionId, String option) {
 		if (clientScriptData == null)
 			return false;
-		Object wearingOption = clientScriptData.get(528+optionId);
+		Object wearingOption = clientScriptData.get(528 + optionId);
 		if (wearingOption != null && wearingOption instanceof String)
 			return wearingOption.equals(option);
 		return false;
 	}
-	
+
 	public boolean containsOption(String option) {
 		if (inventoryOptions == null)
 			return false;
@@ -324,7 +323,7 @@ public final class ItemDefinitions {
 			return (int) attackSpeed;
 		return 4;
 	}
-	
+
 	public int getOriginalItemSpec() {
 		return getCSOpcode(4338);
 	}
@@ -332,119 +331,119 @@ public final class ItemDefinitions {
 	public int getHealth() {
 		return getCSOpcode(1326);
 	}
-	
+
 	public GeneralRequirementMap getCombatMap() {
 		int csMapOpcode = getCSOpcode(686);
-		if(csMapOpcode != 0) 
+		if (csMapOpcode != 0)
 			return GeneralRequirementMap.getMap(csMapOpcode);
 		return null;
 	}
-	
+
 	public int getCombatOpcode(int opcode) {
 		Integer value = (Integer) clientScriptData.get(opcode);
-		if(value != null)
+		if (value != null)
 			return value;
 		GeneralRequirementMap map = getCombatMap();
 		return map == null ? 0 : map.getIntValue(opcode);
 	}
-	
+
 	public int getCombatStyle() {
 		return getCombatOpcode(2853);
 	}
-	
+
 	public int getDamage(int type) {
-		if(type == Combat.MELEE_TYPE) 
+		if (type == Combat.MELEE_TYPE)
 			return getMeleeDamage();
-		if(type == Combat.RANGE_TYPE) 
+		if (type == Combat.RANGE_TYPE)
 			return getRangeDamage();
-		if(type == Combat.MAGIC_TYPE) 
+		if (type == Combat.MAGIC_TYPE)
 			return getMagicDamage();
 		return 0;
 	}
-	
+
 	public int getAccuracy(int type) {
-		if(type == Combat.MELEE_TYPE) 
+		if (type == Combat.MELEE_TYPE)
 			return getMeleeAccuracy();
-		if(type == Combat.RANGE_TYPE) 
+		if (type == Combat.RANGE_TYPE)
 			return getRangeAccuracy();
-		if(type == Combat.MAGIC_TYPE) 
+		if (type == Combat.MAGIC_TYPE)
 			return getMageAccuracy();
 		return 0;
 	}
-	
+
 	public int getMeleeDamage() {
 		return getCSOpcode(641);
 	}
-	
+
 	public int getRangeDamage() {
 		return getCSOpcode(643);
 	}
-	
+
 	public int getMageDamage() {
 		return getCSOpcode(965);
 	}
-	
+
 	public int getArmor() {
 		return getCSOpcode(2870);
 	}
-	
+
 	public int getMeleeAccuracy() {
 		return getCSOpcode(3267);
 	}
-	
+
 	public int getRangeAccuracy() {
 		return getCSOpcode(4);
 	}
-	
+
 	public int getMageAccuracy() {
 		return getCSOpcode(3);
 	}
-	
+
 	public boolean isMeleeTypeGear() {
 		return getCSOpcode(2821) == 1;
 	}
-	
+
 	public boolean isRangeTypeGear() {
 		return getCSOpcode(2822) == 1;
 	}
-	
+
 	public boolean isMagicTypeGear() {
 		return getCSOpcode(2823) == 1;
 	}
-	
+
 	public boolean isAllTypeGear() {
 		return getCSOpcode(2824) == 1;
 	}
-	
+
 	public boolean isMeleeTypeWeapon() {
 		return getCSOpcode(2825) == 1;
 	}
-	
+
 	public boolean isRangeTypeWeapon() {
 		return getCSOpcode(2826) == 1;
 	}
-	
+
 	public boolean isMagicTypeWeapon() {
 		return getCSOpcode(2827) == 1;
 	}
-	
+
 	public boolean isShield() {
 		return getCSOpcode(2832) == 1;
 	}
-	
+
 	public int getCSOpcode(int opcode) {
-		if(clientScriptData != null) {
+		if (clientScriptData != null) {
 			Object value = clientScriptData.get(opcode);
 			if (value != null && value instanceof Integer)
 				return (int) value;
 		}
 		return 0;
 	}
-	
+
 	public int getMaterial1() {
 		return getCSOpcode(2655);
 	}
-	
+
 	public int getStabAttack() {
 		if (id > 25439 || clientScriptData == null)
 			return 0;
@@ -624,7 +623,7 @@ public final class ItemDefinitions {
 			return (Integer) animId;
 		return 1284;
 	}
-	
+
 	public int getModelOnBackId() {
 		if (clientScriptData == null)
 			return -1;
@@ -703,12 +702,12 @@ public final class ItemDefinitions {
 	public HashMap<Integer, Object> getClientScriptData() {
 		return clientScriptData;
 	}
-	
+
 	public int getAttackLevel() {
 		Integer level = getWearingSkillRequiriments().get(Skills.ATTACK);
 		return level == null ? 1 : level;
 	}
-	
+
 	public int getRangedLevel() {
 		Integer level = getWearingSkillRequiriments().get(Skills.RANGE);
 		return level == null ? 1 : level;
@@ -731,7 +730,7 @@ public final class ItemDefinitions {
 			if (maxedSkill != null)
 				skills.put(maxedSkill, getId() == 19709 ? 120 : 99);
 			itemRequiriments = skills;
-			
+
 			if (name.toLowerCase().contains("berserker helm"))
 				itemRequiriments.put(Skills.DEFENCE, 45);
 			else if (name.toLowerCase().contains("helm of neitiznot"))
@@ -825,8 +824,8 @@ public final class ItemDefinitions {
 				itemRequiriments.put(Skills.ATTACK, 60);
 				itemRequiriments.put(Skills.DEFENCE, 60);
 				break;
-			//case 19172:
-			//itemRequiriments.put(Skills.PRAYER, 22);
+			// case 19172:
+			// itemRequiriments.put(Skills.PRAYER, 22);
 			case 8839:
 			case 8840:
 			case 8841:
@@ -864,10 +863,8 @@ public final class ItemDefinitions {
 	}
 
 	public void setDefaultOptions() {
-		groundOptions = new String[]
-		{ null, null, "take", null, null };
-		inventoryOptions = new String[]
-		{ null, null, null, null, "drop" };
+		groundOptions = new String[] { null, null, "take", null, null };
+		inventoryOptions = new String[] { null, null, null, null, "drop" };
 	}
 
 	public void setDefaultsVariableValues() {
@@ -1005,7 +1002,7 @@ public final class ItemDefinitions {
 			unknownInt4 = stream.readBigSmart();
 		else if (opcode == 94) {// new
 			int anInt7887 = stream.readUnsignedShort();
-		}else if (opcode == 95)
+		} else if (opcode == 95)
 			unknownInt5 = stream.readUnsignedShort();
 		else if (opcode == 96)
 			unknownInt6 = stream.readUnsignedByte();
@@ -1079,19 +1076,19 @@ public final class ItemDefinitions {
 				Arrays.fill(unknownArray5, -1);
 			}
 			unknownArray5[opcode - 150] = stream.readUnsignedShort();
-		}else if (opcode == 156) { //new
-			
-		} else if (157 == opcode) {//new
+		} else if (opcode == 156) { // new
+
+		} else if (157 == opcode) {// new
 			boolean aBool7955 = true;
-		} else if (161 == opcode) {//new
+		} else if (161 == opcode) {// new
 			int anInt7904 = stream.readUnsignedShort();
-		} else if (162 == opcode) {//new
+		} else if (162 == opcode) {// new
 			int anInt7923 = stream.readUnsignedShort();
-		} else if (163 == opcode) {//new
+		} else if (163 == opcode) {// new
 			int anInt7939 = stream.readUnsignedShort();
-		} else if (164 == opcode) {//new coinshare shard
+		} else if (164 == opcode) {// new coinshare shard
 			String aString7902 = stream.readString();
-		} else if (opcode == 165) {//new
+		} else if (opcode == 165) {// new
 			stackable = 2;
 		} else if (opcode == 242) {
 			int oldInvModel = stream.readBigSmart();
@@ -1216,7 +1213,7 @@ public final class ItemDefinitions {
 	public int getId() {
 		return id;
 	}
-	
+
 	public int getTeamId() {
 		return teamId;
 	}
@@ -1228,12 +1225,11 @@ public final class ItemDefinitions {
 	public int getEquipLookHideSlot() {
 		return equipLookHideSlot;
 	}
-	
+
 	public int getEquipLookHideSlot2() {
 		return equipLookHideSlot2;
 	}
-	
-	
+
 	public int getSheatheModelId() {
 		if (clientScriptData == null)
 			return -1;
@@ -1242,5 +1238,5 @@ public final class ItemDefinitions {
 			return (Integer) modelId;
 		return -1;
 	}
-	
+
 }

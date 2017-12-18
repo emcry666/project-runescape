@@ -9,127 +9,94 @@ import com.rs.game.player.Player;
 public class CarrierTravel {
 
 	private static final int TRAVEL_INTERFACE = 299, CHARTER_INTERFACE = 95, GLIDER_INTEFACE = 138;
-	private static final int[] REGIONS = new int[]
-	{ 8496, 14646, 11061, 11823, 11825, 11058, 10545, 12081, 14637, -1, 10284 };
+	private static final int[] REGIONS = new int[] { 8496, 14646, 11061, 11823, 11825, 11058, 10545, 12081, 14637, -1, 10284 };
 
 	public enum Carrier {
 
 		/**
 		 * Carter Ships
 		 */
-		Port_Tyras(new int[]
-		{ -1, 3200, 3200, 3200, 3200, 3200, 3200, 1600, 3200, -1, 3200 }, new WorldTile(2142, 3122, 0)),
+		Port_Tyras(new int[] { -1, 3200, 3200, 3200, 3200, 3200, 3200, 1600, 3200, -1, 3200 }, new WorldTile(2142, 3122, 0)),
 
-		Port_Phasmatys(new int[]
-		{ 3200, -1, 3500, -1, 2900, 2900, 4100, 1300, -1, -1, 2800 }, new WorldTile(3702, 3503, 0)),
+		Port_Phasmatys(new int[] { 3200, -1, 3500, -1, 2900, 2900, 4100, 1300, -1, -1, 2800 }, new WorldTile(3702, 3503, 0)),
 
-		Catherby(new int[]
-		{ 3200, 2500, -1, 1600, 480, 480, 1600, 1000, 1750, -1, 3400 }, new WorldTile(2792, 3414, 0)),
+		Catherby(new int[] { 3200, 2500, -1, 1600, 480, 480, 1600, 1000, 1750, -1, 3400 }, new WorldTile(2792, 3414, 0)),
 
-		Ship_Yard(new int[]
-		{ 3200, -1, 1600, -1, 200, 400, 720, 400, 225, -1, 900 }, new WorldTile(3001, 3032, 0)),
+		Ship_Yard(new int[] { 3200, -1, 1600, -1, 200, 400, 720, 400, 225, -1, 900 }, new WorldTile(3001, 3032, 0)),
 
-		Karamja(new int[]
-		{ 3200, 2900, 480, 200, -1, 200, 400, -1, 225, -1, 2000 }, new WorldTile(2954, 3158, 0)),
+		Karamja(new int[] { 3200, 2900, 480, 200, -1, 200, 400, -1, 225, -1, 2000 }, new WorldTile(2954, 3158, 0)),
 
-		Brimhaven(new int[]
-		{ 3200, 2900, 480, 400, 200, -1, 400, 1600, 975, -1, 3800 }, new WorldTile(2760, 3238, 0)),
+		Brimhaven(new int[] { 3200, 2900, 480, 400, 200, -1, 400, 1600, 975, -1, 3800 }, new WorldTile(2760, 3238, 0)),
 
-		Port_Khazard(new int[]
-		{ 3200, 4100, 1600, 1600, 1600, 1600, -1, 1280, 1025, -1, 5000 }, new WorldTile(2674, 3144, 0)),
+		Port_Khazard(new int[] { 3200, 4100, 1600, 1600, 1600, 1600, -1, 1280, 1025, -1, 5000 }, new WorldTile(2674, 3144, 0)),
 
-		Port_Sarim(new int[]
-		{ 3200, 1300, 1000, 400, -1, 1600, 1280, -1, 325, -1, 1400 }, new WorldTile(3038, 3192, 0)),
+		Port_Sarim(new int[] { 3200, 1300, 1000, 400, -1, 1600, 1280, -1, 325, -1, 1400 }, new WorldTile(3038, 3192, 0)),
 
-		Mos_Le_Harmless(new int[]
-		{ 1600, -1, 625, 275, 1025, 725, 1025, 325, -1, -1, 500 }, new WorldTile(3671, 2931, 0)),
+		Mos_Le_Harmless(new int[] { 1600, -1, 625, 275, 1025, 725, 1025, 325, -1, -1, 500 }, new WorldTile(3671, 2931, 0)),
 
-		Crandor(new int[]
-		{ 3200, 2800, 3400, 900, 2000, 3800, 5000, 1400, 500, -1, -1 }, new WorldTile(2623, 2857, 0)), //disable for now
+		Crandor(new int[] { 3200, 2800, 3400, 900, 2000, 3800, 5000, 1400, 500, -1, -1 }, new WorldTile(2623, 2857, 0)), // disable
+		// for
+		// now
 
-		Oo_glog(new int[]
-		{ 3200, 2800, 3400, 900, 2000, 3800, 5000, 1400, 500, -1, -1 }, new WorldTile(2623, 2857, 0)),
+		Oo_glog(new int[] { 3200, 2800, 3400, 900, 2000, 3800, 5000, 1400, 500, -1, -1 }, new WorldTile(2623, 2857, 0)),
 
 		/**
 		 * Fares
 		 */
-		Etrana_Fare(new int[]
-		{ -1 }, 3500, "Port Sarim", new WorldTile(2834, 3335, 0), new WorldTile(3048, 3234, 0)),
+		Etrana_Fare(new int[] { -1 }, 3500, "Port Sarim", new WorldTile(2834, 3335, 0), new WorldTile(3048, 3234, 0)),
 
-		Cranador_Fare(new int[]
-		{ -1 }, 5000, "Port Sarim", new WorldTile(2853, 3238, 0), new WorldTile(3047, 3204, 0)),
+		Cranador_Fare(new int[] { -1 }, 5000, "Port Sarim", new WorldTile(2853, 3238, 0), new WorldTile(3047, 3204, 0)),
 
-		Karamja_Fare(new int[]
-		{ 30 }, 3000, "Port Sarim", new WorldTile(2956, 3146, 0), new WorldTile(3029, 3217, 0)),
+		Karamja_Fare(new int[] { 30 }, 3000, "Port Sarim", new WorldTile(2956, 3146, 0), new WorldTile(3029, 3217, 0)),
 
-		Brimhaven_Fare(new int[]
-		{ 30 }, 4000, "Ardougne", new WorldTile(2772, 3234, 0), new WorldTile(2683, 3271, 0)),
+		Brimhaven_Fare(new int[] { 30 }, 4000, "Ardougne", new WorldTile(2772, 3234, 0), new WorldTile(2683, 3271, 0)),
 
 		UNUSED(null, -1, null, null, null),
 
-		Port_Khazard_Fare(new int[]
-		{ -1 }, 7000, "Ship yard", new WorldTile(2981, 3052, 0), new WorldTile(2676, 3170, 0)), // 15
+		Port_Khazard_Fare(new int[] { -1 }, 7000, "Ship yard", new WorldTile(2981, 3052, 0), new WorldTile(2676, 3170, 0)), // 15
 
-		Carin_Island_Fare(new int[]
-		{ -1 }, 6000, "Ship yard", new WorldTile(2995, 3052, 0), new WorldTile(2763, 2956, 1)),
+		Carin_Island_Fare(new int[] { -1 }, 6000, "Ship yard", new WorldTile(2995, 3052, 0), new WorldTile(2763, 2956, 1)),
 
-		Void_Outpost_Fare(new int[]
-		{ -1 }, 6000, "Port Sarim", new WorldTile(2659, 2676, 0), new WorldTile(3041, 3202, 0)),
+		Void_Outpost_Fare(new int[] { -1 }, 6000, "Port Sarim", new WorldTile(2659, 2676, 0), new WorldTile(3041, 3202, 0)),
 
 		/**
 		 * Relleka boats
 		 */
-		Jatizo(new int[]
-		{ -1 }, 1000, "Relleke", new WorldTile(2422, 3781, 0), new WorldTile(2643, 3710, 0)),
+		Jatizo(new int[] { -1 }, 1000, "Relleke", new WorldTile(2422, 3781, 0), new WorldTile(2643, 3710, 0)),
 
-		Neitznot(new int[]
-		{ -1 }, 1000, "Relleke", new WorldTile(2311, 3781, 0), new WorldTile(2643, 3710, 0)),
+		Neitznot(new int[] { -1 }, 1000, "Relleke", new WorldTile(2311, 3781, 0), new WorldTile(2643, 3710, 0)),
 
-		Waterbirth(new int[]
-		{ -1 }, 1000, "Relleke", new WorldTile(2551, 3756, 0), new WorldTile(2620, 3686, 0)),
+		Waterbirth(new int[] { -1 }, 1000, "Relleke", new WorldTile(2551, 3756, 0), new WorldTile(2620, 3686, 0)),
 
-		Miscellenia(new int[]
-		{ -1 }, 1000, "Relleke", new WorldTile(2581, 3847, 0), new WorldTile(2629, 3693, 0)),
+		Miscellenia(new int[] { -1 }, 1000, "Relleke", new WorldTile(2581, 3847, 0), new WorldTile(2629, 3693, 0)),
 
-		Pirates_Cove(new int[]
-		{ -1 }, 1000, "Relleke", new WorldTile(2213, 3794, 0), new WorldTile(2620, 3686, 0)),
+		Pirates_Cove(new int[] { -1 }, 1000, "Relleke", new WorldTile(2213, 3794, 0), new WorldTile(2620, 3686, 0)),
 
-		LumbridgeCanoe(new int[]
-		{ -1 }, 1000, null, new WorldTile(3233, 3249, 0), null),
+		LumbridgeCanoe(new int[] { -1 }, 1000, null, new WorldTile(3233, 3249, 0), null),
 
-		LegendsCanoe(new int[]
-		{ -1 }, 1000, null, new WorldTile(3199, 3343, 0), null),
+		LegendsCanoe(new int[] { -1 }, 1000, null, new WorldTile(3199, 3343, 0), null),
 
-		BarbCanoe(new int[]
-		{ -1 }, 1000, null, new WorldTile(3113, 3406, 0), null),
+		BarbCanoe(new int[] { -1 }, 1000, null, new WorldTile(3113, 3406, 0), null),
 
-		EdgeCanoe(new int[]
-		{ -1 }, 1000, null, new WorldTile(3130, 3505, 0), null),
+		EdgeCanoe(new int[] { -1 }, 1000, null, new WorldTile(3130, 3505, 0), null),
 
-		WildernessCanoe(new int[]
-		{ -1 }, 1000, null, new WorldTile(3147, 3799, 0), null),
+		WildernessCanoe(new int[] { -1 }, 1000, null, new WorldTile(3147, 3799, 0), null),
 
 		/**
 		 * Glider
 		 */
 
-		Sindrpos_Glider(new int[]
-		{ -1 }, 1000, null, new WorldTile(2845, 3501, 0), new WorldTile(2464, 3503, 3)),
+		Sindrpos_Glider(new int[] { -1 }, 1000, null, new WorldTile(2845, 3501, 0), new WorldTile(2464, 3503, 3)),
 
-		LemantoAndra_Glider(new int[]
-		{ -1 }, 1500, null, new WorldTile(3322, 3431, 0), new WorldTile(2464, 3503, 3)),
+		LemantoAndra_Glider(new int[] { -1 }, 1500, null, new WorldTile(3322, 3431, 0), new WorldTile(2464, 3503, 3)),
 
-		KarHewo_Glider(new int[]
-		{ -1 }, 1700, null, new WorldTile(3284, 3213, 0), new WorldTile(2464, 3503, 3)),
+		KarHewo_Glider(new int[] { -1 }, 1700, null, new WorldTile(3284, 3213, 0), new WorldTile(2464, 3503, 3)),
 
-		Gandius_Glider(new int[]
-		{ -1 }, 1500, null, new WorldTile(2973, 2969, 0), new WorldTile(2464, 3503, 3)),
+		Gandius_Glider(new int[] { -1 }, 1500, null, new WorldTile(2973, 2969, 0), new WorldTile(2464, 3503, 3)),
 
-		UNUSED2(new int[]
-		{ -1 }, -1, null, null, null),
+		UNUSED2(new int[] { -1 }, -1, null, null, null),
 
-		Lemantolly_Undri_Glider(new int[]
-		{ -1 }, 1000, null, new WorldTile(2545, 2972, 0), new WorldTile(2464, 3503, 3));
+		Lemantolly_Undri_Glider(new int[] { -1 }, 1000, null, new WorldTile(2545, 2972, 0), new WorldTile(2464, 3503, 3));
 
 		private int[] costs;
 		private long destinationTime;
@@ -213,7 +180,7 @@ public class CarrierTravel {
 		FadingScreen.fade(player, ship.getDestinationTime(), new Runnable() {
 
 			@Override
-			public void run() {//9
+			public void run() {// 9
 				player.setNextWorldTile(tile);
 				player.lock(1);
 				player.closeInterfaces();

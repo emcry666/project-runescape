@@ -39,8 +39,7 @@ public class LoginClientChannelManager {
 	 */
 	private static long lastSync;
 	/**
-	 * Number of the last packet that our client successfully received from the
-	 * server.
+	 * Number of the last packet that our client successfully received from the server.
 	 */
 	private static long in_syncnum;
 	/**
@@ -234,11 +233,13 @@ public class LoginClientChannelManager {
 			case LoginProtocol.MSG_DATA_PACKET_R: // reliable packet
 				long datasyncnum = stream.readLong() - in_syncnum;
 				if (datasyncnum != 1) {
-					// some packets need to arrive first before this packet, so drop it
+					// some packets need to arrive first before this packet, so
+					// drop it
 					break;
 				}
 				lastSync = Utils.currentTimeMillis(); // reset sync counter
-				in_syncnum += 1; // increase our syncnum so next packets can go thru
+				in_syncnum += 1; // increase our syncnum so next packets can go
+				// thru
 				LoginClientPacketsDecoder.decodeIncomingPacket(stream);
 				break;
 			case LoginProtocol.MSG_DATA_PACKET_U: // unreliable packet

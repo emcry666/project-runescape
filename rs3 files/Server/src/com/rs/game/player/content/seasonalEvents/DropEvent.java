@@ -22,7 +22,7 @@ public class DropEvent {
 	}
 
 	private static final Drops CURRENT = null;
-	private static final int RATE = 60; //every 60 second
+	private static final int RATE = 60; // every 60 second
 
 	private static boolean enabled() {
 		return CURRENT != null;
@@ -52,15 +52,7 @@ public class DropEvent {
 		}, RATE * 1000, RATE * 1000);
 	}
 
-	public static String[] HALLOWEEN_MESSAGES =
-	{
-		"Have a fun and safe halloween!",
-		"Be sure to double check your candy for LSD!",
-		"Always have your gaurdian come and pre-examine your candy.",
-		"Is it just me, or did it get chilly.",
-		"Don't drink and drive.",
-		"Cjay0091's the best." };
-	public static int[] HALLOWEEN_NPCS =
-	{ 94, 100, 73, 6214, 3073, 3347 };
+	public static String[] HALLOWEEN_MESSAGES = { "Have a fun and safe halloween!", "Be sure to double check your candy for LSD!", "Always have your gaurdian come and pre-examine your candy.", "Is it just me, or did it get chilly.", "Don't drink and drive.", "Cjay0091's the best." };
+	public static int[] HALLOWEEN_NPCS = { 94, 100, 73, 6214, 3073, 3347 };
 
 }

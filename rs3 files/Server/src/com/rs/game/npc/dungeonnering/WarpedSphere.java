@@ -11,21 +11,9 @@ import com.rs.game.player.content.dungeoneering.RoomReference;
 @SuppressWarnings("serial")
 public class WarpedSphere extends DungeonNPC {
 
-	private static final int[][] ORB_TELEPORT_LOCATIONS =
-		{{ 0, 0 },
-		{ 0, 0 },
-		{ 13, 4 },
-		{ 11, 12 },
-		{ 3, 4 },
-		{ 3, 12 } },
+	private static final int[][] ORB_TELEPORT_LOCATIONS = { { 0, 0 }, { 0, 0 }, { 13, 4 }, { 11, 12 }, { 3, 4 }, { 3, 12 } },
 
-		PLAYER_TELEPORT_LOCATIONS =
-	{{ 0, 0 },
-		{ 0, 0 },
-		{ 6, 11 },
-		{ 10, 4 },
-		{ 10, 11 },
-		{ 10, 4 } };
+			PLAYER_TELEPORT_LOCATIONS = { { 0, 0 }, { 0, 0 }, { 6, 11 }, { 10, 4 }, { 10, 11 }, { 10, 4 } };
 
 	private final RoomReference reference;
 	private int stage;
@@ -33,7 +21,7 @@ public class WarpedSphere extends DungeonNPC {
 	public WarpedSphere(RoomReference reference, int id, WorldTile tile, DungeonManager manager, double multiplier) {
 		super(id, tile, manager, multiplier);
 		this.reference = reference;
-		stage = -1;//Gotta follow warmonger
+		stage = -1;// Gotta follow warmonger
 	}
 
 	@Override

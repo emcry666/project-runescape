@@ -37,7 +37,7 @@ public class LoginChannelsPacketEncoder {
 		out.writeByte(isLobby ? 1 : 0);
 		return out;
 	}
-	
+
 	public static OutputStream encodeLoginResponse(int sessionid, String sessionuser, int status) {
 		OutputStream out = new OutputStream(11 + sessionuser.length());
 		out.writeByte(LoginProtocol.PACKET_LOGINRSP);

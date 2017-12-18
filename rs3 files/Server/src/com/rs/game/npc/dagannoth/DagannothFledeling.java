@@ -18,7 +18,7 @@ public class DagannothFledeling extends NPC {
 		ArrayList<Entity> targets = getPossibleTargets(true, false);
 		ArrayList<Entity> targetsCleaned = new ArrayList<Entity>();
 		for (Entity t : targets) {
-			if (!(t instanceof NPC) || ((NPC)t).getId() != 2879)
+			if (!(t instanceof NPC) || ((NPC) t).getId() != 2879)
 				continue;
 			targetsCleaned.add(t);
 		}

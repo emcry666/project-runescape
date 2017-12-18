@@ -4,14 +4,12 @@ import java.util.HashMap;
 
 public class ILayoutDefaults {
 
-	
 	public static final HashMap<Integer, Integer> INTERFACE_LAYOUT_VARS = new HashMap<Integer, Integer>();
-	
+
 	static {
 		setNSIDefaultVars();
 	}
-	
-	
+
 	private static void setNSIDefaultVars() {
 		INTERFACE_LAYOUT_VARS.put(2992, 8390656);
 		INTERFACE_LAYOUT_VARS.put(2991, -2145025360);
@@ -111,5 +109,4 @@ public class ILayoutDefaults {
 		INTERFACE_LAYOUT_VARS.put(2993, -2146848419);
 	}
 
-	
 }

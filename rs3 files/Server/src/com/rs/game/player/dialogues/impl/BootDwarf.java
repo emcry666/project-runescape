@@ -10,8 +10,7 @@ public class BootDwarf extends Dialogue {
 	@Override
 	public void start() {
 		npcId = (Integer) parameters[0];
-		sendEntityDialogue(SEND_1_TEXT_CHAT, new String[]
-		{ NPCDefinitions.getNPCDefinitions(npcId).name, "'Hello tall person." }, IS_NPC, npcId, 9827);
+		sendEntityDialogue(SEND_1_TEXT_CHAT, new String[] { NPCDefinitions.getNPCDefinitions(npcId).name, "'Hello tall person." }, IS_NPC, npcId, 9827);
 
 	}
 
@@ -30,8 +29,7 @@ public class BootDwarf extends Dialogue {
 			}
 		} else if (stage == 1) {
 			stage = 2;
-			sendEntityDialogue(SEND_2_TEXT_CHAT, new String[]
-			{ NPCDefinitions.getNPCDefinitions(npcId).name, "I'm called Boot, becasue when I was very young, I used to", "sleep, in a largue boot." }, IS_NPC, npcId, 9827);
+			sendEntityDialogue(SEND_2_TEXT_CHAT, new String[] { NPCDefinitions.getNPCDefinitions(npcId).name, "I'm called Boot, becasue when I was very young, I used to", "sleep, in a largue boot." }, IS_NPC, npcId, 9827);
 		} else if (stage == 2) {
 			stage = -2;
 			sendPlayerDialogue(9827, "Yeah, great, I didn't want your life story.");

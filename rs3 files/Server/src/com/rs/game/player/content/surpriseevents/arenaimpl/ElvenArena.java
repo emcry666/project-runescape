@@ -6,12 +6,11 @@ import com.rs.game.player.content.surpriseevents.EventArena;
 import com.rs.utils.Utils;
 
 public class ElvenArena extends EventArena {
-	
+
 	/**
 	 * Contains base positions.
 	 */
 	private int[] base;
-	
 
 	public ElvenArena(boolean multicombat) {
 		super(multicombat);
@@ -65,9 +64,7 @@ public class ElvenArena extends EventArena {
 	@Override
 	public WorldTile randomSpawn() {
 		return new WorldTile(minX() + 30 + Utils.random(12), minY() + 30 + Utils.random(12), 0);
-		
+
 	}
-
-
 
 }

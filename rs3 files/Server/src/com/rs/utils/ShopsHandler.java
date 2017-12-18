@@ -67,7 +67,7 @@ public class ShopsHandler {
 				if (key < 1200) {
 					for (int i = 0; i < items.length; i++) {
 						int value = items[i].getAmount();
-						if (value < Short.MAX_VALUE) //32k
+						if (value < Short.MAX_VALUE) // 32k
 							items[i].setAmount(value * SHOP_QUANTITY_RATE);
 					}
 				} else {
@@ -135,7 +135,7 @@ public class ShopsHandler {
 
 	public static void restoreShops() {
 		for (Shop shop : handledShops.values()) {
-			if(shop.isGeneralStore())
+			if (shop.isGeneralStore())
 				shop.restoreItems(true);
 			shop.restoreItems(false);
 		}

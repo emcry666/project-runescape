@@ -8,7 +8,7 @@ public class DialogueManager {
 
 	private Player player;
 	private Dialogue lastDialogue;
-	private ConfirmDialogue lastConfirmDialogue; 
+	private ConfirmDialogue lastConfirmDialogue;
 
 	public DialogueManager(Player player) {
 		this.player = player;
@@ -16,20 +16,20 @@ public class DialogueManager {
 
 	public void sendLogoutDialogue() {
 		player.getDialogueManager().sendConfirmDialogue(6, new ConfirmDialogue() {
-		    @Override
-		    public void process(int option) {
-			player.logout(option == 0);
-		    }
+			@Override
+			public void process(int option) {
+				player.logout(option == 0);
+			}
 
-		    @Override
-		    public void finish() {
-		    }
+			@Override
+			public void finish() {
+			}
 		});
 	}
-	
+
 	public void sendConfirmDialogue(int type, ConfirmDialogue dialogue) {
 		finishConfirmDialogue();
-		if(type == 9 && player.isInstantSwitchToLegacy())  {
+		if (type == 9 && player.isInstantSwitchToLegacy()) {
 			dialogue.process(1);
 			return;
 		}
@@ -38,11 +38,11 @@ public class DialogueManager {
 		player.getPackets().sendIComponentSettings(26, 22, -1, -1, 2);
 		lastConfirmDialogue = dialogue;
 	}
-	
+
 	public void handleConfirmDialogue(int componentId) {
-		if(lastConfirmDialogue != null) {	
-			if(componentId != 22) {//20 is cancel. 16 is option1 
-				if (componentId == 6 && player.getVarsManager().getValue(3813) == 9) 
+		if (lastConfirmDialogue != null) {
+			if (componentId != 22) {// 20 is cancel. 16 is option1
+				if (componentId == 6 && player.getVarsManager().getValue(3813) == 9)
 					player.switchInstantSwitchToLegacy();
 				lastConfirmDialogue.process(componentId == 18 ? 0 : 1);
 			}
@@ -51,14 +51,13 @@ public class DialogueManager {
 	}
 
 	public void finishConfirmDialogue() {
-		if(lastConfirmDialogue != null) {
+		if (lastConfirmDialogue != null) {
 			lastConfirmDialogue.finish();
 			player.getInterfaceManager().closeConfirmDialogue();
 			lastConfirmDialogue = null;
 		}
 	}
-	
-	
+
 	public void startDialogue(Object key, Object... parameters) {
 		if (!player.getControlerManager().useDialogueScript(key))
 			return;
@@ -72,7 +71,7 @@ public class DialogueManager {
 		lastDialogue.start();
 	}
 
-	public void continueDialogue(int interfaceId, int componentId) {
+	public void continueDialogue(int interfaceId, int componentId) throws ClassNotFoundException {
 		if (lastDialogue == null)
 			return;
 		lastDialogue.run(interfaceId, componentId);

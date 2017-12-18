@@ -12,10 +12,8 @@ import com.rs.game.tasks.WorldTasksManager;
 public class Canoes {
 
 	public static int CANOE_SELECTION = 52, AREA_SELECTION = 53;
-	private static final int[] VISIBLE_COMPONENTS =
-	{ 3, 2, 5 };
-	private static final int[] INVISIBLE_COMPONENTS =
-	{ 9, 10, 8 };
+	private static final int[] VISIBLE_COMPONENTS = { 3, 2, 5 };
+	private static final int[] INVISIBLE_COMPONENTS = { 9, 10, 8 };
 
 	public static boolean chopCanoeTree(Player player, final int configIndex) {
 		player.getActionManager().setAction(new Action() {

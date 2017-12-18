@@ -67,8 +67,8 @@ public class GrandExchange {
 				newPrice = 1;
 			else if (newPrice > Integer.MAX_VALUE)
 				newPrice = Integer.MAX_VALUE;
-			int shopValue =  ItemDefinitions.getItemDefinitions(id).value;
-			if(newPrice < shopValue)
+			int shopValue = ItemDefinitions.getItemDefinitions(id).value;
+			if (newPrice < shopValue)
 				newPrice = shopValue;
 			PRICES.put(id, (int) newPrice);
 		}
@@ -77,11 +77,10 @@ public class GrandExchange {
 		VirtualValues.setValues();
 		savePrices();
 	}
-	
+
 	public static void setPrice(int id, int price) {
 		PRICES.put(id, price);
 	}
-
 
 	public static void savePrices() {
 		SerializableFilesManager.saveGEPrices(new HashMap<Integer, Integer>(PRICES));
@@ -180,7 +179,7 @@ public class GrandExchange {
 		while (!offer.isCompleted()) {
 			Offer bestOffer = null;
 			for (Offer o : OFFERS.values()) {
-				//owner is null when not logged in but u online its on so works
+				// owner is null when not logged in but u online its on so works
 				if (o.getOwner() == offer.getOwner() || o.isBuying() == offer.isBuying() || o.getId() != offer.getId() || o.isCompleted() || (offer.isBuying() && o.getPrice() > offer.getPrice()) || (!offer.isBuying() && o.getPrice() < offer.getPrice()) || offer.isOfferTooHigh(o))
 					continue;
 				if (bestOffer == null || (offer.isBuying() && o.getPrice() < bestOffer.getPrice()) || (!offer.isBuying() && o.getPrice() > bestOffer.getPrice()))

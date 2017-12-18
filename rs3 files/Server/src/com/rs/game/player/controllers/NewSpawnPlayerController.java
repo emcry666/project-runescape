@@ -24,14 +24,14 @@ public class NewSpawnPlayerController extends Controller {
 
 	@Override
 	public boolean processButtonClick(int interfaceId, int componentId, int slotId, int slotId2, int packetId) {
-		if(interfaceId == 1507) {
-			if(componentId == 8 || componentId == 5) {
-				if(player.isLegacyMode() != (componentId == 8))
+		if (interfaceId == 1507) {
+			if (componentId == 8 || componentId == 5) {
+				if (player.isLegacyMode() != (componentId == 8))
 					player.switchLegacyMode();
 				player.getInterfaceManager().setRootInterface(548, false);
 			}
 			return false;
-		}else if(interfaceId == 548 && componentId == 4) 
+		} else if (interfaceId == 548 && componentId == 4)
 			startSceneDelay = 60;
 		return true;
 	}
@@ -57,7 +57,7 @@ public class NewSpawnPlayerController extends Controller {
 	public void process() {
 		if (player.getInterfaceManager().getWindowsPane() == 548) {
 			startSceneDelay++;
-			if(startSceneDelay >= 60) {
+			if (startSceneDelay >= 60) {
 				player.getInterfaceManager().setDefaultRootInterface();
 				setStage(1);
 				updateProgress();
@@ -102,7 +102,7 @@ public class NewSpawnPlayerController extends Controller {
 	@Override
 	public void sendInterfaces() {
 		int stage = getStage();
-		//		player.getInterfaceManager().replaceRealChatBoxInterface(372);
+		// player.getInterfaceManager().replaceRealChatBoxInterface(372);
 		if (stage == 2) {
 			player.getPackets().sendIComponentText(372, 0, "Getting Started");
 			player.getPackets().sendIComponentText(372, 1, "To start the tutorial use your left mouse button to click on the");
@@ -152,8 +152,7 @@ public class NewSpawnPlayerController extends Controller {
 
 	public int getStage() {
 		if (getArguments() == null)
-			setArguments(new Object[]
-					{ 2 }); // index 0 = stage
+			setArguments(new Object[] { 2 }); // index 0 = stage
 		return (Integer) getArguments()[0];
 	}
 

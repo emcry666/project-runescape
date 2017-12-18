@@ -27,10 +27,10 @@ public final class Combat {
 	public static final int TYPE_AIR = 1, TYPE_WATER = 2, TYPE_EARTH = 3, TYPE_FIRE = 4;
 
 	public static double getWeaknessMultiplier(double totalArmor, double weakArmor, double neutralArmor, double strongArmor) {
-		return totalArmor == 0 ? WEAKNESS_MULTIPLIER_NEUTRAL : ((weakArmor*WEAKNESS_MULTIPLIER_WEAK + neutralArmor*WEAKNESS_MULTIPLIER_NEUTRAL + strongArmor*WEAKNESS_MULTIPLIER_STRONG)/totalArmor);
+		return totalArmor == 0 ? WEAKNESS_MULTIPLIER_NEUTRAL : ((weakArmor * WEAKNESS_MULTIPLIER_WEAK + neutralArmor * WEAKNESS_MULTIPLIER_NEUTRAL + strongArmor * WEAKNESS_MULTIPLIER_STRONG) / totalArmor);
 	}
 
-	public static int[] COMBAT_SKILLS = {Skills.ATTACK, Skills.DEFENCE, Skills.STRENGTH, Skills.RANGE, Skills.MAGIC };
+	public static int[] COMBAT_SKILLS = { Skills.ATTACK, Skills.DEFENCE, Skills.STRENGTH, Skills.RANGE, Skills.MAGIC };
 
 	public static boolean rollHit(double att, double def) {
 		if (att < 0) // wont happen unless low att lv plus negative bonus
@@ -41,159 +41,141 @@ public final class Combat {
 	}
 
 	public static int getStyleType(int style) {
-		if(style >= 1 && style <= 4)
+		if (style >= 1 && style <= 4)
 			return MAGIC_TYPE;
-		if(style >= 5 && style <= 7)
+		if (style >= 5 && style <= 7)
 			return MELEE_TYPE;
-		if(style >= 8 && style <= 10)
+		if (style >= 8 && style <= 10)
 			return RANGE_TYPE;
 		return ALL_TYPE;
 	}
 
 	public static void giveXP(Entity from, double totalXP) {
-		if(totalXP == 0)
+		if (totalXP == 0)
 			return;
-		Map<Entity, Integer>  dmgReceived = from.getReceivedDamage();
-		
+		Map<Entity, Integer> dmgReceived = from.getReceivedDamage();
+
 		int totalDmgReceived = from.getTotalDamageReceived();
-		
-		for(Entity source : dmgReceived.keySet()) {
+
+		for (Entity source : dmgReceived.keySet()) {
 			if (!(source instanceof Player))
 				continue;
 			Integer dmgDealt = dmgReceived.get(source);
 			double receivedXP = dmgDealt * totalXP / totalDmgReceived;
-			
-			
+
 			Player player = (Player) source;
 			player.getSkills().addXp(Skills.HITPOINTS, receivedXP / 3);
 			int combatStyle = player.getCombatDefinitions().getType(Equipment.SLOT_WEAPON);
-			if(combatStyle == Combat.MELEE_TYPE || combatStyle == Combat.ALL_TYPE) {
-				switch(player.getCombatDefinitions().getMeleeCombatExperience()) {
-					case 0:
-						player.getSkills().addXp(Skills.ATTACK, receivedXP / 3);
-						player.getSkills().addXp(Skills.STRENGTH, receivedXP / 3);
-						player.getSkills().addXp(Skills.DEFENCE, receivedXP / 3);
-						break;
-					case 1:
-						player.getSkills().addXp(Skills.ATTACK, receivedXP);
-						break;
-					case 2:
-						player.getSkills().addXp(Skills.STRENGTH, receivedXP);
-						break;
-					case 3:
-						player.getSkills().addXp(Skills.DEFENCE, receivedXP);
-						break;
+			if (combatStyle == Combat.MELEE_TYPE || combatStyle == Combat.ALL_TYPE) {
+				switch (player.getCombatDefinitions().getMeleeCombatExperience()) {
+				case 0:
+					player.getSkills().addXp(Skills.ATTACK, receivedXP / 3);
+					player.getSkills().addXp(Skills.STRENGTH, receivedXP / 3);
+					player.getSkills().addXp(Skills.DEFENCE, receivedXP / 3);
+					break;
+				case 1:
+					player.getSkills().addXp(Skills.ATTACK, receivedXP);
+					break;
+				case 2:
+					player.getSkills().addXp(Skills.STRENGTH, receivedXP);
+					break;
+				case 3:
+					player.getSkills().addXp(Skills.DEFENCE, receivedXP);
+					break;
 				}
-			}else if(combatStyle == Combat.RANGE_TYPE) {
-					switch(player.getCombatDefinitions().getRangedCombatExperience()) {
-						case 0:
-							player.getSkills().addXp(Skills.RANGE, receivedXP / 2);
-							player.getSkills().addXp(Skills.DEFENCE, receivedXP / 2);
-							break;
-						case 1:
-							player.getSkills().addXp(Skills.RANGE, receivedXP);
-							break;
-						case 2:
-							player.getSkills().addXp(Skills.DEFENCE, receivedXP);
-							break;
-					}
-			}else if(combatStyle == Combat.MAGIC_TYPE) {
-				switch(player.getCombatDefinitions().getMagicCombatExperience()) {
-					case 0:
-						player.getSkills().addXp(Skills.MAGIC, receivedXP / 2);
-						player.getSkills().addXp(Skills.DEFENCE, receivedXP / 2);
-						break;
-					case 1:
-						player.getSkills().addXp(Skills.MAGIC, receivedXP);
-						break;
-					case 2:
-						player.getSkills().addXp(Skills.DEFENCE, receivedXP);
-						break;
+			} else if (combatStyle == Combat.RANGE_TYPE) {
+				switch (player.getCombatDefinitions().getRangedCombatExperience()) {
+				case 0:
+					player.getSkills().addXp(Skills.RANGE, receivedXP / 2);
+					player.getSkills().addXp(Skills.DEFENCE, receivedXP / 2);
+					break;
+				case 1:
+					player.getSkills().addXp(Skills.RANGE, receivedXP);
+					break;
+				case 2:
+					player.getSkills().addXp(Skills.DEFENCE, receivedXP);
+					break;
+				}
+			} else if (combatStyle == Combat.MAGIC_TYPE) {
+				switch (player.getCombatDefinitions().getMagicCombatExperience()) {
+				case 0:
+					player.getSkills().addXp(Skills.MAGIC, receivedXP / 2);
+					player.getSkills().addXp(Skills.DEFENCE, receivedXP / 2);
+					break;
+				case 1:
+					player.getSkills().addXp(Skills.MAGIC, receivedXP);
+					break;
+				case 2:
+					player.getSkills().addXp(Skills.DEFENCE, receivedXP);
+					break;
 				}
 			}
 		}
-		
+
 	}
-	
-	
+
 	public static double getHitChance(Entity from, Entity target, int attackStyle, boolean mainHand) {
 		double accuracy;
 		int attackType = from instanceof Player ? Combat.getStyleType(attackStyle) : attackStyle;
-		if(from instanceof Player) {
+		if (from instanceof Player) {
 			Player player = (Player) from;
-			accuracy = player.getCombatDefinitions().getSkillAccuracy(!mainHand)
-					+ (player.getCombatDefinitions().getStats()[
-					                                            mainHand ? CombatDefinitions.MAINHAND_ACCURACY
-					                                            		: CombatDefinitions.OFFHAND_ACCURACY]*10);
-			accuracy -= player.getCombatDefinitions().getStats()[
-			                                                     attackType == MAGIC_TYPE ? CombatDefinitions.MAGE_ACCURACY_PENALTY
-			                                                    		 : attackType == RANGE_TYPE ? CombatDefinitions.RANGE_ACCURACY_PENALTY
-			                                                    				 : CombatDefinitions.MELEE_ACCURACY_PENALTY];
-			//	System.out.println(Arrays.toString(player.getCombatDefinitions().getStats()));
+			accuracy = player.getCombatDefinitions().getSkillAccuracy(!mainHand) + (player.getCombatDefinitions().getStats()[mainHand ? CombatDefinitions.MAINHAND_ACCURACY : CombatDefinitions.OFFHAND_ACCURACY] * 10);
+			accuracy -= player.getCombatDefinitions().getStats()[attackType == MAGIC_TYPE ? CombatDefinitions.MAGE_ACCURACY_PENALTY : attackType == RANGE_TYPE ? CombatDefinitions.RANGE_ACCURACY_PENALTY : CombatDefinitions.MELEE_ACCURACY_PENALTY];
+			// System.out.println(Arrays.toString(player.getCombatDefinitions().getStats()));
 
 			accuracy *= player.getPrayer().getCombatRatingMultiplier(attackType);
-		}else {
+		} else {
 			accuracy = ((NPC) from).getBonuses()[3 + attackType] * 10;
-			accuracy += accuracy / 2.5; //lvl stat
+			accuracy += accuracy / 2.5; // lvl stat
 		}
-		
-		
-		if(target instanceof Player)
-			accuracy *= ((Player)target).getPrayer().getEnemyCombatRatingMultiplier(attackType);
+
+		if (target instanceof Player)
+			accuracy *= ((Player) target).getPrayer().getEnemyCombatRatingMultiplier(attackType);
 
 		double defence;
 
-		if(target instanceof Player) {
+		if (target instanceof Player) {
 			Player playerTarget = (Player) target;
-			defence = playerTarget.getCombatDefinitions().getDefenceArmor()
-					+ playerTarget.getCombatDefinitions().getStats()[CombatDefinitions.ARMOR];
-			
-			if(playerTarget.getEffectsManager().hasActiveEffect(EffectType.BERSERK))
-				defence *= 0.5;
-			
-			
-			double multiplier = playerTarget.getCombatDefinitions().getStats()[
-			                                                                   attackType == MELEE_TYPE ? CombatDefinitions.ARMOR_MELEE_WEAKNESS
-			                                                                		   : attackType == RANGE_TYPE ? CombatDefinitions.ARMOR_RANGE_WEAKNESS
-			                                                                				   : CombatDefinitions.ARMOR_MAGIC_WEAKNESS];
+			defence = playerTarget.getCombatDefinitions().getDefenceArmor() + playerTarget.getCombatDefinitions().getStats()[CombatDefinitions.ARMOR];
 
-			int styleBonus =  (int) (defence * (Combat.WEAKNESS_MULTIPLIER_NEUTRAL - (multiplier / 100)));
-			//	System.out.println("style bonus: "+styleBonus+", "+multiplier+", "+attackType);
+			if (playerTarget.getEffectsManager().hasActiveEffect(EffectType.BERSERK))
+				defence *= 0.5;
+
+			double multiplier = playerTarget.getCombatDefinitions().getStats()[attackType == MELEE_TYPE ? CombatDefinitions.ARMOR_MELEE_WEAKNESS : attackType == RANGE_TYPE ? CombatDefinitions.ARMOR_RANGE_WEAKNESS : CombatDefinitions.ARMOR_MAGIC_WEAKNESS];
+
+			int styleBonus = (int) (defence * (Combat.WEAKNESS_MULTIPLIER_NEUTRAL - (multiplier / 100)));
+			// System.out.println("style bonus: "+styleBonus+", "+multiplier+",
+			// "+attackType);
 
 			defence += styleBonus;
 			defence *= playerTarget.getPrayer().getDefenceRatingMultiplier();
-		}else{
+		} else {
 			NPC npcTarget = (NPC) target;
 			int weaknessStyle = npcTarget.getWeaknessStyle();
-			
-			double multiplier = Combat.WEAKNESS_MULTIPLIER_NEUTRAL;
-			
-			
-	
-			
-			if (attackStyle == weaknessStyle)
-				multiplier = Combat.WEAKNESS_MULTIPLIER_STYLE; //less 15% def bonus
-			else if(attackType == npcTarget.getStrengthType())
-				multiplier = Combat.WEAKNESS_MULTIPLIER_STRONG; //extra 10% def bonus
-			else if(attackType == Combat.getStyleType(weaknessStyle))
-				multiplier = Combat.WEAKNESS_MULTIPLIER_WEAK; //less 10% def bonus
-			
-			
-			defence = npcTarget.getBonuses()[6] * 10;
-			defence += defence / 2.3; //lvl stat
 
-			int styleBonus =  (int) (defence * (Combat.WEAKNESS_MULTIPLIER_NEUTRAL - multiplier));
-			
-			
-			
+			double multiplier = Combat.WEAKNESS_MULTIPLIER_NEUTRAL;
+
+			if (attackStyle == weaknessStyle)
+				multiplier = Combat.WEAKNESS_MULTIPLIER_STYLE; // less 15% def
+			// bonus
+			else if (attackType == npcTarget.getStrengthType())
+				multiplier = Combat.WEAKNESS_MULTIPLIER_STRONG; // extra 10% def
+			// bonus
+			else if (attackType == Combat.getStyleType(weaknessStyle))
+				multiplier = Combat.WEAKNESS_MULTIPLIER_WEAK; // less 10% def
+			// bonus
+
+			defence = npcTarget.getBonuses()[6] * 10;
+			defence += defence / 2.3; // lvl stat
+
+			int styleBonus = (int) (defence * (Combat.WEAKNESS_MULTIPLIER_NEUTRAL - multiplier));
+
 			defence += styleBonus;
-			
 
 		}
-		
-		
-		if(from instanceof Player)
-			defence *= ((Player)from).getPrayer().getEnemyDefenceRatingMultiplier();
+
+		if (from instanceof Player)
+			defence *= ((Player) from).getPrayer().getEnemyDefenceRatingMultiplier();
 
 		if (from.getEffectsManager().hasActiveEffect(EffectType.SMOKE_EFFECT))
 			accuracy *= (double) from.getEffectsManager().getEffectForType(EffectType.SMOKE_EFFECT).getArguments()[0];
@@ -201,11 +183,11 @@ public final class Combat {
 			accuracy *= (double) from.getEffectsManager().getEffectForType(EffectType.CONFUSE_EFFECT).getArguments()[0];
 		if (from.getEffectsManager().hasActiveEffect(EffectType.STAGGER_EFFECT))
 			accuracy *= (double) from.getEffectsManager().getEffectForType(EffectType.STAGGER_EFFECT).getArguments()[0];
-		return (accuracy / defence*Combat.WEAKNESS_MULTIPLIER_NEUTRAL) * 100;
+		return (accuracy / defence * Combat.WEAKNESS_MULTIPLIER_NEUTRAL) * 100;
 	}
 
 	public static double getAccuracy(double tierLevel) {
-		return  (0.0008*Math.pow(tierLevel, 3) + tierLevel*4 + 40) * 10;
+		return (0.0008 * Math.pow(tierLevel, 3) + tierLevel * 4 + 40) * 10;
 	}
 
 	public static boolean hasAntiDragProtection(Entity target) {
@@ -215,7 +197,6 @@ public final class Combat {
 		int shieldId = p2.getEquipment().getShieldId();
 		return shieldId == 1540 || shieldId == 11283 || shieldId == 11284 || shieldId == 16933;
 	}
-
 
 	public static boolean hasDarkbow(Player player) {
 		int weaponId = player.getEquipment().getWeaponId();
@@ -228,7 +209,7 @@ public final class Combat {
 			return item.getName().contains(mainHand ? "Ascension crossbow" : "Off-hand Ascension crossbow");
 		return false;
 	}
-	
+
 	public static final boolean usingGoliathGloves(Player player) {
 		String name = player.getEquipment().getItem(Equipment.SLOT_SHIELD) != null ? player.getEquipment().getItem(Equipment.SLOT_SHIELD).getDefinitions().getName().toLowerCase() : "";
 		if (player.getEquipment().getItem((Equipment.SLOT_HANDS)) != null) {
@@ -309,15 +290,15 @@ public final class Combat {
 		if (target instanceof NPC) {
 			NPC n = (NPC) target;
 			return n.getCombatDefinitions().getDefenceEmote();
-		} else { 
+		} else {
 			Player p = (Player) target;
 			boolean legacy = p.getCombatDefinitions().getCombatMode() == CombatDefinitions.LEGACY_COMBAT_MODE;
-			if(p.getEquipment().getShieldId() != -1)
+			if (p.getEquipment().getShieldId() != -1)
 				return legacy ? 424 : 18346;
 			Item weapon = p.getEquipment().getItem(Equipment.SLOT_WEAPON);
-			if(weapon == null)
+			if (weapon == null)
 				return legacy ? 424 : 18346;
-			int emote = weapon.getDefinitions().getCombatOpcode(legacy ? 4387 : 2917 /*4371*/);
+			int emote = weapon.getDefinitions().getCombatOpcode(legacy ? 4387 : 2917 /* 4371 */);
 			return emote == 0 ? legacy ? 424 : 18346 : emote;
 		}
 	}

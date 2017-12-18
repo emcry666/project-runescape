@@ -22,19 +22,11 @@ import com.rs.utils.Utils;
 @SuppressWarnings("serial")
 public final class DivineSkinweaver extends DungeonBoss {
 
-	private static final int[] SKELETONS =
-	{ 10630, 10680, 10693 };
+	private static final int[] SKELETONS = { 10630, 10680, 10693 };
 
-	private static final int[][] HOLES =
-	{
-	{ 0, 10 },
-	{ 5, 15 },
-	{ 11, 15 },
-	{ 15, 10 },
-	{ 15, 5 } };
+	private static final int[][] HOLES = { { 0, 10 }, { 5, 15 }, { 11, 15 }, { 15, 10 }, { 15, 5 } };
 
-	private static final String[] CLOSE_HOLE_MESSAGES =
-	{ "Ride the wind and smite the tunnel.", "We have little time, tear down the tunnel.", "Churra! Bring down the tunnel while you can." };
+	private static final String[] CLOSE_HOLE_MESSAGES = { "Ride the wind and smite the tunnel.", "We have little time, tear down the tunnel.", "Churra! Bring down the tunnel while you can." };
 
 	private final boolean[] holeClosed;
 	private int count;
@@ -72,8 +64,7 @@ public final class DivineSkinweaver extends DungeonBoss {
 		for (int[] hole : HOLES) {
 			WorldObject object = getManager().getObjectWithType(getReference(), 49289, 0, hole[0], hole[1]);
 			if (object != null && object.getId() != 49289)
-				holes.add(new int[]
-				{ object.getX() + Utils.ROTATION_DIR_X[object.getRotation()], object.getY() + Utils.ROTATION_DIR_Y[object.getRotation()] });
+				holes.add(new int[] { object.getX() + Utils.ROTATION_DIR_X[object.getRotation()], object.getY() + Utils.ROTATION_DIR_Y[object.getRotation()] });
 		}
 		if (holes.size() == 0)
 			return null;
@@ -85,7 +76,9 @@ public final class DivineSkinweaver extends DungeonBoss {
 		ArrayList<Entity> targets = getPossibleTargets();
 		if (respawnDelay > 0) {
 			respawnDelay--;
-		} else if (count < holeClosed.length && targets.size() != 0 && skeletons.size() < 5) { //blablala spawn skeletons
+		} else if (count < holeClosed.length && targets.size() != 0 && skeletons.size() < 5) { // blablala
+			// spawn
+			// skeletons
 			int[] coords = getOpenHole();
 			if (coords != null) {
 				skeletons.add((DungeonSkeletonBoss) getManager().spawnNPC(SKELETONS[Utils.random(SKELETONS.length)], 0, new WorldTile(coords[0], coords[1], 0), getReference(), DungeonConstants.BOSS_NPC, 0.4D));
@@ -109,9 +102,9 @@ public final class DivineSkinweaver extends DungeonBoss {
 		if (distance == 4 || distance < 0)
 			return;
 		int maxHeal = (int) (healTarget.getMaxHitpoints() * 0.25);
-		
+
 		healTarget.heal((distance + 1) * maxHeal / 4, 0, 60);
-		setNextAnimation(new Animation(13678)); //TODO find real one plus gfxs
+		setNextAnimation(new Animation(13678)); // TODO find real one plus gfxs
 		setNextGraphics(new Graphics(2445));
 		healTarget.setNextGraphics(new Graphics(2443, 60, 0));
 		faceEntity(healTarget);

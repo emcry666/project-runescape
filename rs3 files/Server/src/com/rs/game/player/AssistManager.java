@@ -2,14 +2,13 @@ package com.rs.game.player;
 
 public class AssistManager {
 
-	private static final byte[] SKILL_ORDER =
-	{ Skills.RUNECRAFTING, Skills.CRAFTING, Skills.FLETCHING, Skills.CONSTRUCTION, Skills.FARMING, Skills.MAGIC, Skills.SMITHING, Skills.COOKING, Skills.HERBLORE };
+	private static final byte[] SKILL_ORDER = { Skills.RUNECRAFTING, Skills.CRAFTING, Skills.FLETCHING, Skills.CONSTRUCTION, Skills.FARMING, Skills.MAGIC, Skills.SMITHING, Skills.COOKING, Skills.HERBLORE };
 
 	private Player player, assistor;
 	private int[] assistedSkills;
 	private double[] collectedExperience;
 
-	public AssistManager(Player player, Player assistor) { //gfx 1247
+	public AssistManager(Player player, Player assistor) { // gfx 1247
 		this.player = player;
 		this.assistor = assistor;
 		fillArray();

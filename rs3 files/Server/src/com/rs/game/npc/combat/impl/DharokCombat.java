@@ -10,8 +10,7 @@ public class DharokCombat extends CombatScript {
 
 	@Override
 	public Object[] getKeys() {
-		return new Object[]
-		{ 2026 };
+		return new Object[] { 2026 };
 	}
 
 	@Override

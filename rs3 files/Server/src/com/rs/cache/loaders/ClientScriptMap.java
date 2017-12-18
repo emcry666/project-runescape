@@ -23,27 +23,25 @@ public final class ClientScriptMap {
 		// Cache.STORE = new Store("C:/.jagex_cache_32/runescape/");
 		Cache.init();
 		MusicHints.init();
-		//ClientScriptMap names = ClientScriptMap.getMap(1345);
-		//ClientScriptMap hint1 = ClientScriptMap.getMap(952);
+		// ClientScriptMap names = ClientScriptMap.getMap(1345);
+		// ClientScriptMap hint1 = ClientScriptMap.getMap(952);
 		// ClientScriptMap hint2 = ClientScriptMap.getMap(1349);
-		//System.out.println(hint1);
+		// System.out.println(hint1);
 		for (Object key : ClientScriptMap.getMap(1345).values.keySet()) {
 			int id = ClientScriptMap.getMap(1351).getIntValue((long) key);
 
 			ClientScriptMap names = ClientScriptMap.getMap(1345);
 
 			/*
-			 * String text = hint.getStringValue(key);
-			 * if(text.equals("automatically.")) System.out.println(id);
+			 * String text = hint.getStringValue(key); if(text.equals("automatically.")) System.out.println(id);
 			 */
-			String hint = MusicHints.getHint((int)(long) key);/*
-			 * hint1.getValues().containsKey
-			 * ((long) key) ? hint1
-			 * .getStringValue(key) :
-			 * hint2.getStringValue(key);
-			 */
-			System.out.println("index: "+key+", id: "+id+", name: "+names.getValue((long) key)+", "+hint);
-			//	System.out.println(id + ", " + v + "; " + hint + ", "+", "+key);
+			String hint = MusicHints
+					.getHint((int) (long) key);/*
+												 * hint1.getValues().containsKey ((long) key) ? hint1
+												 * .getStringValue(key) : hint2.getStringValue(key);
+												 */
+			System.out.println("index: " + key + ", id: " + id + ", name: " + names.getValue((long) key) + ", " + hint);
+			// System.out.println(id + ", " + v + "; " + hint + ", "+", "+key);
 		}
 	}
 
@@ -139,10 +137,12 @@ public final class ClientScriptMap {
 
 	private void readValues(InputStream stream, int opcode) {
 		if (opcode == 1) {
-			keyType = stream.readByte();//Utils.method2782((byte) stream.readByte());
-		}else if (opcode == 2) {
-			valueType = stream.readByte();///Utils.method2782((byte) stream.readByte());
-		}else if (opcode == 3)
+			keyType = stream.readByte();// Utils.method2782((byte)
+			// stream.readByte());
+		} else if (opcode == 2) {
+			valueType = stream.readByte();/// Utils.method2782((byte)
+			/// stream.readByte());
+		} else if (opcode == 3)
 			defaultStringValue = stream.readString();
 		else if (opcode == 4)
 			defaultIntValue = stream.readInt();
@@ -161,7 +161,7 @@ public final class ClientScriptMap {
 		} else if (opcode == 102) {
 			valueType = stream.readSmart();
 		} else {
-			System.err.println("Missing Opcode: "+opcode);
+			System.err.println("Missing Opcode: " + opcode);
 		}
 	}
 

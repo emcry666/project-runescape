@@ -21,16 +21,16 @@ public class SpinolypCombat extends CombatScript {
 	public int attack(NPC npc, Entity target) {
 		final NPCCombatDefinitions defs = npc.getCombatDefinitions();
 		switch (Utils.random(2)) {
-			case 0:
-				npc.setNextAnimation(new Animation(defs.getAttackEmote()));
-				Projectile projectile = World.sendProjectileNew(npc, target, 2705, 34, 16, 35, 2, 10, 0);
-				delayHit(npc, Utils.projectileTimeToCycles(projectile.getEndTime()) - 1, target, getMagicHit(npc, getMaxHit(npc, NPCCombatDefinitions.MAGE, target)));
-				break;
-			case 1:
-				npc.setNextAnimation(new Animation(defs.getAttackEmote()));
-				projectile = World.sendProjectileNew(npc, target, 473, 34, 16, 35, 2, 10, 0);
-				delayHit(npc, Utils.projectileTimeToCycles(projectile.getEndTime()) - 1, target, getRangeHit(npc, getMaxHit(npc, NPCCombatDefinitions.RANGE, target)));
-				break;
+		case 0:
+			npc.setNextAnimation(new Animation(defs.getAttackEmote()));
+			Projectile projectile = World.sendProjectileNew(npc, target, 2705, 34, 16, 35, 2, 10, 0);
+			delayHit(npc, Utils.projectileTimeToCycles(projectile.getEndTime()) - 1, target, getMagicHit(npc, getMaxHit(npc, NPCCombatDefinitions.MAGE, target)));
+			break;
+		case 1:
+			npc.setNextAnimation(new Animation(defs.getAttackEmote()));
+			projectile = World.sendProjectileNew(npc, target, 473, 34, 16, 35, 2, 10, 0);
+			delayHit(npc, Utils.projectileTimeToCycles(projectile.getEndTime()) - 1, target, getRangeHit(npc, getMaxHit(npc, NPCCombatDefinitions.RANGE, target)));
+			break;
 		}
 		if (Utils.random(10) == 0)
 			EffectsManager.makePoisoned(target, 68);

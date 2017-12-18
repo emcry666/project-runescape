@@ -30,7 +30,6 @@ public final class NPCCombatDefinitionsLNew {
 		createData();
 	}
 
-
 	public static NPCCombatDefinitions getNPCCombatDefinitions(int npcId) {
 		NPCCombatDefinitions def = npcCombatDefinitions.get(npcId);
 		if (def == null)
@@ -46,10 +45,9 @@ public final class NPCCombatDefinitionsLNew {
 	private static Map<Integer, Integer> attackGFXs = new HashMap<Integer, Integer>();
 	private static Map<Integer, Integer> respawnDelays = new HashMap<Integer, Integer>();
 
-
 	private static void loadBeastData() throws IOException {
 		BufferedReader in = new BufferedReader(new FileReader(new File("./lists/beasts.txt")));
-		while(true) {
+		while (true) {
 			String line = in.readLine();
 			if (line == null) {
 				in.close();
@@ -120,14 +118,14 @@ public final class NPCCombatDefinitionsLNew {
 					String line = beasts.remove(npcId);
 					if (line == null && cDefs.getHitpoints() == 1)
 						continue;
-					writer.write("//"+(line == null ? "OLD" : "NEW")+ ": "+def.getName()+", "+def.combatLevel);
+					writer.write("//" + (line == null ? "OLD" : "NEW") + ": " + def.getName() + ", " + def.combatLevel);
 					writer.newLine();
 					int hitpoints = line == null ? cDefs.getHitpoints() * 10 : Integer.parseInt(getData(line, "lifepoints", 3, 0));
 					double xp = line == null ? cDefs.getXp() : Double.parseDouble(getData(line, "xp", 3, 1));
 					boolean poisonous = line == null ? cDefs.isPoisonous() : Boolean.parseBoolean(getData(line, "poisonous", 3, -1));
-					boolean poisonImmune = false;//TODO manually add this.
+					boolean poisonImmune = false;// TODO manually add this.
 					boolean agressive = line == null ? cDefs.isAgressive() : Boolean.parseBoolean(getData(line, "aggressive", 3, -1));
-					int attackStyle = 0;//Default.
+					int attackStyle = 0;// Default.
 					if (def.clientScriptData != null) {
 						if (def.clientScriptData.containsKey(26)) {
 							attackStyle = (int) def.clientScriptData.get(26) - 1;
@@ -144,7 +142,7 @@ public final class NPCCombatDefinitionsLNew {
 					int agroRatio = agros.containsKey(npcId) ? agros.get(npcId) : 5;
 					int oldAtkStyle = combatStyles.containsKey(npcId) ? combatStyles.get(npcId) : 0;
 					int respawnDelay = respawnDelays.containsKey(npcId) ? respawnDelays.get(npcId) : 60;
-					
+
 					boolean hasRangeAttack = false;
 					boolean hasMagicAttack = false;
 					if (def.clientScriptData != null) {
@@ -152,20 +150,20 @@ public final class NPCCombatDefinitionsLNew {
 						hasMagicAttack = def.clientScriptData.containsKey(965);
 					}
 					boolean follow = (attackStyle == NPCCombatDefinitions.MELEE && !hasRangeAttack && !hasMagicAttack) || oldAtkStyle == 3 || oldAtkStyle == 4;
-					writer.write(npcId +" - "+hitpoints+" "+attackAnim + " "+defenceAnim+" "+deathAnim+" "+(respawnDelay / 2)+" "+attackGFX+" "+attackProjectile+" "+xp+" "+follow+" "+poisonImmune+" "+poisonous+" "+agressive+ " "+agroRatio);
+					writer.write(npcId + " - " + hitpoints + " " + attackAnim + " " + defenceAnim + " " + deathAnim + " " + (respawnDelay / 2) + " " + attackGFX + " " + attackProjectile + " " + xp + " " + follow + " " + poisonImmune + " " + poisonous + " " + agressive + " " + agroRatio);
 					writer.newLine();
 					writer.flush();
 				}
 			} finally {
 				writer.close();
 			}
-		} catch(IOException e) {
+		} catch (IOException e) {
 			e.printStackTrace();
 		}
 	}
 
 	private static String getData(String line, String search, int extraSkip, int number) {
-		int baseIdx = line.indexOf("\""+search+"\"");
+		int baseIdx = line.indexOf("\"" + search + "\"");
 		if (baseIdx == -1)
 			return number == 0 ? "100" : number == 1 ? "0.2" : number == 2 ? "-1" : "";
 		return line.substring(baseIdx + search.length() + extraSkip, line.indexOf(",", baseIdx)).replace("\"", "").replace("}", "");

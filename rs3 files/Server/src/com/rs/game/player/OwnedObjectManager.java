@@ -42,7 +42,7 @@ public class OwnedObjectManager {
 		}
 		return false;
 	}
-	
+
 	public static interface ConvertEvent {
 
 		public boolean canConvert(Player player);
@@ -80,7 +80,7 @@ public class OwnedObjectManager {
 		}
 		return false;
 	}
-	
+
 	public static boolean removeObjectWithCoords(Player player, WorldObject object) {
 		for (Iterator<String> it = player.getOwnedObjectManagerKeys().iterator(); it.hasNext();) {
 			final OwnedObjectManager manager = ownedObjects.get(it.next());
@@ -123,9 +123,7 @@ public class OwnedObjectManager {
 	}
 
 	public static String addOwnedObjectManager(Player player, WorldObject object, long cycleTime) {
-		return addOwnedObjectManager(player, new WorldObject[]
-		{ object }, new long[]
-		{ cycleTime });
+		return addOwnedObjectManager(player, new WorldObject[] { object }, new long[] { cycleTime });
 	}
 
 	public static String addOwnedObjectManager(Player player, WorldObject[] object, long[] cycleTimes) {

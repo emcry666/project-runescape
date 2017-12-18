@@ -11,8 +11,7 @@ public class ClayFamiliarCombat extends CombatScript {
 
 	@Override
 	public Object[] getKeys() {
-		return new Object[]
-		{ 8241, 8243, 8245, 8247, 8249 };
+		return new Object[] { 8241, 8243, 8245, 8247, 8249 };
 	}
 
 	@Override

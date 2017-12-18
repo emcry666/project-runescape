@@ -7,8 +7,7 @@ import com.rs.game.player.Player;
 @SuppressWarnings("serial")
 public class Dreadnip extends NPC {
 
-	public static final String[] DREADNIP_MESSAGES =
-	{ "Your dreadnip gave up as you were too far away.", "Your dreadnip served its purpose and fled." };
+	public static final String[] DREADNIP_MESSAGES = { "Your dreadnip gave up as you were too far away.", "Your dreadnip served its purpose and fled." };
 
 	private Player target;
 	private int ticks;
@@ -34,7 +33,7 @@ public class Dreadnip extends NPC {
 	public Player getOwner() {
 		return target;
 	}
-	
+
 	public int getTicks() {
 		return ticks;
 	}

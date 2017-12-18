@@ -33,8 +33,7 @@ public final class FightPits {
 	private static boolean startedGame;
 	public static String currentChampion;
 
-	private static WorldTile[] GAME_TELEPORTS =
-	{ new WorldTile(4577, 5086, 0), new WorldTile(4571, 5083, 0), new WorldTile(4564, 5086, 0), new WorldTile(4564, 5097, 0), new WorldTile(4571, 5101, 0), new WorldTile(4578, 5097, 0) };
+	private static WorldTile[] GAME_TELEPORTS = { new WorldTile(4577, 5086, 0), new WorldTile(4571, 5083, 0), new WorldTile(4564, 5086, 0), new WorldTile(4564, 5097, 0), new WorldTile(4571, 5101, 0), new WorldTile(4578, 5097, 0) };
 
 	private static class GameTask extends TimerTask {
 

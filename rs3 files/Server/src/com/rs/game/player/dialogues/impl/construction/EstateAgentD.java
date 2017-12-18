@@ -9,18 +9,15 @@ import com.rs.utils.Utils;
 
 public class EstateAgentD extends Dialogue {
 
-	private static final POHLocation[] LOCATIONS =
-	{ POHLocation.RIMMINGTON, POHLocation.TAVERLY, POHLocation.POLLNIVNEACH, POHLocation.RELLEKKE, POHLocation.BRIMHAVEN, POHLocation.YANILLE, POHLocation.PRIFDDINAS };
-	private static final int[] REDECORATE_PRICE =
-	{ 5000, 5000, 7000, 10000, 15000, 25000, 0 };
-	private static final int[] REDECORATE_BUILDS =
-	{/*basic wood*/3, 0
-	/*basic stone*/, 3, 1
-	/*whitewash*/, 1, 2
-	/*fremmy wood*/, 2, 3
-	/*tropical wood*/, 3, 4
-	/*fancy stone*/, 3, 5
-	/*zenviva dark*/, 3, 6 };
+	private static final POHLocation[] LOCATIONS = { POHLocation.RIMMINGTON, POHLocation.TAVERLY, POHLocation.POLLNIVNEACH, POHLocation.RELLEKKE, POHLocation.BRIMHAVEN, POHLocation.YANILLE, POHLocation.PRIFDDINAS };
+	private static final int[] REDECORATE_PRICE = { 5000, 5000, 7000, 10000, 15000, 25000, 0 };
+	private static final int[] REDECORATE_BUILDS = { /* basic wood */3, 0
+			/* basic stone */, 3, 1
+			/* whitewash */, 1, 2
+			/* fremmy wood */, 2, 3
+			/* tropical wood */, 3, 4
+			/* fancy stone */, 3, 5
+			/* zenviva dark */, 3, 6 };
 
 	private int npcId;
 

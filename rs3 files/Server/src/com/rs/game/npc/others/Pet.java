@@ -55,14 +55,10 @@ public final class Pet extends NPC {
 	/**
 	 * Constructs a new {@code Pet} {@code Object}.
 	 * 
-	 * @param id
-	 *            The NPC id.
-	 * @param itemId
-	 *            The item id.
-	 * @param owner
-	 *            The owner.
-	 * @param tile
-	 *            The world tile.
+	 * @param id The NPC id.
+	 * @param itemId The item id.
+	 * @param owner The owner.
+	 * @param tile The world tile.
 	 */
 	public Pet(int id, int itemId, Player owner, WorldTile tile, PetDetails details) {
 		super(id, tile, -1, false);
@@ -229,8 +225,7 @@ public final class Pet extends NPC {
 	/**
 	 * Switch the Summoning orb state.
 	 * 
-	 * @param enable
-	 *            If the orb should be enabled.
+	 * @param enable If the orb should be enabled.
 	 */
 	public void switchOrb(boolean enable) {
 		owner.getVarsManager().sendVarOld(1174, enable ? getId() : 0);
@@ -284,8 +279,7 @@ public final class Pet extends NPC {
 	/**
 	 * Sets the growthRate.
 	 * 
-	 * @param growthRate
-	 *            The growthRate to set.
+	 * @param growthRate The growthRate to set.
 	 */
 	public void setGrowthRate(double growthRate) {
 		this.growthRate = growthRate;

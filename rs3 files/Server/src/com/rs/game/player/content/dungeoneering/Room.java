@@ -12,12 +12,12 @@ public class Room {
 	private HandledRoom room;
 	private int rotation;
 	private int dropId;
-//	private int creationIndex;
+	// private int creationIndex;
 
 	private Door[] doors;
 
 	private int thiefChest;
-	
+
 	private boolean critPath;
 
 	public Room(HandledRoom room, int rotation) {
@@ -26,13 +26,12 @@ public class Room {
 		reset();
 		thiefChest = -1;
 	}
-	
+
 	public void reset() {
 		critPath = false;
 		dropId = -1;
 		doors = new Door[room.getDoorDirections().length];
 	}
-
 
 	public void setDoor(int index, Door door) {
 		doors[index] = door;
@@ -41,6 +40,7 @@ public class Room {
 	public Door getDoor(int index) {
 		return doors[index];
 	}
+
 	public int getDoorsCount() {
 		return doors.length;
 	}
@@ -134,13 +134,13 @@ public class Room {
 		room.openRoom(dungeon, reference);
 	}
 
-//	public int getCreationIndex() {
-//		return creationIndex;
-//	}
-//
-//	public void setCreationIndex(int creationIndex) {
-//		this.creationIndex = creationIndex;
-//	}
+	// public int getCreationIndex() {
+	// return creationIndex;
+	// }
+	//
+	// public void setCreationIndex(int creationIndex) {
+	// this.creationIndex = creationIndex;
+	// }
 
 	public int getDropId() {
 		return dropId;

@@ -22,11 +22,10 @@ public final class TormentedDemon extends NPC {
 	private boolean[] demonPrayer;
 	private int[] cachedDamage;
 	private int shieldTimer, fixedAmount, prayerTimer, fixedCombatType, lastType;
-	
-	private static final HeadIcon[][] ICONS = {
-		{new HeadIcon(440, 0)},//MELEE
-		{new HeadIcon(440, 1)},//RANGE
-		{new HeadIcon(440, 2)},///MAGIC
+
+	private static final HeadIcon[][] ICONS = { { new HeadIcon(440, 0) }, // MELEE
+			{ new HeadIcon(440, 1) }, // RANGE
+			{ new HeadIcon(440, 2) },/// MAGIC
 	};
 
 	public TormentedDemon(int id, WorldTile tile, int mapAreaNameHash, boolean canBeAttackFromOutOfArea, boolean spawned) {
@@ -47,7 +46,7 @@ public final class TormentedDemon extends NPC {
 		resetPrayerTimer();
 		requestIconRefresh();
 	}
-	
+
 	public HeadIcon[] getIcons() {
 		return ICONS[getId() - 8349];
 	}
@@ -121,7 +120,7 @@ public final class TormentedDemon extends NPC {
 		for (Entity t : getPossibleTargets()) {
 			if (t.withinDistance(tile, 1)) {
 				if (t instanceof Player)
-					((Player)t).getPackets().sendGameMessage("The demon's magical attack splashes on you.");
+					((Player) t).getPackets().sendGameMessage("The demon's magical attack splashes on you.");
 				t.applyHit(new Hit(this, 2810, HitLook.MAGIC_DAMAGE, projectile.getEndTime()));
 			}
 		}
@@ -158,7 +157,7 @@ public final class TormentedDemon extends NPC {
 			return true;
 		return false;
 	}
-	
+
 	@Override
 	public double getMagePrayerMultiplier() {
 		return 0;

@@ -39,8 +39,7 @@ public class WorldInformation {
 	 */
 	private String ip;
 	/**
-	 * Id of player files on this world. All worlds that have same file id will
-	 * share same player file.
+	 * Id of player files on this world. All worlds that have same file id will share same player file.
 	 */
 	private int playerFilesId;
 
@@ -78,17 +77,12 @@ public class WorldInformation {
 	public String getActivity() {
 		return activity;
 	}
-	
-	
-
-
 
 	public String getIp() {
-		/*try {
-			return !Settings.HOSTED ? InetAddress.getLocalHost().getHostAddress() : ip;
-		} catch (UnknownHostException e) {
-			return "127.0.0.1";
-		}*/
+		/*
+		 * try { return !Settings.HOSTED ? InetAddress.getLocalHost().getHostAddress() : ip; } catch
+		 * (UnknownHostException e) { return "127.0.0.1"; }
+		 */
 		return ip;
 	}
 

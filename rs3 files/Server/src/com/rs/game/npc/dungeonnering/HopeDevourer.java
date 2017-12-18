@@ -39,7 +39,8 @@ public class HopeDevourer extends DungeonBoss {
 	public boolean canMove(int dir) {
 		int nextX = Utils.DIRECTION_DELTA_X[dir] + getX();
 		int nextY = Utils.DIRECTION_DELTA_Y[dir] + getY();
-		int size = getSize(); //i always do this instead of calling at loop cuz it grabs npcdef from hashmap every call
+		int size = getSize(); // i always do this instead of calling at loop cuz
+		// it grabs npcdef from hashmap every call
 		for (Player player : getManager().getParty().getTeam()) {
 			if (Utils.colides(player.getX(), player.getY(), player.getSize(), nextX, nextY, size))
 				return false;

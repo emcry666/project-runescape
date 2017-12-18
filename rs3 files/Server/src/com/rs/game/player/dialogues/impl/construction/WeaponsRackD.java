@@ -6,8 +6,7 @@ import com.rs.game.player.dialogues.Dialogue;
 
 public class WeaponsRackD extends Dialogue {
 
-	private static final String[] RACK_NAMES =
-	{ "Red Boxing Gloves", "Blue Boxing Gloves", "Wooden Sword", "Wooden Shield", "Pugle Stick" };
+	private static final String[] RACK_NAMES = { "Red Boxing Gloves", "Blue Boxing Gloves", "Wooden Sword", "Wooden Shield", "Pugle Stick" };
 
 	@Override
 	public void start() {

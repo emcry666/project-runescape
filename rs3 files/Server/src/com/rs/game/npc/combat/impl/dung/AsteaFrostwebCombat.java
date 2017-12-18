@@ -19,8 +19,7 @@ public class AsteaFrostwebCombat extends CombatScript {
 
 	@Override
 	public Object[] getKeys() {
-		return new Object[]
-		{ "Astea Frostweb" };
+		return new Object[] { "Astea Frostweb" };
 	}
 
 	@Override

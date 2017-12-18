@@ -25,18 +25,18 @@ public class VarsManager {
 
 	@Deprecated
 	public void sendVarOld(int id, int value) {
-		//sendVar(id, value, false);
+		// sendVar(id, value, false);
 	}
 
 	public boolean sendVar(int id, int value) {
 		return sendVar(id, value, false);
 	}
-	
+
 	@Deprecated
 	public void forceSendVarOld(int id, int value) {
-		//sendVar(id, value, true);
+		// sendVar(id, value, true);
 	}
-	
+
 	public void forceSendVar(int id, int value) {
 		sendVar(id, value, true);
 	}
@@ -61,18 +61,18 @@ public class VarsManager {
 
 	@Deprecated
 	public void forceSendVarBitOld(int id, int value) {
-		//setVarBit(id, value, 0x1 | 0x2);
+		// setVarBit(id, value, 0x1 | 0x2);
 	}
-	
+
 	public void forceSendVarBit(int id, int value) {
 		setVarBit(id, value, 0x1 | 0x2);
 	}
 
 	@Deprecated
 	public void sendVarBitOld(int id, int value) {
-	//	setVarBit(id, value, 0x1);
+		// setVarBit(id, value, 0x1);
 	}
-	
+
 	public boolean sendVarBit(int id, int value) {
 		return setVarBit(id, value, 0x1);
 	}
@@ -81,7 +81,7 @@ public class VarsManager {
 	public void setVarBitOld(int id, int value) {
 		setVarBit(id, value, 0);
 	}
-	
+
 	public void setVarBit(int id, int value) {
 		setVarBit(id, value, 0);
 	}

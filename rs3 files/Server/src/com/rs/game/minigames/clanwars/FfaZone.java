@@ -100,7 +100,7 @@ public final class FfaZone extends Controller {
 		case 38700:
 			remove(true);
 			player.useStairs(-1, new WorldTile(2993, 9679, 0), 0, 1);
-			//player.getControlerManager().startControler("clan_wars_request");
+			// player.getControlerManager().startControler("clan_wars_request");
 			return false;
 		}
 		return true;
@@ -154,11 +154,9 @@ public final class FfaZone extends Controller {
 	}
 
 	/**
-	 * Checks if a player's overload effect is changed (due to being in the risk
-	 * ffa zone, in pvp)
+	 * Checks if a player's overload effect is changed (due to being in the risk ffa zone, in pvp)
 	 * 
-	 * @param player
-	 *            The player.
+	 * @param player The player.
 	 * @return {@code True} if so.
 	 */
 	public static boolean isOverloadChanged(Player player) {

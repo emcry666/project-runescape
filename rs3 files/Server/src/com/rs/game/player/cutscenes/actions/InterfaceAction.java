@@ -25,10 +25,8 @@ public final class InterfaceAction extends CutsceneAction {
 	/**
 	 * Constructs a new {@code InterfaceAction} {@code Object}.
 	 * 
-	 * @param interfaceId
-	 *            The interface id.
-	 * @param actionDelay
-	 *            The action delay.
+	 * @param interfaceId The interface id.
+	 * @param actionDelay The action delay.
 	 */
 	public InterfaceAction(int interfaceId, int actionDelay) {
 		super(-1, actionDelay);

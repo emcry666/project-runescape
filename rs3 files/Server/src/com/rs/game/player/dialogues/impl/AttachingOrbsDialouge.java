@@ -15,37 +15,30 @@ import com.rs.net.decoders.handlers.InventoryOptionsHandler;
  */
 public class AttachingOrbsDialouge extends Dialogue {
 
-	private final static int[] LEVELS =
-	{ 66, 58, 54, 62, 77 }, ORBS =
-	{ 573, 575, 571, 569, 21775 }, STAFFS =
-	{ 1397, 1399, 1395, 1393, 21777 };
-	private final static double[] EXPERIENCE =
-	{ 137.5, 112.5, 100, 125, 150 };
+	private final static int[] LEVELS = { 66, 58, 54, 62, 77 }, ORBS = { 573, 575, 571, 569, 21775 }, STAFFS = { 1397, 1399, 1395, 1393, 21777 };
+	private final static double[] EXPERIENCE = { 137.5, 112.5, 100, 125, 150 };
 	public static int BATTLESTAFF = 1391;
-
 
 	@Override
 	public void start() {
 		int index = (int) parameters[0];
 		SkillsDialogue.sendSkillDialogueByProduce(player, STAFFS[index]);
-	/*	SkillsDialogue.sendSkillsDialogue(player, SkillsDialogue.MAKE, "Choose how many you wish to make,<br>then click on the item to begin.", 28, new int[]
-		{ ORBS[index] }, new ItemNameFilter() {
-
-			@Override
-			public String rename(String name) {
-				int levelRequired = LEVELS[index];
-				if (player.getSkills().getLevel(Skills.CRAFTING) < levelRequired)
-					name = "<col=ff0000>" + name + "<br><col=ff0000>Level " + levelRequired;
-				return name;
-			}
-		});*/
+		/*
+		 * SkillsDialogue.sendSkillsDialogue(player, SkillsDialogue.MAKE,
+		 * "Choose how many you wish to make,<br>then click on the item to begin." , 28, new int[] { ORBS[index] },
+		 * new ItemNameFilter() {
+		 * 
+		 * @Override public String rename(String name) { int levelRequired = LEVELS[index]; if
+		 * (player.getSkills().getLevel(Skills.CRAFTING) < levelRequired) name = "<col=ff0000>" + name +
+		 * "<br><col=ff0000>Level " + levelRequired; return name; } });
+		 */
 	}
 
 	@Override
 	public void run(int interfaceId, int componentId) {
 		SkillDialogueResult result = SkillsDialogue.getResult(player);
 		final int index = getStaffIndex(result.getProduce());
-		if(index == -1) {
+		if (index == -1) {
 			end();
 			return;
 		}
@@ -121,7 +114,7 @@ public class AttachingOrbsDialouge extends Dialogue {
 		}
 		return -1;
 	}
-	
+
 	private static int getOrbIndex(int requestedId) {
 		for (int index = 0; index < ORBS.length; index++) {
 			if (requestedId == ORBS[index]) {

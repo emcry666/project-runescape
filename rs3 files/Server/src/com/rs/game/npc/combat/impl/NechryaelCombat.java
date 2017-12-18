@@ -11,7 +11,7 @@ public class NechryaelCombat extends CombatScript {
 
 	@Override
 	public Object[] getKeys() {
-		return new Object[] {"Nechryael"};
+		return new Object[] { "Nechryael" };
 	}
 
 	@Override

@@ -16,11 +16,10 @@ public class ObjectLocationFinder {// cus im lazy
 		System.out.println("Starting..");
 		Cache.init();
 
-
 		int id = 13379;
-		
+
 		for (int regionId = 0; regionId < Short.MAX_VALUE; regionId++) {
-			int regionX = (regionId >> 8) ;
+			int regionX = (regionId >> 8);
 			int regionY = (regionId & 0xff);
 			int archiveId = Utils.getMapArchiveId(regionX, regionY);
 			byte[] data;
@@ -28,12 +27,12 @@ public class ObjectLocationFinder {// cus im lazy
 				data = Cache.STORE.getIndexes()[5].getFile(archiveId, 0);
 				Cache.STORE.getIndexes()[5].resetCachedFiles();
 				Cache.STORE.getIndexes()[5].getMainFile().resetCachedArchives();
-				
-			}catch(Throwable e) {
+
+			} catch (Throwable e) {
 				continue;
 			}
 
-			if(data == null)
+			if (data == null)
 				continue;
 			InputStream landStream = new InputStream(data);
 			int objectId = -1;
@@ -55,9 +54,9 @@ public class ObjectLocationFinder {// cus im lazy
 					int objectPlane = plane;
 					if (objectPlane < 0 || objectPlane >= 4 || plane < 0 || plane >= 4)
 						continue;
-					WorldObject o = new WorldObject(objectId, type, rotation, localX + regionX*64, localY + regionY*64, objectPlane);
-					if(o.getId() == id)
-						System.out.println(o.getId()+", "+o.getDefinitions().name+", "+o.getX()+", "+o.getY()+", "+o.getPlane());
+					WorldObject o = new WorldObject(objectId, type, rotation, localX + regionX * 64, localY + regionY * 64, objectPlane);
+					if (o.getId() == id)
+						System.out.println(o.getId() + ", " + o.getDefinitions().name + ", " + o.getX() + ", " + o.getY() + ", " + o.getPlane());
 				}
 			}
 		}

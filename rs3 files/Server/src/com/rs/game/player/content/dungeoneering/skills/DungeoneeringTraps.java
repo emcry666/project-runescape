@@ -13,12 +13,9 @@ import com.rs.utils.Utils;
 
 public class DungeoneeringTraps {
 
-	public static final int[] ITEM_TRAPS =
-	{ 17756, 17758, 17760, 17762, 17764, 17766, 17768, 17770, 17772, 17774 };
-	private static final int[] MASTRYX_HIDES =
-	{ 17424, 17426, 17428, 17430, 17432, 17434, 17436, 17438, 17440, 17442 };
-	private static final int[] HUNTER_LEVELS =
-	{ 1, 10, 20, 30, 40, 50, 60, 70, 80, 90 };
+	public static final int[] ITEM_TRAPS = { 17756, 17758, 17760, 17762, 17764, 17766, 17768, 17770, 17772, 17774 };
+	private static final int[] MASTRYX_HIDES = { 17424, 17426, 17428, 17430, 17432, 17434, 17436, 17438, 17440, 17442 };
+	private static final int[] HUNTER_LEVELS = { 1, 10, 20, 30, 40, 50, 60, 70, 80, 90 };
 
 	public static void placeTrap(final Player player, final DungeonManager manager, final int index) {
 		int levelRequired = HUNTER_LEVELS[index];

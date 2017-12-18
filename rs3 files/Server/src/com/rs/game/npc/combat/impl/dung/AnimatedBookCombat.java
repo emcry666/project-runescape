@@ -15,8 +15,7 @@ public class AnimatedBookCombat extends CombatScript {
 
 	@Override
 	public Object[] getKeys() {
-		return new Object[]
-		{ 10744 };
+		return new Object[] { 10744 };
 	}
 
 	@Override

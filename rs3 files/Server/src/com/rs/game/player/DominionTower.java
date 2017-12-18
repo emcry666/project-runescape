@@ -40,35 +40,9 @@ public final class DominionTower implements Serializable {
 	private int maxFloorEndurance;
 	private int maxFloorClimber;
 
-	private static final Item[] REWARD_CHEST = new Item[]
-			{
-		new Item(3024, 1),
-		new Item(6685, 1),
-		new Item(2448, 1),
-		new Item(15328, 1),
-		new Item(565, 10),
-		new Item(566, 10),
-		new Item(560, 10),
-		new Item(561, 10),
-		new Item(892, 10),
-		new Item(9144, 10),
-		new Item(532, 1),
-		new Item(536, 1),
-		new Item(532, 1),
-		new Item(6729, 1),
-		new Item(22346, 1),
-		new Item(22347, 1),
-		new Item(22348, 1),
-		new Item(22358, 1),
-		new Item(22362, 1),
-		new Item(22366, 1),
-		new Item(22370, 1) };
+	private static final Item[] REWARD_CHEST = new Item[] { new Item(3024, 1), new Item(6685, 1), new Item(2448, 1), new Item(15328, 1), new Item(565, 10), new Item(566, 10), new Item(560, 10), new Item(561, 10), new Item(892, 10), new Item(9144, 10), new Item(532, 1), new Item(536, 1), new Item(532, 1), new Item(6729, 1), new Item(22346, 1), new Item(22347, 1), new Item(22348, 1), new Item(22358, 1), new Item(22362, 1), new Item(22366, 1), new Item(22370, 1) };
 
-	private static final int[] NORMAL_ARENA =
-		{ 456, 768 }, LARGE_PILAR_ARENA =
-	{ 456, 776 }, SMALL_PILAR_ARENA =
-{ 456, 784 }, PODIUM_ARENA =
-	{ 456, 760 };
+	private static final int[] NORMAL_ARENA = { 456, 768 }, LARGE_PILAR_ARENA = { 456, 776 }, SMALL_PILAR_ARENA = { 456, 784 }, PODIUM_ARENA = { 456, 760 };
 
 	public void setPlayer(Player player) {
 		this.player = player;
@@ -150,38 +124,30 @@ public final class DominionTower implements Serializable {
 		}
 	}
 
-	private static final int[] MUSICS =
-		{ 1015, 1022, 1018, 1016, 1021 };
+	private static final int[] MUSICS = { 1015, 1022, 1018, 1016, 1021 };
 
 	/*
 	 * public static final class Boss {
 	 * 
-	 * private String name; private String text; private int[] ids; private
-	 * boolean forceMulti; private Item item; private int voice; private int[]
-	 * arena;
+	 * private String name; private String text; private int[] ids; private boolean forceMulti; private Item item;
+	 * private int voice; private int[] arena;
 	 * 
-	 * public Boss(String name, String text, int... ids) { this(name, text, -1,
-	 * false, null, NORMAL_ARENA, ids); }
+	 * public Boss(String name, String text, int... ids) { this(name, text, -1, false, null, NORMAL_ARENA, ids); }
 	 * 
-	 * public Boss(String name, String text, int voice, boolean forceMulti, Item
-	 * item, int[] arena, int... ids) { this.name = name; this.text = text;
-	 * this.forceMulti = forceMulti; this.ids = ids; this.item = item;
+	 * public Boss(String name, String text, int voice, boolean forceMulti, Item item, int[] arena, int... ids) {
+	 * this.name = name; this.text = text; this.forceMulti = forceMulti; this.ids = ids; this.item = item;
 	 * this.voice = voice; this.arena = arena; }
 	 * 
 	 * public boolean isForceMulti() { return forceMulti; }
 	 * 
 	 * public String getName() { return name; } }
 	 * 
-	 * private static final Boss[] BOSSES = { new Boss("Elvarg", "Grrrr",
-	 * 14548), new Boss("Delrith", "Grrrr", -1, false, new Item(2402, 1),
-	 * NORMAL_ARENA, 14578), new Boss("Evil Chicken", "Bwak bwak bwak", 3375),
-	 * new Boss("The Black Knight Titan", "Kill kill kill!", 14436), new
-	 * Boss("Bouncer", "Grrr", 14483), //custom bosses new
-	 * Boss("Corporeal Beast", null, -1, true, null, NORMAL_ARENA, 8133), new
-	 * Boss("Jad", "Roarrrrrrrrrrrrrrrrrrrrrrrrrr", 2745), new
-	 * Boss("KalphiteQueen", null, 1158), new Boss("King Black Dragon", "Grrrr",
-	 * 50), new Boss("Nomad", "You don't stand a chance!", 7985, true, null ,
-	 * NOMAD_ARENA, 8528), };
+	 * private static final Boss[] BOSSES = { new Boss("Elvarg", "Grrrr", 14548), new Boss("Delrith", "Grrrr", -1,
+	 * false, new Item(2402, 1), NORMAL_ARENA, 14578), new Boss("Evil Chicken", "Bwak bwak bwak", 3375), new
+	 * Boss("The Black Knight Titan", "Kill kill kill!", 14436), new Boss("Bouncer", "Grrr", 14483), //custom
+	 * bosses new Boss("Corporeal Beast", null, -1, true, null, NORMAL_ARENA, 8133), new Boss("Jad",
+	 * "Roarrrrrrrrrrrrrrrrrrrrrrrrrr", 2745), new Boss("KalphiteQueen", null, 1158), new Boss("King Black Dragon",
+	 * "Grrrr", 50), new Boss("Nomad", "You don't stand a chance!", 7985, true, null , NOMAD_ARENA, 8528), };
 	 */
 
 	private void startEnduranceMode() {
@@ -259,14 +225,14 @@ public final class DominionTower implements Serializable {
 
 	public String getStartFightText(int message) {
 		switch (message) {
-			case 0:
-				return "Kick my ass!";
-			case 1:
-				return "Please don't hit my face";
-			case 2:
-				return "Argh!";
-			default:
-				return "Bring it on!";
+		case 0:
+			return "Kick my ass!";
+		case 1:
+			return "Please don't hit my face";
+		case 2:
+			return "Argh!";
+		default:
+			return "Bring it on!";
 		}
 	}
 
@@ -306,7 +272,7 @@ public final class DominionTower implements Serializable {
 					player.getPackets().sendHideIComponent(1172, 2, false);
 					player.getPackets().sendHideIComponent(1172, 5, true);
 					player.getPackets().sendIComponentText(1172, 6, getMap().getStringValue(2095)
-							/* BOSSES[index].name */);
+					/* BOSSES[index].name */);
 					player.getVarsManager().sendVarOld(1241, 0);
 					player.getPackets().sendCameraPos(Cutscene.getX(player, getBaseX() + 35), Cutscene.getY(player, getBaseY() + 37), 1800);
 					player.getPackets().sendCameraLook(Cutscene.getX(player, getBaseX() + 35), Cutscene.getY(player, getBaseY() + 28), 800);
@@ -337,8 +303,7 @@ public final class DominionTower implements Serializable {
 					}
 					/*
 					 * if (nextBossIndex != -1 && BOSSES[index].item != null)
-					 * World.addGroundItem(BOSSES[index].item, new
-					 * WorldTile(getBaseX() + 26, getBaseY() + 33, 2));
+					 * World.addGroundItem(BOSSES[index].item, new WorldTile(getBaseX() + 26, getBaseY() + 33, 2));
 					 */
 					player.closeInterfaces();
 					player.getPackets().sendResetCamera();
@@ -364,19 +329,16 @@ public final class DominionTower implements Serializable {
 			player.getAppearence().generateAppearenceData();
 		}
 		/*
-		 * if (BOSSES[nextBossIndex].item != null) {
-		 * player.getInventory().deleteItem( BOSSES[nextBossIndex].item.getId(),
-		 * BOSSES[nextBossIndex].item.getAmount());
+		 * if (BOSSES[nextBossIndex].item != null) { player.getInventory().deleteItem(
+		 * BOSSES[nextBossIndex].item.getId(), BOSSES[nextBossIndex].item.getAmount());
 		 * player.getEquipment().deleteItem( BOSSES[nextBossIndex].item.getId(),
-		 * BOSSES[nextBossIndex].item.getAmount());
-		 * player.getAppearence().generateAppearenceData(); }
+		 * BOSSES[nextBossIndex].item.getAmount()); player.getAppearence().generateAppearenceData(); }
 		 */
 	}
 
 	public void loss(final int mode) {
 		/*
-		 * if(mapBaseCoords == null) { //died on logout
-		 * player.setNextWorldTile(new WorldTile(3744, 6425, 0));
+		 * if(mapBaseCoords == null) { //died on logout player.setNextWorldTile(new WorldTile(3744, 6425, 0));
 		 * player.getControlerManager().removeControlerWithoutCheck(); return; }
 		 */
 		removeItem();
@@ -676,8 +638,7 @@ public final class DominionTower implements Serializable {
 		rewards.remove(slot, reward);
 		rewards.shift();
 		if (type == 1)
-			player.getBank().addItems(new Item[]
-					{ reward }, false);
+			player.getBank().addItems(new Item[] { reward }, false);
 		else if (type == 0)
 			player.getInventory().addItem(reward);
 		refreshRewards();
@@ -689,8 +650,7 @@ public final class DominionTower implements Serializable {
 		for (Item reward : rewards.getItems()) {
 			if (reward == null)
 				continue;
-			player.getBank().addItems(new Item[]
-					{ reward }, false);
+			player.getBank().addItems(new Item[] { reward }, false);
 		}
 		rewards.clear();
 		refreshRewards();

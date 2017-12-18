@@ -12,8 +12,7 @@ import com.rs.game.player.content.prayer.Burying.Bone;
 
 public class BoneOffering extends Action {
 
-	private static final double[] BASE_ALTAR_PERCENT_BOOST =
-	{ 1D, 1.1D, 1.25D, 1.5D, 1.75D, 2D, 2.5D };
+	private static final double[] BASE_ALTAR_PERCENT_BOOST = { 1D, 1.1D, 1.25D, 1.5D, 1.75D, 2D, 2.5D };
 	private static final Animation OFFERING_ANIMATION = new Animation(3705);
 	private static final Graphics OFFERING_GRAPHICS = new Graphics(624, 0, 100);
 

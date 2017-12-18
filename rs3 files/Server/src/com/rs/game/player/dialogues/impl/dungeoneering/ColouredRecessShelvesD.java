@@ -15,7 +15,7 @@ public class ColouredRecessShelvesD extends Dialogue {
 
 	@Override
 	public void run(int interfaceId, int componentId) {
-		if(Math.random() < 0.2) {
+		if (Math.random() < 0.2) {
 			player.getPackets().sendGameMessage("The vial reacts explosively as you pick it up.");
 			player.applyHit(new Hit(player, (int) (player.getMaxHitpoints() * 0.25D), HitLook.REGULAR_DAMAGE));
 			end();

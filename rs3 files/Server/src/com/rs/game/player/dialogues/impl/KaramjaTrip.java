@@ -10,15 +10,13 @@ public class KaramjaTrip extends Dialogue {
 	@Override
 	public void start() {
 		npcId = (Integer) parameters[0];
-		sendEntityDialogue(SEND_1_TEXT_CHAT, new String[]
-		{ NPCDefinitions.getNPCDefinitions(npcId).name, "Do you want to go on a trip to Karamja?" }, IS_NPC, npcId, 9827);
+		sendEntityDialogue(SEND_1_TEXT_CHAT, new String[] { NPCDefinitions.getNPCDefinitions(npcId).name, "Do you want to go on a trip to Karamja?" }, IS_NPC, npcId, 9827);
 	}
 
 	@Override
 	public void run(int interfaceId, int componentId) {
 		if (stage == -1) {
-			sendEntityDialogue(SEND_1_TEXT_CHAT, new String[]
-			{ NPCDefinitions.getNPCDefinitions(npcId).name, "The trip will cost you 30 coins." }, IS_NPC, npcId, 9827);
+			sendEntityDialogue(SEND_1_TEXT_CHAT, new String[] { NPCDefinitions.getNPCDefinitions(npcId).name, "The trip will cost you 30 coins." }, IS_NPC, npcId, 9827);
 			stage = 0;
 		} else if (stage == 0) {
 			sendOptionsDialogue("Would you like to go?", "Yes please.", "No thank you.");

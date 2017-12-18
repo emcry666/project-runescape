@@ -16,20 +16,19 @@ public class ReportAbuse {
 		player.getInterfaceManager().sendCentralInterface(1406);
 		return true;
 	}
-	
+
 	public static void reportABug(Player player) {
 		player.getInterfaceManager().sendCentralInterface(1405);
 	}
-	
+
 	public static void reportAPlayer(Player player, String name) {
 		player.getInterfaceManager().sendCentralInterface(594);
-	 	if (name != null)
+		if (name != null)
 			player.getPackets().sendCSVarString(2578, name);
 		if (player.getRights() > 0)
 			player.getPackets().sendHideIComponent(594, 9, false);
-	 
+
 	}
-	
 
 	public static void report(Player player, String name) {
 		if (player.getInterfaceManager().containsScreenInterface() || player.getInterfaceManager().containsBankInterface()) {

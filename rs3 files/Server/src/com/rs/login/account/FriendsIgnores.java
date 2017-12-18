@@ -259,7 +259,7 @@ public class FriendsIgnores implements Serializable {
 		boolean wasOnline = isAccountOnline(account, previousStatus);
 		boolean isOnline = isAccountOnline(account, currentStatus);
 		if (wasOnline == isOnline)
-			return; // Our visibility of that account did not change	
+			return; // Our visibility of that account did not change
 
 		OutputStream packet = LoginChannelsPacketEncoder.createUpdateFriendsPacket(this.account.getUsername());
 		LoginChannelsPacketEncoder.appendUpdateFriend(packet, true, account.getDisplayName(), account.getPreviousDisplayName(), isOnline ? account.getWorld().getId() : 0, getRank(account.getUsername()), isOnline ? ((account.isLobby() ? "Lobby " : "World ") + account.getWorld().getId()) : null);

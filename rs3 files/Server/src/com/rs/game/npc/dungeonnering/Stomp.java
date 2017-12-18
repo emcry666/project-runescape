@@ -27,7 +27,7 @@ import com.rs.utils.Utils;
 @SuppressWarnings("serial")
 public final class Stomp extends DungeonBoss {
 
-	private static final int IVULNERABLE_TIMER = 27; //16.5 sec
+	private static final int IVULNERABLE_TIMER = 27; // 16.5 sec
 	private int stage;
 	private int count;
 	private int lodeStoneType;
@@ -37,7 +37,7 @@ public final class Stomp extends DungeonBoss {
 
 	public Stomp(int id, WorldTile tile, DungeonManager manager, RoomReference reference) {
 		super(id, tile, manager, reference);
-		setCantFollowUnderCombat(true); //force cant walk
+		setCantFollowUnderCombat(true); // force cant walk
 		lodestones = new boolean[2];
 		shadows = new ArrayList<int[]>();
 	}
@@ -107,8 +107,7 @@ public final class Stomp extends DungeonBoss {
 			refreshLodestone(i);
 	}
 
-	private static final int[] CRYSTAL =
-	{ 15752, 15751, 15750 };
+	private static final int[] CRYSTAL = { 15752, 15751, 15750 };
 
 	public void refreshLodestone(int index) {
 
@@ -160,8 +159,7 @@ public final class Stomp extends DungeonBoss {
 				int y = 2 + Utils.getRandom(9);
 				if (containsShadow(x, y) || !getManager().isFloorFree(getReference(), x, y))
 					continue;
-				shadows.add(new int[]
-				{ x, y });
+				shadows.add(new int[] { x, y });
 				getManager().spawnObject(getReference(), 49269, 10, 0, x, y);
 				break l;
 			}
@@ -236,21 +234,19 @@ public final class Stomp extends DungeonBoss {
 		getManager().openStairs(getReference());
 	}
 
-/*    @Override
-    public Item sendDrop(Player player, Drop drop) {
-	Item item = new Item(drop.getItemId());
-	player.getInventory().addItemDrop(item.getId(), item.getAmount());
-	return item;
-    }*/
+	/*
+	 * @Override public Item sendDrop(Player player, Drop drop) { Item item = new Item(drop.getItemId());
+	 * player.getInventory().addItemDrop(item.getId(), item.getAmount()); return item; }
+	 */
 
 	@Override
 	public void setNextFaceEntity(Entity entity) {
-		//this boss doesnt face
+		// this boss doesnt face
 	}
 
 	@Override
 	public boolean clipedProjectile(WorldTile tile, boolean checkClose, int size) {
-		//because npc is under cliped data
+		// because npc is under cliped data
 		return getManager().isAtBossRoom(tile);
 	}
 

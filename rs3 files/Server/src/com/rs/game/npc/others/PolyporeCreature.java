@@ -42,7 +42,8 @@ public class PolyporeCreature extends NPC {
 	}
 
 	public static void useStairs(final Player player, WorldTile tile, final boolean down) {
-		player.useStairs(down ? 15458 : 15456, tile, 2, 3); //TODO find correct emote
+		player.useStairs(down ? 15458 : 15456, tile, 2, 3); // TODO find correct
+		// emote
 		WorldTasksManager.schedule(new WorldTask() {
 			@Override
 			public void run() {
@@ -96,7 +97,7 @@ public class PolyporeCreature extends NPC {
 		if (getCombat().getTarget() == null)
 			setTarget(player);
 		NeemDrupeSqueeze.removeCharge(player);
-		//TODO find emote and message
+		// TODO find emote and message
 	}
 
 	@Override

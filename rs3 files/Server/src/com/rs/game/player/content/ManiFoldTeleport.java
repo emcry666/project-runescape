@@ -14,21 +14,8 @@ import com.rs.utils.Utils;
 public class ManiFoldTeleport {
 
 	private static final int REQUEST_INTERFACE = 326;
-	private static final String[][] TELEPORT_NAMES =
-	{
-	{ "MoonClan", "WaterBirth Island", "Barbarian Outpost", "Port Khazard", "Fishing Guild", "Catherby", "Ice Platue (Dangerous)", "Trollhiem" } };
-	private static final WorldTile[][] TELEPORT_LOCATION =
-	{
-		{
-			new WorldTile(2114, 3914, 0),
-			new WorldTile(2546, 3758, 0),
-			new WorldTile(2635, 3166, 0),
-			new WorldTile(2635, 3166, 0),
-			new WorldTile(2614, 3384, 0),
-			new WorldTile(2795, 3434, 0),
-			new WorldTile(2974, 3940, 0),
-			new WorldTile(2814, 3680, 0) },
-		{} };
+	private static final String[][] TELEPORT_NAMES = { { "MoonClan", "WaterBirth Island", "Barbarian Outpost", "Port Khazard", "Fishing Guild", "Catherby", "Ice Platue (Dangerous)", "Trollhiem" } };
+	private static final WorldTile[][] TELEPORT_LOCATION = { { new WorldTile(2114, 3914, 0), new WorldTile(2546, 3758, 0), new WorldTile(2635, 3166, 0), new WorldTile(2635, 3166, 0), new WorldTile(2614, 3384, 0), new WorldTile(2795, 3434, 0), new WorldTile(2974, 3940, 0), new WorldTile(2814, 3680, 0) }, {} };
 
 	public static void openInterface(Player player, String name, int index, boolean isGroupTeleport) {
 		player.getDialogueManager().startDialogue(new Dialogue() {

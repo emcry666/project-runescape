@@ -26,10 +26,7 @@ public class SorceressGarden extends Controller {
 
 	public enum Gate {
 
-		WINTER(21709, 1, new WorldTile(2902, 5470, 0), new WorldTile(2903, 5470, 0), 231),
-		SPRING(21753, 25, new WorldTile(2921, 5473, 0), new WorldTile(2920, 5473, 0), 228),
-		AUTUMN(21731, 45, new WorldTile(2913, 5462, 0), new WorldTile(2913, 5463, 0), 229),
-		SUMMER(21687, 65, new WorldTile(2910, 5481, 0), new WorldTile(2910, 5480, 0), 230);
+		WINTER(21709, 1, new WorldTile(2902, 5470, 0), new WorldTile(2903, 5470, 0), 231), SPRING(21753, 25, new WorldTile(2921, 5473, 0), new WorldTile(2920, 5473, 0), 228), AUTUMN(21731, 45, new WorldTile(2913, 5462, 0), new WorldTile(2913, 5463, 0), 229), SUMMER(21687, 65, new WorldTile(2910, 5481, 0), new WorldTile(2910, 5480, 0), 230);
 
 		private int objectId;
 		private int levelReq;
@@ -54,14 +51,10 @@ public class SorceressGarden extends Controller {
 
 		/**
 		 * 
-		 * @param player
-		 *            the Player
-		 * @param objectId
-		 *            Object id
-		 * @param lvlReq
-		 *            Level required for entrance
-		 * @param toTile
-		 *            Where the player will be spawned
+		 * @param player the Player
+		 * @param objectId Object id
+		 * @param lvlReq Level required for entrance
+		 * @param toTile Where the player will be spawned
 		 */
 		public static void handleGates(Player player, int objectId, int lvlReq, WorldTile toTile, int musicId) {
 			if (lvlReq > player.getSkills().getLevelForXp(Skills.THIEVING)) {

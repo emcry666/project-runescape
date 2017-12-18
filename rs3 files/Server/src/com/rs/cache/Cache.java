@@ -22,7 +22,6 @@ public final class Cache {
 		STORE = new Store(Settings.CACHE_PATH);
 	}
 
-
 	public static final byte[] generateUkeysFile() {
 		OutputStream stream = new OutputStream();
 		stream.writeByte(STORE.getIndexes().length);
@@ -50,8 +49,7 @@ public final class Cache {
 		byte[] hash = new byte[hashStream.getOffset()];
 		hashStream.setOffset(0);
 		hashStream.getBytes(hash, 0, hash.length);
-		hash = Utils.cryptRSA(hash, Settings.GRAB_SERVER_PRIVATE_EXPONENT,
-				Settings.GRAB_SERVER_MODULUS);
+		hash = Utils.cryptRSA(hash, Settings.GRAB_SERVER_PRIVATE_EXPONENT, Settings.GRAB_SERVER_MODULUS);
 		stream.writeBytes(hash);
 		archive = new byte[stream.getOffset()];
 		stream.setOffset(0);

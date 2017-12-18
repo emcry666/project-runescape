@@ -96,10 +96,10 @@ public class InventoryOptionsHandler {
 		else if (itemId == 15365)
 			ItemSets.openSkillPack(player, itemId, 9979, 50, player.getInventory().getAmountOf(itemId));
 		else if (itemId == 1225) {
-			// player.getPackets().sendInputIntegerScript("What would you like to do when you grow up?");
+			// player.getPackets().sendInputIntegerScript("What would you like
+			// to do when you grow up?");
 			// player.getTemporaryAttributtes().put("xformring", Boolean.TRUE);
-		}
-		else if (itemId >= 5509 && itemId <= 5514) {
+		} else if (itemId >= 5509 && itemId <= 5514) {
 			int pouch = -1;
 			if (itemId == 5509)
 				pouch = 0;
@@ -111,19 +111,15 @@ public class InventoryOptionsHandler {
 				pouch = 3;
 			Runecrafting.emptyPouch(player, pouch);
 			player.stopAll(false);
-		}
-		else if (itemId >= 15086 && itemId <= 15100) {
+		} else if (itemId >= 15086 && itemId <= 15100) {
 			Dicing.handleRoll(player, itemId, true);
 			return;
-		}
-		else if (itemId == 6583 || itemId == 7927) {
+		} else if (itemId == 6583 || itemId == 7927) {
 			AccessorySmithing.ringTransformation(player, itemId);
-		}
-		else if (item.getDefinitions().containsInventoryOption(1, "Extinguish")) {
+		} else if (item.getDefinitions().containsInventoryOption(1, "Extinguish")) {
 			if (LightSource.extinguishSource(player, slotId, false))
 				return;
-		}
-		else {
+		} else {
 			handleWear(player, slotId, item);
 		}
 	}
@@ -146,8 +142,7 @@ public class InventoryOptionsHandler {
 					player.stopAll(false, true, false);
 				}
 			});
-		}
-		else if (!player.getSwitchItemCache().contains(slotId)) {
+		} else if (!player.getSwitchItemCache().contains(slotId)) {
 			player.getSwitchItemCache().add(slotId);
 		}
 	}
@@ -170,8 +165,7 @@ public class InventoryOptionsHandler {
 					player.setNextWorldTile(new WorldTile(1752, 5137, 0));
 					player.getPackets().sendGameMessage("You seem to have dropped down into a network of mole tunnels.");
 					return;
-				}
-				else if (player.withinDistance(new WorldTile(2748, 3734, 0), 2)) {
+				} else if (player.withinDistance(new WorldTile(2748, 3734, 0), 2)) {
 					player.lock();
 					player.setNextGraphics(new Graphics(80, 5, 60));
 					FadingScreen.fade(player, 1000, new Runnable() {
@@ -204,8 +198,7 @@ public class InventoryOptionsHandler {
 		if (leatherIndex != -1) {
 			player.getDialogueManager().startDialogue("LeatherCraftingD", leatherIndex, false);
 			return;
-		}
-		else if (player.getTreasureTrailsManager().useItem(item, slotId))
+		} else if (player.getTreasureTrailsManager().useItem(item, slotId))
 			return;
 		else if (Consumables.eat(player, slotId, item))
 			return;
@@ -234,8 +227,7 @@ public class InventoryOptionsHandler {
 			player.setNextAnimation(new Animation(832));
 			player.lock(1);
 			World.spawnObjectTemporary(new WorldObject(73268, 10, 0, player.getX() + 1, player.getY(), player.getPlane()), 3600 * 1000);
-		}
-		else if (itemId >= 5509 && itemId <= 5514) {
+		} else if (itemId >= 5509 && itemId <= 5514) {
 			int pouch = -1;
 			if (itemId == 5509)
 				pouch = 0;
@@ -247,24 +239,20 @@ public class InventoryOptionsHandler {
 				pouch = 3;
 			Runecrafting.fillPouch(player, pouch);
 			return;
-		}
-		else if (itemId == 952) {// spade
+		} else if (itemId == 952) {// spade
 			dig(player);
 			return;
-		}
-		else if (itemId == 10952) {
+		} else if (itemId == 10952) {
 			if (Slayer.isUsingBell(player))
 				return;
-		}
-		else if (HerbCleaning.clean(player, item, slotId))
+		} else if (HerbCleaning.clean(player, item, slotId))
 			return;
 		else if (TrapAction.isTrap(player, new WorldTile(player), itemId))
 			return;
 		else if (Bone.forId(itemId) != null) {
 			Bone.bury(player, slotId);
 			return;
-		}
-		else if (Magic.useTabTeleport(player, itemId))
+		} else if (Magic.useTabTeleport(player, itemId))
 			return;
 		else if (item.getId() == 22370)
 			Summoning.openDreadNipSelection(player);
@@ -273,8 +261,7 @@ public class InventoryOptionsHandler {
 			player.getPackets().sendGameMessage("The rock cake resists all attempts to eat it.");
 			player.applyHit(new Hit(player, player.getHitpoints() - 10 < 35 ? player.getHitpoints() - 35 < 0 ? 0 : player.getHitpoints() - 35 : 10, HitLook.REGULAR_DAMAGE));
 
-		}
-		else if (ItemTransportation.transportationDialogue(player, item, true))
+		} else if (ItemTransportation.transportationDialogue(player, item, true))
 			return;
 		else if (Lamps.isSelectable(itemId) || Lamps.isSkillLamp(itemId) || Lamps.isOtherLamp(itemId))
 			Lamps.processLampClick(player, slotId, itemId);
@@ -286,12 +273,10 @@ public class InventoryOptionsHandler {
 			if (player.withinDistance(Settings.START_PLAYER_LOCATION, 120)) {
 				player.getPackets().sendGameMessage("Planting flowers in this area has been disabled.");
 				return;
-			}
-			else if (player.isCanPvp()) {
+			} else if (player.isCanPvp()) {
 				player.getPackets().sendGameMessage("You cant plant a seed while doing this action.");
 				return;
-			}
-			else if (World.getStandartObject(player) != null) {
+			} else if (World.getStandartObject(player) != null) {
 				player.getPackets().sendGameMessage("You can't plant a flower here.");
 				return;
 			}
@@ -311,8 +296,7 @@ public class InventoryOptionsHandler {
 					player.getDialogueManager().startDialogue("FlowerPickD", object);
 				}
 			}, 2);
-		}
-		else if (itemId == 4251)
+		} else if (itemId == 4251)
 			Magic.useEctoPhial(player, item);
 		else if (itemId == 15262)
 			ItemSets.openSkillPack(player, itemId, 12183, 5000, 1);
@@ -358,20 +342,17 @@ public class InventoryOptionsHandler {
 			if (player.getSkills().getLevel(Skills.CRAFTING) < 77) {
 				player.getPackets().sendGameMessage("You need a Crafting level of at least 77 in order to combine the shards.");
 				return;
-			}
-			else if (player.getInventory().containsItem(itemId, 100)) {
+			} else if (player.getInventory().containsItem(itemId, 100)) {
 				player.setNextAnimation(new Animation(713));
 				player.setNextGraphics(new Graphics(1383));
 				player.getInventory().deleteItem(new Item(itemId, 100));
 				player.getInventory().addItem(new Item(21775, 1));
 				player.getSkills().addXp(Skills.CRAFTING, 150);
 				player.getPackets().sendGameMessage("You combine the shards into an orb.");
-			}
-			else {
+			} else {
 				player.getPackets().sendGameMessage("You need at least 100 shards in order to create an orb of armadyl.");
 			}
-		}
-		else if (itemId == 5974) {
+		} else if (itemId == 5974) {
 			if (!player.getInventory().containsItemToolBelt(Smithing.HAMMER)) {
 				player.getDialogueManager().startDialogue("SimpleMessage", "You need a hammer in order to break open a coconut.");
 				return;
@@ -379,7 +360,7 @@ public class InventoryOptionsHandler {
 			player.getInventory().addItem(new Item(5976, 1));
 			player.getInventory().deleteItem(new Item(5974, 1));
 			player.getPackets().sendGameMessage("You smash the coconut with a hammer and it breaks into two symmetrical pieces.");
-		}else if (itemId == 24352) 
+		} else if (itemId == 24352)
 			player.getDialogueManager().startDialogue("DragonBoneUpgradeKiteInfoD");
 		else if (itemId == SqirkFruitSqueeze.SqirkFruit.AUTUMM.getFruitId())
 			player.getDialogueManager().startDialogue("SqirkFruitSqueeze", SqirkFruit.AUTUMM);
@@ -393,8 +374,7 @@ public class InventoryOptionsHandler {
 			player.getDialogueManager().startDialogue("SimplePlayerMessage", "Ugh, this is inedible.");
 		else if ((item.getDefinitions().containsInventoryOption(0, "Craft") || item.getDefinitions().containsInventoryOption(0, "Fletch") || item.getDefinitions().containsInventoryOption(0, "String")) && SkillsDialogue.selectTool(player, item.getId())) {
 			return;
-		}
-		else
+		} else
 			player.getPackets().sendGameMessage("Nothing interesting happens.");
 		if (Settings.DEBUG)
 			Logger.log("ItemHandler", "Item option 1:" + itemId + ", Slot Id:" + slotId);
@@ -424,7 +404,7 @@ public class InventoryOptionsHandler {
 	}
 
 	public static void handleInterfaceOnInterface(final Player player, InputStream stream) {
-		
+
 		int usedWithId = stream.readUnsignedShortLE();
 		int interface1 = stream.readInt();
 		int fromSlot = stream.readUnsignedShort128();
@@ -489,8 +469,7 @@ public class InventoryOptionsHandler {
 			if (combination != null) {
 				player.getDialogueManager().startDialogue("CombinationsD", combination);
 				return;
-			}
-			else if (Firemaking.isFiremaking(player, itemUsed, usedWith))
+			} else if (Firemaking.isFiremaking(player, itemUsed, usedWith))
 				return;
 			else if (OrnamentKits.attachKit(player, itemUsed, usedWith, fromSlot, toSlot))
 				return;
@@ -505,24 +484,20 @@ public class InventoryOptionsHandler {
 					TreeSaplings.plantSeed(player, usedWithId, fromSlot);
 				else
 					TreeSaplings.plantSeed(player, itemUsedId, toSlot);
-			}
-			else if (Drinkables.mixPot(player, itemUsed, usedWith, fromSlot, toSlot, true) != -1)
+			} else if (Drinkables.mixPot(player, itemUsed, usedWith, fromSlot, toSlot, true) != -1)
 				return;
 			else if (WeaponPoison.poison(player, itemUsed, usedWith, false))
 				return;
 			else if (PrayerBooks.isGodBook(itemUsedId, false) || PrayerBooks.isGodBook(usedWithId, false)) {
 				PrayerBooks.bindPages(player, itemUsed.getName().contains(" page ") ? usedWithId : itemUsedId);
-			}
-			else if (contains(22498, 554, itemUsed, usedWith) || contains(22498, 22448, itemUsed, usedWith)) {
+			} else if (contains(22498, 554, itemUsed, usedWith) || contains(22498, 22448, itemUsed, usedWith)) {
 				if (player.getSkills().getLevel(Skills.FARMING) < 80) {
 					player.getPackets().sendGameMessage("You need a Farming level of 80 in order to make a polypore staff.");
 					return;
-				}
-				else if (!player.getInventory().containsItem(22448, 3000)) {
+				} else if (!player.getInventory().containsItem(22448, 3000)) {
 					player.getPackets().sendGameMessage("You need 3,000 polypore spores in order to make a polypore staff.");
 					return;
-				}
-				else if (!player.getInventory().containsItem(554, 15000)) {
+				} else if (!player.getInventory().containsItem(554, 15000)) {
 					player.getPackets().sendGameMessage("You need 15,000 fire runes in order to make a polypore staff.");
 					return;
 				}
@@ -533,8 +508,7 @@ public class InventoryOptionsHandler {
 				player.getInventory().deleteItem(22498, 1);
 				player.getInventory().addItem(22494, 1);
 				player.getPackets().sendGameMessage("You attach the polypore spores and infuse the fire runes to the stick in order to create a staff.");
-			}
-			else if (contains(22496, 22448, itemUsed, usedWith)) {
+			} else if (contains(22496, 22448, itemUsed, usedWith)) {
 				if (player.getSkills().getLevel(Skills.FARMING) < 80) {
 					player.getPackets().sendGameMessage("You need a Farming level of 80 in order to recharge polypore staff.");
 					return;
@@ -551,8 +525,7 @@ public class InventoryOptionsHandler {
 				player.getCharges().resetCharges(22496);
 				player.getInventory().addItem(22494, 1);
 				player.getPackets().sendGameMessage("You attach the polypore spores to the staff.");
-			}
-			else if (contains(11710, 11712, itemUsed, usedWith) || contains(11710, 11714, itemUsed, usedWith) || contains(11712, 11714, itemUsed, usedWith))
+			} else if (contains(11710, 11712, itemUsed, usedWith) || contains(11710, 11714, itemUsed, usedWith) || contains(11712, 11714, itemUsed, usedWith))
 				GodswordCreating.joinPieces(player, false);
 			else if (Slayer.createSlayerHelmet(player, itemUsedId, usedWithId))
 				return;
@@ -561,8 +534,7 @@ public class InventoryOptionsHandler {
 				if (pot == null)
 					return;
 				player.getDialogueManager().startDialogue("FlaskDecantingD", pot);
-			}
-			else if (contains(11690, 11702, itemUsed, usedWith))
+			} else if (contains(11690, 11702, itemUsed, usedWith))
 				GodswordCreating.attachHilt(player, 0);
 			else if (contains(11690, 11704, itemUsed, usedWith))
 				GodswordCreating.attachHilt(player, 1);
@@ -588,8 +560,7 @@ public class InventoryOptionsHandler {
 				player.getInventory().addItem(new Item(Herblore.COCONUT_MILK, 1));
 				player.getInventory().addItem(new Item(5978, 1));
 				player.getPackets().sendGameMessage("You pour the milk of the coconut into a vial.");
-			}
-			else if (contains(4151, 21369, itemUsed, usedWith)) {
+			} else if (contains(4151, 21369, itemUsed, usedWith)) {
 				if (!player.getSkills().hasRequiriments(Skills.ATTACK, 75, Skills.SLAYER, 80)) {
 					player.getPackets().sendGameMessage("You need an attack level of 75 and slayer level of 80 in order to attach the whip vine to the whip.");
 					return;
@@ -597,27 +568,24 @@ public class InventoryOptionsHandler {
 				player.getInventory().replaceItem(21371, 1, toSlot);
 				player.getInventory().deleteItem(fromSlot, itemUsed);
 				player.getPackets().sendGameMessage("You attach the whip vine to the abbysal whip.");
-			}
-			else if (contains(985, 987, itemUsed, usedWith)) { // crystal key
+			} else if (contains(985, 987, itemUsed, usedWith)) { // crystal key
 				// make
 				player.getInventory().deleteItem(toSlot, usedWith);
 				itemUsed.setId(989);
 				player.getInventory().refresh(fromSlot);
 				player.getPackets().sendGameMessage("You join the two halves of the key together.");
-			}
-			else
+			} else
 				player.getPackets().sendGameMessage("Nothing interesting happens.");
 			if (Settings.DEBUG)
 				Logger.log("ItemHandler", "Used:" + itemUsed.getId() + ", With:" + usedWith.getId());
-		}
-		else if ((interfaceId == 1461 && interfaceComponent == 1) && (interfaceId2 == Inventory.INVENTORY_INTERFACE || interfaceId2 == Inventory.INVENTORY_INTERFACE_2) && !player.getInterfaceManager().containsInventoryInter()) {
+		} else if ((interfaceId == 1461 && interfaceComponent == 1) && (interfaceId2 == Inventory.INVENTORY_INTERFACE || interfaceId2 == Inventory.INVENTORY_INTERFACE_2) && !player.getInterfaceManager().containsInventoryInter()) {
 			if (toSlot >= 28)
 				return;
 			Item item = player.getInventory().getItem(toSlot);
 			if (item == null || item.getId() != usedWithId)
 				return;
 			player.getActionbar().useAbility(new MagicAbilityShortcut(fromSlot), item);
-			//Magic.handleSpellOnItem(player, fromSlot, (byte) toSlot);
+			// Magic.handleSpellOnItem(player, fromSlot, (byte) toSlot);
 		}
 	}
 
@@ -652,12 +620,10 @@ public class InventoryOptionsHandler {
 			player.getInventory().replaceItem(4151, 1, slotId);
 			player.getInventory().addItem(21369, 1);
 			player.getPackets().sendGameMessage("You split the whip vine from the abbysal whip.");
-		}
-		else if (itemId == 4155) {
+		} else if (itemId == 4155) {
 			player.getInterfaceManager().sendCentralInterface(1309);
 			player.getPackets().sendIComponentText(1309, 37, "List Co-Op Partner");
-		}
-		else if (itemId == 11694 || itemId == 11696 || itemId == 11698 || itemId == 11700)
+		} else if (itemId == 11694 || itemId == 11696 || itemId == 11698 || itemId == 11700)
 			GodswordCreating.dismantleGS(player, item, slotId);
 		else if (itemId == 23044 || itemId == 23045 || itemId == 23046 || itemId == 23047)
 			player.getDialogueManager().startDialogue("MindSpikeD", itemId, slotId);
@@ -697,8 +663,7 @@ public class InventoryOptionsHandler {
 				return;
 			}
 			player.getMoneyPouch().sendDynamicInteraction(item.getAmount(), false, MoneyPouch.TYPE_POUCH_INVENTORY);
-		}
-		else if (itemId == 1438)
+		} else if (itemId == 1438)
 			Runecrafting.locate(player, 3127, 3405);
 		else if (itemId == 1440)
 			Runecrafting.locate(player, 3306, 3474);
@@ -723,16 +688,14 @@ public class InventoryOptionsHandler {
 		else if (itemId == 21776) {
 			if (Herblore.isRawIngredient(player, item.getId()))
 				return;
-		}
-		else if (itemId == 11283)
+		} else if (itemId == 11283)
 			DragonfireShield.empty(player);
 		else if (itemId == 15492 || itemId == 13263)
 			Slayer.dissasembleSlayerHelmet(player, itemId == 15492);
 		else if (Slayer.isBlackMask(itemId)) {
 			player.getInventory().replaceItem(8921, 1, slot);
 			player.getPackets().sendGameMessage("You remove all the charges from the black mask.");
-		}
-		else
+		} else
 			player.getPackets().sendGameMessage("Nothing interesting happens.");
 	}
 
@@ -762,8 +725,7 @@ public class InventoryOptionsHandler {
 			return;
 		if (player.isBeginningAccount()) {
 			World.addGroundItem(item, new WorldTile(player), player, true, 60, 2, 0);
-		}
-		else if (player.getControlerManager().getControler() instanceof Wilderness && ItemConstants.isTradeable(item))
+		} else if (player.getControlerManager().getControler() instanceof Wilderness && ItemConstants.isTradeable(item))
 			World.addGroundItem(item, new WorldTile(player), player, false, -1);
 		else
 			World.addGroundItem(item, new WorldTile(player), player, true, 60);

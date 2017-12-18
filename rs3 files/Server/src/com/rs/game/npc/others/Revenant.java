@@ -18,7 +18,7 @@ public class Revenant extends NPC {
 
 	public Revenant(int id, WorldTile tile, int mapAreaNameHash, boolean canBeAttackFromOutOfArea, boolean spawned) {
 		super(id, tile, mapAreaNameHash, canBeAttackFromOutOfArea, spawned);
-		setDropRateFactor(2); //duplicates
+		setDropRateFactor(2); // duplicates
 	}
 
 	@Override

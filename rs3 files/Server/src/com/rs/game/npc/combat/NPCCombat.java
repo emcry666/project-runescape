@@ -51,20 +51,16 @@ public final class NPCCombat {
 		}
 		return false;
 	}
-	
+
 	public void checkStuck() {
-		if(combatDelay == 0 && npc.isUnderCombat() && npc.getAttackingDelay() <= Utils.currentTimeMillis()
-				&& npc.getAttackedByDelay() <= Utils.currentTimeMillis()
-				&& !npc.isCantFollowUnderCombat()
-				&& !npc.isCantInteract()
-				&& !npc.hasWalkSteps() && !npc.isBound() && !npc.isStunned() && !(npc instanceof Nomad)) { //reset
-			if(resetDelay++ == 10) {
+		if (combatDelay == 0 && npc.isUnderCombat() && npc.getAttackingDelay() <= Utils.currentTimeMillis() && npc.getAttackedByDelay() <= Utils.currentTimeMillis() && !npc.isCantFollowUnderCombat() && !npc.isCantInteract() && !npc.hasWalkSteps() && !npc.isBound() && !npc.isStunned() && !(npc instanceof Nomad)) { // reset
+			if (resetDelay++ == 10) {
 				resetDelay = 0;
 				removeTarget();
 				npc.forceWalkRespawnTile();
 				npc.setHitpoints(npc.getMaxHitpoints());
 			}
-		}else
+		} else
 			resetDelay = 0;
 	}
 
@@ -81,7 +77,7 @@ public final class NPCCombat {
 		// check if close to target, if not let it just walk and dont attack
 		// this gameticket
 		NPCCombatDefinitions defs = npc.getCombatDefinitions();
-	//	int attackStyle = npc.getAttackStyle();
+		// int attackStyle = npc.getAttackStyle();
 		if (target instanceof Familiar && (npc.getLureDelay() == 0 || Utils.random(3) == 0)) {
 			Familiar familiar = (Familiar) target;
 			Player player = familiar.getOwner();
@@ -100,16 +96,42 @@ public final class NPCCombat {
 		}
 		// MAGE_FOLLOW and RANGE_FOLLOW follow close but can attack far unlike
 		// melee
-		int maxDistance = npc.isCantFollowUnderCombat() ? 16 : 
-			npc.getAttackStyle() != Combat.MELEE_TYPE ?
-				9 : 0;//attackStyle == NPCCombatDefinitions.MELEE ? 0 : npc.isCantFollowUnderCombat() ? 16 : 9;
-		//player is walking to atm
-		if ((!npc.clipedProjectile(target, maxDistance == 0 && !forceCheckClipAsRange(target))) 
-				|| !Utils.isOnRange(npc, target, maxDistance
-		//correct extra distance for walk. no glitches this way ^^. even if frozen
-		+ (npc.hasWalkSteps() && target.hasWalkSteps() ? (npc.getRun() && target.getRun() ? 2 : 1) : 0)) || (!npc.isCantFollowUnderCombat() && Utils.colides(npc, target))) {//doesnt let u attack when u under / while walking out, remove this check if u want
+		int maxDistance = npc.isCantFollowUnderCombat() ? 16 : npc.getAttackStyle() != Combat.MELEE_TYPE ? 9 : 0;// attackStyle
+		// ==
+		// NPCCombatDefinitions.MELEE
+		// ?
+		// 0
+		// :
+		// npc.isCantFollowUnderCombat()
+		// ?
+		// 16
+		// :
+		// 9;
+		// player is walking to atm
+		if ((!npc.clipedProjectile(target, maxDistance == 0 && !forceCheckClipAsRange(target))) || !Utils.isOnRange(npc, target,
+				maxDistance
+						// correct extra distance for walk. no glitches this way
+						// ^^. even if frozen
+						+ (npc.hasWalkSteps() && target.hasWalkSteps() ? (npc.getRun() && target.getRun() ? 2 : 1) : 0))
+				|| (!npc.isCantFollowUnderCombat() && Utils.colides(npc, target))) {// doesnt
+			// let
+			// u
+			// attack
+			// when
+			// u
+			// under
+			// /
+			// while
+			// walking
+			// out,
+			// remove
+			// this
+			// check
+			// if
+			// u
+			// want
 			return 0;
-			
+
 		}
 		addAttackedByDelay(target);
 		return CombatScriptsHandler.specialAttack(npc, target);
@@ -117,11 +139,10 @@ public final class NPCCombat {
 
 	protected void doDefenceEmote(Entity target, Hit hit) {
 		/*
-		 * if (target.getNextAnimation() != null) // if has att emote already
-		 * return;
+		 * if (target.getNextAnimation() != null) // if has att emote already return;
 		 */
 		int defenceEmote = Combat.getDefenceEmote(target);
-		if(defenceEmote != -1)
+		if (defenceEmote != -1)
 			target.setNextAnimationNoPriority(new Animation(defenceEmote, hit.getDelay()));
 	}
 
@@ -162,7 +183,8 @@ public final class NPCCombat {
 		int maxDistance;
 		int agroRatio = npc.getCombatDefinitions().getAgroRatio();
 		if (!npc.isNoDistanceCheck() && !npc.isCantFollowUnderCombat()) {
-			maxDistance = agroRatio > 12 ? agroRatio : 12; //before 32, but its too much
+			maxDistance = agroRatio > 12 ? agroRatio : 12; // before 32, but its
+			// too much
 			if (!(npc instanceof Familiar)) {
 
 				if (npc.getMapAreaNameHash() != -1) {
@@ -192,22 +214,18 @@ public final class NPCCombat {
 			Familiar familiar = (Familiar) npc;
 			if (!familiar.canAttack(target))
 				return false;
-		}/* else {
-			if (!npc.isForceMultiAttacked()) {
-				if (!target.isAtMultiArea() || !npc.isAtMultiArea()) {
-					if (npc.getAttackedBy() != target && npc.getAttackedByDelay() > Utils.currentTimeMillis())
-						return false;
-					if (target.getAttackedBy() != npc && target.getAttackedByDelay() > Utils.currentTimeMillis())
-						return false;
-				}
-			}
-		}*/
+		} /*
+			 * else { if (!npc.isForceMultiAttacked()) { if (!target.isAtMultiArea() || !npc.isAtMultiArea()) { if
+			 * (npc.getAttackedBy() != target && npc.getAttackedByDelay() > Utils.currentTimeMillis()) return
+			 * false; if (target.getAttackedBy() != npc && target.getAttackedByDelay() > Utils.currentTimeMillis())
+			 * return false; } } }
+			 */
 		if (!npc.isCantFollowUnderCombat()) {
 			// if is under
 			int targetSize = target.getSize();
 			/*
-			 * if (distanceX < size && distanceX > -targetSize && distanceY <
-			 * size && distanceY > -targetSize && !target.hasWalkSteps()) {
+			 * if (distanceX < size && distanceX > -targetSize && distanceY < size && distanceY > -targetSize &&
+			 * !target.hasWalkSteps()) {
 			 */
 			if (!target.hasWalkSteps() && Utils.colides(npc.getX(), npc.getY(), size, target.getX(), target.getY(), targetSize)) {
 				npc.resetWalkSteps();
@@ -272,12 +290,14 @@ public final class NPCCombat {
 		}
 		return true;
 	}
-	
-	/*if (!npc.clipedProjectile(target, (!(npc instanceof Nex)) && !npc.clipedProjectile(target, maxDistance == 0 && !forceCheckClipAsRange(target)))
-			|| !Utils.isOnRange(npc, target, maxDistance
-	//correct extra distance for walk. no glitches this way ^^. even if frozen
-	+ (npc.hasWalkSteps() && target.hasWalkSteps() ? (npc.getRun() && target.getRun() ? 2 : 1) : 0)) || (!npc.isCantFollowUnderCombat() && Utils.colides(npc, target))) //doesnt let u attack when u under / while walking out, remove this check if u want
-		return 0;*/
+
+	/*
+	 * if (!npc.clipedProjectile(target, (!(npc instanceof Nex)) && !npc.clipedProjectile(target, maxDistance == 0
+	 * && !forceCheckClipAsRange(target))) || !Utils.isOnRange(npc, target, maxDistance //correct extra distance
+	 * for walk. no glitches this way ^^. even if frozen + (npc.hasWalkSteps() && target.hasWalkSteps() ?
+	 * (npc.getRun() && target.getRun() ? 2 : 1) : 0)) || (!npc.isCantFollowUnderCombat() && Utils.colides(npc,
+	 * target))) //doesnt let u attack when u under / while walking out, remove this check if u want return 0;
+	 */
 
 	private boolean forceCheckClipAsRange(Entity target) {
 		return target instanceof PestPortal;

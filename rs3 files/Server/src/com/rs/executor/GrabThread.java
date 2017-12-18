@@ -22,7 +22,7 @@ public class GrabThread extends Thread {
 	public void run() {
 		long limit = UPLINK;
 		long last_sleep = Utils.currentTimeMillis();
-		
+
 		while (!GameExecutorManager.executorShutdown) {
 			try {
 				long t_start = Utils.currentTimeMillis();
@@ -31,26 +31,25 @@ public class GrabThread extends Thread {
 					if (grab.processNext(limit) > 0)
 						processed++;
 				}
-				
+
 				long now = Utils.currentTimeMillis();
 				if (processed < 1 || ((now - last_sleep) > 100)) {
 					Thread.sleep(1);
 					last_sleep = Utils.currentTimeMillis();
 				}
-				
+
 				long t_took = Utils.currentTimeMillis() - t_start;
 				if (t_took < 1)
 					t_took = 1;
-				
+
 				if (processed < 1)
 					limit = UPLINK * t_took;
 				else
 					limit = (UPLINK * t_took) / processed;
-				
+
 				if (limit > UPLINK_MAX)
 					limit = UPLINK_MAX;
-			}
-			catch (Throwable t) {
+			} catch (Throwable t) {
 				Logger.handle(t);
 			}
 		}

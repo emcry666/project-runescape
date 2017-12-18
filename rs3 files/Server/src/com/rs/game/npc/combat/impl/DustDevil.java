@@ -28,8 +28,7 @@ public class DustDevil extends CombatScript {
 			targetPlayer.getSkills().set(randomSkill, currentLevel < 5 ? 0 : currentLevel - Utils.random(20));
 			targetPlayer.getPackets().sendGameMessage("The dust devil's smoke suffocates you.");
 			delayHit(npc, 0, target, getMeleeHit(npc, targetPlayer.getMaxHitpoints() / 4));
-		}
-		else
+		} else
 			delayHit(npc, 0, target, getMeleeHit(npc, getMaxHit(npc, npc.getAttackStyle(), target)));
 		npc.setNextAnimation(new Animation(def.getAttackEmote()));
 		return npc.getAttackSpeed();

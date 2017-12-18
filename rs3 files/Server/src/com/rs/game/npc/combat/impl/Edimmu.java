@@ -15,8 +15,7 @@ public class Edimmu extends CombatScript {
 
 	@Override
 	public Object[] getKeys() {
-		return new Object[]
-		{ 10704 };
+		return new Object[] { 10704 };
 	}
 
 	@Override

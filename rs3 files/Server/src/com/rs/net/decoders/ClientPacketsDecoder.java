@@ -19,17 +19,17 @@ public final class ClientPacketsDecoder extends Decoder {
 		session.setDecoder(-1);
 		int packetId = stream.readUnsignedByte();
 		switch (packetId) {
-			case 14:
-				return decodeLogin(stream);
-			case 15:
-				return decodeGrab(stream);
-			case 71: //byte 71 = G
-				return decodeWebGrab(stream);
-			default:
-				if (Settings.DEBUG)
-					Logger.log(this, "PacketId " + packetId);
-				session.getChannel().close();
-				return -1;
+		case 14:
+			return decodeLogin(stream);
+		case 15:
+			return decodeGrab(stream);
+		case 71: // byte 71 = G
+			return decodeWebGrab(stream);
+		default:
+			if (Settings.DEBUG)
+				Logger.log(this, "PacketId " + packetId);
+			session.getChannel().close();
+			return -1;
 		}
 	}
 
@@ -49,20 +49,19 @@ public final class ClientPacketsDecoder extends Decoder {
 				session.getChannel().close();
 				return -1;
 			}
-					
+
 			if (indexId != 255 && (Cache.STORE.getIndexes().length <= indexId || Cache.STORE.getIndexes()[indexId] == null || !Cache.STORE.getIndexes()[indexId].archiveExists(archiveId))) {
 				session.getChannel().close();
 				return -1;
 			}
-			//disable to see what happens
+			// disable to see what happens
 			if (indexId == 255 && archiveId == 255) {
 				long cb = Long.parseLong(getVar(data, "cb"));
 				if (cb == -1) {
 					session.getChannel().close();
 					return -1;
 				}
-			}
-			else {
+			} else {
 				int crc = Integer.parseInt(getVar(data, "c"));
 				int revision = Integer.parseInt(getVar(data, "v"));
 				if (crc != Cache.STORE.getIndexes()[indexId].getTable().getArchives()[archiveId].getCRC() || revision != Cache.STORE.getIndexes()[indexId].getTable().getArchives()[archiveId].getRevision()) {
@@ -75,8 +74,7 @@ public final class ClientPacketsDecoder extends Decoder {
 			session.setEncoder(0);
 			session.getGrabPackets().sendCacheArchiveWeb(new ArchiveRequest(indexId, archiveId));
 			return stream.getBuffer().length;
-		}
-		catch (Throwable e) {
+		} catch (Throwable e) {
 			e.printStackTrace();
 			session.getChannel().close();
 			return -1;
@@ -122,6 +120,8 @@ public final class ClientPacketsDecoder extends Decoder {
 			session.getChannel().close();
 			return -1;
 		}
+
+		stream.readByte();
 
 		session.setDecoder(1, new Grab(session));
 		session.getGrabPackets().sendStartUpPacket();

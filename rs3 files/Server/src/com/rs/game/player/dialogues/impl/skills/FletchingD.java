@@ -9,7 +9,7 @@ import com.rs.game.player.dialogues.Dialogue;
 public class FletchingD extends Dialogue {
 
 	// componentId, amount, option
-	
+
 	private FletchData items;
 
 	@Override

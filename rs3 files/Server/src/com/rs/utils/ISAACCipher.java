@@ -35,8 +35,7 @@ public class ISAACCipher {
 	/** * Gets the next value. * @return The next value. */
 	public int getNextValue() {
 		/*
-		 * if (count-- == 0) { isaac(); count = SIZE - 1; } return
-		 * results[count];
+		 * if (count-- == 0) { isaac(); count = SIZE - 1; } return results[count];
 		 */
 		return 0; // DISABLED
 	}
@@ -92,8 +91,7 @@ public class ISAACCipher {
 	}
 
 	/**
-	 * * Initializes the ISAAC. * * @param flag Indicating if we should perform
-	 * a second pass.
+	 * * Initializes the ISAAC. * * @param flag Indicating if we should perform a second pass.
 	 */
 	public void init(boolean flag) {
 		int i;

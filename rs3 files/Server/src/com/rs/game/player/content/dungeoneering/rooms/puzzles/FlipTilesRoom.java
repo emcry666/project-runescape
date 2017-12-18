@@ -40,7 +40,8 @@ public class FlipTilesRoom extends PuzzleRoom {
 		}
 		for (int x = 0; x < 5; x++) {
 			for (int y = 0; y < 5; y++) {
-				//Apparently not every configuration is solveable but eh, thats what the force option is for!
+				// Apparently not every configuration is solveable but eh, thats
+				// what the force option is for!
 				tiles[x][y] = new WorldObject(Math.random() > 0.5 ? GREEN : YELLOW, 22, 0, manager.getTile(reference, x + xOffset, y + yOffset));
 				World.spawnObject(tiles[x][y]);
 			}
@@ -83,7 +84,13 @@ public class FlipTilesRoom extends PuzzleRoom {
 
 	public void flipTile(final WorldObject tile) {
 		final int id = tile.getId();
-		tile.setId(id == GREEN ? YELLOW : GREEN); //instantly update so 2 players pressing the same tiles at once will not bug it out, although visual may be weird, rs might lock the whole puzzle up for 1 sec, not sure tho
+		tile.setId(id == GREEN ? YELLOW : GREEN); // instantly update so 2
+		// players pressing the same
+		// tiles at once will not bug
+		// it out, although visual may
+		// be weird, rs might lock the
+		// whole puzzle up for 1 sec,
+		// not sure tho
 		for (Player team : manager.getParty().getTeam()) {
 			team.getPackets().sendObjectAnimation(tile, new Animation(id == GREEN ? GREEN_TO_YELLOW : YELLOW_TO_GREEN));
 		}
@@ -102,7 +109,8 @@ public class FlipTilesRoom extends PuzzleRoom {
 
 	private void checkComplete() {
 		if (isComplete())
-			return; //You can still flip tiles after puzzle is complete, but don't do any checks
+			return; // You can still flip tiles after puzzle is complete, but
+		// don't do any checks
 		int first = tiles[0][0].getId();
 		for (int x = 0; x < 5; x++) {
 			for (int y = 0; y < 5; y++) {

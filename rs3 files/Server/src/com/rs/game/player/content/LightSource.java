@@ -6,10 +6,7 @@ import com.rs.game.player.controllers.UnderGroundDungeon;
 
 public class LightSource {
 
-	private static final int[][] LIGHT_SOURCES =
-	{
-	{ 596, 36, 4529, 4522, 4537, 7051, 4548, 5014 },
-	{ 594, 33, 4534, 4524, 4539, 7053, 4550, 5013 } };
+	private static final int[][] LIGHT_SOURCES = { { 596, 36, 4529, 4522, 4537, 7051, 4548, 5014 }, { 594, 33, 4534, 4524, 4539, 7053, 4550, 5013 } };
 
 	public static boolean hasExplosiveSource(Player player) {
 		for (Item item : player.getInventory().getItems().getItems()) {

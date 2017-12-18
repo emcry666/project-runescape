@@ -709,8 +709,7 @@ public final class Drinkables {
 					if (newLevel < 1)
 						newLevel = 0;
 					return newLevel;
-				}
-				else {
+				} else {
 					int boost = (int) ((realLevel * 0.08) + 1);
 					int level = actualLevel > realLevel ? realLevel : actualLevel;
 					return level + boost;
@@ -738,8 +737,7 @@ public final class Drinkables {
 					if (newLevel < 1)
 						newLevel = 0;
 					return newLevel;
-				}
-				else {
+				} else {
 					int boost = (int) ((realLevel * 0.12) + 2);
 					int level = actualLevel > realLevel ? realLevel : actualLevel;
 					return level + boost;
@@ -794,19 +792,19 @@ public final class Drinkables {
 		ANTIPOISON() {
 			@Override
 			public void extra(Player player) {
-				player.setAntipoisonDelay(300);//1 min and half
+				player.setAntipoisonDelay(300);// 1 min and half
 			}
 		},
 		ANTIPOISON_PLUS() {
 			@Override
 			public void extra(Player player) {
-				player.setAntipoisonDelay(900);//like 8 minutes and half
+				player.setAntipoisonDelay(900);// like 8 minutes and half
 			}
 		},
 		ANTIPOISON_DOUBLE_PLUS() {
 			@Override
 			public void extra(Player player) {
-				player.setAntipoisonDelay(1200);//12 mins
+				player.setAntipoisonDelay(1200);// 12 mins
 			}
 		},
 		SUPER_ANTIPOISON() {
@@ -879,7 +877,7 @@ public final class Drinkables {
 				}
 				return true;
 			}
-			
+
 			@Override
 			public void extra(Player player) {
 				player.getEffectsManager().removeEffect(EffectType.POISON);
@@ -1022,8 +1020,7 @@ public final class Drinkables {
 					int boost = (int) (realLevel * 0.08) + 1;
 					int level = actualLevel > realLevel ? realLevel : actualLevel;
 					return level + boost;
-				}
-				else {
+				} else {
 					return (int) (actualLevel * 0.96) - 1;
 				}
 			}
@@ -1048,8 +1045,7 @@ public final class Drinkables {
 					int boost = (int) (realLevel * 0.08) + 1;
 					int level = actualLevel > realLevel ? realLevel : actualLevel;
 					return level + boost;
-				}
-				else {
+				} else {
 					return (int) (actualLevel * 0.96) - 1;
 				}
 			}
@@ -1140,8 +1136,7 @@ public final class Drinkables {
 					int boost = (int) (realLevel * 0.04);
 					int level = actualLevel > realLevel ? realLevel : actualLevel;
 					return level + boost;
-				}
-				else {
+				} else {
 					return (int) (actualLevel * 0.93);
 				}
 			}
@@ -1158,8 +1153,7 @@ public final class Drinkables {
 					int boost = (int) (4);
 					int level = actualLevel > realLevel ? realLevel : actualLevel;
 					return level + boost;
-				}
-				else {
+				} else {
 					return (int) (actualLevel > 9 && actualLevel != 0 ? actualLevel - 9 : actualLevel >> 9);
 				}
 			}
@@ -1176,8 +1170,7 @@ public final class Drinkables {
 					int boost = (int) (10);
 					int level = actualLevel > realLevel ? realLevel : actualLevel;
 					return level + boost;
-				}
-				else {
+				} else {
 					return (int) (actualLevel > 40 && actualLevel != 0 ? actualLevel - 40 : actualLevel >> 40);
 				}
 			}
@@ -1202,8 +1195,7 @@ public final class Drinkables {
 					int boost = (int) (3);
 					int level = actualLevel > realLevel ? realLevel : actualLevel;
 					return level + boost;
-				}
-				else {
+				} else {
 					return (int) (actualLevel > 6 && actualLevel != 0 ? actualLevel - 6 : actualLevel >> 6);
 				}
 			}
@@ -1220,8 +1212,7 @@ public final class Drinkables {
 					int boost = (int) (1);
 					int level = actualLevel > realLevel ? realLevel : actualLevel;
 					return level + boost;
-				}
-				else {
+				} else {
 					return (int) (actualLevel > 2 && actualLevel != 0 ? actualLevel - 2 : actualLevel >> 2);
 				}
 			}
@@ -1238,8 +1229,7 @@ public final class Drinkables {
 					int boost = (int) (1);
 					int level = actualLevel > realLevel ? realLevel : actualLevel;
 					return level + boost;
-				}
-				else {
+				} else {
 					return (int) (actualLevel > 2 && actualLevel != 0 ? actualLevel - 2 : actualLevel >> 2);
 				}
 			}
@@ -1256,8 +1246,7 @@ public final class Drinkables {
 					int boost = (int) (1);
 					int level = actualLevel > realLevel ? realLevel : actualLevel;
 					return level + boost;
-				}
-				else {
+				} else {
 					return (int) (actualLevel > 2 && actualLevel != 0 ? actualLevel - 2 : actualLevel >> 2);
 				}
 			}
@@ -1274,8 +1263,7 @@ public final class Drinkables {
 					int boost = (int) (2);
 					int level = actualLevel > realLevel ? realLevel : actualLevel;
 					return level + boost;
-				}
-				else {
+				} else {
 					return (int) (actualLevel > 1 && actualLevel != 0 ? actualLevel - 1 : actualLevel >> 1);
 				}
 			}
@@ -1292,8 +1280,7 @@ public final class Drinkables {
 					int boost = (int) (2);
 					int level = actualLevel > realLevel ? realLevel : actualLevel;
 					return level + boost;
-				}
-				else {
+				} else {
 					return (int) (actualLevel > 5 && actualLevel != 0 ? actualLevel - 5 : actualLevel >> 5);
 				}
 			}
@@ -1310,8 +1297,7 @@ public final class Drinkables {
 					int boost = (int) (1);
 					int level = actualLevel > realLevel ? realLevel : actualLevel;
 					return level + boost;
-				}
-				else {
+				} else {
 					return (int) (actualLevel > 2 && actualLevel != 0 ? actualLevel - 2 : actualLevel >> 2);
 				}
 			}
@@ -1329,11 +1315,9 @@ public final class Drinkables {
 					int boost = (int) (player.getSkills().getLevelForXp(Skills.MAGIC) >= 50 ? 3 : 2);
 					int level = actualLevel > realLevel ? realLevel : actualLevel;
 					return level + boost;
-				}
-				else if (skillId == Skills.ATTACK) {
+				} else if (skillId == Skills.ATTACK) {
 					return (int) (actualLevel > 4 && actualLevel != 0 ? actualLevel - 4 : actualLevel >> 4);
-				}
-				else {
+				} else {
 					return (int) (actualLevel > 3 && actualLevel != 0 ? actualLevel - 3 : actualLevel >> 3);
 				}
 			}
@@ -1350,8 +1334,7 @@ public final class Drinkables {
 					int boost = (int) (realLevel * 0.05);
 					int level = actualLevel > realLevel ? realLevel : actualLevel;
 					return level + boost;
-				}
-				else {
+				} else {
 					return (int) (actualLevel * 0.97);
 				}
 			}
@@ -1369,11 +1352,9 @@ public final class Drinkables {
 					int boost = (int) (1);
 					int level = actualLevel > realLevel ? realLevel : actualLevel;
 					return level + boost;
-				}
-				else if (skillId == Skills.STRENGTH) {
+				} else if (skillId == Skills.STRENGTH) {
 					return (int) (actualLevel > 1 && actualLevel != 0 ? actualLevel - 1 : actualLevel >> 1);
-				}
-				else {
+				} else {
 					return (int) (actualLevel > 6 && actualLevel != 0 ? actualLevel - 6 : actualLevel >> 6);
 				}
 			}
@@ -1390,8 +1371,7 @@ public final class Drinkables {
 					int boost = (int) (1);
 					int level = actualLevel > realLevel ? realLevel : actualLevel;
 					return level + boost;
-				}
-				else {
+				} else {
 					return (int) (actualLevel > 3 && actualLevel != 0 ? actualLevel - 3 : actualLevel >> 3);
 				}
 			}
@@ -1408,8 +1388,7 @@ public final class Drinkables {
 					int boost = (int) (2);
 					int level = actualLevel > realLevel ? realLevel : actualLevel;
 					return level + boost;
-				}
-				else {
+				} else {
 					return (int) (actualLevel > 4 && actualLevel != 0 ? actualLevel - 4 : actualLevel >> 4);
 				}
 			}
@@ -1534,8 +1513,9 @@ public final class Drinkables {
 	}
 
 	public static boolean drink(Player player, Item item, int slot) {
-		/*if (item.getDefinitions().getCSOpcode(3744) > 0) TODO add drinks to consumables.
-			return false;*/
+		/*
+		 * if (item.getDefinitions().getCSOpcode(3744) > 0) TODO add drinks to consumables. return false;
+		 */
 		player.stopAll(false, true, false);
 		Drink drink = getDrink(item.getId());
 		if (drink == null)
@@ -1565,7 +1545,9 @@ public final class Drinkables {
 		return true;
 	}
 
-	public static void decantPotsInv(Player player) {//Cheepo Hax way, probs terrible performance but whatever xD
+	public static void decantPotsInv(Player player) {// Cheepo Hax way, probs
+		// terrible performance but
+		// whatever xD
 		int count = 0;
 		outLoop: for (int fromSlot = 0; fromSlot < 28; fromSlot++) {
 			Item fromItem = player.getInventory().getItem(fromSlot);
@@ -1583,7 +1565,14 @@ public final class Drinkables {
 		}
 
 		if (count != 0) {
-			for (Item item : player.getInventory().getItems().getItems()) {//because i know someone will bitch about order.
+			for (Item item : player.getInventory().getItems().getItems()) {// because
+				// i
+				// know
+				// someone
+				// will
+				// bitch
+				// about
+				// order.
 				if (item == null || item.getId() != VIAL)
 					continue;
 				player.getInventory().deleteItem(item);
@@ -1597,35 +1586,35 @@ public final class Drinkables {
 	@SuppressWarnings("incomplete-switch")
 	private static int getReplacedId(Drink drink) {
 		switch (drink) {
-			case JUG:
-				return 1935;
-			case BEER:
-			case TANKARD:
-			case GREENMANS_ALE:
-			case AXEMANS_ALE:
-			case SLAYER_RESPITE:
-			case RANGERS_AID:
-			case MOONLIGHT_MEAD:
-			case DRAGON_BITTER:
-			case ASGARNIAN_ALE:
-			case CHEF_DELIGHT:
-			case CHEF_DELIGHT_KEG:
-			case CIDER:
-			case CIDER_KEG:
-			case WIZARD_MIND_BOMB:
-			case DWARVEN_STOUT:
-			case GROG:
-			case BANDIT_BREW:
-				return 1919;
-			case GREENMANS_ALE_KEG:
-			case AXEMANS_ALE_KEG:
-			case SLAYER_RESPITE_KEG:
-			case MOONLIGHT_MEAD_KEG:
-			case DRAGON_BITTER_KEG:
-			case ASGARNIAN_ALE_KEG:
-			case DWARVEN_STOUT_KEG:
-			case KEG_OF_BEER:
-				return 10885;
+		case JUG:
+			return 1935;
+		case BEER:
+		case TANKARD:
+		case GREENMANS_ALE:
+		case AXEMANS_ALE:
+		case SLAYER_RESPITE:
+		case RANGERS_AID:
+		case MOONLIGHT_MEAD:
+		case DRAGON_BITTER:
+		case ASGARNIAN_ALE:
+		case CHEF_DELIGHT:
+		case CHEF_DELIGHT_KEG:
+		case CIDER:
+		case CIDER_KEG:
+		case WIZARD_MIND_BOMB:
+		case DWARVEN_STOUT:
+		case GROG:
+		case BANDIT_BREW:
+			return 1919;
+		case GREENMANS_ALE_KEG:
+		case AXEMANS_ALE_KEG:
+		case SLAYER_RESPITE_KEG:
+		case MOONLIGHT_MEAD_KEG:
+		case DRAGON_BITTER_KEG:
+		case ASGARNIAN_ALE_KEG:
+		case DWARVEN_STOUT_KEG:
+		case KEG_OF_BEER:
+			return 10885;
 		}
 		return 0;
 	}

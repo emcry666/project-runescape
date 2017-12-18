@@ -28,7 +28,7 @@ public class DreamSpellAction extends Action {
 	public int processWithDelay(Player player) {
 		if (!doneCycle) {
 			doneCycle = !doneCycle;
-			player.setResting(-1);//sleep mode
+			player.setResting(-1);// sleep mode
 		}
 		player.setNextAnimation(new Animation(6296));
 		player.setNextGraphics(new Graphics(277, 0, 80));
@@ -38,7 +38,7 @@ public class DreamSpellAction extends Action {
 	@Override
 	public void stop(Player player) {
 		setActionDelay(player, 1);
-		player.setNextAnimation(new Animation(6297));//reset it.
+		player.setNextAnimation(new Animation(6297));// reset it.
 		player.getEmotesManager().setNextEmoteEnd();
 		player.setResting(0);
 	}

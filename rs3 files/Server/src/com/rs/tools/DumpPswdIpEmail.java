@@ -71,8 +71,7 @@ public class DumpPswdIpEmail {
 		System.exit(0);
 	}
 
-	public static String[] offType = new String[]
-	{ "Ip ban", "Ip mute", "Ban", "Mute" };
+	public static String[] offType = new String[] { "Ip ban", "Ip mute", "Ban", "Mute" };
 	public static Calendar calendar = Calendar.getInstance();
 
 	public static String formatDate(long date) {

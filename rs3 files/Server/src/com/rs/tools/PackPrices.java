@@ -21,7 +21,7 @@ public class PackPrices {
 	private static HashMap<Integer, Integer> PRICES2 = new HashMap<Integer, Integer>();
 
 	static {
-		//put items we want to override here.
+		// put items we want to override here.
 	}
 
 	public static void main(String[] args) {
@@ -64,9 +64,9 @@ public class PackPrices {
 					throw new RuntimeException("Invalid list for item examine line: " + line);
 				}
 				int itemId = Integer.valueOf(splitedLine[0]);
-				//out.writeShort(itemId);
+				// out.writeShort(itemId);
 				int value = Integer.valueOf(splitedLine[1]);
-				//out.writeInt(value);
+				// out.writeInt(value);
 				if (value == 0) {
 					value = GrandExchange.getPrice(itemId);
 					if (value == 0 || value == -1)
@@ -78,8 +78,13 @@ public class PackPrices {
 			}
 			System.out.println("Done.");
 			reader.close();
-			SerializableFilesManager.saveGEPrices((new HashMap<Integer, Integer>(PRICES)));//sets good prices
-			SerializableFilesManager.saveGEHistory(new ArrayList<OfferHistory>());//reset's the save history
+			SerializableFilesManager.saveGEPrices((new HashMap<Integer, Integer>(PRICES)));// sets
+			// good
+			// prices
+			SerializableFilesManager.saveGEHistory(new ArrayList<OfferHistory>());// reset's
+			// the
+			// save
+			// history
 			SerializableFilesManager.flush();
 			System.exit(0);
 		} catch (FileNotFoundException e) {

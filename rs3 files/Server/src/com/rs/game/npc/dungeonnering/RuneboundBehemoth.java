@@ -12,8 +12,7 @@ import com.rs.game.player.content.dungeoneering.RoomReference;
 @SuppressWarnings("serial")
 public class RuneboundBehemoth extends DungeonBoss {
 
-	private static final String[] ARTIFACT_TYPE =
-	{ "Melee", "Range", "Magic" };
+	private static final String[] ARTIFACT_TYPE = { "Melee", "Range", "Magic" };
 	private BehemothArtifact[] artifacts;
 
 	public RuneboundBehemoth(int id, WorldTile tile, DungeonManager manager, RoomReference reference) {
@@ -48,7 +47,7 @@ public class RuneboundBehemoth extends DungeonBoss {
 
 	public void activateArtifact(Player player, WorldObject object, int type) {
 		BehemothArtifact artifact = artifacts[type];
-		if (artifact.isActive())//Hax unit 2k13
+		if (artifact.isActive())// Hax unit 2k13
 			return;
 		WorldObject o = new WorldObject(object);
 		o.setId(type == 0 ? 53980 : type == 1 ? 53982 : 53981);

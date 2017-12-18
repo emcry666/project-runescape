@@ -25,10 +25,10 @@ public class CommanderZilyana extends NPC {
 		super(id, tile, mapAreaNameHash, canBeAttackFromOutOfArea, spawned);
 		setIntelligentRouteFinder(true);
 		setForceFollowClose(true);
-		setLureDelay(6000);//approximately 6 seconds lure
-		setDropRateFactor(3); //triples chances
+		setLureDelay(6000);// approximately 6 seconds lure
+		setDropRateFactor(3); // triples chances
 	}
-	
+
 	/*
 	 * gotta override else setRespawnTask override doesnt work
 	 */
@@ -51,7 +51,8 @@ public class CommanderZilyana extends NPC {
 						List<Player> players = FriendsChat.getLootSharingPeople(player);
 						if (players != null) {
 							for (Player p : players) {
-								if (p == null) continue;
+								if (p == null)
+									continue;
 								Controller controler = p.getControlerManager().getControler();
 								if (controler != null && controler instanceof GodWars) {
 									GodWars godControler = (GodWars) controler;

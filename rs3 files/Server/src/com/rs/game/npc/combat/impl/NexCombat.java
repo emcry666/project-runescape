@@ -36,16 +36,14 @@ public class NexCombat extends CombatScript {
 	/**
 	 * The teleport coordinates used during nex's "no escape" attack.
 	 */
-	public static final WorldTile[] NO_ESCAPE_TELEPORTS =
-	{ new WorldTile(2924, 5213, 0), // north
-		new WorldTile(2934, 5202, 0), // east,
-		new WorldTile(2924, 5192, 0), // south
-		new WorldTile(2913, 5202, 0), }; // west
+	public static final WorldTile[] NO_ESCAPE_TELEPORTS = { new WorldTile(2924, 5213, 0), // north
+			new WorldTile(2934, 5202, 0), // east,
+			new WorldTile(2924, 5192, 0), // south
+			new WorldTile(2913, 5202, 0), }; // west
 
 	@Override
 	public Object[] getKeys() {
-		return new Object[]
-		{ "Nex" };
+		return new Object[] { "Nex" };
 	}
 
 	@Override
@@ -190,8 +188,7 @@ public class NexCombat extends CombatScript {
 	/**
 	 * Send's nex's ice attack.
 	 * 
-	 * @param nex
-	 *            The instance of {@code Nex} being used.
+	 * @param nex The instance of {@code Nex} being used.
 	 */
 	private void sendIceBarrage(Nex nex) {
 		boolean usingPrayer = false;
@@ -225,10 +222,8 @@ public class NexCombat extends CombatScript {
 	/**
 	 * Traps a player within an ice boundary.
 	 * 
-	 * @param nex
-	 *            The instance of {@code Nex} being used.
-	 * @param start
-	 *            If the target is dead or a null to choose another target.
+	 * @param nex The instance of {@code Nex} being used.
+	 * @param start If the target is dead or a null to choose another target.
 	 */
 	private void sendIcePrison(final Nex nex, boolean start) {
 		if (start) {
@@ -286,8 +281,7 @@ public class NexCombat extends CombatScript {
 	/**
 	 * Send's a barricade made of ice fragments around nex.
 	 * 
-	 * @param nex
-	 *            The instance of {@code Nex} being used.
+	 * @param nex The instance of {@code Nex} being used.
 	 */
 	private void sendIceBarricade(final Nex nex) {
 		nex.setNextForceTalk(new ForceTalk("Contain this!"));
@@ -315,7 +309,10 @@ public class NexCombat extends CombatScript {
 									player.getPackets().sendGameMessage("You've been injured and can't use " + (player.getPrayer().isAncientCurses() ? "deflect curses" : "protection prayers ") + "!");
 									player.resetWalkSteps();
 									player.getPrayer().closeAllPrayers();
-									player.getEffectsManager().startEffect(new Effect(EffectType.PROTECTION_DISABLED, 12));//7 seconds TODO check
+									player.getEffectsManager().startEffect(new Effect(EffectType.PROTECTION_DISABLED, 12));// 7
+									// seconds
+									// TODO
+									// check
 								}
 							}
 							World.spawnObjectTemporary(object, 7000);
@@ -330,12 +327,9 @@ public class NexCombat extends CombatScript {
 	/**
 	 * Sends the 'normal' attacks during nex's blood stage.
 	 * 
-	 * @param hasDistance
-	 *            If the {@code Nex} has distance between the target.
-	 * @param nex
-	 *            The instance of {@code Nex} being used.
-	 * @param target
-	 *            The target being attacked.
+	 * @param hasDistance If the {@code Nex} has distance between the target.
+	 * @param nex The instance of {@code Nex} being used.
+	 * @param target The target being attacked.
 	 */
 	private void sendNormalBloodAttack(boolean hasDistance, Nex nex, Entity target) {
 		switch (hasDistance ? 0 : Utils.random(3)) {
@@ -356,27 +350,23 @@ public class NexCombat extends CombatScript {
 	/**
 	 * Sends nex's blood sacrifice attack.
 	 * 
-	 * @param nex
-	 *            The instance of {@code Nex} being used.
-	 * @param target
-	 *            The entity chosen to be sacrificed.
+	 * @param nex The instance of {@code Nex} being used.
+	 * @param target The entity chosen to be sacrificed.
 	 * @return The delay of the attack.
 	 */
 	private int sendBloodSacrifice(final Nex nex, Entity target) {
 		nex.setNextForceTalk(new ForceTalk("I demand a blood sacrifice!"));
 		nex.playSoundEffect(3293);
 		target.getEffectsManager().startEffect(new Effect(EffectType.BLOOD_SACRIFICE, 8, nex));
-		nex.incrementNexAttack(); 
+		nex.incrementNexAttack();
 		return nex.getAttackSpeed();
 	}
 
 	/**
 	 * Sends a blood barrage during the blood stage.
 	 * 
-	 * @param nex
-	 *            The instance of {@code Nex} being used.
-	 * @param target
-	 *            The target being attacked.
+	 * @param nex The instance of {@code Nex} being used.
+	 * @param target The target being attacked.
 	 */
 	private void sendBloodAttack(final Nex nex, final Entity target) {
 		final int damage = getMaxHit(nex, NPCCombatDefinitions.MAGE, target);
@@ -397,8 +387,7 @@ public class NexCombat extends CombatScript {
 	/**
 	 * Begin's nex's siphion attack during the blood stage.
 	 * 
-	 * @param nex
-	 *            The instance of {@code Nex} being used.
+	 * @param nex The instance of {@code Nex} being used.
 	 */
 	private void sendSipionAttack(final Nex nex, Entity target) {
 		nex.getEffectsManager().startEffect(new Effect(EffectType.SIPHIONING, 8, nex));
@@ -518,7 +507,7 @@ public class NexCombat extends CombatScript {
 			nex.playSoundEffect(3314);
 			nex.setNextAnimation(new Animation(17407));
 			nex.setNextGraphics(new Graphics(3362));
-			
+
 			final List<WorldTile> tiles = new LinkedList<WorldTile>();
 			for (Entity t : nex.getPossibleTargets()) {
 				WorldTile tile = new WorldTile(t);
@@ -565,11 +554,11 @@ public class NexCombat extends CombatScript {
 		target.stopAll();
 		WorldTasksManager.schedule(new WorldTask() {
 			int ticks;
-			
+
 			@Override
 			public void run() {
 				ticks++;
-				
+
 				if (ticks == 1) {
 					target.setNextAnimation(new Animation(14388));
 					target.setNextGraphics(new Graphics(2767));
@@ -612,7 +601,7 @@ public class NexCombat extends CombatScript {
 			if (!t.withinDistance(target, 3))
 				continue;
 			t.setNextForceTalk(new ForceTalk("*Cough*"));
-			//TODO skills drain?
+			// TODO skills drain?
 			t.getTemporaryAttributtes().put("nex_infected", true);
 		}
 		nex.playSoundEffect(3296);
@@ -623,7 +612,7 @@ public class NexCombat extends CombatScript {
 			nex.setNextAnimation(new Animation(17413));
 			nex.setNextGraphics(new Graphics(1214));
 			Projectile projectile = World.sendProjectileNew(nex, t, 3371, 25, 25, 50, 2, 0, 0);
-			
+
 			final int damage = getMaxHit(nex, NPCCombatDefinitions.MAGE, t);
 			Hit hit = getMagicHit(nex, damage);
 			delayHit(nex, Utils.projectileTimeToCycles(projectile.getEndTime()) - 1, t, hit);

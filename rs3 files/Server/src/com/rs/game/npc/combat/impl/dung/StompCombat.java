@@ -19,8 +19,7 @@ public class StompCombat extends CombatScript {
 
 	@Override
 	public Object[] getKeys() {
-		return new Object[]
-		{ "Stomp" };
+		return new Object[] { "Stomp" };
 	}
 
 	@Override
@@ -34,9 +33,9 @@ public class StompCombat extends CombatScript {
 			return npc.getAttackSpeed();
 		}
 		// 0 - first 33%
-		//1 - 66-33%
-		//2 - 33-0%
-		//3 - 0%
+		// 1 - 66-33%
+		// 2 - 33-0%
+		// 3 - 0%
 
 		if (stomp.getStage() > 1 && Utils.random(10) == 0) {
 			final WorldTile tile = new WorldTile(target);
@@ -53,7 +52,7 @@ public class StompCombat extends CombatScript {
 			}, 4);
 		}
 
-		int attackStyle = Utils.random(/*stomp.getStage() > 1 ? 4 : */stomp.getStage() > 0 ? 3 : 2);
+		int attackStyle = Utils.random(/* stomp.getStage() > 1 ? 4 : */stomp.getStage() > 0 ? 3 : 2);
 		if (attackStyle == 0 && !Utils.isOnRange(npc.getX(), npc.getY(), npc.getSize(), target.getX(), target.getY(), target.getSize(), 0))
 			attackStyle = 1;
 

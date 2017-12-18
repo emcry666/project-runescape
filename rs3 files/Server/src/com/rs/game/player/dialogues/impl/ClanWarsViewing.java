@@ -21,15 +21,15 @@ public final class ClanWarsViewing extends Dialogue {
 
 	@Override
 	public void run(int interfaceId, int componentId) {
-		
-		if(componentId == Dialogue.OPTION_1) {
+
+		if (componentId == Dialogue.OPTION_1) {
 			end();
 			player.getPackets().sendInputNameScript("Enter the player name whose battle you wish to see:");
 			player.getTemporaryAttributtes().put(Key.CLAN_WARS_VIEW, Boolean.TRUE);
-		}else if (componentId == Dialogue.OPTION_2) {
-			for(ClanWars war : ClanWars.getCurrentwars()) {
+		} else if (componentId == Dialogue.OPTION_2) {
+			for (ClanWars war : ClanWars.getCurrentwars()) {
 				Player friend = war.getPlayerInside();
-				if(friend != null) {
+				if (friend != null) {
 					end();
 					ClanWars.enter(player, friend, true);
 					return;
@@ -37,7 +37,7 @@ public final class ClanWarsViewing extends Dialogue {
 			}
 			end();
 			player.getPackets().sendGameMessage("There are no clan wars going on currently.");
-		}else if (componentId == Dialogue.OPTION_3) {
+		} else if (componentId == Dialogue.OPTION_3) {
 			end();
 		}
 	}

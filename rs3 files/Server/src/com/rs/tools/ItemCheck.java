@@ -25,12 +25,13 @@ public class ItemCheck {
 			ItemDefinitions p = getPoison(def, "p");
 			ItemDefinitions p_ = getPoison(def, "p+");
 			ItemDefinitions p__ = getPoison(def, "p++");
-			//   System.out.println(p+", "+p_+", "+p__);
+			// System.out.println(p+", "+p_+", "+p__);
 			if (p == null || p_ == null || p__ == null)
 				continue;
 			System.out.println(", " + (Utils.formatPlayerNameForProtocol(def.name).toUpperCase()) + "(" + itemId + ", " + p.id + ", " + p_.id + ", " + p__.id + ")");
 
-			//System.out.println(itemId+", "+def.name+", "+p.id+", "+p.name+", "+p_.id+", "+p_.name+", "+p__.id+", "+p__.name);
+			// System.out.println(itemId+", "+def.name+", "+p.id+", "+p.name+",
+			// "+p_.id+", "+p_.name+", "+p__.id+", "+p__.name);
 		}
 	}
 

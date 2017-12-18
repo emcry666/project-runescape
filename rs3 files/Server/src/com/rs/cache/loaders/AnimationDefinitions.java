@@ -50,9 +50,9 @@ public class AnimationDefinitions {
 			AnimationDefinitions defs = getAnimationDefinitions(i);
 			if (defs == null)
 				continue;
-			if(ItemDefinitions.getItemDefinitions(defs.rightHandItem).name.toLowerCase().contains("null"))
-			if (defs.leftHandItem != -1 && defs.leftHandItem != 65535)
-				System.out.println("anim:" + i + " uses item " + defs.rightHandItem);
+			if (ItemDefinitions.getItemDefinitions(defs.rightHandItem).name.toLowerCase().contains("null"))
+				if (defs.leftHandItem != -1 && defs.leftHandItem != 65535)
+					System.out.println("anim:" + i + " uses item " + defs.rightHandItem);
 		}
 		for (int i = 0; i < Utils.getAnimationDefinitionsSize(); i++) {
 			AnimationDefinitions defs = getAnimationDefinitions(i);
@@ -63,48 +63,31 @@ public class AnimationDefinitions {
 			}
 		}
 
-		/*		System.out.println(Arrays.toString(getAnimationDefinitions(23948).anIntArray2153));
-				System.out.println(Arrays.toString(getAnimationDefinitions(4230).anIntArray2153));
-				
-				ItemDefinitions defs = ItemDefinitions.getItemDefinitions(18481);
-				GeneralRequirementMap map = defs.getCombatMap();
-				if (map != null) {
-					for (long val : map.getValues().keySet()) {
-						System.out.println(val + " = " + map.getIntValue(val)/4);
-					}
-				}
-				
-				defs = ItemDefinitions.getItemDefinitions(25995);
-				map = defs.getCombatMap();
-				if (map != null) {
-					for (long val : map.getValues().keySet()) {
-						System.err.println(val + " = " + map.getIntValue(val)/4);
-					}
-				}*/
+		/*
+		 * System.out.println(Arrays.toString(getAnimationDefinitions(23948). anIntArray2153));
+		 * System.out.println(Arrays.toString(getAnimationDefinitions(4230). anIntArray2153));
+		 * 
+		 * ItemDefinitions defs = ItemDefinitions.getItemDefinitions(18481); GeneralRequirementMap map =
+		 * defs.getCombatMap(); if (map != null) { for (long val : map.getValues().keySet()) {
+		 * System.out.println(val + " = " + map.getIntValue(val)/4); } }
+		 * 
+		 * defs = ItemDefinitions.getItemDefinitions(25995); map = defs.getCombatMap(); if (map != null) { for
+		 * (long val : map.getValues().keySet()) { System.err.println(val + " = " + map.getIntValue(val)/4); } }
+		 */
 
-		/*for (int i = 0; i < Utils.getAnimationDefinitionsSize(); i++) {
-				AnimationDefinitions defs = getAnimationDefinitions(i);
-				if (defs == null)
-					continue;
-				if (defs.leftHandItem == 6739) {
-					System.out.println("anim:" + i + " is playeranim");
-					buffer[size++] = i;
-				}
-			}
-
-			for (int i = 0; i < 50000; i++) {
-			    RenderAnimDefinitions defs = RenderAnimDefinitions.getRenderAnimDefinitions(i);
-			    if (defs == null)
-				continue;
-
-			    for (int x = 0; x < size; x++) {
-				int anim = buffer[x];
-				if (defs.walkAnimation == anim || defs.runAnimation == anim || defs.defaultStandAnimation == anim || defs.walkBackwardsAnimation == anim || defs.walkLeftAnimation == anim || defs.walkRightAnimation == anim || defs.walkUpwardsAnimation == anim) {
-				    System.out.println("Render:" + i + " uses anim " + anim);
-				    break;
-				}
-			    }
-			}*/
+		/*
+		 * for (int i = 0; i < Utils.getAnimationDefinitionsSize(); i++) { AnimationDefinitions defs =
+		 * getAnimationDefinitions(i); if (defs == null) continue; if (defs.leftHandItem == 6739) {
+		 * System.out.println("anim:" + i + " is playeranim"); buffer[size++] = i; } }
+		 * 
+		 * for (int i = 0; i < 50000; i++) { RenderAnimDefinitions defs =
+		 * RenderAnimDefinitions.getRenderAnimDefinitions(i); if (defs == null) continue;
+		 * 
+		 * for (int x = 0; x < size; x++) { int anim = buffer[x]; if (defs.walkAnimation == anim ||
+		 * defs.runAnimation == anim || defs.defaultStandAnimation == anim || defs.walkBackwardsAnimation == anim
+		 * || defs.walkLeftAnimation == anim || defs.walkRightAnimation == anim || defs.walkUpwardsAnimation ==
+		 * anim) { System.out.println("Render:" + i + " uses anim " + anim); break; } } }
+		 */
 
 	}
 
@@ -121,8 +104,7 @@ public class AnimationDefinitions {
 			defs.method2394();
 			animDefs.put(emoteId, defs);
 			return defs;
-		}
-		catch (Throwable t) {
+		} catch (Throwable t) {
 			return null;
 		}
 	}
@@ -166,8 +148,7 @@ public class AnimationDefinitions {
 				anIntArray2139[i_5_] = buffer.readUnsignedShort();
 			for (int i_6_ = 0; i_6_ < i_3_; i_6_++)
 				anIntArray2139[i_6_] = (buffer.readUnsignedShort() << 16) + anIntArray2139[i_6_];
-		}
-		else if (opcode == 2)
+		} else if (opcode == 2)
 			anInt2136 = buffer.readUnsignedShort();
 		else if (5 == opcode)
 			anInt2142 = buffer.readUnsignedByte();
@@ -190,8 +171,7 @@ public class AnimationDefinitions {
 				anIntArray2151[i_8_] = buffer.readUnsignedShort();
 			for (int i_9_ = 0; i_9_ < i_7_; i_9_++)
 				anIntArray2151[i_9_] = (buffer.readUnsignedShort() << 16) + anIntArray2151[i_9_];
-		}
-		else if (13 == opcode) {
+		} else if (13 == opcode) {
 			int i_10_ = buffer.readUnsignedShort();
 			handledSounds = new int[i_10_][];
 			for (int i_11_ = 0; i_11_ < i_10_; i_11_++) {
@@ -203,8 +183,7 @@ public class AnimationDefinitions {
 						handledSounds[i_11_][i_13_] = buffer.readUnsignedShort();
 				}
 			}
-		}
-		else if (opcode == 14)
+		} else if (opcode == 14)
 			aBoolean2158 = true;
 		else if (opcode == 15)
 			aBoolean2159 = true;
@@ -216,8 +195,7 @@ public class AnimationDefinitions {
 						anIntArray1362[i_14_] = 255;
 				}
 				anIntArray1362[buffer.readUnsignedByte()] = buffer.readUnsignedByte();
-			}
-			else if (20 == opcode) {
+			} else if (20 == opcode) {
 				if (soundMaxDelay == null || null == soundMinDelay) {
 					soundMaxDelay = new int[handledSounds.length];
 					soundMinDelay = new int[handledSounds.length];
@@ -229,8 +207,7 @@ public class AnimationDefinitions {
 				int i_16_ = buffer.readUnsignedByte();
 				soundMaxDelay[i_16_] = buffer.readUnsignedShort();
 				soundMinDelay[i_16_] = buffer.readUnsignedShort();
-			}
-			else if (22 == opcode)
+			} else if (22 == opcode)
 				buffer.readUnsignedByte();
 			else if (23 == opcode)
 				buffer.readUnsignedShort();
@@ -251,124 +228,49 @@ public class AnimationDefinitions {
 	}
 
 	/*
-		private void readValues(InputStream stream, int opcode) {
-			if ((opcode ^ 0xffffffff) == -2) {
-				int i = stream.readUnsignedShort();
-				anIntArray2153 = new int[i];
-				for (int i_16_ = 0; (i ^ 0xffffffff) < (i_16_ ^ 0xffffffff); i_16_++)
-					anIntArray2153[i_16_] = stream.readUnsignedShort();
-				anIntArray2139 = new int[i];
-				for (int i_17_ = 0; (i_17_ ^ 0xffffffff) > (i ^ 0xffffffff); i_17_++)
-					anIntArray2139[i_17_] = stream.readUnsignedShort();
-				for (int i_18_ = 0; i_18_ < i; i_18_++)
-					anIntArray2139[i_18_] = ((stream.readUnsignedShort() << 16) + anIntArray2139[i_18_]);
-			} else if ((opcode ^ 0xffffffff) != -3) {
-				if ((opcode ^ 0xffffffff) != -4) {
-					if ((opcode ^ 0xffffffff) == -5)
-						aBoolean2152 = true;
-					else if (opcode == 5)
-						anInt2142 = stream.readUnsignedByte();
-					else if (opcode != 6) {
-						if ((opcode ^ 0xffffffff) == -8)
-							leftHandItem = stream.readUnsignedShort();
-						else if ((opcode ^ 0xffffffff) != -9) {
-							if (opcode != 9) {
-								if ((opcode ^ 0xffffffff) != -11) {
-									if ((opcode ^ 0xffffffff) == -12)
-										anInt2155 = stream.readUnsignedByte();
-									else if (opcode == 12) {
-										int i = stream.readUnsignedByte();
-										anIntArray2151 = new int[i];
-										for (int i_19_ = 0; ((i_19_ ^ 0xffffffff) > (i ^ 0xffffffff)); i_19_++)
-											anIntArray2151[i_19_] = stream.readUnsignedShort();
-										for (int i_20_ = 0; i > i_20_; i_20_++)
-											anIntArray2151[i_20_] = ((stream.readUnsignedShort() << 16) + anIntArray2151[i_20_]);
-									} else if ((opcode ^ 0xffffffff) != -14) {
-										if (opcode != 14) {
-											if (opcode != 15) {
-												if (opcode == 16)
-													aBoolean2158 = true;
-												// added opcode
-												else if (opcode == 17) {
-													@SuppressWarnings("unused")
-													int anInt2145 = stream.readUnsignedByte();
-													// added opcode
-												} else if (opcode == 18) {
-													effect2Sound = true;
-												} else if (opcode == 19) {
-													if (anIntArray1362 == null) {
-														anIntArray1362 = new int[handledSounds.length];
-														for (int index = 0; index < handledSounds.length; index++)
-															anIntArray1362[index] = 255;
-													}
-													anIntArray1362[stream.readUnsignedByte()] = stream.readUnsignedByte();
-													// added opcode
-												} else if (opcode == 20) {
-													if ((soundMaxDelay == null) || (soundMinDelay == null)) {
-														soundMaxDelay = (new int[handledSounds.length]);
-														soundMinDelay = (new int[handledSounds.length]);
-														for (int i_34_ = 0; (i_34_ < handledSounds.length); i_34_++) {
-															soundMaxDelay[i_34_] = 256;
-															soundMinDelay[i_34_] = 256;
-														}
-													}
-													int index = stream.readUnsignedByte();
-													soundMaxDelay[index] = stream.readUnsignedShort();
-													soundMinDelay[index] = stream.readUnsignedShort();
-												} else if (opcode == 22) { //rs3 added
-													 stream.readUnsignedByte(); //idk
-												} else if (opcode == 23) { //rs3 added
-													 stream.readUnsignedByte(); //unused
-												} else if (opcode == 24) { //rs3 added
-													 stream.readUnsignedShort(); //idk, calls for data from cache. idx 2, 77
-												} else if (opcode == 249) {
-													int length = stream.readUnsignedByte();
-													if (clientScriptData == null)
-														clientScriptData = new HashMap<Integer, Object>(length);
-													for (int index = 0; index < length; index++) {
-														boolean stringInstance = stream.readUnsignedByte() == 1;
-														int key = stream.read24BitInt();
-														Object value = stringInstance ? stream.readString() : stream.readInt();
-														clientScriptData.put(key, value);
-													}
-												} 
-												
-											} else
-												aBoolean2159 = true;
-										} else
-											aBoolean2141 = true;
-									} else {
-										// opcode 13
-										int i = stream.readUnsignedShort();
-										handledSounds = new int[i][];
-										for (int i_21_ = 0; i_21_ < i; i_21_++) {
-											int i_22_ = stream.readUnsignedByte();
-											if ((i_22_ ^ 0xffffffff) < -1) {
-												handledSounds[i_21_] = new int[i_22_];
-												handledSounds[i_21_][0] = stream.readUnsignedShort();
-												for (int i_23_ = 1; ((i_22_ ^ 0xffffffff) < (i_23_ ^ 0xffffffff)); i_23_++) {
-													handledSounds[i_21_][i_23_] = stream.readUnsignedShort();
-												}
-											}
-										}
-									}
-								} else
-									anInt2162 = stream.readUnsignedByte();
-							} else
-								anInt2140 = stream.readUnsignedByte();
-						} else
-							anInt2136 = stream.readUnsignedByte();
-					} else
-						rightHandItemId = stream.readUnsignedShort();
-				} else {
-					aBooleanArray2149 = new boolean[256];
-					int i = stream.readUnsignedByte();
-					for (int i_24_ = 0; (i ^ 0xffffffff) < (i_24_ ^ 0xffffffff); i_24_++)
-						aBooleanArray2149[stream.readUnsignedByte()] = true;
-				}
-			} else
-				anInt2163 = stream.readUnsignedShort();
-		}*/
+	 * private void readValues(InputStream stream, int opcode) { if ((opcode ^ 0xffffffff) == -2) { int i =
+	 * stream.readUnsignedShort(); anIntArray2153 = new int[i]; for (int i_16_ = 0; (i ^ 0xffffffff) < (i_16_ ^
+	 * 0xffffffff); i_16_++) anIntArray2153[i_16_] = stream.readUnsignedShort(); anIntArray2139 = new int[i]; for
+	 * (int i_17_ = 0; (i_17_ ^ 0xffffffff) > (i ^ 0xffffffff); i_17_++) anIntArray2139[i_17_] =
+	 * stream.readUnsignedShort(); for (int i_18_ = 0; i_18_ < i; i_18_++) anIntArray2139[i_18_] =
+	 * ((stream.readUnsignedShort() << 16) + anIntArray2139[i_18_]); } else if ((opcode ^ 0xffffffff) != -3) { if
+	 * ((opcode ^ 0xffffffff) != -4) { if ((opcode ^ 0xffffffff) == -5) aBoolean2152 = true; else if (opcode == 5)
+	 * anInt2142 = stream.readUnsignedByte(); else if (opcode != 6) { if ((opcode ^ 0xffffffff) == -8) leftHandItem
+	 * = stream.readUnsignedShort(); else if ((opcode ^ 0xffffffff) != -9) { if (opcode != 9) { if ((opcode ^
+	 * 0xffffffff) != -11) { if ((opcode ^ 0xffffffff) == -12) anInt2155 = stream.readUnsignedByte(); else if
+	 * (opcode == 12) { int i = stream.readUnsignedByte(); anIntArray2151 = new int[i]; for (int i_19_ = 0; ((i_19_
+	 * ^ 0xffffffff) > (i ^ 0xffffffff)); i_19_++) anIntArray2151[i_19_] = stream.readUnsignedShort(); for (int
+	 * i_20_ = 0; i > i_20_; i_20_++) anIntArray2151[i_20_] = ((stream.readUnsignedShort() << 16) +
+	 * anIntArray2151[i_20_]); } else if ((opcode ^ 0xffffffff) != -14) { if (opcode != 14) { if (opcode != 15) {
+	 * if (opcode == 16) aBoolean2158 = true; // added opcode else if (opcode == 17) {
+	 * 
+	 * @SuppressWarnings("unused") int anInt2145 = stream.readUnsignedByte(); // added opcode } else if (opcode ==
+	 * 18) { effect2Sound = true; } else if (opcode == 19) { if (anIntArray1362 == null) { anIntArray1362 = new
+	 * int[handledSounds.length]; for (int index = 0; index < handledSounds.length; index++) anIntArray1362[index]
+	 * = 255; } anIntArray1362[stream.readUnsignedByte()] = stream.readUnsignedByte(); // added opcode } else if
+	 * (opcode == 20) { if ((soundMaxDelay == null) || (soundMinDelay == null)) { soundMaxDelay = (new
+	 * int[handledSounds.length]); soundMinDelay = (new int[handledSounds.length]); for (int i_34_ = 0; (i_34_ <
+	 * handledSounds.length); i_34_++) { soundMaxDelay[i_34_] = 256; soundMinDelay[i_34_] = 256; } } int index =
+	 * stream.readUnsignedByte(); soundMaxDelay[index] = stream.readUnsignedShort(); soundMinDelay[index] =
+	 * stream.readUnsignedShort(); } else if (opcode == 22) { //rs3 added stream.readUnsignedByte(); //idk } else
+	 * if (opcode == 23) { //rs3 added stream.readUnsignedByte(); //unused } else if (opcode == 24) { //rs3 added
+	 * stream.readUnsignedShort(); //idk, calls for data from cache. idx 2, 77 } else if (opcode == 249) { int
+	 * length = stream.readUnsignedByte(); if (clientScriptData == null) clientScriptData = new HashMap<Integer,
+	 * Object>(length); for (int index = 0; index < length; index++) { boolean stringInstance =
+	 * stream.readUnsignedByte() == 1; int key = stream.read24BitInt(); Object value = stringInstance ?
+	 * stream.readString() : stream.readInt(); clientScriptData.put(key, value); } }
+	 * 
+	 * } else aBoolean2159 = true; } else aBoolean2141 = true; } else { // opcode 13 int i =
+	 * stream.readUnsignedShort(); handledSounds = new int[i][]; for (int i_21_ = 0; i_21_ < i; i_21_++) { int
+	 * i_22_ = stream.readUnsignedByte(); if ((i_22_ ^ 0xffffffff) < -1) { handledSounds[i_21_] = new int[i_22_];
+	 * handledSounds[i_21_][0] = stream.readUnsignedShort(); for (int i_23_ = 1; ((i_22_ ^ 0xffffffff) < (i_23_ ^
+	 * 0xffffffff)); i_23_++) { handledSounds[i_21_][i_23_] = stream.readUnsignedShort(); } } } } } else anInt2162
+	 * = stream.readUnsignedByte(); } else anInt2140 = stream.readUnsignedByte(); } else anInt2136 =
+	 * stream.readUnsignedByte(); } else rightHandItemId = stream.readUnsignedShort(); } else { aBooleanArray2149 =
+	 * new boolean[256]; int i = stream.readUnsignedByte(); for (int i_24_ = 0; (i ^ 0xffffffff) < (i_24_ ^
+	 * 0xffffffff); i_24_++) aBooleanArray2149[stream.readUnsignedByte()] = true; } } else anInt2163 =
+	 * stream.readUnsignedShort(); }
+	 */
 
 	public void method2394() {
 		if (anInt2140 == -1) {

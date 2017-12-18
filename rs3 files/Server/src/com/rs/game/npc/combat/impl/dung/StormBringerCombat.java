@@ -16,8 +16,7 @@ public class StormBringerCombat extends CombatScript {
 
 	@Override
 	public Object[] getKeys() {
-		return new Object[]
-		{ 11126, 11128, 11130, 11132, 11134, 11136, 11138, 11140, 11142, 11144, 11146 };
+		return new Object[] { 11126, 11128, 11130, 11132, 11134, 11136, 11138, 11140, 11142, 11144, 11146 };
 	}
 
 	@Override
@@ -36,7 +35,7 @@ public class StormBringerCombat extends CombatScript {
 			damage = getMaxHit(npc, NPCCombatDefinitions.MAGE, target);
 		npc.setNextGraphics(new Graphics(2591));
 		npc.setNextAnimation(new Animation(13620));
-		World.sendProjectile(npc, target, 2592, 41, 16, 41, 35, 16, 0);//2593
+		World.sendProjectile(npc, target, 2592, 41, 16, 41, 35, 16, 0);// 2593
 		delayHit(npc, 2, target, getRangeHit(npc, damage));
 		if (damage > 0) {
 			WorldTasksManager.schedule(new WorldTask() {

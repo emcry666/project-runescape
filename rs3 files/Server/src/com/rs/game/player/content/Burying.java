@@ -90,7 +90,7 @@ public class Burying {
 			WorldTasksManager.schedule(new WorldTask() {
 				@Override
 				public void run() {
-					player.getPackets().sendGameMessage("You bury the " + itemDef.getName().toLowerCase()+".");
+					player.getPackets().sendGameMessage("You bury the " + itemDef.getName().toLowerCase() + ".");
 					player.getInventory().deleteItem(item.getId(), 1);
 					double xp = bone.getExperience() * player.getAuraManager().getPrayerMultiplier();
 					player.getSkills().addXp(Skills.PRAYER, xp);

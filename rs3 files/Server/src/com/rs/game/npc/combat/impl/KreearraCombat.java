@@ -15,8 +15,7 @@ public class KreearraCombat extends CombatScript {
 
 	@Override
 	public Object[] getKeys() {
-		return new Object[]
-		{ 6222 };
+		return new Object[] { 6222 };
 	}
 
 	@Override

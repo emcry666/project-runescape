@@ -34,8 +34,7 @@ public class DisplayNames implements Serializable {
 	}
 
 	/**
-	 * Initialize's reverse mapping, this needs to be done after loading this
-	 * class.
+	 * Initialize's reverse mapping, this needs to be done after loading this class.
 	 */
 	public synchronized void initReverseMapping() {
 		userToDisplay = new HashMap<String, String>();
@@ -49,8 +48,7 @@ public class DisplayNames implements Serializable {
 	}
 
 	/**
-	 * Tries to assign any display name for specific user, giving priority to
-	 * preferred name.
+	 * Tries to assign any display name for specific user, giving priority to preferred name.
 	 */
 	public synchronized boolean assignAnyDisplayName(String username, String preferredDisplayName) {
 		if (preferredDisplayName != null && reserveDisplayName(username, preferredDisplayName))
@@ -63,8 +61,7 @@ public class DisplayNames implements Serializable {
 	}
 
 	/**
-	 * Reserve's display name for specific user while removing previous display
-	 * name (if it had one).
+	 * Reserve's display name for specific user while removing previous display name (if it had one).
 	 */
 	public synchronized boolean reserveDisplayName(String username, String displayname) {
 		if (displayToUser.containsKey(displayname) || LoginFilesManager.containsAccount(displayname))
@@ -80,7 +77,7 @@ public class DisplayNames implements Serializable {
 		userToDisplay.put(username, displayname);
 		return true;
 	}
-	
+
 	/**
 	 * Remove's specific display name.
 	 */
@@ -92,7 +89,6 @@ public class DisplayNames implements Serializable {
 			userToDisplay.remove(user);
 		return true;
 	}
-	
 
 	/**
 	 * Find's user name by display name.

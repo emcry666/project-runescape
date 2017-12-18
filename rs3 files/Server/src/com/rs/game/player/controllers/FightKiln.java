@@ -32,57 +32,53 @@ public class FightKiln extends Controller {
 
 	private static final int TOKHAAR_HOK = 15195, TOKHAAR_HOK_SCENE = 15200;
 
-	private static final int[] MUSICS =
-	{1044, 1050, 1051};
+	private static final int[] MUSICS = { 1044, 1050, 1051 };
 
 	public void playMusic() {
 		player.getMusicsManager().playMusic(selectedMusic);
 	}
 
 	/*
-	 * 0 - south east 1 - south west 2 - north west 3 - north east TokHaar-Hur -
-	 * 15201 TokHaar-Xil - 15202 TokHaar-Mej - 15203 TokHaar-Ket - 15204
-	 * TokHaar-Tok-Xil - 15205 TokHaar-Yt-Mejkot - 15206 TokHaar-Ket-Zek - 15207
-	 * TokHaar-Jad - 15208 TokHaar-Ket-Dill - 15213
+	 * 0 - south east 1 - south west 2 - north west 3 - north east TokHaar-Hur - 15201 TokHaar-Xil - 15202
+	 * TokHaar-Mej - 15203 TokHaar-Ket - 15204 TokHaar-Tok-Xil - 15205 TokHaar-Yt-Mejkot - 15206 TokHaar-Ket-Zek -
+	 * 15207 TokHaar-Jad - 15208 TokHaar-Ket-Dill - 15213
 	 */
-	private static final int[][] WAVES =
-	{
-	{ 15202, 15202, 15205, 15201, 15201 }, // 1
-		{ 15202, 15202, 15205, 15205, 15201 }, // 2
-		{ 15202, 15205, 15205, 15205, 15201 }, // 3
-		{ 15205, 15205, 15205, 15203, 15203 }, // 4
-		{ 15202, 15205, 15205, 15205, 15213 }, // 5
-		{ 15202, 15205, 15203, 15203, 15205, 15205 }, // 6
-		{ 15203, 15205, 15205, 15205, 15202, 15205 }, // 7
-		{ 15207, 15205, 15205 }, // 8
-		{ 15205, 15205, 15205, 15205, 15205, 15205 }, // 9
-		{ 15205, 15208 }, // 10
-		{ 15203, 15203, 15203, 15203 }, // 11
-		{ 15203, 15205, 15205, 15203 }, // 12
-		{ 15203, 15207, 15203 }, // 13
-		{ 15207, 15207, 15203, 15203 }, // 14
-		{ 15207, 15207, 15205 }, // 15
-		{ 15207, 15207, 15205, 15203, 15203 }, // 16
-		{ 15207, 15207, 15205, 15203, 15206 }, // 17
-		{ 15207, 15207, 15205, 15206, 15205, 15205 }, // 18
-		{ 15203, 15203, 15203, 15203, 15203, 15203, 15203, 15203, 15203 }, // 19
-		{ 15207, 15208 }, // 20
-		{ 15201, 15201, 15201, 15201, 15201, 15201, 15201, 15201, 15201, 15201, 15201, 15201 }, // 21
-		{ 15206, 15201, 15204, 15204, 15201 }, // 22
-		{ 15206, 15206, 15204, 15206, 15201 }, // 23
-		{ 15206, 15206, 15206, 15205, 15206 }, // 24
-		{ 15206, 15206, 15205, 15205, 15207 }, // 25
-		{ 15206, 15206, 15205, 15207, 15207 }, // 26
-		{ 15204, 15206, 15205, 15204, 15206 }, // 27
-		{ 15213, 15213, 15207, 15213, 15213, 15213, 15213 }, // 28
-		{ 15206, 15206, 15206, 15206, 15206, 15206 }, // 29
-		{ 15206, 15208, 15206, 15206 }, // 30
-		{ 15205, 15205, 15205, 15205 }, // 31
-		{ 15206, 15206, 15206, 15206 }, // 32
-		{ 15207, 15207, 15207, 15207 }, // 33
-		{ 15205, 15208, 15206 }, // 34
-		{ 15207, 15206, 15206, 15208 }, // 35
-		{ 15208, 15208 } // 36
+	private static final int[][] WAVES = { { 15202, 15202, 15205, 15201, 15201 }, // 1
+			{ 15202, 15202, 15205, 15205, 15201 }, // 2
+			{ 15202, 15205, 15205, 15205, 15201 }, // 3
+			{ 15205, 15205, 15205, 15203, 15203 }, // 4
+			{ 15202, 15205, 15205, 15205, 15213 }, // 5
+			{ 15202, 15205, 15203, 15203, 15205, 15205 }, // 6
+			{ 15203, 15205, 15205, 15205, 15202, 15205 }, // 7
+			{ 15207, 15205, 15205 }, // 8
+			{ 15205, 15205, 15205, 15205, 15205, 15205 }, // 9
+			{ 15205, 15208 }, // 10
+			{ 15203, 15203, 15203, 15203 }, // 11
+			{ 15203, 15205, 15205, 15203 }, // 12
+			{ 15203, 15207, 15203 }, // 13
+			{ 15207, 15207, 15203, 15203 }, // 14
+			{ 15207, 15207, 15205 }, // 15
+			{ 15207, 15207, 15205, 15203, 15203 }, // 16
+			{ 15207, 15207, 15205, 15203, 15206 }, // 17
+			{ 15207, 15207, 15205, 15206, 15205, 15205 }, // 18
+			{ 15203, 15203, 15203, 15203, 15203, 15203, 15203, 15203, 15203 }, // 19
+			{ 15207, 15208 }, // 20
+			{ 15201, 15201, 15201, 15201, 15201, 15201, 15201, 15201, 15201, 15201, 15201, 15201 }, // 21
+			{ 15206, 15201, 15204, 15204, 15201 }, // 22
+			{ 15206, 15206, 15204, 15206, 15201 }, // 23
+			{ 15206, 15206, 15206, 15205, 15206 }, // 24
+			{ 15206, 15206, 15205, 15205, 15207 }, // 25
+			{ 15206, 15206, 15205, 15207, 15207 }, // 26
+			{ 15204, 15206, 15205, 15204, 15206 }, // 27
+			{ 15213, 15213, 15207, 15213, 15213, 15213, 15213 }, // 28
+			{ 15206, 15206, 15206, 15206, 15206, 15206 }, // 29
+			{ 15206, 15208, 15206, 15206 }, // 30
+			{ 15205, 15205, 15205, 15205 }, // 31
+			{ 15206, 15206, 15206, 15206 }, // 32
+			{ 15207, 15207, 15207, 15207 }, // 33
+			{ 15205, 15208, 15206 }, // 34
+			{ 15207, 15206, 15206, 15208 }, // 35
+			{ 15208, 15208 } // 36
 	};
 
 	private int[] boundChuncks;
@@ -155,19 +151,14 @@ public class FightKiln extends Controller {
 	public int[] getMap() {
 		int wave = getCurrentWave();
 		if (wave < 11)
-			return new int[]
-			{ 504, 632 };
+			return new int[] { 504, 632 };
 		if (wave < 21)
-			return new int[]
-			{ 512, 632 };
+			return new int[] { 512, 632 };
 		if (wave < 31)
-			return new int[]
-			{ 520, 632 };
+			return new int[] { 520, 632 };
 		if (wave < 34)
-			return new int[]
-			{ 528, 632 };
-		return new int[]
-		{ 536, 632 };
+			return new int[] { 528, 632 };
+		return new int[] { 536, 632 };
 	}
 
 	public void buildMap() {
@@ -257,7 +248,7 @@ public class FightKiln extends Controller {
 										@Override
 										public void run() {
 											try {
-												if(player.getTimersManager().isActive())
+												if (player.getTimersManager().isActive())
 													player.getTimersManager().removeTimer(RecordKey.FIGHT_KILN);
 												player.getDialogueManager().startDialogue("TokHaarHok", 6, TOKHAAR_HOK_SCENE, kiln);
 											} catch (Throwable e) {
@@ -394,7 +385,7 @@ public class FightKiln extends Controller {
 									WorldTile posTile = getWorldTile(31, 50);
 									player.getPackets().sendCameraPos(Cutscene.getX(player, posTile.getX()), Cutscene.getY(player, posTile.getY()), 3000);
 									player.getDialogueManager().startDialogue("TokHaarHok", 1, TOKHAAR_HOK_SCENE, kiln);
-									if(!player.getTimersManager().isActive())
+									if (!player.getTimersManager().isActive())
 										player.getTimersManager().sendTimer();
 									stage = Stages.RUNNING;
 									player.unlock();
@@ -550,34 +541,27 @@ public class FightKiln extends Controller {
 		case 1:
 		case 13:
 		case 25:
-			return new int[]
-			{ 23653 };
+			return new int[] { 23653 };
 		case 3:
 		case 15:
 		case 27:
-			return new int[]
-			{ 23654 };
+			return new int[] { 23654 };
 		case 5:
 		case 18:
 		case 29:
-			return new int[]
-			{ 23655 };
+			return new int[] { 23655 };
 		case 7:
 		case 19:
 		case 31:
-			return new int[]
-			{ 23656 };
+			return new int[] { 23656 };
 		case 9:
 		case 21:
-			return new int[]
-			{ 23657 };
+			return new int[] { 23657 };
 		case 11:
 		case 23:
-			return new int[]
-			{ 23658 };
+			return new int[] { 23658 };
 		case 35:
-			return new int[]
-			{ 23657, 23658 };
+			return new int[] { 23657, 23658 };
 		default:
 			return null;
 		}
@@ -726,8 +710,9 @@ public class FightKiln extends Controller {
 		} else {
 			player.setLargeSceneView(false);
 			player.getInterfaceManager().removeMinigameInterface();
-			if(player.getTimersManager().isActive()) //it only sets timer at wave 1 either way
-				player.getTimersManager().removeTimer(); 
+			if (player.getTimersManager().isActive()) // it only sets timer at
+				// wave 1 either way
+				player.getTimersManager().removeTimer();
 			if (type == 1 || type == 4) {
 				player.useStairs(-1, outside, 0, 1);
 				if (type == 4) {

@@ -18,12 +18,12 @@ public final class ShadowForgerIhlakhizan extends DungeonBoss {
 
 	public ShadowForgerIhlakhizan(int id, WorldTile tile, DungeonManager manager, RoomReference reference) {
 		super(id, tile, manager, reference);
-		setCantFollowUnderCombat(true); //force cant walk
+		setCantFollowUnderCombat(true); // force cant walk
 	}
 
 	@Override
 	public void setNextFaceEntity(Entity entity) {
-		//this boss doesnt face
+		// this boss doesnt face
 	}
 
 	@Override

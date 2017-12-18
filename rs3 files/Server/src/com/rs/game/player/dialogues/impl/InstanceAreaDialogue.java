@@ -12,11 +12,11 @@ public class InstanceAreaDialogue extends Dialogue {
 
 	@Override
 	public void run(int interfaceId, int componentId) {
-		
+
 	}
 
 	@Override
 	public void finish() {
-		
+
 	}
 }

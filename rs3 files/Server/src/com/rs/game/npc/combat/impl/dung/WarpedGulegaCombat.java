@@ -24,8 +24,7 @@ public class WarpedGulegaCombat extends CombatScript {
 
 	@Override
 	public Object[] getKeys() {
-		return new Object[]
-		{ 12737 };
+		return new Object[] { 12737 };
 	}
 
 	@Override
@@ -34,7 +33,7 @@ public class WarpedGulegaCombat extends CombatScript {
 
 		int style = Utils.random(4);
 		switch (style) {
-		case 3://reg aeo melee
+		case 3:// reg aeo melee
 			npc.setNextAnimation(new Animation(15004));
 
 			final List<WorldTile> attackTiles = new LinkedList<WorldTile>();
@@ -57,7 +56,7 @@ public class WarpedGulegaCombat extends CombatScript {
 				}
 			});
 			break;
-		case 1://reg range aeo
+		case 1:// reg range aeo
 			npc.setNextAnimation(new Animation(15001));
 			npc.setNextGraphics(new Graphics(2882));
 			for (Entity t : npc.getPossibleTargets(true, true)) {
@@ -66,7 +65,7 @@ public class WarpedGulegaCombat extends CombatScript {
 				delayHit(npc, 2, t, getRangeHit(npc, getMaxHit(npc, (int) (npc.getMaxHit(NPCCombatDefinitions.MELEE) * 0.75), NPCCombatDefinitions.RANGE, t)));
 			}
 			break;
-		case 2://reg magic aeo
+		case 2:// reg magic aeo
 			npc.setNextAnimation(new Animation(15007));
 			for (Entity t : npc.getPossibleTargets(true, true)) {
 				World.sendProjectile(npc, t, 2880, 150, 75, 30, 35, 15, 1);

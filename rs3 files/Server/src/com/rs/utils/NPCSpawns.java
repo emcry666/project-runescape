@@ -14,22 +14,22 @@ public final class NPCSpawns {
 		loadSpawnsList("data/npcs/spawnsList.txt");
 		loadSpawnsList("data/npcs/customSpawnsList.txt");
 	}
-	
+
 	private static class NPCSpawn {
-		
+
 		private NPCSpawn(int npcId, WorldTile tile, int mapAreaNameHash, boolean canBeAttackFromOutOfArea) {
 			this.npcId = npcId;
 			this.tile = tile;
 			this.mapAreaNameHash = mapAreaNameHash;
 			this.canBeAttackFromOutOfArea = canBeAttackFromOutOfArea;
 		}
-		
+
 		private int npcId;
-		private WorldTile tile; 
+		private WorldTile tile;
 		private int mapAreaNameHash;
 		private boolean canBeAttackFromOutOfArea;
 	}
-	
+
 	private static final List<NPCSpawn>[][] spawns = new ArrayList[256][256];
 
 	private static final void loadSpawnsList(String path) {
@@ -72,23 +72,24 @@ public final class NPCSpawns {
 	}
 
 	public static final void loadNPCSpawns(int regionId) {
-		int x = (regionId >> 8) ;
+		int x = (regionId >> 8);
 		int y = (regionId & 0xff);
-		if(spawns[x][y] == null)
+		if (spawns[x][y] == null)
 			return;
-		for(NPCSpawn spawn : spawns[x][y])
+		for (NPCSpawn spawn : spawns[x][y])
 			World.spawnNPC(spawn.npcId, spawn.tile, spawn.mapAreaNameHash, spawn.canBeAttackFromOutOfArea);
 		spawns[x][y] = null;
 	}
 
 	private static final void addNPCSpawn(int npcId, WorldTile tile, int mapAreaNameHash, boolean canBeAttackFromOutOfArea) {
-		//World.spawnNPC(npcId, tile, mapAreaNameHash, canBeAttackFromOutOfArea);
-		
+		// World.spawnNPC(npcId, tile, mapAreaNameHash,
+		// canBeAttackFromOutOfArea);
+
 		int x = tile.getRegionX();
 		int y = tile.getRegionY();
-		if(spawns[x][y] == null)
+		if (spawns[x][y] == null)
 			spawns[x][y] = new ArrayList<NPCSpawn>();
-		spawns[x][y].add(new NPCSpawn( npcId, tile, mapAreaNameHash, canBeAttackFromOutOfArea));
+		spawns[x][y].add(new NPCSpawn(npcId, tile, mapAreaNameHash, canBeAttackFromOutOfArea));
 	}
 
 	private NPCSpawns() {

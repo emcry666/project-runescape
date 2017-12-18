@@ -47,7 +47,7 @@ public class DropAnalyser {
 		int npc = kbd.nextInt(), size = NPCDefinitions.getNPCDefinitions(npc).size;
 
 		GameWorld target = Login.getWorld(1);
-		
+
 		final int TEST_AMT = 10000;
 		int dLevel = 0;
 
@@ -68,10 +68,10 @@ public class DropAnalyser {
 			if (drops == null)
 				return;
 			drops.setAcessRareTable(false);
-			NPC n = World.spawnNPC(npc, new WorldTile(1,1,1), -1, true);
+			NPC n = World.spawnNPC(npc, new WorldTile(1, 1, 1), -1, true);
 			for (int i = 0; i < TEST_AMT; i++) {
 				List<Drop> dropL = drops.generateDrops(player, Settings.getDropRate(player) * n.getDropRateFactor());
-			
+
 				drops.addCharms(dropL, size);
 				for (Drop d : dropL) {
 					String itemName = ItemDefinitions.getItemDefinitions(d.getItemId()).getName();
@@ -86,33 +86,33 @@ public class DropAnalyser {
 
 			}
 		}
-		
+
 		File file = new File("./dropt/");
 		if (!file.exists())
 			file.mkdirs();
-		BufferedWriter writer = new BufferedWriter(new FileWriter(new File("./dropt/"+NPCDefinitions.getNPCDefinitions(npc).getName()+".txt")));
+		BufferedWriter writer = new BufferedWriter(new FileWriter(new File("./dropt/" + NPCDefinitions.getNPCDefinitions(npc).getName() + ".txt")));
 
-		writer.write("Kill count: "+TEST_AMT);
+		writer.write("Kill count: " + TEST_AMT);
 		writer.newLine();
-		
-		writer.write("Difficulty Level [Hard = 1, Med = 2, Easy = 3]: "+dLevel);
+
+		writer.write("Difficulty Level [Hard = 1, Med = 2, Easy = 3]: " + dLevel);
 		writer.newLine();
-		
+
 		writer.write("Format: Item Name, Item Amount, Drop percentage");
 		writer.newLine();
-		
+
 		writer.newLine();
-		
+
 		DecimalFormat df = new DecimalFormat("#.###");
 		String[] keys = dpR.keySet().toArray(new String[dpR.size()]);
 		Arrays.sort(keys);
 		for (String key : keys) {
 			int keyCount = dpR.get(key);
-			writer.write(key + " : "+keyCount+" : "+(df.format(100 * ((double) dpP.get(key) / TEST_AMT)))+"%");
+			writer.write(key + " : " + keyCount + " : " + (df.format(100 * ((double) dpP.get(key) / TEST_AMT))) + "%");
 			writer.newLine();
 		}
 		writer.flush();
-		
+
 		writer.close();
 		kbd.close();
 	}

@@ -12,8 +12,7 @@ public class RobustGlassD extends Dialogue {
 
 	@Override
 	public void start() {
-		int[] ids =
-		{ 23193 };
+		int[] ids = { 23193 };
 		SkillsDialogueOld.sendSkillsDialogue(player, SkillsDialogueOld.MAKE, "Choose how many you wish to make,<br>then click on the item to begin.", 28, ids, new ItemNameFilter() {
 
 			@Override

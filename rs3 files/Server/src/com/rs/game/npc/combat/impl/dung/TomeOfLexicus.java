@@ -12,8 +12,7 @@ public class TomeOfLexicus extends CombatScript {
 
 	@Override
 	public Object[] getKeys() {
-		return new Object[]
-		{ 9856, 9857, 9858 };
+		return new Object[] { 9856, 9857, 9858 };
 	}
 
 	@Override

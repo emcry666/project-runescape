@@ -25,15 +25,12 @@ import com.rs.game.tasks.WorldTasksManager;
 import com.rs.utils.Logger;
 import com.rs.utils.Utils;
 
-
 public class BorkController extends Controller {
-
 
 	private static final WorldTile OUTSIDE = new WorldTile(3143, 5545, 0);
 
-	
 	public static void enterBork(Player player) {
-		if(Utils.currentTimeMillis() - player.getLastBork() <= ((player.isDonator() ? 8 : 12)*60*60*1000)) {
+		if (Utils.currentTimeMillis() - player.getLastBork() <= ((player.isDonator() ? 8 : 12) * 60 * 60 * 1000)) {
 			player.getPackets().sendGameMessage("The portal appears to have stopped working for now. Perhaps you should return later?");
 			return;
 		}
@@ -45,30 +42,30 @@ public class BorkController extends Controller {
 	private Bork bork;
 	private boolean earthquake;
 	private int timer;
-	
+
 	@Override
 	public void start() {
 		enter();
 	}
-	
+
 	@Override
 	public boolean processObjectClick1(WorldObject object) {
-		if(object.getId() == 77745) {
+		if (object.getId() == 77745) {
 			leave(2);
 			return false;
 		}
 		return true;
 	}
-	
+
 	@Override
 	public boolean processNPCClick1(NPC npc) {
-		if(npc.getId() == 7136 || npc.getId() == 7137) {
+		if (npc.getId() == 7136 || npc.getId() == 7137) {
 			player.getPackets().sendGameMessage("Your attack has no effect.");
 			return false;
 		}
 		return true;
 	}
-	
+
 	public void enter() {
 		instance = new MapInstance(385, 690);
 		player.lock();
@@ -89,46 +86,46 @@ public class BorkController extends Controller {
 					}
 				});
 			}
-			
+
 		});
 	}
-	
-	//0 - logout
-	//1 - teleport / death
-	//2 - leave
+
+	// 0 - logout
+	// 1 - teleport / death
+	// 2 - leave
 	public void leave(int type) {
 		player.stopAll();
-		if(type != 0) {
-			if(type == 1)
+		if (type != 0) {
+			if (type == 1)
 				player.lock(3);
 			else
 				player.useStairs(17803, OUTSIDE, 2, 3);
 			player.getMusicsManager().reset();
-			if(earthquake)
+			if (earthquake)
 				player.getPackets().sendStopCameraShake();
 			removeControler();
-		}else
+		} else
 			player.setLocation(OUTSIDE);
 		instance.destroy(null);
 	}
-	
+
 	@Override
 	public boolean logout() {
 		leave(0);
 		return true;
 	}
-	
+
 	@Override
 	public boolean login() {
 		player.setNextWorldTile(OUTSIDE);
-		return true; //shouldnt happen
+		return true; // shouldnt happen
 	}
-	
+
 	@Override
 	public void magicTeleported(int type) {
 		leave(1);
 	}
-	
+
 	@Override
 	public boolean sendDeath() {
 		player.lock(8);
@@ -153,15 +150,15 @@ public class BorkController extends Controller {
 			}
 		}, 0, 1);
 		return false;
-		
+
 	}
-	
+
 	public void startFight() {
 		player.unlock();
 		bork.setCantInteract(false);
 		surokMagis.setTarget(player);
 	}
-	
+
 	public void startEarthquake() {
 		player.unlock();
 		player.getPackets().sendGameMessage("Something is shaking the whole cavern! You should get out of here quick!");
@@ -169,10 +166,10 @@ public class BorkController extends Controller {
 		earthquake = true;
 		timer = 30;
 	}
-	
+
 	@Override
 	public void process() {
-		if(!earthquake)
+		if (!earthquake)
 			return;
 		if (timer > 0) {
 			timer--;
@@ -181,12 +178,12 @@ public class BorkController extends Controller {
 		player.applyHit(new Hit(player, Utils.random(499) + 1, HitLook.REGULAR_DAMAGE));
 		timer = 30;
 	}
-	
+
 	public void spawnMinions() {
 		player.getPackets().sendGameMessage("Bork strikes the ground with his axe.");
 		sendCutscene(691, 4200);
 	}
-	
+
 	public void killBork() {
 		bork = null;
 		sendCutscene(693, 5400);
@@ -196,10 +193,11 @@ public class BorkController extends Controller {
 		player.getSkills().addXp(Skills.SLAYER, player.getLastBork() == 0 ? 5000 : 3000);
 		player.setLastBork(Utils.currentTimeMillis());
 	}
-	
+
 	public Stages getStage() {
 		return instance.getStage();
 	}
+
 	public void sendCutscene(final int interfaceId, long time) {
 		player.lock();
 		player.getMusicsManager().forcePlayMusic(587);
@@ -209,14 +207,14 @@ public class BorkController extends Controller {
 			@Override
 			public void run() {
 				try {
-					if(instance.getStage() != Stages.RUNNING)
+					if (instance.getStage() != Stages.RUNNING)
 						return;
 					player.getInterfaceManager().removeMinigameInterface();
-					if(interfaceId == 692) {
+					if (interfaceId == 692) {
 						player.resetReceivedHits();
 						player.getDialogueManager().startDialogue("SurokMagis", surokMagis.getId(), BorkController.this);
 						player.getPackets().sendBlackOut(0);
-					}else if(interfaceId == 693) {
+					} else if (interfaceId == 693) {
 						WorldTile lookTo = instance.getTile(22, 22);
 						player.getPackets().sendCameraLook(Cutscene.getX(player, lookTo.getX()), Cutscene.getY(player, lookTo.getY()), 1000);
 						WorldTile posTile = instance.getTile(22, 15);
@@ -226,18 +224,18 @@ public class BorkController extends Controller {
 						WorldTasksManager.schedule(new WorldTask() {
 
 							boolean teleported;
-							
+
 							@Override
 							public void run() {
-								if(instance.getStage() != Stages.RUNNING) {
+								if (instance.getStage() != Stages.RUNNING) {
 									stop();
 									return;
 								}
-								if(!teleported) {
+								if (!teleported) {
 									surokMagis.setNextAnimation(new Animation(8939));
 									surokMagis.setNextGraphics(new Graphics(1576));
 									teleported = true;
-								}else{
+								} else {
 									surokMagis.finish();
 									surokMagis = null;
 									player.getDialogueManager().startDialogue("SurokMagisT", BorkController.this);
@@ -246,10 +244,10 @@ public class BorkController extends Controller {
 									stop();
 								}
 							}
-							
+
 						}, 6, 3);
-					}else {
-						if(interfaceId == 691)
+					} else {
+						if (interfaceId == 691)
 							bork.setMinions();
 						player.unlock();
 						player.getPackets().sendBlackOut(0);

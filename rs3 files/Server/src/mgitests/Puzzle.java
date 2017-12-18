@@ -57,7 +57,7 @@ public class Puzzle {
 			}
 		}
 
-		//parity check
+		// parity check
 		int tot = 0;
 		for (int i = 1; i < mix.length; i++) {
 			for (int j = 0; j < i; j++) {

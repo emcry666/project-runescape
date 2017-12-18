@@ -12,8 +12,7 @@ public class GuthanCombat extends CombatScript {
 
 	@Override
 	public Object[] getKeys() {
-		return new Object[]
-		{ 2027 };
+		return new Object[] { 2027 };
 	}
 
 	@Override

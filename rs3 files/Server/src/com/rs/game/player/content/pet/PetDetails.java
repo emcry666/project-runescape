@@ -33,8 +33,7 @@ public final class PetDetails implements Serializable {
 	/**
 	 * Constructs a new {@code PetDetails} {@code Object}.
 	 * 
-	 * @param growth
-	 *            The growth value.
+	 * @param growth The growth value.
 	 */
 	public PetDetails(double growth) {
 		this.growth = growth;
@@ -43,8 +42,7 @@ public final class PetDetails implements Serializable {
 	/**
 	 * Increases the hunger value by the given amount.
 	 * 
-	 * @param amount
-	 *            The amount.
+	 * @param amount The amount.
 	 */
 	public void updateHunger(double amount) {
 		hunger += amount;
@@ -58,8 +56,7 @@ public final class PetDetails implements Serializable {
 	/**
 	 * Increases the growth value by the given amount.
 	 * 
-	 * @param amount
-	 *            The amount.
+	 * @param amount The amount.
 	 */
 	public void updateGrowth(double amount) {
 		growth += amount;
@@ -100,8 +97,7 @@ public final class PetDetails implements Serializable {
 	/**
 	 * Sets the stage.
 	 * 
-	 * @param stage
-	 *            The stage to set.
+	 * @param stage The stage to set.
 	 */
 	public void setStage(int stage) {
 		this.stage = stage;

@@ -24,8 +24,7 @@ public class GeomancerCombat extends CombatScript {
 
 	@Override
 	public Object[] getKeys() {
-		return new Object[]
-		{ 10059 };
+		return new Object[] { 10059 };
 	}
 
 	@Override
@@ -49,7 +48,7 @@ public class GeomancerCombat extends CombatScript {
 
 		int attackType = Utils.random(6);
 		switch (attackType) {
-		case 0://MELEE
+		case 0:// MELEE
 			if (atDistance)
 				sendEarthBlast(npc, target, true);
 			else {
@@ -57,14 +56,14 @@ public class GeomancerCombat extends CombatScript {
 				delayHit(npc, 0, target, getMeleeHit(npc, getMaxHit(npc, NPCCombatDefinitions.MELEE, target)));
 			}
 			break;
-		case 1://EARTH BLAST
+		case 1:// EARTH BLAST
 		case 2:
 			sendEarthBlast(npc, target, attackType == 2);
 			break;
-		case 3://WEAKEN
+		case 3:// WEAKEN
 			sendWeaken(npc, target);
 			break;
-		case 4://SNARE
+		case 4:// SNARE
 			sendEntangle(npc, target);
 			break;
 		case 5:

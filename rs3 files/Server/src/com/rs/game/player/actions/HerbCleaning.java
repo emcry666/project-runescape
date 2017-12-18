@@ -100,11 +100,11 @@ public class HerbCleaning {
 				return herb;
 		return null;
 	}
-	
+
 	public static List<Herbs> getHerbs() {
 		List<Herbs> herbs = new LinkedList<Herbs>();
 		for (Herbs herb : Herbs.values()) {
-			if (herb.ordinal() < 17) //Felstalks
+			if (herb.ordinal() < 17) // Felstalks
 				herbs.add(herb);
 		}
 		return herbs;

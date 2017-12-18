@@ -18,9 +18,8 @@ public class RouteFinder {
 	private static int lastUsed;
 
 	/**
-	 * Find's route using given strategy. Returns amount of steps found. If
-	 * steps > 0, route exists. If steps = 0, route exists, but no need to move.
-	 * If steps < 0, route does not exist.
+	 * Find's route using given strategy. Returns amount of steps found. If steps > 0, route exists. If steps = 0,
+	 * route exists, but no need to move. If steps < 0, route does not exist.
 	 */
 	public static int findRoute(int type, int srcX, int srcY, int srcZ, int srcSizeXY, RouteStrategy strategy, boolean findAlternative) {
 		switch (lastUsed = type) {

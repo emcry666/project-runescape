@@ -550,40 +550,26 @@ public final class EmotesManager implements Serializable {
 				}, 0, 1);
 				break;
 			/*
-			 * //TODO fix lulz case 19709: case 19710: // SlayerMasterD
-			 * dungeoneering cape nextEmoteEnd = Utils.currentTimeMillis() +
-			 * (20 * 600); WorldTasksManager.schedule(new WorldTask() { int
-			 * step; private NPC dung1, dung2, dung3, dung4;
+			 * //TODO fix lulz case 19709: case 19710: // SlayerMasterD dungeoneering cape nextEmoteEnd =
+			 * Utils.currentTimeMillis() + (20 * 600); WorldTasksManager.schedule(new WorldTask() { int step;
+			 * private NPC dung1, dung2, dung3, dung4;
 			 * 
-			 * @Override public void run() { if (step == 1) {
-			 * player.lock(12);
-			 * player.getAppearence().transformIntoNPC(11229);
-			 * player.setNextAnimation(new Animation(14608)); dung1 = new
-			 * NPC(-1, new WorldTile(player.getX(), player.getY() - 1,
-			 * player.getPlane()), -1, true);
-			 * player.setNextFaceEntity(dung1); dung1.setLocation(dung1);
-			 * dung1.setNextGraphics(new Graphics(2777)); dung2 = new
-			 * NPC(-1, new WorldTile( player.getX() + 1, player.getY() - 1,
-			 * player.getPlane()), -1, true); } if (step == 2) {
-			 * player.setNextFaceEntity(null); dung1.finish();
-			 * player.getAppearence().transformIntoNPC(11228);
-			 * dung2.setLocation(dung2); player.setNextAnimation(new
-			 * Animation(14609)); player.setNextGraphics(new
-			 * Graphics(2782)); dung2.setNextGraphics(new Graphics(2778));
-			 * dung3 = new NPC(-1, new WorldTile(player.getX(),
-			 * player.getY() - 1, player.getPlane()), -1, true); dung4 = new
-			 * NPC(-1, new WorldTile(player.getX(), player.getY() + 1,
-			 * player.getPlane()), -1, true); } if (step == 3) {
-			 * dung2.finish();
-			 * player.getAppearence().transformIntoNPC(11227);
-			 * dung3.setLocation(dung3); dung4.setLocation(dung4);
-			 * dung4.setNextFaceEntity(player); player.setNextAnimation(new
-			 * Animation(14610)); dung3.setNextGraphics(new Graphics(2779));
-			 * dung4.setNextGraphics(new Graphics(2780)); } if (step > 4) {
-			 * dung4.setNextFaceEntity(null);
-			 * player.getAppearence().transformIntoNPC(-1); dung3.finish();
-			 * dung4.finish(); stop(); player.unlock(); } step++; } }, 0,
-			 * 1);
+			 * @Override public void run() { if (step == 1) { player.lock(12);
+			 * player.getAppearence().transformIntoNPC(11229); player.setNextAnimation(new Animation(14608)); dung1
+			 * = new NPC(-1, new WorldTile(player.getX(), player.getY() - 1, player.getPlane()), -1, true);
+			 * player.setNextFaceEntity(dung1); dung1.setLocation(dung1); dung1.setNextGraphics(new
+			 * Graphics(2777)); dung2 = new NPC(-1, new WorldTile( player.getX() + 1, player.getY() - 1,
+			 * player.getPlane()), -1, true); } if (step == 2) { player.setNextFaceEntity(null); dung1.finish();
+			 * player.getAppearence().transformIntoNPC(11228); dung2.setLocation(dung2);
+			 * player.setNextAnimation(new Animation(14609)); player.setNextGraphics(new Graphics(2782));
+			 * dung2.setNextGraphics(new Graphics(2778)); dung3 = new NPC(-1, new WorldTile(player.getX(),
+			 * player.getY() - 1, player.getPlane()), -1, true); dung4 = new NPC(-1, new WorldTile(player.getX(),
+			 * player.getY() + 1, player.getPlane()), -1, true); } if (step == 3) { dung2.finish();
+			 * player.getAppearence().transformIntoNPC(11227); dung3.setLocation(dung3); dung4.setLocation(dung4);
+			 * dung4.setNextFaceEntity(player); player.setNextAnimation(new Animation(14610));
+			 * dung3.setNextGraphics(new Graphics(2779)); dung4.setNextGraphics(new Graphics(2780)); } if (step >
+			 * 4) { dung4.setNextFaceEntity(null); player.getAppearence().transformIntoNPC(-1); dung3.finish();
+			 * dung4.finish(); stop(); player.unlock(); } step++; } }, 0, 1);
 			 * 
 			 * break;
 			 */

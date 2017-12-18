@@ -22,8 +22,7 @@ public class BalLakThePummelerCombat extends CombatScript {
 
 	@Override
 	public Object[] getKeys() {
-		return new Object[]
-		{ "Bal'lak the Pummeller" };
+		return new Object[] { "Bal'lak the Pummeller" };
 	}
 
 	@Override
@@ -76,7 +75,7 @@ public class BalLakThePummelerCombat extends CombatScript {
 		}
 
 		switch (Utils.random(2)) {
-		case 0://reg melee left
+		case 0:// reg melee left
 
 			final boolean firstHand = Utils.random(2) == 0;
 
@@ -92,7 +91,7 @@ public class BalLakThePummelerCombat extends CombatScript {
 
 			}, 1);
 			break;
-		case 1://magic attack multi
+		case 1:// magic attack multi
 			boss.setNextAnimation(new Animation(14380));
 			boss.setNextGraphics(new Graphics(2441));
 			for (Entity t : npc.getPossibleTargets()) {

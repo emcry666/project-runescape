@@ -10,11 +10,8 @@ import com.rs.game.player.controllers.Controller;
 
 public class FightPitsLobby extends Controller {
 
+	public static final WorldTile[] ORB_TELEPORTS = { new WorldTile(4571, 5092, 0), new WorldTile(4571, 5107, 0), new WorldTile(4590, 5092, 0), new WorldTile(4571, 5077, 0), new WorldTile(4557, 5092, 0) };
 
-	public static final WorldTile[] ORB_TELEPORTS =
-	{ new WorldTile(4571, 5092, 0), new WorldTile(4571, 5107, 0), new WorldTile(4590, 5092, 0), new WorldTile(4571, 5077, 0), new WorldTile(4557, 5092, 0) };
-
-	
 	@Override
 	public void start() {
 

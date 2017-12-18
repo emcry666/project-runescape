@@ -13,10 +13,8 @@ public interface QueenAttack {
 	/**
 	 * Starts the attack.
 	 * 
-	 * @param npc
-	 *            The NPC.
-	 * @param victim
-	 *            The victim.
+	 * @param npc The NPC.
+	 * @param victim The victim.
 	 * @return The next attack value.
 	 */
 	int attack(QueenBlackDragon npc, Player victim);
@@ -24,10 +22,8 @@ public interface QueenAttack {
 	/**
 	 * Checks if the QBD can use this attack.
 	 * 
-	 * @param npc
-	 *            The QBD.
-	 * @param victim
-	 *            The player.
+	 * @param npc The QBD.
+	 * @param victim The player.
 	 * @return {@code True} if so.
 	 */
 	boolean canAttack(QueenBlackDragon npc, Player victim);

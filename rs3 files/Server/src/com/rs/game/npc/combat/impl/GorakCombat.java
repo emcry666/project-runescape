@@ -12,8 +12,7 @@ public class GorakCombat extends CombatScript {
 
 	@Override
 	public Object[] getKeys() {
-		return new Object[]
-		{ "Gorak" };
+		return new Object[] { "Gorak" };
 	}
 
 	@Override

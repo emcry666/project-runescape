@@ -251,30 +251,26 @@ public final class ClanWarRequestController extends Controller {
 			ClanWars.enter(player, player, false);
 			return false;
 		case 38698: // Safe FFA portal.
-			player.getDialogueManager().startDialogue("WarningD", DoomsayerManager.CLAN_WARS_WARNING_MESSAGE, DoomsayerManager.CLAN_WARS_SAFE_WARNING, 
-					null,
-					null, new Runnable() {
+			player.getDialogueManager().startDialogue("WarningD", DoomsayerManager.CLAN_WARS_WARNING_MESSAGE, DoomsayerManager.CLAN_WARS_SAFE_WARNING, null, null, new Runnable() {
 
-						@Override
-						public void run() {
-							player.useStairs(-1, new WorldTile(2815, 5511, 0), 0, 1);
-							player.getControlerManager().startControler("clan_wars_ffa", false);
-						}
-				
+				@Override
+				public void run() {
+					player.useStairs(-1, new WorldTile(2815, 5511, 0), 0, 1);
+					player.getControlerManager().startControler("clan_wars_ffa", false);
+				}
+
 			});
 			return false;
 		case 38699: // Risk FFA portal.
-			
-			player.getDialogueManager().startDialogue("WarningD", DoomsayerManager.CLAN_WARS_WARNING_MESSAGE, DoomsayerManager.CLAN_WARS_DANGEROUS_WARNING, 
-					null,
-					null, new Runnable() {
 
-						@Override
-						public void run() {
-							player.useStairs(-1, new WorldTile(3007, 5511, 0), 0, 1);
-							player.getControlerManager().startControler("clan_wars_ffa", true);
-						}
-				
+			player.getDialogueManager().startDialogue("WarningD", DoomsayerManager.CLAN_WARS_WARNING_MESSAGE, DoomsayerManager.CLAN_WARS_DANGEROUS_WARNING, null, null, new Runnable() {
+
+				@Override
+				public void run() {
+					player.useStairs(-1, new WorldTile(3007, 5511, 0), 0, 1);
+					player.getControlerManager().startControler("clan_wars_ffa", true);
+				}
+
 			});
 			return false;
 		}
@@ -290,17 +286,12 @@ public final class ClanWarRequestController extends Controller {
 		player.getPackets().sendPlayerOption("null", 1, false);
 	}
 
-
 	/**
 	 * Checks if a player can request a war.
 	 * 
-	 * @param player
-	 *            The player.
-	 * @param target
-	 *            The player to challenge.
-	 * @param message
-	 *            If the player should be messaged if he was unable to
-	 *            challenge.
+	 * @param player The player.
+	 * @param target The player to challenge.
+	 * @param message If the player should be messaged if he was unable to challenge.
 	 * @return {@code True} if so.
 	 */
 	private static boolean canRequest(Player player, Player target, boolean message) {
@@ -329,8 +320,7 @@ public final class ClanWarRequestController extends Controller {
 	/**
 	 * Checks if a player is in the clan wars request area.
 	 * 
-	 * @param player
-	 *            The player.
+	 * @param player The player.
 	 * @return {@code True} if so.
 	 */
 	public static boolean inWarRequest(Player player) {

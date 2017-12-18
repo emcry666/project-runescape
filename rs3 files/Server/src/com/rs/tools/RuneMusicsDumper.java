@@ -14,7 +14,7 @@ public class RuneMusicsDumper {
 		System.out.println("Starting..");
 		Cache.init();
 		dumpMusics();
-		
+
 	}
 
 	public static boolean dumpMusics() {
@@ -35,11 +35,11 @@ public class RuneMusicsDumper {
 					else
 						lastLine = line;
 				} else {
-					String musicName = lastLine.substring(lastLine.indexOf("\">")+2, lastLine.indexOf("</a>"));
-				
+					String musicName = lastLine.substring(lastLine.indexOf("\">") + 2, lastLine.indexOf("</a>"));
+
 					Object key = ClientScriptMap.getMap(1345).getKeyForValue(musicName);
-					System.out.println(musicName+", "+key);
-					ids.add((int)(long)key);
+					System.out.println(musicName + ", " + key);
+					ids.add((int) (long) key);
 					isNextLine = false;
 				}
 			}

@@ -13,16 +13,10 @@ import com.rs.game.tasks.WorldTasksManager;
 
 public class TanningD extends Dialogue {
 
-	public static final int[][] TANNING_PRICES =
-	{
-	{ 0, 3, 15, 20, 20, 20, 20, 20, 20 },
-	{ 2, 5, 25, 45, 45, 45, 45, 45, 45 } };
-	public static final int[] INGREDIENT =
-	{ 1739, 1739, 6287, 1753, 1751, 1749, 1747, 24372 };
-	public static final int[] PRODUCT =
-	{ 1741, 1743, 6289, 1745, 2505, 2507, 2509, 24374 };
-	public static final int[] LEVELS =
-	{ 1, 28, 45, 45, 57, 66, 73, 79, 87 };
+	public static final int[][] TANNING_PRICES = { { 0, 3, 15, 20, 20, 20, 20, 20, 20 }, { 2, 5, 25, 45, 45, 45, 45, 45, 45 } };
+	public static final int[] INGREDIENT = { 1739, 1739, 6287, 1753, 1751, 1749, 1747, 24372 };
+	public static final int[] PRODUCT = { 1741, 1743, 6289, 1745, 2505, 2507, 2509, 24374 };
+	public static final int[] LEVELS = { 1, 28, 45, 45, 57, 66, 73, 79, 87 };
 
 	private boolean isCanfis;
 	private int npcId;

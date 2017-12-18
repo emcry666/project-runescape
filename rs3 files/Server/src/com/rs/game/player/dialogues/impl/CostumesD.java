@@ -5,7 +5,7 @@ import com.rs.game.player.dialogues.Dialogue;
 public class CostumesD extends Dialogue {
 
 	private int npcId;
-	
+
 	@Override
 	public void start() {
 		npcId = (int) parameters[0];
@@ -13,12 +13,12 @@ public class CostumesD extends Dialogue {
 	}
 
 	int option = 0;
+
 	@Override
 	public void run(int interfaceId, int componentId) {
 		end();
-		
+
 	}
-	
 
 	@Override
 	public void finish() {

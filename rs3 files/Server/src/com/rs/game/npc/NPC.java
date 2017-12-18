@@ -53,7 +53,8 @@ public class NPC extends Entity implements Serializable {
 	private int mapAreaNameHash;
 	private boolean canBeAttackFromOutOfArea;
 	private int walkType;
-	private int[] bonuses; //melee dmg, range dmg, magic dmg, melee acc, range acc, mage acc, armour bonus, crit bonus
+	private int[] bonuses; // melee dmg, range dmg, magic dmg, melee acc, range
+	// acc, mage acc, armour bonus, crit bonus
 	private boolean spawned;
 	private transient NPCCombat combat;
 	public WorldTile forceWalk;
@@ -81,9 +82,8 @@ public class NPC extends Entity implements Serializable {
 	private transient boolean locked;
 	private transient double dropRateFactor;
 	private transient boolean cantSetTargetAutoRelatio;
-	
-	private transient BossInstance bossInstance; //if its a instance npc
-	
+
+	private transient BossInstance bossInstance; // if its a instance npc
 
 	public NPC(int id, WorldTile tile, int mapAreaNameHash, boolean canBeAttackFromOutOfArea) {
 		this(id, tile, mapAreaNameHash, canBeAttackFromOutOfArea, false);
@@ -103,7 +103,7 @@ public class NPC extends Entity implements Serializable {
 		dropRateFactor = 1;
 		setHitpoints(getMaxHitpoints());
 		setDirection(getRespawnDirection());
-		//int walkType = t(id);
+		// int walkType = t(id);
 		setRandomWalk(getDefinitions().walkMask);
 		setBonuses();
 		combat = new NPCCombat(this);
@@ -124,7 +124,7 @@ public class NPC extends Entity implements Serializable {
 	private int[] getCacheBonuses() {
 		int[] bonuses = new int[8];
 		Map<Integer, Object> data = getDefinitions().clientScriptData;
-		if(data != null) {
+		if (data != null) {
 			Integer meleeDamage = (Integer) data.get(641);
 			bonuses[0] = meleeDamage == null ? 0 : meleeDamage;
 			Integer rangeDamage = (Integer) data.get(643);
@@ -149,18 +149,20 @@ public class NPC extends Entity implements Serializable {
 
 	public void restoreBonuses() {
 		int[] b = getCacheBonuses();
-		for(int i = 0; i < b.length; i++) {
-			if(b[i] > bonuses[i])
+		for (int i = 0; i < b.length; i++) {
+			if (b[i] > bonuses[i])
 				bonuses[i]++;
-			else if(b[i] < bonuses[i])
+			else if (b[i] < bonuses[i])
 				bonuses[i]--;
 		}
 	}
 
 	@Override
 	public boolean needMasksUpdate() {
-		return super.needMasksUpdate() || refreshHeadIcon || nextSecondaryBar != null || nextTransformation != null || getCustomName() != null || getCustomCombatLevel() >= 0 /*									        * changedName
-		 */;
+		return super.needMasksUpdate() || refreshHeadIcon || nextSecondaryBar != null || nextTransformation != null || getCustomName() != null
+				|| getCustomCombatLevel() >= 0 /*
+												 * * changedName
+												 */;
 	}
 
 	public void setNextNPCTransformation(int id) {
@@ -231,9 +233,9 @@ public class NPC extends Entity implements Serializable {
 								if (can) {
 									int moveX = Utils.random(4, 8);
 									int moveY = Utils.random(4, 8);
-									if(Utils.random(2) == 0)
+									if (Utils.random(2) == 0)
 										moveX = -moveX;
-									if(Utils.random(2) == 0)
+									if (Utils.random(2) == 0)
 										moveY = -moveY;
 									resetWalkSteps();
 									if (getMapAreaNameHash() != -1) {
@@ -241,17 +243,19 @@ public class NPC extends Entity implements Serializable {
 											forceWalkRespawnTile();
 											return;
 										}
-										//fly walk noclips for now, nothing uses it anyway
-										if((walkType & FLY_WALK) != 0)
+										// fly walk noclips for now, nothing
+										// uses it anyway
+										if ((walkType & FLY_WALK) != 0)
 											addWalkSteps(getX() + moveX, getY() + moveY, 10, false);
 										else
 											Entity.findBasicRoute(this, new WorldTile(getX() + moveX, getY() + moveY, getPlane()), 10, true);
-									} else
-										if((walkType & FLY_WALK) != 0)
-											addWalkSteps(respawnTile.getX() + moveX, respawnTile.getY() + moveY, 7, false);
-										else
-											Entity.findBasicRoute(this, respawnTile.transform(moveX, moveY, 0), 7, true);
-									//	addWalkSteps(respawnTile.getX() + moveX, respawnTile.getY() + moveY, 5, (walkType & FLY_WALK) == 0);
+									} else if ((walkType & FLY_WALK) != 0)
+										addWalkSteps(respawnTile.getX() + moveX, respawnTile.getY() + moveY, 7, false);
+									else
+										Entity.findBasicRoute(this, respawnTile.transform(moveX, moveY, 0), 7, true);
+									// addWalkSteps(respawnTile.getX() + moveX,
+									// respawnTile.getY() + moveY, 5, (walkType
+									// & FLY_WALK) == 0);
 								}
 
 							}
@@ -302,22 +306,12 @@ public class NPC extends Entity implements Serializable {
 	}
 
 	/*
-	 * forces npc to random walk even if cache says no, used because of fake
-	 * cache information
+	 * forces npc to random walk even if cache says no, used because of fake cache information
 	 */
-	/*  private static int walkType(int npcId) {
-	switch (npcId) {
-	    case 11226:
-		return RANDOM_WALK;
-	    case 3341:
-	    case 3342:
-	    case 3343:
-		return RANDOM_WALK;
-	    default:
-		return -1;
-	}
-	  }*/
-
+	/*
+	 * private static int walkType(int npcId) { switch (npcId) { case 11226: return RANDOM_WALK; case 3341: case
+	 * 3342: case 3343: return RANDOM_WALK; default: return -1; } }
+	 */
 
 	@Override
 	public void handleIngoingHit(final Hit hit) {
@@ -328,8 +322,8 @@ public class NPC extends Entity implements Serializable {
 		Entity source = hit.getSource();
 		if (source == null)
 			return;
-		 if (getEffectsManager().hasActiveEffect(EffectType.BARRICADE))
-				hit.setDamage(0);
+		if (getEffectsManager().hasActiveEffect(EffectType.BARRICADE))
+			hit.setDamage(0);
 		if (source instanceof Player) {
 			((Player) source).getPrayer().handleHitPrayers(this, hit);
 			((Player) source).getControlerManager().processIncommingHit(hit, this);
@@ -356,7 +350,7 @@ public class NPC extends Entity implements Serializable {
 	}
 
 	public void setRespawnTask() {
-		if(bossInstance != null && bossInstance.isFinished())
+		if (bossInstance != null && bossInstance.isFinished())
 			return;
 		if (!hasFinished()) {
 			reset();
@@ -364,13 +358,13 @@ public class NPC extends Entity implements Serializable {
 			finish();
 		}
 		long respawnDelay = getCombatDefinitions().getRespawnDelay() * 600;
-		if(bossInstance != null) 
+		if (bossInstance != null)
 			respawnDelay /= bossInstance.getSettings().getSpawnSpeed();
 		GameExecutorManager.slowExecutor.schedule(new Runnable() {
 			@Override
 			public void run() {
 				try {
-					if(bossInstance != null && bossInstance.isFinished())
+					if (bossInstance != null && bossInstance.isFinished())
 						return;
 					spawn();
 				} catch (Throwable e) {
@@ -428,7 +422,8 @@ public class NPC extends Entity implements Serializable {
 					finish();
 					if (!isSpawned())
 						setRespawnTask();
-					if (source.getAttackedBy() == NPC.this) { //no need to wait after u kill
+					if (source.getAttackedBy() == NPC.this) { // no need to wait
+						// after u kill
 						source.setAttackedByDelay(0);
 						source.setAttackedBy(null);
 						source.setFindTargetDelay(0);
@@ -439,20 +434,16 @@ public class NPC extends Entity implements Serializable {
 			}
 		}, 0, 1);
 	}
-	
+
 	@Override
 	public void giveXP() {
 		if (getCombatDefinitions() == NPCCombatDefinitionsL.DEFAULT_DEFINITION || getMaxHitpoints() == 1)
 			return;
 		Combat.giveXP(this, getCombatDefinitions().getXp());
 	}
-	
-	
-	
 
 	public void drop() {
-		if (getCombatDefinitions() == NPCCombatDefinitionsL.DEFAULT_DEFINITION || getMaxHitpoints() == 1
-				|| (bossInstance != null && (bossInstance.isFinished() || bossInstance.getSettings().isPractiseMode())))
+		if (getCombatDefinitions() == NPCCombatDefinitionsL.DEFAULT_DEFINITION || getMaxHitpoints() == 1 || (bossInstance != null && (bossInstance.isFinished() || bossInstance.getSettings().isPractiseMode())))
 			return;
 		Player killer = getMostDamageReceivedSourcePlayer();
 		if (killer == null)
@@ -468,10 +459,10 @@ public class NPC extends Entity implements Serializable {
 
 		double dropRate = 0;
 
-		if (players == null || players.size() == 1) 
+		if (players == null || players.size() == 1)
 			dropRate = Settings.getDropRate(killer);
-		else{ //to be fair
-			for (Player p2 : players) 
+		else { // to be fair
+			for (Player p2 : players)
 				dropRate += Settings.getDropRate(p2);
 			dropRate /= players.size();
 		}
@@ -481,23 +472,22 @@ public class NPC extends Entity implements Serializable {
 
 		if (players == null || players.size() == 1) {
 			boolean hasBonecrusher = killer.getInventory().containsOneItem(18337);
-			//gotta add option to turn it on and off
-			//	boolean hasHerbicide = killer.getInventory().containsOneItem(19675);
+			// gotta add option to turn it on and off
+			// boolean hasHerbicide =
+			// killer.getInventory().containsOneItem(19675);
 			for (Drop drop : dropL) {
-				if(hasBonecrusher) {
+				if (hasBonecrusher) {
 					Bone bone = Bone.forId(drop.getItemId());
-					if(bone != null && !bone.isAsh()) {
+					if (bone != null && !bone.isAsh()) {
 						killer.getSkills().addXp(Skills.PRAYER, bone.getExperience());
 						continue;
 					}
 				}
-				/*	if(hasHerbicide) {
-					final Herbs herb = HerbCleaning.getHerb(drop.getItemId());
-					if(herb != null && killer.getSkills().getLevel(Skills.HERBLORE) >= herb.getLevel()) {
-						killer.getSkills().addXp(Skills.HERBLORE, herb.getExperience()*2);
-						continue;
-					}
-				}*/
+				/*
+				 * if(hasHerbicide) { final Herbs herb = HerbCleaning.getHerb(drop.getItemId()); if(herb != null &&
+				 * killer.getSkills().getLevel(Skills.HERBLORE) >= herb.getLevel()) {
+				 * killer.getSkills().addXp(Skills.HERBLORE, herb.getExperience()*2); continue; } }
+				 */
 				if (killer.getTreasureTrailsManager().isScroll(drop.getItemId())) {
 					if (killer.getTreasureTrailsManager().hasClueScrollItem())
 						continue;
@@ -526,36 +516,42 @@ public class NPC extends Entity implements Serializable {
 	}
 
 	public Item sendDrop(Player player, Drop drop) {
-		if ((drop.getItemId() >= 20135 && drop.getItemId() <= 20174) //nex piece
-				|| (drop.getItemId() >= 24974 && drop.getItemId() <= 24991) //nex gloves/boots
-				|| (drop.getItemId() >= 13746 && drop.getItemId() <= 13753) //sigil
-				|| drop.getItemId() == 11335 //dragon full helm
-				)
+		if ((drop.getItemId() >= 20135 && drop.getItemId() <= 20174) // nex
+				// piece
+				|| (drop.getItemId() >= 24974 && drop.getItemId() <= 24991) // nex
+				// gloves/boots
+				|| (drop.getItemId() >= 13746 && drop.getItemId() <= 13753) // sigil
+				|| drop.getItemId() == 11335 // dragon full helm
+		)
 			World.sendNews(player, player.getDisplayName() + " has received " + ItemDefinitions.getItemDefinitions(drop.getItemId()).getName() + " drop!", 1);
-		else if ((drop.getItemId() >= 21787 && drop.getItemId() <= 21795) //glacor boots
-				|| (drop.getItemId() >= 11702 && drop.getItemId() <= 11709) //godsword hilts
-				|| (drop.getItemId() >= 11716 && drop.getItemId() <= 11731) //godwars gear
-				|| (drop.getItemId() >= 24992 && drop.getItemId() <= 25039) //godwars gear
-				|| drop.getItemId() == 14484  //dragon claws
-				|| drop.getItemId() == 15259  //dragon pickaxe
-				|| drop.getItemId() == 11286  //draconic visage
-				|| drop.getItemId() == 13902 //status warhammer
-				|| drop.getItemId() == 13899 //vesta's longsword
-				)
+		else if ((drop.getItemId() >= 21787 && drop.getItemId() <= 21795) // glacor
+				// boots
+				|| (drop.getItemId() >= 11702 && drop.getItemId() <= 11709) // godsword
+				// hilts
+				|| (drop.getItemId() >= 11716 && drop.getItemId() <= 11731) // godwars
+				// gear
+				|| (drop.getItemId() >= 24992 && drop.getItemId() <= 25039) // godwars
+				// gear
+				|| drop.getItemId() == 14484 // dragon claws
+				|| drop.getItemId() == 15259 // dragon pickaxe
+				|| drop.getItemId() == 11286 // draconic visage
+				|| drop.getItemId() == 13902 // status warhammer
+				|| drop.getItemId() == 13899 // vesta's longsword
+		)
 			World.sendNews(player, player.getDisplayName() + " has received " + ItemDefinitions.getItemDefinitions(drop.getItemId()).getName() + " drop!", 2);
 		int size = getSize();
 		boolean stackable = ItemDefinitions.getItemDefinitions(drop.getItemId()).isStackable();
 		Item item = stackable ? new Item(drop.getItemId(), (drop.getMinAmount() * Settings.getDropQuantityRate()) + Utils.random(drop.getExtraAmount() * Settings.getDropQuantityRate())) : new Item(drop.getItemId(), drop.getMinAmount() + Utils.random(drop.getExtraAmount()));
-		//rs doesnt do this. unless u got that autocollect imp
-		/*if (item.getId() == 995)
-			player.getInventory().addItemMoneyPouch(item);
-		else {*/
-			if (!stackable && item.getAmount() > 1) {
-				for (int i = 0; i < item.getAmount(); i++)
-					World.addGroundItem(new Item(item.getId(), 1), new WorldTile(getCoordFaceX(size), getCoordFaceY(size), getPlane()), player, true, 60);
-			} else
-				World.addGroundItem(item, new WorldTile(getCoordFaceX(size), getCoordFaceY(size), getPlane()), player, true, 60);
-		//}
+		// rs doesnt do this. unless u got that autocollect imp
+		/*
+		 * if (item.getId() == 995) player.getInventory().addItemMoneyPouch(item); else {
+		 */
+		if (!stackable && item.getAmount() > 1) {
+			for (int i = 0; i < item.getAmount(); i++)
+				World.addGroundItem(new Item(item.getId(), 1), new WorldTile(getCoordFaceX(size), getCoordFaceY(size), getPlane()), player, true, 60);
+		} else
+			World.addGroundItem(item, new WorldTile(getCoordFaceX(size), getCoordFaceY(size), getPlane()), player, true, 60);
+		// }
 		return item;
 	}
 
@@ -606,9 +602,12 @@ public class NPC extends Entity implements Serializable {
 		super.setAttackedBy(target);
 		if (target == combat.getTarget() && !(combat.getTarget() instanceof Familiar)) {
 			lastAttackedByTarget = Utils.currentTimeMillis();
-			if(target instanceof Player) {
-				if(((Player) target).getEffectsManager().hasActiveEffect(EffectType.INCITE))
-				lastAttackedByTarget += 3000; 				//3seconds to keep agro extra. enough, even makes those who dont focus, start focusing	
+			if (target instanceof Player) {
+				if (((Player) target).getEffectsManager().hasActiveEffect(EffectType.INCITE))
+					lastAttackedByTarget += 3000; // 3seconds to keep agro
+				// extra. enough, even makes
+				// those who dont focus, start
+				// focusing
 			}
 		}
 	}
@@ -622,7 +621,8 @@ public class NPC extends Entity implements Serializable {
 	}
 
 	public void setTarget(Entity entity) {
-		if (isForceWalking() || cantInteract) // if force walk not gonna get target
+		if (isForceWalking() || cantInteract) // if force walk not gonna get
+			// target
 			return;
 		combat.setTarget(entity);
 		lastAttackedByTarget = Utils.currentTimeMillis();
@@ -674,7 +674,11 @@ public class NPC extends Entity implements Serializable {
 				if (npcsIndexes != null) {
 					for (int npcIndex : npcsIndexes) {
 						NPC npc = World.getNPCs().get(npcIndex);
-						if (npc == null || npc instanceof Familiar || npc.getPlane() != getPlane() || npc == this || npc.isDead() || npc.hasFinished() || !Utils.isOnRange(getX(), getY(), size, npc.getX(), npc.getY(), npc.getSize(), forceTargetDistance > 0 ? forceTargetDistance : agroRatio) || (!npc.getDefinitions().hasAttackOption()) || /*((!isAtMultiArea() || !npc.isAtMultiArea()) && npc.getAttackedBy() != this && npc.getAttackedByDelay() > Utils.currentTimeMillis()) ||*/ !clipedProjectile(npc, false) || npc.isCantInteract())
+						if (npc == null || npc instanceof Familiar || npc.getPlane() != getPlane() || npc == this || npc.isDead() || npc.hasFinished() || !Utils.isOnRange(getX(), getY(), size, npc.getX(), npc.getY(), npc.getSize(), forceTargetDistance > 0 ? forceTargetDistance : agroRatio) || (!npc.getDefinitions().hasAttackOption())
+								|| /*
+									 * ((!isAtMultiArea() || !npc.isAtMultiArea()) && npc.getAttackedBy() != this
+									 * && npc.getAttackedByDelay() > Utils.currentTimeMillis()) ||
+									 */ !clipedProjectile(npc, false) || npc.isCantInteract())
 							continue;
 						possibleTarget.add(npc);
 					}
@@ -691,13 +695,13 @@ public class NPC extends Entity implements Serializable {
 	@Override
 	public boolean isStunImmune() {
 		Map<Integer, Object> data = getDefinitions().clientScriptData;
-		if(data != null) {
+		if (data != null) {
 			Integer immune = (Integer) data.get(2892);
 			return immune != null && immune == 1;
 		}
 		return false;
 	}
-	
+
 	@Override
 	public boolean isBoundImmune() {
 		return isStunImmune();
@@ -792,7 +796,6 @@ public class NPC extends Entity implements Serializable {
 		this.forceFollowClose = forceFollowClose;
 	}
 
-
 	public void setRandomWalk(int forceRandomWalk) {
 		this.walkType = forceRandomWalk;
 	}
@@ -865,8 +868,7 @@ public class NPC extends Entity implements Serializable {
 	/**
 	 * Sets the locked.
 	 * 
-	 * @param locked
-	 *            The locked to set.
+	 * @param locked The locked to set.
 	 */
 	public void setLocked(boolean locked) {
 		this.locked = locked;
@@ -922,7 +924,7 @@ public class NPC extends Entity implements Serializable {
 
 	public int getWeaknessStyle() {
 		Map<Integer, Object> data = getDefinitions().clientScriptData;
-		if(data != null) {
+		if (data != null) {
 			Integer weakness = (Integer) data.get(2848);
 			if (weakness != null)
 				return weakness;
@@ -932,7 +934,7 @@ public class NPC extends Entity implements Serializable {
 
 	public double getCritChance() {
 		Map<Integer, Object> data = getDefinitions().clientScriptData;
-		if(data != null) {
+		if (data != null) {
 			Integer crit = (Integer) data.get(2864);
 			if (crit != null)
 				return crit / 10.0;
@@ -941,18 +943,18 @@ public class NPC extends Entity implements Serializable {
 	}
 
 	public int getAttackStyle() {
-		if(bonuses[2] > 0)
+		if (bonuses[2] > 0)
 			return NPCCombatDefinitions.MAGE;
-		if(bonuses[1] > 0)
+		if (bonuses[1] > 0)
 			return NPCCombatDefinitions.RANGE;
 		return NPCCombatDefinitions.MELEE;
 	}
 
 	public int getAttackSpeed() {
 		Map<Integer, Object> data = getDefinitions().clientScriptData;
-		if(data != null) {
+		if (data != null) {
 			Integer speed = (Integer) data.get(14);
-			if(speed != null)
+			if (speed != null)
 				return speed;
 		}
 		return 4;
@@ -969,18 +971,18 @@ public class NPC extends Entity implements Serializable {
 	public boolean isRefreshHeadIcon() {
 		return refreshHeadIcon;
 	}
-	
+
 	public void increaseKills(RecordKey key, boolean hm) {
-		for(Entity s : getReceivedDamageSources()) {
-			if(s instanceof Player)
-				((Player)s).getTimersManager().increaseKills(key, hm);
+		for (Entity s : getReceivedDamageSources()) {
+			if (s instanceof Player)
+				((Player) s).getTimersManager().increaseKills(key, hm);
 		}
 	}
-	
+
 	public void setBossInstance(BossInstance instance) {
 		bossInstance = instance;
 	}
-	
+
 	public BossInstance getBossInstance() {
 		return bossInstance;
 	}

@@ -15,8 +15,7 @@ public class DreadFowlCombat extends CombatScript {
 
 	@Override
 	public Object[] getKeys() {
-		return new Object[]
-		{ 6825, 6824 };
+		return new Object[] { 6825, 6824 };
 	}
 
 	@Override

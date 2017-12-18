@@ -1,7 +1,5 @@
 package com.rs;
 
-import java.net.InetAddress;
-import java.net.InetSocketAddress;
 import java.util.Scanner;
 
 import com.rs.executor.LoginExecutorManager;
@@ -9,7 +7,6 @@ import com.rs.login.GameWorld;
 import com.rs.login.Login;
 import com.rs.login.account.Account;
 import com.rs.net.LoginServerChannelManager;
-import com.rs.net.WebsiteChannelsManager;
 import com.rs.net.encoders.LoginChannelsPacketEncoder;
 import com.rs.utils.Logger;
 import com.rs.utils.Utils;
@@ -29,7 +26,7 @@ public class LoginLauncher {
 		Settings.DEBUG = Boolean.parseBoolean(args[0]);
 		Settings.HOSTED = Boolean.parseBoolean(args[1]);
 		Settings.init();
-		
+
 		long currentTime = Utils.currentTimeMillis();
 		Logger.log("Launcher", "Starting login core...");
 		Login.init();
@@ -44,22 +41,23 @@ public class LoginLauncher {
 			System.exit(1);
 			return;
 		}
-		Logger.log("Launcher", "Initing Website Channels Manager...");
-		try {
-			//if (Settings.HOSTED)
-			WebsiteChannelsManager.init();
-		} catch (Throwable e) {
-			Logger.handle(e);
-			Logger.log("Launcher", "Failed initing Website Channels Manager. Shutting down...");
-			System.exit(1);
-			return;
-		}
+		// Logger.log("Launcher", "Initing Website Channels Manager...");
+		// try {
+		// // if (Settings.HOSTED)
+		// WebsiteChannelsManager.init();
+		// } catch (Throwable e) {
+		// Logger.handle(e);
+		// Logger.log("Launcher", "Failed initing Website Channels Manager. Shutting down...");
+		// System.exit(1);
+		// return;
+		// }
 
 		Logger.log("Launcher", "Login server took " + (Utils.currentTimeMillis() - currentTime) + " milli seconds to launch.");
 
 		GameWorld world = Login.getWorld(1);
 		LoginServerChannelManager.sendReliablePacket(world, LoginChannelsPacketEncoder.encodeConsoleMessage("Hello there from login!").getBuffer());
-		//LoginServerChannelManager.sendReliablePacket(world, LoginChannelsPacketEncoder.encodePingPong(0).getBuffer());
+		// LoginServerChannelManager.sendReliablePacket(world,
+		// LoginChannelsPacketEncoder.encodePingPong(0).getBuffer());
 
 		Scanner scanner = new Scanner(System.in);
 		for (String line = scanner.nextLine(); line != null; line = scanner.nextLine()) {
@@ -145,8 +143,6 @@ public class LoginLauncher {
 		LoginExecutorManager.shutdown(true);
 
 		Logger.log("Launcher", "Shutting down network...");
-		if (Settings.HOSTED)
-			WebsiteChannelsManager.shutdown();
 		LoginServerChannelManager.shutdown();
 
 		Logger.log("Launcher", "Shutting down login core...");
@@ -192,8 +188,6 @@ public class LoginLauncher {
 		LoginExecutorManager.shutdown(true);
 
 		Logger.log("Launcher", "Shutting down network...");
-		if (Settings.HOSTED)
-			WebsiteChannelsManager.shutdown();
 		LoginServerChannelManager.shutdown();
 
 		Logger.log("Launcher", "Shutting down login core...");

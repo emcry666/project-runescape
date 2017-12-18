@@ -13,46 +13,29 @@ import com.rs.utils.Utils;
  */
 public class GameArea {
 
-	public static int[] NONE = new int[]
-	{ -1, -1 };
-	public static int[] BASE = new int[]
-	{ 240, 712 };
-	public static int[] EMPTY = new int[]
-	{ 241, 715 };
-	public static int[] RESERVED_1 = new int[]
-	{ 240, 713 };
-	public static int[] RESERVED_2 = new int[]
-	{ 241, 712 };
-	public static int[] RESERVED_3 = new int[]
-	{ 241, 713 };
-	public static int[] KILN = new int[]
-	{ 240, 714 };
-	public static int[] ALTAR = new int[]
-	{ 241, 714 };
-	public static int[] FOG = new int[]
-	{ 240, 715 };
-	public static int[] RIFT = new int[]
-	{ 240, 716 };
-	public static int[] WALL = new int[]
-	{ 241, 716 };
-	public static int[] ROCK = new int[]
-	{ 242, 716 };
+	public static int[] NONE = new int[] { -1, -1 };
+	public static int[] BASE = new int[] { 240, 712 };
+	public static int[] EMPTY = new int[] { 241, 715 };
+	public static int[] RESERVED_1 = new int[] { 240, 713 };
+	public static int[] RESERVED_2 = new int[] { 241, 712 };
+	public static int[] RESERVED_3 = new int[] { 241, 713 };
+	public static int[] KILN = new int[] { 240, 714 };
+	public static int[] ALTAR = new int[] { 241, 714 };
+	public static int[] FOG = new int[] { 240, 715 };
+	public static int[] RIFT = new int[] { 240, 716 };
+	public static int[] WALL = new int[] { 241, 716 };
+	public static int[] ROCK = new int[] { 242, 716 };
 
-	public static int[] SKILL_ROCK = new int[]
-	{ 247, 715 };
-	public static int[] SKILL_POOL = new int[]
-	{ 247, 714 };
-	public static int[] SKILL_SWARM = new int[]
-	{ 247, 713 };
-	public static int[] SKILL_TREE = new int[]
-	{ 247, 712 };
+	public static int[] SKILL_ROCK = new int[] { 247, 715 };
+	public static int[] SKILL_POOL = new int[] { 247, 714 };
+	public static int[] SKILL_SWARM = new int[] { 247, 713 };
+	public static int[] SKILL_TREE = new int[] { 247, 712 };
 
 	/**
-	 * Contains area flags. 0-3 bits - type 4-7 bits - tier (if any) 8-9 bits -
-	 * rotation 10-18 bits - degradation 19-20 bits - wall team 21-23 bits -
-	 * wall tier 24-29 bits - wall status Types: 0 - reserved, don't use 1 -
-	 * base 2 - empty 3 - rift 4 - wall 5 - fog 6 - large rock 7 - altar 8 -
-	 * kiln 9 - rock 10 - tree 11 - pool 12 - swarm
+	 * Contains area flags. 0-3 bits - type 4-7 bits - tier (if any) 8-9 bits - rotation 10-18 bits - degradation
+	 * 19-20 bits - wall team 21-23 bits - wall tier 24-29 bits - wall status Types: 0 - reserved, don't use 1 -
+	 * base 2 - empty 3 - rift 4 - wall 5 - fog 6 - large rock 7 - altar 8 - kiln 9 - rock 10 - tree 11 - pool 12 -
+	 * swarm
 	 */
 	private int[][] flags;
 	/**
@@ -123,8 +106,7 @@ public class GameArea {
 		if (base != null)
 			throw new RuntimeException("Area already created.");
 		int b = MapBuilder.findEmptyRegionHash(flags.length, flags.length);
-		base = new int[]
-		{ (b >> 8) << 6, (b & 0xFF) << 6 };
+		base = new int[] { (b >> 8) << 6, (b & 0xFF) << 6 };
 		// System.err.println("Base:" + base[0] + "," + base[1] + "," + b);
 		for (int x = 0; x < flags.length; x++) {
 			for (int y = 0; y < flags.length; y++) {

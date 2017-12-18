@@ -17,10 +17,10 @@ public class HandledPuzzleRoom extends HandledRoom {
 		this.puzzle = puzzle;
 	}
 
-//	@Override
-//	public final boolean allowSpecialDoors() {
-//		return false;
-//	}
+	// @Override
+	// public final boolean allowSpecialDoors() {
+	// return false;
+	// }
 
 	@Override
 	public boolean isComplexity(int complexity) {

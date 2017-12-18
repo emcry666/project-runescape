@@ -59,7 +59,8 @@ public class GodWarMinion extends NPC {
 						List<Player> players = FriendsChat.getLootSharingPeople(player);
 						if (players != null) {
 							for (Player p : players) {
-								if (p == null) continue;
+								if (p == null)
+									continue;
 								Controller controler = p.getControlerManager().getControler();
 								if (controler != null && controler instanceof GodWars) {
 									GodWars godControler = (GodWars) controler;

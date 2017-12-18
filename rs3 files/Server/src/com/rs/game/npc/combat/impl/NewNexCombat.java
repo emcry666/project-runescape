@@ -33,49 +33,49 @@ public class NewNexCombat extends CombatScript {
 		nex.setForceFollowClose(Utils.random(2) == 0);
 		nex.resetLastAttack();
 		boolean isDistanced = !Utils.isOnRange(npc.getX(), npc.getY(), npc.getSize(), target.getX(), target.getY(), target.getSize(), 0);
-		if (nex.isSiphioning()|| nex.isFlying())
+		if (nex.isSiphioning() || nex.isFlying())
 			return 0;
 		if (Utils.random(3) == 0 && !isDistanced) {
 			sendMeleeAttack(nex, target);
 		} else {
 			switch (nex.getCurrentPhase().getPhaseValue()) {
-				case 1: // Smoke
-					if (nex.isFirstStageAttack()) {
-						sendVirusAttack(nex);
-						nex.setFirstStageAttack(false);
-						return nex.getAttackSpeed();
+			case 1: // Smoke
+				if (nex.isFirstStageAttack()) {
+					sendVirusAttack(nex);
+					nex.setFirstStageAttack(false);
+					return nex.getAttackSpeed();
+				}
+				if (Utils.random(8) == 0) {
+					// No escape
+				} else if (Utils.random(5) == 0) {
+					// Virus attack
+					sendVirusAttack(nex);
+				} else if (Utils.random(3) == 0) {
+					// Drag check
+					List<Entity> distanceTargets = new LinkedList<Entity>();
+					for (Entity t : nex.getPossibleTargets()) {
+						if (!Utils.isOnRange(npc.getX(), npc.getY(), npc.getSize(), t.getX(), t.getY(), t.getSize(), 6)) {
+							distanceTargets.add(t);
+							break;
+						}
 					}
-					if (Utils.random(8) == 0) {
-						//No escape
-					} else if (Utils.random(5) == 0) {
-						//Virus attack
-						sendVirusAttack(nex);
-					} else if (Utils.random(3) == 0) {
-						//Drag check
-						List<Entity> distanceTargets = new LinkedList<Entity>();
-						for (Entity t : nex.getPossibleTargets()) {
-							if (!Utils.isOnRange(npc.getX(), npc.getY(), npc.getSize(), t.getX(), t.getY(), t.getSize(), 6)) {
-								distanceTargets.add(t);
-								break;
-							}
-						}
-						if (distanceTargets.size() == 0) {
-							sendMagicAttack(nex);
-						} else {
-							Entity t = distanceTargets.get(Utils.random(distanceTargets.size()));
-							sendPullAttack(nex, t);
-						}
-					} else
+					if (distanceTargets.size() == 0) {
 						sendMagicAttack(nex);
-					break;
-				case 2://Shadow
-					break;
-				case 3://Blood
-					break;
-				case 4://Ice
-					break;
-				case 5://Zaros phase
-					break;
+					} else {
+						Entity t = distanceTargets.get(Utils.random(distanceTargets.size()));
+						sendPullAttack(nex, t);
+					}
+				} else
+					sendMagicAttack(nex);
+				break;
+			case 2:// Shadow
+				break;
+			case 3:// Blood
+				break;
+			case 4:// Ice
+				break;
+			case 5:// Zaros phase
+				break;
 			}
 		}
 		return nex.getAttackSpeed();
@@ -83,7 +83,6 @@ public class NewNexCombat extends CombatScript {
 
 	private void sendPullAttack(Nex nex, Entity target) {
 		nex.setTarget(target);
-
 
 	}
 

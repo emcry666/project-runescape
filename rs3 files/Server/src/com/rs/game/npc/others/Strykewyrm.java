@@ -10,7 +10,7 @@ import com.rs.game.tasks.WorldTasksManager;
 
 @SuppressWarnings("serial")
 public class Strykewyrm extends NPC {
-	
+
 	private int nonCombatTicks;
 
 	public Strykewyrm(int id, WorldTile tile, int mapAreaNameHash, boolean canBeAttackFromOutOfArea) {
@@ -49,7 +49,7 @@ public class Strykewyrm extends NPC {
 			return;
 		int requiredLevel = npc.getId() == 9462 ? 93 : npc.getId() == 9464 ? 77 : npc.getId() == 9466 ? 73 : 1;
 		if (player.getSkills().getLevel(Skills.SLAYER) < requiredLevel) {
-			player.getPackets().sendGameMessage("You need a Slayer level of at least "+requiredLevel+"to fight a Stykewyrm.");
+			player.getPackets().sendGameMessage("You need a Slayer level of at least " + requiredLevel + "to fight a Stykewyrm.");
 			return;
 		}
 		player.setNextAnimation(new Animation(4278));
@@ -57,6 +57,7 @@ public class Strykewyrm extends NPC {
 		WorldTasksManager.schedule(new WorldTask() {
 
 			int ticks;
+
 			@Override
 			public void run() {
 				ticks++;

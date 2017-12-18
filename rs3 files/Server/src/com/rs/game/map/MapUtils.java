@@ -12,7 +12,7 @@ public class MapUtils {
 		public abstract int encode(int x, int y, int plane);
 
 	}
-	
+
 	private static interface StructureDecoder {
 
 		public abstract int[] decode(int id);
@@ -29,8 +29,8 @@ public class MapUtils {
 		}, new StructureDecoder() {
 			@Override
 			public int[] decode(int id) {
-				return new int[]{id >> 14 & 16383, id & 16383, id >> 28 & 3};
-			}	
+				return new int[] { id >> 14 & 16383, id & 16383, id >> 28 & 3 };
+			}
 		}), CHUNK(TILE, 8, 8, new StructureEncoder() {
 			@Override
 			public int encode(int x, int y, int plane) {
@@ -39,8 +39,8 @@ public class MapUtils {
 		}, new StructureDecoder() {
 			@Override
 			public int[] decode(int id) {
-				return new int[]{id >> 14 & 2047, id >> 3 & 2047, id >> 24 & 3};
-			}	
+				return new int[] { id >> 14 & 2047, id >> 3 & 2047, id >> 24 & 3 };
+			}
 		}), REGION(CHUNK, 8, 8, new StructureEncoder() {
 			@Override
 			public int encode(int x, int y, int plane) {
@@ -49,8 +49,8 @@ public class MapUtils {
 		}, new StructureDecoder() {
 			@Override
 			public int[] decode(int id) {
-				return new int[]{id >> 8 & 255, id & 255, id >> 24 & 3};
-			}	
+				return new int[] { id >> 8 & 255, id & 255, id >> 24 & 3 };
+			}
 		}), MAP(REGION, 256, 256);
 
 		private Structure child;
@@ -59,11 +59,7 @@ public class MapUtils {
 		private StructureDecoder decoder;
 
 		/*
-		 * width * height squares.
-		 * For instance 4x4:
-		 * S S S S
-		 * S S S S
-		 * S S S S
+		 * width * height squares. For instance 4x4: S S S S S S S S S S S S
 		 */
 
 		private Structure(Structure child, int width, int height, StructureEncoder encode, StructureDecoder decoder) {
@@ -109,7 +105,7 @@ public class MapUtils {
 		public int[] decode(int id) {
 			return decoder == null ? null : decoder.decode(id);
 		}
-		
+
 		public int encode(int x, int y, int plane) {
 			return encoder == null ? -1 : encoder.encode(x, y, plane);
 		}
@@ -196,18 +192,16 @@ public class MapUtils {
 	}
 
 	/*
-	 * converted pos
-	 * return converted x and y 
+	 * converted pos return converted x and y
 	 */
 	public static int[] convert(Structure from, Structure to, int... xy) {
-		return new int[]
-		{ xy[0] * from.getWidth() / to.getWidth(), xy[1] * from.getHeight() / to.getHeight() };
+		return new int[] { xy[0] * from.getWidth() / to.getWidth(), xy[1] * from.getHeight() / to.getHeight() };
 	}
 
 	public static int encode(Structure structure, int... xyp) {
 		return structure.encode(xyp[0], xyp[1], xyp.length == 3 ? xyp[2] : 0);
 	}
-	
+
 	public static int[] decode(Structure structure, int id) {
 		return structure.decode(id);
 	}

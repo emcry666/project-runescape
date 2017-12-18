@@ -75,7 +75,15 @@ public class HunterTrapNPC extends NPC {
 		if (objects == null)
 			return;
 		for (final WorldObject o : objects) {
-			if (o.getId() != trap.getIds()[1] || !withinDistance(o, 4) || Utils.random(50) != 0)//We don't want it instant or too far ^.^
+			if (o.getId() != trap.getIds()[1] || !withinDistance(o, 4) || Utils.random(50) != 0)// We
+				// don't
+				// want
+				// it
+				// instant
+				// or
+				// too
+				// far
+				// ^.^
 				continue;
 			this.o = o;
 			this.captureTicks = 1;

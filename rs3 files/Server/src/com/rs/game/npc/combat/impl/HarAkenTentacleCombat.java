@@ -13,8 +13,7 @@ public class HarAkenTentacleCombat extends CombatScript {
 
 	@Override
 	public Object[] getKeys() {
-		return new Object[]
-		{ 15209, 15210 };
+		return new Object[] { 15209, 15210 };
 	}
 
 	@Override

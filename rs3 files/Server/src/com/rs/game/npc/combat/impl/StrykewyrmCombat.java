@@ -47,8 +47,7 @@ public class StrykewyrmCombat extends CombatScript {
 						npc.setTarget(target);
 						stop();
 						return;
-					}
-					else if (!npc.hasForceWalk()) {
+					} else if (!npc.hasForceWalk()) {
 						npc.setNextNPCTransformation(npc.getId() + 1);
 						npc.setNextAnimation(new Animation(12795));
 						if (Utils.colides(target, npc)) {
@@ -64,8 +63,8 @@ public class StrykewyrmCombat extends CombatScript {
 					}
 				}
 			}, 1, 1);
-		}
-		else if (Utils.random(3) == 0 || !Utils.isOnRange(npc, target, 0)) {//Magical attack
+		} else if (Utils.random(3) == 0 || !Utils.isOnRange(npc, target, 0)) {// Magical
+			// attack
 			npc.setNextAnimation(new Animation(12794));
 			final Hit hit = getMagicHit(npc, getMaxHit(npc, NPCCombatDefinitions.MAGE, target));
 			Projectile projectile = World.sendProjectileNew(npc, target, defs.getAttackProjectile(), 41, 16, 30, 2, 16, 0);
@@ -75,16 +74,14 @@ public class StrykewyrmCombat extends CombatScript {
 				if (Utils.random(5) == 0) {
 					target.setBoundDelay(5, true);
 					target.setNextGraphics(new Graphics(369, projectile.getEndTime(), 0));
-				} else 
+				} else
 					target.setNextGraphics(new Graphics(2315, projectile.getEndTime(), 0));
-			}
-			else if (npc.getId() == 9467) {
+			} else if (npc.getId() == 9467) {
 				target.setNextGraphics(new Graphics(2313, projectile.getEndTime(), 0));
 				if (Utils.random(3) == 0)
 					EffectsManager.makePoisoned(target, 88);
 			}
-		}
-		else {//Melee Attack
+		} else {// Melee Attack
 			npc.setNextAnimation(new Animation(defs.getAttackEmote()));
 			if (npc.getId() == 9467 && Utils.random(5) == 0) {
 				target.setNextGraphics(new Graphics(2309));

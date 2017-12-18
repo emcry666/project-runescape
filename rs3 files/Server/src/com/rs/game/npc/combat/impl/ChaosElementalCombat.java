@@ -19,8 +19,7 @@ public class ChaosElementalCombat extends CombatScript {
 
 	@Override
 	public Object[] getKeys() {
-		return new Object[]
-		{ 3200 };
+		return new Object[] { 3200 };
 	}
 
 	@Override
@@ -31,7 +30,7 @@ public class ChaosElementalCombat extends CombatScript {
 			attackStyle = 1 + Utils.random(2);
 		npc.setNextAnimation(new Animation(defs.getAttackEmote()));
 		switch (attackStyle) {
-		case 0: //remove item
+		case 0: // remove item
 			Projectile projectile = World.sendProjectileNew(npc, target, 558, 41, 41, 15, 2, 0, 0);
 
 			WorldTasksManager.schedule(new WorldTask() {
@@ -53,10 +52,10 @@ public class ChaosElementalCombat extends CombatScript {
 
 			}, Utils.projectileTimeToCycles(projectile.getEndTime()) - 1);
 			break;
-		case 1: //teleport
+		case 1: // teleport
 			projectile = World.sendProjectileNew(npc, target, 2947, 41, 41, 15, 2, 0, 0);
 
-			//projectile here
+			// projectile here
 			WorldTasksManager.schedule(new WorldTask() {
 
 				@Override
@@ -72,13 +71,14 @@ public class ChaosElementalCombat extends CombatScript {
 
 			}, Utils.projectileTimeToCycles(projectile.getEndTime()) - 1);
 			break;
-		default: //attack
-			int attack = Utils.random(3); 		//	melee range mage
+		default: // attack
+			int attack = Utils.random(3); // melee range mage
 			if (target instanceof Player) {
 				Player player = (Player) target;
 				int prayer = player.getPrayer().isMeleeProtecting() ? 0 : player.getPrayer().isRangeProtecting() ? 1 : player.getPrayer().isMageProtecting() ? 2 : -1;
 				if (prayer == attack)
-					attack = (attack - 1) & 0x3; //to make sure its positive between 0 and 2 lol
+					attack = (attack - 1) & 0x3; // to make sure its positive
+				// between 0 and 2 lol
 			}
 			int damage = getMaxHit(npc, attack, target);
 			projectile = World.sendProjectileNew(npc, target, 552, 41, 41, 20, 15, 0, 0);

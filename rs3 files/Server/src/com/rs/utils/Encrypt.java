@@ -12,8 +12,7 @@ public class Encrypt {
 	/**
 	 * Encrypt the string using the SHA-1 encryption algorithm.
 	 * 
-	 * @param string
-	 *            The string.
+	 * @param string The string.
 	 * @return The encrypted string.
 	 */
 	public static String encryptSHA1(String string) {
@@ -29,11 +28,9 @@ public class Encrypt {
 	/**
 	 * Encrypt the string to a SHA-1 hash.
 	 * 
-	 * @param x
-	 *            The string to encrypt.
+	 * @param x The string to encrypt.
 	 * @return The byte array.
-	 * @throws Exception
-	 *             when an exception occurs.
+	 * @throws Exception when an exception occurs.
 	 */
 	public static byte[] hash(String x) throws Exception {
 		MessageDigest string;
@@ -46,8 +43,7 @@ public class Encrypt {
 	/**
 	 * Converts a byte array to hex string.
 	 * 
-	 * @param b
-	 *            The byte array.
+	 * @param b The byte array.
 	 * @return The hex string.
 	 */
 	public static String byteArrayToHexString(byte[] b) {

@@ -5,8 +5,8 @@ import java.util.List;
 public class Score {
 
 	/**
-	 * Name of the player that this score belongs to. (stored here so if player
-	 * goes offline it's still possible to show name in highscores interface)
+	 * Name of the player that this score belongs to. (stored here so if player goes offline it's still possible to
+	 * show name in highscores interface)
 	 */
 	private String name;
 	/**

@@ -17,8 +17,7 @@ public class CockatriceCombat extends CombatScript {
 
 	@Override
 	public Object[] getKeys() {
-		return new Object[]
-		{ 1620 };
+		return new Object[] { 1620 };
 	}
 
 	@Override

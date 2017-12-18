@@ -110,7 +110,7 @@ public class PriceCheckManager {
 		Item[] inv = player.getInventory().getItems().getItems();
 		for (int slot = 0; slot < inv.length; slot++) {
 			Item item = inv[slot];
-			if (item == null || !ItemConstants.isTradeable(item)) 
+			if (item == null || !ItemConstants.isTradeable(item))
 				continue;
 			addItem(slot, item.getAmount());
 		}

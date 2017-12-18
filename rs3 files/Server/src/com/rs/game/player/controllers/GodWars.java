@@ -21,15 +21,11 @@ public class GodWars extends Controller {
 
 	public static final int EMPTY_SECTOR = -1, BANDOS = 0, ARMADYL = 1, SARADOMIN = 2, ZAMORAK = 3, ZAROS = 4;
 	private static final int BANDOS_SECTOR = 4, ARMADYL_SECTOR = 5, SARADOMIN_SECTOR = 6, ZAMORAK_SECTOR = 7, ZAROS_PRE_CHAMBER = 8, ZAROS_SECTOR = 9;
-	public static final WorldTile[] CHAMBER_TELEPORTS =
-		{ new WorldTile(2863, 5357, 0), new WorldTile(2862, 5357, 0), // bandos
-		new WorldTile(2835, 5295, 0),
-		new WorldTile(2835, 5294, 0), // armadyl
-		new WorldTile(2923, 5256, 0),
-		new WorldTile(2923, 5257, 0), // saradomin
-		new WorldTile(2925, 5332, 0),
-		new WorldTile(2925, 5333, 0), // zamorak
-		};
+	public static final WorldTile[] CHAMBER_TELEPORTS = { new WorldTile(2863, 5357, 0), new WorldTile(2862, 5357, 0), // bandos
+			new WorldTile(2835, 5295, 0), new WorldTile(2835, 5294, 0), // armadyl
+			new WorldTile(2923, 5256, 0), new WorldTile(2923, 5257, 0), // saradomin
+			new WorldTile(2925, 5332, 0), new WorldTile(2925, 5333, 0), // zamorak
+	};
 
 	private int[] killCount = new int[5];
 	private long lastPrayerRecharge;
@@ -43,7 +39,9 @@ public class GodWars extends Controller {
 
 	@Override
 	public void sendInterfaces() {
-		player.getInterfaceManager().sendMinigameInterface(601);//This is the only one left muhahahaha
+		player.getInterfaceManager().sendMinigameInterface(601);// This is the
+		// only one left
+		// muhahahaha
 		if (sector == ZAROS_PRE_CHAMBER)
 			player.getPackets().sendExecuteScriptReverse(1171);
 		refresh();
@@ -51,8 +49,7 @@ public class GodWars extends Controller {
 
 	@Override
 	public boolean logout() {
-		setArguments(new Object[]
-				{ killCount, lastPrayerRecharge, sector });
+		setArguments(new Object[] { killCount, lastPrayerRecharge, sector });
 		return false; // so doesnt remove script
 	}
 
@@ -295,11 +292,11 @@ public class GodWars extends Controller {
 	}
 
 	public void refresh() {
-		player.getVarsManager().sendVarBit(15163, killCount[ARMADYL]);//arma
-		player.getVarsManager().sendVarBit(15165, killCount[BANDOS]);//bando
-		player.getVarsManager().sendVarBit(15162, killCount[SARADOMIN]);//sara
-		player.getVarsManager().sendVarBit(15164, killCount[ZAMORAK]);//zamy
-		player.getVarsManager().sendVarBit(15166, killCount[ZAROS]);//zaros
+		player.getVarsManager().sendVarBit(15163, killCount[ARMADYL]);// arma
+		player.getVarsManager().sendVarBit(15165, killCount[BANDOS]);// bando
+		player.getVarsManager().sendVarBit(15162, killCount[SARADOMIN]);// sara
+		player.getVarsManager().sendVarBit(15164, killCount[ZAMORAK]);// zamy
+		player.getVarsManager().sendVarBit(15166, killCount[ZAROS]);// zaros
 	}
 
 	public static void useAgilityStones(final Player player, final WorldObject object, final WorldTile tile, int levelRequired, final int emote, final int delay) {
@@ -311,7 +308,7 @@ public class GodWars extends Controller {
 
 			@Override
 			public void run() {
-				player.resetReceivedHits();//Kinda unfair if not :)
+				player.resetReceivedHits();// Kinda unfair if not :)
 				player.useStairs(emote, tile, delay, delay + 1);
 			}
 		}, 1);

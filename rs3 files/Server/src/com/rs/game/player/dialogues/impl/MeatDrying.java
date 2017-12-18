@@ -16,7 +16,8 @@ public class MeatDrying extends Dialogue {
 	@Override
 	public void run(int interfaceId, int componentId) {
 		if (stage == -1) {
-			player.getActionManager().setAction(new Cooking((WorldObject) this.parameters[0], new Item(2132, 1), /*SkillsDialogue.getQuantity(player)*/28, componentId == OPTION_1 ? Cookables.RAW_MEAT : Cookables.SINEW));
+			player.getActionManager().setAction(new Cooking((WorldObject) this.parameters[0], new Item(2132, 1),
+					/* SkillsDialogue.getQuantity(player) */28, componentId == OPTION_1 ? Cookables.RAW_MEAT : Cookables.SINEW));
 			end();
 		}
 	}

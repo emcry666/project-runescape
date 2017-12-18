@@ -11,14 +11,10 @@ import com.rs.game.player.dialogues.Dialogue;
 
 public class PotteryFurnace extends Dialogue {
 
-	private static final int[] INGREDIENTS =
-	{ 1787, 1789, 1791, 5352 };
-	private static final int[] PRODUCTS =
-	{ 1931, 2313, 1923, 5350 };
-	private static final int[] LEVELS =
-	{ 1, 7, 8, 19 };
-	private static final double[] EXPERIENCE =
-	{ 6.3, 10, 15, 17.5 };
+	private static final int[] INGREDIENTS = { 1787, 1789, 1791, 5352 };
+	private static final int[] PRODUCTS = { 1931, 2313, 1923, 5350 };
+	private static final int[] LEVELS = { 1, 7, 8, 19 };
+	private static final double[] EXPERIENCE = { 6.3, 10, 15, 17.5 };
 
 	@Override
 	public void start() {

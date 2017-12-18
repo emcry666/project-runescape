@@ -16,15 +16,9 @@ import com.rs.utils.Utils;
 
 public class PuroPuro extends Controller {
 
-	private static final Item[][] REQUIRED =
-	{
-	{ new Item(11238, 3), new Item(11240, 2), new Item(11242, 1) },
-	{ new Item(11242, 3), new Item(11244, 2), new Item(11246, 1) },
-	{ new Item(11246, 3), new Item(11248, 2), new Item(11250, 1) },
-	{ null } };
+	private static final Item[][] REQUIRED = { { new Item(11238, 3), new Item(11240, 2), new Item(11242, 1) }, { new Item(11242, 3), new Item(11244, 2), new Item(11246, 1) }, { new Item(11246, 3), new Item(11248, 2), new Item(11250, 1) }, { null } };
 
-	private static final Item[] REWARD =
-	{ new Item(11262, 1), new Item(11259, 1), new Item(11258, 1), new Item(11260, 3) };
+	private static final Item[] REWARD = { new Item(11262, 1), new Item(11259, 1), new Item(11258, 1), new Item(11260, 3) };
 
 	@Override
 	public void start() {
@@ -141,8 +135,7 @@ public class PuroPuro extends Controller {
 			for (Item item : player.getInventory().getItems().getItems()) {
 				if (item == null || FlyingEntities.forItem((short) item.getId()) == null)
 					continue;
-				requriedItems = new Item[]
-				{ item };
+				requriedItems = new Item[] { item };
 			}
 		}
 		if (requriedItems == null || !player.getInventory().containsItems(requriedItems)) {

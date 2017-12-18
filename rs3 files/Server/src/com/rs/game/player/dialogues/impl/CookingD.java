@@ -9,7 +9,7 @@ import com.rs.game.player.dialogues.Dialogue;
 
 public class CookingD extends Dialogue {
 
-	//private Cookables cooking;
+	// private Cookables cooking;
 	private WorldObject object;
 
 	@Override
@@ -22,8 +22,12 @@ public class CookingD extends Dialogue {
 			return;
 		}
 		SkillsDialogue.sendSkillDialogueByProduce(player, cooking.getProduct().getId());
-	/*	SkillsDialogue.sendSkillsDialogue(player, SkillsDialogue.COOK, "Choose how many you wish to cook,<br>then click on the item to begin.", player.getInventory().getItems().getNumberOf(cooking.getRawItem()), new int[]
-		{ cooking.getProduct().getId() }, null);*/
+		/*
+		 * SkillsDialogue.sendSkillsDialogue(player, SkillsDialogue.COOK,
+		 * "Choose how many you wish to cook,<br>then click on the item to begin." ,
+		 * player.getInventory().getItems().getNumberOf(cooking.getRawItem()), new int[] {
+		 * cooking.getProduct().getId() }, null);
+		 */
 	}
 
 	@Override
@@ -31,9 +35,9 @@ public class CookingD extends Dialogue {
 		SkillDialogueResult result = SkillsDialogue.getResult(player);
 		end();
 		Cookables cooking = Cooking.getCookForProduce(result.getProduce());
-		if(cooking == null)
+		if (cooking == null)
 			return;
-		
+
 		player.getActionManager().setAction(new Cooking(object, cooking.getRawItem(), result.getQuantity(), cooking));
 	}
 

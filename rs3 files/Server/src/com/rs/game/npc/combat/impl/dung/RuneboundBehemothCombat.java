@@ -25,8 +25,7 @@ public class RuneboundBehemothCombat extends CombatScript {
 
 	@Override
 	public Object[] getKeys() {
-		return new Object[]
-		{ "Runebound behemoth" };
+		return new Object[] { "Runebound behemoth" };
 	}
 
 	@Override
@@ -91,37 +90,33 @@ public class RuneboundBehemothCombat extends CombatScript {
 			}, 0, 0);
 			return 8;
 		}
-		int[] possibleAttacks = new int[]
-		{ 0, 1, 2 };
+		int[] possibleAttacks = new int[] { 0, 1, 2 };
 		if (target instanceof Player) {
 			Player player = (Player) target;
 			if (player.getPrayer().isMeleeProtecting())
-				possibleAttacks = new int[]
-				{ 1, 2 };
+				possibleAttacks = new int[] { 1, 2 };
 			else if (player.getPrayer().isRangeProtecting())
-				possibleAttacks = new int[]
-				{ 0, 1 };
+				possibleAttacks = new int[] { 0, 1 };
 			else if (player.getPrayer().isMageProtecting())
-				possibleAttacks = new int[]
-				{ 0, 2 };
+				possibleAttacks = new int[] { 0, 2 };
 		}
 		boolean distanced = !Utils.isOnRange(npc.getX(), npc.getY(), npc.getSize(), target.getX(), target.getY(), target.getSize(), 0);
 		int attack = possibleAttacks[Utils.random(possibleAttacks.length)];
 		if (attack == 0 && distanced)
 			attack = possibleAttacks[1];
 		switch (attack) {
-		case 0://melee
+		case 0:// melee
 			boss.setNextAnimation(new Animation(14423));
 			delayHit(npc, 0, target, getMeleeHit(npc, getMaxHit(npc, NPCCombatDefinitions.MELEE, target)));
 			break;
-		case 1://green exploding blob attack (magic)
+		case 1:// green exploding blob attack (magic)
 			boss.setNextAnimation(new Animation(14427));
-			//boss.setNextGraphics(new Graphics(2413));
+			// boss.setNextGraphics(new Graphics(2413));
 			World.sendProjectile(npc, target, 2414, 41, 16, 50, 40, 0, 0);
 			delayHit(npc, 1, target, getMagicHit(npc, getMaxHit(npc, NPCCombatDefinitions.MAGE, target)));
 			target.setNextGraphics(new Graphics(2417, 80, 0));
 			break;
-		case 2://green blob attack (range)
+		case 2:// green blob attack (range)
 			boss.setNextAnimation(new Animation(14424));
 			boss.setNextGraphics(new Graphics(2394));
 			World.sendProjectile(npc, target, 2395, 41, 16, 50, 40, 0, 2);

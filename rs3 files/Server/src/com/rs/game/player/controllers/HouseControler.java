@@ -45,7 +45,8 @@ public class HouseControler extends Controller {
 	@Override
 	public void start() {
 		this.house = (House) getArguments()[0];
-		getArguments()[0] = null; //its was gonna be saved unless somehow in a server restart but lets be safe
+		getArguments()[0] = null; // its was gonna be saved unless somehow in a
+		// server restart but lets be safe
 	}
 
 	/**
@@ -53,7 +54,8 @@ public class HouseControler extends Controller {
 	 */
 	@Override
 	public boolean processObjectClick5(WorldObject object) {
-		//System.out.println(object.getXInChunk() + ", " + object.getYInChunk() + ", 5");
+		// System.out.println(object.getXInChunk() + ", " + object.getYInChunk()
+		// + ", 5");
 		if (object.getDefinitions().containsOption(4, "Build")) {
 			if (!house.isOwner(player)) {
 				player.getPackets().sendGameMessage("You can only do that in your own house.");
@@ -159,7 +161,7 @@ public class HouseControler extends Controller {
 			passDoor(object);
 			return false;
 		} else if (HouseConstants.Builds.ALTAR.containsObject(object)) {
-			return true; //do what it does to altars outside world
+			return true; // do what it does to altars outside world
 		} else if (HouseConstants.Builds.LEVER.containsObject(object)) {
 			if (!house.isOwner(player)) {
 				player.getPackets().sendGameMessage("You can only do that in your own house.");
@@ -213,7 +215,9 @@ public class HouseControler extends Controller {
 			WorldObject objectR = new WorldObject(object);
 			objectR.setId(object.getId() + 1);
 			int time = 1210000;
-			World.spawnObjectTemporary(objectR, time, true, true); //lights for 2 min 10 seconds
+			World.spawnObjectTemporary(objectR, time, true, true); // lights for
+			// 2 min 10
+			// seconds
 			World.sendObjectAnimation(objectR, new Animation(13209));
 			for (int burner : HouseConstants.INCENSE_BURNERS) {
 				if (objectR.getId() == burner) {
@@ -242,7 +246,8 @@ public class HouseControler extends Controller {
 				player.getDialogueManager().startDialogue("ClimbHouseStairD", object, house);
 			else
 				house.climbStaircase(player, object, object.getDefinitions().getOption(1).equals("Climb-up"), object.getId() == HouseConstants.HObject.DUNGEON_ENTRACE.getId());
-		} else if (object.getId() == 13137 || object.getId() == 13133 || object.getId() == 13129) { //combat ring
+		} else if (object.getId() == 13137 || object.getId() == 13133 || object.getId() == 13129) { // combat
+			// ring
 			if (!house.isBuildMode()) {
 				byte ringType = (byte) (this.ringType > 0 ? -1 : (object.getId() == 13137 ? 3 : object.getId() == 13133 ? 2 : 1));
 				if (!canEnterRing(ringType))
@@ -291,8 +296,7 @@ public class HouseControler extends Controller {
 		player.lock(1);
 	}
 
-	private final static int[] RESTRICTED_SLOTS =
-	{ 0, 1, 2, 4, 5, 7, 9, 10, 12, 13, 14 };
+	private final static int[] RESTRICTED_SLOTS = { 0, 1, 2, 4, 5, 7, 9, 10, 12, 13, 14 };
 
 	private boolean canEnterRing(byte ringType) {
 		if (ringType == 1 || ringType == 2) {
@@ -321,8 +325,7 @@ public class HouseControler extends Controller {
 	 */
 	private boolean canAttack() {
 		if (ringType == 1 || ringType == 2) {
-			boolean distanceAttack = player.getCombatDefinitions().getStyle(true) == Combat.RANGE_TYPE
-					|| player.getCombatDefinitions().getStyle(false) == Combat.RANGE_TYPE;
+			boolean distanceAttack = player.getCombatDefinitions().getStyle(true) == Combat.RANGE_TYPE || player.getCombatDefinitions().getStyle(false) == Combat.RANGE_TYPE;
 			if (player.getEquipment().getWeaponId() == 22496 || player.getCombatDefinitions().getSpellId() > 0 || distanceAttack) {
 				player.getPackets().sendGameMessage("You may only use melee in this ring!");
 				return false;
@@ -373,8 +376,7 @@ public class HouseControler extends Controller {
 				TabletMaking.handleTabletCreation(player, componentId, 10);
 			else if (packetId == WorldPacketsDecoder.ACTION_BUTTON4_PACKET) {
 				player.getTemporaryAttributtes().put("create_tab_X_component", componentId);
-				player.getPackets().sendExecuteScriptReverse(108, new Object[]
-				{ "Enter Amount:" });
+				player.getPackets().sendExecuteScriptReverse(108, new Object[] { "Enter Amount:" });
 			} else if (packetId == WorldPacketsDecoder.ACTION_BUTTON5_PACKET)
 				TabletMaking.handleTabletCreation(player, componentId, player.getInventory().getAmountOf(1761));
 		}
@@ -403,7 +405,8 @@ public class HouseControler extends Controller {
 			player.getSkills().addXp(Skills.FIREMAKING, 40);
 			WorldObject objectR = new WorldObject(object);
 			objectR.setId(object.getId() + 1);
-			World.spawnObjectTemporary(objectR, 60000, true, true); //lights for 1min
+			World.spawnObjectTemporary(objectR, 60000, true, true); // lights
+			// for 1min
 			return false;
 		} else if (HouseConstants.HObject.FIREPIT.getId() >= object.getId() && HouseConstants.HObject.FANCY_RANGE.getId() <= object.getId()) {
 			Cookables cook = Cooking.isCookingSkill(item);
@@ -645,15 +648,16 @@ public class HouseControler extends Controller {
 	@Override
 	public boolean logout() {
 		house.leaveHouse(player, House.LOGGED_OUT);
-		return false; //leave house method removes controller already
+		return false; // leave house method removes controller already
 	}
 
-	//shouldnt happen but lets imagine somehow in a server restart
+	// shouldnt happen but lets imagine somehow in a server restart
 	@Override
 	public boolean login() {
 		player.setNextWorldTile(Settings.START_PLAYER_LOCATION);
 		removeControler();
-		return false; //remove controller manualy since i dont want to call forceclose
+		return false; // remove controller manualy since i dont want to call
+		// forceclose
 	}
 
 	@Override
@@ -693,7 +697,7 @@ public class HouseControler extends Controller {
 		house.leaveHouse(player, House.TELEPORTED);
 	}
 
-	//shouldnt happen
+	// shouldnt happen
 	@Override
 	public void forceClose() {
 		house.leaveHouse(player, House.TELEPORTED);

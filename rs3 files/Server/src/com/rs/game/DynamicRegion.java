@@ -81,24 +81,25 @@ public class DynamicRegion extends Region {
 						for (int plane = 0; plane < 4; plane++) {
 							for (int x = 0; x < 64; x++) {
 								for (int y = 0; y < 64; y++) {
-									
+
 									int value = stream.readUnsignedByte();
-									if((value & 0x1) != 0) {
-										 stream.readUnsignedByte();
-										 stream.readUnsignedSmart();
+									if ((value & 0x1) != 0) {
+										stream.readUnsignedByte();
+										stream.readUnsignedSmart();
 
 									}
-									if((value & 0x2) != 0) {
+									if ((value & 0x2) != 0) {
 										mapSettings[plane][x][y] = (byte) stream.readByte();
 
 									}
-									if((value & 0x4) != 0) {
-										stream.readUnsignedSmart(); //setted to 30
-									
+									if ((value & 0x4) != 0) {
+										stream.readUnsignedSmart(); // setted to
+										// 30
+
 									}
-									if((value & 0x8) != 0) {
-										 stream.readUnsignedByte();
-				
+									if ((value & 0x8) != 0) {
+										stream.readUnsignedByte();
+
 									}
 								}
 							}
@@ -187,9 +188,8 @@ public class DynamicRegion extends Region {
 					if (removed.getPlane() == chunkZ && removed.getChunkX() == chunkX && removed.getChunkY() == chunkY)
 						removedOriginalObjects.remove(removed);
 				/*
-				 * for (WorldObject added : ro) if (added.getPlane() == chunkZ
-				 * && added.getChunkX() == chunkX && added.getChunkY() ==
-				 * chunkY) spawnedObjects.remove(ao);
+				 * for (WorldObject added : ro) if (added.getPlane() == chunkZ && added.getChunkX() == chunkX &&
+				 * added.getChunkY() == chunkY) spawnedObjects.remove(ao);
 				 */
 			}
 		}

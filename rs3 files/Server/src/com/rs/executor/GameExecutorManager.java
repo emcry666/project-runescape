@@ -43,7 +43,7 @@ public final class GameExecutorManager {
 				} catch (InterruptedException e) {
 				}
 			}
-			
+
 			while (true) {
 				try {
 					grabThread.join();

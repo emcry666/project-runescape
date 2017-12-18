@@ -15,20 +15,17 @@ public class SmeltingD extends Dialogue {
 	public void start() {
 		object = (WorldObject) parameters[0];
 		SmeltingBar bar = (SmeltingBar) parameters[1];
-		/*int[] ids = new int[SmeltingBar.NOVITE.ordinal()];
-		for (int i = 0; i < ids.length; i++)
-			ids[i] = SmeltingBar.values()[i].getProducedBar().getId();
-		SkillsDialogue.sendSkillsDialogue(player, SkillsDialogue.MAKE, "How many bars would you like to smelt?<br>Choose a number, then click the bar to begin.", 28, ids, new ItemNameFilter() {
-			int count = 0;
-
-			@Override
-			public String rename(String name) {
-				SmeltingBar bar = SmeltingBar.values()[count++];
-				if (player.getSkills().getLevel(Skills.SMITHING) < bar.getLevelRequired())
-					name = "<col=ff0000>" + name + "<br><col=ff0000>Level " + bar.getLevelRequired();
-				return name;
-			}
-		});*/
+		/*
+		 * int[] ids = new int[SmeltingBar.NOVITE.ordinal()]; for (int i = 0; i < ids.length; i++) ids[i] =
+		 * SmeltingBar.values()[i].getProducedBar().getId(); SkillsDialogue.sendSkillsDialogue(player,
+		 * SkillsDialogue.MAKE,
+		 * "How many bars would you like to smelt?<br>Choose a number, then click the bar to begin." , 28, ids, new
+		 * ItemNameFilter() { int count = 0;
+		 * 
+		 * @Override public String rename(String name) { SmeltingBar bar = SmeltingBar.values()[count++]; if
+		 * (player.getSkills().getLevel(Skills.SMITHING) < bar.getLevelRequired()) name = "<col=ff0000>" + name +
+		 * "<br><col=ff0000>Level " + bar.getLevelRequired(); return name; } });
+		 */
 		SkillsDialogue.sendSkillDialogueByProduce(player, bar.getProducedBar().getId());
 	}
 
@@ -37,7 +34,7 @@ public class SmeltingD extends Dialogue {
 		SkillDialogueResult result = SkillsDialogue.getResult(player);
 		end();
 		SmeltingBar bar = SmeltingBar.getBarByProduce(result.getProduce());
-		if(bar == null)
+		if (bar == null)
 			return;
 		player.getActionManager().setAction(new Smelting(bar, object, result.getQuantity()));
 	}

@@ -5,10 +5,8 @@ import com.rs.game.player.Player;
 
 public class StealingCreationShop {
 
-	private static final int[] POINTS_COST =
-	{ 20, 20, 30, 28, 24, 26, 200 };
-	private static final int[] DEFAULT_PRODUCTS =
-	{ 14098, 14106, 14094, 14095, 14096, 14097, 21527 };
+	private static final int[] POINTS_COST = { 20, 20, 30, 28, 24, 26, 200 };
+	private static final int[] DEFAULT_PRODUCTS = { 14098, 14106, 14094, 14095, 14096, 14097, 21527 };
 
 	public static void openInterface(final Player player) {
 		refresh(player);

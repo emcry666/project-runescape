@@ -17,8 +17,7 @@ public class IcyBonesCombat extends CombatScript {
 
 	@Override
 	public Object[] getKeys() {
-		return new Object[]
-		{ "Icy Bones" };
+		return new Object[] { "Icy Bones" };
 	}
 
 	@Override

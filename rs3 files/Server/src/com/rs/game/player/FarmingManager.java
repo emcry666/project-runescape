@@ -28,28 +28,11 @@ public class FarmingManager implements Serializable {
 	// minutes
 	private static final int ALLOTMENT = 0, TREES = 1, HOPS = 2, FLOWERS = 3, FRUIT_TREES = 4, BUSHES = 5, HERBS = 6, COMPOST = 7, MUSHROOMS = 8, BELLADONNA = 9;
 	private static final int RAKE = 5341, EMPTY_BUCKET = 1925;
-	private static final String[] PATCH_NAMES =
-		{ "allotment", "tree", "hops", "flower", "fruit tree", "bush", "herb", "compost", "mushroom", "belladonna" };
-	private static final int[][] HARVEST_AMOUNTS =
-		{
-		{ 3, 53 },
-		{ 1, 1 },
-		{ 3, 41 },
-		{ 1, 3 },
-		{ 3, 5 },
-		{ 3, 5 },
-		{ 3, 18 },
-		{ 0, 0 },
-		{ 6, 9 },
-		{ 1, 1 } };
-	public static final int[] COMPOST_ORGANIC =
-		{ 6055, 1942, 1957, 1965, 5986, 5504, 5982, 249, 251, 253, 255, 257, 2998, 259, 261, 263, 3000, 265, 2481, 267, 269, 1951, 753, 2126, 247, 239, 6018 };
-	public static final int[] SUPER_COMPOST_ORGANIC =
-		{ 2114, 5978, 5980, 5982, 6004, 247, 6469 };
-	private static final Animation RAKING_ANIMATION = new Animation(2273), WATERING_ANIMATION = new Animation(2293), SEED_DIPPING_ANIMATION = new Animation(2291),
-			SPADE_ANIMATION = new Animation(830), HERB_PICKING_ANIMATION = new Animation(2282), MAGIC_PICKING_ANIMATION = new Animation(2286), CURE_PLANT_ANIMATION = new Animation(2288),
-			CHECK_TREE_ANIMATION = new Animation(832), PRUNING_ANIMATION = new Animation(2275), FLOWER_PICKING_ANIMATION = new Animation(2292), FRUIT_PICKING_ANIMATION = new Animation(2280),
-			COMPOST_ANIMATION = new Animation(2283), BUSH_PICKING_ANIMATION = new Animation(2281), FILL_COMPOST_ANIMATION = new Animation(832);
+	private static final String[] PATCH_NAMES = { "allotment", "tree", "hops", "flower", "fruit tree", "bush", "herb", "compost", "mushroom", "belladonna" };
+	private static final int[][] HARVEST_AMOUNTS = { { 3, 53 }, { 1, 1 }, { 3, 41 }, { 1, 3 }, { 3, 5 }, { 3, 5 }, { 3, 18 }, { 0, 0 }, { 6, 9 }, { 1, 1 } };
+	public static final int[] COMPOST_ORGANIC = { 6055, 1942, 1957, 1965, 5986, 5504, 5982, 249, 251, 253, 255, 257, 2998, 259, 261, 263, 3000, 265, 2481, 267, 269, 1951, 753, 2126, 247, 239, 6018 };
+	public static final int[] SUPER_COMPOST_ORGANIC = { 2114, 5978, 5980, 5982, 6004, 247, 6469 };
+	private static final Animation RAKING_ANIMATION = new Animation(2273), WATERING_ANIMATION = new Animation(2293), SEED_DIPPING_ANIMATION = new Animation(2291), SPADE_ANIMATION = new Animation(830), HERB_PICKING_ANIMATION = new Animation(2282), MAGIC_PICKING_ANIMATION = new Animation(2286), CURE_PLANT_ANIMATION = new Animation(2288), CHECK_TREE_ANIMATION = new Animation(832), PRUNING_ANIMATION = new Animation(2275), FLOWER_PICKING_ANIMATION = new Animation(2292), FRUIT_PICKING_ANIMATION = new Animation(2280), COMPOST_ANIMATION = new Animation(2283), BUSH_PICKING_ANIMATION = new Animation(2281), FILL_COMPOST_ANIMATION = new Animation(832);
 
 	private List<FarmingSpot> spots;
 	private transient Player player;
@@ -77,93 +60,43 @@ public class FarmingManager implements Serializable {
 		/**
 		 * Allotments
 		 */
-		Potato(5318, 1, 1942, 0, 8, 9, 10, ALLOTMENT),
-		Onion(5319, 5, 1957, 1, 9.5, 10.5, 10, ALLOTMENT),
-		Cabbage(5324, 7, 1965, 2, 10, 11.5, 10, ALLOTMENT),
-		Tomato(5322, 12, 1982, 3, 12.5, 14, 10, ALLOTMENT),
-		Sweetcorn(5320, 20, 5986, 4, 17, 19, 10, 6, ALLOTMENT),
-		Strawberry(5323, 31, 5504, 5, 26, 29, 10, 6, 2, ALLOTMENT),
-		Watermelon(5321, 47, 5982, 6, 48.5, 54.5, 10, 8, 4, ALLOTMENT),
+		Potato(5318, 1, 1942, 0, 8, 9, 10, ALLOTMENT), Onion(5319, 5, 1957, 1, 9.5, 10.5, 10, ALLOTMENT), Cabbage(5324, 7, 1965, 2, 10, 11.5, 10, ALLOTMENT), Tomato(5322, 12, 1982, 3, 12.5, 14, 10, ALLOTMENT), Sweetcorn(5320, 20, 5986, 4, 17, 19, 10, 6, ALLOTMENT), Strawberry(5323, 31, 5504, 5, 26, 29, 10, 6, 2, ALLOTMENT), Watermelon(5321, 47, 5982, 6, 48.5, 54.5, 10, 8, 4, ALLOTMENT),
 
 		/**
 		 * Herbs
 		 */
-		Guam(5291, 9, 199, 0, 11, 12.5, 20, HERBS),
-		Marrentill(5292, 14, 201, 1, 13.5, 15, 20, HERBS),
-		Tarromin(5293, 19, 203, 2, 16, 18, 20, HERBS),
-		Harralander(5294, 26, 205, 3, 21.5, 24, 20, HERBS),
-		Rannar(5295, 32, 207, 4, 27, 30.5, 20, HERBS),
-		Toadflax(5296, 38, 3049, 5, 34, 38.5, 20, HERBS),
-		Irit(5297, 44, 209, 6, 43, 48.5, 20, HERBS),
-		Avantoe(5298, 50, 211, 7, 54.4, 61.5, 20, HERBS),
-		Kwuarm(5299, 56, 213, 6, 69, 78, 20, HERBS),
-		Snapdragon(5300, 62, 3051, 6, 87.5, 98.5, 20, HERBS),
-		Cadantine(5301, 67, 215, 6, 106.5, 120, 20, HERBS),
-		Lantadyme(5302, 73, 2485, 6, 134.5, 151.5, 20, HERBS),
-		Dwarf(5303, 79, 217, 6, 170.5, 192, 20, HERBS),
-		Torstol(5304, 85, 219, 6, 199.5, 224.5, 20, HERBS),
-		Fellstalk(21621, 91, 21626, 6, 225, 315.6, 20, HERBS),
-		Wergali(14870, 46, 213, 8, 52.8, 52.8, 20, HERBS),
-		Gout(6311, 65, 3261, 27, 105, 45, 20, HERBS),
+		Guam(5291, 9, 199, 0, 11, 12.5, 20, HERBS), Marrentill(5292, 14, 201, 1, 13.5, 15, 20, HERBS), Tarromin(5293, 19, 203, 2, 16, 18, 20, HERBS), Harralander(5294, 26, 205, 3, 21.5, 24, 20, HERBS), Rannar(5295, 32, 207, 4, 27, 30.5, 20, HERBS), Toadflax(5296, 38, 3049, 5, 34, 38.5, 20, HERBS), Irit(5297, 44, 209, 6, 43, 48.5, 20, HERBS), Avantoe(5298, 50, 211, 7, 54.4, 61.5, 20, HERBS), Kwuarm(5299, 56, 213, 6, 69, 78, 20, HERBS), Snapdragon(5300, 62, 3051, 6, 87.5, 98.5, 20, HERBS), Cadantine(5301, 67, 215, 6, 106.5, 120, 20, HERBS), Lantadyme(5302, 73, 2485, 6, 134.5, 151.5, 20, HERBS), Dwarf(5303, 79, 217, 6, 170.5, 192, 20, HERBS), Torstol(5304, 85, 219, 6, 199.5, 224.5, 20, HERBS), Fellstalk(21621, 91, 21626, 6, 225, 315.6, 20, HERBS), Wergali(14870, 46, 213, 8, 52.8, 52.8, 20, HERBS), Gout(6311, 65, 3261, 27, 105, 45, 20, HERBS),
 
 		/**
 		 * Flowers
 		 */
-		Marigold(5096, 2, 6010, 0, 8.5, 47, 5, FLOWERS),
-		Rosemary(5097, 11, 6014, 1, 12, 66.5, 5, FLOWERS),
-		Nasturtium(5098, 24, 6012, 2, 19.5, 111, 5, FLOWERS),
-		Woad(5099, 25, 1793, 3, 20.5, 115.5, 5, FLOWERS),
-		Limpwurt(5100, 26, 225, 4, 21.5, 120, 5, FLOWERS),
-		White_lily(14589, 52, 14583, 6, 70, 250, 20, 4, -1, FLOWERS),
+		Marigold(5096, 2, 6010, 0, 8.5, 47, 5, FLOWERS), Rosemary(5097, 11, 6014, 1, 12, 66.5, 5, FLOWERS), Nasturtium(5098, 24, 6012, 2, 19.5, 111, 5, FLOWERS), Woad(5099, 25, 1793, 3, 20.5, 115.5, 5, FLOWERS), Limpwurt(5100, 26, 225, 4, 21.5, 120, 5, FLOWERS), White_lily(14589, 52, 14583, 6, 70, 250, 20, 4, -1, FLOWERS),
 
 		/**
 		 * Hops
 		 */
-		Barley(5305, 3, 6006, 9, 8.5, 9.5, 10, 4, 1, HOPS),
-		Hammerstone(5307, 4, 5994, 0, 9, 10, 10, 4, 1, HOPS),
-		Asgarnian(5308, 8, 5996, 1, 10.9, 12, 10, 5, 3, HOPS),
-		Jute(5306, 13, 5931, 10, 13, 14.5, 10, 5, 3, HOPS),
-		Yanillian(5309, 16, 5998, 3, 14.5, 16, 10, 6, 1, HOPS),
-		Krandorian(5310, 21, 6000, 5, 17.5, 19.5, 10, 7, HOPS),
-		Wildbood(5311, 28, 6002, 7, 23, 26, 10, 7, 1, HOPS),
+		Barley(5305, 3, 6006, 9, 8.5, 9.5, 10, 4, 1, HOPS), Hammerstone(5307, 4, 5994, 0, 9, 10, 10, 4, 1, HOPS), Asgarnian(5308, 8, 5996, 1, 10.9, 12, 10, 5, 3, HOPS), Jute(5306, 13, 5931, 10, 13, 14.5, 10, 5, 3, HOPS), Yanillian(5309, 16, 5998, 3, 14.5, 16, 10, 6, 1, HOPS), Krandorian(5310, 21, 6000, 5, 17.5, 19.5, 10, 7, HOPS), Wildbood(5311, 28, 6002, 7, 23, 26, 10, 7, 1, HOPS),
 
 		/**
 		 * Trees
 		 */
-		Oak(5370, 15, 6043, 1, 467.3, 14, 40, TREES),
-		Willow(5371, 30, 6045, 6, 1456.5, 25, 40, 6, TREES),
-		Maple(5372, 45, 6047, 17, 3403.4, 45, 40, 8, TREES),
-		Yew(5373, 60, 6049, 26, 7069.9, 81, 40, 10, TREES),
-		Magic(5374, 75, 6051, 41, 13768.3, 145.5, 40, 12, TREES),
+		Oak(5370, 15, 6043, 1, 467.3, 14, 40, TREES), Willow(5371, 30, 6045, 6, 1456.5, 25, 40, 6, TREES), Maple(5372, 45, 6047, 17, 3403.4, 45, 40, 8, TREES), Yew(5373, 60, 6049, 26, 7069.9, 81, 40, 10, TREES), Magic(5374, 75, 6051, 41, 13768.3, 145.5, 40, 12, TREES),
 
 		/**
 		 * Trees of the fruits :)
 		 */
-		Apple(5496, 27, 1955, 1, 1199.5, 22, 160, 6, FRUIT_TREES),
-		Banana(5497, 33, 1963, 26, 1841.5, 28, 160, 6, FRUIT_TREES),
-		Orange(5498, 39, 2108, 65, 2470.2, 35.5, 160, 6, FRUIT_TREES),
-		Curry(5499, 42, 5970, 90, 2906.9, 40, 160, 6, FRUIT_TREES),
-		Pineapple(5500, 51, 2114, 129, 4605.7, 57, 160, 6, FRUIT_TREES),
-		Papaya(5501, 57, 5972, 154, 6146.4, 72, 160, 6, FRUIT_TREES),
-		Palm(5502, 68, 5974, 193, 10150.1, 110.5, 160, 6, FRUIT_TREES),
+		Apple(5496, 27, 1955, 1, 1199.5, 22, 160, 6, FRUIT_TREES), Banana(5497, 33, 1963, 26, 1841.5, 28, 160, 6, FRUIT_TREES), Orange(5498, 39, 2108, 65, 2470.2, 35.5, 160, 6, FRUIT_TREES), Curry(5499, 42, 5970, 90, 2906.9, 40, 160, 6, FRUIT_TREES), Pineapple(5500, 51, 2114, 129, 4605.7, 57, 160, 6, FRUIT_TREES), Papaya(5501, 57, 5972, 154, 6146.4, 72, 160, 6, FRUIT_TREES), Palm(5502, 68, 5974, 193, 10150.1, 110.5, 160, 6, FRUIT_TREES),
 
 		/**
 		 * Bushes of the bush
 		 */
-		Redberry(5101, 10, 1951, -4, 64, 11.5, 20, 5, BUSHES),
-		Cadavaberry(5102, 22, 753, 6, 102.5, 18, 20, 6, BUSHES),
-		Dwellberry(5103, 36, 2126, 19, 177.5, 31.5, 20, 7, BUSHES),
-		Jangerberry(5104, 48, 247, 31, 284.5, 50.5, 20, 8, BUSHES),
-		Whiteberry(5105, 59, 239, 42, 437.5, 78, 20, 8, BUSHES),
-		Poison_ivy(5106, 70, 6018, 188, 675, 120, 20, 8, BUSHES),
+		Redberry(5101, 10, 1951, -4, 64, 11.5, 20, 5, BUSHES), Cadavaberry(5102, 22, 753, 6, 102.5, 18, 20, 6, BUSHES), Dwellberry(5103, 36, 2126, 19, 177.5, 31.5, 20, 7, BUSHES), Jangerberry(5104, 48, 247, 31, 284.5, 50.5, 20, 8, BUSHES), Whiteberry(5105, 59, 239, 42, 437.5, 78, 20, 8, BUSHES), Poison_ivy(5106, 70, 6018, 188, 675, 120, 20, 8, BUSHES),
 
 		Compost_Bin(7836, 1, -1, 0, 8, 14, 2, 15, COMPOST),
 
-		Bittercap(17825, 53, 17821, 0, 61.5, 57.7, 40, 6, 0, MUSHROOMS),
-		Morchella(21620, 74, 21622, 1, 22, 77.7, 25, 6, 0, MUSHROOMS),
+		Bittercap(17825, 53, 17821, 0, 61.5, 57.7, 40, 6, 0, MUSHROOMS), Morchella(21620, 74, 21622, 1, 22, 77.7, 25, 6, 0, MUSHROOMS),
 
-		Belladonna(5281, 63, 2398, 0, 91, 512, 80, BELLADONNA)
-		;
+		Belladonna(5281, 63, 2398, 0, 91, 512, 80, BELLADONNA);
 
 		private static Map<Short, ProductInfo> products = new HashMap<Short, ProductInfo>();
 
@@ -220,55 +153,24 @@ public class FarmingManager implements Serializable {
 
 	public static enum SpotInfo {
 
-		Talvery_Tree(8388, TREES),
-		Falador_Garden_Tree(8389, TREES),
-		Varrock_Tree(8390, TREES),
-		Lumbridge_Tree(8391, TREES),
-		Gnome_Tree(19147, TREES),
+		Talvery_Tree(8388, TREES), Falador_Garden_Tree(8389, TREES), Varrock_Tree(8390, TREES), Lumbridge_Tree(8391, TREES), Gnome_Tree(19147, TREES),
 
-		Gnome_Strong_Fruit_Tree(7962, FRUIT_TREES),
-		Gnome_Fruit_Tree(7963, FRUIT_TREES),
-		Brimhaven_Fruit_Tree(7964, FRUIT_TREES),
-		Catherby_Fruit_Tree(7965, FRUIT_TREES),
-		Lletya_Fruit_Tree(28919, FRUIT_TREES),
+		Gnome_Strong_Fruit_Tree(7962, FRUIT_TREES), Gnome_Fruit_Tree(7963, FRUIT_TREES), Brimhaven_Fruit_Tree(7964, FRUIT_TREES), Catherby_Fruit_Tree(7965, FRUIT_TREES), Lletya_Fruit_Tree(28919, FRUIT_TREES),
 
-		Falador_Allotment_North(8550, ALLOTMENT),
-		Falador_Allotment_South(8551, ALLOTMENT),
-		Catherby_Allotment_North(8552, ALLOTMENT),
-		Catherby_Allotment_South(8553, ALLOTMENT),
-		Ardougne_Allotment_North(8554, ALLOTMENT),
-		Ardougne_Allotment_South(8555, ALLOTMENT),
-		Canfis_Allotment_North(8556, ALLOTMENT),
-		Canfis_Allotment_South(8557, ALLOTMENT),
+		Falador_Allotment_North(8550, ALLOTMENT), Falador_Allotment_South(8551, ALLOTMENT), Catherby_Allotment_North(8552, ALLOTMENT), Catherby_Allotment_South(8553, ALLOTMENT), Ardougne_Allotment_North(8554, ALLOTMENT), Ardougne_Allotment_South(8555, ALLOTMENT), Canfis_Allotment_North(8556, ALLOTMENT), Canfis_Allotment_South(8557, ALLOTMENT),
 
-		Yannile_Hops_Patch(8173, HOPS),
-		Talvery_Hops_Patch(8174, HOPS),
-		Lumbridge_Hops_Patch(8175, HOPS),
-		McGrubor_Hops_Patch(8176, HOPS),
+		Yannile_Hops_Patch(8173, HOPS), Talvery_Hops_Patch(8174, HOPS), Lumbridge_Hops_Patch(8175, HOPS), McGrubor_Hops_Patch(8176, HOPS),
 
-		Falador_Flower(7847, FLOWERS),
-		Catherby_Flower(7848, FLOWERS),
-		Ardougne_Flower(7849, FLOWERS),
-		Canfis_Flower(7850, FLOWERS),
+		Falador_Flower(7847, FLOWERS), Catherby_Flower(7848, FLOWERS), Ardougne_Flower(7849, FLOWERS), Canfis_Flower(7850, FLOWERS),
 
-		Champions_Bush(7577, BUSHES),
-		Rimmington_Bush(7578, BUSHES),
-		Etceteria_Bush(7579, BUSHES),
-		South_Arddougne_Bush(7580, BUSHES),
+		Champions_Bush(7577, BUSHES), Rimmington_Bush(7578, BUSHES), Etceteria_Bush(7579, BUSHES), South_Arddougne_Bush(7580, BUSHES),
 
-		Falador_Herb_Patch(8150, HERBS),
-		Catherby_Herb_Patch(8151, HERBS),
-		Ardougne_Herb_Patch(8152, HERBS),
-		Canfis_Herb_Patch(8153, HERBS),
+		Falador_Herb_Patch(8150, HERBS), Catherby_Herb_Patch(8151, HERBS), Ardougne_Herb_Patch(8152, HERBS), Canfis_Herb_Patch(8153, HERBS),
 
-		Falador_Compost_Bin(7836, COMPOST),
-		Catherby_Bin(7837, COMPOST),
-		Port_Phasymatis_Bin(7838, COMPOST),
-		Ardougn_Bin(7839, COMPOST),
-		Taverly_Bin(66577, COMPOST),
+		Falador_Compost_Bin(7836, COMPOST), Catherby_Bin(7837, COMPOST), Port_Phasymatis_Bin(7838, COMPOST), Ardougn_Bin(7839, COMPOST), Taverly_Bin(66577, COMPOST),
 
 		Mushroom_Special(8337, MUSHROOMS),
-		
+
 		Belladonna(7572, BELLADONNA);
 
 		private static Map<Short, SpotInfo> informations = new HashMap<Short, SpotInfo>();
@@ -1142,7 +1044,7 @@ public class FarmingManager implements Serializable {
 			else if (type == MUSHROOMS) {
 				int value = stage + getConfigBaseValue();
 				if (isDead())
-					value += productInfo.configIndex == 1 ? 19 : 16;//14
+					value += productInfo.configIndex == 1 ? 19 : 16;// 14
 				else if (isDiseased() && stage != 0)
 					value += productInfo.configIndex == 1 ? 14 : 11;
 				return value;

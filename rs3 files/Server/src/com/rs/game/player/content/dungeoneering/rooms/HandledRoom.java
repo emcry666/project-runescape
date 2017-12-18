@@ -11,7 +11,7 @@ public class HandledRoom {
 	private int[] doorsDirections;
 	private RoomEvent event;
 	private int[] keySpot;
-	
+
 	public HandledRoom(int chunkX, int chunkY, RoomEvent event, int[] keySpot, int... doorDirections) {
 		this.chunkX = chunkX;
 		this.chunkY = chunkY;
@@ -19,7 +19,7 @@ public class HandledRoom {
 		this.doorsDirections = doorDirections;
 		this.keySpot = keySpot;
 	}
-	
+
 	public HandledRoom(int chunkX, int chunkY, RoomEvent event, int... doorsDirections) {
 		this(chunkX, chunkY, event, null, doorsDirections);
 	}
@@ -77,9 +77,9 @@ public class HandledRoom {
 		event.openRoom(dungeon, reference);
 	}
 
-//	public boolean allowSpecialDoors() {
-//		return true;
-//	}
+	// public boolean allowSpecialDoors() {
+	// return true;
+	// }
 
 	public boolean allowResources() {
 		return true;
@@ -88,11 +88,9 @@ public class HandledRoom {
 	public boolean isAvailableOnFloorType(int floorType) {
 		return true;
 	}
-	
-	
+
 	public int[] getKeySpot() {
 		return keySpot;
 	}
-	
 
 }

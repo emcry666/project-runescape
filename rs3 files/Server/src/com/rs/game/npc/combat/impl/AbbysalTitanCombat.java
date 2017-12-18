@@ -12,8 +12,7 @@ public class AbbysalTitanCombat extends CombatScript {
 
 	@Override
 	public Object[] getKeys() {
-		return new Object[]
-		{ 7350, 7349 };
+		return new Object[] { 7350, 7349 };
 	}
 
 	@Override

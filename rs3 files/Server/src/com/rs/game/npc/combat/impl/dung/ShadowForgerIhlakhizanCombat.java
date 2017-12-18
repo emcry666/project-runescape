@@ -24,8 +24,7 @@ public class ShadowForgerIhlakhizanCombat extends CombatScript {
 
 	@Override
 	public Object[] getKeys() {
-		return new Object[]
-		{ "Shadow-Forger Ihlakhizan" };
+		return new Object[] { "Shadow-Forger Ihlakhizan" };
 	}
 
 	@Override

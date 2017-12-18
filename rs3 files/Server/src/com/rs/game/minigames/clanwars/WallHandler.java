@@ -10,8 +10,7 @@ import com.rs.game.WorldTile;
 import com.rs.game.player.Player;
 
 /**
- * Handles the spawning, animating and removing of the wall in the clan wars
- * area.
+ * Handles the spawning, animating and removing of the wall in the clan wars area.
  * 
  * @author Emperor
  * 
@@ -21,8 +20,7 @@ public final class WallHandler {
 	/**
 	 * Loads the wall.
 	 * 
-	 * @param c
-	 *            The clan wars object.
+	 * @param c The clan wars object.
 	 */
 	public static void loadWall(ClanWars c) {
 		WorldTile base = c.getBaseLocation();
@@ -96,8 +94,7 @@ public final class WallHandler {
 	/**
 	 * Drops the wall, so the players can attack each other.
 	 * 
-	 * @param clanWars
-	 *            The clan wars object.
+	 * @param clanWars The clan wars object.
 	 */
 	public static void dropWall(ClanWars clanWars) {
 		List<WorldObject> objects = clanWars.getWallObjects();
@@ -132,8 +129,7 @@ public final class WallHandler {
 	/**
 	 * Removes the clan wars wall.
 	 * 
-	 * @param clanWars
-	 *            The clan wars object.
+	 * @param clanWars The clan wars object.
 	 */
 	public static void removeWall(ClanWars clanWars) {
 		List<WorldObject> objects = clanWars.getWallObjects();

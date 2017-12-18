@@ -25,7 +25,8 @@ public class DungManager implements Serializable {
 	 */
 	private static final long serialVersionUID = 5472153493680156393L;
 
-	private static final byte version = 2; //termporary, should be deleted once files remade
+	private static final byte version = 2; // termporary, should be deleted once
+	// files remade
 
 	// dungeonering
 	private boolean[] currentProgress;
@@ -37,7 +38,7 @@ public class DungManager implements Serializable {
 	private Item bindedAmmo;
 	private boolean[] visitedResources;
 
-	private byte cVersion; //termporary, should be deleted once files remade
+	private byte cVersion; // termporary, should be deleted once files remade
 
 	private Object rejoinKey;
 
@@ -46,22 +47,8 @@ public class DungManager implements Serializable {
 	private transient Player invitingPlayer;
 
 	private static enum ResourceDungeon {
-		EDGEVILLE_DUNGEON(10, 1100, 52849, new WorldTile(3132, 9933, 0), 52867, new WorldTile(991, 4585, 0)),
-		DWARVEN_MINE(15, 1500, 52855, new WorldTile(3034, 9772, 0), 52864, new WorldTile(1041, 4575, 0)),
-		EDGEVILLE_DUNGEON_2(20, 1600, 52853, new WorldTile(3104, 9826, 0), 52868, new WorldTile(1135, 4589, 0)),
-		KARANJA_VOLCANO(25, 2100, 52850, new WorldTile(2845, 9557, 0), 52869, new WorldTile(1186, 4598, 0)),
-		DAEMONHEIM_PENINSULA(30, 2400, 52861, new WorldTile(3513, 3666, 0), 52862, new WorldTile(3498, 3633, 0)),
-		BAXTORIAN_FALLS(35, 3000, 52857, new WorldTile(2578, 9898, 0), 52873, new WorldTile(1256, 4592, 0)),
-		MINING_GUILD(45, 4400, 52856, new WorldTile(3022, 9741, 0), 52866, new WorldTile(1052, 4521, 0)),
-		TAVERLY_DUNGEON_1(55, 6200, 52851, new WorldTile(2854, 9841, 0), 52870, new WorldTile(1394, 4588, 0)),
-		TAVERLY_DUNGEON_2(60, 7000, 52852, new WorldTile(2912, 9810, 0), 52865, new WorldTile(1000, 4522, 0)),
-		VARRICK_SEWERS(65, 8500, 52863, new WorldTile(3164, 9878, 0), 52876, new WorldTile(1312, 4590, 0)),
-		CHAOS_TUNNELS(70, 9600, 52858, new WorldTile(3160, 5521, 0), 52874, new WorldTile(1238, 4524, 0)),
-		AL_KHARID(75, 11400, 52860, new WorldTile(3298, 3307, 0), 52872, new WorldTile(1182, 4515, 0)),
-		BRIMHAVEM_DUNGEON(80, 12800, 77579, new WorldTile(2697, 9442, 0), 77580, new WorldTile(1140, 4499, 0)),
-		POLYPORE_DUNGEON(82, 13500, 64291, new WorldTile(4661, 5491, 3), 64291, new WorldTile(4695, 5625, 3)),
-		ASGARNIAN_ICE_DUNGEON(85, 15000, 52859, new WorldTile(3033, 9599, 0), 52875, new WorldTile(1297, 4510, 0))
-		//,BRAINDEATH_ISLAND(50, 0)
+		EDGEVILLE_DUNGEON(10, 1100, 52849, new WorldTile(3132, 9933, 0), 52867, new WorldTile(991, 4585, 0)), DWARVEN_MINE(15, 1500, 52855, new WorldTile(3034, 9772, 0), 52864, new WorldTile(1041, 4575, 0)), EDGEVILLE_DUNGEON_2(20, 1600, 52853, new WorldTile(3104, 9826, 0), 52868, new WorldTile(1135, 4589, 0)), KARANJA_VOLCANO(25, 2100, 52850, new WorldTile(2845, 9557, 0), 52869, new WorldTile(1186, 4598, 0)), DAEMONHEIM_PENINSULA(30, 2400, 52861, new WorldTile(3513, 3666, 0), 52862, new WorldTile(3498, 3633, 0)), BAXTORIAN_FALLS(35, 3000, 52857, new WorldTile(2578, 9898, 0), 52873, new WorldTile(1256, 4592, 0)), MINING_GUILD(45, 4400, 52856, new WorldTile(3022, 9741, 0), 52866, new WorldTile(1052, 4521, 0)), TAVERLY_DUNGEON_1(55, 6200, 52851, new WorldTile(2854, 9841, 0), 52870, new WorldTile(1394, 4588, 0)), TAVERLY_DUNGEON_2(60, 7000, 52852, new WorldTile(2912, 9810, 0), 52865, new WorldTile(1000, 4522, 0)), VARRICK_SEWERS(65, 8500, 52863, new WorldTile(3164, 9878, 0), 52876, new WorldTile(1312, 4590, 0)), CHAOS_TUNNELS(70, 9600, 52858, new WorldTile(3160, 5521, 0), 52874, new WorldTile(1238, 4524, 0)), AL_KHARID(75, 11400, 52860, new WorldTile(3298, 3307, 0), 52872, new WorldTile(1182, 4515, 0)), BRIMHAVEM_DUNGEON(80, 12800, 77579, new WorldTile(2697, 9442, 0), 77580, new WorldTile(1140, 4499, 0)), POLYPORE_DUNGEON(82, 13500, 64291, new WorldTile(4661, 5491, 3), 64291, new WorldTile(4695, 5625, 3)), ASGARNIAN_ICE_DUNGEON(85, 15000, 52859, new WorldTile(3033, 9599, 0), 52875, new WorldTile(1297, 4510, 0))
+		// ,BRAINDEATH_ISLAND(50, 0)
 
 		;
 
@@ -91,7 +78,7 @@ public class DungManager implements Serializable {
 		this.player = player;
 		if (cVersion != version)
 			reset();
-		else if (visitedResources == null) //temporary
+		else if (visitedResources == null) // temporary
 			visitedResources = new boolean[ResourceDungeon.values().length];
 	}
 
@@ -276,28 +263,35 @@ public class DungManager implements Serializable {
 	public void refreshPartyDetailsComponents() {
 		if (!player.getInterfaceManager().containsInterface(939))
 			return;
-		player.getPackets().sendHideIComponent(939, 18, party != null);//Form party button
-		player.getPackets().sendHideIComponent(939, 14, party == null || !party.isLeader(player));//Leave Group
-		player.getPackets().sendHideIComponent(939, 20, party == null || !party.isLeader(player));//Invite Button
-		player.getPackets().sendHideIComponent(939, 77, party != null && party.isLeader(player));//Complexity change
-		player.getPackets().sendHideIComponent(939, 82, party != null && party.isLeader(player));//Floor change
-		player.getPackets().sendHideIComponent(939, 68, party != null && party.isLeader(player));//Guide mode
-		
+		player.getPackets().sendHideIComponent(939, 18, party != null);// Form
+		// party
+		// button
+		player.getPackets().sendHideIComponent(939, 14, party == null || !party.isLeader(player));// Leave
+		// Group
+		player.getPackets().sendHideIComponent(939, 20, party == null || !party.isLeader(player));// Invite
+		// Button
+		player.getPackets().sendHideIComponent(939, 77, party != null && party.isLeader(player));// Complexity
+		// change
+		player.getPackets().sendHideIComponent(939, 82, party != null && party.isLeader(player));// Floor
+		// change
+		player.getPackets().sendHideIComponent(939, 68, party != null && party.isLeader(player));// Guide
+		// mode
+
 		/*
-		player.getPackets().sendHideIComponent(939, 34, party == null || party.isLeader(player));
-		for (int i = 0; i < 5; i++) {
-			Player p2 = party == null || i >= party.getTeam().size() ? null : party.getTeam().get(i);
-			for (int i2 = 59 + i * 3; i2 < 62 + i * 3; i2++)
-				player.getPackets().sendHideIComponent(939, i2, p2 == null);
-		}*/
-		
+		 * player.getPackets().sendHideIComponent(939, 34, party == null || party.isLeader(player)); for (int i =
+		 * 0; i < 5; i++) { Player p2 = party == null || i >= party.getTeam().size() ? null :
+		 * party.getTeam().get(i); for (int i2 = 59 + i * 3; i2 < 62 + i * 3; i2++)
+		 * player.getPackets().sendHideIComponent(939, i2, p2 == null); }
+		 */
+
 		for (int i = 0; i < 5; i++) {
 			Player p2 = party == null || i >= party.getTeam().size() ? null : party.getTeam().get(i);
 			for (int i2 = 35 + i * 3; i2 < 38 + i * 3; i2++)
 				player.getPackets().sendHideIComponent(939, i2, p2 == null);
 		}
-		
-		for (int component = 29; component < 35; component++)//Lines on the interface
+
+		for (int component = 29; component < 35; component++)// Lines on the
+			// interface
 			player.getPackets().sendHideIComponent(939, component, false);
 	}
 
@@ -644,25 +638,7 @@ public class DungManager implements Serializable {
 		player.getPackets().sendHideIComponent(938, 14 + ((complexity - 1) * 5), !mark);
 	}
 
-	private static final String[] COMPLEXITY_SKILLS =
-		{
-		"Combat",
-		"Cooking",
-		"Firemaking",
-		"Woodcutting",
-		"Fishing",
-		"Creating Weapons",
-		"Mining",
-		"Runecrafting",
-		"Farming Textiles",
-		"Hunting",
-		"Creating Armour",
-		"Farming Seeds",
-		"Herblore",
-		"Thieving",
-		"Summoning",
-		"Construction",
-		"Divination" };
+	private static final String[] COMPLEXITY_SKILLS = { "Combat", "Cooking", "Firemaking", "Woodcutting", "Fishing", "Creating Weapons", "Mining", "Runecrafting", "Farming Textiles", "Hunting", "Creating Armour", "Farming Seeds", "Herblore", "Thieving", "Summoning", "Construction", "Divination" };
 
 	private void hideSkills(int complexity) {
 		int count = 0;
@@ -698,7 +674,7 @@ public class DungManager implements Serializable {
 			player.getDialogueManager().startDialogue("DungeonPartyStart");
 			return;
 		}
-		if (party.getDungeon() != null) //cant happen
+		if (party.getDungeon() != null) // cant happen
 			return;
 		if (!party.isLeader(player)) {
 			player.getPackets().sendGameMessage("Only your party's leader can start a dungeon!");

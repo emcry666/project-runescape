@@ -17,38 +17,21 @@ import com.rs.utils.Utils;
 
 public class ForgottenMage extends CombatScript {
 
-	private static final int[][] ATTACK_TYPES =
-		{ { 0, 9, 10 },
-		{ 10, 11, 0, 12, 1 },
-		{ 12, 13, 0, 1, 3, 2, 14 },
-		{ 14, 15, 0, 3, 16 },
-		{ 17, 18, 0, 1, 2, 3, 19 },
-		{ 20, 21, 0, 1, 2, 22, 4 },
-		{ 22, 23, 0, 1, 4, 6, 24 },
-		{ 24, 25, 0, 6, 7, 5, 26 },
-		{ 26, 27, 6, 7, 8, 5, 28 },
-		{ 28, 29, 6, 7, 8, 5, 30 },
-		{ 30, 6, 7, 8, 5 }, };
+	private static final int[][] ATTACK_TYPES = { { 0, 9, 10 }, { 10, 11, 0, 12, 1 }, { 12, 13, 0, 1, 3, 2, 14 }, { 14, 15, 0, 3, 16 }, { 17, 18, 0, 1, 2, 3, 19 }, { 20, 21, 0, 1, 2, 22, 4 }, { 22, 23, 0, 1, 4, 6, 24 }, { 24, 25, 0, 6, 7, 5, 26 }, { 26, 27, 6, 7, 8, 5, 28 }, { 28, 29, 6, 7, 8, 5, 30 }, { 30, 6, 7, 8, 5 }, };
 
-	private static final int[] ATTACK_ANIMATIONS =
-		{ 711, 716, 724, 710, 710, 710, 729, 729, 729, 14221, 14222, 14221, 14221, 14220, 14220, 14222, 14223, 14221, 14220, 14222, 14223, 14221, 14220, 14222, 14223, 10546, 10542, 14209, 2791 };
+	private static final int[] ATTACK_ANIMATIONS = { 711, 716, 724, 710, 710, 710, 729, 729, 729, 14221, 14222, 14221, 14221, 14220, 14220, 14222, 14223, 14221, 14220, 14222, 14223, 14221, 14220, 14222, 14223, 10546, 10542, 14209, 2791 };
 
-	private static final int[] START_GRAPHICS =
-		{ 102, 105, 108, 177, 177, 177, 167, 170, 173, -1, 2701, 2713, 2728, -1, 2707, 2709, 2714, 2728, -1, 2701, 2715, 2728, -1, 2702, 2716, 2728, 457, 2701, 2717, 2728 };
+	private static final int[] START_GRAPHICS = { 102, 105, 108, 177, 177, 177, 167, 170, 173, -1, 2701, 2713, 2728, -1, 2707, 2709, 2714, 2728, -1, 2701, 2715, 2728, -1, 2702, 2716, 2728, 457, 2701, 2717, 2728 };
 
-	private static final int[] HIT_GRAPHICS =
-		{ 104, 107, 110, 181, 180, 179, 169, 172, 107, 2700, 2708, 2723, 2737, 2700, 2704, 2724, 2738, 2700, 2710, 2725, 2739, 2700, 2710, 2726, 2740, 2700, 2712, 2727, 2741 };
+	private static final int[] HIT_GRAPHICS = { 104, 107, 110, 181, 180, 179, 169, 172, 107, 2700, 2708, 2723, 2737, 2700, 2704, 2724, 2738, 2700, 2710, 2725, 2739, 2700, 2710, 2726, 2740, 2700, 2712, 2727, 2741 };
 
-	private static final int[] PROJECTILES =
-		{ 103, 106, 109, 178, 178, 178, 168, 171, 174, 2699, 2703, 2718, 2729, 2699, 2704, 2719, 2731, 2699, 2705, 2720, 2733, 2699, 2706, 2721, 2735, 462, 2707, 2722, -1 };
+	private static final int[] PROJECTILES = { 103, 106, 109, 178, 178, 178, 168, 171, 174, 2699, 2703, 2718, 2729, 2699, 2704, 2719, 2731, 2699, 2705, 2720, 2733, 2699, 2706, 2721, 2735, 462, 2707, 2722, -1 };
 
-	private static final int[] SKILLS =
-		{ Skills.ATTACK, Skills.STRENGTH, Skills.DEFENCE, 0, 1, 2, Skills.DEFENCE, Skills.STRENGTH, Skills.ATTACK };
+	private static final int[] SKILLS = { Skills.ATTACK, Skills.STRENGTH, Skills.DEFENCE, 0, 1, 2, Skills.DEFENCE, Skills.STRENGTH, Skills.ATTACK };
 
 	@Override
 	public Object[] getKeys() {
-		return new Object[]
-				{ "Forgotten mage" };
+		return new Object[] { "Forgotten mage" };
 	}
 
 	@Override
@@ -101,7 +84,7 @@ public class ForgottenMage extends CombatScript {
 						Player player = (Player) target;
 						if (percentDrain == 0) {
 							player.setBoundDelay(skill == 0 ? 8 : skill == 1 ? 12 : 16);
-						}else
+						} else
 							player.getSkills().set(skill, (int) (player.getSkills().getLevel(skill) * percentDrain));
 					}
 				}

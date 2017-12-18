@@ -58,15 +58,15 @@ public class Shop {
 				player.getTemporaryAttributtes().remove("isShopBuying");
 				player.getTemporaryAttributtes().remove("ShopSelectedSlot");
 				player.getTemporaryAttributtes().remove("ShopSelectedInventory");
-				player.getInterfaceManager().sendLockGameTab(InterfaceManager.INVENTORY_TAB, false); 
+				player.getInterfaceManager().sendLockGameTab(InterfaceManager.INVENTORY_TAB, false);
 			}
 		});
-		player.getInterfaceManager().sendLockGameTab(InterfaceManager.INVENTORY_TAB, true); 
-		
-		
+		player.getInterfaceManager().sendLockGameTab(InterfaceManager.INVENTORY_TAB, true);
+
 		player.refreshVerboseShopDisplayMode();
 		player.getVarsManager().sendVar(304, generalStock != null ? 139 : MAIN_STOCK_ITEMS_KEY);
-		player.getVarsManager().sendVar(305, -1); // sample items container id (TODO: add support for it)
+		player.getVarsManager().sendVar(305, -1); // sample items container id
+		// (TODO: add support for it)
 		player.getVarsManager().sendVar(306, money);
 		resetSelected(player);
 		sendStore(player);
@@ -75,9 +75,11 @@ public class Shop {
 			player.getPackets().sendGameMessage("Warning! All oracle items are based in grand exchange prices but 40% more expensive so you're recommended to use g.e. instead.");
 		resetTransaction(player);
 		setBuying(player, true);
-		player.getPackets().sendIComponentSettings(1265, 20, 0, getStoreSize(), 2097406); // unlocks stock slots
-		//rs stoped sending inv. but locks old one ye.
-	//	sendInventory(player);
+		player.getPackets().sendIComponentSettings(1265, 20, 0, getStoreSize(), 2097406); // unlocks
+		// stock
+		// slots
+		// rs stoped sending inv. but locks old one ye.
+		// sendInventory(player);
 		player.getPackets().sendCSVarString(2360, name);
 	}
 
@@ -146,7 +148,6 @@ public class Shop {
 		return isBuying != null && isBuying;
 	}
 
-
 	public void buyAll(Player player, int slotId) {
 		if (slotId >= getStoreSize())
 			return;
@@ -204,7 +205,8 @@ public class Shop {
 
 	public void restoreItems(boolean general) {
 		Item[] stock = general ? generalStock : mainStock;
-		int[] restoreQuantity = getPercentOfStock(stock, 0.05, general);//ten percent
+		int[] restoreQuantity = getPercentOfStock(stock, 0.05, general);// ten
+		// percent
 		for (int idx = 0; idx < stock.length; idx++) {
 			Item item = stock[idx];
 			if (item == null || !general && item.getAmount() == defaultQuantity[idx])
@@ -227,11 +229,11 @@ public class Shop {
 			Item item = stock[idx];
 			if (item == null)
 				continue;
-			percentArray[idx] = (int) Math.max(1, (general ? item.getAmount() : defaultQuantity[idx]) * percent); 
+			percentArray[idx] = (int) Math.max(1, (general ? item.getAmount() : defaultQuantity[idx]) * percent);
 		}
 		return percentArray;
 	}
-	
+
 	private boolean addItem(int itemId, int quantity) {
 		for (Item item : mainStock) {
 			if (item.getId() == itemId) {
@@ -349,11 +351,27 @@ public class Shop {
 		resetTransaction(player);
 		player.getTemporaryAttributtes().put("ShopSelectedSlot", slotId);
 		player.getTemporaryAttributtes().put("ShopSelectedInventory", inventory);
-		player.getVarsManager().sendVar(299, inventory ? 93 : generalStock != null ? 139 : MAIN_STOCK_ITEMS_KEY); // inv key
+		player.getVarsManager().sendVar(299, inventory ? 93 : generalStock != null ? 139 : MAIN_STOCK_ITEMS_KEY); // inv
+		// key
 		player.getVarsManager().sendVar(306, item.getId());
 		player.getVarsManager().sendVar(301, slotId);
 		player.getPackets().sendCSVarString(2361, ItemExamines.getExamine(item));
-		player.getPackets().sendCSVarInteger(1876, getSubDescription(player, item));// item.getDefinitions().getCSOpcode(2195)); // TODO item  pos or usage if has one, setting 0 to allow see stats
+		player.getPackets().sendCSVarInteger(1876, getSubDescription(player, item));// item.getDefinitions().getCSOpcode(2195));
+		// //
+		// TODO
+		// item
+		// pos
+		// or
+		// usage
+		// if
+		// has
+		// one,
+		// setting
+		// 0
+		// to
+		// allow
+		// see
+		// stats
 		int price = inventory ? getSellPrice(item) : getBuyPrice(item);
 		player.getPackets().sendGameMessage(item.getDefinitions().getName() + ": shop will " + (inventory ? "buy" : "sell") + " for: " + price + " " + Utils.formatPlayerNameForDisplay(ItemDefinitions.getItemDefinitions(money).getName()));
 	}
@@ -414,16 +432,24 @@ public class Shop {
 
 	public void refreshShop() {
 		for (Player player : viewingPlayers) {
-			player.getPackets().sendCSVarString(336, customcs2configstring(player)); // makes my hand crafted cs2 to set prices work
+			player.getPackets().sendCSVarString(336, customcs2configstring(player)); // makes
+			// my
+			// hand
+			// crafted
+			// cs2
+			// to
+			// set
+			// prices
+			// work
 			sendStore(player);
 			player.getPackets().sendIComponentSettings(620, 25, 0, getStoreSize() * 6, 1150);
 		}
 	}
-	
+
 	private String customcs2configstring(Player player) {
 		String str = "";
 
-		for (int i = 0; i < player.getInventory().getItemsContainerSize(); i++) {	
+		for (int i = 0; i < player.getInventory().getItemsContainerSize(); i++) {
 			Item item = player.getInventory().getItem(i);
 			if (item == null) {
 				String id = Integer.toString(-1, 16);
@@ -490,7 +516,6 @@ public class Shop {
 
 		return str.toUpperCase();
 
-
 	}
 
 	public int getStoreSize() {
@@ -511,40 +536,55 @@ public class Shop {
 			System.arraycopy(generalStock, 0, stock, mainStock.length, generalStock.length);
 		player.getPackets().sendItems(generalStock != null ? 139 : MAIN_STOCK_ITEMS_KEY, stock);
 	}
-	
-	
+
 	private static int getSubDescription(Player player, Item item) {
 		ItemDefinitions defs = item.getDefinitions();
-		switch(defs.getCSOpcode(2195)) {
-			case 12: return 33;//Edible Food
-			case 6: return 34;//Raw Food
-			case 35: return player.getToolbelt().containsItem(item.getId()) ? 31 : player.getToolbelt().isTool(item.getId()) ? 30 : 32;
-			case 32: return 36;//Runes
-			default:// There is another way to do this, but this is the best and simplest
-				int slot = defs.getEquipSlot();
-				if (slot != -1) {
-					switch (slot) {
-						case Equipment.SLOT_HAT: return 0;
-						case Equipment.SLOT_CAPE: return 1;
-						case Equipment.SLOT_CHEST: return 3;
-						case Equipment.SLOT_LEGS: return 4;
-						case Equipment.SLOT_HANDS: return 5;
-						case Equipment.SLOT_FEET: return 6;
-						case Equipment.SLOT_AMULET: return 2;
-						case Equipment.SLOT_RING: return 7;
-						case Equipment.SLOT_ARROWS: return 8;
-						case Equipment.SLOT_AURA: return 60;
-						case Equipment.SLOT_SHIELD: return 9;
-						case Equipment.SLOT_WEAPON:
-							if (defs.isMeleeTypeWeapon())
-								return Equipment.isTwoHandedWeapon(item) ? 14 : 11;
-							else if (defs.isRangeTypeWeapon())
-								return Equipment.isTwoHandedWeapon(item) ? 15 : 12;
-							else if (defs.isMagicTypeWeapon())
-								return Equipment.isTwoHandedWeapon(item) ? 16 : 13;
-					}
+		switch (defs.getCSOpcode(2195)) {
+		case 12:
+			return 33;// Edible Food
+		case 6:
+			return 34;// Raw Food
+		case 35:
+			return player.getToolbelt().containsItem(item.getId()) ? 31 : player.getToolbelt().isTool(item.getId()) ? 30 : 32;
+		case 32:
+			return 36;// Runes
+		default:// There is another way to do this, but this is the best and
+			// simplest
+			int slot = defs.getEquipSlot();
+			if (slot != -1) {
+				switch (slot) {
+				case Equipment.SLOT_HAT:
+					return 0;
+				case Equipment.SLOT_CAPE:
+					return 1;
+				case Equipment.SLOT_CHEST:
+					return 3;
+				case Equipment.SLOT_LEGS:
+					return 4;
+				case Equipment.SLOT_HANDS:
+					return 5;
+				case Equipment.SLOT_FEET:
+					return 6;
+				case Equipment.SLOT_AMULET:
+					return 2;
+				case Equipment.SLOT_RING:
+					return 7;
+				case Equipment.SLOT_ARROWS:
+					return 8;
+				case Equipment.SLOT_AURA:
+					return 60;
+				case Equipment.SLOT_SHIELD:
+					return 9;
+				case Equipment.SLOT_WEAPON:
+					if (defs.isMeleeTypeWeapon())
+						return Equipment.isTwoHandedWeapon(item) ? 14 : 11;
+					else if (defs.isRangeTypeWeapon())
+						return Equipment.isTwoHandedWeapon(item) ? 15 : 12;
+					else if (defs.isMagicTypeWeapon())
+						return Equipment.isTwoHandedWeapon(item) ? 16 : 13;
 				}
-				return -1;
+			}
+			return -1;
 		}
 	}
 

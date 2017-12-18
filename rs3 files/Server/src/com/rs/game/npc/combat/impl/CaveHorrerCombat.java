@@ -14,8 +14,7 @@ public class CaveHorrerCombat extends CombatScript {
 
 	@Override
 	public Object[] getKeys() {
-		return new Object[]
-		{ "Cave horror" };
+		return new Object[] { "Cave horror" };
 	}
 
 	@Override

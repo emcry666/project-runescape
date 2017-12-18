@@ -15,8 +15,7 @@ public class DeathslingerCombat extends CombatScript {
 
 	@Override
 	public Object[] getKeys() {
-		return new Object[]
-		{ 11208, 11210, 11212, 11214, 11216, 11218, 11220, 11222, 11224, 11226 };
+		return new Object[] { 11208, 11210, 11212, 11214, 11216, 11218, 11220, 11222, 11224, 11226 };
 	}
 
 	@Override

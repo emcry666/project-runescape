@@ -3,10 +3,7 @@ package com.rs.game.player;
 import java.util.concurrent.ConcurrentHashMap;
 
 import com.rs.Settings;
-import com.rs.game.TemporaryAtributtes.Key;
 import com.rs.game.player.CosmeticsManager.CosmeticType;
-import com.rs.game.player.content.Highscores;
-import com.rs.game.player.content.PlayerLook;
 import com.rs.game.player.content.clans.ClansManager;
 import com.rs.utils.Logger;
 import com.rs.utils.Utils;
@@ -15,53 +12,37 @@ public class InterfaceManager {
 
 	public static final int FIXED_WINDOW_ID = 1477;
 	public static final int RESIZABLE_WINDOW_ID = 1477;
-	public static final int BANK_COMPONENT_ID = 388;
-	public static final int CENTRAL_INTERFACE_COMPONENT_ID = 416;
-	public static final int INVENTORY_INTERFACE_COMPONENT_ID = 421;
-	public static final int EDIT_MODE_COMPONENT_ID = 430;
-	public static final int DIALOGUE_COMPONENT_ID = 428;
-	public static final int INPUT_TEXT_COMPONENT_ID = 427;
-	public static final int FADING_COMPONENT_ID = 18;
+	public static final int BANK_COMPONENT_ID = 488;// 876
+	public static final int CENTRAL_INTERFACE_COMPONENT_ID = 521;// 876
+	public static final int INVENTORY_INTERFACE_COMPONENT_ID = 120;// 876
+	public static final int EDIT_MODE_COMPONENT_ID = 535;// 876
+	public static final int DIALOGUE_COMPONENT_ID = 533;// 876
+	public static final int INPUT_TEXT_COMPONENT_ID = 532;// 876
+	public static final int FADING_COMPONENT_ID = 33;// 876
 	public static final int SCREEN_BACKGROUND_COMPONENT_ID = 8;
 	public static final int SCREEN_BACKGROUND_INTER_COMPONENT_ID = 410;
-	public static final int GAME_SCREEN_COMPONENT_ID = 12;
-	public static final int WORLD_MAP_COMPONENT_ID = 13;
-	public static final int LEVEL_UP_COMPONENT_ID = 14;
-	public static final int CONFIRM_DIALOGUE_COMPONENT_ID = 777;
-	public static final int MINIGAME_HUD_COMPONENT_ID = 368; //overlay
-	public static final int PLAYER_EXAMINE_COMPONENT_ID = 395;
-	
-	public static final int TIMER_COMPONENT_ID = 378; 
-	public static final int MINIGAME_TAB_COMPONENT_ID = 209; //tab
-	
-	public static final int EXPAND_BUTTONS_COMPONENT_ID = 466;
-	
-	
-	
-	
-	/*
-	 * 0 - skill inter
-	 * 1 - active task
-	 * 2 - inventory
-	 * 3 - equipment
-	 * 4 - prayer book
-	 * 5 - abilities
-	 * 9 - emotes
-	 * 14 - friend list
-	 * 15 - friend chat info
-	 * 16 - clan
-	 * 18 - chat
-	 * 19 - friend chat
-	 */
-	public static final int SKILLS_TAB = 0, ACTIVE_TASK_TAB = 1, INVENTORY_TAB = 2,EQUIPMENT_TAB = 3, PRAYER_BOOK_TAB = 4
-			, MAGIC_ABILITIES_TAB = 5, MELEE_ABILITIES_TAB = 6, RANGE_ABILITIES_TAB = 7, DEFENCE_ABILITIES_TAB = 8, EMOTES_TAB = 9,
-				NOTES_TAB = 11, SUMMONING_TAB = 12, MINIGAME_TAB = 17, ALL_CHAT_TAB = 18;
-	
+	public static final int GAME_SCREEN_COMPONENT_ID = 20;// 876
+	public static final int WORLD_MAP_COMPONENT_ID = 26;// 876
+	public static final int LEVEL_UP_COMPONENT_ID = 577;// 876
+	public static final int CONFIRM_DIALOGUE_COMPONENT_ID = 882;// 876
+	public static final int MINIGAME_HUD_COMPONENT_ID = 448; // overlay// 876
+	public static final int PLAYER_EXAMINE_COMPONENT_ID = 495;// 876
+	public static final int SKILL_PROGRESS_COMPONENT_ID = 440;// TODO not used
 
-	private static final int[] MENU_SLOT_COMPONENTS_ = { 3, 5, 7, 9 };
-	
-	private static final int[] MENU_SUBMENU_VARS = { 18995, 18996, 18997, 18998, 18999, 19000, 19002, 19003, 19001};
-	
+	public static final int TIMER_COMPONENT_ID = 462;// 876
+	public static final int MINIGAME_TAB_COMPONENT_ID = 209; // tab// 876
+
+	public static final int EXPAND_BUTTONS_COMPONENT_ID = 571;// 876
+
+	/*
+	 * 0 - skill inter 1 - active task 2 - inventory 3 - equipment 4 - prayer book 5 - abilities 9 - emotes 14 -
+	 * friend list 15 - friend chat info 16 - clan 18 - chat 19 - friend chat
+	 */
+	public static final int SKILLS_TAB = 0, ACTIVE_TASK_TAB = 1, INVENTORY_TAB = 2, EQUIPMENT_TAB = 3, PRAYER_BOOK_TAB = 4, MAGIC_ABILITIES_TAB = 5, MELEE_ABILITIES_TAB = 6, RANGE_ABILITIES_TAB = 7, DEFENCE_ABILITIES_TAB = 8, EMOTES_TAB = 9, NOTES_TAB = 11, SUMMONING_TAB = 12, MINIGAME_TAB = 17, ALL_CHAT_TAB = 18;
+
+	private static final int[] MENU_SLOT_COMPONENTS_ = { 3, 5, 7, 9, 11 };
+
+	private static final int[] MENU_SUBMENU_VARS = { 18995, 18996, 18997, 18998, 18999, 19000, 19002, 19003, 19004, 19001 };
 
 	private Player player;
 
@@ -94,18 +75,18 @@ public class InterfaceManager {
 
 	public void sendExpandOptionsInterface(int id, int interfaceId, int componentId, int width, int height) {
 		setWindowInterface(EXPAND_BUTTONS_COMPONENT_ID, id);
-		//width height parentuid borderx, bordery(always -1, 2) x y(always -24, -6).
+		// width height parentuid borderx, bordery(always -1, 2) x y(always -24,
+		// -6).
 		player.getPackets().sendExecuteScript(8787, width, height, InterfaceManager.getComponentUId(interfaceId, componentId), -1, 2, -24, -6);
 	}
-	
+
 	public void sendTimerInterface() {
 		setWindowInterface(TIMER_COMPONENT_ID, 1508);
 	}
-	
+
 	public void removeTimerInterface() {
 		removeWindowInterface(TIMER_COMPONENT_ID);
 	}
-	
 
 	public void sendGameMapInterface() {
 		sendGameMapInterface(1482);
@@ -138,7 +119,6 @@ public class InterfaceManager {
 		refreshInterface(false);
 	}
 
-
 	public void removeDialogueInterface() {
 		removeWindowInterface(DIALOGUE_COMPONENT_ID);
 		refreshInterface(true);
@@ -156,8 +136,8 @@ public class InterfaceManager {
 		removeWindowInterface(MINIGAME_HUD_COMPONENT_ID);
 	}
 
-	public void sendSquealOverlay() {
-		setWindowInterface(resizableScreen ? 0 : 10, 1252); // TODO not working for fixed
+	public void sendTreasureHunter() {
+		setWindowInterface(368, 1252);
 	}
 
 	public void sendInputTextInterface() {
@@ -166,7 +146,7 @@ public class InterfaceManager {
 
 	public void sendInputTextInterface(int interfaceId) {
 		setWindowInterface(INPUT_TEXT_COMPONENT_ID, 1418);
-		setInterface(true, 1418, 0, interfaceId);
+		setInterface(true, 1418, 1, interfaceId);
 		refreshInterface(false);
 	}
 
@@ -179,8 +159,9 @@ public class InterfaceManager {
 		refreshInterface(true);
 	}
 
-	public void closeSquealOverlay() {
-		removeWindowInterface(resizableScreen ? 0 : 10);
+	public void closeTreasureHunter() {
+		removeWindowInterface(MINIGAME_HUD_COMPONENT_ID);
+		player.getPackets().sendGameMessage("You can access the Treasure Hunter from the side panel, and you can show the button again by logging out and back in.", true);
 	}
 
 	public void sendCentralInterface(int interfaceId) {
@@ -198,7 +179,7 @@ public class InterfaceManager {
 	}
 
 	public void refreshInterface(boolean closing) {
-		if(!player.getCutscenesManager().hasCutscene())
+		if (!player.getCutscenesManager().hasCutscene())
 			player.getPackets().sendExecuteScript(closing ? 8779 : 8697);
 	}
 
@@ -206,29 +187,41 @@ public class InterfaceManager {
 		return containsWindowInterfaceAtParent(BANK_COMPONENT_ID);
 	}
 
+	public boolean containsTreasureHunterInterface() {
+		if (player.getInterfaceManager().containsInterface(1253))
+			return true;
+		return false;
+	}
+
 	public void removeBankInterface() {
 		removeWindowInterface(BANK_COMPONENT_ID);
-		sendLockGameTab(InterfaceManager.INVENTORY_TAB, false); //unlocks inventory
-		sendLockGameTab(InterfaceManager.EQUIPMENT_TAB, false); //unlocks equipment
+		sendLockGameTab(InterfaceManager.INVENTORY_TAB, false); // unlocks
+		// inventory
+		sendLockGameTab(InterfaceManager.EQUIPMENT_TAB, false); // unlocks
+		// equipment
 	}
 
 	public void sendBankInterface(int interfaceId) {
 		setInterface(false, resizableScreen ? RESIZABLE_WINDOW_ID : FIXED_WINDOW_ID, BANK_COMPONENT_ID, interfaceId);
-		sendLockGameTab(InterfaceManager.INVENTORY_TAB, true); //locks inventory
-		sendLockGameTab(InterfaceManager.BANK_COMPONENT_ID, true); //locks equipment
+		sendLockGameTab(InterfaceManager.INVENTORY_TAB, true); // locks
+		// inventory
+		sendLockGameTab(InterfaceManager.BANK_COMPONENT_ID, true); // locks
+		// equipment
 		refreshInterface(false);
 	}
 
 	public void sendInventoryInterface(int interfaceId) {
 
 		setInterface(false, FIXED_WINDOW_ID, INVENTORY_INTERFACE_COMPONENT_ID, interfaceId);
-		sendLockGameTab(InterfaceManager.INVENTORY_TAB, true); //locks inventory
+		sendLockGameTab(InterfaceManager.INVENTORY_TAB, true); // locks
+		// inventory
 		refreshInterface(false);
 	}
 
 	public void removeInventoryInterface() {
 		removeWindowInterface(INVENTORY_INTERFACE_COMPONENT_ID);
-		sendLockGameTab(InterfaceManager.INVENTORY_TAB, false); //unlocks inventory
+		sendLockGameTab(InterfaceManager.INVENTORY_TAB, false); // unlocks
+		// inventory
 		refreshInterface(true);
 	}
 
@@ -247,12 +240,11 @@ public class InterfaceManager {
 
 	public final void sendInterfaces() {
 		if (player.isLobby()) {
-			if (player.getLoginCount() == 0) //means never logged ingame, so keep sending acc creation until it does so
-				sendAccountCreation();
-			else
-				sendLobbyInterfaces();
-		}
-		else {
+			// if (player.getLoginCount() == 0) {
+			// PlayerLook.openCharacterCustomizing(player);
+			// } else
+			sendLobbyInterfaces();
+		} else {
 			sendNISScreenInterfaces();
 			lockDefaultTabs();
 			unlockCustomizationSwitchButton();
@@ -260,9 +252,7 @@ public class InterfaceManager {
 			unlockOptionMenu();
 			unlockLogout();
 			unlockScreen();
-			unlockSubscribe();
-
-			//sendSquealOverlay();
+			openGameTab(2);
 			player.getCombatDefinitions().sendAbilityVars();
 			player.getActionbar().unlockActionBar(false);
 			player.getCombatDefinitions().unlockSheatheButton();
@@ -275,78 +265,64 @@ public class InterfaceManager {
 			player.getEquipment().unlockEquipment(false);
 			player.getFriendsIgnores().unlockFriendsIgnore(false);
 			ClansManager.unlockClanBanList(player, false);
-			
-			//send familiar details if has familiar
-			if (player.getFamiliar() != null && player.isRunning()) 
+
+			// send familiar details if has familiar
+			if (player.getFamiliar() != null && player.isRunning())
 				player.getFamiliar().sendFollowerDetails();
-			
+
 			player.getTimersManager().sendInterfaces();
 			player.getControlerManager().sendInterfaces();
 		}
-
 	}
-	
+
 	/*
 	 * those are locked by default. ^^. until inter added
 	 */
 	private void lockDefaultTabs() {
-			player.getInterfaceManager().sendLockGameTab(InterfaceManager.SUMMONING_TAB, true);
-			player.getInterfaceManager().sendLockGameTab(InterfaceManager.MINIGAME_TAB, true);
+		player.getInterfaceManager().sendLockGameTab(InterfaceManager.SUMMONING_TAB, true);
+		player.getInterfaceManager().sendLockGameTab(InterfaceManager.MINIGAME_TAB, true);
 	}
 
-	public void unlockSubscribe() {
-		player.getPackets().sendHideIComponent(1484, 0, player.isDonator());
-		player.getPackets().sendIComponentText(1484, 7, "Donate");
-	}
-	
-	//new way of doing menus
+	// new way of doing menus
 	public void unlockOptionMenu() {
-		player.getPackets().sendIComponentSettings(1477, 791, 0, 1000, 2);
-	}
-
-	public void sendAccountCreation() {
-		PlayerLook.openCharacterCustomizing(player);
-
+		player.getPackets().sendIComponentSettings(1477, 507, 0, 24, 2);
 	}
 
 	public void sendLobbyInterfaces() {
 		setRootInterface(906, false);
-
-		setInterface(true, 906, 158, 907);
-		setInterface(true, 906, 160, 910);
-		setInterface(true, 906, 161, 909);
-		setInterface(true, 906, 163, 912);
-		setInterface(true, 906, 162, 589);
-		setInterface(true, 906, 164, 911);
-		setInterface(true, 906, 87, 914);
-		setInterface(true, 906, 79, 915);
-		setInterface(true, 906, 71, 913);
-		setInterface(true, 907, 31, 908);
-		
-		
-		//player.getPackets().sendIComponentSprite(908, 8, -1); 
-		//player.getPackets().sendIComponentSprite(907, 5, 782); 
-		//player.getPackets().sendIComponentSprite(907, 2, 784); 
-		//player.getPackets().sendIComponentSprite(908, 32, 788); 
+		setInterface(true, 906, 112, 907);
+		setInterface(true, 906, 113, 910);
+		setInterface(true, 906, 114, 909);
+		setInterface(true, 906, 116, 912);
+		setInterface(true, 906, 115, 589);
+		setInterface(true, 906, 117, 911);
+		setInterface(true, 906, 285, 914);
+		setInterface(true, 906, 303, 915);
+		setInterface(true, 906, 312, 913);
+		// setInterface(true, 907, 31, 908);
 	}
 
 	public void unlockScreen() {
-		player.getPackets().sendIComponentSettings(1477, 18, -1, -1, 2097152); //todo
+		player.getPackets().sendIComponentSettings(1477, 18, -1, -1, 2097152); // todo
 	}
 
 	public void unlockMenu() {
-		player.getPackets().sendUnlockIComponentOptionSlots(1477, 402, 0, 100, 0); //unlocks menu switching
-		player.getPackets().sendUnlockIComponentOptionSlots(1477, 405, 0, 1, 0); //unlocks close menu button
+		player.getPackets().sendUnlockIComponentOptionSlots(1477, 510, 1, 1, 2); // unlocks
+		// menu
+		// switching
+		player.getPackets().sendUnlockIComponentOptionSlots(1477, 528, 1, 1, 2); // unlocks
+		// close
+		// menu
+		// button
 	}
 
 	public void unlockLogout() {
-		player.getPackets().sendUnlockIComponentOptionSlots(1477, 42, 0, 1, 0);
+		player.getPackets().sendUnlockIComponentOptionSlots(1477, 76, 0, 1, 0);
 	}
 
 	public void unlockCustomizationSwitchButton() {
 		player.getPackets().sendIComponentSettings(1477, 30, 1, 1, 2);
 	}
-
 
 	public void setDefaultRootInterface() {
 		setRootInterface(FIXED_WINDOW_ID, false);
@@ -358,81 +334,96 @@ public class InterfaceManager {
 	}
 
 	public void sendMagicAbilities(int interfaceId) {
-		setWindowInterface(187, interfaceId); //mage spellbook
+		setWindowInterface(221, interfaceId); // mage spellbook
 	}
-
 
 	public void sendMeleeAbilities() {
 		boolean legacyMode = player.getCombatDefinitions().getCombatMode() == CombatDefinitions.LEGACY_COMBAT_MODE;
-		setWindowInterface(165, legacyMode ? 1503 : 1460);
-		if(!legacyMode)
+		setWindowInterface(199, legacyMode ? 1503 : 1460);
+		if (!legacyMode)
 			player.getCombatDefinitions().unlockMeleeAbilities();
 	}
 
 	public void sendRangedAbilities() {
-		setWindowInterface(176, 1452); //range abilities
+		setWindowInterface(210, 1452); // range abilities
 		player.getCombatDefinitions().unlockRangeAbilities();
 	}
 
 	public void sendDefenceAbilities() {
-		setWindowInterface(198, 1449); //defence abilities
+		setWindowInterface(232, 1449); // defence abilities
 		player.getCombatDefinitions().unlockDefenceAbilities();
 	}
 
-
 	public void sendNISScreenInterfaces() {
 		setDefaultRootInterface();
-		sendGameMapInterface();//Game Map
+		sendGameMapInterface();// Game Map
+
 		sendMagicAbilities();
 		sendMeleeAbilities();
 		sendRangedAbilities();
 		sendDefenceAbilities();
 		sendEpochTimer();
-		setWindowInterface(219, 1466);
-		setWindowInterface(230, 1220);
-		setWindowInterface(57, 1473);
-		setWindowInterface(132, 1464);
-		setWindowInterface(154, 1458);
-		setWindowInterface(252, 550);
-		setWindowInterface(296, 1427);
-		setWindowInterface(263, 1110);
-		setWindowInterface(46, 590);
-		setWindowInterface(241, 1416);
-		setWindowInterface(285, 1417);
-		setWindowInterface(307, 231);
-		setWindowInterface(274, 1519);
-		setWindowInterface(29, 1431);
-		setWindowInterface(386, 568);
-		setWindowInterface(35, 1430);
-		setWindowInterface(39, 1465);
+		setWindowInterface(253, 1466);
+		// setWindowInterface(230, 506);
+		setWindowInterface(91, 1473);
+		setWindowInterface(166, 1464);
+		setWindowInterface(188, 1458);
+		setWindowInterface(286, 550);
+		setWindowInterface(330, 1427);
+		setWindowInterface(297, 1110);
+		setWindowInterface(80, 590);
+		setWindowInterface(275, 1416);
+		setWindowInterface(319, 1417);
+		setWindowInterface(341, 231);
+		// setWindowInterface(274, 930);
+		setWindowInterface(43, 1431);
+		setWindowInterface(486, 568);
+		// setWindowInterface(35, 1430);
+		setWindowInterface(73, 1465);
 		setInterface(true, 1465, 10, 1504);
 		setInterface(true, 1465, 12, 1506);
 		setInterface(true, 1465, 11, 1505);
-		setWindowInterface(486, 1433);
-		setWindowInterface(349, 1483);
-		setWindowInterface(366, 745);
-		setWindowInterface(345, 1485);
-		setWindowInterface(471, 1213);
-		setWindowInterface(403, 1448);
-		setWindowInterface(337, 557);
-		setWindowInterface(481, 1484);
-		setWindowInterface(68, 137);
-		setWindowInterface(78, 1467);
-		setWindowInterface(87, 1472);
-		setWindowInterface(96, 1471);
-		setWindowInterface(105, 1470);
-		setWindowInterface(114, 464);
-		setWindowInterface(318, 228);
-		setWindowInterface(123, 1529);
-		setWindowInterface(374, 182);
-		setWindowInterface(475, 1488);
-		setWindowInterface(333, 1215); //xp counter
+		setWindowInterface(591, 1433);
+		setWindowInterface(427, 1483);
+		setWindowInterface(444, 745);
+		setWindowInterface(423, 1485);
+		setWindowInterface(470, 1213);
+		setWindowInterface(508, 1448);
+		setWindowInterface(415, 557);
+		// setWindowInterface(481, 1484);
+		setWindowInterface(102, 137);
+		setWindowInterface(112, 1467);
+		setWindowInterface(121, 1472);
+		setWindowInterface(130, 1471);
+		setWindowInterface(139, 1470);
+		setWindowInterface(148, 464);
+		setWindowInterface(352, 228);
+		setWindowInterface(157, 1529);
+		setWindowInterface(458, 182);
+		setWindowInterface(580, 1488);
+		setWindowInterface(49, 1430);// action bar
+		setWindowInterface(884, 1252);// treasure hunter
+		setWindowInterface(264, 1220);// tasks
+		setWindowInterface(308, 1519); // group chat
+		setWindowInterface(1019, 190);// quest list
+		setInterface(true, 1253, 118, 1701);
+
+		setWindowInterface(362, 1588); // wont open for me
+		setWindowInterface(375, 1678);// wont open for me
+		setWindowInterface(54, 1670);// wont open for me
+		setWindowInterface(59, 1671);// wont open for me
+		setWindowInterface(64, 1672);// wont open for me
+		setWindowInterface(31, 1680);// wont open for me
+		setWindowInterface(478, 1639);// wont open for me
+		setWindowInterface(118, 1701); // wont open for me
+
+		// setWindowInterface(333, 1215); // xp counter
 
 	}
 
 	private void sendEpochTimer() {
-		setWindowInterface(382, 635); //time
-		player.getPackets().sendExecuteScript(7486, (int) (Utils.currentTimeMillis() / 60000), (635<<16)+1);
+		setWindowInterface(466, 635); // time
+		player.getPackets().sendExecuteScript(7486, (int) (Utils.currentTimeMillis() / 60000), (635 << 16) + 1);
 	}
 
 	public void sendConfirmDialogue() {
@@ -451,6 +442,7 @@ public class InterfaceManager {
 		setWindowInterface(MINIGAME_TAB_COMPONENT_ID, interfaceId);
 		sendLockGameTab(MINIGAME_TAB, false);
 	}
+
 	/*
 	 * used for instance for clan citadel
 	 */
@@ -458,8 +450,6 @@ public class InterfaceManager {
 		removeWindowInterface(MINIGAME_TAB_COMPONENT_ID);
 		sendLockGameTab(MINIGAME_TAB, true);
 	}
-	
-
 
 	public void sendSettings() {
 		sendSettings(261);
@@ -472,28 +462,20 @@ public class InterfaceManager {
 		setWindowInterface(resizableScreen ? 123 : 183, interfaceId);
 	}
 
+	public void sendMagicBook() {
 
-	public void sendMagicBook() {}
-
-	public void sSquealOfFortuneTab() {
-		player.getSquealOfFortune().sendSpinCounts();
-		player.getPackets().sendCSVarInteger(823, 1); // this config used in cs2 to tell current extra tab type (0 - none, 1 - sof, 2 - armies minigame tab)
-		setWindowInterface(resizableScreen ? 119 : 179, 1139);
 	}
 
-	public void closeSquealOfFortuneTab() {
-		removeWindowInterface(resizableScreen ? 119 : 179);
-		player.getPackets().sendCSVarInteger(823, 0); // this config used in cs2 to tell current extra tab type (0 - none, 1 - sof, 2 - armies minigame tab)
-	}
-	
 	public void setInterface(boolean clickThrought, int parentInterfaceId, int parentInterfaceComponentId, int interfaceId) {
 		if (Settings.DEBUG) {
 			if (parentInterfaceId != rootInterface && !containsInterface(parentInterfaceId))
 				System.out.println("The parent interface isnt setted so where are u trying to set it? " + parentInterfaceId + ", " + parentInterfaceComponentId + ", " + interfaceId);
-			/* if(containsInterface(interfaceId))
-			     System.out.println("Already have "+interfaceId+" in another component.");*/
+			/*
+			 * if(containsInterface(interfaceId)) System.out.println(
+			 * "Already have "+interfaceId+" in another component.");
+			 */
 		}
-		//even so lets set it for now
+		// even so lets set it for now
 		int parentUID = getComponentUId(parentInterfaceId, parentInterfaceComponentId);
 		int oldParentUID = getInterfaceParentId(interfaceId);
 
@@ -501,12 +483,13 @@ public class InterfaceManager {
 		if (oldInterface != null)
 			clearChilds(oldInterface);
 
-		openedinterfaces.put(parentUID, interfaceId); //replaces inter if theres one in that component already
+		openedinterfaces.put(parentUID, interfaceId); // replaces inter if
+		// theres one in that
+		// component already
 		if (oldParentUID != -1 && oldParentUID != parentUID) {
 			openedinterfaces.remove(oldParentUID, interfaceId);
-			player.getPackets().moveInterface(oldParentUID, parentUID);
-		}
-		else
+			// player.getPackets().moveInterface(oldParentUID, parentUID);
+		} else
 			player.getPackets().sendInterface(clickThrought, parentUID, interfaceId);
 	}
 
@@ -581,7 +564,7 @@ public class InterfaceManager {
 		return containsWindowInterfaceAtParent(INVENTORY_INTERFACE_COMPONENT_ID);
 	}
 
-	public void sendFadingInterface(int backgroundInterface) { 
+	public void sendFadingInterface(int backgroundInterface) {
 		setWindowInterface(FADING_COMPONENT_ID, backgroundInterface);
 	}
 
@@ -596,6 +579,22 @@ public class InterfaceManager {
 	public void setScreenInterface(boolean walkable, int backgroundInterface, int interfaceId) {
 		removeCentralInterface();
 		setWindowInterface(walkable, SCREEN_BACKGROUND_COMPONENT_ID, backgroundInterface);
+		setWindowInterface(walkable, SCREEN_BACKGROUND_INTER_COMPONENT_ID, interfaceId);
+
+		player.setCloseInterfacesEvent(new Runnable() {
+			@Override
+			public void run() {
+				removeScreenInterfaceBG();
+			}
+		});
+	}
+
+	public void sendBlackScreen(int interfaceId) {
+		setWindowInterface(SCREEN_BACKGROUND_COMPONENT_ID, interfaceId);
+	}
+
+	public void setFairyRingInterface(boolean walkable, int interfaceId) {
+		removeCentralInterface();
 		setWindowInterface(walkable, SCREEN_BACKGROUND_INTER_COMPONENT_ID, interfaceId);
 
 		player.setCloseInterfacesEvent(new Runnable() {
@@ -625,7 +624,8 @@ public class InterfaceManager {
 
 	public void openEditMode() {
 		player.stopAll();
-		setWindowInterface(InterfaceManager.EDIT_MODE_COMPONENT_ID, 1475); //Edit menu
+		setWindowInterface(InterfaceManager.EDIT_MODE_COMPONENT_ID, 1475); // Edit
+		// menu
 		setEditMode(true);
 		player.setCloseInterfacesEvent(new Runnable() {
 			@Override
@@ -642,18 +642,8 @@ public class InterfaceManager {
 
 	public void gazeOrbOfOculus() {
 		player.stopAll();
-		setRootInterface(475, false);
-		setInterface(true, 475, 57, 751);
-		setInterface(true, 475, 55, 752);
-		player.setCloseInterfacesEvent(new Runnable() {
-
-			@Override
-			public void run() {
-				setDefaultRootInterface();
-				player.getPackets().sendResetCamera();
-			}
-
-		});
+		setFairyRingInterface(true, 475);
+		player.getPackets().sendGameMessage("The Orb of Oculus is not working correctly at the moment.");
 	}
 
 	/*
@@ -664,7 +654,7 @@ public class InterfaceManager {
 	}
 
 	public void switchMenu(int subMenu) {
-		if(!isMenuOpen())
+		if (!isMenuOpen())
 			return;
 		openMenu(currentMenu, subMenu);
 	}
@@ -676,7 +666,7 @@ public class InterfaceManager {
 		}
 		sendCentralInterface(1139);
 	}
-	
+
 	public void openRibbonSetup() {
 		if (player.isUnderCombat()) {
 			player.getPackets().sendGameMessage("You can't do that while in combat.");
@@ -692,7 +682,6 @@ public class InterfaceManager {
 		}
 		sendCentralInterface(1496);
 	}
-	
 
 	public void openMenu(int menu, int subMenu) {
 		if (menu == currentMenu && player.getSubMenus()[menu] + 1 == subMenu) {
@@ -710,57 +699,24 @@ public class InterfaceManager {
 		}
 		setMenu(menu);
 		player.getSubMenus()[menu] = subMenu - 1;
-		
+
 		player.getVarsManager().forceSendVarBit(18994, menu);
 		player.getVarsManager().forceSendVarBit(MENU_SUBMENU_VARS[menu], subMenu);
-		
-		if(Settings.DEBUG)
-			Logger.log(InterfaceManager.class, "Menu: "+menu+", "+subMenu);
-		
-		if (menu == 0) { //hero
-			if (subMenu == 1) { //Summary
+
+		if (Settings.DEBUG)
+			Logger.log(InterfaceManager.class, "Menu: " + menu + ", " + subMenu);
+
+		if (menu == 0) { // hero
+			if (subMenu == 1) { // Summary
 				setMenuInterface(0, 320);
 				setMenuInterface(1, 1446);
 				player.getPackets().sendIComponentText(1446, 94, player.getDisplayName());
 				player.getSkills().unlockSkills(true);
-			}
-			else if (subMenu == 2) { //Skills
+			} else if (subMenu == 2) { // Skills
 				setMenuInterface(0, 1218);
-				setInterface(true, 1218, 58, 1217);
-				//sendCSVarInteger(1753, 8);?
-			}
-			else if (subMenu == 3) { //Pets
-				setMenuInterface(0, 1311);
-				player.getCosmeticsManager().open(CosmeticType.PET);
-				//sendCSVarInteger(2017, 12);
-				//sendCSVarInteger(2018, 0);
-				/*
-				 * Runscripts: [7422, -1, -1, 0, 0, 0]
-				Runscripts: [7425, ]
-				sendCSVarInteger(2699, -1);
-				Runscripts: [6874]
-				 */
-			}
-			else if (subMenu == 4) { //Achievements
-				setMenuInterface(0, 917);
-				setMenuInterface(1, 1056);
-				//ndCSVarInteger(1423, 63);
-				//sendCSVarInteger(1424, 57);
-				/*
-				 * sendCSVarInteger(2017, 12);
-				sendCSVarInteger(2018, 0);
-				sendCSVarInteger(1963, -1);
-				sendCSVarInteger(1964, -1);
-				sendCSVarInteger(1966, -1);
-				sendCSVarInteger(1965, -1);
-				Runscripts: [8862, 2, 1]
-				Runscripts: [8862, 3, 1]
-				 */
-
-			}
-		}
-		else if (menu == 1) { //gear
-			if (subMenu == 1) { //loadout
+				setInterface(true, 1218, 61, 1217);
+				// sendCSVarInteger(1753, 8);?
+			} else if (subMenu == 3) { // Loadout
 				setMenuInterface(0, 1474);
 				setMenuInterface(1, 1463);
 				setMenuInterface(2, 1462);
@@ -768,82 +724,68 @@ public class InterfaceManager {
 				player.getInventory().unlockInventory(true);
 				player.getEquipment().unlockEquipment(true);
 				player.getEquipment().refreshEquipmentInterfaceBonuses();
+			} else if (subMenu == 4) {// Presets
+				setMenuInterface(0, 579);
+				setMenuInterface(1, 627);
+				setMenuInterface(2, 577);
+				player.getInventory().unlockInventory(true);
+				player.getEquipment().unlockEquipment(true);
+				player.getEquipment().refreshEquipmentInterfaceBonuses();
+			} else if (subMenu == 5) { // Achievements
+				setMenuInterface(0, 917);
+				setMenuInterface(1, 1056);
+				// ndCSVarInteger(1423, 63);
+				// sendCSVarInteger(1424, 57);
+				/*
+				 * sendCSVarInteger(2017, 12); sendCSVarInteger(2018, 0); sendCSVarInteger(1963, -1);
+				 * sendCSVarInteger(1964, -1); sendCSVarInteger(1966, -1); sendCSVarInteger(1965, -1); Runscripts:
+				 * [8862, 2, 1] Runscripts: [8862, 3, 1]
+				 */
 
+			} else if (subMenu == 6) {
+				setMenuInterface(0, 1628);
 			}
-			else if (subMenu == 2) { //wardrobe
+		} else if (menu == 1) { // Customizations
+			if (subMenu == 1) { // wardrobe
 				setMenuInterface(0, 1311);
 				player.getCosmeticsManager().open(CosmeticType.WARDROBE);
-				/*Runscripts: [8862, 2, 0]
-				Runscripts: [8862, 3, 0]
-				sendCSVarInteger(2017, 12);
-				sendCSVarInteger(2018, 0);
-				sendCSVarInteger(2699, -1);
-				Runscripts: [6874]*/
-			}
-			else if (subMenu == 3) { //titles
-				setMenuInterface(0, 1311);
-				player.getCosmeticsManager().open(CosmeticType.TITLE);
-			}
-			else if (subMenu == 4) { //animations
+				/*
+				 * Runscripts: [8862, 2, 0] Runscripts: [8862, 3, 0] sendCSVarInteger(2017, 12);
+				 * sendCSVarInteger(2018, 0); sendCSVarInteger(2699, -1); Runscripts: [6874]
+				 */
+			} else if (subMenu == 2) {// Animations
 				setMenuInterface(0, 1311);
 				player.getCosmeticsManager().open(CosmeticType.ANIMATION);
-				
-				/*Runscripts: [8862, 2, 0]
-				Runscripts: [8862, 3, 0]
-				Runscripts: [2716, -1]
-				Runscripts: [6453, , 1]
-				sendCSVarInteger(2017, 12);
-				sendCSVarInteger(2018, 0);
-				sendCSVarInteger(2017, 12);
-				sendCSVarInteger(2018, 0);
-				sendCSVarInteger(2699, -1);
-				Runscripts: [6874]*/
-			}
-			else if (subMenu == 5) { //appearence
+			} else if (subMenu == 3) {// appearance
 				setMenuInterface(0, 1311);
 				player.getCosmeticsManager().open(CosmeticType.APPEARENCE);
+			} else if (subMenu == 4) {// titles
+				setMenuInterface(0, 1311);
+				player.getCosmeticsManager().open(CosmeticType.TITLE);
+			} else if (subMenu == 5) {// pets
+				setMenuInterface(0, 1311);
+				player.getCosmeticsManager().open(CosmeticType.PET);
 			}
-			else if (subMenu == 6) { //presets
-				setMenuInterface(0, 579);
-				setMenuInterface(1, 577);
-				setMenuInterface(2, 627);
-				//Runscripts: [9916]
-				/*	sendCSVarInteger(3838, 0);
-					sendCSVarInteger(3840, 0);
-					sendCSVarInteger(3842, -1);
-					sendCSVarInteger(2017, 12);
-					sendCSVarInteger(2018, 0);
-					sendCSVarInteger(1963, -1);
-					sendCSVarInteger(1964, -1);
-					sendCSVarInteger(1966, -1);
-					sendCSVarInteger(1965, -1);
-					Runscripts: [8862, 2, 1]
-					Runscripts: [8862, 3, 1]*/
-			}
-		}
-		else if (menu == 2) { //powers
-			if (subMenu == 1) { //melee
+		} else if (menu == 2) {// powers
+			if (subMenu == 1) { // melee
 				setMenuInterface(0, 1450);
 				setMenuInterface(1, 1454);
 				setMenuInterface(2, 1435);
 				setMenuInterface(3, 1436);
 				player.getActionbar().unlockActionBar(true);
-			}
-			else if (subMenu == 2) { //ranged
+			} else if (subMenu == 2) { // ranged
 				setMenuInterface(0, 1456);
 				setMenuInterface(1, 1454);
 				setMenuInterface(2, 1445);
 				setMenuInterface(3, 1436);
 				player.getActionbar().unlockActionBar(true);
-			}
-			else if (subMenu == 3) { //magic
+			} else if (subMenu == 3) { // magic
 				setMenuInterface(0, 1459);
 				setMenuInterface(1, 1454);
 				setMenuInterface(2, 1437);
 				setMenuInterface(3, 1436);
 				player.getActionbar().unlockActionBar(true);
-			}
-			else if (subMenu == 4) { //defensive
+			} else if (subMenu == 4) { // defensive
 				setWindowInterface(292, 1215);
 				setMenuInterface(0, 1453);
 				setMenuInterface(0, 1453);
@@ -851,113 +793,110 @@ public class InterfaceManager {
 				setMenuInterface(2, 1434);
 				setMenuInterface(3, 1436);
 				player.getActionbar().unlockActionBar(true);
-			}
-			else if (subMenu == 5) { //prayers
+			} else if (subMenu == 5) { // prayers
 				setMenuInterface(0, 1457);
 				setMenuInterface(1, 1454);
 				setMenuInterface(2, 1439);
 				setMenuInterface(3, 1436);
 				player.getActionbar().unlockActionBar(true);
-			}
-			else if (subMenu == 6) { //combat settings
-				/*sendCSVarInteger(1951, -1);
-				sendCSVarInteger(1952, -1);
-				Runscripts: [8194, 2, 6]
-				sendCSVarInteger(2911, 2);*/
+			} else if (subMenu == 6) { // combat settings
+				/*
+				 * sendCSVarInteger(1951, -1); sendCSVarInteger(1952, -1); Runscripts: [8194, 2, 6]
+				 * sendCSVarInteger(2911, 2);
+				 */
 				setMenuInterface(0, 327);
 				setMenuInterface(1, 1436);
 				player.getActionbar().unlockActionBar(true);
 			}
-		}
-		else if (menu == 3) { //adventures
-			if (subMenu == 1) { //latest content
-				setMenuInterface(0, 1345);
-				//varbit 16570 - selects the quest 
-			}
-			else if (subMenu == 2) { //quests
-				/*	Runscripts: [8194, 3, 2]
-							sendCSVarInteger(2911, 3);*/
-				setMenuInterface(0, 190);
-				setMenuInterface(1, 1500);
-			}
-			else if (subMenu == 3) { //challenges
+		} else if (menu == 3) {// Adventures
+			if (subMenu == 1) {// featured
+				// setMenuInterface(0, 1816);
+			} else if (subMenu == 2) {// quests
+				setMenuInterface(0, 1782);
+				setMenuInterface(1, 1783);
+				setMenuInterface(2, 1500);
+			} else if (subMenu == 3) {// challenges
 				setMenuInterface(0, 1343);
 				setMenuInterface(1, 1056);
-				//Runscripts: [4507, 22, 88014911, 88014900, 88014879]
-			}
-			else if (subMenu == 4) { //minigames
+			} else if (subMenu == 4) {// minigames
 				setMenuInterface(0, 1344);
-				//Runscripts: [4507, 0, 88080426, 88080415, 88080391]
-			}
-			else if (subMenu == 5) { //path
+			} else if (subMenu == 5) {// path
 				setMenuInterface(0, 639);
 				setMenuInterface(1, 400);
-			}else if (subMenu == 6) {//beasts
+			} else if (subMenu == 6) {// beasts
 				setMenuInterface(0, 753);
-				player.getPackets().sendIComponentSettings(753, 71, 0, 2, 2);
-				player.getPackets().sendIComponentSettings(753, 46, 0, 40, 2);
-				player.getTimersManager().setBeastMenu(0);
 			}
-		}
-		else if (menu == 4) { //community
-			if (subMenu == 1) { //vote now
-				/*Runscripts: [8194, 4, 1]
-						sendCSVarInteger(2911, 4);*/
+		} else if (menu == 4) {// community
+			if (subMenu == 1) {// vote now
 				setMenuInterface(0, 1029);
-				/*Runscripts: [1665, 0]
-				Runscripts: [1665, 1]
-				Runscripts: [1665, 2]
-				Runscripts: [9598, 0]*/
-			}
-			else if (subMenu == 2) { //high scores
+			} else if (subMenu == 2) {// hiscores
 				setMenuInterface(0, 1419);
-				player.getTemporaryAttributtes().remove(Key.HIGHSCORES);
-				Highscores.loadHighscores(player, 1);
-			}
-			else if (subMenu == 3) { //chat settings
+			} else if (subMenu == 3) {// social
 				setMenuInterface(0, 1440);
 				setMenuInterface(1, 1109);
-				setMenuInterface(2, 982);
+				setMenuInterface(2, 1438);
 				setMenuInterface(3, 1441);
+				setMenuInterface(4, 34);
 				player.getFriendsIgnores().unlockFriendsIgnore(true);
-				player.getPackets().sendIComponentSettings(982, 7, 0, 19, 2); //chat color
+				player.getPackets().sendIComponentSettings(1438, 7, 0, 19, 2); // chat
+				// color
 				ClansManager.unlockClanBanList(player, true);
-			}
-			else if (subMenu == 4) { //grouping system
+			} else if (subMenu == 4) {// grouping
 				setMenuInterface(0, 1524);
 				setMenuInterface(1, 1528);
-			}else if (subMenu == 5) { //twitch
+			} else if (subMenu == 5) {// twitch
 				setMenuInterface(0, 232);
+			} else if (subMenu == 6) {// seasonal
+				setMenuInterface(0, 1784);
+				setMenuInterface(1, 1809);
+				setInterface(true, 1809, 1, 1700);
+				setInterface(true, 1809, 2, 1808);
+				setInterface(true, 1809, 3, 1810);
+				setInterface(true, 1809, 4, 1807);
 			}
-		}
-		else if (menu == 8) { //settings
-			if (subMenu == 1) { //game settings
-				setMenuInterface(0, 34);
-				setMenuInterface(1, 1443);
-				player.getNotes().unlockNotes(true);
+		} else if (menu == 7) {// extras
+			if (subMenu == 1) {
+				setMenuInterface(0, 1607);
 			}
-			else if (subMenu == 2) { //interface
+		} else if (menu == 8) {// runemetrics
+			if (subMenu == 1) {// welcome
+				setMenuInterface(0, 1740);
+			} else if (subMenu == 2) {// metrics
+				setMenuInterface(0, 1681);
+				setMenuInterface(1, 1739);
+				setMenuInterface(2, 1682);
+				setMenuInterface(3, 1738);
+			} else if (subMenu == 3) {// graphs
+				setMenuInterface(0, 1733);
+				setMenuInterface(1, 1737);
+				setMenuInterface(2, 1736);
+			} else if (subMenu == 4) {// drops
+				setMenuInterface(0, 1679);
+				setMenuInterface(1, 1735);
+				setMenuInterface(2, 1734);
+			}
+		} else if (menu == 9) {// settings
+			if (subMenu == 1) {// gameplay
+				setMenuInterface(0, 1443);
+				setInterface(true, 1443, 69, 1663);
+			} else if (subMenu == 2) {// interface
 				setMenuInterface(0, 1442);
-				setMenuInterface(1, 1214);
-				// sendCSVarInteger(944, 22);?
-				player.getPackets().sendIComponentSettings(1442, 130, 0, 2, 2); //unlocks close menu button
-			}
-			else if (subMenu == 3) { //controls
+				player.getPackets().sendIComponentSettings(1442, 130, 0, 2, 2); // unlocks
+			} else if (subMenu == 3) {// controls
 				setMenuInterface(0, 1444);
-			}
-			else if (subMenu == 4) { //graphic settings
+			} else if (subMenu == 4) {// graphic settings
 				setMenuInterface(0, 1426);
 				setInterface(true, 1426, 0, 742);
-			}
-			else if (subMenu == 5) { //audio settings
+			} else if (subMenu == 5) { // audio settings
 				setMenuInterface(0, 187);
 				setMenuInterface(1, 429);
-				setWindowInterface(292, 1215);
 				player.getMusicsManager().refreshMusicInterface(true);
 				player.getMusicsManager().unlockMusicPlayer(true);
+			} else if (subMenu == 6) {
+				setMenuInterface(0, 327);
+				player.getActionbar().unlockActionBar(true);
 			}
 		}
-
 	}
 
 	private void setMenuInterface(int slot, int id) {
@@ -975,7 +914,7 @@ public class InterfaceManager {
 
 	private void setMenu(int menu) {
 		currentMenu = menu;
-		if(player.getVarsManager().getBitValue(CosmeticsManager.COSMETIC_TYPE_MENU_VARBIT) != 0)
+		if (player.getVarsManager().getBitValue(CosmeticsManager.COSMETIC_TYPE_MENU_VARBIT) != 0)
 			player.getCosmeticsManager().close();
 		player.getPackets().sendCSVarInteger(2911, menu);
 		for (int slot : MENU_SLOT_COMPONENTS_)
@@ -986,6 +925,14 @@ public class InterfaceManager {
 	}
 
 	public static int getNextStatus(int status) {
-		return status == 2 ? 0 : (status+1);
+		return status == 2 ? 0 : (status + 1);
+	}
+
+	public void sendCustom(Player player) {
+		player.getPackets().sendUnlockIComponentOptionSlots(190, 15, 0, 201, 0, 1, 2, 3);
+		player.getPackets().sendConfig(31, 10);
+		player.getPackets().sendConfig(160, 1);
+		// player.getPackets().sendIComponentText(190, 27, "Quest Points: " +
+		// player.getQuestManager().getQuestPoints() + "/10");
 	}
 }

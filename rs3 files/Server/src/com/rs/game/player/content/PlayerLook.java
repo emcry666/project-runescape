@@ -1,6 +1,5 @@
 package com.rs.game.player.content;
 
-
 import com.rs.cache.loaders.ClientScriptMap;
 import com.rs.cache.loaders.GeneralRequirementMap;
 import com.rs.game.Animation;
@@ -15,37 +14,36 @@ public final class PlayerLook {
 		player.getPackets().sendAppearenceLook();
 		player.getInterfaceManager().setRootInterface(1420, false);
 		player.getPackets().sendHideIComponent(1420, 159, false);
-		
-		player.getPackets().sendUnlockIComponentOptionSlots(1420, 163, 0, 46, 0); //colors
-		player.getPackets().sendUnlockIComponentOptionSlots(1420, 185, 0, 55, 0); //style
-		player.getPackets().sendUnlockIComponentOptionSlots(1420, 102, -1, 0, 0);//random button
+
+		player.getPackets().sendUnlockIComponentOptionSlots(1420, 163, 0, 46, 0); // colors
+		player.getPackets().sendUnlockIComponentOptionSlots(1420, 185, 0, 55, 0); // style
+		player.getPackets().sendUnlockIComponentOptionSlots(1420, 102, -1, 0, 0);// random
+		// button
 	}
-	
+
 	public static void randomizeLook(Appearence appearence) {
-		
+
 		ClientScriptMap skinMap = ClientScriptMap.getMap(7724);
-		
-		
-		//dont allow skins out of default skins
+
+		// dont allow skins out of default skins
 		appearence.setSkinColor(ClientScriptMap.getMap(748).getIntValue(skinMap.getIntValueAtIndex(Utils.random(skinMap.getSize()))));
-		
+
 		ClientScriptMap hairColor = ClientScriptMap.getMap(2345);
 		appearence.setHairColor(hairColor.getIntValueAtIndex(Utils.random(hairColor.getSize())));
-		
+
 		ClientScriptMap topColor = ClientScriptMap.getMap(3282);
 		appearence.setTopColor(topColor.getIntValueAtIndex(Utils.random(topColor.getSize())));
 		appearence.setLegsColor(topColor.getIntValueAtIndex(Utils.random(topColor.getSize())));
-		
+
 		ClientScriptMap bootsColor = ClientScriptMap.getMap(3297);
 		appearence.setBootsColor(bootsColor.getIntValueAtIndex(Utils.random(bootsColor.getSize())));
-		
+
 		boolean male = appearence.isMale();
-		
+
 		ClientScriptMap hairStyle = ClientScriptMap.getMap(male ? 3304 : 3302);
 		GeneralRequirementMap map = GeneralRequirementMap.getMap(hairStyle.getIntValueAtIndex(Utils.random(hairStyle.getSize())));
 		appearence.setHairStyle(map.getIntValue(788));
-		
-		
+
 		ClientScriptMap topStyle = ClientScriptMap.getMap(male ? 3287 : 3299);
 		appearence.setTopStyle(topStyle.getIntValueAtIndex(Utils.random(topStyle.getSize())));
 		for (int i = 0; i < SET_COUNT; i++) {
@@ -56,14 +54,14 @@ public final class PlayerLook {
 				break;
 			}
 		}
-		
+
 		ClientScriptMap legsStyle = ClientScriptMap.getMap(male ? 3289 : 3301);
 		appearence.setLegsStyle(legsStyle.getIntValueAtIndex(Utils.random(legsStyle.getSize())));
-		
+
 		ClientScriptMap bootsStyle = ClientScriptMap.getMap(male ? 3290 : 3293);
 		appearence.setBootsStyle(bootsStyle.getIntValueAtIndex(Utils.random(bootsStyle.getSize())));
-		
-		if(male) {
+
+		if (male) {
 			ClientScriptMap beardStyle = ClientScriptMap.getMap(3307);
 			appearence.setBeardStyle(beardStyle.getIntValueAtIndex(Utils.random(beardStyle.getSize())));
 		}
@@ -72,7 +70,7 @@ public final class PlayerLook {
 	public static int SET_COUNT = 96;
 
 	public static int[] getSet(int index) {
-		GeneralRequirementMap map = GeneralRequirementMap.getMap((index >= 64 ? (28114-64) : 1048) + index);
+		GeneralRequirementMap map = GeneralRequirementMap.getMap((index >= 64 ? (28114 - 64) : 1048) + index);
 		int[] parts = new int[5];
 		for (int i = 1182; i <= 1186; i++)
 			parts[i - 1182] = map.getIntValue(i);
@@ -91,9 +89,9 @@ public final class PlayerLook {
 	}
 
 	public static void handleCharacterCustomizingButtons(Player player, int buttonId, int slotId) {
-		if(buttonId == 18 || buttonId == 19) {
+		if (buttonId == 18 || buttonId == 19) {
 			boolean male = buttonId == 19;
-			if(male != player.getAppearence().isMale()) {
+			if (male != player.getAppearence().isMale()) {
 				if (!male)
 					player.getAppearence().female();
 				else
@@ -101,41 +99,41 @@ public final class PlayerLook {
 				randomizeLook(player.getAppearence());
 				player.getPackets().sendAppearenceLook();
 			}
-		}else if (buttonId == 102) {
+		} else if (buttonId == 102) {
 			randomizeLook(player.getAppearence());
 			player.getPackets().sendAppearenceLook();
-		}else if (buttonId == 163) {
+		} else if (buttonId == 163) {
 			Integer tab = (Integer) player.getTemporaryAttributtes().get(Key.PLAYER_CUSTOMIZATION_TAB);
-			if(tab == null || tab == 0) {
-				player.getAppearence().setSkinColor(ClientScriptMap.getMap(748).getIntValue(ClientScriptMap.getMap(7724).getIntValue(slotId/2)));
+			if (tab == null || tab == 0) {
+				player.getAppearence().setSkinColor(ClientScriptMap.getMap(748).getIntValue(ClientScriptMap.getMap(7724).getIntValue(slotId / 2)));
 				player.getPackets().sendAppearenceLook();
-			}else if(tab == 1 || (tab == 5 && player.getAppearence().isMale())) { //hair/bear
-				player.getAppearence().setHairColor(ClientScriptMap.getMap(2345).getIntValue(ClientScriptMap.getMap(7723).getIntValue(slotId/2)));
+			} else if (tab == 1 || (tab == 5 && player.getAppearence().isMale())) { // hair/bear
+				player.getAppearence().setHairColor(ClientScriptMap.getMap(2345).getIntValue(ClientScriptMap.getMap(7723).getIntValue(slotId / 2)));
 				player.getPackets().sendAppearenceLook();
-			}else if(tab == 2) { //top
-				player.getAppearence().setTopColor(ClientScriptMap.getMap(3282).getIntValue(ClientScriptMap.getMap(7721).getIntValue(slotId/2)));
+			} else if (tab == 2) { // top
+				player.getAppearence().setTopColor(ClientScriptMap.getMap(3282).getIntValue(ClientScriptMap.getMap(7721).getIntValue(slotId / 2)));
 				player.getPackets().sendAppearenceLook();
-			}else if(tab == 3) { //legs
-				player.getAppearence().setLegsColor(ClientScriptMap.getMap(3282).getIntValue(ClientScriptMap.getMap(7721).getIntValue(slotId/2)));
+			} else if (tab == 3) { // legs
+				player.getAppearence().setLegsColor(ClientScriptMap.getMap(3282).getIntValue(ClientScriptMap.getMap(7721).getIntValue(slotId / 2)));
 				player.getPackets().sendAppearenceLook();
-			}else if(tab == 4) { //boot
-				player.getAppearence().setBootsColor(ClientScriptMap.getMap(3297).getIntValue(ClientScriptMap.getMap(7722).getIntValue(slotId/2)));
+			} else if (tab == 4) { // boot
+				player.getAppearence().setBootsColor(ClientScriptMap.getMap(3297).getIntValue(ClientScriptMap.getMap(7722).getIntValue(slotId / 2)));
 				player.getPackets().sendAppearenceLook();
 			}
-		}else if (buttonId == 185) {
+		} else if (buttonId == 185) {
 			Integer tab = (Integer) player.getTemporaryAttributtes().get(Key.PLAYER_CUSTOMIZATION_TAB);
-			if(tab == null || tab == 0)
+			if (tab == null || tab == 0)
 				return;
 			boolean male = player.getAppearence().isMale();
-			if(tab == 1) { //hair/bear
-				int map1 = ClientScriptMap.getMap(male ? 3304 : 3302).getIntValue(slotId/2);
+			if (tab == 1) { // hair/bear
+				int map1 = ClientScriptMap.getMap(male ? 3304 : 3302).getIntValue(slotId / 2);
 				if (map1 == 0)
 					return;
 				GeneralRequirementMap map = GeneralRequirementMap.getMap(map1);
 				player.getAppearence().setHairStyle(map.getIntValue(788));
 				player.getPackets().sendAppearenceLook();
-			}else if(tab == 2) { //top
-				player.getAppearence().setTopStyle(ClientScriptMap.getMap(male ? 3287 : 3299).getIntValue(slotId/2));
+			} else if (tab == 2) { // top
+				player.getAppearence().setTopStyle(ClientScriptMap.getMap(male ? 3287 : 3299).getIntValue(slotId / 2));
 				for (int i = 0; i < SET_COUNT; i++) {
 					int[] set = getSet(i);
 					if (set[0] == player.getAppearence().getTopStyle()) {
@@ -145,26 +143,26 @@ public final class PlayerLook {
 					}
 				}
 				player.getPackets().sendAppearenceLook();
-			}else if(tab == 3) { //legs
-				player.getAppearence().setLegsStyle(ClientScriptMap.getMap(male ? 3289 : 3301).getIntValue(slotId/2));
+			} else if (tab == 3) { // legs
+				player.getAppearence().setLegsStyle(ClientScriptMap.getMap(male ? 3289 : 3301).getIntValue(slotId / 2));
 				player.getPackets().sendAppearenceLook();
-			}else if(tab == 4) { //boot
-				player.getAppearence().setBootsStyle(ClientScriptMap.getMap(male ? 3290 : 3293).getIntValue(slotId/2));
+			} else if (tab == 4) { // boot
+				player.getAppearence().setBootsStyle(ClientScriptMap.getMap(male ? 3290 : 3293).getIntValue(slotId / 2));
 				player.getPackets().sendAppearenceLook();
-			}else if (tab == 5 && male) {
-				player.getAppearence().setBeardStyle(ClientScriptMap.getMap(3307).getIntValue(slotId/2));
+			} else if (tab == 5 && male) {
+				player.getAppearence().setBeardStyle(ClientScriptMap.getMap(3307).getIntValue(slotId / 2));
 				player.getPackets().sendAppearenceLook();
 			}
 		} else if (buttonId >= 219 && buttonId <= 223)
 			player.getTemporaryAttributtes().put(Key.PLAYER_CUSTOMIZATION_TAB, buttonId - 218);
-		else if (buttonId == 192) 
+		else if (buttonId == 192)
 			player.getTemporaryAttributtes().remove(Key.PLAYER_CUSTOMIZATION_TAB);
 		else if (buttonId == 432) {
 			player.getTemporaryAttributtes().remove(Key.PLAYER_CUSTOMIZATION_TAB);
-			if(player.isLobby()) {
+			if (player.isLobby()) {
 				player.getInterfaceManager().sendLobbyInterfaces();
-				
-			}else{
+
+			} else {
 				player.getInterfaceManager().setDefaultRootInterface();
 				player.getAppearence().generateAppearenceData();
 			}
@@ -185,7 +183,6 @@ public final class PlayerLook {
 		player.getVarsManager().sendVarBitOld(8093, male ? 0 : 1);
 	}
 
-
 	public static void setDesign(Player player, int index1, int index2) {
 		int map1 = ClientScriptMap.getMap(3278).getIntValue(index1);
 		if (map1 == 0)
@@ -197,12 +194,12 @@ public final class PlayerLook {
 		GeneralRequirementMap map = GeneralRequirementMap.getMap(map2Id);
 		for (int i = 1182; i <= 1186; i++) {
 			int value = map.getIntValue(i);
-			//dont stop at -1 else bugs
+			// dont stop at -1 else bugs
 			player.getAppearence().setLook(i - 1180, value);
 		}
 		for (int i = 1187; i <= 1190; i++) {
 			int value = map.getIntValue(i);
-			//dont stop at -1 else bugs
+			// dont stop at -1 else bugs
 			player.getAppearence().setColor(i - 1186, value);
 		}
 

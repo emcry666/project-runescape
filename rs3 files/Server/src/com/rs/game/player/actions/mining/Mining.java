@@ -10,8 +10,7 @@ import com.rs.utils.Utils;
 
 public final class Mining extends MiningBase {
 
-	private static final int[] UNCUT_GEMS =
-	{ 1623, 1619, 1621, 1617, 1631, 6571 };
+	private static final int[] UNCUT_GEMS = { 1623, 1619, 1621, 1617, 1631, 6571 };
 
 	public static enum RockDefinitions {
 
@@ -216,7 +215,7 @@ public final class Mining extends MiningBase {
 		player.getSkills().addXp(Skills.MINING, totalXp);
 		if (definitions.getOreId() != -1) {
 			player.getInventory().addItem(definitions.getOreId() + idSome, 1);
-			if ((Utils.currentTimeMillis() - player.getLastStarSprite()) <= 15*60*1000)
+			if ((Utils.currentTimeMillis() - player.getLastStarSprite()) <= 15 * 60 * 1000)
 				player.getInventory().addItem(definitions.getOreId() + idSome, 1);
 			String oreName = ItemDefinitions.getItemDefinitions(definitions.getOreId() + idSome).getName().toLowerCase();
 			player.getPackets().sendGameMessage("You mine some " + oreName + ".", true);

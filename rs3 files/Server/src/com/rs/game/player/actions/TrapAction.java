@@ -18,20 +18,20 @@ public class TrapAction extends Action {
 
 	public enum Traps {
 
-		/*itemid, objectid, fail obj id, set emote, remove emote*/
-		BOX(new int[]
-		{ 10008, 19187, 19192, 5208, 5208 }, 27),
+		/* itemid, objectid, fail obj id, set emote, remove emote */
+		BOX(new int[] { 10008, 19187, 19192, 5208, 5208 }, 27),
 
-		SNARE(new int[]
-		{ 10006, 19175, 19174, 5208, 5207 }, 1),
+		SNARE(new int[] { 10006, 19175, 19174, 5208, 5207 }, 1),
 
-		/*obj id, trans id, fail obj id, itemid, itemamount, set emote, remove emote*/
+		/*
+		 * obj id, trans id, fail obj id, itemid, itemamount, set emote, remove emote
+		 */
 
-		BOULDER_TRAP(new int[]
-		{ 19205, 19206, 19219, 1511, 1, 5208, 5208 }, 23);
+		BOULDER_TRAP(new int[] { 19205, 19206, 19219, 1511, 1, 5208, 5208 }, 23);
 
-		/*PITFALL(new int[]
-		{ 0, 0, 0, 0, 0 }, 31)*/;
+		/*
+		 * PITFALL(new int[] { 0, 0, 0, 0, 0 }, 31)
+		 */;
 
 		private final int[] ids;
 		private int requirementLevel;
@@ -56,44 +56,31 @@ public class TrapAction extends Action {
 
 	public enum HunterNPC {
 
-		BARB_TAILED_KEBBIT(Traps.BOULDER_TRAP, 23, 168, new int[]
-		{ 19207, 5275, 5277, 526, 10129 }),
+		BARB_TAILED_KEBBIT(Traps.BOULDER_TRAP, 23, 168, new int[] { 19207, 5275, 5277, 526, 10129 }),
 
-		GREY_CHINCHOMPA(Traps.BOX, 53, 198.4, new int[]
-		{ 28557, 5184, -1, 10033 }),
+		GREY_CHINCHOMPA(Traps.BOX, 53, 198.4, new int[] { 28557, 5184, -1, 10033 }),
 
-		RED_CHINCHOMPA(Traps.BOX, 63, 265, new int[]
-		{ 28558, 5184, -1, 10034 }),
+		RED_CHINCHOMPA(Traps.BOX, 63, 265, new int[] { 28558, 5184, -1, 10034 }),
 
-		FERRET(Traps.BOX, 27, 115, new int[]
-		{ 19189, 5191, 5192 }),
+		FERRET(Traps.BOX, 27, 115, new int[] { 19189, 5191, 5192 }),
 
-		GECKO(Traps.BOX, 27, 100, new int[]
-		{ 19190, 8362, 8361 }),
+		GECKO(Traps.BOX, 27, 100, new int[] { 19190, 8362, 8361 }),
 
-		RACCOON(Traps.BOX, 27, 100, new int[]
-		{ 19191, 7726, 7727 }),
+		RACCOON(Traps.BOX, 27, 100, new int[] { 19191, 7726, 7727 }),
 
-		MONKEY(Traps.BOX, 27, 100, new int[]
-		{ 28557, 8343, 8345 }),
+		MONKEY(Traps.BOX, 27, 100, new int[] { 28557, 8343, 8345 }),
 
-		CRIMSON_SWIFT(Traps.SNARE, 1, 34, new int[]
-		{ 19180, 5171, 5172, 10088, 526, 9978 }),
+		CRIMSON_SWIFT(Traps.SNARE, 1, 34, new int[] { 19180, 5171, 5172, 10088, 526, 9978 }),
 
-		GOLDEN_WARBLER(Traps.SNARE, 5, 48, new int[]
-		{ 19184, 5171, 5172, 1583, 526, 9978 }),
+		GOLDEN_WARBLER(Traps.SNARE, 5, 48, new int[] { 19184, 5171, 5172, 1583, 526, 9978 }),
 
-		COPPER_LONGTAIL(Traps.SNARE, 9, 61, new int[]
-		{ 19186, 5171, 5172, 10091, 526, 9978 }),
+		COPPER_LONGTAIL(Traps.SNARE, 9, 61, new int[] { 19186, 5171, 5172, 10091, 526, 9978 }),
 
-		CERULEAN_TWITCH(Traps.SNARE, 11, 64.67, new int[]
-		{ 19182, 5171, 5172, 10089, 526, 9978 }),
+		CERULEAN_TWITCH(Traps.SNARE, 11, 64.67, new int[] { 19182, 5171, 5172, 10089, 526, 9978 }),
 
-		TROPICAL_WAGTAIL(Traps.SNARE, 19, 95.2, new int[]
-		{ 19178, 5171, 5172, 10087, 526, 9978 }),
+		TROPICAL_WAGTAIL(Traps.SNARE, 19, 95.2, new int[] { 19178, 5171, 5172, 10087, 526, 9978 }),
 
-		WIMPY_BIRD(Traps.SNARE, 39, 167, new int[]
-		{ 28930, 5171, 5172, 11525, 526, 9978 });
+		WIMPY_BIRD(Traps.SNARE, 39, 167, new int[] { 28930, 5171, 5172, 11525, 526, 9978 });
 
 		private final Traps trap;
 		private final int lureLevel;
@@ -189,9 +176,7 @@ public class TrapAction extends Action {
 			else if (!World.removeGroundItem(player, item, false))
 				return -1;
 		}
-		OwnedObjectManager.addOwnedObjectManager(player, new WorldObject[]
-		{ new WorldObject(ids[1], 10, 0, tile.getX(), tile.getY(), tile.getPlane()) }, new long[]
-		{ 300000 });
+		OwnedObjectManager.addOwnedObjectManager(player, new WorldObject[] { new WorldObject(ids[1], 10, 0, tile.getX(), tile.getY(), tile.getPlane()) }, new long[] { 300000 });
 		return -1;
 	}
 

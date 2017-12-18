@@ -22,7 +22,7 @@ public class CreateOublietteD extends Dialogue {
 			int slot = room.getTrapdoorSlot();
 			if (slot != -1) {
 				RoomReference newRoom = new RoomReference(Room.OUTBLIETTE, room.getX(), room.getY(), 0, room.getRotation());
-				newRoom.addObject(HouseConstants.Builds.LADDER, slot); //TODO
+				newRoom.addObject(HouseConstants.Builds.LADDER, slot); // TODO
 				player.getHouse().createRoom(newRoom);
 			}
 		}

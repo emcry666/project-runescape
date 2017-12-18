@@ -22,8 +22,7 @@ public class GluttonousBehemothCombat extends CombatScript {
 
 	@Override
 	public Object[] getKeys() {
-		return new Object[]
-		{ "Gluttonous behemoth" };
+		return new Object[] { "Gluttonous behemoth" };
 	}
 
 	@Override

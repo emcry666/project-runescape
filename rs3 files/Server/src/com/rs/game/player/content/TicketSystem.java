@@ -45,7 +45,8 @@ public class TicketSystem {
 			@Override
 			public void run() {
 				player.setNextForceTalk(new ForceTalk("Hello there, I'm prepared to answer your questions."));
-				//System.out.println("First Call : X "+ticket.getTile().getX()+ " Y "+ticket.getTile().getY());
+				// System.out.println("First Call : X "+ticket.getTile().getX()+
+				// " Y "+ticket.getTile().getY());
 				player.getTemporaryAttributtes().put("selected_ticket", ticket);
 				target.useStairs(-1, new WorldTile(player, 1), 1, 2);
 			}
@@ -62,7 +63,8 @@ public class TicketSystem {
 			return;
 		player.setNextForceTalk(new ForceTalk("Goodbye, don't hesitate to open another ticket at any time."));
 		Player target = ticket.getPlayer();
-		//System.out.println("X "+ticket.getTile().getX()+ " Y "+ticket.getTile().getY());
+		// System.out.println("X "+ticket.getTile().getX()+ " Y
+		// "+ticket.getTile().getY());
 		target.useStairs(-1, ticket.tile, 1, 2);
 		player.getTemporaryAttributtes().remove("selected_ticket");
 	}

@@ -43,7 +43,7 @@ public class Cubskinweaver extends Familiar {
 	@Override
 	public boolean submitSpecial(Object object) {
 		Player player = (Player) object;
-		player.heal(10);//Increases by 10 each time
+		player.heal(10);// Increases by 10 each time
 		getOwner().setNextGraphics(new Graphics(1300));
 		getOwner().setNextAnimation(new Animation(7660));
 		return true;

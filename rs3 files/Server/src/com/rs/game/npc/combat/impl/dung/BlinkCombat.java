@@ -25,8 +25,7 @@ public class BlinkCombat extends CombatScript {
 
 	@Override
 	public Object[] getKeys() {
-		return new Object[]
-		{ 12865 };
+		return new Object[] { 12865 };
 	}
 
 	@Override
@@ -66,7 +65,9 @@ public class BlinkCombat extends CombatScript {
 					boss.setNextAnimation(new Animation(14949));
 					boss.resetCombat();
 					boss.setNextFaceEntity(null);
-					boss.setNextFaceWorldTile(beginningTile);//Faces the direction it throws into
+					boss.setNextFaceWorldTile(beginningTile);// Faces the
+					// direction it
+					// throws into
 					World.sendProjectile(boss, beginningTile, 2853, 18, 18, 50, 50, 0, 0);
 					WorldTasksManager.schedule(new WorldTask() {
 
@@ -85,7 +86,7 @@ public class BlinkCombat extends CombatScript {
 								}
 							} else if (cycles == 2) {
 								for (WorldTile tile : knifeTargets) {
-									//outdated method projectile
+									// outdated method projectile
 									int delay = Utils.projectileTimeToCycles(World.sendProjectile(boss, boss.getNextPath(), tile, 2853, 18, 18, 50, 50, 0, 0).getEndTime());
 									entityLoop: for (Entity t : boss.getPossibleTargets()) {
 										if (!t.matches(tile))
@@ -106,7 +107,7 @@ public class BlinkCombat extends CombatScript {
 			} else {
 				if (Utils.random(7) == 0) {
 					boss.setNextForceTalk(new ForceTalk("Magicinyaface!"));
-					boss.playSoundEffect(3022);//MAGIC IN YA FACE
+					boss.playSoundEffect(3022);// MAGIC IN YA FACE
 				}
 				boss.setNextAnimation(new Animation(14956));
 				boss.setNextGraphics(new Graphics(2854));

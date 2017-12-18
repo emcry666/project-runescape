@@ -32,7 +32,7 @@ public class VoidKnightExchange extends Dialogue {
 				sendPlayerDialogue(NORMAL, "I'm fine, thanks.");
 				stage = 3;
 			}
-		} else if (stage == 1) { //sendNPCDialogue(npcId, NORMAL,"");
+		} else if (stage == 1) { // sendNPCDialogue(npcId, NORMAL,"");
 			sendNPCDialogue(npcId, NORMAL, "A Void Knight, sir, fight for balance just like you.");
 			stage = 3;
 		} else if (stage == 2) {

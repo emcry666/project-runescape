@@ -10,8 +10,7 @@ public class MagicalMeleeCombat extends CombatScript {
 
 	@Override
 	public Object[] getKeys() {
-		return new Object[]
-		{ "Jelly", "Bloodveld" };
+		return new Object[] { "Jelly", "Bloodveld" };
 	}
 
 	@Override

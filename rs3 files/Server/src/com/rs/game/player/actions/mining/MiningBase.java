@@ -90,7 +90,10 @@ public abstract class MiningBase extends Action {
 	}
 
 	public static PickAxeDefinitions getPickAxeDefinitions(Player player, boolean dungeoneering) {
-		for (int i = dungeoneering ? 10 : PickAxeDefinitions.values().length - 1; i >= (dungeoneering ? 0 : 11); i--) { //from best to worst
+		for (int i = dungeoneering ? 10 : PickAxeDefinitions.values().length - 1; i >= (dungeoneering ? 0 : 11); i--) { // from
+			// best
+			// to
+			// worst
 			PickAxeDefinitions def = PickAxeDefinitions.values()[i];
 			if (player.getInventory().containsItemToolBelt(def.pickAxeId) || player.getEquipment().getWeaponId() == def.pickAxeId) {
 				if (player.getSkills().getLevel(Skills.MINING) >= def.levelRequried)

@@ -46,7 +46,7 @@ public class LadyOfTheLake extends Dialogue {
 				stage = 14;
 			}
 		} else if (stage == 4) {
-			if (IGNORE_QUEST) { //player.getQuestManager().completedQuest(Quests.MERLINS_CRYSTAL)
+			if (IGNORE_QUEST) { // player.getQuestManager().completedQuest(Quests.MERLINS_CRYSTAL)
 				sendNPCDialogue(npcId, NORMAL, "I recall you have already proven yourself to be worthy of wielding it. I shall return it to you if you can prove yourself to still be worthy.");
 				stage = 5;
 			} else {

@@ -191,13 +191,10 @@ public class CastleWarsPlaying extends Controller {
 					if (weaponId == 4037 || weaponId == 4039) {
 						CastleWars.setWeapon(player, null);
 						CastleWars.dropFlag(player, weaponId == 4037 ? CastleWars.SARADOMIN : CastleWars.ZAMORAK);
-					}/* else {
-						Player killer = player.getMostDamageReceivedSourcePlayer();
-						if (killer != null) {
-						   killer.removeDamage(player);
-						   killer.increaseKillCount(player);
-						}
-						}*/
+					} /*
+						 * else { Player killer = player.getMostDamageReceivedSourcePlayer(); if (killer != null) {
+						 * killer.removeDamage(player); killer.increaseKillCount(player); } }
+						 */
 
 					player.reset();
 					player.setNextWorldTile(new WorldTile(team == CastleWars.ZAMORAK ? CastleWars.ZAMO_BASE : CastleWars.SARA_BASE, 1));
@@ -387,11 +384,10 @@ public class CastleWarsPlaying extends Controller {
 			player.getEffectsManager().removeEffect(EffectType.BOUND);
 			player.getEffectsManager().removeEffect(EffectType.BOUND_IMMUNITY);
 			return false;
-		}/*
-			 * else if (id == 4438) player.getActionManager().setSkill(new
-			 * Mining(object, RockDefinitions.SMALLER_ROCKS)); else if (id == 4437)
-			 * player.getActionManager().setSkill(new Mining(object,
-			 * RockDefinitions.ROCKS ));
+		} /*
+			 * else if (id == 4438) player.getActionManager().setSkill(new Mining(object,
+			 * RockDefinitions.SMALLER_ROCKS)); else if (id == 4437) player.getActionManager().setSkill(new
+			 * Mining(object, RockDefinitions.ROCKS ));
 			 */
 		else if (id == 4448) {
 			for (List<Player> players : CastleWars.getPlaying()) {

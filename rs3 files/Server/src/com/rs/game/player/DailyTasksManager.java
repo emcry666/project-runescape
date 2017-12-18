@@ -24,8 +24,7 @@ public class DailyTasksManager {
 		/**
 		 * Separate tasks by type here.
 		 */
-		TASKS_THRESHHOLD.put(EASY, new TaskData[]
-		{ TaskData.TEST_TASK });
+		TASKS_THRESHHOLD.put(EASY, new TaskData[] { TaskData.TEST_TASK });
 
 	}
 
@@ -111,7 +110,8 @@ public class DailyTasksManager {
 		}
 
 		@Override
-		public String toString() {//TODO task names that are funny, separate with $ as sentinel
+		public String toString() {// TODO task names that are funny, separate
+			// with $ as sentinel
 			return name().replace("_", " ");
 		}
 	}
@@ -142,17 +142,26 @@ public class DailyTasksManager {
 					break;
 				}
 			}
-			for (int idx = 0; idx < task.getExperienceTracker().length; idx++) {// We only check this here cuz of exp tracker
+			for (int idx = 0; idx < task.getExperienceTracker().length; idx++) {// We
+				// only
+				// check
+				// this
+				// here
+				// cuz
+				// of
+				// exp
+				// tracker
 				if (task.getExperienceTracker()[idx] != experienceCap[idx])
 					return;
 			}
 			setCompletedTask(task);
 		} else {
 			if (type == SKILL) {
-				int skill = (int) paramaters[0];//which skill are we using
+				int skill = (int) paramaters[0];// which skill are we using
 				Object skillExtention = paramaters[1];
 				int increment = (int) paramaters[2];
-				if (skill != (int) task.getParamaters()[0] || skillExtention != task.getParamaters()[1])//cuz peas.
+				if (skill != (int) task.getParamaters()[0] || skillExtention != task.getParamaters()[1])// cuz
+					// peas.
 					return;
 				sendTaskUpdate(type, increment, task);
 			} else if (type == PVP) {
@@ -181,7 +190,7 @@ public class DailyTasksManager {
 	}
 
 	private void sendTaskUpdate(int type, int increment, SpecialTask task) {
-		String message = "<col=EAC117>Daily Task Update: ";//Default color
+		String message = "<col=EAC117>Daily Task Update: ";// Default color
 		if (type == SKILL)
 			message += "Completed " + task.getCurrentCount() + " " + task.getName() + " out of " + task.getMaximumCount() + ".";
 		else if (type == PVP)
@@ -198,8 +207,8 @@ public class DailyTasksManager {
 		consecutiveTasks++;
 		completedTasks++;
 		task.setCompleted(true);
-		//player.getInterfaceManager().setOverlay(199, false);
-		//player.getPackets().sendIComponentText(199, "Your task '");
+		// player.getInterfaceManager().setOverlay(199, false);
+		// player.getPackets().sendIComponentText(199, "Your task '");
 		player.getPackets().sendGameMessage("<col=EAC117> Daily Task Update: Your task has been completed, go speak to the task manager for your reward!");
 	}
 
@@ -234,7 +243,8 @@ public class DailyTasksManager {
 				return false;
 		}
 		if (task.paramaters.length == 3) {
-			Quests[] quests = (Quests[]) task.paramaters[3];//Does our skill need any quests?
+			Quests[] quests = (Quests[]) task.paramaters[3];// Does our skill
+			// need any quests?
 			for (Quests quest : quests) {
 				if (!player.getQuestManager().completedQuest(quest))
 					return false;

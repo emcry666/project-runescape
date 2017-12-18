@@ -23,175 +23,32 @@ import com.rs.utils.ShopsHandler;
 import com.rs.utils.Utils;
 
 public class EconomyManager {
-	
+
 	private static int[] ROOT_COMPONENTS = new int[] { 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24 };
 	private static int[] TEXT_COMPONENTS = new int[] { 38, 46, 54, 62, 70, 78, 86, 94, 102, 110, 118, 126, 134, 142, 150, 158, 166, 174, 182, 190 };
 	private static int[] CLICK_COMPONENTS = new int[] { 35, 43, 51, 59, 67, 75, 83, 91, 99, 107, 115, 123, 131, 139, 147, 155, 163, 171, 179, 187 };
 
-	private static String[] SHOPS_NAMES = new String[]
-	{
-		"General store",
-		"Vote shop",
-		"PKP shop 1",
-		"PKP shop 2",
-		"Weapons 1",
-		"Weapons 2",
-		"Melee armor",
-		"Ranged armor",
-		"Magic armor",
-		"Food & Potions",
-		"Runes",
-		"Ammo",
-		"Summoning items",
-		"Capes",
-		"Jewelry",
-		"Quest items",
-		"Skilling stuff 1",
-		"Skilling stuff 2",
-		"Heblore Secundaries 1",
-		"Heblore Secundaries 2",
-		"Back" };
+	private static String[] SHOPS_NAMES = new String[] { "General store", "Vote shop", "PKP shop 1", "PKP shop 2", "Weapons 1", "Weapons 2", "Melee armor", "Ranged armor", "Magic armor", "Food & Potions", "Runes", "Ammo", "Summoning items", "Capes", "Jewelry", "Quest items", "Skilling stuff 1", "Skilling stuff 2", "Heblore Secundaries 1", "Heblore Secundaries 2", "Back" };
 
-	private static int[] SHOPS_IDS = new int[]
-	{ 1200, 1201, 500, 501, 1202, 1203, 1205, 1207, 1208, 1209, 1210, 1211, 1212, 1213, 1214, 1215, 1216, 1217, 1218, 1219, -1 };
+	private static int[] SHOPS_IDS = new int[] { 1200, 1201, 500, 501, 1202, 1203, 1205, 1207, 1208, 1209, 1210, 1211, 1212, 1213, 1214, 1215, 1216, 1217, 1218, 1219, -1 };
 
-	public static int[] MANAGER_NPC_IDS = new int[]
-	{ 13930, 15158 };
-	public static String[] MANAGER_NPC_TEXTS = new String[]
-	{ "I seek the evil power!", "I smell the darkness...", "I sense the darkness...", "Evil forces are getting stronger...", "Come to me, traveler!" };
+	public static int[] MANAGER_NPC_IDS = new int[] { 13930, 15158 };
+	public static String[] MANAGER_NPC_TEXTS = new String[] { "I seek the evil power!", "I smell the darkness...", "I sense the darkness...", "Evil forces are getting stronger...", "Come to me, traveler!" };
 
-	private static String[] NEWBIE_LOC_NAMES = new String[]
-	{ "Stronghold of security", "Karamja & Crandor", "Rock Crabs", "Back" };
-	private static WorldTile[] NEWBIE_LOCATIONS = new WorldTile[]
-	{ new WorldTile(3080, 3418, 0), new WorldTile(2861, 9570, 0), new WorldTile(2674, 3710, 0), null };
+	private static String[] NEWBIE_LOC_NAMES = new String[] { "Stronghold of security", "Karamja & Crandor", "Rock Crabs", "Back" };
+	private static WorldTile[] NEWBIE_LOCATIONS = new WorldTile[] { new WorldTile(3080, 3418, 0), new WorldTile(2861, 9570, 0), new WorldTile(2674, 3710, 0), null };
 
-	private static String[] CITIES_NAMES = new String[]
-	{
-		"Lumbridge",
-		"Varrock",
-		"Edgeville",
-		"Falador",
-		"Seer's village",
-		"Ardougne",
-		"Yannile",
-		"Keldagrim",
-		"Dorgesh-Kan",
-		"Lletya",
-		"Etceteria",
-		"Daemonheim",
-		"Canifis",
-		"Tzhaar area",
-		"Burthrope",
-		"Al-Kharid",
-		"Draynor village",
-		"Zanaris",
-		"Shilo village",
-		"Darkmeyer",
-		"Back" };
-	private static WorldTile[] CITIES_LOCATIONS = new WorldTile[]
-	{
-		new WorldTile(3222, 3219, 0),
-		new WorldTile(3212, 3422, 0),
-		new WorldTile(3094, 3502, 0),
-		new WorldTile(2965, 3386, 0),
-		new WorldTile(2725, 3491, 0),
-		new WorldTile(2662, 3305, 0),
-		new WorldTile(2605, 3093, 0),
-		new WorldTile(2845, 10210, 0),
-		new WorldTile(2720, 5351, 0),
-		new WorldTile(2341, 3171, 0),
-		new WorldTile(2614, 3894, 0),
-		new WorldTile(3450, 3718, 0),
-		new WorldTile(3496, 3489, 0),
-		new WorldTile(4651, 5151, 0),
-		new WorldTile(2889, 3528, 0),
-		new WorldTile(3275, 3166, 0),
-		new WorldTile(3079, 3250, 0),
-		new WorldTile(2386, 4458, 0),
-		new WorldTile(2849, 2958, 0),
-		new WorldTile(3613, 3371, 0),
-		null };
+	private static String[] CITIES_NAMES = new String[] { "Lumbridge", "Varrock", "Edgeville", "Falador", "Seer's village", "Ardougne", "Yannile", "Keldagrim", "Dorgesh-Kan", "Lletya", "Etceteria", "Daemonheim", "Canifis", "Tzhaar area", "Burthrope", "Al-Kharid", "Draynor village", "Zanaris", "Shilo village", "Darkmeyer", "Back" };
+	private static WorldTile[] CITIES_LOCATIONS = new WorldTile[] { new WorldTile(3222, 3219, 0), new WorldTile(3212, 3422, 0), new WorldTile(3094, 3502, 0), new WorldTile(2965, 3386, 0), new WorldTile(2725, 3491, 0), new WorldTile(2662, 3305, 0), new WorldTile(2605, 3093, 0), new WorldTile(2845, 10210, 0), new WorldTile(2720, 5351, 0), new WorldTile(2341, 3171, 0), new WorldTile(2614, 3894, 0), new WorldTile(3450, 3718, 0), new WorldTile(3496, 3489, 0), new WorldTile(4651, 5151, 0), new WorldTile(2889, 3528, 0), new WorldTile(3275, 3166, 0), new WorldTile(3079, 3250, 0), new WorldTile(2386, 4458, 0), new WorldTile(2849, 2958, 0), new WorldTile(3613, 3371, 0), null };
 
-	private static String[] DUNGEON_NAMES = new String[]
-	{
-		"God Wars",
-		"King black dragon",
-		"Corporeal beast",
-		"Tormented demons",
-		"Stronghold of security",
-		"Karamja & Crandor",
-		"Brimhaven dungeon",
-		"TzHaar",
-		"Jungle Strykewyrms",
-		"Desert Skrykewyrms",
-		"Ice Strykewyrms",
-		"Kalphite hive",
-		"Asgarnia ice dungeon",
-		"Mos le harmless jungle",
-		"Gorak",
-		"Lumbridge swamp caves",
-		"Grotworm lair (QBD)",
-		"Framenik slayer dungeon",
-		"Back" };
-	private static WorldTile[] DUNGEON_LOCATIONS = new WorldTile[]
-	{
-		new WorldTile(2908, 3707, 0),
-		new WorldTile(3051, 3519, 0),
-		new WorldTile(2966, 4383, 2),
-		new WorldTile(2562, 5739, 0),
-		new WorldTile(3080, 3418, 0),
-		new WorldTile(2861, 9570, 0),
-		new WorldTile(2745, 3152, 0),
-		new WorldTile(4673, 5116, 0),
-		new WorldTile(2450, 2898, 0),
-		new WorldTile(3381, 3162, 0),
-		new WorldTile(3508, 5516, 0),
-		new WorldTile(3228, 3106, 0),
-		new WorldTile(3010, 3150, 0),
-		new WorldTile(3731, 3039, 0),
-		new WorldTile(3035, 5346, 0),
-		new WorldTile(3169, 3171, 0),
-		new WorldTile(2990, 3237, 0),
-		new WorldTile(2794, 3615, 0),
-		null };
+	private static String[] DUNGEON_NAMES = new String[] { "God Wars", "King black dragon", "Corporeal beast", "Tormented demons", "Stronghold of security", "Karamja & Crandor", "Brimhaven dungeon", "TzHaar", "Jungle Strykewyrms", "Desert Skrykewyrms", "Ice Strykewyrms", "Kalphite hive", "Asgarnia ice dungeon", "Mos le harmless jungle", "Gorak", "Lumbridge swamp caves", "Grotworm lair (QBD)", "Framenik slayer dungeon", "Back" };
+	private static WorldTile[] DUNGEON_LOCATIONS = new WorldTile[] { new WorldTile(2908, 3707, 0), new WorldTile(3051, 3519, 0), new WorldTile(2966, 4383, 2), new WorldTile(2562, 5739, 0), new WorldTile(3080, 3418, 0), new WorldTile(2861, 9570, 0), new WorldTile(2745, 3152, 0), new WorldTile(4673, 5116, 0), new WorldTile(2450, 2898, 0), new WorldTile(3381, 3162, 0), new WorldTile(3508, 5516, 0), new WorldTile(3228, 3106, 0), new WorldTile(3010, 3150, 0), new WorldTile(3731, 3039, 0), new WorldTile(3035, 5346, 0), new WorldTile(3169, 3171, 0), new WorldTile(2990, 3237, 0), new WorldTile(2794, 3615, 0), null };
 
-	private static String[] MINIGAMES_NAMES = new String[]
-	{
-		"Duel arena",
-		"Dominion tower",
-		"God Wars",
-		"Barrows",
-		"Fight pits",
-		"Fight caves",
-		"Kiln",
-		"Puro-puro",
-		"Clan wars & Stealing creations",
-		"High & Low runespan",
-		"Sorceror's garden",
-		"Crucible",
-		"Pest Control",
-		"Back" };
-	private static WorldTile[] MINIGAMES_LOCATIONS = new WorldTile[]
-	{
-		new WorldTile(3370, 3270, 0),
-		new WorldTile(3361, 3082, 0),
-		new WorldTile(2857, 3573, 0),
-		new WorldTile(3565, 3306, 0),
-		new WorldTile(4602, 5062, 0),
-		new WorldTile(4615, 5129, 0),
-		new WorldTile(4743, 5170, 0),
-		new WorldTile(2428, 4441, 0),
-		new WorldTile(2961, 9675, 0),
-		new WorldTile(3106, 3160, 0),
-		new WorldTile(3323, 3139, 0),
-		new WorldTile(3120, 3519, 0),
-		new WorldTile(2659, 2676, 0),
-		null };
+	private static String[] MINIGAMES_NAMES = new String[] { "Duel arena", "Dominion tower", "God Wars", "Barrows", "Fight pits", "Fight caves", "Kiln", "Puro-puro", "Clan wars & Stealing creations", "High & Low runespan", "Sorceror's garden", "Crucible", "Pest Control", "Back" };
+	private static WorldTile[] MINIGAMES_LOCATIONS = new WorldTile[] { new WorldTile(3370, 3270, 0), new WorldTile(3361, 3082, 0), new WorldTile(2857, 3573, 0), new WorldTile(3565, 3306, 0), new WorldTile(4602, 5062, 0), new WorldTile(4615, 5129, 0), new WorldTile(4743, 5170, 0), new WorldTile(2428, 4441, 0), new WorldTile(2961, 9675, 0), new WorldTile(3106, 3160, 0), new WorldTile(3323, 3139, 0), new WorldTile(3120, 3519, 0), new WorldTile(2659, 2676, 0), null };
 
-	private static String[] OTHER_NAMES = new String[]
-	{ "Mages bank", "Multi pvp (Wilderness)", "Wests (Wilderness)", "Easts (Wilderness)", "Oracle of darkness (Wilderness)", "Back" };
-	private static WorldTile[] OTHER_LOCATIONS = new WorldTile[]
-	{ new WorldTile(2538, 4715, 0), new WorldTile(3240, 3611, 0), new WorldTile(2984, 3596, 0), new WorldTile(3360, 3658, 0), new WorldTile(3194, 3922, 0), null };
+	private static String[] OTHER_NAMES = new String[] { "Mages bank", "Multi pvp (Wilderness)", "Wests (Wilderness)", "Easts (Wilderness)", "Oracle of darkness (Wilderness)", "Back" };
+	private static WorldTile[] OTHER_LOCATIONS = new WorldTile[] { new WorldTile(2538, 4715, 0), new WorldTile(3240, 3611, 0), new WorldTile(2984, 3596, 0), new WorldTile(3360, 3658, 0), new WorldTile(3194, 3922, 0), null };
 
 	/**
 	 * Whether task was submitted.
@@ -214,7 +71,6 @@ public class EconomyManager {
 	 */
 	private static String eventText;
 
-
 	public static synchronized void startEvent(String text, WorldTile tile, SurpriseEvent event) {
 		if (!eventTaskSubmitted) {
 			eventTaskSubmitted = true;
@@ -232,20 +88,19 @@ public class EconomyManager {
 									continue;
 								if (Utils.random(10) != 0)
 									continue;
-	
+
 								String message = "An event: " + eventText + " is currently happening! Talk to Oracle of Dawn to get there!";
 								if (isEconomyManagerNpc(npc.getId()))
 									message = message.replace("Oracle of Dawn", "me");
 								npc.setNextForceTalk(new ForceTalk(message));
 							}
-						}
-						else if (surpriseEvent != null) {
+						} else if (surpriseEvent != null) {
 							for (NPC npc : World.getNPCs()) {
 								if (npc == null || npc.isDead() || npc.getNextForceTalk() != null)
 									continue;
 								if (Utils.random(10) != 0)
 									continue;
-	
+
 								String message = "An event: " + eventText + " is currently happening! Talk to Oracle of Dawn to get there!";
 								if (isEconomyManagerNpc(npc.getId()))
 									message = message.replace("Oracle of Dawn", "me");
@@ -263,8 +118,7 @@ public class EconomyManager {
 		if (tile != null) {
 			tileEventHappening = true;
 			eventTile = tile;
-		}
-		else {
+		} else {
 			surpriseEvent = event;
 			event.start();
 		}
@@ -360,7 +214,10 @@ public class EconomyManager {
 				int length = currentOptions.length - currentOptionsOffset;
 				if (currentOptionsOffset != 0 || length > ROOT_COMPONENTS.length) {
 					System.arraycopy(currentOptions, currentOptionsOffset, buffer, 0, Math.min(length, ROOT_COMPONENTS.length - 1));
-					buffer[ROOT_COMPONENTS.length - 1] = "More"; // copy up to (len-1) options + more button
+					buffer[ROOT_COMPONENTS.length - 1] = "More"; // copy up to
+					// (len-1)
+					// options +
+					// more button
 				} else {
 					System.arraycopy(currentOptions, currentOptionsOffset, buffer, 0, length);
 				}
@@ -451,12 +308,10 @@ public class EconomyManager {
 					if (optionId == 0) { // current event
 						if (tileEventHappening) {
 							Magic.sendNormalTeleportSpell(player, 0, 0, eventTile);
-						}
-						else if (surpriseEvent != null) {
+						} else if (surpriseEvent != null) {
 							end();
 							surpriseEvent.tryJoin(player);
-						}
-						else {
+						} else {
 							player.getPackets().sendGameMessage("No official event is currently happening.");
 						}
 					} else if (optionId == 1) { // current starter town
@@ -641,92 +496,73 @@ public class EconomyManager {
 
 	public static final void processStorePurchase(final Player player, String item) {
 		if (item.equals("Random nex set")) {
-			int[][] sets = new int[][]
-			{ new int[]
-			{ 20159, 20163, 20167 }, new int[]
-			{ 20147, 20151, 20155 }, new int[]
-			{ 20135, 20139, 20143 } };
+			int[][] sets = new int[][] { new int[] { 20159, 20163, 20167 }, new int[] { 20147, 20151, 20155 }, new int[] { 20135, 20139, 20143 } };
 			int[] set = sets[Utils.random(sets.length)];
 			for (int itemid : set)
 				player.getInventory().addItemDrop(itemid, 1);
 		} else if (item.equals("Random chaotic item")) {
-			int[] items = new int[]
-			{ 18349, 18351, 18353, 18355, 18357, 18359, };
+			int[] items = new int[] { 18349, 18351, 18353, 18355, 18357, 18359, };
 			int itemid = items[Utils.random(items.length)];
 			player.getInventory().addItemDrop(itemid, 1);
 		} else if (item.equals("Random spirit shield")) {
-			int[] items = new int[]
-			{ 13738, 13740, 13742, 13744 };
+			int[] items = new int[] { 13738, 13740, 13742, 13744 };
 			int itemid = items[Utils.random(items.length)];
 			player.getInventory().addItemDrop(itemid, 1);
 		} else if (item.equals("Random godsword")) {
-			int[] items = new int[]
-			{ 11694, 11696, 11698, 11700 };
+			int[] items = new int[] { 11694, 11696, 11698, 11700 };
 			int itemid = items[Utils.random(items.length)];
 			player.getInventory().addItemDrop(itemid, 1);
 		} else if (item.equals("Random partyhat")) {
-			int[] items = new int[]
-			{ 1038, 1040, 1042, 1044, 1046, 1048 };
+			int[] items = new int[] { 1038, 1040, 1042, 1044, 1046, 1048 };
 			int itemid = items[Utils.random(items.length)];
 			player.getInventory().addItemDrop(itemid, 1);
 		} else if (item.equals("Random haloween mask")) {
-			int[] items = new int[]
-			{ 1053, 1055, 1057, };
+			int[] items = new int[] { 1053, 1055, 1057, };
 			int itemid = items[Utils.random(items.length)];
 			player.getInventory().addItemDrop(itemid, 1);
 		} else if (item.equals("Experience (Random skill)")) {
 			int skill = Utils.random(Skills.SKILL_NAME.length);
 			player.getSkills().addXpStore(skill, 3000000.0D);
 		} else if (item.equals("All barrows sets")) {
-			int[] items = new int[]
-			{ 11846, 11848, 11850, 11852, 11854, 11856 };
+			int[] items = new int[] { 11846, 11848, 11850, 11852, 11854, 11856 };
 			for (int itemid : items)
 				player.getInventory().addItemDrop(itemid, 1);
 		} else if (item.equals("Bandos set (With godsword)")) {
-			int[] items = new int[]
-			{ 11696, 11724, 11726, 11728 };
+			int[] items = new int[] { 11696, 11724, 11726, 11728 };
 			for (int itemid : items)
 				player.getInventory().addItemDrop(itemid, 1);
 		} else if (item.equals("Armadyl set (With godsword)")) {
-			int[] items = new int[]
-			{ 11694, 11718, 11720, 11722 };
+			int[] items = new int[] { 11694, 11718, 11720, 11722 };
 			for (int itemid : items)
 				player.getInventory().addItemDrop(itemid, 1);
 		} else if (item.equals("Divine spirit shield")) {
-			int[] items = new int[]
-			{ 13740 };
+			int[] items = new int[] { 13740 };
 			for (int itemid : items)
 				player.getInventory().addItemDrop(itemid, 1);
 		} else if (item.equals("Dragon claws")) {
-			int[] items = new int[]
-			{ 14484 };
+			int[] items = new int[] { 14484 };
 			for (int itemid : items)
 				player.getInventory().addItemDrop(itemid, 1);
 		} else if (item.equals("Abyssal whip")) {
-			int[] items = new int[]
-			{ 4151 };
+			int[] items = new int[] { 4151 };
 			for (int itemid : items)
 				player.getInventory().addItemDrop(itemid, 1);
 		} else if (item.equals("Coins")) {
-			int[] items = new int[]
-			{ 995 };
+			int[] items = new int[] { 995 };
 			for (int itemid : items)
 				player.getInventory().addItemDrop(itemid, 100000000);
 		} else if (item.equals("Vote tokens")) {
-			int[] items = new int[]
-			{ Settings.VOTE_TOKENS_ITEM_ID };
+			int[] items = new int[] { Settings.VOTE_TOKENS_ITEM_ID };
 			for (int itemid : items)
 				player.getInventory().addItemDrop(itemid, 10000000);
 		} else if (item.equals("Fire cape")) {
 			player.setCompletedFightCaves();
-			int[] items = new int[]
-			{ 6570 };
+			int[] items = new int[] { 6570 };
 			for (int itemid : items)
 				player.getInventory().addItemDrop(itemid, 1);
 		} else if (item.equals("Kiln cape")) {
 			player.setCompletedFightKiln();
-			int[] items = new int[]
-			{ 23659 };
+			int[] items = new int[] { 23659 };
 			for (int itemid : items)
 				player.getInventory().addItemDrop(itemid, 1);
 		}
@@ -743,7 +579,7 @@ public class EconomyManager {
 			player.setVoteCount(player.getVoteCount() + 1);
 			int amount = Integer.parseInt(item.substring(12));
 			Item tokens = new Item(Settings.VOTE_TOKENS_ITEM_ID, amount);
-			if (player.getBank().addItems(new Item[] {tokens}, true) == 0)
+			if (player.getBank().addItems(new Item[] { tokens }, true) == 0)
 				player.getInventory().addItemDrop(tokens.getId(), tokens.getAmount());
 			if (amount >= Settings.VOTE_MIN_AMOUNT)
 				player.refreshLastVote();

@@ -13,18 +13,17 @@ public class ForceMovement {
 	protected int direction;
 
 	/*
-	 * USE: moves to firsttile firstTileTicketDelay: the delay in game tickets
-	 * between your tile and first tile the direction
+	 * USE: moves to firsttile firstTileTicketDelay: the delay in game tickets between your tile and first tile the
+	 * direction
 	 */
 	public ForceMovement(WorldTile toFirstTile, int firstTileTicketDelay, int direction) {
 		this(toFirstTile, firstTileTicketDelay, null, 0, direction);
 	}
 
 	/*
-	 * USE: moves to firsttile and from first tile to second tile
-	 * firstTileTicketDelay: the delay in game tickets between your tile and
-	 * first tile secondTileTicketDelay: the delay in game tickets between first
-	 * tile and second tile the direction
+	 * USE: moves to firsttile and from first tile to second tile firstTileTicketDelay: the delay in game tickets
+	 * between your tile and first tile secondTileTicketDelay: the delay in game tickets between first tile and
+	 * second tile the direction
 	 */
 	public ForceMovement(WorldTile toFirstTile, int firstTileTicketDelay, WorldTile toSecondTile, int secondTileTicketDelay, int direction) {
 		this.toFirstTile = toFirstTile;

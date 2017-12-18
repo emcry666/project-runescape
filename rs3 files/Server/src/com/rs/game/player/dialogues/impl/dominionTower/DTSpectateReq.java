@@ -8,7 +8,7 @@ public class DTSpectateReq extends Dialogue {
 	public void start() {
 		sendDialogue(
 
-		"You don't have the requirements to play this content, but you can", "spectate some of the matches taking place if you would like.");
+				"You don't have the requirements to play this content, but you can", "spectate some of the matches taking place if you would like.");
 	}
 
 	@Override

@@ -21,45 +21,25 @@ public class Slayer {
 
 	public enum SlayerMaster implements Serializable {
 
-		SPRIA(8462, 85, 1, new int[]
-		{ 0, 0, 0 }, new int[]
-		{ 15, 50 }, SlayerTask.BANSHEE, SlayerTask.BAT, SlayerTask.BEAR, SlayerTask.COW, SlayerTask.BIRD, SlayerTask.CAVE_BUG, SlayerTask.CAVE_SLIME, SlayerTask.DWARF, SlayerTask.CRAWLING_HAND, SlayerTask.DESERT_LIZARD, SlayerTask.DWARF, SlayerTask.GHOST, SlayerTask.GOBLIN, SlayerTask.ICEFIEND, SlayerTask.MINOTAUR, SlayerTask.MONKEY, SlayerTask.SCORPION, SlayerTask.SKELETON, SlayerTask.SPIDER, SlayerTask.WOLF, SlayerTask.ZOMBIE),
+		SPRIA(8462, 85, 1, new int[] { 0, 0, 0 }, new int[] { 15, 50 }, SlayerTask.BANSHEE, SlayerTask.BAT, SlayerTask.BEAR, SlayerTask.COW, SlayerTask.BIRD, SlayerTask.CAVE_BUG, SlayerTask.CAVE_SLIME, SlayerTask.DWARF, SlayerTask.CRAWLING_HAND, SlayerTask.DESERT_LIZARD, SlayerTask.DWARF, SlayerTask.GHOST, SlayerTask.GOBLIN, SlayerTask.ICEFIEND, SlayerTask.MINOTAUR, SlayerTask.MONKEY, SlayerTask.SCORPION, SlayerTask.SKELETON, SlayerTask.SPIDER, SlayerTask.WOLF, SlayerTask.ZOMBIE),
 
-		TURAEL(8480, 3, 1, new int[]
-		{ 0, 0, 0 }, new int[]
-		{ 15, 50 }, SlayerTask.BANSHEE, SlayerTask.BAT, SlayerTask.BEAR, SlayerTask.COW, SlayerTask.BIRD, SlayerTask.CAVE_BUG, SlayerTask.CAVE_SLIME, SlayerTask.DWARF, SlayerTask.CRAWLING_HAND, SlayerTask.DESERT_LIZARD, SlayerTask.DWARF, SlayerTask.GHOST, SlayerTask.GOBLIN, SlayerTask.ICEFIEND, SlayerTask.MINOTAUR, SlayerTask.MONKEY, SlayerTask.SCORPION, SlayerTask.SKELETON, SlayerTask.SPIDER, SlayerTask.WOLF, SlayerTask.ZOMBIE),
+		TURAEL(8480, 3, 1, new int[] { 0, 0, 0 }, new int[] { 15, 50 }, SlayerTask.BANSHEE, SlayerTask.BAT, SlayerTask.BEAR, SlayerTask.COW, SlayerTask.BIRD, SlayerTask.CAVE_BUG, SlayerTask.CAVE_SLIME, SlayerTask.DWARF, SlayerTask.CRAWLING_HAND, SlayerTask.DESERT_LIZARD, SlayerTask.DWARF, SlayerTask.GHOST, SlayerTask.GOBLIN, SlayerTask.ICEFIEND, SlayerTask.MINOTAUR, SlayerTask.MONKEY, SlayerTask.SCORPION, SlayerTask.SKELETON, SlayerTask.SPIDER, SlayerTask.WOLF, SlayerTask.ZOMBIE),
 
-		MAZCHNA(8481, 20, 1, new int[]
-		{ 2, 5, 15 }, new int[]
-		{ 40, 85 }, SlayerTask.BANSHEE, SlayerTask.BAT, SlayerTask.CATABLEPON, SlayerTask.CAVE_CRAWLER, SlayerTask.COCKATRICE, SlayerTask.CRAWLING_HAND, SlayerTask.CYCLOPS, SlayerTask.DESERT_LIZARD, SlayerTask.DOG, SlayerTask.FLESH_CRAWLER, SlayerTask.GHOUL, SlayerTask.GHOST, SlayerTask.GROTWORM, SlayerTask.HILL_GIANT, SlayerTask.HOBGOBLIN, SlayerTask.ICE_WARRIOR, SlayerTask.KALPHITE, SlayerTask.PYREFIEND, SlayerTask.ROCKSLUG, SlayerTask.SKELETON, SlayerTask.VAMPYRE, SlayerTask.WALL_BEAST, SlayerTask.WOLF, SlayerTask.ZOMBIE),
+		MAZCHNA(8481, 20, 1, new int[] { 2, 5, 15 }, new int[] { 40, 85 }, SlayerTask.BANSHEE, SlayerTask.BAT, SlayerTask.CATABLEPON, SlayerTask.CAVE_CRAWLER, SlayerTask.COCKATRICE, SlayerTask.CRAWLING_HAND, SlayerTask.CYCLOPS, SlayerTask.DESERT_LIZARD, SlayerTask.DOG, SlayerTask.FLESH_CRAWLER, SlayerTask.GHOUL, SlayerTask.GHOST, SlayerTask.GROTWORM, SlayerTask.HILL_GIANT, SlayerTask.HOBGOBLIN, SlayerTask.ICE_WARRIOR, SlayerTask.KALPHITE, SlayerTask.PYREFIEND, SlayerTask.ROCKSLUG, SlayerTask.SKELETON, SlayerTask.VAMPYRE, SlayerTask.WALL_BEAST, SlayerTask.WOLF, SlayerTask.ZOMBIE),
 
-		ACHTRYN(8465, 20, 1, new int[]
-		{ 2, 5, 15 }, new int[]
-		{ 40, 85 }, SlayerTask.BANSHEE, SlayerTask.BAT, SlayerTask.CATABLEPON, SlayerTask.CAVE_CRAWLER, SlayerTask.COCKATRICE, SlayerTask.CRAWLING_HAND, SlayerTask.CYCLOPS, SlayerTask.DESERT_LIZARD, SlayerTask.DOG, SlayerTask.FLESH_CRAWLER, SlayerTask.GHOUL, SlayerTask.GHOST, SlayerTask.GROTWORM, SlayerTask.HILL_GIANT, SlayerTask.HOBGOBLIN, SlayerTask.ICE_WARRIOR, SlayerTask.KALPHITE, SlayerTask.PYREFIEND, SlayerTask.ROCKSLUG, SlayerTask.SKELETON, SlayerTask.VAMPYRE, SlayerTask.WALL_BEAST, SlayerTask.WOLF, SlayerTask.ZOMBIE),
+		ACHTRYN(8465, 20, 1, new int[] { 2, 5, 15 }, new int[] { 40, 85 }, SlayerTask.BANSHEE, SlayerTask.BAT, SlayerTask.CATABLEPON, SlayerTask.CAVE_CRAWLER, SlayerTask.COCKATRICE, SlayerTask.CRAWLING_HAND, SlayerTask.CYCLOPS, SlayerTask.DESERT_LIZARD, SlayerTask.DOG, SlayerTask.FLESH_CRAWLER, SlayerTask.GHOUL, SlayerTask.GHOST, SlayerTask.GROTWORM, SlayerTask.HILL_GIANT, SlayerTask.HOBGOBLIN, SlayerTask.ICE_WARRIOR, SlayerTask.KALPHITE, SlayerTask.PYREFIEND, SlayerTask.ROCKSLUG, SlayerTask.SKELETON, SlayerTask.VAMPYRE, SlayerTask.WALL_BEAST, SlayerTask.WOLF, SlayerTask.ZOMBIE),
 
-		VANNAKA(1597, 40, 1, new int[]
-		{ 4, 20, 60 }, new int[]
-		{ 60, 120 }, SlayerTask.ABERRANT_SPECTRE, SlayerTask.ANKOU, SlayerTask.BANSHEE, SlayerTask.BASILISK, SlayerTask.BLOODVELD, SlayerTask.BRINE_RAT, SlayerTask.COCKATRICE, SlayerTask.CROCODILE, SlayerTask.CYCLOPS, SlayerTask.DUST_DEVIL, SlayerTask.EARTH_WARRIOR, SlayerTask.GHOUL, SlayerTask.GREEN_DRAGON, SlayerTask.GROTWORM, SlayerTask.HARPIE_BUG_SWARM, SlayerTask.HILL_GIANT, SlayerTask.ICE_GIANT, SlayerTask.ICE_WARRIOR, SlayerTask.INFERNAL_MAGE, SlayerTask.JELLY, SlayerTask.JUNGLE_HORROR, SlayerTask.LESSER_DEMON, SlayerTask.MOLANISK, SlayerTask.MOSS_GIANT, SlayerTask.OGRE, SlayerTask.OTHERWORLDLY_BEING, SlayerTask.PYREFIEND, SlayerTask.SHADE, SlayerTask.SHADOW_WARRIOR, SlayerTask.TUROTH, SlayerTask.VAMPYRE, SlayerTask.WEREWOLF),
+		VANNAKA(1597, 40, 1, new int[] { 4, 20, 60 }, new int[] { 60, 120 }, SlayerTask.ABERRANT_SPECTRE, SlayerTask.ANKOU, SlayerTask.BANSHEE, SlayerTask.BASILISK, SlayerTask.BLOODVELD, SlayerTask.BRINE_RAT, SlayerTask.COCKATRICE, SlayerTask.CROCODILE, SlayerTask.CYCLOPS, SlayerTask.DUST_DEVIL, SlayerTask.EARTH_WARRIOR, SlayerTask.GHOUL, SlayerTask.GREEN_DRAGON, SlayerTask.GROTWORM, SlayerTask.HARPIE_BUG_SWARM, SlayerTask.HILL_GIANT, SlayerTask.ICE_GIANT, SlayerTask.ICE_WARRIOR, SlayerTask.INFERNAL_MAGE, SlayerTask.JELLY, SlayerTask.JUNGLE_HORROR, SlayerTask.LESSER_DEMON, SlayerTask.MOLANISK, SlayerTask.MOSS_GIANT, SlayerTask.OGRE, SlayerTask.OTHERWORLDLY_BEING, SlayerTask.PYREFIEND, SlayerTask.SHADE, SlayerTask.SHADOW_WARRIOR, SlayerTask.TUROTH, SlayerTask.VAMPYRE, SlayerTask.WEREWOLF),
 
-		CHAELDAR(1598, 70, 1, new int[]
-		{ 10, 50, 100 }, new int[]
-		{ 110, 170 }, SlayerTask.ABERRANT_SPECTRE, SlayerTask.BANSHEE, SlayerTask.BASILISK, SlayerTask.BLOODVELD, SlayerTask.BLUE_DRAGON, SlayerTask.BRINE_RAT, SlayerTask.BRONZE_DRAGON, SlayerTask.CAVE_CRAWLER, SlayerTask.CAVE_HORROR, SlayerTask.CRAWLING_HAND, SlayerTask.DAGANNOTH, SlayerTask.DUST_DEVIL, SlayerTask.ELF_WARRIOR, SlayerTask.FEVER_SPIDER, SlayerTask.FIRE_GIANT, SlayerTask.FUNGAL_MAGE, SlayerTask.GARGOYLE, SlayerTask.GRIFOLAPINE, SlayerTask.GRIFOLAROO, SlayerTask.GROTWORM, SlayerTask.HARPIE_BUG_SWARM, SlayerTask.JUNGLE_STRYKEWYRM, SlayerTask.INFERNAL_MAGE, SlayerTask.JELLY, SlayerTask.JUNGLE_HORROR, SlayerTask.KALPHITE, SlayerTask.KALPHITE, SlayerTask.KURASK, SlayerTask.LESSER_DEMON, SlayerTask.ZYGOMITE, SlayerTask.SHADOW_WARRIOR, SlayerTask.TUROTH, SlayerTask.VYREWATCH, SlayerTask.WARPED_TORTOISE),
+		CHAELDAR(1598, 70, 1, new int[] { 10, 50, 100 }, new int[] { 110, 170 }, SlayerTask.ABERRANT_SPECTRE, SlayerTask.BANSHEE, SlayerTask.BASILISK, SlayerTask.BLOODVELD, SlayerTask.BLUE_DRAGON, SlayerTask.BRINE_RAT, SlayerTask.BRONZE_DRAGON, SlayerTask.CAVE_CRAWLER, SlayerTask.CAVE_HORROR, SlayerTask.CRAWLING_HAND, SlayerTask.DAGANNOTH, SlayerTask.DUST_DEVIL, SlayerTask.ELF_WARRIOR, SlayerTask.FEVER_SPIDER, SlayerTask.FIRE_GIANT, SlayerTask.FUNGAL_MAGE, SlayerTask.GARGOYLE, SlayerTask.GRIFOLAPINE, SlayerTask.GRIFOLAROO, SlayerTask.GROTWORM, SlayerTask.HARPIE_BUG_SWARM, SlayerTask.JUNGLE_STRYKEWYRM, SlayerTask.INFERNAL_MAGE, SlayerTask.JELLY, SlayerTask.JUNGLE_HORROR, SlayerTask.KALPHITE, SlayerTask.KALPHITE, SlayerTask.KURASK, SlayerTask.LESSER_DEMON, SlayerTask.ZYGOMITE, SlayerTask.SHADOW_WARRIOR, SlayerTask.TUROTH, SlayerTask.VYREWATCH, SlayerTask.WARPED_TORTOISE),
 
-		SUMONA(7780, 85, 35, new int[]
-		{ 12, 60, 180 }, new int[]
-		{ 120, 185 }, SlayerTask.ABERRANT_SPECTRE, SlayerTask.ABYSSAL_DEMON, SlayerTask.AQUANITE, SlayerTask.BANSHEE, SlayerTask.BASILISK, SlayerTask.BLACK_DEMON, SlayerTask.BLOODVELD, SlayerTask.BLUE_DRAGON, SlayerTask.CAVE_CRAWLER, SlayerTask.CAVE_HORROR, SlayerTask.DAGANNOTH, SlayerTask.DESERT_STRYKEWYRM, SlayerTask.DUST_DEVIL, SlayerTask.ELF_WARRIOR, SlayerTask.FUNGAL_MAGE, SlayerTask.GARGOYLE, SlayerTask.GREATER_DEMON, SlayerTask.GRIFOLAPINE, SlayerTask.GRIFOLAROO, SlayerTask.GROTWORM, SlayerTask.HELLHOUND, SlayerTask.IRON_DRAGON, SlayerTask.JUNGLE_STRYKEWYRM, SlayerTask.KALPHITE, SlayerTask.KURASK, SlayerTask.JADINKO, SlayerTask.NECHRYAEL, SlayerTask.RED_DRAGON, SlayerTask.SCABARITE, SlayerTask.SPIRITUAL_MAGE, SlayerTask.SPIRITUAL_WARRIOR, SlayerTask.TERROR_DOG, SlayerTask.TROLL, SlayerTask.TUROTH, SlayerTask.VYREWATCH),
+		SUMONA(7780, 85, 35, new int[] { 12, 60, 180 }, new int[] { 120, 185 }, SlayerTask.ABERRANT_SPECTRE, SlayerTask.ABYSSAL_DEMON, SlayerTask.AQUANITE, SlayerTask.BANSHEE, SlayerTask.BASILISK, SlayerTask.BLACK_DEMON, SlayerTask.BLOODVELD, SlayerTask.BLUE_DRAGON, SlayerTask.CAVE_CRAWLER, SlayerTask.CAVE_HORROR, SlayerTask.DAGANNOTH, SlayerTask.DESERT_STRYKEWYRM, SlayerTask.DUST_DEVIL, SlayerTask.ELF_WARRIOR, SlayerTask.FUNGAL_MAGE, SlayerTask.GARGOYLE, SlayerTask.GREATER_DEMON, SlayerTask.GRIFOLAPINE, SlayerTask.GRIFOLAROO, SlayerTask.GROTWORM, SlayerTask.HELLHOUND, SlayerTask.IRON_DRAGON, SlayerTask.JUNGLE_STRYKEWYRM, SlayerTask.KALPHITE, SlayerTask.KURASK, SlayerTask.JADINKO, SlayerTask.NECHRYAEL, SlayerTask.RED_DRAGON, SlayerTask.SCABARITE, SlayerTask.SPIRITUAL_MAGE, SlayerTask.SPIRITUAL_WARRIOR, SlayerTask.TERROR_DOG, SlayerTask.TROLL, SlayerTask.TUROTH, SlayerTask.VYREWATCH),
 
-		DURADEL(8466, 100, 50, new int[]
-		{ 15, 75, 225 }, new int[]
-		{ 130, 200 }, SlayerTask.ABERRANT_SPECTRE, SlayerTask.ABYSSAL_DEMON, SlayerTask.AQUANITE, SlayerTask.BLACK_DEMON, SlayerTask.BLACK_DRAGON, SlayerTask.BLOODVELD, SlayerTask.DAGANNOTH, SlayerTask.DARK_BEAST, SlayerTask.DESERT_STRYKEWYRM, SlayerTask.DUST_DEVIL, SlayerTask.FIRE_GIANT, SlayerTask.FUNGAL_MAGE, SlayerTask.GANODERMIC, SlayerTask.GARGOYLE, SlayerTask.GORAK, SlayerTask.GREATER_DEMON, SlayerTask.GRIFALOPINE, SlayerTask.GRIFALOROO, SlayerTask.GROTWORM, SlayerTask.HELLHOUND, SlayerTask.ICE_STRYKEWYRM, SlayerTask.IRON_DRAGON, SlayerTask.JUNGLE_STRYKEWYRM, SlayerTask.KALPHITE, SlayerTask.MITHRIL_DRAGON, SlayerTask.JADINKO, SlayerTask.NECHRYAEL, SlayerTask.SCABARITE, SlayerTask.SKELETAL_WYVERN, SlayerTask.SPIRITUAL_MAGE, SlayerTask.STEEL_DRAGON, SlayerTask.SUQAH, SlayerTask.VYREWATCH, SlayerTask.WARPED_TERRORBIRD, SlayerTask.WATERFIEND),
+		DURADEL(8466, 100, 50, new int[] { 15, 75, 225 }, new int[] { 130, 200 }, SlayerTask.ABERRANT_SPECTRE, SlayerTask.ABYSSAL_DEMON, SlayerTask.AQUANITE, SlayerTask.BLACK_DEMON, SlayerTask.BLACK_DRAGON, SlayerTask.BLOODVELD, SlayerTask.DAGANNOTH, SlayerTask.DARK_BEAST, SlayerTask.DESERT_STRYKEWYRM, SlayerTask.DUST_DEVIL, SlayerTask.FIRE_GIANT, SlayerTask.FUNGAL_MAGE, SlayerTask.GANODERMIC, SlayerTask.GARGOYLE, SlayerTask.GORAK, SlayerTask.GREATER_DEMON, SlayerTask.GRIFALOPINE, SlayerTask.GRIFALOROO, SlayerTask.GROTWORM, SlayerTask.HELLHOUND, SlayerTask.ICE_STRYKEWYRM, SlayerTask.IRON_DRAGON, SlayerTask.JUNGLE_STRYKEWYRM, SlayerTask.KALPHITE, SlayerTask.MITHRIL_DRAGON, SlayerTask.JADINKO, SlayerTask.NECHRYAEL, SlayerTask.SCABARITE, SlayerTask.SKELETAL_WYVERN, SlayerTask.SPIRITUAL_MAGE, SlayerTask.STEEL_DRAGON, SlayerTask.SUQAH, SlayerTask.VYREWATCH, SlayerTask.WARPED_TERRORBIRD, SlayerTask.WATERFIEND),
 
-		LAPALOK(8467, 100, 50, new int[]
-		{ 15, 75, 225 }, new int[]
-		{ 130, 200 }, SlayerTask.ABERRANT_SPECTRE, SlayerTask.ABYSSAL_DEMON, SlayerTask.AQUANITE, SlayerTask.BLACK_DEMON, SlayerTask.BLACK_DRAGON, SlayerTask.BLOODVELD, SlayerTask.DAGANNOTH, SlayerTask.DARK_BEAST, SlayerTask.DESERT_STRYKEWYRM, SlayerTask.DUST_DEVIL, SlayerTask.FIRE_GIANT, SlayerTask.FUNGAL_MAGE, SlayerTask.GANODERMIC, SlayerTask.GARGOYLE, SlayerTask.GORAK, SlayerTask.GREATER_DEMON, SlayerTask.GRIFALOPINE, SlayerTask.GRIFALOROO, SlayerTask.GROTWORM, SlayerTask.HELLHOUND, SlayerTask.ICE_STRYKEWYRM, SlayerTask.IRON_DRAGON, SlayerTask.JUNGLE_STRYKEWYRM, SlayerTask.KALPHITE, SlayerTask.MITHRIL_DRAGON, SlayerTask.JADINKO, SlayerTask.NECHRYAEL, SlayerTask.SCABARITE, SlayerTask.SKELETAL_WYVERN, SlayerTask.SPIRITUAL_MAGE, SlayerTask.STEEL_DRAGON, SlayerTask.SUQAH, SlayerTask.VYREWATCH, SlayerTask.WARPED_TERRORBIRD, SlayerTask.WATERFIEND),
+		LAPALOK(8467, 100, 50, new int[] { 15, 75, 225 }, new int[] { 130, 200 }, SlayerTask.ABERRANT_SPECTRE, SlayerTask.ABYSSAL_DEMON, SlayerTask.AQUANITE, SlayerTask.BLACK_DEMON, SlayerTask.BLACK_DRAGON, SlayerTask.BLOODVELD, SlayerTask.DAGANNOTH, SlayerTask.DARK_BEAST, SlayerTask.DESERT_STRYKEWYRM, SlayerTask.DUST_DEVIL, SlayerTask.FIRE_GIANT, SlayerTask.FUNGAL_MAGE, SlayerTask.GANODERMIC, SlayerTask.GARGOYLE, SlayerTask.GORAK, SlayerTask.GREATER_DEMON, SlayerTask.GRIFALOPINE, SlayerTask.GRIFALOROO, SlayerTask.GROTWORM, SlayerTask.HELLHOUND, SlayerTask.ICE_STRYKEWYRM, SlayerTask.IRON_DRAGON, SlayerTask.JUNGLE_STRYKEWYRM, SlayerTask.KALPHITE, SlayerTask.MITHRIL_DRAGON, SlayerTask.JADINKO, SlayerTask.NECHRYAEL, SlayerTask.SCABARITE, SlayerTask.SKELETAL_WYVERN, SlayerTask.SPIRITUAL_MAGE, SlayerTask.STEEL_DRAGON, SlayerTask.SUQAH, SlayerTask.VYREWATCH, SlayerTask.WARPED_TERRORBIRD, SlayerTask.WATERFIEND),
 
-		KURADAL(9085, 110, 75, new int[]
-		{ 18, 90, 270 }, new int[]
-		{ 120, 250 }, SlayerTask.ABERRANT_SPECTRE, SlayerTask.ABYSSAL_DEMON, SlayerTask.BLACK_DEMON, SlayerTask.BLACK_DRAGON, SlayerTask.BLOODVELD, SlayerTask.BLUE_DRAGON, SlayerTask.DAGANNOTH, SlayerTask.DARK_BEAST, SlayerTask.DESERT_STRYKEWYRM, SlayerTask.DUST_DEVIL, SlayerTask.FIRE_GIANT, SlayerTask.GANODERMIC, SlayerTask.GARGOYLE, SlayerTask.GRIFOLAPINE, SlayerTask.GRIFOLAROO, SlayerTask.GROTWORM, SlayerTask.HELLHOUND, SlayerTask.IRON_DRAGON, SlayerTask.JUNGLE_STRYKEWYRM, SlayerTask.KALPHITE, SlayerTask.LIVING_ROCK, SlayerTask.MITHRIL_DRAGON, SlayerTask.JADINKO, SlayerTask.NECHRYAEL, SlayerTask.SKELETAL_WYVERN, SlayerTask.SPIRITUAL_MAGE, SlayerTask.STEEL_DRAGON, SlayerTask.SUQAH, SlayerTask.TERROR_DOG, SlayerTask.TZHAAR, SlayerTask.TZHAAR, SlayerTask.VYREWATCH, SlayerTask.WARPED_TORTOISE, SlayerTask.WATERFIEND);
+		KURADAL(9085, 110, 75, new int[] { 18, 90, 270 }, new int[] { 120, 250 }, SlayerTask.ABERRANT_SPECTRE, SlayerTask.ABYSSAL_DEMON, SlayerTask.BLACK_DEMON, SlayerTask.BLACK_DRAGON, SlayerTask.BLOODVELD, SlayerTask.BLUE_DRAGON, SlayerTask.DAGANNOTH, SlayerTask.DARK_BEAST, SlayerTask.DESERT_STRYKEWYRM, SlayerTask.DUST_DEVIL, SlayerTask.FIRE_GIANT, SlayerTask.GANODERMIC, SlayerTask.GARGOYLE, SlayerTask.GRIFOLAPINE, SlayerTask.GRIFOLAROO, SlayerTask.GROTWORM, SlayerTask.HELLHOUND, SlayerTask.IRON_DRAGON, SlayerTask.JUNGLE_STRYKEWYRM, SlayerTask.KALPHITE, SlayerTask.LIVING_ROCK, SlayerTask.MITHRIL_DRAGON, SlayerTask.JADINKO, SlayerTask.NECHRYAEL, SlayerTask.SKELETAL_WYVERN, SlayerTask.SPIRITUAL_MAGE, SlayerTask.STEEL_DRAGON, SlayerTask.SUQAH, SlayerTask.TERROR_DOG, SlayerTask.TZHAAR, SlayerTask.TZHAAR, SlayerTask.VYREWATCH, SlayerTask.WARPED_TORTOISE, SlayerTask.WATERFIEND);
 
 		private SlayerTask[] task;
 		private int[] tasksRange, pointsRange;
@@ -118,16 +98,13 @@ public class Slayer {
 
 	public enum SlayerTask implements Serializable {// 79 matches out of 117
 
-		MIGHTY_BANSHEE(37, new String[]
-		{ "Banshees are fearsome creatures with a mighty scream.", " You need something to cover your ears", "Beware of their scream.", "Banshees are found in the Slayer Tower." }),
+		MIGHTY_BANSHEE(37, new String[] { "Banshees are fearsome creatures with a mighty scream.", " You need something to cover your ears", "Beware of their scream.", "Banshees are found in the Slayer Tower." }),
 
 		// finished
-		MIGHTY_BANSEE(37, new String[]
-		{ "Banshees are fearsome creatures with a mighty scream.", " You need something to cover your ears", "Beware of their scream.", "Banshees are found in the Slayer Tower." }, MIGHTY_BANSHEE),
+		MIGHTY_BANSEE(37, new String[] { "Banshees are fearsome creatures with a mighty scream.", " You need something to cover your ears", "Beware of their scream.", "Banshees are found in the Slayer Tower." }, MIGHTY_BANSHEE),
 
 		// finished
-		BANSHEE(15, new String[]
-		{ "Banshees are fearsome creatures with a mighty scream.", " You need something to cover your ears", "Beware of their scream.", "Banshees are found in the Slayer Tower." }, MIGHTY_BANSEE),
+		BANSHEE(15, new String[] { "Banshees are fearsome creatures with a mighty scream.", " You need something to cover your ears", "Beware of their scream.", "Banshees are found in the Slayer Tower." }, MIGHTY_BANSEE),
 
 		// finished
 		BAT(1, new String[] {}),
@@ -144,12 +121,7 @@ public class Slayer {
 		DUCK(1, new String[] {}),
 
 		// finished
-		BIRD(1, new String[]
-		{
-			"Birds are a type of species found throughout Matrix in different forms.",
-			"It's recomended that you bring range weapons to fight these monsters.",
-			"Avansies are the strongest and most widely known type of bird.",
-			"Chickens are great for a fast task." }, AVIANSIE, CHICKEN, CHOMPY_BIRD, DUCK),
+		BIRD(1, new String[] { "Birds are a type of species found throughout Matrix in different forms.", "It's recomended that you bring range weapons to fight these monsters.", "Avansies are the strongest and most widely known type of bird.", "Chickens are great for a fast task." }, AVIANSIE, CHICKEN, CHOMPY_BIRD, DUCK),
 
 		// finished
 		BEAR(1, new String[] {}),
@@ -175,7 +147,7 @@ public class Slayer {
 		// finished
 		DWARF(1, new String[] {}),
 
-		//finished
+		// finished
 		LIZARD(22, null),
 
 		// finished
@@ -385,9 +357,7 @@ public class Slayer {
 		// finished
 		ZYGOMITE(57, new String[] {}, FUNGI),
 
-		VYRELORD(31, 0.68, new String[] {}),
-		VYRELADY(31, 0.68, new String[] {}),
-		VYREWATCH(31, 0.68, new String[] {}, VYRELORD, VYRELADY),
+		VYRELORD(31, 0.68, new String[] {}), VYRELADY(31, 0.68, new String[] {}), VYREWATCH(31, 0.68, new String[] {}, VYRELORD, VYRELADY),
 
 		// finished
 		WARPED_TORTOISE(56, new String[] {}),
@@ -412,23 +382,18 @@ public class Slayer {
 
 		// finished
 		IRON_DRAGON(1, 0.468, new String[] {}),
-		
-		MUTATED_JADINKO_MALE(91, 0.88, new String[] {}),
-		MUTATED_JADINKO_GAURD(86, 0.88, new String[] {}),
-		MUTATED_JADINKO_BABY(80, 0.88, new String[] {}),
+
+		MUTATED_JADINKO_MALE(91, 0.88, new String[] {}), MUTATED_JADINKO_GAURD(86, 0.88, new String[] {}), MUTATED_JADINKO_BABY(80, 0.88, new String[] {}),
 
 		JADINKO(1, 0.88, new String[] {}, MUTATED_JADINKO_MALE, MUTATED_JADINKO_GAURD, MUTATED_JADINKO_BABY),
-		
+
 		// finished
 		NECHRYAEL(80, 0.88, new String[] {}),
 
 		// finished
 		RED_DRAGON(1, 0.43, new String[] {}),
 
-		LOCUST(1, 0.4, new String[] {}),
-		SCABARAS(1, 0.4, new String[] {}),
-		SCARAB(1, 0.4, new String[] {}),
-		SCABARITE(1, 0.4, new String[] {}, LOCUST, SCABARAS, SCARAB),
+		LOCUST(1, 0.4, new String[] {}), SCABARAS(1, 0.4, new String[] {}), SCARAB(1, 0.4, new String[] {}), SCABARITE(1, 0.4, new String[] {}, LOCUST, SCABARAS, SCARAB),
 
 		// finished
 		SPIRITUAL_MAGE(83, 0.96, new String[] {}),
@@ -440,8 +405,7 @@ public class Slayer {
 		TERROR_DOG(40, 0.28, new String[] {}),
 
 		// a stupid troll at death plateau
-		ROCK(1, 1.033, new String[] {}),
-		TROLL(1, 1.033, new String[] {}, ROCK),
+		ROCK(1, 1.033, new String[] {}), TROLL(1, 1.033, new String[] {}, ROCK),
 
 		// finished
 		BLACK_DRAGON(1, 0.36, new String[] {}),
@@ -624,10 +588,8 @@ public class Slayer {
 		return requestedId >= 8901 && requestedId <= 8920;
 	}
 
-	private static final int[] SLAYER_HELMET_PARTS =
-	{ 8921, 4166, 4164, 4551, 4168 };
-	private static final int[] FULL_SLAYER_HELMET_PARTS =
-	{ 13263, 15490, 15488 };
+	private static final int[] SLAYER_HELMET_PARTS = { 8921, 4166, 4164, 4551, 4168 };
+	private static final int[] FULL_SLAYER_HELMET_PARTS = { 13263, 15490, 15488 };
 
 	public static boolean createSlayerHelmet(Player player, int itemUsed, int itemUsedWith) {
 		if (itemUsed == itemUsedWith)

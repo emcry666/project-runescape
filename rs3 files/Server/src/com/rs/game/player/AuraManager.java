@@ -71,11 +71,15 @@ public class AuraManager implements Serializable {
 			player.getAppearence().generateAppearenceData();
 		} else {
 			if (activation != 0) {
-				player.getPackets().sendGameMessage("Your aura is already activated."); // TODO real message
+				player.getPackets().sendGameMessage("Your aura is already activated."); // TODO
+				// real
+				// message
 				return;
 			}
 			if (Utils.currentTimeMillis() <= getCoolDown(item.getId())) {
-				player.getPackets().sendGameMessage("Your aura did not recharge yet."); // TODO real message
+				player.getPackets().sendGameMessage("Your aura did not recharge yet."); // TODO
+				// real
+				// message
 				return;
 			}
 			int tier = getTier(item.getId());
@@ -163,14 +167,11 @@ public class AuraManager implements Serializable {
 	}
 
 	/*
-	 * 16449 - Corruption 16464 - Greater corruption 16429 - SlayerMasterD corruption
-	 * 68615 - Supreme corruption
+	 * 16449 - Corruption 16464 - Greater corruption 16429 - SlayerMasterD corruption 68615 - Supreme corruption
 	 * 
-	 * 16465 - Salvation 16524 - Greater salvation 16450 - SlayerMasterD salvation
-	 * 68611 - supreme salvation.
+	 * 16465 - Salvation 16524 - Greater salvation 16450 - SlayerMasterD salvation 68611 - supreme salvation.
 	 * 
-	 * 68605 - Harmony. 68610 - Greater harmony. 68607 - SlayerMasterD harmony. 68613 -
-	 * Supreme harmony.
+	 * 68605 - Harmony. 68610 - Greater harmony. 68607 - SlayerMasterD harmony. 68613 - Supreme harmony.
 	 */
 	public int getAuraModelId2() {
 		int aura = player.getEquipment().getAuraId();
@@ -366,8 +367,7 @@ public class AuraManager implements Serializable {
 	}
 
 	/**
-	 * Gets the amount of prayer points to restore (when getting 500 prayer
-	 * experience).
+	 * Gets the amount of prayer points to restore (when getting 500 prayer experience).
 	 * 
 	 * @return The prayer restoration multiplier.
 	 */
@@ -503,7 +503,7 @@ public class AuraManager implements Serializable {
 			return 86400; // 24hours
 		default:
 			return 10800; // default 3 hours - stated on
-			// www.runescape.wikia.com/wiki/Aura
+		// www.runescape.wikia.com/wiki/Aura
 		}
 	}
 

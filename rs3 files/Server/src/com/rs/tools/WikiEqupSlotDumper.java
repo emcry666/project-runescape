@@ -57,9 +57,8 @@ public class WikiEqupSlotDumper {
 			return new EquipSlot(id, SlotType.LEGWEAR_SLOT);
 		} else if (line.equals("Head slot")) {
 			/*
-			 * if (Equipment.isFullHat(item)) new EquipSlot(id,
-			 * SlotType.FULL_HELMET); else if (Equipment.isFullMask(item))
-			 * return new EquipSlot(id, SlotType.FULL_MASK);
+			 * if (Equipment.isFullHat(item)) new EquipSlot(id, SlotType.FULL_HELMET); else if
+			 * (Equipment.isFullMask(item)) return new EquipSlot(id, SlotType.FULL_MASK);
 			 */
 			return new EquipSlot(id, SlotType.HEAD_SLOT);
 		} else if (line.equals("Shield slot")) {

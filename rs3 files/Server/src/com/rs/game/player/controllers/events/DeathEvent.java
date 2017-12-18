@@ -24,62 +24,45 @@ import com.rs.utils.Logger;
 import com.rs.utils.Utils;
 
 public class DeathEvent extends Controller {
-	public static final WorldTile[] HUBS =
-	{
-		//Lumbridge
-		new WorldTile(3222, 3219, 0)
-		//Varrock
-		,
-		new WorldTile(3212, 3422, 0)
-		//EDGEVILLE
-		,
-		new WorldTile(3094, 3502, 0)
-		//FALADOR
-		,
-		new WorldTile(2965, 3386, 0)
-		//SEERS VILLAGE
-		,
-		new WorldTile(2725, 3491, 0)
-		//ARDOUDGE
-		,
-		new WorldTile(2662, 3305, 0)
-		//YANNILE
-		,
-		new WorldTile(2605, 3093, 0)
-		//KELDAGRIM
-		,
-		new WorldTile(2845, 10210, 0)
-		//DORGESH-KAN
-		,
-		new WorldTile(2720, 5351, 0)
-		//LYETYA
-		,
-		new WorldTile(2341, 3171, 0)
-		//ETCETERIA
-		,
-		new WorldTile(2609, 3891, 0)
-		//DAEMONHEIM
-		,
-		new WorldTile(3450, 3718, 0)
-		//CANIFIS
-		,
-		new WorldTile(3496, 3489, 0)
-		//THZAAR AREA
-		,
-		new WorldTile(4651, 5151, 0)
-		//BURTHORPE
-		,
-		new WorldTile(2889, 3528, 0)
-		//ALKARID
-		,
-		new WorldTile(3275, 3166, 0)
-		//DRAYNOR VILLAGE
-		,
-		new WorldTile(3079, 3250, 0) };
+	public static final WorldTile[] HUBS = {
+			// Lumbridge
+			new WorldTile(3222, 3219, 0)
+			// Varrock
+			, new WorldTile(3212, 3422, 0)
+			// EDGEVILLE
+			, new WorldTile(3094, 3502, 0)
+			// FALADOR
+			, new WorldTile(2965, 3386, 0)
+			// SEERS VILLAGE
+			, new WorldTile(2725, 3491, 0)
+			// ARDOUDGE
+			, new WorldTile(2662, 3305, 0)
+			// YANNILE
+			, new WorldTile(2605, 3093, 0)
+			// KELDAGRIM
+			, new WorldTile(2845, 10210, 0)
+			// DORGESH-KAN
+			, new WorldTile(2720, 5351, 0)
+			// LYETYA
+			, new WorldTile(2341, 3171, 0)
+			// ETCETERIA
+			, new WorldTile(2609, 3891, 0)
+			// DAEMONHEIM
+			, new WorldTile(3450, 3718, 0)
+			// CANIFIS
+			, new WorldTile(3496, 3489, 0)
+			// THZAAR AREA
+			, new WorldTile(4651, 5151, 0)
+			// BURTHORPE
+			, new WorldTile(2889, 3528, 0)
+			// ALKARID
+			, new WorldTile(3275, 3166, 0)
+			// DRAYNOR VILLAGE
+			, new WorldTile(3079, 3250, 0) };
 
-	//3796 - 0 - Lumbridge Castle - {1=Falador Castle, 2=Camelot, 3=Soul Wars, 4=Burthorpe}
-	public static final WorldTile[] RESPAWN_LOCATIONS =
-	{ new WorldTile(3222, 3219, 0), new WorldTile(2971, 3343, 0), new WorldTile(2758, 3486, 0), new WorldTile(1891, 3177, 0), new WorldTile(2889, 3528, 0) };
+	// 3796 - 0 - Lumbridge Castle - {1=Falador Castle, 2=Camelot, 3=Soul Wars,
+	// 4=Burthorpe}
+	public static final WorldTile[] RESPAWN_LOCATIONS = { new WorldTile(3222, 3219, 0), new WorldTile(2971, 3343, 0), new WorldTile(2758, 3486, 0), new WorldTile(1891, 3177, 0), new WorldTile(2889, 3528, 0) };
 
 	public static int getCurrentHub(WorldTile tile) {
 		int nearestHub = -1;
@@ -151,20 +134,10 @@ public class DeathEvent extends Controller {
 	public void sendInterfaces() {
 		lockInterfaces(true);
 	}
-	
+
 	/*
-	 * 0 - skill inter
-	 * 1 - active task
-	 * 2 - inventory
-	 * 3 - equipment
-	 * 4 - prayer book
-	 * 5 - abilities
-	 * 9 - emotes
-	 * 14 - friend list
-	 * 15 - friend chat info
-	 * 16 - clan
-	 * 18 - chat
-	 * 19 - friend chat
+	 * 0 - skill inter 1 - active task 2 - inventory 3 - equipment 4 - prayer book 5 - abilities 9 - emotes 14 -
+	 * friend list 15 - friend chat info 16 - clan 18 - chat 19 - friend chat
 	 */
 	public void lockInterfaces(boolean lock) {
 		player.getInterfaceManager().sendLockGameTab(InterfaceManager.SKILLS_TAB, lock);
@@ -191,7 +164,8 @@ public class DeathEvent extends Controller {
 					player.giveXP();
 					player.reset();
 					player.setNextWorldTile(new WorldTile(boundChuncks[0] * 8 + 10, boundChuncks[1] * 8 + 6, 0));
-					// 1delay because player cant walk while teleing :p, + possible
+					// 1delay because player cant walk while teleing :p, +
+					// possible
 					// issues avoid
 					WorldTasksManager.schedule(new WorldTask() {
 						@Override
@@ -248,7 +222,7 @@ public class DeathEvent extends Controller {
 				if (packetId == WorldPacketsDecoder.ACTION_BUTTON1_PACKET)
 					protect(slotId2);
 			} else if (componentId == 45) {
-				//slotid - 1
+				// slotid - 1
 				if (slotId > RESPAWN_LOCATIONS.length || slotId == 0)
 					return false;
 				currentHub = 255 + slotId;
@@ -268,7 +242,8 @@ public class DeathEvent extends Controller {
 			player.getVarsManager().sendVarBitOld(9222, -1);
 			player.getVarsManager().sendVarBitOld(9227, 1);
 		}
-		player.getVarsManager().sendVarBitOld(668, 1); //unlocks camelot respawn spot
+		player.getVarsManager().sendVarBitOld(668, 1); // unlocks camelot
+		// respawn spot
 		player.getVarsManager().sendVarOld(105, -1);
 		player.getVarsManager().sendVarBitOld(9231, currentHub = getCurrentHub(getDeathTile()));
 		player.getPackets().sendUnlockIComponentOptionSlots(18, 9, 0, slots[0].length, 0);
@@ -300,7 +275,7 @@ public class DeathEvent extends Controller {
 			int slot = -1;
 			for (int i = 0; i < slots[1].length; i++) {
 
-				Item item = slots[1][i] >= (BodyDefinitions.getEquipmentContainerSize()+1) ? player.getInventory().getItem(slots[1][i] - (BodyDefinitions.getEquipmentContainerSize()+1)) : player.getEquipment().getItem(slots[1][i] - 1);
+				Item item = slots[1][i] >= (BodyDefinitions.getEquipmentContainerSize() + 1) ? player.getInventory().getItem(slots[1][i] - (BodyDefinitions.getEquipmentContainerSize() + 1)) : player.getEquipment().getItem(slots[1][i] - 1);
 				if (item == null)
 					continue;
 				if (item.getId() == itemId) {

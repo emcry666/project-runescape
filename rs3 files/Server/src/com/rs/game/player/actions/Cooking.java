@@ -268,24 +268,22 @@ public class Cooking extends Action {
 	public static Cookables isCookingSkill(Item item) {
 		return Cookables.forId((short) item.getId());
 	}
-	
-	
+
 	public static Cookables getCook(Player player) {
-		for(Cookables c : Cookables.values()) {
-			if(player.getInventory().containsOneItem(c.raw.getId()))
+		for (Cookables c : Cookables.values()) {
+			if (player.getInventory().containsOneItem(c.raw.getId()))
 				return c;
 		}
 		return Cookables.RAW_CHICKEN;
 	}
-	
+
 	public static Cookables getCookForProduce(int id) {
-		for(Cookables c : Cookables.values()) {
-			if(c.getProduct().getId() == id)
+		for (Cookables c : Cookables.values()) {
+			if (c.getProduct().getId() == id)
 				return c;
 		}
 		return null;
 	}
-	
 
 	@Override
 	public boolean process(Player player) {

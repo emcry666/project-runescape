@@ -14,14 +14,12 @@ public class CorporealBeastScene extends Cutscene {
 	public boolean hiddenMinimap() {
 		return true;
 	}
-	
-	
+
 	@Override
 	public boolean allowSkipCutscene() {
 		return false;
 	}
-	
-	
+
 	@Override
 	public CutsceneAction[] getActions(Player player) {
 		ArrayList<CutsceneAction> actionsList = new ArrayList<CutsceneAction>();

@@ -57,8 +57,7 @@ public final class ClanWars implements Serializable {
 		/**
 		 * Constructs a new {@code Rules} {@code Object}.
 		 * 
-		 * @param configId
-		 *            The config id.
+		 * @param configId The config id.
 		 */
 		private Rules(int configId) {
 			this.configId = configId;
@@ -129,7 +128,7 @@ public final class ClanWars implements Serializable {
 	 * The amount of kills done.
 	 */
 	private transient int kills = 0;
-	
+
 	private transient WorldTile[] views;
 
 	private boolean ended;
@@ -137,10 +136,8 @@ public final class ClanWars implements Serializable {
 	/**
 	 * Constructs a new {@code ClanWars} {@code Object}.
 	 * 
-	 * @param first
-	 *            The first team.
-	 * @param second
-	 *            The second team.
+	 * @param first The first team.
+	 * @param second The second team.
 	 */
 	public ClanWars(FriendsChat first, FriendsChat second) {
 		this.firstTeam = first;
@@ -148,13 +145,10 @@ public final class ClanWars implements Serializable {
 	}
 
 	/**
-	 * Flags a rule if the rule was previously inactivated, unflags the rule if
-	 * the rule was previously activated.
+	 * Flags a rule if the rule was previously inactivated, unflags the rule if the rule was previously activated.
 	 * 
-	 * @param rule
-	 *            The rule to switch.
-	 * @param player
-	 *            The player switching the rule.
+	 * @param rule The rule to switch.
+	 * @param player The player switching the rule.
 	 */
 	public void switchRule(Rules rule, Player player) {
 		Player other = (Player) player.getTemporaryAttributtes().get("clan_request_p");
@@ -182,14 +176,10 @@ public final class ClanWars implements Serializable {
 	/**
 	 * Sends a config to both the players.
 	 * 
-	 * @param player
-	 *            The first player.
-	 * @param other
-	 *            The other player.
-	 * @param configId
-	 *            The config id.
-	 * @param value
-	 *            The value.
+	 * @param player The first player.
+	 * @param other The other player.
+	 * @param configId The config id.
+	 * @param value The value.
 	 */
 	public static void sendConfig(Player player, Player other, int configId, int value) {
 		boolean resetAccept = false;
@@ -225,8 +215,7 @@ public final class ClanWars implements Serializable {
 	/**
 	 * Sends the victory type configuration.
 	 * 
-	 * @param p
-	 *            The player.
+	 * @param p The player.
 	 */
 	private void sendVictoryConfiguration(Player p) {
 		switch (victoryType) {
@@ -272,8 +261,7 @@ public final class ClanWars implements Serializable {
 	/**
 	 * Sends the time configuration.
 	 * 
-	 * @param p
-	 *            The player.
+	 * @param p The player.
 	 */
 	private void sendTimeConfiguration(Player p) {
 		switch (timeLeft) {
@@ -322,8 +310,7 @@ public final class ClanWars implements Serializable {
 	/**
 	 * Checks if a rule has been activated.
 	 * 
-	 * @param rule
-	 *            The rule to check.
+	 * @param rule The rule to check.
 	 * @return {@code True} if so.
 	 */
 	public boolean get(Rules rule) {
@@ -351,8 +338,7 @@ public final class ClanWars implements Serializable {
 	/**
 	 * Sends the interface for challenge request.
 	 * 
-	 * @param p
-	 *            The player to send to interface to.
+	 * @param p The player to send to interface to.
 	 * @param other
 	 */
 	public void sendInterface(final Player p, final Player other) {
@@ -381,8 +367,7 @@ public final class ClanWars implements Serializable {
 	/**
 	 * Called when the player accepts the challenge terms.
 	 * 
-	 * @param player
-	 *            The player.
+	 * @param player The player.
 	 */
 	public void accept(final Player player) {
 		final Player other = (Player) player.getTemporaryAttributtes().get("clan_request_p");
@@ -457,8 +442,7 @@ public final class ClanWars implements Serializable {
 	/**
 	 * Enters the purple portal.
 	 * 
-	 * @param p
-	 *            The player.
+	 * @param p The player.
 	 */
 	public static boolean enter(Player p, Player friend, boolean viewing) {
 		boolean hasWar = friend.getCurrentFriendsChat() != null && friend.getCurrentFriendsChat().getClanWars() != null;
@@ -519,7 +503,7 @@ public final class ClanWars implements Serializable {
 	public static final WorldTile OUTSIDE = new WorldTile(2992, 9676, 0);;
 
 	/*
-	 *  0 - leave normaly, 1 - teleported - 2 - leave logout
+	 * 0 - leave normaly, 1 - teleported - 2 - leave logout
 	 */
 	public void leave(Player p, int type) {
 		p.lock(3);
@@ -710,12 +694,9 @@ public final class ClanWars implements Serializable {
 	/**
 	 * Sets the victoryType.
 	 * 
-	 * @param victoryType
-	 *            The victoryType to set.
-	 * @param p
-	 *            The player.
-	 * @param other
-	 *            The other player.
+	 * @param victoryType The victoryType to set.
+	 * @param p The player.
+	 * @param other The other player.
 	 */
 	public void setVictoryType(int victoryType, Player p, Player other) {
 		this.victoryType = victoryType;
@@ -735,12 +716,9 @@ public final class ClanWars implements Serializable {
 	/**
 	 * Sets the timeLeft.
 	 * 
-	 * @param timeLeft
-	 *            The timeLeft to set.
-	 * @param p
-	 *            The player.
-	 * @param other
-	 *            The other player.
+	 * @param timeLeft The timeLeft to set.
+	 * @param p The player.
+	 * @param other The other player.
 	 */
 	public void setTimeLeft(int timeLeft, Player p, Player other) {
 		this.timeLeft = timeLeft;
@@ -787,8 +765,7 @@ public final class ClanWars implements Serializable {
 	/**
 	 * Sets the areaType.
 	 * 
-	 * @param areaType
-	 *            The areaType to set.
+	 * @param areaType The areaType to set.
 	 */
 	public void setAreaType(AreaType areaType) {
 		this.areaType = areaType;
@@ -806,8 +783,7 @@ public final class ClanWars implements Serializable {
 	/**
 	 * Sets the magicRuleCount.
 	 * 
-	 * @param magicRuleCount
-	 *            The magicRuleCount to set.
+	 * @param magicRuleCount The magicRuleCount to set.
 	 */
 	public void setMagicRuleCount(int magicRuleCount) {
 		this.magicRuleCount = magicRuleCount;
@@ -825,8 +801,7 @@ public final class ClanWars implements Serializable {
 	/**
 	 * Sets the baseLocation.
 	 * 
-	 * @param baseLocation
-	 *            The baseLocation to set.
+	 * @param baseLocation The baseLocation to set.
 	 */
 	public void setBaseLocation(WorldTile baseLocation) {
 		this.baseLocation = baseLocation;
@@ -844,8 +819,7 @@ public final class ClanWars implements Serializable {
 	/**
 	 * Sets the wallObjects.
 	 * 
-	 * @param wallObjects
-	 *            The wallObjects to set.
+	 * @param wallObjects The wallObjects to set.
 	 */
 	public void setWallObjects(List<WorldObject> wallObjects) {
 		this.wallObjects = wallObjects;
@@ -902,8 +876,7 @@ public final class ClanWars implements Serializable {
 	/**
 	 * Sets the current kills.
 	 * 
-	 * @param kills
-	 *            The kills.
+	 * @param kills The kills.
 	 */
 	public void setKills(int kills) {
 		this.kills = kills;

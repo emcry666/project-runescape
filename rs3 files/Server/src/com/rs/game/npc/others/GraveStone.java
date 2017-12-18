@@ -69,12 +69,11 @@ public class GraveStone extends NPC {// 652 - gravestone selection interface
 		player.getPackets().sendGameMessage("Your items have been dropped at your gravestone, where they'll remain until it crumbles. Look at the world map to help find your gravestone.");
 		player.getPackets().sendGameMessage("It looks like it'll survive another " + (ticks / 100) + " minutes.");
 	}
-	
-	
+
 	public static void linkPlayer(Player player) {
 		synchronized (gravestones) {
 			GraveStone gravestone = getGraveStoneByUsername(player.getUsername());
-			if(gravestone == null)
+			if (gravestone == null)
 				return;
 			gravestone.setPlayer(player);
 		}
@@ -87,7 +86,7 @@ public class GraveStone extends NPC {// 652 - gravestone selection interface
 		player.getPackets().sendCSVarInteger(624, 0);
 		player.getPackets().sendCSVarString(53, "Your gravestone marker");
 	}
-	
+
 	@Override
 	public void processNPC() {
 		ticks--;
@@ -256,16 +255,15 @@ public class GraveStone extends NPC {// 652 - gravestone selection interface
 	}
 
 	/*
-	 * the final items after swaping slots
-	 * return keptItems, dropedItems
-	 * as we reset inv and equipment all others will just disapear
+	 * the final items after swaping slots return keptItems, dropedItems as we reset inv and equipment all others
+	 * will just disapear
 	 */
 	public static Item[][] getItemsKeptOnDeath(Player player, Integer[][] slots) {
 		ArrayList<Item> droppedItems = new ArrayList<Item>();
 		ArrayList<Item> keptItems = new ArrayList<Item>();
-		for (int i : slots[0]) { //items kept on death
-			Item item = i >= (BodyDefinitions.getEquipmentContainerSize()+1) ? player.getInventory().getItem(i - (BodyDefinitions.getEquipmentContainerSize()+1)) : player.getEquipment().getItem(i - 1);
-			if (item == null) //shouldn't
+		for (int i : slots[0]) { // items kept on death
+			Item item = i >= (BodyDefinitions.getEquipmentContainerSize() + 1) ? player.getInventory().getItem(i - (BodyDefinitions.getEquipmentContainerSize() + 1)) : player.getEquipment().getItem(i - 1);
+			if (item == null) // shouldn't
 				continue;
 			item = new Item(item.getId(), item.getAmount());
 			if (item.getAmount() > 1) {
@@ -274,34 +272,34 @@ public class GraveStone extends NPC {// 652 - gravestone selection interface
 			}
 			keptItems.add(item);
 		}
-		for (int i : slots[1]) { //items droped on death
-			Item item = i >= (BodyDefinitions.getEquipmentContainerSize()+1) ? player.getInventory().getItem(i - (BodyDefinitions.getEquipmentContainerSize()+1)) : player.getEquipment().getItem(i - 1);
-			if (item == null) //shouldnt
+		for (int i : slots[1]) { // items droped on death
+			Item item = i >= (BodyDefinitions.getEquipmentContainerSize() + 1) ? player.getInventory().getItem(i - (BodyDefinitions.getEquipmentContainerSize() + 1)) : player.getEquipment().getItem(i - 1);
+			if (item == null) // shouldnt
 				continue;
 			item = new Item(item.getId(), item.getAmount());
 			droppedItems.add(item);
 		}
-		for (int i : slots[2]) { //items protected by default
-			Item item = i >= (BodyDefinitions.getEquipmentContainerSize()+1) ? player.getInventory().getItem(i - (BodyDefinitions.getEquipmentContainerSize()+1)) : player.getEquipment().getItem(i - 1);
-			if (item == null) //shouldnt
+		for (int i : slots[2]) { // items protected by default
+			Item item = i >= (BodyDefinitions.getEquipmentContainerSize() + 1) ? player.getInventory().getItem(i - (BodyDefinitions.getEquipmentContainerSize() + 1)) : player.getEquipment().getItem(i - 1);
+			if (item == null) // shouldnt
 				continue;
 			item = new Item(item.getId(), item.getAmount());
 			keptItems.add(item);
 		}
-		return new Item[][]
-		{ keptItems.toArray(new Item[keptItems.size()]), droppedItems.toArray(new Item[droppedItems.size()]) };
+		return new Item[][] { keptItems.toArray(new Item[keptItems.size()]), droppedItems.toArray(new Item[droppedItems.size()]) };
 
 	}
 
 	/*
-	 * return arrays: items kept on death by default, items dropped on death by default, items protected by default, items lost by default
+	 * return arrays: items kept on death by default, items dropped on death by default, items protected by
+	 * default, items lost by default
 	 */
 	public static Integer[][] getItemSlotsKeptOnDeath(final Player player, boolean atWilderness, boolean skulled, boolean protectPrayer) {
 		ArrayList<Integer> droppedItems = new ArrayList<Integer>();
 		ArrayList<Integer> protectedItems = atWilderness ? null : new ArrayList<Integer>();
 		ArrayList<Integer> lostItems = new ArrayList<Integer>();
 		for (int i = 1; i < 46; i++) {
-			Item item = i >= (BodyDefinitions.getEquipmentContainerSize()+1) ? player.getInventory().getItem(i - (BodyDefinitions.getEquipmentContainerSize()+1)) : player.getEquipment().getItem(i - 1);
+			Item item = i >= (BodyDefinitions.getEquipmentContainerSize() + 1) ? player.getInventory().getItem(i - (BodyDefinitions.getEquipmentContainerSize() + 1)) : player.getEquipment().getItem(i - 1);
 			if (item == null)
 				continue;
 			int stageOnDeath = item.getDefinitions().getStageOnDeath();
@@ -320,8 +318,8 @@ public class GraveStone extends NPC {// 652 - gravestone selection interface
 		Collections.sort(droppedItems, new Comparator<Integer>() {
 			@Override
 			public int compare(Integer o1, Integer o2) {
-				Item i1 = o1 >= (BodyDefinitions.getEquipmentContainerSize()+1) ? player.getInventory().getItem(o1 - (BodyDefinitions.getEquipmentContainerSize()+1)) : player.getEquipment().getItem(o1 - 1);
-				Item i2 = o2 >= (BodyDefinitions.getEquipmentContainerSize()+1) ? player.getInventory().getItem(o2 - (BodyDefinitions.getEquipmentContainerSize()+1)) : player.getEquipment().getItem(o2 - 1);
+				Item i1 = o1 >= (BodyDefinitions.getEquipmentContainerSize() + 1) ? player.getInventory().getItem(o1 - (BodyDefinitions.getEquipmentContainerSize() + 1)) : player.getEquipment().getItem(o1 - 1);
+				Item i2 = o2 >= (BodyDefinitions.getEquipmentContainerSize() + 1) ? player.getInventory().getItem(o2 - (BodyDefinitions.getEquipmentContainerSize() + 1)) : player.getEquipment().getItem(o2 - 1);
 				int price1 = i1 == null ? 0 : Settings.USE_GE_PRICES_FOR_ITEMS_KEPT_ON_DEATH ? GrandExchange.getPrice(i1.getId()) : i1.getDefinitions().value;
 				int price2 = i2 == null ? 0 : Settings.USE_GE_PRICES_FOR_ITEMS_KEPT_ON_DEATH ? GrandExchange.getPrice(i2.getId()) : i2.getDefinitions().value;
 				if (price1 > price2)
@@ -335,12 +333,7 @@ public class GraveStone extends NPC {// 652 - gravestone selection interface
 		Integer[] keptItems = new Integer[keptAmount];
 		for (int i = 0; i < keptAmount; i++)
 			keptItems[i] = droppedItems.remove(0);
-		return new Integer[][]
-		{
-			keptItems,
-			droppedItems.toArray(new Integer[droppedItems.size()]),
-			atWilderness ? new Integer[0] : protectedItems.toArray(new Integer[protectedItems.size()]),
-			atWilderness ? new Integer[0] : lostItems.toArray(new Integer[lostItems.size()]) };
+		return new Integer[][] { keptItems, droppedItems.toArray(new Integer[droppedItems.size()]), atWilderness ? new Integer[0] : protectedItems.toArray(new Integer[protectedItems.size()]), atWilderness ? new Integer[0] : lostItems.toArray(new Integer[lostItems.size()]) };
 
 	}
 

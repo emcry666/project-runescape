@@ -9,7 +9,6 @@ import com.rs.game.player.Skills;
 
 public class ShootingStarMining extends MiningBase {
 
-
 	private WorldObject rock;
 	private PickAxeDefinitions axeDefinitions;
 
@@ -28,7 +27,7 @@ public class ShootingStarMining extends MiningBase {
 	}
 
 	private int getMiningDelay(Player player) {
-		return ShootingStars.getStarSize()*2;
+		return ShootingStars.getStarSize() * 2;
 	}
 
 	private boolean checkAll(Player player) {
@@ -73,7 +72,7 @@ public class ShootingStarMining extends MiningBase {
 
 	private void addOre(Player player) {
 		player.getSkills().addXp(Skills.MINING, ShootingStars.getXP());
-		if(!player.getInventory().containsItem(ShootingStars.STARDUST, 200))
+		if (!player.getInventory().containsItem(ShootingStars.STARDUST, 200))
 			player.getInventory().addItem(ShootingStars.STARDUST, 1);
 		player.getPackets().sendGameMessage("You mine some stardust.", true);
 		ShootingStars.reduceStarLife();

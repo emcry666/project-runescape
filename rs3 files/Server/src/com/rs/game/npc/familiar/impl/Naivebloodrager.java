@@ -41,7 +41,7 @@ public class Naivebloodrager extends Familiar {
 	}
 
 	@Override
-	public boolean submitSpecial(Object object) {//COMBAT SPECIAL
+	public boolean submitSpecial(Object object) {// COMBAT SPECIAL
 		setNextGraphics(new Graphics(2445));
 		getOwner().setNextGraphics(new Graphics(1316));
 		getOwner().setNextAnimation(new Animation(7660));

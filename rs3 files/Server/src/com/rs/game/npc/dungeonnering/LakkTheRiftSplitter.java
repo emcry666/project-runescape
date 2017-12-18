@@ -20,8 +20,7 @@ import com.rs.utils.Utils;
 @SuppressWarnings("serial")
 public class LakkTheRiftSplitter extends DungeonBoss {
 
-	private static final int[] RAIN_GRAPHICS =
-	{ 2581, 2583, 2585 };
+	private static final int[] RAIN_GRAPHICS = { 2581, 2583, 2585 };
 
 	private List<PortalCluster> clusters;
 

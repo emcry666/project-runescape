@@ -14,27 +14,8 @@ import com.rs.utils.Utils;
 @SuppressWarnings("serial")
 public class YkLagorThunderous extends DungeonBoss {
 
-	private static int[][] BROKEN_FLOORS_TILES =
-	{
-	{ 5, 11 },
-	{ 2, 13 },
-	{ 10, 11 },
-	{ 13, 12 },
-	{ 11, 8 },
-	{ 11, 6 },
-	{ 13, 4 },
-	{ 9, 5 },
-	{ 10, 3 },
-	{ 3, 3 },
-	{ 4, 9 },
-	{ 7, 4 },
-	{ 4, 6 } };
-	private static int[][] PILLAR_SAFEZONE =
-	{
-	{ 1, 6 },
-	{ 1, 9 },
-	{ 14, 9 },
-	{ 14, 6 } };
+	private static int[][] BROKEN_FLOORS_TILES = { { 5, 11 }, { 2, 13 }, { 10, 11 }, { 13, 12 }, { 11, 8 }, { 11, 6 }, { 13, 4 }, { 9, 5 }, { 10, 3 }, { 3, 3 }, { 4, 9 }, { 7, 4 }, { 4, 6 } };
+	private static int[][] PILLAR_SAFEZONE = { { 1, 6 }, { 1, 9 }, { 14, 9 }, { 14, 6 } };
 	private static final Graphics EARTH_QUAKE_GRAPHICS = new Graphics(1551, 10, 20);
 
 	private YkLagorMage[] mysteriousMages;
@@ -64,10 +45,8 @@ public class YkLagorThunderous extends DungeonBoss {
 		mysteriousMages[index++] = new YkLagorMage(this, 11887, getManager().getTile(getReference(), 10, 5), getManager(), 1);
 	}
 
-	private final static String[] QUOTES =
-	{ "We will break you!", "You've outlived your use!", "You do not belong here.", "Your soul belongs to us!", "Mah zodas'bakh me'ah." };
-	private final static int[] QUOTES_SOUNDS =
-	{ 1899, 1903, 1902, 1901, 1900 };
+	private final static String[] QUOTES = { "We will break you!", "You've outlived your use!", "You do not belong here.", "Your soul belongs to us!", "Mah zodas'bakh me'ah." };
+	private final static int[] QUOTES_SOUNDS = { 1899, 1903, 1902, 1901, 1900 };
 
 	public YkLagorMage[] getMages() {
 		return mysteriousMages;
@@ -131,19 +110,13 @@ public class YkLagorThunderous extends DungeonBoss {
 		return 0.6;
 	}
 
-	/* public ArrayList<Entity> getPossibleTargets(boolean special, boolean npc) {
-	ArrayList<Entity> possibleTargets = super.getPossibleTargets(npc, true);
-	if (special) {
-	    for (int index = 0; index < PILLAR_SAFEZONE.length; index++) {
-		WorldTile tile = getManager().getTile(getReference(), PILLAR_SAFEZONE[index][0], PILLAR_SAFEZONE[index][1]);
-		for (Entity t : possibleTargets) {
-		    if (t.getX() == tile.getX() && t.getY() == tile.getY())
-			possibleTargets.remove(t);
-		}
-	    }
-	}
-	return possibleTargets;
-	}*/
+	/*
+	 * public ArrayList<Entity> getPossibleTargets(boolean special, boolean npc) { ArrayList<Entity>
+	 * possibleTargets = super.getPossibleTargets(npc, true); if (special) { for (int index = 0; index <
+	 * PILLAR_SAFEZONE.length; index++) { WorldTile tile = getManager().getTile(getReference(),
+	 * PILLAR_SAFEZONE[index][0], PILLAR_SAFEZONE[index][1]); for (Entity t : possibleTargets) { if (t.getX() ==
+	 * tile.getX() && t.getY() == tile.getY()) possibleTargets.remove(t); } } } return possibleTargets; }
+	 */
 
 	public void sendBrokenFloor() {
 		for (int index = 0; index < BROKEN_FLOORS_TILES.length; index++) {

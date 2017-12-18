@@ -15,34 +15,23 @@ import com.rs.utils.Utils;
 
 public class SlidingStatuesRoom extends PuzzleRoom {
 
-	public final int[][] STATUES_INACTIVE =
-	{
-		//{7809, 7810, 7811, 7812}, //??
-		//range1, warr1, range2, warr2
-		{ 10942, 10943, 10944, 10945 }, //frozen
-		{ 10946, 10947, 10948, 10949 }, //aba
-		{ 10950, 10951, 10952, 10953 }, //furn
-		{ 12117, 12118, 12119, 12120 }, //occ
-		{ 12952, 12953, 12954, 12955 }, //warp
+	public final int[][] STATUES_INACTIVE = {
+			// {7809, 7810, 7811, 7812}, //??
+			// range1, warr1, range2, warr2
+			{ 10942, 10943, 10944, 10945 }, // frozen
+			{ 10946, 10947, 10948, 10949 }, // aba
+			{ 10950, 10951, 10952, 10953 }, // furn
+			{ 12117, 12118, 12119, 12120 }, // occ
+			{ 12952, 12953, 12954, 12955 }, // warp
 	};
 
-	public final int[][] STATUES_ACTIVE =
-	{
-		//{7813, 7814, 7815, 7817}, //??
-		{ 10954, 10955, 10956, 10957 },
-		{ 10958, 10959, 10960, 10961 },
-		{ 10962, 10963, 10964, 10965 },
-		{ 12121, 12122, 12123, 12124 },
-		{ 12956, 12957, 12958, 12959 },
+	public final int[][] STATUES_ACTIVE = {
+			// {7813, 7814, 7815, 7817}, //??
+			{ 10954, 10955, 10956, 10957 }, { 10958, 10959, 10960, 10961 }, { 10962, 10963, 10964, 10965 }, { 12121, 12122, 12123, 12124 }, { 12956, 12957, 12958, 12959 },
 
 	};
 
-	public final int[][] STATUE_LOCATIONS =
-	{
-	{ 2, 9 },
-	{ 9, 9 },
-	{ 2, 2 },
-	{ 9, 2 }, };
+	public final int[][] STATUE_LOCATIONS = { { 2, 9 }, { 9, 9 }, { 2, 2 }, { 9, 2 }, };
 
 	private WorldTile[] statues;
 
@@ -57,7 +46,15 @@ public class SlidingStatuesRoom extends PuzzleRoom {
 					WorldTile inactive = base.transform(STATUE_LOCATIONS[i][0] + Utils.random(5), STATUE_LOCATIONS[i][1] + Utils.random(5), 0);
 					WorldTile active = base.transform(STATUE_LOCATIONS[i + 2][0] + Utils.random(5), STATUE_LOCATIONS[i + 2][1] + Utils.random(5), 0);
 					for (WorldTile statue : statues) {
-						if (statue != null && (inactive.matches(statue) || active.matches(statue))) { //doing some redundant checks this way but it's short
+						if (statue != null && (inactive.matches(statue) || active.matches(statue))) { // doing
+							// some
+							// redundant
+							// checks
+							// this
+							// way
+							// but
+							// it's
+							// short
 							continue while_;
 						}
 					}
@@ -87,7 +84,8 @@ public class SlidingStatuesRoom extends PuzzleRoom {
 		}
 
 		public void handle(final Player player, final boolean push) {
-			//TODO: make sure 2 players can't move 2 statues ontop of eachother in the same tick? although it doesn't really matter
+			// TODO: make sure 2 players can't move 2 statues ontop of eachother
+			// in the same tick? although it doesn't really matter
 			boolean pull = !push;
 			int x = transform(-baseX, -baseY, 0).getXInChunk();
 			int y = transform(-baseX, -baseY, 0).getYInChunk();

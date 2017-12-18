@@ -27,15 +27,16 @@ public class LeatherDragonCombat extends CombatScript {
 		if (Utils.isOnRange(npc.getX(), npc.getY(), npc.getSize(), target.getX(), target.getY(), target.getSize(), 0) && Utils.random(3) != 0) {
 			npc.setNextAnimation(new Animation(defs.getAttackEmote()));
 			delayHit(npc, 0, target, getMeleeHit(npc, getMaxHit(npc, NPCCombatDefinitions.MELEE, target)));
-		}
-		else {
+		} else {
 			if (Utils.random(5) == 1) {// Dragonfire
 				npc.setNextAnimation(new Animation(12259));
 				npc.setNextGraphics(new Graphics(1, 0, 100));
-				int damage = Utils.random(5000);//getMaxHit(npc, NPCCombatDefinitions.MAGE, target);
-				if (/*damage > 200 && */target instanceof Player) {
+				int damage = Utils.random(5000);// getMaxHit(npc,
+				// NPCCombatDefinitions.MAGE,
+				// target);
+				if (/* damage > 200 && */target instanceof Player) {
 					Player player = (Player) target;
-					//Rest should all be types of dragon-fire.
+					// Rest should all be types of dragon-fire.
 
 					boolean hasSuperPot = player.getEffectsManager().hasActiveEffect(EffectType.SUPER_FIRE_IMMUNITY);
 					boolean hasRegularPot = player.getEffectsManager().hasActiveEffect(EffectType.FIRE_IMMUNITY);
@@ -43,8 +44,7 @@ public class LeatherDragonCombat extends CombatScript {
 					if (hasSuperPot) {
 						damage = 0;
 						player.getPackets().sendGameMessage("Your potion fully protects you from the dragon's fiery breath.");
-					}
-					else {
+					} else {
 						if (hasRegularPot)
 							damage *= 0.5;
 						if (hasShield) {
@@ -55,8 +55,7 @@ public class LeatherDragonCombat extends CombatScript {
 					DragonfireShield.chargeDFS(player, false);
 				}
 				delayHit(npc, 1, target, getMagicHit(npc, damage));
-			}
-			else {// Magical attack
+			} else {// Magical attack
 				npc.setNextAnimation(new Animation(12259));
 				Projectile projectile = World.sendProjectileNew(npc, target, 2731, 28, 16, 35, 4, 0, 0);
 				delayHit(npc, Utils.projectileTimeToCycles(projectile.getEndTime()) - 1, target, getMagicHit(npc, getMaxHit(npc, NPCCombatDefinitions.MAGE, target)));

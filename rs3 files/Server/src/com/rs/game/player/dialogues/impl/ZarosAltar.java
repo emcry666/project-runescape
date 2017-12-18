@@ -14,7 +14,7 @@ public class ZarosAltar extends Dialogue {
 
 	@Override
 	public void run(int interfaceId, int componentId) {
-		switch(stage) {
+		switch (stage) {
 		case -1:
 			stage = 0;
 			if (!player.getPrayer().isAncientCurses()) {

@@ -23,15 +23,15 @@ public class DestroyItemOption extends Dialogue {
 	@Override
 	public void run(int interfaceId, int componentId) {
 		if (interfaceId == 1183 && (componentId == 6 || componentId == 8)) {
-			if(componentId == 8) { //destroy all
+			if (componentId == 8) { // destroy all
 				player.getInventory().deleteItem(new Item(item.getId(), player.getInventory().getAmountOf(item.getId())));
-			}else
+			} else
 				player.getInventory().deleteItem(slotId, item);
 			player.getCharges().degradeCompletly(item);
 			if (item.getDefinitions().isBinded())
 				player.getDungManager().unbind(item);
-			//find correct sound
-			//player.getPackets().sendSound(4500, 0, 1);
+			// find correct sound
+			// player.getPackets().sendSound(4500, 0, 1);
 		}
 		end();
 	}

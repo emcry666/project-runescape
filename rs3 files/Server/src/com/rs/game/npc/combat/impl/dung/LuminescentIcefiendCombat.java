@@ -16,8 +16,7 @@ public class LuminescentIcefiendCombat extends CombatScript {
 
 	@Override
 	public Object[] getKeys() {
-		return new Object[]
-		{ 9912 };
+		return new Object[] { 9912 };
 	}
 
 	@Override

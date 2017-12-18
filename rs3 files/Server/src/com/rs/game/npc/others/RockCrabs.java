@@ -12,7 +12,7 @@ public class RockCrabs extends NPC {
 	public RockCrabs(int id, WorldTile tile, int mapAreaNameHash, boolean canBeAttackFromOutOfArea, boolean spawned) {
 		super(id, tile, mapAreaNameHash, canBeAttackFromOutOfArea, spawned);
 		realId = id;
-		setForceAgressive(true); //to ignore combat lvl
+		setForceAgressive(true); // to ignore combat lvl
 	}
 
 	@Override

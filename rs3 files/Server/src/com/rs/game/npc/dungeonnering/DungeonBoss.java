@@ -42,19 +42,20 @@ public class DungeonBoss extends DungeonNPC {
 		Drops drops = NPCDrops.getDrops(getId());
 		if (drops == null)
 			return;
-		
+
 		Drop[] dropsA = drops.getDrops(Drops.COMMOM);
-		if(dropsA == null)
+		if (dropsA == null)
 			return;
 		Drop drop;
-		if(getManager().getParty().getSize() == DungeonConstants.LARGE_DUNGEON)
-			drop = dropsA[Utils.random(100) < 90 ? dropsA.length-1 : Utils.random(dropsA.length)];
-		else if(getManager().getParty().getSize() == DungeonConstants.LARGE_DUNGEON)
-			drop = dropsA[Utils.random(100) < 60 ? dropsA.length-1 : Utils.random(dropsA.length)];
+		if (getManager().getParty().getSize() == DungeonConstants.LARGE_DUNGEON)
+			drop = dropsA[Utils.random(100) < 90 ? dropsA.length - 1 : Utils.random(dropsA.length)];
+		else if (getManager().getParty().getSize() == DungeonConstants.LARGE_DUNGEON)
+			drop = dropsA[Utils.random(100) < 60 ? dropsA.length - 1 : Utils.random(dropsA.length)];
 		else
 			drop = dropsA[Utils.random(dropsA.length)];
-	//	Drop drop = drops.getDrop(Drops.COMMOM, Double.MAX_VALUE); //to make 100% chance
-		if (drop == null) //shouldnt
+		// Drop drop = drops.getDrop(Drops.COMMOM, Double.MAX_VALUE); //to make
+		// 100% chance
+		if (drop == null) // shouldnt
 			return;
 		List<Player> players = getManager().getParty().getTeam();
 		if (players.size() == 0)
@@ -69,14 +70,13 @@ public class DungeonBoss extends DungeonNPC {
 		}
 	}
 
-	
 	@Override
 	public Item sendDrop(Player player, Drop drop) {
 		Item item = new Item(drop.getItemId());
 		player.getInventory().addItemDrop(item.getId(), item.getAmount());
 		return item;
 	}
-	
+
 	@Override
 	public boolean isPoisonImmune() {
 		return true;

@@ -5,22 +5,20 @@ import com.rs.cache.Cache;
 
 public class BodyDefinitions {
 
-	
-    public static int anInt5276;
-    public static int anInt5280;
-    public static int[] disabledSlots;
-    public static int[] anIntArray5281;
-    public static int[] anIntArray5282;
-	
-	
+	public static int anInt5276;
+	public static int anInt5280;
+	public static int[] disabledSlots;
+	public static int[] anIntArray5281;
+	public static int[] anIntArray5282;
+
 	public static void init() {
-		loadBodyDefinitions(); //in case rs stops using it for just this
+		loadBodyDefinitions(); // in case rs stops using it for just this
 	}
-	
+
 	public static int getEquipmentContainerSize() {
 		return disabledSlots.length;
 	}
-	
+
 	/*
 	 * suposely in rsclient its an instance but its only used for this archive lol
 	 */
@@ -29,7 +27,7 @@ public class BodyDefinitions {
 		byte[] data = Cache.STORE.getIndexes()[28].getFile(6);
 		readOpcodeValues(new InputStream(data));
 	}
-	
+
 	private static void setDefaultsVariableValues() {
 		anInt5280 = -1;
 		anInt5276 = -1;
@@ -43,7 +41,7 @@ public class BodyDefinitions {
 			readValues(stream, opcode);
 		}
 	}
-	
+
 	private static void readValues(InputStream stream, int opcode) {
 		if (opcode == 1) {
 			int containerSize = stream.readUnsignedByte();
@@ -54,8 +52,7 @@ public class BodyDefinitions {
 					/* empty */
 				}
 			}
-		}
-		else if (3 == opcode)
+		} else if (3 == opcode)
 			anInt5280 = stream.readUnsignedByte();
 		else if (opcode == 4)
 			anInt5276 = stream.readUnsignedByte();
@@ -63,13 +60,11 @@ public class BodyDefinitions {
 			anIntArray5281 = new int[stream.readUnsignedByte()];
 			for (int i_3_ = 0; i_3_ < anIntArray5281.length; i_3_++)
 				anIntArray5281[i_3_] = stream.readUnsignedByte();
-		}
-		else if (6 == opcode) {
+		} else if (6 == opcode) {
 			anIntArray5282 = new int[stream.readUnsignedByte()];
 			for (int i_4_ = 0; i_4_ < anIntArray5282.length; i_4_++)
 				anIntArray5282[i_4_] = stream.readUnsignedByte();
 		}
 	}
 
-	    
 }

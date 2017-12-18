@@ -8,8 +8,8 @@ import com.rs.game.player.GrandExchangeManager;
 public class AccData implements Serializable {
 
 	/**
-     * 
-     */
+	* 
+	*/
 	private static final long serialVersionUID = 4697826089433977340L;
 	public String username;
 	public String password;

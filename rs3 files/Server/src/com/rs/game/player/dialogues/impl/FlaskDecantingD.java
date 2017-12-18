@@ -11,20 +11,18 @@ public class FlaskDecantingD extends Dialogue {
 
 	private Drink usedPot, pot;
 
-	//TODO flasks decanting is wrong. this skill dialogue never existed....
-	
+	// TODO flasks decanting is wrong. this skill dialogue never existed....
+
 	@Override
 	public void start() {
 		usedPot = (Drink) this.parameters[0];
-	/*	for (Drink pot : Drink.values()) {
-			if (pot.ordinal() == usedPot.ordinal() || !pot.name().replace("_FLASK", "").equals(usedPot.name().replace("_POTION", "")))
-				continue;
-			this.pot = pot;
-			SkillsDialogue.sendSkillsDialogue(player, SkillsDialogue.MAKE, "Choose how many you wish to make,<br>then click on the item to begin.", 40, new int[]
-			{ pot.getIdForDoses(pot.getMaxDoses()) }, null);
-			return;
-		}
-		end();*/
+		/*
+		 * for (Drink pot : Drink.values()) { if (pot.ordinal() == usedPot.ordinal() ||
+		 * !pot.name().replace("_FLASK", "").equals(usedPot.name().replace("_POTION", ""))) continue; this.pot =
+		 * pot; SkillsDialogue.sendSkillsDialogue(player, SkillsDialogue.MAKE,
+		 * "Choose how many you wish to make,<br>then click on the item to begin." , 40, new int[] {
+		 * pot.getIdForDoses(pot.getMaxDoses()) }, null); return; } end();
+		 */
 	}
 
 	@Override
@@ -36,7 +34,7 @@ public class FlaskDecantingD extends Dialogue {
 
 			@Override
 			public boolean start(Player player) {
-				ticks = 1;//SkillsDialogue.getQuantity(player);
+				ticks = 1;// SkillsDialogue.getQuantity(player);
 				potionSlot = calculatePotionSlot(player);
 				calculateFlaskSlot(player);
 				if (!checkAll(player)) {

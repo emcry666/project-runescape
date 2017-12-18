@@ -47,7 +47,7 @@ public class House implements Serializable {
 	public static int LOGGED_OUT = 0, KICKED = 1, TELEPORTED = 2;
 	private static final long serialVersionUID = 8111719490432901786L;
 
-	//dont name it rooms or it will null server
+	// dont name it rooms or it will null server
 	private List<RoomReference> roomsR;
 
 	private byte look;
@@ -60,10 +60,11 @@ public class House implements Serializable {
 
 	private transient Player player;
 	private transient boolean locked;
-	private transient int challengeMode; //0 disabled,  1 - challenge method, 2 - pvp challenge method
+	private transient int challengeMode; // 0 disabled, 1 - challenge method, 2
+	// - pvp challenge method
 	private transient int burnerCount;
 
-	//house loaded datas
+	// house loaded datas
 	private transient List<Player> players;
 	private transient int[] boundChuncks;
 	private transient boolean loaded;
@@ -85,7 +86,7 @@ public class House implements Serializable {
 	}
 
 	public void kickGuests() {
-		if (players == null) //still initing i guess
+		if (players == null) // still initing i guess
 			return;
 		for (Player player : new ArrayList<Player>(players)) {
 			if (isOwner(player))
@@ -107,8 +108,8 @@ public class House implements Serializable {
 	}
 
 	public void openRoomCreationMenu(WorldObject door) {
-		int roomX = player.getChunkX() - boundChuncks[0]; //current room
-		int roomY = player.getChunkY() - boundChuncks[1]; //current room
+		int roomX = player.getChunkX() - boundChuncks[0]; // current room
+		int roomY = player.getChunkY() - boundChuncks[1]; // current room
 		int xInChunk = player.getXInChunk();
 		int yInChunk = player.getYInChunk();
 		if (xInChunk == 7)
@@ -130,8 +131,8 @@ public class House implements Serializable {
 	}
 
 	public void removeRoom() {
-		int roomX = player.getChunkX() - boundChuncks[0]; //current room
-		int roomY = player.getChunkY() - boundChuncks[1]; //current room
+		int roomX = player.getChunkX() - boundChuncks[0]; // current room
+		int roomY = player.getChunkY() - boundChuncks[1]; // current room
 		RoomReference room = getRoom(roomX, roomY, player.getPlane());
 		if (room == null)
 			return;
@@ -197,8 +198,7 @@ public class House implements Serializable {
 					player.getPackets().sendIComponentText(402, index + (refRoom == HouseConstants.Room.DUNGEON_STAIRS || refRoom == HouseConstants.Room.DUNGEON_PIT ? 69 : refRoom == HouseConstants.Room.TREASURE_ROOM ? 70 : 68), "<col=008000> " + refRoom.getPrice() + " coins");
 			}
 			player.getInterfaceManager().sendCentralInterface(402);
-			player.getTemporaryAttributtes().put("CreationRoom", new int[]
-			{ roomX, roomY, plane });
+			player.getTemporaryAttributtes().put("CreationRoom", new int[] { roomX, roomY, plane });
 			player.setCloseInterfacesEvent(new Runnable() {
 				@Override
 				public void run() {
@@ -224,7 +224,7 @@ public class House implements Serializable {
 				player.getDialogueManager().startDialogue("CreateOublietteD", room);
 			else
 				player.getPackets().sendGameMessage("This " + (up ? "ladder" : "trapdoor") + " does not lead anywhere.");
-			//start dialogue
+			// start dialogue
 			return;
 		}
 		if (roomTo.room != Room.THRONE_ROOM && roomTo.room != Room.OUTBLIETTE) {
@@ -250,7 +250,7 @@ public class House implements Serializable {
 				player.getDialogueManager().startDialogue("CreateRoomStairsD", room, up, dungeonEntrance);
 			else
 				player.getPackets().sendGameMessage((dungeonEntrance ? "This entrance does " : "These stairs do") + " not lead anywhere.");
-			//start dialogue
+			// start dialogue
 			return;
 		}
 		if ((roomTo.room != Room.GARDEN && roomTo.room != Room.FORMAL_GARDEN) && roomTo.getStaircaseSlot() == -1) {
@@ -336,7 +336,16 @@ public class House implements Serializable {
 	public void createRoom(RoomReference room) {
 		if (!loaded)
 			return;
-		if (player.getInventory().getCoinsAmount() < room.room.getPrice()) { //better double check if somehow u manage to drop money
+		if (player.getInventory().getCoinsAmount() < room.room.getPrice()) { // better
+			// double
+			// check
+			// if
+			// somehow
+			// u
+			// manage
+			// to
+			// drop
+			// money
 			player.getPackets().sendGameMessage("You don't have enough coins to build this room.");
 			return;
 		}
@@ -346,9 +355,8 @@ public class House implements Serializable {
 		refreshHouse();
 	}
 
-	//Used for inter 396
-	private static final int[] BUILD_INDEXES =
-	{ 0, 2, 4, 6, 1, 3, 5 };
+	// Used for inter 396
+	private static final int[] BUILD_INDEXES = { 0, 2, 4, 6, 1, 3, 5 };
 
 	public void openBuildInterface(WorldObject object, final Builds build) {
 		if (!buildMode) {
@@ -365,14 +373,16 @@ public class House implements Serializable {
 		for (int index = 0; index < build.getPieces().length; index++) {
 			HObject piece = build.getPieces()[index];
 			itemArray[index] = new Item(piece.getItemId(), 1);
-			if(hasRequirimentsToBuild(false, build, piece))
-				requirimentsValue += Math.pow(2, index+1);
+			if (hasRequirimentsToBuild(false, build, piece))
+				requirimentsValue += Math.pow(2, index + 1);
 		}
 		player.getPackets().sendCSVarInteger(841, requirimentsValue);
 		player.getPackets().sendItems(398, itemArray);
-		player.getPackets().sendIComponentSettings(1306, 55, -1, -1, 1); //exit button
-		for(int i = 0; i < itemArray.length; i++)
-			player.getPackets().sendIComponentSettings(1306, 8 + 7*i, 4, 4, 1); //build options
+		player.getPackets().sendIComponentSettings(1306, 55, -1, -1, 1); // exit
+		// button
+		for (int i = 0; i < itemArray.length; i++)
+			player.getPackets().sendIComponentSettings(1306, 8 + 7 * i, 4, 4, 1); // build
+		// options
 		player.getInterfaceManager().sendCentralInterface(1306);
 		player.getTemporaryAttributtes().put("OpenedBuild", build);
 		player.getTemporaryAttributtes().put("OpenedBuildObject", object);
@@ -389,35 +399,34 @@ public class House implements Serializable {
 
 		});
 	}
-	
+
 	/*
-	 * 	player.getHouse().build(slotId);
+	 * player.getHouse().build(slotId);
 	 */
-	
+
 	private boolean hasRequirimentsToBuild(boolean warn, Builds build, HObject piece) {
 		int level = player.getSkills().getLevel(Skills.CONSTRUCTION);
 		if (!build.isWater() && player.getInventory().containsOneItem(9625))
 			level += 3;
 		if (level < piece.getLevel()) {
-			if(warn)
+			if (warn)
 				player.getPackets().sendGameMessage("Your level of construction is too low for this build.");
 			return false;
 		}
 		if (player.getRights() < 2) {
 			if (!player.getInventory().containsItems(piece.getRequirements())) {
-				if(warn)
+				if (warn)
 					player.getPackets().sendGameMessage("You dont have the right materials.");
-				return false ;
+				return false;
 			}
 			if (build.isWater() ? !hasWaterCan() : (!player.getInventory().containsItemToolBelt(HouseConstants.HAMMER) || (!player.getInventory().containsItemToolBelt(HouseConstants.SAW) && !player.getInventory().containsOneItem(9625)))) {
-				if(warn)
+				if (warn)
 					player.getPackets().sendGameMessage(build.isWater() ? "You will need a watering can with some water in it instead of hammer and saw to build plants." : "You will need a hammer and saw to build furniture.");
 				return false;
 			}
 		}
 		return true;
 	}
-	
 
 	public void build(int slot) {
 		final Builds build = (Builds) player.getTemporaryAttributtes().get("OpenedBuild");
@@ -430,7 +439,7 @@ public class House implements Serializable {
 		if (room == null)
 			return;
 		final HObject piece = build.getPieces()[slot];
-		if(!hasRequirimentsToBuild(true, build, piece))
+		if (!hasRequirimentsToBuild(true, build, piece))
 			return;
 		final ObjectReference oref = room.addObject(build, slot);
 		player.closeInterfaces();
@@ -574,7 +583,8 @@ public class House implements Serializable {
 	}
 
 	public void removeBuild(final WorldObject object) {
-		if (!buildMode) { //imagine u use settings to change while dialogue open, cheater :p
+		if (!buildMode) { // imagine u use settings to change while dialogue
+			// open, cheater :p
 			player.getDialogueManager().startDialogue("SimpleMessage", "You can only do that in building mode.");
 			return;
 		}
@@ -591,7 +601,7 @@ public class House implements Serializable {
 		WorldTasksManager.schedule(new WorldTask() {
 			@Override
 			public void run() {
-				//World.removeObject(object);
+				// World.removeObject(object);
 				refreshObject(room, oref, true);
 				player.lock(1);
 			}
@@ -630,12 +640,13 @@ public class House implements Serializable {
 
 	public static void enterHouse(Player player, String displayname) {
 		if (player.isLocked()) {
-			//players could enter friends house while using things like home tele which teleports you out when stepping off lodestone
+			// players could enter friends house while using things like home
+			// tele which teleports you out when stepping off lodestone
 			return;
 		}
 		Player owner = World.getPlayerByDisplayName(displayname);
-		
-		if(owner != player) {
+
+		if (owner != player) {
 			if (owner == null || !owner.isRunning() || owner.getHouse().locked) {
 				player.getPackets().sendGameMessage("That player is offline, or has privacy mode enabled.");
 				return;
@@ -653,17 +664,18 @@ public class House implements Serializable {
 	}
 
 	public boolean joinHouse(final Player player) {
-		if (!isOwner(player)) { //not owner
+		if (!isOwner(player)) { // not owner
 			if (!isOwnerInside() || !loaded) {
-				player.getPackets().sendGameMessage("That player is offline, or has privacy mode enabled."); //TODO message
+				player.getPackets().sendGameMessage("That player is offline, or has privacy mode enabled."); // TODO
+				// message
 				return false;
 			}
 			if (buildMode) {
 				player.getPackets().sendGameMessage("The owner currently has build mode turned on.");
 				return false;
 			}
-		}else{
-			if (buildMode && !player.getBank().hasVerified(6)) 
+		} else {
+			if (buildMode && !player.getBank().hasVerified(6))
 				return false;
 		}
 		players.add(player);
@@ -682,7 +694,8 @@ public class House implements Serializable {
 			GameExecutorManager.slowExecutor.execute(new Runnable() {
 				@Override
 				public void run() {
-					try { //sets bounds before finishing load therefore the load boolean
+					try { // sets bounds before finishing load therefore the
+						// load boolean
 						boundChuncks = MapBuilder.findEmptyChunkBound(8, 8);
 						createHouse(true);
 					} catch (Throwable e) {
@@ -730,7 +743,7 @@ public class House implements Serializable {
 	 */
 	public void finish() {
 		kickGuests();
-		//no need to leavehouse for owner, controler does that itself
+		// no need to leavehouse for owner, controler does that itself
 	}
 
 	public void refreshHouse() {
@@ -764,7 +777,7 @@ public class House implements Serializable {
 						return getCenterTile(room);
 			}
 		}
-		//shouldnt happen
+		// shouldnt happen
 		int[] xyp = MapUtils.convert(MapUtils.Structure.CHUNK, MapUtils.Structure.TILE, boundChuncks);
 		return new WorldTile(xyp[0] + 32, xyp[1] + 32, 0);
 	}
@@ -834,7 +847,7 @@ public class House implements Serializable {
 		player.getPackets().sendCSVarInteger(944, roomsR.size());
 	}
 
-	//TODO
+	// TODO
 	public void setDoorsOpen(boolean doorsOpen) {
 		this.doorsOpen = doorsOpen;
 		refreshDoorsOpen();
@@ -854,14 +867,15 @@ public class House implements Serializable {
 	public void refreshArriveInPortal() {
 		player.getVarsManager().sendVarBit(1552, arriveInPortal ? 1 : 0);
 	}
-	
+
 	public void setBuildMode(boolean buildMode) {
 		if (this.buildMode == buildMode)
 			return;
 		this.buildMode = buildMode;
 		if (loaded) {
 			expelGuests();
-			if (isOwnerInside()) { //since it expels all guests no point in refreshing if owner not inside
+			if (isOwnerInside()) { // since it expels all guests no point in
+				// refreshing if owner not inside
 				player.stopAll();
 				if (player.isCanPvp())
 					player.setCanPvp(false);
@@ -876,8 +890,8 @@ public class House implements Serializable {
 	}
 
 	public RoomReference getRoom(Player player) {
-		int roomX = player.getChunkX() - boundChuncks[0]; //current room
-		int roomY = player.getChunkY() - boundChuncks[1]; //current room
+		int roomX = player.getChunkX() - boundChuncks[0]; // current room
+		int roomY = player.getChunkY() - boundChuncks[1]; // current room
 		RoomReference room = getRoom(roomX, roomY, player.getPlane());
 		if (room == null)
 			return null;
@@ -935,7 +949,7 @@ public class House implements Serializable {
 							int[] coords = DynamicRegion.translate(x, y, reference.rotation, defs.sizeX, defs.sizeY, object.getRotation());
 							objectR.setLocation(new WorldTile(boundX + coords[0], boundY + coords[1], reference.plane));
 							objectR.setRotation((object.getRotation() + reference.rotation) & 0x3);
-							//just a preview. they're not realy there.
+							// just a preview. they're not realy there.
 							if (remove)
 								World.removeObject(objectR);
 							else
@@ -949,7 +963,8 @@ public class House implements Serializable {
 
 	public void destroyHouse() {
 		final int[] boundChunksCopy = boundChuncks;
-		//this way a new house can be created while current house being destroyed
+		// this way a new house can be created while current house being
+		// destroyed
 		loaded = false;
 		boundChuncks = null;
 		removeServant();
@@ -972,11 +987,10 @@ public class House implements Serializable {
 
 	public void createHouse(final boolean tp) {
 		Object[][][][] data = new Object[4][8][8][];
-		//sets rooms data
+		// sets rooms data
 		for (RoomReference reference : roomsR)
-			data[reference.plane][reference.x][reference.y] = new Object[]
-			{ reference.room.getChunkX(), reference.room.getChunkY(), reference.rotation, reference.room.isShowRoof(), reference.room.getDoorsCount() };
-		//sets roof data
+			data[reference.plane][reference.x][reference.y] = new Object[] { reference.room.getChunkX(), reference.room.getChunkY(), reference.rotation, reference.room.isShowRoof(), reference.room.getDoorsCount() };
+		// sets roof data
 		if (!buildMode) { // construct roof
 			for (int x = 1; x < 7; x++) {
 				skipY: for (int y = 1; y < 7; y++) {
@@ -988,8 +1002,7 @@ public class House implements Serializable {
 								// TODO find best Roof
 								int doorsCount = (int) data[plane][x][y][4];
 								Roof roof = doorsCount == 4 ? HouseConstants.Roof.ROOF3 : doorsCount == 3 ? HouseConstants.Roof.ROOF2 : HouseConstants.Roof.ROOF1;
-								data[plane + 1][x][y] = new Object[]
-								{ roof.getChunkX(), roof.getChunkY(), rotation, true, doorsCount };
+								data[plane + 1][x][y] = new Object[] { roof.getChunkX(), roof.getChunkY(), rotation, true, doorsCount };
 								continue skipY;
 							}
 						}
@@ -997,7 +1010,7 @@ public class House implements Serializable {
 				}
 			}
 		}
-		//builds data
+		// builds data
 		for (int plane = 0; plane < data.length; plane++) {
 			for (int x = 0; x < data[plane].length; x++) {
 				for (int y = 0; y < data[plane][x].length; y++) {
@@ -1038,7 +1051,8 @@ public class House implements Serializable {
 
 			@Override
 			public void run() {
-				if (boundChuncks == null) //shouldnt unless shutdown command force kicks
+				if (boundChuncks == null) // shouldnt unless shutdown command
+					// force kicks
 					return;
 				for (RoomReference reference : roomsR) {
 					int boundX = reference.x * 8;
@@ -1095,7 +1109,8 @@ public class House implements Serializable {
 										object = new WorldObject(object);
 										object.setId(reference.plane == 0 ? HouseConstants.WALL_IDS[look] : HouseConstants.WINDOW_IDS[look]);
 										World.spawnObject(object);
-									} else if (isDoorSpace(object)) //yes it does
+									} else if (isDoorSpace(object)) // yes it
+										// does
 										World.removeObject(object);
 								}
 							}

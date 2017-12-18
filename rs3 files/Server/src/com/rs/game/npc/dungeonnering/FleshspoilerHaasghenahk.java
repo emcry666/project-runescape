@@ -90,7 +90,7 @@ public class FleshspoilerHaasghenahk extends DungeonBoss {
 					setNextAnimation(new Animation(-1));
 					addFleshCreatures();
 					setNextNPCTransformation(11895);
-					setCombatLevel((int) (getCombatLevel() * 0.85)); //15% nerf
+					setCombatLevel((int) (getCombatLevel() * 0.85)); // 15% nerf
 					setHitpoints(getMaxHitpoints());
 					setLureDelay(Integer.MAX_VALUE);
 					setCantFollowUnderCombat(true);

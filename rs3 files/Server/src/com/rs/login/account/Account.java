@@ -293,9 +293,9 @@ public class Account implements Serializable {
 		for (int i = 0; i < 4; i++)
 			ranks[i] = false;
 
-		/* Administrator - 5, 6, 51 Global modetator - 7 Game moderator - 25
-		 * Graphics designer - 10 Support member - 52 Donator - 53 Extreme
-		 * donator - 54
+		/*
+		 * Administrator - 5, 6, 51 Global modetator - 7 Game moderator - 25 Graphics designer - 10 Support member
+		 * - 52 Donator - 53 Extreme donator - 54
 		 */
 		for (int forumGroupID : groupIDS) {
 			if (forumGroupID == 5 || forumGroupID == 6 || forumGroupID == 51) {

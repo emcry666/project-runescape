@@ -40,16 +40,14 @@ public final class ClanWarsTimer extends TimerTask {// this is the class for
 	private int lastMinutes = -1;
 
 	/**
-	 * The time-out counter, we use this to check if the war has expired due to
-	 * inactivity.
+	 * The time-out counter, we use this to check if the war has expired due to inactivity.
 	 */
 	private int timeOut = 0;
 
 	/**
 	 * Constructs a new {@code ClanWarsTimer} {@code Object}.
 	 * 
-	 * @param clanWars
-	 *            The clan wars object.
+	 * @param clanWars The clan wars object.
 	 */
 	public ClanWarsTimer(ClanWars clanWars) {
 		this.clanWars = clanWars;
@@ -62,14 +60,14 @@ public final class ClanWarsTimer extends TimerTask {// this is the class for
 			if (!started) {
 				if (startTicks-- == 8) {
 					WallHandler.dropWall(clanWars);
-					for (Player player : clanWars.getFirstPlayers()) 
+					for (Player player : clanWars.getFirstPlayers())
 						player.getPackets().sendMusicEffectOld(getMusicEffect());
-					for (Player player : clanWars.getSecondPlayers()) 
+					for (Player player : clanWars.getSecondPlayers())
 						player.getPackets().sendMusicEffectOld(getMusicEffect());
 				} else if (startTicks == 100) {
-					for (Player player : clanWars.getFirstPlayers()) 
+					for (Player player : clanWars.getFirstPlayers())
 						player.getPackets().sendMusicEffectOld(getMusicEffect());
-					for (Player player : clanWars.getSecondPlayers()) 
+					for (Player player : clanWars.getSecondPlayers())
 						player.getPackets().sendMusicEffectOld(getMusicEffect());
 				} else if (startTicks == 0) {
 					started = true;
@@ -115,19 +113,18 @@ public final class ClanWarsTimer extends TimerTask {// this is the class for
 	}
 
 	public int getMusicEffect() {
-		if(startTicks > 100)
+		if (startTicks > 100)
 			return 290;
-		if(startTicks > 8)
+		if (startTicks > 8)
 			return 291;
 		return 289;
 	}
+
 	/**
 	 * Joins the war.
 	 * 
-	 * @param p
-	 *            The player.
-	 * @param firstTeam
-	 *            If the player is part of the first team/viewers.
+	 * @param p The player.
+	 * @param firstTeam If the player is part of the first team/viewers.
 	 */
 	public void refresh(Player p, boolean firstTeam) {
 		int count1 = clanWars.getPlayersInside(false);
@@ -140,8 +137,6 @@ public final class ClanWarsTimer extends TimerTask {// this is the class for
 		p.getPackets().sendCSVarInteger(270, started ? lastMinutes : startTicks);
 		p.getMusicsManager().forcePlayMusic(442);
 	}
-	
-
 
 	/**
 	 * If the war has started.

@@ -269,17 +269,14 @@ public class RenderAnimDefinitions {
 				System.out.println(i);
 		}
 
-		/*File file = new File("./r2anims.txt");
-		BufferedWriter writer = new BufferedWriter(new FileWriter(file));
-		for (int i = 0; i < Utils.getNPCDefinitionsSize(); i++) {
-		    RenderAnimDefinitions defs = RenderAnimDefinitions.getRenderAnimDefinitions(NPCDefinitions.getNPCDefinitions(i).renderEmote);
-		    if (defs != null) {
-			writer.write(i + ", run: " + defs.runAnimation + ", walk: " + defs.walkAnimation + ", stand: " + Arrays.toString(defs.anIntArray967));
-			writer.newLine();
-			writer.flush();
-		    }
-		}
-		writer.close();*/
+		/*
+		 * File file = new File("./r2anims.txt"); BufferedWriter writer = new BufferedWriter(new FileWriter(file));
+		 * for (int i = 0; i < Utils.getNPCDefinitionsSize(); i++) { RenderAnimDefinitions defs =
+		 * RenderAnimDefinitions.getRenderAnimDefinitions(NPCDefinitions. getNPCDefinitions(i).renderEmote); if
+		 * (defs != null) { writer.write(i + ", run: " + defs.runAnimation + ", walk: " + defs.walkAnimation +
+		 * ", stand: " + Arrays.toString(defs.anIntArray967)); writer.newLine(); writer.flush(); } }
+		 * writer.close();
+		 */
 	}
 
 	public RenderAnimDefinitions() {

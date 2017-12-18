@@ -38,14 +38,12 @@ public class TormentedDemonCombat extends CombatScript {
 			npc.setNextAnimation(new Animation(10922));
 			npc.setNextGraphics(new Graphics(1886));
 			delayHit(npc, target, NPCCombatDefinitions.MELEE, 0);
-		}
-		else if (style == 1) {
+		} else if (style == 1) {
 			npc.setNextAnimation(new Animation(10918));
 			Projectile projectile = World.sendProjectileNew(npc, target, 1884, 70, 25, 30, 1, 16, 30);
 			if (delayHit(npc, target, NPCCombatDefinitions.MAGE, projectile.getEndTime()))
 				target.setNextGraphics(new Graphics(1883, projectile.getEndTime(), 100));
-		}
-		else if (style == 2) {
+		} else if (style == 2) {
 			npc.setNextAnimation(new Animation(10919));
 			npc.setNextGraphics(new Graphics(1888));
 			Projectile projectile = World.sendProjectileNew(npc, target, 1887, 70, 25, 65, 1, 16, 0);

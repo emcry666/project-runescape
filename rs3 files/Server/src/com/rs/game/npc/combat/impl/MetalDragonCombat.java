@@ -17,8 +17,7 @@ public class MetalDragonCombat extends CombatScript {
 
 	@Override
 	public Object[] getKeys() {
-		return new Object[]
-		{ "Bronze dragon", "Iron dragon", "Steel dragon" };
+		return new Object[] { "Bronze dragon", "Iron dragon", "Steel dragon" };
 	}
 
 	@Override
@@ -31,7 +30,7 @@ public class MetalDragonCombat extends CombatScript {
 			int damage = getMaxHit(npc, NPCCombatDefinitions.MAGE, target);
 			if (damage > 200 && target instanceof Player) {
 				Player player = (Player) target;
-				//Rest should all be types of dragon-fire.
+				// Rest should all be types of dragon-fire.
 
 				boolean hasSuperPot = player.getEffectsManager().hasActiveEffect(EffectType.SUPER_FIRE_IMMUNITY);
 				boolean hasRegularPot = player.getEffectsManager().hasActiveEffect(EffectType.FIRE_IMMUNITY);

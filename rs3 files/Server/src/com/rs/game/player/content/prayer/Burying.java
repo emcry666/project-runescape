@@ -46,16 +46,16 @@ public class Burying {
 		DAGANNOTH(6729, 125),
 
 		OURG(4834, 140),
-		//dung ones
+		// dung ones
 		FROST_DRAGON(18830, 180)
-		//real ones
-		,FROST_DRAGON_2(18832, 180)
-		
-		,IMPIOUS(20264, 4, true)
-		
+		// real ones
+		, FROST_DRAGON_2(18832, 180)
+
+		, IMPIOUS(20264, 4, true)
+
 		, ACCURSED(20266, 12.5, true)
-		
-		,INFERNAL(20268, 62.5, true);
+
+		, INFERNAL(20268, 62.5, true);
 
 		private int id;
 		private double experience;
@@ -78,7 +78,7 @@ public class Burying {
 			this.experience = experience;
 			this.ash = ash;
 		}
-		
+
 		private Bone(int id, double experience) {
 			this.id = id;
 			this.experience = experience;
@@ -87,7 +87,7 @@ public class Burying {
 		public int getId() {
 			return id;
 		}
-		
+
 		public boolean isAsh() {
 			return ash;
 		}
@@ -103,11 +103,11 @@ public class Burying {
 			if (item == null)
 				return;
 			final Bone bone = Bone.forId(item.getId());
-			if(bone == null)
+			if (bone == null)
 				return;
 			final ItemDefinitions itemDef = new ItemDefinitions(item.getId());
 			player.lock(2);
-			switch(item.getId()) {
+			switch (item.getId()) {
 			case 20264:
 				player.setNextAnimation(new Animation(445));
 				player.setNextGraphics(new Graphics(56));
@@ -118,19 +118,18 @@ public class Burying {
 				break;
 			case 20268:
 				player.setNextAnimation(new Animation(445));
-				 player.setNextGraphics(new Graphics(40));
+				player.setNextGraphics(new Graphics(40));
 				break;
 			default:
 				player.setNextAnimation(BURY_ANIMATION);
 				break;
 			}
-			    
-			
+
 			player.getPackets().sendGameMessage(bone.ash ? "You scatter the ashes in the wind." : "You dig a hole in the ground...", true);
 			WorldTasksManager.schedule(new WorldTask() {
 				@Override
 				public void run() {
-					if(!bone.ash)
+					if (!bone.ash)
 						player.getPackets().sendGameMessage("You bury the " + itemDef.getName().toLowerCase(), true);
 					player.getInventory().deleteItem(item.getId(), 1);
 					double xp = bone.getExperience() * player.getAuraManager().getPrayerMultiplier();

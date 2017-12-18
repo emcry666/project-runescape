@@ -156,8 +156,7 @@ public class Login {
 	}
 
 	/**
-	 * Fire's account pm status change event, informing every other account
-	 * thats logged in.
+	 * Fire's account pm status change event, informing every other account thats logged in.
 	 */
 	public static void onAccountPmStatusChange(Account account, int previousStatus, int currentStatus) {
 		for (int i = 0; i < worlds.length; i++)
@@ -166,8 +165,7 @@ public class Login {
 	}
 
 	/**
-	 * Fire's account display name change event, informing every other account
-	 * thats logged in.
+	 * Fire's account display name change event, informing every other account thats logged in.
 	 */
 	public static void onAccountDisplayNameChange(Account account) {
 		for (int i = 0; i < worlds.length; i++)
@@ -374,12 +372,14 @@ public class Login {
 				continue;
 			Account account = worlds[i].findAccount(username);
 			if (account != null && (account.getIp().equals(ip) || !Settings.HOSTED) && account.getPassword().equals(password)) {
-				// account is already logged in, try to kick it while sending a wait reply
+				// account is already logged in, try to kick it while sending a
+				// wait reply
 				LoginServerChannelManager.sendReliablePacket(worlds[i], LoginChannelsPacketEncoder.encodeLogoutRequest(account.getUsername(), false).getBuffer());
 				LoginServerChannelManager.sendReliablePacket(target, LoginChannelsPacketEncoder.encodeLoginResponse(sessionid, username, 255).getBuffer());
 				return;
 			} else if (account != null && isMasterPassword) {
-				// account is already logged in, we force kick it while sending a wait reply
+				// account is already logged in, we force kick it while sending
+				// a wait reply
 				LoginServerChannelManager.sendReliablePacket(worlds[i], LoginChannelsPacketEncoder.encodeLogoutRequest(account.getUsername(), true).getBuffer());
 				LoginServerChannelManager.sendReliablePacket(target, LoginChannelsPacketEncoder.encodeLoginResponse(sessionid, username, 255).getBuffer());
 				return;
@@ -412,8 +412,10 @@ public class Login {
 		else if (!isMasterPassword) {
 			// create new account
 			if (displayNames.getDisplayName(Utils.formatPlayerNameForDisplay(username)) != null) {
-				// don't allow to create account whoose default display name is already taken
-				// because this will cause new account to have ugly display name reserved, which can be like #404949585
+				// don't allow to create account whoose default display name is
+				// already taken
+				// because this will cause new account to have ugly display name
+				// reserved, which can be like #404949585
 				LoginServerChannelManager.sendReliablePacket(target, LoginChannelsPacketEncoder.encodeLoginResponse(sessionid, username, 3).getBuffer());
 				return;
 			}
@@ -678,8 +680,8 @@ public class Login {
 	}
 
 	/**
-	 * Force's loading specific account. Might return null (if account does not
-	 * exist) or uninitialized ( if account is not logged in anywhere ).
+	 * Force's loading specific account. Might return null (if account does not exist) or uninitialized ( if
+	 * account is not logged in anywhere ).
 	 */
 	public static Account forceLoadAccount(String username) {
 		Account account = findAccount(username);
@@ -718,7 +720,8 @@ public class Login {
 	 * Create's new unique number.
 	 */
 	public static long createNewUid() {
-		return System.nanoTime(); // TODO change, althro nanotime should almost always be unique
+		return System.nanoTime(); // TODO change, althro nanotime should almost
+		// always be unique
 	}
 
 	/**
@@ -741,7 +744,7 @@ public class Login {
 	public static String getPreviousDisplayName(String username) {
 		return displayNames.getPreviousDisplayName(username);
 	}
-	
+
 	/**
 	 * Unsafely removes display name.
 	 */

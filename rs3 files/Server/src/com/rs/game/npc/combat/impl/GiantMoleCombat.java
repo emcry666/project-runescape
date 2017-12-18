@@ -15,21 +15,11 @@ import com.rs.utils.Utils;
 
 public class GiantMoleCombat extends CombatScript {
 
-	private static final WorldTile[] COORDS =
-	{
-		new WorldTile(1737, 5228, 0),
-		new WorldTile(1751, 5233, 0),
-		new WorldTile(1778, 5237, 0),
-		new WorldTile(1736, 5227, 0),
-		new WorldTile(1780, 5152, 0),
-		new WorldTile(1758, 5162, 0),
-		new WorldTile(1745, 5169, 0),
-		new WorldTile(1760, 5183, 0) };
+	private static final WorldTile[] COORDS = { new WorldTile(1737, 5228, 0), new WorldTile(1751, 5233, 0), new WorldTile(1778, 5237, 0), new WorldTile(1736, 5227, 0), new WorldTile(1780, 5152, 0), new WorldTile(1758, 5162, 0), new WorldTile(1745, 5169, 0), new WorldTile(1760, 5183, 0) };
 
 	@Override
 	public Object[] getKeys() {
-		return new Object[]
-		{ 3340 };
+		return new Object[] { 3340 };
 	}
 
 	@Override

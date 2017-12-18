@@ -19,8 +19,7 @@ import com.rs.utils.Utils;
 @SuppressWarnings("serial")
 public class LexicusRunewright extends DungeonBoss {
 
-	private static final int[] TELEPORT_LOCS =
-	{ 8, 7, 3, 3, 3, 12, 12, 12, 12, 3 };
+	private static final int[] TELEPORT_LOCS = { 8, 7, 3, 3, 3, 12, 12, 12, 12, 3 };
 
 	private boolean completedFirstAttack;
 	private int attackStage;

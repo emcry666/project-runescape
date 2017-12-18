@@ -82,8 +82,9 @@ public class LoginFilesManager {
 
 	public synchronized static void saveAccount(Account account) {
 		try {
-			/*if (account.isMasterLogin())
-				return;*/
+			/*
+			 * if (account.isMasterLogin()) return;
+			 */
 			storeObject(account, ACCOUNTS_PATH + account.getUsername() + ".acc");
 		} catch (Throwable e) {
 			Logger.handle(e);

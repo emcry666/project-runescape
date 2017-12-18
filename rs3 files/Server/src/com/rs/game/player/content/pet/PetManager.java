@@ -62,10 +62,8 @@ public final class PetManager implements Serializable {
 	/**
 	 * Spawns a pet.
 	 * 
-	 * @param itemId
-	 *            The item id.
-	 * @param deleteItem
-	 *            If the item should be removed.
+	 * @param itemId The item id.
+	 * @param deleteItem If the item should be removed.
 	 * @return {@code True} if we were dealing with a pet item id.
 	 */
 	public boolean spawnPet(int itemId, boolean deleteItem) {
@@ -108,8 +106,7 @@ public final class PetManager implements Serializable {
 	/**
 	 * Checks if the player has the requirements for the pet.
 	 * 
-	 * @param pet
-	 *            The pet.
+	 * @param pet The pet.
 	 * @return {@code True} if so.
 	 */
 	private boolean hasRequirements(Pets pet) {
@@ -159,10 +156,8 @@ public final class PetManager implements Serializable {
 	/**
 	 * Makes the pet eat.
 	 * 
-	 * @param foodId
-	 *            The food item id.
-	 * @param npc
-	 *            The pet NPC.
+	 * @param foodId The food item id.
+	 * @param npc The pet NPC.
 	 */
 	public void eat(int foodId, Pet npc) {
 		Pets pets = Pets.forId(itemId);
@@ -199,8 +194,7 @@ public final class PetManager implements Serializable {
 	/**
 	 * Removes the details for this pet.
 	 * 
-	 * @param npcId
-	 *            The item id of the pet.
+	 * @param npcId The item id of the pet.
 	 */
 	public void removeDetails(int itemId) {
 		Pets pets = Pets.forId(itemId);
@@ -222,8 +216,7 @@ public final class PetManager implements Serializable {
 	/**
 	 * Sets the player.
 	 * 
-	 * @param player
-	 *            The player to set.
+	 * @param player The player to set.
 	 */
 	public void setPlayer(Player player) {
 		this.player = player;
@@ -241,8 +234,7 @@ public final class PetManager implements Serializable {
 	/**
 	 * Sets the npcId.
 	 * 
-	 * @param npcId
-	 *            The npcId to set.
+	 * @param npcId The npcId to set.
 	 */
 	public void setNpcId(int npcId) {
 		this.npcId = npcId;
@@ -260,8 +252,7 @@ public final class PetManager implements Serializable {
 	/**
 	 * Sets the itemId.
 	 * 
-	 * @param itemId
-	 *            The itemId to set.
+	 * @param itemId The itemId to set.
 	 */
 	public void setItemId(int itemId) {
 		this.itemId = itemId;
@@ -279,8 +270,7 @@ public final class PetManager implements Serializable {
 	/**
 	 * Sets the trollBabyName.
 	 * 
-	 * @param trollBabyName
-	 *            The trollBabyName to set.
+	 * @param trollBabyName The trollBabyName to set.
 	 */
 	public void setTrollBabyName(String trollBabyName) {
 		this.trollBabyName = trollBabyName;

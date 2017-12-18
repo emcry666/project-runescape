@@ -22,8 +22,7 @@ public class LucienCombat extends CombatScript {
 
 	@Override
 	public Object[] getKeys() {
-		return new Object[]
-		{ 14256 };
+		return new Object[] { 14256 };
 	}
 
 	@Override
@@ -46,8 +45,7 @@ public class LucienCombat extends CombatScript {
 				}
 				String key = t.getX() + "_" + t.getY();
 				if (!tiles.containsKey(t.getX() + "_" + t.getY())) {
-					tiles.put(key, new int[]
-					{ t.getX(), t.getY() });
+					tiles.put(key, new int[] { t.getX(), t.getY() });
 					World.sendProjectile(npc, new WorldTile(t.getX(), t.getY(), npc.getPlane()), 1900, 34, 0, 30, 35, 16, 0);
 				}
 			}
@@ -100,8 +98,8 @@ public class LucienCombat extends CombatScript {
 			delayHit(npc, 2, target, getRegularHit(npc, target.getMaxHitpoints() - 1 > 900 ? 900 : target.getMaxHitpoints() - 1));
 		} else if (attackStyle == 4) {
 			/*
-			 * 11364 - even better k0 move. fire balls from sky into everyone
-			 * 80% max hp or gfx 2600 everyone near dies
+			 * 11364 - even better k0 move. fire balls from sky into everyone 80% max hp or gfx 2600 everyone near
+			 * dies
 			 */
 			npc.setNextAnimation(new Animation(11364));
 			npc.setNextGraphics(new Graphics(2600));

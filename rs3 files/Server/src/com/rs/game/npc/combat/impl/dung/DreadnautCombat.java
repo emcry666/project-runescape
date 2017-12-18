@@ -19,8 +19,7 @@ public class DreadnautCombat extends CombatScript {
 
 	@Override
 	public Object[] getKeys() {
-		return new Object[]
-		{ 12848 };//GFX 2859 Poop bubbles that drain prayer
+		return new Object[] { 12848 };// GFX 2859 Poop bubbles that drain prayer
 	}
 
 	@Override

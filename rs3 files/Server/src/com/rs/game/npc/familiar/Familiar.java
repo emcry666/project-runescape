@@ -127,13 +127,11 @@ public abstract class Familiar extends NPC implements Serializable {
 			setNextNPCTransformation(originalId);
 			call(false);
 			return;
-		}
-		else if (!owner.isCanPvp() && getId() == originalId && pouch != Pouch.MAGPIE && pouch != Pouch.IBIS && pouch != Pouch.BEAVER && pouch != Pouch.MACAW && pouch != Pouch.FRUIT_BAT) {
+		} else if (!owner.isCanPvp() && getId() == originalId && pouch != Pouch.MAGPIE && pouch != Pouch.IBIS && pouch != Pouch.BEAVER && pouch != Pouch.MACAW && pouch != Pouch.FRUIT_BAT) {
 			setNextNPCTransformation(originalId - 1);
 			call(false);
 			return;
-		}
-		else if (!withinDistance(owner, 12)) {
+		} else if (!withinDistance(owner, 12)) {
 			call(false);
 			return;
 		}
@@ -152,8 +150,7 @@ public abstract class Familiar extends NPC implements Serializable {
 			Player player = (Player) target;
 			if (!owner.isCanPvp() || !player.isCanPvp())
 				return false;
-		}
-		else if (target instanceof NPC) {
+		} else if (target instanceof NPC) {
 			NPC n = (NPC) target;
 			if (n.getId() == 14301 || n.getId() == 14302 || n.getId() == 14303 || n.getId() == 14304) {
 				Glacyte glacyte = (Glacyte) n;
@@ -170,8 +167,7 @@ public abstract class Familiar extends NPC implements Serializable {
 		if (ticks > 5) {
 			owner.getPackets().sendGameMessage("You need to have at least two minutes and fifty seconds remaining before you can renew your familiar.", true);
 			return false;
-		}
-		else if (!owner.getInventory().getItems().contains(new Item(pouch.getRealPouchId(), 1))) {
+		} else if (!owner.getInventory().getItems().contains(new Item(pouch.getRealPouchId(), 1))) {
 			owner.getPackets().sendGameMessage("You need a " + ItemDefinitions.getItemDefinitions(pouch.getRealPouchId()).getName().toLowerCase() + " to renew your familiar's timer.");
 			return false;
 		}
@@ -206,7 +202,7 @@ public abstract class Familiar extends NPC implements Serializable {
 		owner.getPackets().sendCSVarString(205, getSpecialDescription());
 		owner.getPackets().sendCSVarInteger(1436, getSpecialAttack() == SpecialAttack.CLICK ? 1 : 0);
 		unlockOrb(); // temporary
-		sendFollowerDetails(); //send interface when u start
+		sendFollowerDetails(); // send interface when u start
 	}
 
 	public void sendFollowerDetails() {
@@ -227,7 +223,7 @@ public abstract class Familiar extends NPC implements Serializable {
 	}
 
 	public void unlockOrb() {
-		//owner.getPackets().sendHideIComponent(1428, 15, false);
+		// owner.getPackets().sendHideIComponent(1428, 15, false);
 		sendLeftClickOption(owner);
 	}
 
@@ -255,14 +251,14 @@ public abstract class Familiar extends NPC implements Serializable {
 
 	public void lockOrb() {
 		refreshDefaultPetOptions(owner);
-		//owner.getPackets().sendHideIComponent(1428, 15, true);
+		// owner.getPackets().sendHideIComponent(1428, 15, true);
 	}
 
 	public static void refreshDefaultPetOptions(Player owner) {
-		//COMP 33 - Call Familiar ONLY
-		//COMP 6 - Left click option 
-		//	owner.getPackets().sendHideIComponent(1428, 7, true);
-		//	owner.getPackets().sendHideIComponent(1428, 6, true);
+		// COMP 33 - Call Familiar ONLY
+		// COMP 6 - Left click option
+		// owner.getPackets().sendHideIComponent(1428, 7, true);
+		// owner.getPackets().sendHideIComponent(1428, 6, true);
 	}
 
 	private transient int[][] checkNearDirs;
@@ -285,8 +281,7 @@ public abstract class Familiar extends NPC implements Serializable {
 				bob.setEntitys(owner, this);
 			checkNearDirs = Utils.getCoordOffsetsNear(size);
 			sendMainConfigs();
-		}
-		else
+		} else
 			removeTarget();
 		WorldTile teleTile = null;
 		for (int dir = 0; dir < checkNearDirs[0].length; dir++) {
@@ -358,8 +353,7 @@ public abstract class Familiar extends NPC implements Serializable {
 				if (loop == 0) {
 					setNextAnimation(new Animation(defs.getDeathEmote()));
 					owner.getPackets().sendGameMessage("Your familiar slowly begins to fade away..");
-				}
-				else if (loop >= defs.getDeathDelay()) {
+				} else if (loop >= defs.getDeathDelay()) {
 					dissmissFamiliar(false);
 					stop();
 				}

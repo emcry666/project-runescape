@@ -15,8 +15,7 @@ import com.rs.utils.Utils;
 
 public class WildernessObelisk {
 
-	public static final WorldTile[] OBELISK_CENTER_TILES =
-	{ new WorldTile(2978, 3864, 0), new WorldTile(3033, 3730, 0), new WorldTile(3104, 3792, 0), new WorldTile(3154, 3618, 0), new WorldTile(3217, 3654, 0), new WorldTile(3305, 3914, 0) };
+	public static final WorldTile[] OBELISK_CENTER_TILES = { new WorldTile(2978, 3864, 0), new WorldTile(3033, 3730, 0), new WorldTile(3104, 3792, 0), new WorldTile(3154, 3618, 0), new WorldTile(3217, 3654, 0), new WorldTile(3305, 3914, 0) };
 	private static final boolean[] IS_ACTIVE = new boolean[6];
 
 	public static void activateObelisk(int id, final Player player) {
@@ -28,7 +27,7 @@ public class WildernessObelisk {
 		}
 		IS_ACTIVE[index] = true;
 		WorldObject object = World.getObjectWithId(center, id);
-		if (object == null) //still loading objects i guess
+		if (object == null) // still loading objects i guess
 			return;
 		World.sendObjectAnimation(object, new Animation(2226));
 		World.sendObjectAnimation(World.getObjectWithId(center.transform(4, 0, 0), id), new Animation(2226));

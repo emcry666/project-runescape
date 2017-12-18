@@ -17,8 +17,7 @@ public class RammernautCombat extends CombatScript {
 
 	@Override
 	public Object[] getKeys() {
-		return new Object[]
-		{ 9767 };
+		return new Object[] { 9767 };
 	}
 
 	public static int getChargeCount(NPC npc) {
@@ -49,7 +48,8 @@ public class RammernautCombat extends CombatScript {
 			setChargeCount(npc, chargeCount + 1);
 			return 3;
 		}
-		setChargeCount(npc, Utils.random(10) == 0 ? 2 : 0); //1 in 10 change charging next att
+		setChargeCount(npc, Utils.random(10) == 0 ? 2 : 0); // 1 in 10 change
+		// charging next att
 
 		if (Utils.random(5) == 0) {
 			npc.setNextAnimation(new Animation(13705));
@@ -71,7 +71,7 @@ public class RammernautCombat extends CombatScript {
 
 		}
 
-		//default melee attack can be protected with prayer
+		// default melee attack can be protected with prayer
 		npc.setNextAnimation(new Animation(defs.getAttackEmote()));
 		delayHit(npc, 0, target, getMeleeHit(npc, getMaxHit(npc, NPCCombatDefinitions.MELEE, target)));
 		return npc.getAttackSpeed();

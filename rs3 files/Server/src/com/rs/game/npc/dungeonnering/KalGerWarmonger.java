@@ -28,15 +28,13 @@ import com.rs.utils.Utils;
 public class KalGerWarmonger extends DungeonBoss {
 
 	private static final int SIZE = 5;
-	private static final int[] WEAPONS =
-		{ -1, 56057, 56054, 56056, 56055, 56053 };
-	private static final int[][] FLY_COORDINATES =
-		{ { 4, 2 },//correct
-		{ 0, 0 },//correct cuz he doesn't even fly
-		{ 10, 10 },//correct
-		{ 10, 2 },//correct
-		{ 5, 10 },//correct
-		{ 5, 3 } };//correct
+	private static final int[] WEAPONS = { -1, 56057, 56054, 56056, 56055, 56053 };
+	private static final int[][] FLY_COORDINATES = { { 4, 2 }, // correct
+			{ 0, 0 }, // correct cuz he doesn't even fly
+			{ 10, 10 }, // correct
+			{ 10, 2 }, // correct
+			{ 5, 10 }, // correct
+			{ 5, 3 } };// correct
 
 	private WarpedSphere sphere;
 	private WorldTile nextFlyTile;
@@ -46,7 +44,7 @@ public class KalGerWarmonger extends DungeonBoss {
 
 	public KalGerWarmonger(int id, WorldTile tile, final DungeonManager manager, final RoomReference reference) {
 		super(id, tile, manager, reference);
-		//setName("Lord Fungus");
+		// setName("Lord Fungus");
 		setCapDamage(5000);
 		setCantInteract(true);
 		typeTicks = -1;
@@ -65,13 +63,21 @@ public class KalGerWarmonger extends DungeonBoss {
 	private void beginFlyCount() {
 		type++;
 		if (type != 1)
-			setHitpoints((int) (getHitpoints() + (getMaxHitpoints() * .15D)));// He heals a bit not 100% sure what the multiplier is
+			setHitpoints((int) (getHitpoints() + (getMaxHitpoints() * .15D)));// He
+		// heals
+		// a
+		// bit
+		// not
+		// 100%
+		// sure
+		// what
+		// the
+		// multiplier
+		// is
 		typeTicks = type == 2 ? 7 : 0;
 		setCantInteract(true);
-		setNextFaceEntity(null);//Resets?
+		setNextFaceEntity(null);// Resets?
 	}
-	
-	
 
 	@Override
 	public void processHit(Hit hit) {
@@ -133,7 +139,10 @@ public class KalGerWarmonger extends DungeonBoss {
 		super.sendDeath(source);
 		playSoundEffect(2997);
 		setNextGraphics(new Graphics(2754));
-		setNextForceTalk(new ForceTalk("IMPOSSIBRU!"));// <-- did that on purpose, npc's name is also called lord fungus
+		setNextForceTalk(new ForceTalk("IMPOSSIBRU!"));// <-- did that on
+		// purpose, npc's name is
+		// also called lord
+		// fungus
 
 		final NPC boss = this;
 		WorldTasksManager.schedule(new WorldTask() {
@@ -155,7 +164,7 @@ public class KalGerWarmonger extends DungeonBoss {
 
 	@Override
 	public int getMaxHitpoints() {
-		return super.getMaxHitpoints() * 2;//Maybe * 3
+		return super.getMaxHitpoints() * 2;// Maybe * 3
 	}
 
 	@Override
@@ -176,7 +185,7 @@ public class KalGerWarmonger extends DungeonBoss {
 	private void processNextType() {
 		if (getManager().isDestroyed()) // Should fix some nullpointers
 			return;
-		
+
 		if (typeTicks == 1) {
 			setNextAnimation(new Animation(14995));
 			setNextGraphics(new Graphics(2870));

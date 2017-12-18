@@ -21,8 +21,7 @@ public class UnholyCursebearerCombat extends CombatScript {
 
 	@Override
 	public Object[] getKeys() {
-		return new Object[]
-		{ "Unholy cursebearer" };
+		return new Object[] { "Unholy cursebearer" };
 	}
 
 	@Override

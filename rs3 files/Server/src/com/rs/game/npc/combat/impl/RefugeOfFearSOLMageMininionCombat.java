@@ -17,8 +17,7 @@ public class RefugeOfFearSOLMageMininionCombat extends CombatScript {
 
 	@Override
 	public Object[] getKeys() {
-		return new Object[]
-		{ 15172 };
+		return new Object[] { 15172 };
 	}
 
 	@Override

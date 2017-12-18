@@ -8,10 +8,8 @@ import com.rs.game.player.dialogues.Dialogue;
 
 public class LarderDialouge extends Dialogue {
 
-	private static final int[] LARDER_ITEMS =
-	{ 7738, 1927, 1944, 1933, 1942, 1550, 1957, 1985 };
-	private static final String[] LARDER_NAMES =
-	{ "Tea leaves", "Bucket of Milk", "Eggs", "Pot of Flour", "Potato", "Garlic", "Onion", "Cheese" };
+	private static final int[] LARDER_ITEMS = { 7738, 1927, 1944, 1933, 1942, 1550, 1957, 1985 };
+	private static final String[] LARDER_NAMES = { "Tea leaves", "Bucket of Milk", "Eggs", "Pot of Flour", "Potato", "Garlic", "Onion", "Cheese" };
 
 	private final List<String> currentOptions = new LinkedList<String>();
 	private int max_index;

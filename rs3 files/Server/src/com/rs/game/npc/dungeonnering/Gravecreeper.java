@@ -39,7 +39,7 @@ public class Gravecreeper extends DungeonBoss {
 
 	@Override
 	public double getRangePrayerMultiplier() {
-		return 0.6; //rs makes it always 0.6 99% time when partialy blocked duh
+		return 0.6; // rs makes it always 0.6 99% time when partialy blocked duh
 	}
 
 	@Override
@@ -100,8 +100,7 @@ public class Gravecreeper extends DungeonBoss {
 		super.sendDeath(source);
 	}
 
-	private static final String[] SPECIAL_SHOUTS =
-	{ "Burrrrrry", "Digggggg", "Brrainnns" };
+	private static final String[] SPECIAL_SHOUTS = { "Burrrrrry", "Digggggg", "Brrainnns" };
 
 	public void useSpecial() {
 		WorldTile walkTo = getNearestPlinch();
@@ -124,7 +123,7 @@ public class Gravecreeper extends DungeonBoss {
 
 					@Override
 					public void run() {
-						//finish(); no cuz it stops process burned
+						// finish(); no cuz it stops process burned
 						setNextNPCTransformation(1957);
 						if (specialDelay == -1)
 							specialDelay = -2;
@@ -135,9 +134,11 @@ public class Gravecreeper extends DungeonBoss {
 								if (getManager().isDestroyed())
 									return;
 								setNextWorldTile(getManager().getTile(getReference(), 3 + Utils.random(4) * 3, 3 + Utils.random(4) * 3));
-								//setLocation(getManager().getTile(getReference(), 3 + Utils.random(4) * 3, 3 + Utils.random(4) * 3));
+								// setLocation(getManager().getTile(getReference(),
+								// 3 + Utils.random(4) * 3, 3 + Utils.random(4)
+								// * 3));
 								setNextNPCTransformation(11708);
-								//	spawn();
+								// spawn();
 								setNextAnimation(new Animation(14506));
 								WorldTasksManager.schedule(new WorldTask() {
 
@@ -228,28 +229,7 @@ public class Gravecreeper extends DungeonBoss {
 		}
 	}
 
-	private static final int[][][] TOMB_LOC_POS_2 =
-	{
-	{
-	{ 2, 2 },
-	{ 6, 2 },
-	{ 9, 2 },
-	{ 13, 2 } },
-	{
-	{ 2, 6 },
-	{ 7, 7 },
-	{ 8, 7 },
-	{ 13, 6 } },
-	{
-	{ 2, 9 },
-	{ 7, 8 },
-	{ 8, 8 },
-	{ 13, 9 } },
-	{
-	{ 2, 13 },
-	{ 6, 13 },
-	{ 9, 13 },
-	{ 13, 13 } } };
+	private static final int[][][] TOMB_LOC_POS_2 = { { { 2, 2 }, { 6, 2 }, { 9, 2 }, { 13, 2 } }, { { 2, 6 }, { 7, 7 }, { 8, 7 }, { 13, 6 } }, { { 2, 9 }, { 7, 8 }, { 8, 8 }, { 13, 9 } }, { { 2, 13 }, { 6, 13 }, { 9, 13 }, { 13, 13 } } };
 
 	public void activateTombs() {
 		for (int x = 0; x < plinths.length; x++) {

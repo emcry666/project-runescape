@@ -63,8 +63,7 @@ public class PolyporeCreatureCombat extends CombatScript {
 					}
 				}
 			}
-		}
-		else if ((npc.getId() == 14688 || npc.getId() == 14689) && Utils.random(5) == 0) {
+		} else if ((npc.getId() == 14688 || npc.getId() == 14689) && Utils.random(5) == 0) {
 			npc.resetWalkSteps();
 			npc.calcFollow(target, false);
 			npc.setForceFollowClose(true);
@@ -87,13 +86,11 @@ public class PolyporeCreatureCombat extends CombatScript {
 					npc.setNextAnimation(new Animation(15487));
 					return npc.getAttackSpeed();
 				}
-			}
-			else {
+			} else {
 				Projectile projectile = World.sendProjectileNew(npc, target, 2035, 41, 16, 20, 2, 10, 0);
 				delayHit(npc, Utils.projectileTimeToCycles(projectile.getEndTime()) - 1, target, getMagicHit(npc, getMaxHit(npc, NPCCombatDefinitions.MAGE, target)));
 			}
-		}
-		else
+		} else
 			delayHit(npc, 0, target, getMeleeHit(npc, getMaxHit(npc, NPCCombatDefinitions.MELEE, target)));
 		if (def.getAttackGfx() != -1)
 			npc.setNextGraphics(new Graphics(def.getAttackGfx()));

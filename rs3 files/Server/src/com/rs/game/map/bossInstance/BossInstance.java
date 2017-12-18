@@ -18,7 +18,7 @@ public abstract class BossInstance {
 
 	public static int STARTING = 0, RUNNING = 1, FINISHED = 2;
 
-	//null if real world
+	// null if real world
 	private MapInstance map;
 	private Player owner;
 	private List<Player> players;
@@ -59,8 +59,7 @@ public abstract class BossInstance {
 					enterInstance(owner, false);
 				}
 			});
-		}
-		else {
+		} else {
 			loadMapInstance();
 			stage = RUNNING;
 		}
@@ -82,7 +81,7 @@ public abstract class BossInstance {
 
 	public abstract int[] getMapPos();
 
-	//return 1,1 by default
+	// return 1,1 by default
 	public abstract int[] getMapSize();
 
 	public void setMapInstance(int chunkX, int chunkY, int ratioX, int ratioY) {
@@ -113,18 +112,22 @@ public abstract class BossInstance {
 		return settings.getBoss().name().replace("_", " ");
 	}
 
-	public static final int TELEPORTED = 0, LOGGED_OUT = 1, EXITED = 2,
-			DIED = 3;
+	public static final int TELEPORTED = 0, LOGGED_OUT = 1, EXITED = 2, DIED = 3;
 
 	public void leaveInstance(Player player, int type) {
 		synchronized (BossInstanceHandler.LOCK) {
 			if (type == EXITED)
 				player.useStairs(-1, settings.getBoss().getOutsideTile(), 0, 2);
-			else if (type == LOGGED_OUT && !isPublic()) //if public no need to move the player to entrance :p(exept for instance vorago but thats done at vorago instance extend)
+			else if (type == LOGGED_OUT && !isPublic()) // if public no need to
+				// move the player to
+				// entrance :p(exept for
+				// instance vorago but
+				// thats done at vorago
+				// instance extend)
 				player.setLocation(settings.getBoss().getOutsideTile());
 			player.getMusicsManager().reset();
 			players.remove(player);
-			if (players.isEmpty()) //public version
+			if (players.isEmpty()) // public version
 				finish();
 		}
 	}
@@ -141,15 +144,16 @@ public abstract class BossInstance {
 		return getTile(tile.getX(), tile.getY(), tile.getPlane());
 	}
 
-	//gets the instanced coords of the world tile(notice if the area instanced differs from coords it will give wrong tile, the ratio part is to make sure the coords are inside map
+	// gets the instanced coords of the world tile(notice if the area instanced
+	// differs from coords it will give wrong tile, the ratio part is to make
+	// sure the coords are inside map
 	public WorldTile getTile(int x, int y, int plane) {
 		WorldTile tile;
 		if (owner != null) {
 			int[] originalPos = map.getOriginalPos();
 			tile = map.getTile((x - originalPos[0] * 8) % (map.getRatioX() * 64), (y - originalPos[1] * 8) % (map.getRatioY() * 64));
 			tile.moveLocation(0, 0, plane);
-		}
-		else
+		} else
 			tile = new WorldTile(x, y, plane);
 		return tile;
 	}

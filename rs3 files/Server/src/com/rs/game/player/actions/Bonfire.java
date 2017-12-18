@@ -21,17 +21,7 @@ public class Bonfire extends Action {
 
 	public static enum Log {
 
-		LOG(1511, 3098, 1, 40, 6),
-		OAK(1521, 3099, 15, 60, 12),
-		WILLOW(1519, 3101, 30, 90, 18),
-		TEAK(6333, 3103, 35, 105, 24),
-		MAPLE(1517, 3100, 45, 135, 36),
-		MAHOGANY(6332, 3102, 50, 157.5, 42),
-		EUCALYPTUS(12581, 3112, 58, 193, 48),
-		YEWS(1515, 3111, 60, 202.5, 54),
-		MAGIC(1513, 3135, 75, 303.8, 60),
-		BLISTERWOOD(21600, 3113, 76, 434, 60),
-		CURSED_MAGIC(13567, 3116, 82, 434, 60);
+		LOG(1511, 3098, 1, 40, 6), OAK(1521, 3099, 15, 60, 12), WILLOW(1519, 3101, 30, 90, 18), TEAK(6333, 3103, 35, 105, 24), MAPLE(1517, 3100, 45, 135, 36), MAHOGANY(6332, 3102, 50, 157.5, 42), EUCALYPTUS(12581, 3112, 58, 193, 48), YEWS(1515, 3111, 60, 202.5, 54), MAGIC(1513, 3135, 75, 303.8, 60), BLISTERWOOD(21600, 3113, 76, 434, 60), CURSED_MAGIC(13567, 3116, 82, 434, 60);
 		private int logId, gfxId, level, boostTime;
 		private double xp;
 
@@ -70,7 +60,6 @@ public class Bonfire extends Action {
 		return true;
 	}
 
-	
 	public static Log getLog(int logId) {
 		for (Log log : Log.values()) {
 			if (log.getLogId() == logId)
@@ -78,7 +67,7 @@ public class Bonfire extends Action {
 		}
 		return null;
 	}
-	
+
 	public static boolean addLog(Player player, WorldObject object, Item item) {
 		for (Log log : Log.values())
 			if (log.logId == item.getId()) {

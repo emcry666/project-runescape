@@ -93,7 +93,8 @@ public class DungeonManager {
 	private Dungeon dungeon;
 	private VisibleRoom[][] visibleMap;
 	private int[] boundChuncks;
-	private int stage; //0 - not loaded. 1 - loaded. 2 - new one not loaded, old one loaded(rewards screen)
+	private int stage; // 0 - not loaded. 1 - loaded. 2 - new one not loaded,
+	// old one loaded(rewards screen)
 	private RewardsTimer rewardsTimer;
 	private DestroyTimer destroyTimer;
 	private long time;
@@ -104,12 +105,13 @@ public class DungeonManager {
 	private WorldTile groupGatestone;
 	private List<MastyxTrap> mastyxTraps;
 
-	//force saving deaths
+	// force saving deaths
 	private Map<String, Integer> partyDeaths;
 
 	private boolean tutorialMode;
 
-	private DungeonBoss temporaryBoss; //must for gravecreeper, cuz... it gets removed from npc list :/
+	private DungeonBoss temporaryBoss; // must for gravecreeper, cuz... it gets
+	// removed from npc list :/
 
 	// 7554
 	public DungeonManager(DungeonPartyManager party) {
@@ -125,7 +127,7 @@ public class DungeonManager {
 	public void clearKeyList() {
 		for (Player player : party.getTeam()) {
 			player.getPackets().sendExecuteScriptReverse(6072);
-			player.getPackets().sendCSVarInteger(1875, 0); //forces refresh
+			player.getPackets().sendCSVarInteger(1875, 0); // forces refresh
 		}
 	}
 
@@ -317,7 +319,8 @@ public class DungeonManager {
 						setDoor(reference, keyDoor.getObjectId(), keyDoor.getDoorId(party.getFloorType()), rotation);
 					} else if (door.getType() == DungeonConstants.GUARDIAN_DOOR) {
 						setDoor(reference, -1, DungeonConstants.DUNGEON_GUARDIAN_DOORS[party.getFloorType()], rotation);
-						if (visibleRoom.roomCleared())  //remove referene since done
+						if (visibleRoom.roomCleared()) // remove referene since
+							// done
 							room.setDoor(i, null);
 					} else if (door.getType() == DungeonConstants.SKILL_DOOR) {
 						SkillDoors skillDoor = SkillDoors.values()[door.getId()];
@@ -357,29 +360,23 @@ public class DungeonManager {
 			return;
 		}
 
-		spawnItem(reference, new Item(room.getDropId()), 7, 1); //spawn it on the entrance door
+		spawnItem(reference, new Item(room.getDropId()), 7, 1); // spawn it on
+		// the entrance
+		// door
 
 		/*
-		List<int[]> keySpots = new ArrayList<int[]>();
-		if (keySpots.isEmpty()) {
-
-			for (int x = 2; x < 15; x++) {
-				for (int y = 2; y < 15; y++) {
-					if (!World.isTileFree(0, toChunkX * 8 + x, toChunkY * 8 + y, 2))
-						continue;
-					keySpots.add(new int[]
-					{ x, y });
-				}
-			}
-		}
-		loc = keySpots.isEmpty() ? new int[]
-		{ 8, 8 } : keySpots.get(Utils.random(keySpots.size()));
-		World.addGroundItem(new Item(room.getDropId()), new WorldTile(toChunkX * 8 + loc[0], toChunkY * 8 + loc[1], 0));
-		*/
+		 * List<int[]> keySpots = new ArrayList<int[]>(); if (keySpots.isEmpty()) {
+		 * 
+		 * for (int x = 2; x < 15; x++) { for (int y = 2; y < 15; y++) { if (!World.isTileFree(0, toChunkX * 8 + x,
+		 * toChunkY * 8 + y, 2)) continue; keySpots.add(new int[] { x, y }); } } } loc = keySpots.isEmpty() ? new
+		 * int[] { 8, 8 } : keySpots.get(Utils.random(keySpots.size())); World.addGroundItem(new
+		 * Item(room.getDropId()), new WorldTile(toChunkX * 8 + loc[0], toChunkY * 8 + loc[1], 0));
+		 */
 	}
 
 	public void setResources(Room room, RoomReference reference, int toChunkX, int toChunkY) {
-		if (party.getComplexity() >= 5 && Utils.random(3) == 0) { //sets thief chest
+		if (party.getComplexity() >= 5 && Utils.random(3) == 0) { // sets thief
+			// chest
 			for (int i = 0; i < DungeonConstants.SET_RESOURCES_MAX_TRY; i++) {
 				int rotation = Utils.random(DungeonConstants.WALL_BASE_X_Y.length);
 				int[] b = DungeonConstants.WALL_BASE_X_Y[rotation];
@@ -396,7 +393,7 @@ public class DungeonManager {
 				break;
 			}
 		}
-		if (party.getComplexity() >= 4 && Utils.random(3) == 0) { //sets flower
+		if (party.getComplexity() >= 4 && Utils.random(3) == 0) { // sets flower
 			for (int i = 0; i < DungeonConstants.SET_RESOURCES_MAX_TRY; i++) {
 				int rotation = Utils.random(DungeonConstants.WALL_BASE_X_Y.length);
 				int[] b = DungeonConstants.WALL_BASE_X_Y[rotation];
@@ -412,7 +409,7 @@ public class DungeonManager {
 				break;
 			}
 		}
-		if (party.getComplexity() >= 3 && Utils.random(3) == 0) { //sets rock
+		if (party.getComplexity() >= 3 && Utils.random(3) == 0) { // sets rock
 			for (int i = 0; i < DungeonConstants.SET_RESOURCES_MAX_TRY; i++) {
 				int rotation = Utils.random(DungeonConstants.WALL_BASE_X_Y.length);
 				int[] b = DungeonConstants.WALL_BASE_X_Y[rotation];
@@ -428,7 +425,7 @@ public class DungeonManager {
 				break;
 			}
 		}
-		if (party.getComplexity() >= 2 && Utils.random(3) == 0) { //sets tree
+		if (party.getComplexity() >= 2 && Utils.random(3) == 0) { // sets tree
 			for (int i = 0; i < DungeonConstants.SET_RESOURCES_MAX_TRY; i++) {
 				int rotation = Utils.random(DungeonConstants.WALL_BASE_X_Y.length);
 				int[] b = DungeonConstants.WALL_BASE_X_Y[rotation];
@@ -446,15 +443,14 @@ public class DungeonManager {
 				break;
 			}
 		}
-		if (party.getComplexity() >= 2) { //sets fish spot
+		if (party.getComplexity() >= 2) { // sets fish spot
 			List<int[]> fishSpots = new ArrayList<int[]>();
 			for (int x = 0; x < 16; x++) {
 				for (int y = 0; y < 16; y++) {
 					WorldObject o = World.getObjectWithType(new WorldTile(toChunkX * 8 + x, toChunkY * 8 + y, 0), 10);
 					if (o == null || o.getId() != DungeonConstants.FISH_SPOT_OBJECT_ID)
 						continue;
-					fishSpots.add(new int[]
-					{ x, y });
+					fishSpots.add(new int[] { x, y });
 				}
 			}
 			if (!fishSpots.isEmpty()) {
@@ -521,8 +517,7 @@ public class DungeonManager {
 					player.getPackets().sendGameMessage("");
 					player.getPackets().sendGameMessage("-Welcome to Daemonheim-");
 					player.getPackets().sendGameMessage("Floor <col=641d9e>" + party.getFloor() + "    <col=ffffff>Complexity <col=641d9e>" + party.getComplexity());
-					String[] sizeNames = new String[]
-					{ "Small", "Medium", "Large", "Test" };
+					String[] sizeNames = new String[] { "Small", "Medium", "Large", "Test" };
 					player.getPackets().sendGameMessage("Dungeon Size: " + "<col=641d9e>" + sizeNames[party.getSize()]);
 					player.getPackets().sendGameMessage("Party Size:Difficulty <col=641d9e>" + party.getTeam().size() + ":" + party.getDificulty());
 					player.getPackets().sendGameMessage("Pre-Share: <col=641d9e>" + (isKeyShare() ? "OFF" : "ON"));
@@ -538,40 +533,61 @@ public class DungeonManager {
 	}
 
 	public void setTableItems(RoomReference room) {
-		addItemToTable(room, new Item(16295)); //novite pickaxe, cuz of boss aswell so 1+
+		addItemToTable(room, new Item(16295)); // novite pickaxe, cuz of boss
+		// aswell so 1+
 		if (party.getComplexity() >= 2) {
 			addItemToTable(room, new Item(DungeonConstants.RUSTY_COINS, 5000 + Utils.random(10000)));
-			addItemToTable(room, new Item(17678)); //tinderbox
-			addItemToTable(room, new Item(16361)); //novite hatcher
-			addItemToTable(room, new Item(17794)); //fish rods
+			addItemToTable(room, new Item(17678)); // tinderbox
+			addItemToTable(room, new Item(16361)); // novite hatcher
+			addItemToTable(room, new Item(17794)); // fish rods
 		}
-		if (party.getComplexity() >= 3) { //set weap/gear in table
+		if (party.getComplexity() >= 3) { // set weap/gear in table
 			int rangeTier = DungeonUtils.getTier(party.getMaxLevel(Skills.RANGE));
 			if (rangeTier > 8)
 				rangeTier = 8;
-			addItemToTable(room, new Item(DungeonUtils.getArrows(1 + Utils.random(rangeTier)), 90 + Utils.random(30))); //arround 100 arrows, type random up to best u can, limited to tier 8
-			addItemToTable(room, new Item(DungeonConstants.RUNES[0], 90 + Utils.random(30))); //arround 100 air runes
-			addItemToTable(room, new Item(DungeonConstants.RUNE_ESSENCE, 90 + Utils.random(30))); //arround 100 essence
-			addItemToTable(room, new Item(17754)); //knife
-			addItemToTable(room, new Item(17883)); //hammer
+			addItemToTable(room, new Item(DungeonUtils.getArrows(1 + Utils.random(rangeTier)), 90 + Utils.random(30))); // arround
+			// 100
+			// arrows,
+			// type
+			// random
+			// up
+			// to
+			// best
+			// u
+			// can,
+			// limited
+			// to
+			// tier
+			// 8
+			addItemToTable(room, new Item(DungeonConstants.RUNES[0], 90 + Utils.random(30))); // arround
+			// 100
+			// air
+			// runes
+			addItemToTable(room, new Item(DungeonConstants.RUNE_ESSENCE, 90 + Utils.random(30))); // arround
+			// 100
+			// essence
+			addItemToTable(room, new Item(17754)); // knife
+			addItemToTable(room, new Item(17883)); // hammer
 			if (party.getComplexity() >= 4)
-				addItemToTable(room, new Item(17446)); //needle
+				addItemToTable(room, new Item(17446)); // needle
 		}
 		for (@SuppressWarnings("unused")
 		Player player : party.getTeam()) {
 			for (int i = 0; i < 7 + Utils.random(4); i++)
-				//9 food
+				// 9 food
 				addItemToTable(room, new Item(DungeonUtils.getFood(1 + Utils.random(8))));
-			if (party.getComplexity() >= 3) { //set weap/gear in table
+			if (party.getComplexity() >= 3) { // set weap/gear in table
 				for (int i = 0; i < 1 + Utils.random(3); i++)
-					//1 up to 3 pieces of gear or weap
-					addItemToTable(room, new Item(DungeonUtils.getRandomGear(1 + Utils.random(8)))); //arround 100 essence
+					// 1 up to 3 pieces of gear or weap
+					addItemToTable(room, new Item(DungeonUtils.getRandomGear(1 + Utils.random(8)))); // arround
+				// 100
+				// essence
 			}
 		}
 	}
 
 	public void addItemToTable(RoomReference room, Item item) {
-		int slot = Utils.random(10); //10 spaces for items
+		int slot = Utils.random(10); // 10 spaces for items
 		if (slot < 6)
 			spawnItem(room, item, 9 + Utils.random(3), 10 + Utils.random(2));
 		else if (slot < 8)
@@ -633,9 +649,9 @@ public class DungeonManager {
 		Effect previousRenewalEffect = player.getEffectsManager().getEffectForType(EffectType.OVERLOAD);
 		Effect nextRenewalEffect = previousRenewalEffect == null ? null : new Effect(EffectType.OVERLOAD, previousRenewalEffect.getCycle());
 		player.reset();
-		if(nextOvlEffect != null)
+		if (nextOvlEffect != null)
 			player.getEffectsManager().startEffect(nextOvlEffect);
-		if(nextRenewalEffect != null)
+		if (nextRenewalEffect != null)
 			player.getEffectsManager().startEffect(nextRenewalEffect);
 		if (player.getControlerManager().getControler() instanceof DungeonController)
 			((DungeonController) player.getControlerManager().getControler()).reset();
@@ -694,9 +710,11 @@ public class DungeonManager {
 	}
 
 	public void sendRing(Player player) {
-		if (player.getInventory().containsItem(15707, 1)) //deletes current normal ring
+		if (player.getInventory().containsItem(15707, 1)) // deletes current
+			// normal ring
 			player.getInventory().deleteItem(15707, 1);
-		player.getInventory().addItem(new Item(15707)); //todo in future if not leave set new ring
+		player.getInventory().addItem(new Item(15707)); // todo in future if not
+		// leave set new ring
 	}
 
 	public void wearInventory(Player player) {
@@ -719,19 +737,19 @@ public class DungeonManager {
 	@SuppressWarnings("deprecation")
 	public void spawnRandomNPCS(RoomReference reference) {
 		int floorType = party.getFloorType();
-		for (int i = 0; i < 3; i++) { //all floors creatures
+		for (int i = 0; i < 3; i++) { // all floors creatures
 			spawnNPC(reference, DungeonUtils.getGuardianCreature(), 2 + Utils.getRandom(13), 2 + Utils.getRandom(13), true, DungeonConstants.GUARDIAN_DOOR, 0.5);
 		}
 
-		for (int i = 0; i < 2; i++) { //this kind of floor creatures
+		for (int i = 0; i < 2; i++) { // this kind of floor creatures
 			spawnNPC(reference, DungeonUtils.getGuardianCreature(floorType), 2 + Utils.getRandom(13), 2 + Utils.getRandom(13), true, DungeonConstants.GUARDIAN_DOOR, Utils.random(2) == 0 ? 0.8 : 1);
 		}
-		//forgotten warrior
+		// forgotten warrior
 		if (Utils.random(2) == 0)
 			spawnNPC(reference, DungeonUtils.getForgottenWarrior(), 2 + Utils.getRandom(13), 2 + Utils.getRandom(13), true, DungeonConstants.FORGOTTEN_WARRIOR);
-		//hunter creature
+		// hunter creature
 		spawnNPC(reference, DungeonUtils.getHunterCreature(), 2 + Utils.getRandom(13), 2 + Utils.getRandom(13), true, DungeonConstants.HUNTER_NPC, 0.5);
-		if (Utils.random(5) == 0) //slayer creature
+		if (Utils.random(5) == 0) // slayer creature
 			spawnNPC(reference, DungeonUtils.getSlayerCreature(), 2 + Utils.getRandom(13), 2 + Utils.getRandom(13), true, DungeonConstants.SLAYER_NPC);
 	}
 
@@ -840,7 +858,7 @@ public class DungeonManager {
 
 	public WorldObject getObjectWithType(RoomReference reference, int type, int x, int y) {
 		Room room = dungeon.getRoom(reference);
-		if(room == null)
+		if (room == null)
 			return null;
 		final int mapRotation = room.getRotation();
 		int[] coords = translate(x, y, mapRotation, 1, 1, 0);
@@ -849,7 +867,7 @@ public class DungeonManager {
 
 	public WorldTile getTile(RoomReference reference, int x, int y, int sizeX, int sizeY) {
 		Room room = dungeon.getRoom(reference);
-		if(room == null)
+		if (room == null)
 			return null;
 		final int mapRotation = room.getRotation();
 		int[] coords = translate(x, y, mapRotation, sizeX, sizeY, 0);
@@ -976,7 +994,7 @@ public class DungeonManager {
 		lvl *= party.getDificultyRatio();
 		lvl *= multiplier;
 		lvl *= 1D - ((double) (6D - party.getComplexity()) * 0.07D);
-		if (party.getTeam().size() > 2 && id != 12752 && id != 11872 && id != 11708 && id != 12865) //blink
+		if (party.getTeam().size() > 2 && id != 12752 && id != 11872 && id != 11708 && id != 12865) // blink
 			lvl *= 0.7;
 		return (int) (lvl < 1 ? 1 : lvl);
 	}
@@ -988,12 +1006,15 @@ public class DungeonManager {
 		bonuses[CombatDefinitions.RANGE_ATTACK] = party.getRangeLevel() + (level / 3);
 		bonuses[CombatDefinitions.STAB_ATTACK] = (int) (party.getAttackLevel() + (level / 3) / 1.2);
 		bonuses[CombatDefinitions.MAGIC_ATTACK] = (int) (party.getAttackLevel() + (level / 3) / 1.5);
-		int npcDefenceLevel = /*party.getDefenceLevel()*/party.getAverageCombatLevel() / (boss ? 1 : 2);
-		//bonuses[CombatDefinitions.RANGE_DEF] = npcDefenceLevel * + (level / (boss ? 2 : 3));
+		int npcDefenceLevel = /* party.getDefenceLevel() */party.getAverageCombatLevel() / (boss ? 1 : 2);
+		// bonuses[CombatDefinitions.RANGE_DEF] = npcDefenceLevel * + (level /
+		// (boss ? 2 : 3));
 		bonuses[CombatDefinitions.STAB_DEF] = bonuses[CombatDefinitions.CRUSH_DEF] = bonuses[CombatDefinitions.SLASH_DEF] = (int) ((npcDefenceLevel + (level / (boss ? 2 : 3))) / 1.2); // 20%
 
-		//usualy range def > melee def for mobs but bows in dung suck, and even range gear doesnt help that much
-		bonuses[CombatDefinitions.RANGE_DEF] = (int) ((npcDefenceLevel + (level / (boss ? 2 : 3))) / 1.6); // 60% nerf
+		// usualy range def > melee def for mobs but bows in dung suck, and even
+		// range gear doesnt help that much
+		bonuses[CombatDefinitions.RANGE_DEF] = (int) ((npcDefenceLevel + (level / (boss ? 2 : 3))) / 1.6); // 60%
+		// nerf
 
 		// less
 		// than
@@ -1077,7 +1098,7 @@ public class DungeonManager {
 
 	public void destroy() {
 		synchronized (this) {
-			if (isDestroyed()) //to prevent issues when shutting down forcing
+			if (isDestroyed()) // to prevent issues when shutting down forcing
 				return;
 			endRewardsTimer();
 			endDestroyTimer();
@@ -1104,12 +1125,13 @@ public class DungeonManager {
 						Logger.handle(e);
 					}
 				}
-			}, 5000, TimeUnit.MILLISECONDS); //just to be safe
+			}, 5000, TimeUnit.MILLISECONDS); // just to be safe
 		}
 	}
 
 	public void nextFloor() {
-		//int maxFloor = DungeonUtils.getMaxFloor(party.getDungeoneeringLevel());
+		// int maxFloor =
+		// DungeonUtils.getMaxFloor(party.getDungeoneeringLevel());
 		if (party.getMaxFloor() > party.getFloor())
 			party.setFloor(party.getFloor() + 1);
 		if (tutorialMode) {
@@ -1121,12 +1143,12 @@ public class DungeonManager {
 		load();
 	}
 
-	public Integer[] getAchievements(Player player) { //TODO
+	public Integer[] getAchievements(Player player) { // TODO
 		List<Integer> achievements = new ArrayList<Integer>();
 
 		DungeonController controller = (DungeonController) player.getControlerManager().getControler();
 
-		//solo achievements
+		// solo achievements
 		if (controller.isKilledBossWithLessThan10HP())
 			achievements.add(6);
 		if (controller.getDeaths() == 8)
@@ -1136,7 +1158,7 @@ public class DungeonManager {
 		if (controller.getDamage() != 0 && controller.getDamageReceived() == 0)
 			achievements.add(25);
 
-		if (party.getTeam().size() > 1) { //party achievements
+		if (party.getTeam().size() > 1) { // party achievements
 			boolean mostMeleeDmg = true;
 			boolean mostMageDmg = true;
 			boolean mostRangeDmg = true;
@@ -1165,7 +1187,7 @@ public class DungeonManager {
 			}
 			if (mostMeleeDmg && mostMageDmg && mostRangeDmg)
 				achievements.add(1);
-			if (leastDamage && mostDeaths) //leecher
+			if (leastDamage && mostDeaths) // leecher
 				achievements.add(2);
 			if (mostMeleeDmg)
 				achievements.add(3);
@@ -1202,10 +1224,18 @@ public class DungeonManager {
 			player.stopAll();
 			double multiplier = 1;
 			player.getInterfaceManager().sendMinigameInterface(933);
-			player.getPackets().sendExecuteScriptReverse(2275); //clears interface data from last run
+			player.getPackets().sendExecuteScriptReverse(2275); // clears
+			// interface
+			// data from
+			// last run
 			for (int i = 0; i < 5; i++) {
 				Player partyPlayer = i >= party.getTeam().size() ? null : party.getTeam().get(i);
-				player.getPackets().sendCSVarInteger(1198 + i, partyPlayer != null ? 1 : 0); //sets true that this player exists
+				player.getPackets().sendCSVarInteger(1198 + i, partyPlayer != null ? 1 : 0); // sets
+				// true
+				// that
+				// this
+				// player
+				// exists
 				if (partyPlayer == null)
 					continue;
 				player.getPackets().sendCSVarString(2383 + i, partyPlayer.getDisplayName());
@@ -1215,32 +1245,49 @@ public class DungeonManager {
 			}
 			player.getPackets().sendIComponentText(933, 26, Utils.formatTime((Utils.currentWorldCycle() - time) * 600));
 			player.getPackets().sendCSVarInteger(1187, party.getFloor());
-			player.getPackets().sendCSVarInteger(1188, party.getSize() + 1); //dungeon size, sets bonus aswell
+			player.getPackets().sendCSVarInteger(1188, party.getSize() + 1); // dungeon
+			// size,
+			// sets
+			// bonus
+			// aswell
 			multiplier += DungeonConstants.DUNGEON_SIZE_BONUS[party.getSize()];
-			player.getPackets().sendCSVarInteger(1191, party.getTeam().size() * 10 + party.getDificulty()); //teamsize:dificulty
+			player.getPackets().sendCSVarInteger(1191, party.getTeam().size() * 10 + party.getDificulty()); // teamsize:dificulty
 			multiplier += DungeonConstants.DUNGEON_DIFFICULTY_RATIO_BONUS[party.getTeam().size() - 1][party.getDificulty() - 1];
 			int v = 0;
-			if (getVisibleBonusRoomsCount() != 0) { //no bonus rooms in c1, would be divide by 0
+			if (getVisibleBonusRoomsCount() != 0) { // no bonus rooms in c1,
+				// would be divide by 0
 				v = getVisibleBonusRoomsCount() * 10000 / (dungeon.getRoomsCount() - dungeon.getCritCount());
 			}
-			player.getPackets().sendCSVarInteger(1195, v); //dungeons rooms opened, sets bonus aswell
+			player.getPackets().sendCSVarInteger(1195, v); // dungeons rooms
+			// opened, sets bonus
+			// aswell
 			multiplier += DungeonConstants.MAX_BONUS_ROOM * v / 10000;
 			v = (getLevelModPerc() * 20) - 1000;
-			player.getPackets().sendCSVarInteger(1236, v); //sets level mod
+			player.getPackets().sendCSVarInteger(1236, v); // sets level mod
 			multiplier += ((double) v) / 10000;
-			player.getPackets().sendCSVarInteger(1196, party.isGuideMode() ? 1 : 0); //sets guidemode
+			player.getPackets().sendCSVarInteger(1196, party.isGuideMode() ? 1 : 0); // sets
+			// guidemode
 			if (party.isGuideMode())
 				multiplier -= 0.05;
 			player.getPackets().sendCSVarInteger(1319, DungeonUtils.getMaxFloor(player.getSkills().getLevelForXp(Skills.DUNGEONEERING)));
 			player.getPackets().sendCSVarInteger(1320, party.getComplexity());
 			if (party.getComplexity() != 6)
 				multiplier -= (DungeonConstants.COMPLEXIYY_PENALTY_BASE[party.getSize()] + (new Double(5 - party.getComplexity())) * 0.06);
-			double levelDiffPenalty = party.getLevelDiferencePenalty(player);//party.getMaxLevelDiference() > 70 ? DungeonConstants.UNBALANCED_PARTY_PENALTY : 0;
+			double levelDiffPenalty = party.getLevelDiferencePenalty(player);// party.getMaxLevelDiference()
+			// >
+			// 70
+			// ?
+			// DungeonConstants.UNBALANCED_PARTY_PENALTY
+			// :
+			// 0;
 			player.getPackets().sendCSVarInteger(1321, (int) (levelDiffPenalty * 10000));
 			multiplier -= levelDiffPenalty;
 			double countedDeaths = Math.min(player.getVarsManager().getBitValue(7554), 6);
-			multiplier *= (1.0 - (countedDeaths * 0.1)); //adds FLAT 10% reduction per death, upto 6
-			//base xp is based on a ton of factors, including opened rooms, resources harvested, ... but this is most imporant one
+			multiplier *= (1.0 - (countedDeaths * 0.1)); // adds FLAT 10%
+			// reduction per death,
+			// upto 6
+			// base xp is based on a ton of factors, including opened rooms,
+			// resources harvested, ... but this is most imporant one
 			double floorXP = getXPForFloor(party.getFloor(), party.getSize()) * getVisibleRoomsCount() / dungeon.getRoomsCount();
 			boolean tickedOff = player.getDungManager().isTickedOff(party.getFloor());
 			if (!tickedOff)
@@ -1275,7 +1322,23 @@ public class DungeonManager {
 			player.getPackets().sendCSVarInteger(1239, (int) (averageXP * 10));
 			if (Settings.DEBUG)
 				System.out.println(averageXP + ", " + multiplier + ", " + totalXp);
-			player.getSkills().addXp(Skills.DUNGEONEERING, totalXp, true); //force rs xp, cuz we do * xp rate in calcs to make inter show correct xp
+			player.getSkills().addXp(Skills.DUNGEONEERING, totalXp, true); // force
+			// rs
+			// xp,
+			// cuz
+			// we
+			// do
+			// *
+			// xp
+			// rate
+			// in
+			// calcs
+			// to
+			// make
+			// inter
+			// show
+			// correct
+			// xp
 			player.getDungManager().addTokens(tokens);
 			player.getMusicsManager().forcePlayMusic(770);
 			if (!tickedOff) {
@@ -1309,7 +1372,7 @@ public class DungeonManager {
 	}
 
 	public void voteToMoveOn(Player player) {
-		//loadRewards();
+		// loadRewards();
 		if (rewardsTimer == null)
 			setRewardsTimer();
 		rewardsTimer.increaseReadyCount();
@@ -1331,14 +1394,16 @@ public class DungeonManager {
 	}
 
 	public void setDestroyTimer() {
-		//cant be already instanced before anyway, afterall only isntances hwen party is 0 and remvoes if party not 0
+		// cant be already instanced before anyway, afterall only isntances hwen
+		// party is 0 and remvoes if party not 0
 		GameExecutorManager.fastExecutor.schedule(destroyTimer = new DestroyTimer(), 1000, 5000);
 	}
 
 	public void setMark(Entity target, boolean mark) {
 		if (mark) {
 			for (Player player : party.getTeam())
-				player.getHintIconsManager().addHintIcon(6, target, 0, -1, true); //6th slot
+				player.getHintIconsManager().addHintIcon(6, target, 0, -1, true); // 6th
+			// slot
 		} else
 			removeMark();
 		if (target instanceof DungeonNPC)
@@ -1389,7 +1454,7 @@ public class DungeonManager {
 		private long timeLeft;
 
 		public DestroyTimer() {
-			timeLeft = 600; //10min
+			timeLeft = 600; // 10min
 		}
 
 		@Override
@@ -1455,7 +1520,7 @@ public class DungeonManager {
 		if (key == null)
 			return;
 		DungeonManager dungeon = cachedDungeons.get(key);
-		//either doesnt exit / ur m8s moving next floor(reward screen)
+		// either doesnt exit / ur m8s moving next floor(reward screen)
 		if (dungeon == null || !dungeon.hasLoadedNoRewardScreen()) {
 			player.getDungManager().setRejoinKey(null);
 			return;
@@ -1479,7 +1544,7 @@ public class DungeonManager {
 					boundChuncks = MapBuilder.findEmptyChunkBound(dungeon.getMapWidth() * 2, (dungeon.getMapHeight() * 2));
 					// reserves all map area
 					MapBuilder.cutMap(boundChuncks[0], boundChuncks[1], dungeon.getMapWidth() * 2, (dungeon.getMapHeight() * 2), 0);
-					//set dungeon
+					// set dungeon
 					setDungeon();
 					// loads start room
 					loadRoom(dungeon.getStartRoomReference());
@@ -1510,11 +1575,12 @@ public class DungeonManager {
 			return;
 		}
 		player.getInterfaceManager().sendCentralInterface(942);
-		player.getPackets().sendExecuteScriptReverse(3277); //clear the map if theres any setted
+		player.getPackets().sendExecuteScriptReverse(3277); // clear the map if
+		// theres any setted
 		int protocol = party.getSize() == DungeonConstants.LARGE_DUNGEON ? 0 : party.getSize() == DungeonConstants.MEDIUM_DUNGEON ? 2 : 1;
 		for (int x = 0; x < visibleMap.length; x++) {
 			for (int y = 0; y < visibleMap[x].length; y++) {
-				if (visibleMap[x][y] != null) { //means exists
+				if (visibleMap[x][y] != null) { // means exists
 					Room room = getRoom(new RoomReference(x, y));
 					boolean highLight = party.isGuideMode() && room.isCritPath();
 					player.getPackets().sendExecuteScriptReverse(3278, protocol, getMapIconSprite(room, highLight), y, x);
@@ -1576,15 +1642,16 @@ public class DungeonManager {
 		Room room = getRoom(reference);
 		int type = 0;
 
-		if (room.getRoom().getChunkX() == 26 && room.getRoom().getChunkY() == 640) //unholy cursed 
+		if (room.getRoom().getChunkX() == 26 && room.getRoom().getChunkY() == 640) // unholy
+			// cursed
 			type = 1;
-		else if (room.getRoom().getChunkX() == 30 && room.getRoom().getChunkY() == 656) //stomp
+		else if (room.getRoom().getChunkX() == 30 && room.getRoom().getChunkY() == 656) // stomp
 			type = 2;
-		else if ((room.getRoom().getChunkX() == 30 && room.getRoom().getChunkY() == 672) || (room.getRoom().getChunkX() == 24 && room.getRoom().getChunkY() == 690)) //necromancer)
+		else if ((room.getRoom().getChunkX() == 30 && room.getRoom().getChunkY() == 672) || (room.getRoom().getChunkX() == 24 && room.getRoom().getChunkY() == 690)) // necromancer)
 			type = 3;
-		else if (room.getRoom().getChunkX() == 26 && room.getRoom().getChunkY() == 690) //world-gorger
+		else if (room.getRoom().getChunkX() == 26 && room.getRoom().getChunkY() == 690) // world-gorger
 			type = 4;
-		else if (room.getRoom().getChunkX() == 24 && room.getRoom().getChunkY() == 688) //blink
+		else if (room.getRoom().getChunkX() == 24 && room.getRoom().getChunkY() == 688) // blink
 			type = 5;
 		spawnObject(reference, DungeonConstants.LADDERS[party.getFloorType()], 10, (type == 2 || type == 3) ? 0 : 3, type == 4 ? 11 : type == 3 ? 15 : type == 2 ? 14 : 7, type == 5 ? 14 : (type == 3 || type == 2) ? 3 : type == 1 ? 11 : 15);
 		getVisibleRoom(reference).setNoMusic();
@@ -1647,8 +1714,7 @@ public class DungeonManager {
 	}
 
 	/*
-	 * Use get npc instead
-	 * this being used because gravecreeper gets removed when using special :/
+	 * Use get npc instead this being used because gravecreeper gets removed when using special :/
 	 */
 	@Deprecated
 	public DungeonBoss getTemporaryBoss() {

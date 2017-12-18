@@ -23,11 +23,11 @@ public abstract class Cutscene {
 	public int getMapSize() {
 		return 0;
 	}
-	
+
 	public boolean allowSkipCutscene() {
 		return true;
 	}
-	
+
 	public abstract CutsceneAction[] getActions(Player player);
 
 	private int stage;
@@ -38,7 +38,6 @@ public abstract class Cutscene {
 	private int[] currentMapData;
 	private int mapSize;
 
-
 	public Cutscene() {
 		mapSize = -1;
 	}
@@ -47,11 +46,12 @@ public abstract class Cutscene {
 
 	public void stopCutscene(Player player) {
 		if (player.getX() != endTile.getX() || player.getY() != endTile.getY() || player.getPlane() != endTile.getPlane())
-				player.setNextWorldTile(endTile);
+			player.setNextWorldTile(endTile);
 		if (hiddenMinimap())
 			player.getPackets().sendBlackOut(0); // unblack
 		player.closeInterfaces();
-		setCutscene(player, false, false);  //sets cutscene(hides inters) and doesnt let open menus
+		setCutscene(player, false, false); // sets cutscene(hides inters) and
+		// doesnt let open menus
 		player.getPackets().sendResetCamera();
 		player.setLargeSceneView(false);
 		player.unlock();
@@ -69,7 +69,7 @@ public abstract class Cutscene {
 				}
 			});
 		}
-		if(mapSize != -1 && mapSize != player.getMapSize()) {
+		if (mapSize != -1 && mapSize != player.getMapSize()) {
 			player.setForceNextMapLoadRefresh(true);
 			player.setMapSize(mapSize);
 			mapSize = -1;
@@ -79,21 +79,27 @@ public abstract class Cutscene {
 	public void startCutscene(Player player) {
 		if (hiddenMinimap())
 			player.getPackets().sendBlackOut(2); // minimap
-		if(getMapSize() != player.getMapSize()) {
+		if (getMapSize() != player.getMapSize()) {
 			mapSize = player.getMapSize();
 			player.setForceNextMapLoadRefresh(true);
 			player.setMapSize(getMapSize());
 		}
-	//	Dialogue.sendEmptyDialogue(player);
-		setCutscene(player, true, allowSkipCutscene()); //sets cutscene(hides inters) and doesnt let open menus
+		// Dialogue.sendEmptyDialogue(player);
+		setCutscene(player, true, allowSkipCutscene()); // sets cutscene(hides
+		// inters) and doesnt
+		// let open menus
 		player.setLargeSceneView(true);
 		player.lock();
 		player.stopAll(true, false);
 	}
-	
+
 	public static void setCutscene(Player player, boolean open, boolean allowSkip) {
-		player.getVarsManager().sendVarBit(3028, open ? 1 : 0); //sets cutscene(hides inters) and doesnt let open menus
-		
+		player.getVarsManager().sendVarBit(3028, open ? 1 : 0); // sets
+		// cutscene(hides
+		// inters) and
+		// doesnt let
+		// open menus
+
 		player.getPackets().sendHideIComponent(1477, 21, !open || !allowSkip);
 		player.getPackets().sendHideIComponent(1477, 22, !open || !allowSkip);
 		player.getPackets().sendHideIComponent(1477, 23, !open || !allowSkip);
@@ -110,8 +116,7 @@ public abstract class Cutscene {
 					final int[] oldData = currentMapData;
 					int[] mapBaseChunks = MapBuilder.findEmptyChunkBound(widthChunks, heightChunks);
 					MapBuilder.copyAllPlanesMap(baseChunkX, baseChunkY, mapBaseChunks[0], mapBaseChunks[1], widthChunks, heightChunks);
-					currentMapData = new int[]
-					{ mapBaseChunks[0], mapBaseChunks[1], widthChunks, heightChunks };
+					currentMapData = new int[] { mapBaseChunks[0], mapBaseChunks[1], widthChunks, heightChunks };
 					player.setNextWorldTile(new WorldTile(getBaseX() + widthChunks * 4, +getBaseY() + heightChunks * 4, 0));
 					constructingRegion = false;
 					if (Settings.DEBUG)
@@ -163,8 +168,6 @@ public abstract class Cutscene {
 		stopCutscene(player);
 	}
 
-	
-	
 	public final boolean process(Player player) {
 		if (delay > 0) {
 			delay--;
@@ -172,8 +175,11 @@ public abstract class Cutscene {
 		}
 		while (true) {
 			if (constructingRegion || (player.getNextWorldTile() != null && player.needMapUpdate(player.getNextWorldTile())) || !player.clientHasLoadedMapRegion()
-					
-					|| player.getDialogueManager().getLast() != null) //waiting dialogue to get over
+
+					|| player.getDialogueManager().getLast() != null) // waiting
+				// dialogue
+				// to get
+				// over
 				return true;
 			if (stage == actions.length) {
 				stopCutscene(player);

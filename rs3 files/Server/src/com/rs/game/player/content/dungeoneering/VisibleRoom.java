@@ -27,14 +27,11 @@ public class VisibleRoom {
 		this.reference = ref;
 		this.manager = manager;
 		if (room instanceof StartRoom)
-			musicId = new int[]
-			{ DungeonConstants.START_ROOM_MUSICS[type] };
+			musicId = new int[] { DungeonConstants.START_ROOM_MUSICS[type] };
 		else if (room instanceof BossRoom)
-			musicId = new int[]
-			{ ((BossRoom) room).getMusicId() };
+			musicId = new int[] { ((BossRoom) room).getMusicId() };
 		else {
-			musicId = new int[]
-			{ DungeonUtils.getSafeMusic(type), DungeonUtils.getDangerousMusic(type) };
+			musicId = new int[] { DungeonUtils.getSafeMusic(type), DungeonUtils.getDangerousMusic(type) };
 			guardians = new ArrayList<NPC>();
 		}
 	}

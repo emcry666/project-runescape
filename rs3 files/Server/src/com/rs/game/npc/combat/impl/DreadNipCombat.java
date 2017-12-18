@@ -29,23 +29,22 @@ public class DreadNipCombat extends CombatScript {
 		npc.setNextAnimation(new Animation(-1));
 		int attackStyle = Utils.random(3);
 		switch (attackStyle) {
-			case 0:
-				break;
-			case 1:
-				int secondsDelay = 5 + Utils.random(4);
-				target.setStunDelay((int) (secondsDelay / 0.6));
-				if (target instanceof Player) {
-					Player player = (Player) target;
-					player.getActionManager().addActionDelay(secondsDelay);
-				}
-				else {
-					NPC npcTarget = (NPC) target;
-					npcTarget.getCombat().setCombatDelay(npcTarget.getCombat().getCombatDelay() + secondsDelay);
-				}
-				break;
-			case 2:
-				EffectsManager.makePoisoned(target, 108);
-				break;
+		case 0:
+			break;
+		case 1:
+			int secondsDelay = 5 + Utils.random(4);
+			target.setStunDelay((int) (secondsDelay / 0.6));
+			if (target instanceof Player) {
+				Player player = (Player) target;
+				player.getActionManager().addActionDelay(secondsDelay);
+			} else {
+				NPC npcTarget = (NPC) target;
+				npcTarget.getCombat().setCombatDelay(npcTarget.getCombat().getCombatDelay() + secondsDelay);
+			}
+			break;
+		case 2:
+			EffectsManager.makePoisoned(target, 108);
+			break;
 		}
 		if (attackStyle != 0)
 			dreadNip.getOwner().getPackets().sendGameMessage(DREADNIP_ATTACK_MESSAGE[attackStyle - 1]);

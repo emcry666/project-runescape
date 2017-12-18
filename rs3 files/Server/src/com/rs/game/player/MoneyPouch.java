@@ -23,8 +23,9 @@ public class MoneyPouch implements Serializable {
 	}
 
 	public void init() {
-		/*if (usingPouch)
-			swap();*/
+		/*
+		 * if (usingPouch) swap();
+		 */
 		refreshCoins();
 	}
 
@@ -45,7 +46,7 @@ public class MoneyPouch implements Serializable {
 
 	public void refreshCoins() {
 		player.getPackets().sendExecuteScript(5559, coinAmount);
-		player.getPackets().sendItems(623, new Item[] {new Item(995, coinAmount, 0, true)});
+		player.getPackets().sendItems(623, new Item[] { new Item(995, coinAmount, 0, true) });
 	}
 
 	public boolean sendDynamicInteraction(int amount, boolean remove) {
@@ -55,9 +56,8 @@ public class MoneyPouch implements Serializable {
 	public static final int TYPE_POUCH_INVENTORY = 0, TYPE_REMOVE = 1, TYPE_INV = 2;
 
 	/*
-	 * TYPE_POUCH_INVENTORY - from pouch to inventory TYPE_REMOVE - remove from
-	 * pouch as much as it can(example bank) TYPE_INV - remove/add from pouch
-	 * and if not enough, inventory
+	 * TYPE_POUCH_INVENTORY - from pouch to inventory TYPE_REMOVE - remove from pouch as much as it can(example
+	 * bank) TYPE_INV - remove/add from pouch and if not enough, inventory
 	 */
 	public boolean sendDynamicInteraction(int amount, boolean remove, int type) {
 		if (amount == 0)

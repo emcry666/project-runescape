@@ -11,8 +11,7 @@ import com.rs.game.player.dialogues.Dialogue;
  */
 public class FlamingSkull extends Dialogue {
 
-	private static final String COLORS[] =
-	{ "Green", "Purple", "Blue", "Red" };
+	private static final String COLORS[] = { "Green", "Purple", "Blue", "Red" };
 
 	private Item item;
 	private int slot;

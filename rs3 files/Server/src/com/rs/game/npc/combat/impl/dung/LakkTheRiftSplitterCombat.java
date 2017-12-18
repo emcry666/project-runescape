@@ -23,15 +23,12 @@ import com.rs.utils.Utils;
 
 public class LakkTheRiftSplitterCombat extends CombatScript {
 
-	private static final int[] VOICES =
-	{ 3034, 2993, 3007 };
-	private static final String[] MESSAGES =
-	{ "A flame portal will flush you out!", "Taste miasma!", "This will cut you down to size!" };
+	private static final int[] VOICES = { 3034, 2993, 3007 };
+	private static final String[] MESSAGES = { "A flame portal will flush you out!", "Taste miasma!", "This will cut you down to size!" };
 
 	@Override
 	public Object[] getKeys() {
-		return new Object[]
-		{ 9898 };
+		return new Object[] { 9898 };
 	}
 
 	@Override
@@ -61,7 +58,7 @@ public class LakkTheRiftSplitterCombat extends CombatScript {
 			case 1:
 			case 2:
 				final List<WorldTile> boundary = new LinkedList<WorldTile>();
-				for (int x = -1; x < 2; x++) {//3x3 area
+				for (int x = -1; x < 2; x++) {// 3x3 area
 					for (int y = -1; y < 2; y++) {
 						boundary.add(target.transform(x, y, 0));
 					}
@@ -84,7 +81,7 @@ public class LakkTheRiftSplitterCombat extends CombatScript {
 			}
 		}
 
-		//melee or magic
+		// melee or magic
 		boolean onRange = Utils.isOnRange(npc.getX(), npc.getY(), npc.getSize(), target.getX(), target.getY(), target.getSize(), 0);
 		boolean melee = onRange && Utils.random(2) == 0;
 		if (melee) {

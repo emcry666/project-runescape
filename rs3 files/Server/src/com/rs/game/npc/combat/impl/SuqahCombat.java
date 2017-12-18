@@ -25,8 +25,7 @@ public class SuqahCombat extends CombatScript {
 				target.setNextGraphics(new Graphics(369, 40, 0));
 				target.setBoundDelay(8, true);
 			}
-		}
-		else {
+		} else {
 			npc.setNextAnimation(new Animation(defs.getAttackEmote()));
 			delayHit(npc, 0, target, getMeleeHit(npc, getMaxHit(npc, NPCCombatDefinitions.MELEE, target)));
 		}

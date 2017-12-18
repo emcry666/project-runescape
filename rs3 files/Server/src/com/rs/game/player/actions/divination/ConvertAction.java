@@ -11,14 +11,10 @@ import com.rs.utils.Utils;
 public class ConvertAction extends Action {
 
 	// inter cs 357
-	private static final double[] EXPERIENCE = { 45.0D, 42.0D, 38.0D, 35.0D, 32.0D, 25.0D,
-		19.0D, 12.0D, 7.0D, 5.0D, 4.0D, 3.0D };
-	private static final int[] MEMORIES = {
-		/*Enriched Memories*/29406, 29405, 29404, 29403, 29402, 29401, 29400, 29399, 29398, 29397, 29396,
-		/*Regular Memories*/29395, 29394, 29393, 29392, 29391, 29390, 29389, 29388, 29387, 29386, 29385, 29384 };
-	private static final int[] ENERGY = {
-		29324,29323, 29322, 29321, 29320, 29319, 29318, 29317, 29316, 29315, 29314, 29313,
-	};
+	private static final double[] EXPERIENCE = { 45.0D, 42.0D, 38.0D, 35.0D, 32.0D, 25.0D, 19.0D, 12.0D, 7.0D, 5.0D, 4.0D, 3.0D };
+	private static final int[] MEMORIES = { /* Enriched Memories */29406, 29405, 29404, 29403, 29402, 29401, 29400, 29399, 29398, 29397, 29396,
+			/* Regular Memories */29395, 29394, 29393, 29392, 29391, 29390, 29389, 29388, 29387, 29386, 29385, 29384 };
+	private static final int[] ENERGY = { 29324, 29323, 29322, 29321, 29320, 29319, 29318, 29317, 29316, 29315, 29314, 29313, };
 
 	private int type, nextMemory;
 	private boolean enriched;
@@ -72,9 +68,7 @@ public class ConvertAction extends Action {
 		player.setNextAnimation(convertAnim);
 		player.setNextGraphics(convertGFX);
 		player.getSkills().addXp(Skills.DIVINATION, exp);
-		player.getPackets().sendGameMessage(type == 1 ? "You convert the memory into energy."
-				: type == 6 ? "You convert the memory into experience."
-						: "You convert the memory and energy into an enhanced amount of experience.");
+		player.getPackets().sendGameMessage(type == 1 ? "You convert the memory into energy." : type == 6 ? "You convert the memory into experience." : "You convert the memory and energy into an enhanced amount of experience.");
 		return 3;
 	}
 
@@ -90,7 +84,7 @@ public class ConvertAction extends Action {
 		}
 		return -1;
 	}
-	
+
 	public static int getEnergyForMemory(int nextMemory) {
 		return ENERGY[nextMemory >= 11 ? nextMemory - 11 : nextMemory];
 	}

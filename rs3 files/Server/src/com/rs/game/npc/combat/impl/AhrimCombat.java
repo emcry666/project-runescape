@@ -16,8 +16,7 @@ public class AhrimCombat extends CombatScript {
 
 	@Override
 	public Object[] getKeys() {
-		return new Object[]
-		{ 2025 };
+		return new Object[] { 2025 };
 	}
 
 	@Override

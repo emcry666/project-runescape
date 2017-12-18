@@ -10,8 +10,7 @@ public class MasterOfFear extends Dialogue {
 		if (stage == 3) {
 			sendOptionsDialogue(DEFAULT_OPTIONS_TITLE, "Donator cape", "Basket of eggs", "Sled");
 		} else {
-			sendEntityDialogue(SEND_1_TEXT_CHAT, new String[]
-			{ "SlayerMasterD of fear", "Hello, " + player.getDisplayName() + ", welcome to the Refuge of Fear grotto.", }, IS_NPC, 15149, 9843);
+			sendEntityDialogue(SEND_1_TEXT_CHAT, new String[] { "SlayerMasterD of fear", "Hello, " + player.getDisplayName() + ", welcome to the Refuge of Fear grotto.", }, IS_NPC, 15149, 9843);
 		}
 		stage = 1;
 	}

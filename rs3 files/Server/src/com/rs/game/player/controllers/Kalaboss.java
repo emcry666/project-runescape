@@ -27,7 +27,7 @@ public class Kalaboss extends Controller {
 		DungeonManager.checkRejoin(player);
 		return false;
 	}
-	
+
 	@Override
 	public void magicTeleported(int type) {
 		setInviteOption(false);

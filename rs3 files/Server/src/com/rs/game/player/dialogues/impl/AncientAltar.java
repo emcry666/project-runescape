@@ -11,7 +11,7 @@ public class AncientAltar extends Dialogue {
 
 	@Override
 	public void run(int interfaceId, int componentId) {
-		if(stage == -1) {
+		if (stage == -1) {
 			if (componentId == OPTION_1) {
 				stage = 0;
 				if (player.getCombatDefinitions().getSpellBook() != 1) {
@@ -23,7 +23,7 @@ public class AncientAltar extends Dialogue {
 				}
 			} else
 				end();
-		}else{
+		} else {
 			end();
 		}
 	}

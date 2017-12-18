@@ -21,8 +21,8 @@ public class NecroLord extends DungeonBoss {
 
 	public NecroLord(int id, WorldTile tile, DungeonManager manager, RoomReference reference) {
 		super(id, tile, manager, reference, 0.6D);
-		setCantFollowUnderCombat(true); //force can't walk
-		setLureDelay(Integer.MAX_VALUE);//doesn't stop focusing on target
+		setCantFollowUnderCombat(true); // force can't walk
+		setLureDelay(Integer.MAX_VALUE);// doesn't stop focusing on target
 		skeletons = new CopyOnWriteArrayList<SkeletalMinion>();
 	}
 
@@ -66,7 +66,7 @@ public class NecroLord extends DungeonBoss {
 	 */
 	@Override
 	public boolean clipedProjectile(WorldTile tile, boolean checkClose, int size) {
-		//because npc is under cliped data
+		// because npc is under cliped data
 		return getManager().isAtBossRoom(tile);
 	}
 

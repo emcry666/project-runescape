@@ -60,17 +60,25 @@ public class Honeybadger extends Familiar {
 		actualLevel = player.getSkills().getLevel(Skills.DEFENCE);
 		realLevel = player.getSkills().getLevelForXp(Skills.DEFENCE);
 		level = actualLevel > realLevel ? realLevel : actualLevel;
-		player.getSkills().set(Skills.DEFENCE, (int) (level > (realLevel * 0.15) ? level - (realLevel * 0.15) : 1));//(int) (level - (realLevel * 0.15)));
+		player.getSkills().set(Skills.DEFENCE, (int) (level > (realLevel * 0.15) ? level - (realLevel * 0.15) : 1));// (int)
+		// (level
+		// -
+		// (realLevel
+		// *
+		// 0.15)));
 
 		actualLevel = player.getSkills().getLevel(Skills.MAGIC);
-	/*	realLevel = player.getSkills().getLevelForXp(Skills.MAGIC);
-		level = actualLevel > realLevel ? realLevel : actualLevel;*/
+		/*
+		 * realLevel = player.getSkills().getLevelForXp(Skills.MAGIC); level = actualLevel > realLevel ? realLevel
+		 * : actualLevel;
+		 */
 		player.getSkills().set(Skills.MAGIC, level > 5 ? level - 5 : 1);
 
 		actualLevel = player.getSkills().getLevel(Skills.RANGE);
 		realLevel = player.getSkills().getLevelForXp(Skills.RANGE);
 		level = actualLevel > realLevel ? realLevel : actualLevel;
-		player.getSkills().set(Skills.RANGE,  (int) (level > (realLevel * 0.1) ? level - (realLevel * 0.1) : 1)/*(int) (level - (realLevel * 0.1))*/);
+		player.getSkills().set(Skills.RANGE, (int) (level > (realLevel * 0.1) ? level - (realLevel * 0.1)
+				: 1)/* (int) (level - (realLevel * 0.1)) */);
 		setNextAnimation(new Animation(7930));
 		setNextGraphics(new Graphics(1397));
 		player.setNextAnimation(new Animation(7660));

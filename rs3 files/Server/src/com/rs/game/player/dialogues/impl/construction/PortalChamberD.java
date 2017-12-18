@@ -9,22 +9,11 @@ import com.rs.game.player.dialogues.Dialogue;
 
 public class PortalChamberD extends Dialogue {
 
-	private static final int[][] RUNES =
-	{
-	{ 563, 100, 556, 300, 554, 100 },
-	{ 563, 100, 556, 300, 557, 100 },
-	{ 563, 100, 556, 300, 555, 100 },
-	{ 563, 100, 556, 500 },
-	{ 563, 200, 555, 200 },
-	{ 563, 200, 557, 200 },
-	{ 563, 200, 565, 200 } };
+	private static final int[][] RUNES = { { 563, 100, 556, 300, 554, 100 }, { 563, 100, 556, 300, 557, 100 }, { 563, 100, 556, 300, 555, 100 }, { 563, 100, 556, 500 }, { 563, 200, 555, 200 }, { 563, 200, 557, 200 }, { 563, 200, 565, 200 } };
 
-	private static final int[] LEVELS =
-	{ 25, 31, 37, 45, 51, 58, 66 };
-	private static final double[] EXPERIENCE =
-	{ 19, 41, 48, 55.5, 61, 68, 76 };
-	private static final String[] OPTION_NAMES =
-	{ "Nowhere", "Varrock", "Lumbridge", "Falador", "Camelot", "Ardougne", "Yanille", "Kharyll" };
+	private static final int[] LEVELS = { 25, 31, 37, 45, 51, 58, 66 };
+	private static final double[] EXPERIENCE = { 19, 41, 48, 55.5, 61, 68, 76 };
+	private static final String[] OPTION_NAMES = { "Nowhere", "Varrock", "Lumbridge", "Falador", "Camelot", "Ardougne", "Yanille", "Kharyll" };
 
 	private RoomReference rRef;
 	private boolean[] existingPortals;

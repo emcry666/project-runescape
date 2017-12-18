@@ -13,8 +13,7 @@ public class PlaneFreezerLakhrahnazCombat extends CombatScript {
 
 	@Override
 	public Object[] getKeys() {
-		return new Object[]
-		{ "Plane-freezer Lakhrahnaz" };
+		return new Object[] { "Plane-freezer Lakhrahnaz" };
 	}
 
 	@Override

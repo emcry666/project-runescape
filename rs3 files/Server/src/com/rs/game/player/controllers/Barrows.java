@@ -23,15 +23,10 @@ import com.rs.utils.Utils;
 
 public final class Barrows extends Controller {
 
-	private static final short[][] TUNNEL_CONFIG =
-	{
-	{ 470, 479, 482, 476, 474 },
-	{ 479, 477, 478, 480, 472 },
-	{ 477, 471, 472, 476, 475, 478, 480, 477 } };
-	private static final int[] CRYPT_NPCS =
-	{ 1243, 1244, 1245, 1246, 1247, 1618, 2031, 2032, 2033, 2034, 2035, 2036, 2037, 4920, 4921, 5381, 5422, 7637 };
+	private static final short[][] TUNNEL_CONFIG = { { 470, 479, 482, 476, 474 }, { 479, 477, 478, 480, 472 }, { 477, 471, 472, 476, 475, 478, 480, 477 } };
+	private static final int[] CRYPT_NPCS = { 1243, 1244, 1245, 1246, 1247, 1618, 2031, 2032, 2033, 2034, 2035, 2036, 2037, 4920, 4921, 5381, 5422, 7637 };
 
-	//dont enable, not finished
+	// dont enable, not finished
 	private static final boolean ENABLE_AKRISAE = false;
 	private BarrowsBrother target;
 	private int creatureCount;
@@ -44,13 +39,8 @@ public final class Barrows extends Controller {
 	// TORAG
 	// VERAC
 	private static enum Hills {
-		//old verac 3578, 9706, 3
-		AHRIM_HILL(new WorldTile(3564, 3287, 0), new WorldTile(3557, 9703, 3)),
-		DHAROK_HILL(new WorldTile(3573, 3296, 0), new WorldTile(3556, 9718, 3)),
-		GUTHAN_HILL(new WorldTile(3574, 3279, 0), new WorldTile(3534, 9704, 3)),
-		KARIL_HILL(new WorldTile(3563, 3276, 0), new WorldTile(3546, 9684, 3)),
-		TORAG_HILL(new WorldTile(3553, 3281, 0), new WorldTile(3568, 9683, 3)),
-		VERAC_HILL(new WorldTile(3556, 3296, 0), ENABLE_AKRISAE ? new WorldTile(4077, 5710, 0) : new WorldTile(3578, 9706, 3));
+		// old verac 3578, 9706, 3
+		AHRIM_HILL(new WorldTile(3564, 3287, 0), new WorldTile(3557, 9703, 3)), DHAROK_HILL(new WorldTile(3573, 3296, 0), new WorldTile(3556, 9718, 3)), GUTHAN_HILL(new WorldTile(3574, 3279, 0), new WorldTile(3534, 9704, 3)), KARIL_HILL(new WorldTile(3563, 3276, 0), new WorldTile(3546, 9684, 3)), TORAG_HILL(new WorldTile(3553, 3281, 0), new WorldTile(3568, 9683, 3)), VERAC_HILL(new WorldTile(3556, 3296, 0), ENABLE_AKRISAE ? new WorldTile(4077, 5710, 0) : new WorldTile(3578, 9706, 3));
 
 		private WorldTile outBound;
 		private WorldTile inside;
@@ -142,49 +132,19 @@ public final class Barrows extends Controller {
 
 	}
 
-	private static final Item[] COMMUM_REWARDS =
-	{ new Item(558, 1795), new Item(562, 773), new Item(560, 391), new Item(565, 164), new Item(4740, 188) };
+	private static final Item[] COMMUM_REWARDS = { new Item(558, 1795), new Item(562, 773), new Item(560, 391), new Item(565, 164), new Item(4740, 188) };
 
 	@SuppressWarnings("unused")
 	// once i add the ring effect
-	private static final Item[] RING_OF_WEALTH_REWARDS =
-	{ new Item(165, 1), new Item(159, 1), new Item(141, 1), new Item(129, 1), new Item(385, 4) };
-	private static final Item[] RARE_REWARDS =
-	{ new Item(1149, 1), new Item(987, 1), new Item(985, 1) };
-	private static final Item[] BARROW_REWARDS =
-	{
-		new Item(4708, 1),
-		new Item(4710, 1),
-		new Item(4712, 1),
-		new Item(4714, 1),
-		new Item(4716, 1),
-		new Item(4718, 1),
-		new Item(4720, 1),
-		new Item(4722, 1),
-		new Item(4724, 1),
-		new Item(4726, 1),
-		new Item(4728, 1),
-		new Item(4730, 1),
-		new Item(4732, 1),
-		new Item(4734, 1),
-		new Item(4736, 1),
-		new Item(4738, 1),
-		new Item(4745, 1),
-		new Item(4747, 1),
-		new Item(4749, 1),
-		new Item(4751, 1),
-		new Item(4753, 1),
-		new Item(4755, 1),
-		new Item(4757, 1),
-		new Item(4759, 1),
-		new Item(21736, 1),
-		new Item(21744, 1),
-		new Item(21752, 1),
-		new Item(21760, 1) };
+	private static final Item[] RING_OF_WEALTH_REWARDS = { new Item(165, 1), new Item(159, 1), new Item(141, 1), new Item(129, 1), new Item(385, 4) };
+	private static final Item[] RARE_REWARDS = { new Item(1149, 1), new Item(987, 1), new Item(985, 1) };
+	private static final Item[] BARROW_REWARDS = { new Item(4708, 1), new Item(4710, 1), new Item(4712, 1), new Item(4714, 1), new Item(4716, 1), new Item(4718, 1), new Item(4720, 1), new Item(4722, 1), new Item(4724, 1), new Item(4726, 1), new Item(4728, 1), new Item(4730, 1), new Item(4732, 1), new Item(4734, 1), new Item(4736, 1), new Item(4738, 1), new Item(4745, 1), new Item(4747, 1), new Item(4749, 1), new Item(4751, 1), new Item(4753, 1), new Item(4755, 1), new Item(4757, 1), new Item(4759, 1), new Item(21736, 1), new Item(21744, 1), new Item(21752, 1), new Item(21760, 1) };
 
 	public void drop(Item item) {
-		//not increasing by drop rate since its already easy enough :p
-		//new Item(item.getId(), Utils.random(item.getDefinitions().isStackable() ? item.getAmount() * Settings.getDropQuantityRate() : item.getAmount()) + 1);
+		// not increasing by drop rate since its already easy enough :p
+		// new Item(item.getId(),
+		// Utils.random(item.getDefinitions().isStackable() ? item.getAmount() *
+		// Settings.getDropQuantityRate() : item.getAmount()) + 1);
 		player.getInventory().addItemDrop(item.getId(), item.getAmount());
 
 	}
@@ -199,7 +159,7 @@ public final class Barrows extends Controller {
 		if (percentage > 90)
 			percentage = 90;
 		if (percentage >= Math.random() * 100) {
-			//reard barrows
+			// reard barrows
 			drop(BARROW_REWARDS[Utils.random(BARROW_REWARDS.length)]);
 
 		}
@@ -423,8 +383,7 @@ public final class Barrows extends Controller {
 	public void start() {
 		if (player.getHiddenBrother() == -1 || player.getHiddenBrother() == 6)
 			player.setHiddenBrother(Utils.random(ENABLE_AKRISAE ? player.getKilledBarrowBrothers().length : 6));
-		setArguments(new Object[]
-		{ (int) Utils.random(TUNNEL_CONFIG.length), 0 });
+		setArguments(new Object[] { (int) Utils.random(TUNNEL_CONFIG.length), 0 });
 		loadData();
 		sendInterfaces();
 	}
@@ -451,8 +410,7 @@ public final class Barrows extends Controller {
 	@Override
 	public boolean logout() {
 		leave(true);
-		this.setArguments(new Object[]
-		{ getTunnelIndex(), creatureCount });
+		this.setArguments(new Object[] { getTunnelIndex(), creatureCount });
 		return false;
 	}
 

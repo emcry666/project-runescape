@@ -51,8 +51,7 @@ public class YkLagorMage extends DungeonNPC {
 		return 65;
 	}
 
-	/*@Override
-	public void sendDeath(Entity source) {
-	super.sendDeath(source);
-	}*/
+	/*
+	 * @Override public void sendDeath(Entity source) { super.sendDeath(source); }
+	 */
 }

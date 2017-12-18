@@ -42,13 +42,13 @@ public class Wilderness extends Controller {
 		moved();
 		return false;
 	}
-	
+
 	private void refreshMulti() {
 		boolean multiArea = isMultiZone(player.getX(), player.getY());
-		if(multiArea != multi)
+		if (multiArea != multi)
 			setMulti(multiArea);
 	}
-	
+
 	public void setMulti(boolean multi) {
 		this.multi = multi;
 		player.getPackets().sendHideIComponent(745, 1, !multi);
@@ -92,8 +92,8 @@ public class Wilderness extends Controller {
 				player.getPackets().sendGameMessage("You can't attack this player as you added him, or are part of his ignore list.");
 				return false;
 			}
-			if(target instanceof Player && ((Player) target).getControlerManager().getControler() instanceof Wilderness) {
-				if (!multi || !(((Wilderness)((Player) target).getControlerManager().getControler()).multi)) {
+			if (target instanceof Player && ((Player) target).getControlerManager().getControler() instanceof Wilderness) {
+				if (!multi || !(((Wilderness) ((Player) target).getControlerManager().getControler()).multi)) {
 					if (player.getAttackedBy() != target && player.getAttackedByDelay() > Utils.currentTimeMillis()) {
 						player.getPackets().sendGameMessage("You are already in combat.");
 						return false;
@@ -110,9 +110,9 @@ public class Wilderness extends Controller {
 	}
 
 	/*
-	 * dont make it spam here. canhit happens at barrages and stuff to check if target can be hited
-	 * no need to check if target is in wild. actualy all code does it, 
-	 * but, checked at can attack to set a different message than default
+	 * dont make it spam here. canhit happens at barrages and stuff to check if target can be hited no need to
+	 * check if target is in wild. actualy all code does it, but, checked at can attack to set a different message
+	 * than default
 	 * 
 	 */
 	@Override
@@ -122,16 +122,14 @@ public class Wilderness extends Controller {
 		Player p2 = (Player) target;
 		if (Math.abs(player.getSkills().getCombatLevel() - p2.getSkills().getCombatLevel()) > getWildLevel(player))
 			return false;
-		if(target instanceof Player && ((Player) target).getControlerManager().getControler() instanceof Wilderness) {
-			if (!multi || !(((Wilderness)((Player) target).getControlerManager().getControler()).multi)) {
-				if ((player.getAttackedBy() != target && player.getAttackedByDelay() > Utils.currentTimeMillis())
-						|| (target.getAttackedBy() != player && target.getAttackedByDelay() > Utils.currentTimeMillis())) 
+		if (target instanceof Player && ((Player) target).getControlerManager().getControler() instanceof Wilderness) {
+			if (!multi || !(((Wilderness) ((Player) target).getControlerManager().getControler()).multi)) {
+				if ((player.getAttackedBy() != target && player.getAttackedByDelay() > Utils.currentTimeMillis()) || (target.getAttackedBy() != player && target.getAttackedByDelay() > Utils.currentTimeMillis()))
 					return false;
 			}
 		}
 		return true;
 	}
-
 
 	@Override
 	public boolean processMagicTeleport(WorldTile toTile) {
@@ -198,10 +196,9 @@ public class Wilderness extends Controller {
 			for (Iterator<Long> iterator = times[i].iterator(); iterator.hasNext();) {
 				long time = iterator.next();
 				if (current < time + 60 * 60 * 1000) {
-					//expired
+					// expired
 					iterator.remove();
-				}
-				else
+				} else
 					count++;
 			}
 			if (count >= 1)
@@ -228,8 +225,9 @@ public class Wilderness extends Controller {
 		int rareChance = 16;
 		if (killer.isDonator())
 			rareChance--;
-		/*	if (killer.isAtMultiArea())
-				rareChance--;*/
+		/*
+		 * if (killer.isAtMultiArea()) rareChance--;
+		 */
 		if (getWildLevel(killer) >= 30)
 			rareChance--;
 		int artefact = Mandrith_Nastroth.ARTEFACTS[Utils.random(Mandrith_Nastroth.ARTEFACTS.length - 3) + (Utils.random(rareChance) != 0 ? 3 : 0)];
@@ -241,7 +239,7 @@ public class Wilderness extends Controller {
 	public static long getRiskedWealth(Player player) {
 		Integer[][] slots = GraveStone.getItemSlotsKeptOnDeath(player, true, player.hasSkull(), player.getPrayer().isProtectingItem());
 		Item[][] items = GraveStone.getItemsKeptOnDeath(player, slots);
-		if (items.length <= 1) //risking just 1 item or 0
+		if (items.length <= 1) // risking just 1 item or 0
 			return 0;
 		long riskedWealth = 0;
 		for (Item item : items[1])
@@ -277,8 +275,7 @@ public class Wilderness extends Controller {
 				}
 			}, 2);
 			return false;
-		}
-		else if (object.getId() == 2557 || object.getId() == 65717) {
+		} else if (object.getId() == 2557 || object.getId() == 65717) {
 			player.getPackets().sendGameMessage("It seems it is locked, maybe you should try something else.");
 			return false;
 		}
@@ -311,25 +308,22 @@ public class Wilderness extends Controller {
 			public void run() {
 				if (loop == 0) {
 					player.setNextAnimation(player.getDeathAnimation());
-				}
-				else if (loop == 1) {
+				} else if (loop == 1) {
 					player.getPackets().sendGameMessage("Oh dear, you have died.");
-				}
-				else if (loop == 3) {
+				} else if (loop == 3) {
 					Player killer = player.getMostDamageReceivedSourcePlayer();
 					if (killer != null) {
 						player.giveXP();
 						killer.reduceDamage(player);
-						//if (killer.canIncreaseKillCount(player))
+						// if (killer.canIncreaseKillCount(player))
 						dropArtefact(killer);
 						killer.setAttackedByDelay(Utils.currentTimeMillis() + 8000); // imunity
 					}
-					//player.sendItemsOnDeath(killer);
+					// player.sendItemsOnDeath(killer);
 					player.reset();
 					player.setNextWorldTile(DeathEvent.HUBS[2]); // edgevile
 					player.setNextAnimation(new Animation(-1));
-				}
-				else if (loop == 4) {
+				} else if (loop == 4) {
 					removeIcon();
 					removeControler();
 					player.getMusicsManager().playMusicEffect(MusicsManager.DEATH_MUSIC_EFFECT);
@@ -359,16 +353,13 @@ public class Wilderness extends Controller {
 			showingSkull = true;
 			player.setCanPvp(true);
 			showSkull();
-		}
-		else if (showingSkull && (isAtWildSafe || !isAtWild)) {
+		} else if (showingSkull && (isAtWildSafe || !isAtWild)) {
 			removeIcon();
-		}
-		else if (!isAtWildSafe && !isAtWild) {
+		} else if (!isAtWildSafe && !isAtWild) {
 			player.setCanPvp(false);
 			removeIcon();
 			removeControler();
-		}
-		else if ((player.getX() == 3386 || player.getX() == 3387) && player.getY() == 3615) {
+		} else if ((player.getX() == 3386 || player.getX() == 3387) && player.getY() == 3615) {
 			removeIcon();
 			player.setCanPvp(false);
 			removeControler();
@@ -406,7 +397,7 @@ public class Wilderness extends Controller {
 	public static boolean isAtWildSafe(WorldTile tile) {
 		return (tile.getX() >= 2940 && tile.getX() <= 3395 && tile.getY() <= 3524 && tile.getY() >= 3523);
 	}
-	
+
 	public boolean isMulti() {
 		return multi;
 	}
@@ -415,14 +406,13 @@ public class Wilderness extends Controller {
 		int wildLevel = tile.getY() > 9900 ? ((tile.getY() - 9912) / 8 + 1) : ((tile.getY() - 3520) / 8 + 1);
 		return wildLevel < 7 ? 7 : wildLevel;
 		/**
-		 * if (tile.getY() > 9900) return (tile.getY() - 9912) / 8 + 1; return
-		 * (tile.getY() - 3520) / 8 + 1;
+		 * if (tile.getY() > 9900) return (tile.getY() - 9912) / 8 + 1; return (tile.getY() - 3520) / 8 + 1;
 		 */
 	}
 
 	private static boolean isMultiZone(int destX, int destY) {
 		return (destX >= 3029 && destX <= 3374 && destY >= 3759 && destY <= 3903) || // wild
-		(destX >= 2250 && destX <= 2280 && destY >= 4670 && destY <= 4720) || (destX >= 3198 && destX <= 3380 && destY >= 3904 && destY <= 3970) || (destX >= 3191 && destX <= 3326 && destY >= 3510 && destY <= 3759) || (destX >= 2987 && destX <= 3006 && destY >= 3912 && destY <= 3937) || (destX >= 2245 && destX <= 2295 && destY >= 4675 && destY <= 4720) || (destX >= 3070 && destX <= 3290 && destY >= 9821 && destY <= 10003) || (destX >= 3006 && destX <= 3071 && destY >= 3602 && destY <= 3710) || (destX >= 3134 && destX <= 3192 && destY >= 3519 && destY <= 3646) || (destX >= 2815 && destX <= 2966 && destY >= 5240 && destY <= 5375);
+				(destX >= 2250 && destX <= 2280 && destY >= 4670 && destY <= 4720) || (destX >= 3198 && destX <= 3380 && destY >= 3904 && destY <= 3970) || (destX >= 3191 && destX <= 3326 && destY >= 3510 && destY <= 3759) || (destX >= 2987 && destX <= 3006 && destY >= 3912 && destY <= 3937) || (destX >= 2245 && destX <= 2295 && destY >= 4675 && destY <= 4720) || (destX >= 3070 && destX <= 3290 && destY >= 9821 && destY <= 10003) || (destX >= 3006 && destX <= 3071 && destY >= 3602 && destY <= 3710) || (destX >= 3134 && destX <= 3192 && destY >= 3519 && destY <= 3646) || (destX >= 2815 && destX <= 2966 && destY >= 5240 && destY <= 5375);
 	}
 
 }

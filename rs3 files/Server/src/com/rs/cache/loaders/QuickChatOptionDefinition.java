@@ -20,22 +20,7 @@ public class QuickChatOptionDefinition {
 
 	static final QuickChatStringType[] listTypes() {
 
-		return new QuickChatStringType[]
-		{
-			QuickChatStringType.QC_GENERAL_DATAMAP_0,
-			QuickChatStringType.QC_ITEM,
-			QuickChatStringType.QC_UNUSED_TYPE_2,
-			QuickChatStringType.QC_SKILL,
-			QuickChatStringType.QC_SLAYER_ASSIGNMENT_DATAMAP_6,
-			QuickChatStringType.QC_UNUSED_DATAMAP_7,
-			QuickChatStringType.QC_RANK,
-			QuickChatStringType.QC_MINIGAME_POINTS,
-			QuickChatStringType.QC_ITEM_TRADE,
-			QuickChatStringType.QC_EXPERIENCE,
-			QuickChatStringType.QC_FRIEND_CHAT_COUNT,
-			QuickChatStringType.QC_COMBAT_LEVEL_AVERAGE,
-			QuickChatStringType.QC_SOULWARS_AVATAR,
-			QuickChatStringType.QC_COMBAT_LEVEL };
+		return new QuickChatStringType[] { QuickChatStringType.QC_GENERAL_DATAMAP_0, QuickChatStringType.QC_ITEM, QuickChatStringType.QC_UNUSED_TYPE_2, QuickChatStringType.QC_SKILL, QuickChatStringType.QC_SLAYER_ASSIGNMENT_DATAMAP_6, QuickChatStringType.QC_UNUSED_DATAMAP_7, QuickChatStringType.QC_RANK, QuickChatStringType.QC_MINIGAME_POINTS, QuickChatStringType.QC_ITEM_TRADE, QuickChatStringType.QC_EXPERIENCE, QuickChatStringType.QC_FRIEND_CHAT_COUNT, QuickChatStringType.QC_COMBAT_LEVEL_AVERAGE, QuickChatStringType.QC_SOULWARS_AVATAR, QuickChatStringType.QC_COMBAT_LEVEL };
 	}
 
 	static final QuickChatStringType findType(int id) {
@@ -86,7 +71,7 @@ public class QuickChatOptionDefinition {
 				}
 			}
 		} else if (opcode == 4) {
-			//isSearchable = false;
+			// isSearchable = false;
 		}
 	}
 

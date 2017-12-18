@@ -13,20 +13,18 @@ import com.rs.game.player.Player;
 
 public final class MapBuilder {
 
-	//used by construction preview
-	public static final int[] FORCE_LOAD_REGIONS =
-	{ 7503, 7759 };
+	// used by construction preview
+	public static final int[] FORCE_LOAD_REGIONS = { 7503, 7759 };
 
 	public static final int NORTH = 0, EAST = 1, SOUTH = 2, WEST = 3;
 
 	public static void init() {
 
-		/*for (int mapX = 0; mapX < MAX_REGION_X; mapX++) {
-			for (int mapY = 0; mapY < MAX_REGION_Y; mapY++) {
-				if (Cache.STORE.getIndexes()[5].getArchiveId("m" + mapX + "_" + mapY) != -1)
-					EXISTING_MAPS.add(MapUtils.encode(MapUtils.Structure.REGION, mapX, mapY, 0));
-			}
-		}*/
+		/*
+		 * for (int mapX = 0; mapX < MAX_REGION_X; mapX++) { for (int mapY = 0; mapY < MAX_REGION_Y; mapY++) { if
+		 * (Cache.STORE.getIndexes()[5].getArchiveId("m" + mapX + "_" + mapY) != -1)
+		 * EXISTING_MAPS.add(MapUtils.encode(MapUtils.Structure.REGION, mapX, mapY, 0)); } }
+		 */
 		for (int regionId : FORCE_LOAD_REGIONS)
 			World.getRegion(regionId, true);
 	}
@@ -39,8 +37,7 @@ public final class MapBuilder {
 
 	public static int[] findEmptyRegionBound(int widthChunks, int heightChunks) {
 		int regionHash = findEmptyRegionHash(widthChunks, heightChunks);
-		return new int[]
-		{ (regionHash >> 8), regionHash & 0xff };
+		return new int[] { (regionHash >> 8), regionHash & 0xff };
 	}
 
 	public static int[] findEmptyChunkBound(int widthChunks, int heightChunks) {
@@ -252,11 +249,10 @@ public final class MapBuilder {
 	/*
 	 * temporary and used for dungeonnering only
 	 * 
-	 * //rotation 0 // a b // c d //rotation 1 // c a // d b //rotation2 // d c
-	 * // b a //rotation3 // b d // a c
+	 * //rotation 0 // a b // c d //rotation 1 // c a // d b //rotation2 // d c // b a //rotation3 // b d // a c
 	 */
 	public static final void copy2RatioSquare(int fromRegionX, int fromRegionY, int toRegionX, int toRegionY, int rotation, int... planes) {
-		for (int i : planes) { //plane 1 and 2
+		for (int i : planes) { // plane 1 and 2
 			if (rotation == 0) {
 				copyChunk(fromRegionX, fromRegionY, i, toRegionX, toRegionY, i, rotation);
 				copyChunk(fromRegionX + 1, fromRegionY, i, toRegionX + 1, toRegionY, i, rotation);

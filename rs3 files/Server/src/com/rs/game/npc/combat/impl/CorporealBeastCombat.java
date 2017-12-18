@@ -26,8 +26,7 @@ public class CorporealBeastCombat extends CombatScript {
 
 	@Override
 	public Object[] getKeys() {
-		return new Object[]
-				{ 8133 };
+		return new Object[] { 8133 };
 	}
 
 	@Override
@@ -39,7 +38,7 @@ public class CorporealBeastCombat extends CombatScript {
 			beast.spawnDarkEnergyCore();
 		boolean stomp = false;
 		for (Entity t : targets) {
-			if(t instanceof DarkEnergyCore)
+			if (t instanceof DarkEnergyCore)
 				continue;
 			if (t instanceof Familiar) {
 				t.heal(npc.getHitpoints());
@@ -70,10 +69,10 @@ public class CorporealBeastCombat extends CombatScript {
 				final Player player = (Player) target;
 				int skillSelect = Utils.random(3);
 				final int skill = skillSelect == 0 ? Skills.MAGIC : (skillSelect == 1 ? Skills.SUMMONING : Skills.PRAYER);
-				if ((skill == Skills.PRAYER && player.getPrayer().getPrayerpoints() == 0)
-						|| (skill != Skills.PRAYER && player.getSkills().getLevel(skill) == 0)) {
-					damage += 150 + Utils.random(100); //extra dmg as cant drain more
-				}else{
+				if ((skill == Skills.PRAYER && player.getPrayer().getPrayerpoints() == 0) || (skill != Skills.PRAYER && player.getSkills().getLevel(skill) == 0)) {
+					damage += 150 + Utils.random(100); // extra dmg as cant
+					// drain more
+				} else {
 					WorldTasksManager.schedule(new WorldTask() {
 						@Override
 						public void run() {
@@ -88,7 +87,7 @@ public class CorporealBeastCombat extends CombatScript {
 						}
 					}, projectileCycles);
 				}
-				
+
 			} else if (style == 1) {
 				for (int i = 0; i < 6; i++) {
 					final WorldTile newTile = new WorldTile(tile, 3);
@@ -100,11 +99,9 @@ public class CorporealBeastCombat extends CombatScript {
 						@Override
 						public void run() {
 							for (Entity t : targets) {
-								if(t instanceof DarkEnergyCore)
+								if (t instanceof DarkEnergyCore)
 									continue;
-								if(t.getX() >= newTile.getX()-1 && t.getX() <= newTile.getX()+1
-									&& t.getY() >= newTile.getY()-1 && t.getY() <= newTile.getY()+1
-										)
+								if (t.getX() >= newTile.getX() - 1 && t.getX() <= newTile.getX() + 1 && t.getY() >= newTile.getY() - 1 && t.getY() <= newTile.getY() + 1)
 									t.applyHit(new Hit(npc, Utils.random(150, 400), HitLook.MAGIC_DAMAGE));
 							}
 						}

@@ -22,8 +22,7 @@ public class WildyWyrm extends NPC {
 	private int cycle;
 	private Entity target;
 	private int healCycle;
-	
-	
+
 	public WildyWyrm(int id, WorldTile tile, int mapAreaNameHash, boolean canBeAttackFromOutOfArea, boolean spawned) {
 		super(id, tile, mapAreaNameHash, canBeAttackFromOutOfArea, spawned);
 		setLureDelay(2000);
@@ -31,11 +30,11 @@ public class WildyWyrm extends NPC {
 		setForceTargetDistance(16);
 		setDropRateFactor(1.25);
 	}
-	
+
 	public void emerge() {
 		force = true;
 	}
-	
+
 	@Override
 	public void reset() {
 		setNextNPCTransformation(2417);
@@ -48,11 +47,11 @@ public class WildyWyrm extends NPC {
 		setCantInteract(false);
 		super.reset();
 	}
-	
+
 	@Override
 	public void drop() {
-		for(Entity t : getReceivedDamageSources()) {
-			if(!(t instanceof Player))
+		for (Entity t : getReceivedDamageSources()) {
+			if (!(t instanceof Player))
 				continue;
 			Player player = (Player) t;
 			player.setKilledWildyWyrm();
@@ -61,37 +60,37 @@ public class WildyWyrm extends NPC {
 		}
 		super.drop();
 	}
-	
+
 	@Override
 	public void processNPC() {
-		if(isDead())
+		if (isDead())
 			return;
-		if(cycle > 0) {
+		if (cycle > 0) {
 			cycle--;
-			if(cycle == 2 && !emerged) {
+			if (cycle == 2 && !emerged) {
 				setNextNPCTransformation(2417);
 				setCombatLevel(-1);
-			}else if (cycle == 3 && emerged) {
-				for(Entity t : getPossibleTargets()) {
-					if(Utils.colides(t.getX(), t.getY(), t.getSize(), getX(), getY(), getSize())) {
-						t.applyHit(new Hit(this, Utils.random(1001)+3000, HitLook.REGULAR_DAMAGE));
-						if(t instanceof Player) 
+			} else if (cycle == 3 && emerged) {
+				for (Entity t : getPossibleTargets()) {
+					if (Utils.colides(t.getX(), t.getY(), t.getSize(), getX(), getY(), getSize())) {
+						t.applyHit(new Hit(this, Utils.random(1001) + 3000, HitLook.REGULAR_DAMAGE));
+						if (t instanceof Player)
 							t.getEffectsManager().startEffect(new Effect(EffectType.PROTECTION_DISABLED, 8));
 						t.setStunDelay(2);
 					}
 				}
-			}else if(cycle == 0) {
+			} else if (cycle == 0) {
 				getCombat().setCombatDelay(1);
 				setCantInteract(false);
-				if(target != null) {
+				if (target != null) {
 					setTarget(target);
 					target = null;
 				}
 			}
 			return;
 		}
-		if(!emerged) {
-			if(getCombat().getTarget() != null) {
+		if (!emerged) {
+			if (getCombat().getTarget() != null) {
 				emerged = true;
 				cycle = 4;
 				target = getCombat().getTarget();
@@ -101,9 +100,9 @@ public class WildyWyrm extends NPC {
 				setCantInteract(true);
 				return;
 			}
-		}else if (emerged || force) {
-			
-			if(getCombat().getTarget() == null || force) {
+		} else if (emerged || force) {
+
+			if (getCombat().getTarget() == null || force) {
 				emerged = false;
 				force = false;
 				cycle = 4;
@@ -111,28 +110,29 @@ public class WildyWyrm extends NPC {
 				setNextAnimation(new Animation(12796));
 				setCantInteract(true);
 				return;
-			}else{
+			} else {
 				healCycle++;
-				if(healCycle >= 50 && getMaxHitpoints()/2 > getHitpoints()) {
-					double h = getPossibleTargets().size()*0.01D;
-					if(h < 0.01d || h > 0.1d)
+				if (healCycle >= 50 && getMaxHitpoints() / 2 > getHitpoints()) {
+					double h = getPossibleTargets().size() * 0.01D;
+					if (h < 0.01d || h > 0.1d)
 						h = 0.1d;
 					healCycle = 0;
-					heal((int) (getMaxHitpoints()*h));
+					heal((int) (getMaxHitpoints() * h));
 				}
 			}
 		}
-		//cuz ofisCantFollowUnderCombat he doesnt reset even if u far lo(ofc he resets if u die logout blbablabl)
-		if(getCombat().getTarget() != null && !getCombat().getTarget().withinDistance(this, 16)) 
+		// cuz ofisCantFollowUnderCombat he doesnt reset even if u far lo(ofc he
+		// resets if u die logout blbablabl)
+		if (getCombat().getTarget() != null && !getCombat().getTarget().withinDistance(this, 16))
 			this.removeTarget();
 		super.processNPC();
 	}
-	
+
 	public static void handleInspect(final Player player, final NPC npc) {
-		if(!(npc instanceof WildyWyrm))
+		if (!(npc instanceof WildyWyrm))
 			return;
 		final WildyWyrm wyrm = (WildyWyrm) npc;
-		if(wyrm.emerged || wyrm.isCantInteract() || wyrm.cycle != 0 || wyrm.getCombat().getTarget() != null) {
+		if (wyrm.emerged || wyrm.isCantInteract() || wyrm.cycle != 0 || wyrm.getCombat().getTarget() != null) {
 			player.getPackets().sendGameMessage("Someone else is doing that.");
 			return;
 		}

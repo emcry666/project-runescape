@@ -25,29 +25,23 @@ public class KingBlackDragonCombat extends CombatScript {
 	}
 
 	private static final String[] ADVERBS = { "poisonous", "freezing", "shocking" };
-	private static final int[][] ATTACKS = { 
-		{17786, 3441, 3442, 3443},
-		{17785, 3435, 3436, 3437},
-		{17783, 3438, 3439, 3440},
-		{17784, 3432, 3433, 3434},
-	};
+	private static final int[][] ATTACKS = { { 17786, 3441, 3442, 3443 }, { 17785, 3435, 3436, 3437 }, { 17783, 3438, 3439, 3440 }, { 17784, 3432, 3433, 3434 }, };
 
 	@Override
 	public int attack(final NPC npc, final Entity target) {
 		final NPCCombatDefinitions defs = npc.getCombatDefinitions();
 		boolean isDistanced = !Utils.isOnRange(npc.getX(), npc.getY(), npc.getSize(), target.getX(), target.getY(), target.getSize(), 0);
 		int style = Utils.random(isDistanced ? 4 : 5);
-		if (style == 4) {//MELEE
+		if (style == 4) {// MELEE
 			delayHit(npc, 0, target, getMeleeHit(npc, getMaxHit(npc, NPCCombatDefinitions.MELEE, target)));
 			npc.setNextAnimation(new Animation(defs.getAttackEmote()));
 			return npc.getAttackSpeed();
-		}
-		else {
+		} else {
 			int damage = getMaxHit(npc, 4500, NPCCombatDefinitions.MAGE, target);
 			boolean negateDamage = target instanceof Familiar;
 			if (damage > 200 && target instanceof Player) {
 				Player player = (Player) target;
-				//Rest should all be types of dragon-fire.
+				// Rest should all be types of dragon-fire.
 
 				boolean hasSuperPot = player.getEffectsManager().hasActiveEffect(EffectType.SUPER_FIRE_IMMUNITY);
 				boolean hasRegularPot = player.getEffectsManager().hasActiveEffect(EffectType.FIRE_IMMUNITY);
@@ -65,7 +59,9 @@ public class KingBlackDragonCombat extends CombatScript {
 				DragonfireShield.chargeDFS(player, false);
 			}
 			if (negateDamage)
-				damage *= 0.30915576694411414982164090368609;//Just leave it like this, works fine for KBD.
+				damage *= 0.30915576694411414982164090368609;// Just leave it
+			// like this, works
+			// fine for KBD.
 			if (style == 1 && Utils.random(5) == 0)
 				EffectsManager.makePoisoned(target, 100);
 			else if (style == 2 && damage > 200)
@@ -82,7 +78,7 @@ public class KingBlackDragonCombat extends CombatScript {
 			npc.setNextAnimation(ATTACK_ANIM);
 			Projectile projectile = World.sendProjectile(npc, target, false, true, -1, ATTACK_DATA[2], 60, 41, (style == 1 || style == 2) ? 30 : 40, 2, 0, 0);
 			npc.setNextGraphics(new Graphics(ATTACK_DATA[1], 0, projectile.getStartHeight()));
-			delayHit(npc, Utils.projectileTimeToCycles(projectile.getEndTime())-1, target, getMagicHit(npc, damage));
+			delayHit(npc, Utils.projectileTimeToCycles(projectile.getEndTime()) - 1, target, getMagicHit(npc, damage));
 			target.setNextGraphics(new Graphics(ATTACK_DATA[3], projectile.getEndTime(), 0));
 		}
 		return npc.getAttackSpeed();

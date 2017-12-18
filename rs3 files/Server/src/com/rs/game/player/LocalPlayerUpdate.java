@@ -13,8 +13,8 @@ import com.rs.io.OutputStream;
 public final class LocalPlayerUpdate {
 
 	/**
-	 * The maximum amount of local players being added per tick. This is to
-	 * decrease time it takes to load crowded places (such as home).
+	 * The maximum amount of local players being added per tick. This is to decrease time it takes to load crowded
+	 * places (such as home).
 	 */
 	private static final int MAX_PLAYER_ADD = 15;
 
@@ -92,12 +92,18 @@ public final class LocalPlayerUpdate {
 	}
 
 	private boolean needsRemove(Player p) {
-		//can't just do this or you'll get chat from other dungeons 
-		return p != player && (!p.getCutscenesManager().showYourselfToOthers() || p.hasFinished() || !(player.withinDistance(p, player.hasLargeSceneView() ? 182 : 14) && /*(player.hasLargeSceneView() ||*/player.getMapRegionsIds().contains(p.getRegionId())));
+		// can't just do this or you'll get chat from other dungeons
+		return p != player && (!p.getCutscenesManager().showYourselfToOthers() || p.hasFinished() || !(player.withinDistance(p, player.hasLargeSceneView() ? 182 : 14)
+				&& /*
+					 * (player. hasLargeSceneView () ||
+					 */player.getMapRegionsIds().contains(p.getRegionId())));
 	}
 
 	private boolean needsAdd(Player p) {
-		return p != null && p.getCutscenesManager().showYourselfToOthers() && p.isRunning() && (player.withinDistance(p, player.hasLargeSceneView() ? 182 : 14) && /*(player.hasLargeSceneView() || */player.getMapRegionsIds().contains(p.getRegionId())) && localAddedPlayers < MAX_PLAYER_ADD && p.clientHasLoadedMapRegion();
+		return p != null && p.getCutscenesManager().showYourselfToOthers() && p.isRunning() && (player.withinDistance(p, player.hasLargeSceneView() ? 182 : 14)
+				&& /*
+					 * ( player . hasLargeSceneView ( ) ||
+					 */player.getMapRegionsIds().contains(p.getRegionId())) && localAddedPlayers < MAX_PLAYER_ADD && p.clientHasLoadedMapRegion();
 	}
 
 	private void updateRegionHash(OutputStream stream, int lastRegionHash, int currentRegionHash, int currentMovementType) {
@@ -178,13 +184,12 @@ public final class LocalPlayerUpdate {
 				localPlayers[p.getIndex()] = p;
 				slotFlags[playerIndex] = (byte) (slotFlags[playerIndex] | 2);
 			} else {
-				//no need to update hash if player not near
-				/*int hash = p == null ? regionHashes[playerIndex] : p.getRegionHash();
-				if (p != null && hash != regionHashes[playerIndex]) {
-					stream.writeBits(1, 1);
-					updateRegionHash(stream, regionHashes[playerIndex], hash, p);
-					regionHashes[playerIndex] = hash;
-				} else {*/
+				// no need to update hash if player not near
+				/*
+				 * int hash = p == null ? regionHashes[playerIndex] : p.getRegionHash(); if (p != null && hash !=
+				 * regionHashes[playerIndex]) { stream.writeBits(1, 1); updateRegionHash(stream,
+				 * regionHashes[playerIndex], hash, p); regionHashes[playerIndex] = hash; } else {
+				 */
 				stream.writeBits(1, 0); // no update needed
 				for (int i2 = i + 1; i2 < outPlayersIndexesCount; i2++) {
 					int p2Index = outPlayersIndexes[i2];
@@ -199,7 +204,7 @@ public final class LocalPlayerUpdate {
 				}
 				skipPlayers(stream, skip);
 				slotFlags[playerIndex] = (byte) (slotFlags[playerIndex] | 2);
-				//}
+				// }
 			}
 		}
 		stream.finishBitAccess();
@@ -256,32 +261,35 @@ public final class LocalPlayerUpdate {
 							xOffset += 32;
 						if (yOffset < 0)
 							yOffset += 32;
-						stream.writeBits(15, yOffset + (xOffset << 5) + ((planeOffset & 0x3) << 10) | movementType << 12);//4 forces setmovementtype to teleport for next step
+						stream.writeBits(15, yOffset + (xOffset << 5) + ((planeOffset & 0x3) << 10) | movementType << 12);// 4
+																															// forces
+																															// setmovementtype
+																															// to
+																															// teleport
+																															// for
+																															// next
+																															// step
 					} else {
 						stream.writeBits(1, 1);
-						stream.writeBits(3, movementType); //4 forces setmovementtype to teleport for next step
+						stream.writeBits(3, movementType); // 4 forces
+															// setmovementtype
+															// to teleport for
+															// next step
 						stream.writeBits(30, (yOffset & 0x3fff) + ((xOffset & 0x3fff) << 14) + ((planeOffset & 0x3) << 28));
 					}
-					//not needed as teleport handles walk aswell
-					/*	} else if (p.getNextWalkDirection() != -1) {
-							int dx = Utils.DIRECTION_DELTA_X[p.getNextWalkDirection()];
-							int dy = Utils.DIRECTION_DELTA_Y[p.getNextWalkDirection()];
-							int opcode;
-							if (p.getNextRunDirection() != -1) {
-								dx += Utils.DIRECTION_DELTA_X[p.getNextRunDirection()];
-								dy += Utils.DIRECTION_DELTA_Y[p.getNextRunDirection()];
-								opcode = Utils.getPlayerRunningDirection(dx, dy);
-							}else {
-								opcode = Utils.getPlayerWalkingDirection(dx, dy);
-							}
-							stream.writeBits(1, 1);
-							if ((dx == 0 && dy == 0)) {
-								stream.writeBits(1, needUpdate ? 1 : 0);
-								stream.writeBits(2,p.getNextRunDirection() != -1 ? 2 : 1);
-								stream.writeBits(p.getNextRunDirection() != -1 ? 4 : 3, opcode);
-								if(p.getNextRunDirection() == -1)
-									stream.writeBits(1, 0);
-							}*/
+					// not needed as teleport handles walk aswell
+					/*
+					 * } else if (p.getNextWalkDirection() != -1) { int dx =
+					 * Utils.DIRECTION_DELTA_X[p.getNextWalkDirection()]; int dy =
+					 * Utils.DIRECTION_DELTA_Y[p.getNextWalkDirection()]; int opcode; if (p.getNextRunDirection()
+					 * != -1) { dx += Utils.DIRECTION_DELTA_X[p.getNextRunDirection()]; dy +=
+					 * Utils.DIRECTION_DELTA_Y[p.getNextRunDirection()]; opcode =
+					 * Utils.getPlayerRunningDirection(dx, dy); }else { opcode =
+					 * Utils.getPlayerWalkingDirection(dx, dy); } stream.writeBits(1, 1); if ((dx == 0 && dy == 0))
+					 * { stream.writeBits(1, needUpdate ? 1 : 0); stream.writeBits(2,p.getNextRunDirection() != -1
+					 * ? 2 : 1); stream.writeBits(p.getNextRunDirection() != -1 ? 4 : 3, opcode);
+					 * if(p.getNextRunDirection() == -1) stream.writeBits(1, 0); }
+					 */
 				} else if (needUpdate) {
 					stream.writeBits(1, 1); // needs update
 					stream.writeBits(1, 1);
@@ -293,7 +301,7 @@ public final class LocalPlayerUpdate {
 						if (nsn0 ? (0x1 & slotFlags[p2Index]) != 0 : (0x1 & slotFlags[p2Index]) == 0)
 							continue;
 						Player p2 = localPlayers[p2Index];
-						if (needsRemove(p2) || p2.hasTeleported() || p2.getNextWalkDirection() != -1 || (p2.needMasksUpdate() || needAppearenceUpdate(p2.getIndex(), p2.getAppearence().getMD5AppeareanceDataHash()) ||  needIconsUpdate(p2.getIndex(), p2.getAppearence().getMD5IconsDataHash())))
+						if (needsRemove(p2) || p2.hasTeleported() || p2.getNextWalkDirection() != -1 || (p2.needMasksUpdate() || needAppearenceUpdate(p2.getIndex(), p2.getAppearence().getMD5AppeareanceDataHash()) || needIconsUpdate(p2.getIndex(), p2.getAppearence().getMD5IconsDataHash())))
 							break;
 						skip++;
 					}
@@ -313,99 +321,120 @@ public final class LocalPlayerUpdate {
 	}
 
 	private void appendUpdateBlock(Player p, OutputStream data, boolean needAppearenceUpdate, boolean needIconsUpdate, boolean added) {
-		int maskData = 0;
-		if (p.getNextAnimation() != null)
-			maskData |= 0x8;
-		if (!p.getNextHits().isEmpty() || !p.getNextHitBars().isEmpty())
-			maskData |= 0x80;
-		if (p.isRefreshClanIcon() || added)
-			maskData |= 0x400000;
-		if (p.getNextForceTalk() != null)
-			maskData |= 0x800;
-		if(needIconsUpdate)
-			maskData |= 0x8000;
-		if (needAppearenceUpdate)
-			maskData |= 0x40;
-		if ((added || p.getNextFaceWorldTile() != null) && (p.getNextRunDirection() == -1 && p.getNextWalkDirection() == -1
-				&& p.getNextForceMovement() == null && p.getNextFaceEntity() < 0 && !(added && p.getLastFaceEntity() != -1)))
-			maskData |= 0x2;
-		if(p.getNextColour() != null)
-			maskData |= 0x40000;
-		if (player.getCombatDefinitions().isNeedTargetReticuleUpdate(p))
-			maskData |= 0x80000;
-		if (p.getNextForceMovement() != null)
-			maskData |= 0x4;
-		if (p.getNextGraphics4() != null)
-			maskData |= 0x10000;
-		if (p.getNextGraphics1() != null)
-			maskData |= 0x1;
-		if (p.getNextFaceEntity() != -2 || (added && p.getLastFaceEntity() != -1))
-			maskData |= 0x10;
-		if (p.getNextGraphics3() != null)
-			maskData |= 0x400;
-		if (p.getNextGraphics2() != null)
-			maskData |= 0x100;
-		if (maskData >= 0xff)
-			maskData |= 0x20;
-		if (maskData >= 0xffff)
-			maskData |= 0x4000;
-
-		data.writeShort(0); //rs doesnt use this lol
-		data.writeByte(maskData);
-
-		if (maskData >= 0xff)
-			data.writeByte(maskData >> 8);
-		if (maskData >= 0xffff)
-			data.writeByte(maskData >> 16);
-
-		if (p.getNextAnimation() != null)
-			applyAnimationMask(p, data);
-		if (!p.getNextHits().isEmpty() || !p.getNextHitBars().isEmpty())
-			applyHitsMask(p, data);
-		if (p.isRefreshClanIcon() || added)
-			applyClanMemberMask(p, data);
-		if (p.getNextForceTalk() != null)
-			applyForceTalkMask(p, data);
-		if(needIconsUpdate)
-			applyIconsMask(p, data);
-		if (needAppearenceUpdate)
-			applyAppearanceMask(p, data);
-		if ((added || p.getNextFaceWorldTile() != null) && (p.getNextRunDirection() == -1 && p.getNextWalkDirection() == -1
-				&& p.getNextForceMovement() == null && p.getNextFaceEntity() < 0 && !(added && p.getLastFaceEntity() != -1)))
-			applyFaceDirectionMask(p, data);
-		if(p.getNextColour() != null)
-			applyColourMask(p, data);
-		if (player.getCombatDefinitions().isNeedTargetReticuleUpdate(p))
-			applyTargetReticuleMask(p, data);
-		if (p.getNextForceMovement() != null)
-			applyForceMovementMask(p, data);
-		if (p.getNextGraphics4() != null)
-			applyGraphicsMask4(p, data);
-		if (p.getNextGraphics1() != null)
-			applyGraphicsMask1(p, data);
-		if (p.getNextFaceEntity() != -2 || (added && p.getLastFaceEntity() != -1))
+		int mask = 0;
+		if (p.getNextFaceEntity() != -2 || (added && p.getLastFaceEntity() != -1)) {
+			mask |= 0x20;
+		}
+		if (p.getNextForceTalk() != null) {
+			mask |= 0x4000;
+		}
+		if (p.getNextGraphics1() != null) {
+			mask |= 0x4;
+		}
+		if (needIconsUpdate) {
+			mask |= 0x2000;
+		}
+		if (p.getNextColour() != null) {
+			mask |= 0x100000;
+		}
+		if (p.isRefreshClanIcon() || added) {
+			mask |= 0x800000;
+		}
+		if (p.getNextForceMovement() != null) {
+			mask |= 0x2;
+		}
+		if (player.getCombatDefinitions().isNeedTargetReticuleUpdate(p)) {
+			mask |= 0x10000;
+		}
+		if ((added || p.getNextFaceWorldTile() != null) && (p.getNextRunDirection() == -1 && p.getNextWalkDirection() == -1 && p.getNextForceMovement() == null && p.getNextFaceEntity() < 0 && !(added && p.getLastFaceEntity() != -1))) {
+			mask |= 0x40;
+		}
+		if (!p.getNextHits().isEmpty() || !p.getNextHitBars().isEmpty()) {
+			mask |= 0x1;
+		}
+		if (p.getNextGraphics3() != null) {
+			mask |= 0x8000;
+		}
+		if (p.getNextGraphics4() != null) {
+			mask |= 0x200000;
+		}
+		if (needAppearenceUpdate) {
+			mask |= 0x8;
+		}
+		if (p.getNextGraphics2() != null) {
+			mask |= 0x1000;
+		}
+		if (p.getNextAnimation() != null) {
+			mask |= 0x10;
+		}
+		if (mask >= 0xff) {
+			mask |= 0x80;
+		}
+		if (mask >= 0xffff) {
+			mask |= 0x800;
+		}
+		data.writeShort(0); // rs doesnt use this lol
+		data.writeByte(mask);
+		if (mask >= 0xff) {
+			data.writeByte(mask >> 8);
+		}
+		if (mask >= 0xffff) {
+			data.writeByte(mask >> 16);
+		}
+		if (p.getNextFaceEntity() != -2 || (added && p.getLastFaceEntity() != -1)) {
 			applyFaceEntityMask(p, data);
-		if (p.getNextGraphics3() != null)
+		}
+		if (p.getNextForceTalk() != null) {
+			applyForceTalkMask(p, data);
+		}
+		if (p.getNextGraphics1() != null) {
+			applyGraphicsMask1(p, data);
+		}
+		if (needIconsUpdate) {
+			applyIconsMask(p, data);
+		}
+		if (p.getNextColour() != null) {
+			applyColourMask(p, data);
+		}
+		if (p.isRefreshClanIcon() || added) {
+			applyClanMemberMask(p, data);
+		}
+		if (p.getNextForceMovement() != null) {
+			applyForceMovementMask(p, data);
+		}
+		if (player.getCombatDefinitions().isNeedTargetReticuleUpdate(p)) {
+			applyTargetReticuleMask(p, data);
+		}
+		if ((added || p.getNextFaceWorldTile() != null) && (p.getNextRunDirection() == -1 && p.getNextWalkDirection() == -1 && p.getNextForceMovement() == null && p.getNextFaceEntity() < 0 && !(added && p.getLastFaceEntity() != -1))) {
+			applyFaceDirectionMask(p, data);
+		}
+		if (!p.getNextHits().isEmpty() || !p.getNextHitBars().isEmpty()) {
+			applyHitsMask(p, data);
+		}
+		if (p.getNextGraphics3() != null) {
 			applyGraphicsMask3(p, data);
-		if (p.getNextGraphics2() != null)
+		}
+		if (p.getNextGraphics4() != null) {
+			applyGraphicsMask4(p, data);
+		}
+		if (needAppearenceUpdate) {
+			applyAppearanceMask(p, data);
+		}
+		if (p.getNextGraphics2() != null) {
 			applyGraphicsMask2(p, data);
+		}
+		if (p.getNextAnimation() != null) {
+			applyAnimationMask(p, data);
+		}
 	}
 
 	private void applyColourMask(Player p, OutputStream data) {
-		/**
-		 * 			updateBuild.aByte11643 = buf.read128Byte(877571984);
-			updateBuild.aByte11644 = buf.read128Byte(624278611);
-			updateBuild.aByte11626 = buf.readByte128((byte) -106);
-			updateBuild.aByte11605 = (byte) buf.readUnsigned128Byte((byte) 101);
-			updateBuild.anInt11641 = (client.cycles + buf.readUnsignedShortLE128((byte) 8)) * 1008238467;
-			updateBuild.anInt11642 = (client.cycles + buf.readUnsignedShortLE128((byte) 39)) * -1559016237;
-		 */
 		Colour color = p.getNextColour();
 		int colours = color.getColours();
-		data.write128Byte(colours & 0xFF);
+		data.writeByte(colours & 0xFF);
 		data.write128Byte(colours >> 8 & 0xFF);
 		data.writeByte128(colours >> 16 & 0xFF);
-		data.write128Byte(colours >> 24 & 0xFF);
+		data.writeByte128(colours >> 24 & 0xFF);
 		data.writeShortLE128(color.getDelay());
 		data.writeShortLE128(color.getDuration());
 	}
@@ -420,8 +449,11 @@ public final class LocalPlayerUpdate {
 			boolean interactingWith = hit.interactingWith(player, p);
 			if (hit.missed() && !interactingWith) {
 				data.writeSmart(32766);
-				data.writeByteC(hit.getDamageDisplay(player)); //dont ask me why, 32766 sets dmg but no hitmark.
-			}else {
+				data.writeByte128(hit.getDamageDisplay(player)); // dont ask me
+																	// why, 32766
+																	// sets dmg but
+																	// no hitmark.
+			} else {
 				if (hit.getSoaking() != null) {
 					data.writeSmart(32767);
 					data.writeSmart(hit.getMark(player, p));
@@ -435,7 +467,7 @@ public final class LocalPlayerUpdate {
 			}
 			data.writeSmart(hit.getDelay());
 		}
-		data.writeByte128(p.getNextHitBars().size());
+		data.writeByte(p.getNextHitBars().size());
 		for (HitBar bar : p.getNextHitBars()) {
 			data.writeSmart(bar.getType());
 			int perc = bar.getPercentage();
@@ -444,16 +476,15 @@ public final class LocalPlayerUpdate {
 			data.writeSmart(display ? perc != toPerc ? 1 : 0 : 32767);
 			if (display) {
 				data.writeSmart(bar.getDelay());
-				data.writeByte(perc);
+				data.write128Byte(perc);
 				if (toPerc != perc)
-					data.writeByte(toPerc);
+					data.writeByteC(toPerc);
 			}
 		}
 	}
 
 	private void applyFaceEntityMask(Player p, OutputStream data) {
 		data.writeShort(p.getNextFaceEntity() == -2 ? p.getLastFaceEntity() : p.getNextFaceEntity());
-		
 	}
 
 	private void applyFaceDirectionMask(Player p, OutputStream data) {
@@ -462,44 +493,44 @@ public final class LocalPlayerUpdate {
 	}
 
 	private void applyClanMemberMask(Player p, OutputStream data) {
-		data.write128Byte((player.getClanManager() != null && player.getClanManager().isMemberOnline(p)) ? 1 : 0);
+		data.writeByte128((player.getClanManager() != null && player.getClanManager().isMemberOnline(p)) ? 1 : 0);
 	}
 
 	private void applyGraphicsMask1(Player p, OutputStream data) {
-		data.writeShort(p.getNextGraphics1().getId());
-		data.writeInt(p.getNextGraphics1().getSettingsHash());
+		data.writeShortLE(p.getNextGraphics1().getId());
+		data.writeIntV1(p.getNextGraphics1().getSettingsHash());
 		data.writeByte128(p.getNextGraphics1().getSettings2Hash());
 	}
 
 	private void applyGraphicsMask2(Player p, OutputStream data) {
 		data.writeShortLE128(p.getNextGraphics2().getId());
 		data.writeIntLE(p.getNextGraphics2().getSettingsHash());
-		data.writeByte(p.getNextGraphics2().getSettings2Hash());
+		data.writeByteC(p.getNextGraphics2().getSettings2Hash());
 	}
 
 	private void applyGraphicsMask3(Player p, OutputStream data) {
-		data.writeShortLE128(p.getNextGraphics3().getId());
-		data.writeIntV1(p.getNextGraphics3().getSettingsHash());
-		data.writeByte(p.getNextGraphics3().getSettings2Hash());
+		data.writeShort128(p.getNextGraphics3().getId());
+		data.writeIntV2(p.getNextGraphics3().getSettingsHash());
+		data.write128Byte(p.getNextGraphics3().getSettings2Hash());
 	}
 
 	private void applyGraphicsMask4(Player p, OutputStream data) {
 		data.writeShort(p.getNextGraphics4().getId());
 		data.writeIntV2(p.getNextGraphics4().getSettingsHash());
-		data.write128Byte(p.getNextGraphics4().getSettings2Hash());
+		data.writeByte(p.getNextGraphics4().getSettings2Hash());
 	}
 
 	private void applyTargetReticuleMask(Player p, OutputStream data) {
 		Graphics reticle = player.getCombatDefinitions().getTargetReticule(p);
 		data.writeShortLE(reticle.getId());
-		data.writeIntLE(reticle.getSettingsHash());
+		data.writeIntV2(reticle.getSettingsHash());
 		data.writeByte128(reticle.getSettings2Hash());
 	}
 
 	private void applyAnimationMask(Player p, OutputStream data) {
 		for (int id : p.getNextAnimation().getIds())
 			data.writeBigSmart(id);
-		data.writeByteC(p.getNextAnimation().getDelay());
+		data.write128Byte(p.getNextAnimation().getDelay());
 	}
 
 	private void applyAppearanceMask(Player p, OutputStream data) {
@@ -508,31 +539,33 @@ public final class LocalPlayerUpdate {
 		cachedAppearencesHashes[p.getIndex()] = p.getAppearence().getMD5AppeareanceDataHash();
 
 		data.writeByteC(renderData.length);
-		data.writeBytes128(renderData);
+		data.writeBytesReverse(renderData);
 	}
 
 	private void applyIconsMask(Player p, OutputStream data) {
 		byte[] renderData = p.getAppearence().getIconsData();
 		totalRenderDataSentLength += renderData.length;
 		cachedIconsHashes[p.getIndex()] = p.getAppearence().getMD5IconsDataHash();
-		data.writeByteC(renderData.length);
+		data.writeByte(renderData.length);
 		data.writeBytesReverse(renderData);
 	}
 
 	private void applyForceMovementMask(Player p, OutputStream data) {
-		data.writeByteC(p.getNextForceMovement().getToFirstTile().getX() - p.getX());
-		data.writeByte(p.getNextForceMovement().getToFirstTile().getY() - p.getY());
-		data.writeByteC(p.getNextForceMovement().getToSecondTile() == null ? 0 : p.getNextForceMovement().getToSecondTile().getX() - p.getX());
+		data.write128Byte(p.getNextForceMovement().getToFirstTile().getX() - p.getX());
+		data.writeByte128(p.getNextForceMovement().getToFirstTile().getY() - p.getY());
+		data.writeByte(p.getNextForceMovement().getToSecondTile() == null ? 0 : p.getNextForceMovement().getToSecondTile().getX() - p.getX());
 		data.writeByteC(p.getNextForceMovement().getToSecondTile() == null ? 0 : p.getNextForceMovement().getToSecondTile().getY() - p.getY());
-		data.writeShortLE(p.getNextForceMovement().getFirstTileTicketDelay() * 30);
-		data.writeShort128(p.getNextForceMovement().getToSecondTile() == null ? 0 : (p.getNextForceMovement().getSecondTileTicketDelay() * 30));
-		data.writeShort(p.getNextForceMovement().getDirection());
+		data.writeByteC(0);// new in 876
+		data.writeByteC(0);// new in 876
+		data.writeShort128(p.getNextForceMovement().getFirstTileTicketDelay() * 30);
+		data.writeShort(p.getNextForceMovement().getToSecondTile() == null ? 0 : (p.getNextForceMovement().getSecondTileTicketDelay() * 30));
+		data.writeShortLE(p.getNextForceMovement().getDirection());
 	}
 
 	public OutputStream createPacketAndProcess() {
 		OutputStream stream = new OutputStream();
 		OutputStream updateBlockData = new OutputStream();
-		stream.writePacketVarShort(player, 21);
+		stream.writePacketVarShort(player, 54);
 		processLocalPlayers(stream, updateBlockData, true);
 		processLocalPlayers(stream, updateBlockData, false);
 		processOutsidePlayers(stream, updateBlockData, true);
@@ -545,11 +578,11 @@ public final class LocalPlayerUpdate {
 		outPlayersIndexesCount = 0;
 		for (int playerIndex = 1; playerIndex < 2048; playerIndex++) {
 			slotFlags[playerIndex] >>= 1;
-		Player player = localPlayers[playerIndex];
-		if (player == null)
-			outPlayersIndexes[outPlayersIndexesCount++] = playerIndex;
-		else
-			localPlayersIndexes[localPlayersIndexesCount++] = playerIndex;
+			Player player = localPlayers[playerIndex];
+			if (player == null)
+				outPlayersIndexes[outPlayersIndexesCount++] = playerIndex;
+			else
+				localPlayersIndexes[localPlayersIndexesCount++] = playerIndex;
 		}
 		return stream;
 	}

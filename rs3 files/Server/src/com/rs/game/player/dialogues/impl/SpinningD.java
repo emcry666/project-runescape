@@ -12,22 +12,10 @@ import com.rs.game.player.dialogues.Dialogue;
 
 public class SpinningD extends Dialogue {
 
-	private static final int[][] INGREDIENT =
-	{
-	{ 1737, 15415, 1779, 9436, 6051, 10814 },
-	{ 17448, 17450, 17452, 17454, 17456, 17458, 17460, 17462, 17464, 17466 } };
-	private static final int[][] PRODUCT =
-	{
-	{ 1759, 15416, 1777, 9438, 6038, 954 },
-	{ 17468, 17470, 17472, 17474, 17476, 17478, 17480, 17482, 17484, 17486 } };
-	private static final int[][] LEVELS =
-	{
-	{ 1, 1, 1, 10, 19, 30 },
-	{ 1, 10, 20, 30, 40, 50, 60, 70, 80, 90 } };
-	private static final double[][] EXPERIENCE =
-	{
-	{ 2.5, 2.5, 15, 15, 30, 25 },
-	{ 2.5, 3.0, 3.5, 3.0, 3.5, 6.5, 7.5, 9.0, 11, 12 } };
+	private static final int[][] INGREDIENT = { { 1737, 15415, 1779, 9436, 6051, 10814 }, { 17448, 17450, 17452, 17454, 17456, 17458, 17460, 17462, 17464, 17466 } };
+	private static final int[][] PRODUCT = { { 1759, 15416, 1777, 9438, 6038, 954 }, { 17468, 17470, 17472, 17474, 17476, 17478, 17480, 17482, 17484, 17486 } };
+	private static final int[][] LEVELS = { { 1, 1, 1, 10, 19, 30 }, { 1, 10, 20, 30, 40, 50, 60, 70, 80, 90 } };
+	private static final double[][] EXPERIENCE = { { 2.5, 2.5, 15, 15, 30, 25 }, { 2.5, 3.0, 3.5, 3.0, 3.5, 6.5, 7.5, 9.0, 11, 12 } };
 
 	private boolean dung;
 
@@ -91,7 +79,7 @@ public class SpinningD extends Dialogue {
 				player.getSkills().addXp(Skills.CRAFTING, EXPERIENCE[dung ? 1 : 0][componentIndex]);
 				player.getInventory().deleteItem(new Item(INGREDIENT[dung ? 1 : 0][componentIndex], 1));
 				player.getInventory().addItem(new Item(PRODUCT[dung ? 1 : 0][componentIndex], 1));
-				return 3;//4;
+				return 3;// 4;
 			}
 
 			@Override

@@ -8,10 +8,8 @@ import com.rs.game.player.dialogues.Dialogue;
 
 public class POHShelvesDialouge extends Dialogue {
 
-	private static final int[] LARDER_ITEMS =
-	{ 7688, 7702, 1980, 1919, 1923, 2313, 1931, 1949 };
-	private static final String[] LARDER_NAMES =
-	{ "Kettle", "Teapot", "Tea Cup", "Beer Glass", "Bowl", "Pie dish", "Empty pot", "Chef's Hat" };
+	private static final int[] LARDER_ITEMS = { 7688, 7702, 1980, 1919, 1923, 2313, 1931, 1949 };
+	private static final String[] LARDER_NAMES = { "Kettle", "Teapot", "Tea Cup", "Beer Glass", "Bowl", "Pie dish", "Empty pot", "Chef's Hat" };
 
 	private final List<String> currentOptions = new LinkedList<String>();
 	private int max_index;

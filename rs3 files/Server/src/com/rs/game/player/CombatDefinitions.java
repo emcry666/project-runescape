@@ -20,14 +20,10 @@ import com.rs.game.player.controllers.DTControler;
 public final class CombatDefinitions implements Serializable {
 
 	private static final long serialVersionUID = 2102201264836121104L;
-	public static final int STAB_ATTACK = 0, SLASH_ATTACK = 1,
-			CRUSH_ATTACK = 2, RANGE_ATTACK = 4, MAGIC_ATTACK = 3;
-	public static final int STAB_DEF = 5, SLASH_DEF = 6, CRUSH_DEF = 7,
-			RANGE_DEF = 9, MAGIC_DEF = 8, SUMMONING_DEF = 10;
-	public static final int STRENGTH_BONUS = 14, RANGED_STR_BONUS = 15,
-			MAGIC_DAMAGE = 17, PRAYER_BONUS = 16;
-	public static final int ABSORVE_MELEE_BONUS = 11, ABSORVE_RANGE_BONUS = 13,
-			ABSORVE_MAGE_BONUS = 12;
+	public static final int STAB_ATTACK = 0, SLASH_ATTACK = 1, CRUSH_ATTACK = 2, RANGE_ATTACK = 4, MAGIC_ATTACK = 3;
+	public static final int STAB_DEF = 5, SLASH_DEF = 6, CRUSH_DEF = 7, RANGE_DEF = 9, MAGIC_DEF = 8, SUMMONING_DEF = 10;
+	public static final int STRENGTH_BONUS = 14, RANGED_STR_BONUS = 15, MAGIC_DAMAGE = 17, PRAYER_BONUS = 16;
+	public static final int ABSORVE_MELEE_BONUS = 11, ABSORVE_RANGE_BONUS = 13, ABSORVE_MAGE_BONUS = 12;
 	public static final int MANUAL_COMBAT_MODE = 0, REVOLUTION_COMBAT_MODE = 1, MOMENTUM_COMBAT_MODE = 2, LEGACY_COMBAT_MODE = 3;
 
 	public static final int SHARED = -1;
@@ -74,7 +70,7 @@ public final class CombatDefinitions implements Serializable {
 	}
 
 	/*
-	 * the only thing that removes autospell now is when u switch spellbook 
+	 * the only thing that removes autospell now is when u switch spellbook
 	 */
 	public void resetSpells(boolean removeAutoSpell) {
 		player.getTemporaryAttributtes().remove("tempCastSpell");
@@ -98,12 +94,13 @@ public final class CombatDefinitions implements Serializable {
 
 	public void refreshAutoCastSpell() {
 		player.getVarsManager().sendVarBit(43, mainHandSpell);
-		setDefaultAbilityMenu(); //needs to be sent when setting autocast
+		setDefaultAbilityMenu(); // needs to be sent when setting autocast
 	}
 
 	public void refreshAutoAbilityTrigger() {
 		player.getVarsManager().sendVarBit(21682, getCombatMode() == REVOLUTION_COMBAT_MODE ? 1 : 0);
 	}
+
 	public void setDefaultAbilityMenu() {
 		setMagicAbilityMenu(player.isLegacyMode() ? 0 : 1);
 	}
@@ -153,15 +150,17 @@ public final class CombatDefinitions implements Serializable {
 
 	public void refreshSpellBook() {
 		player.getVarsManager().sendVarBit(0, spellBook);
-		player.getVarsManager().sendVar(3226, -1); //charge staff option appears in spells if not -1
+		player.getVarsManager().sendVar(3226, -1); // charge staff option
+		// appears in spells if not
+		// -1
 	}
 
-	//TODO remove
+	// TODO remove
 	public static final int getMeleeDefenceBonus(int bonusId) {
 		return 0;
 	}
 
-	//TODO remove
+	// TODO remove
 	public static final int getMeleeBonusStyle(int weaponId, int attackStyle) {
 		return 0;
 	}
@@ -171,82 +170,82 @@ public final class CombatDefinitions implements Serializable {
 			String weaponName = ItemDefinitions.getItemDefinitions(weaponId).getName().toLowerCase();
 			if (weaponName.contains("whip")) {
 				switch (attackStyle) {
-					case 0:
-						return Skills.ATTACK;
-					case 1:
-						return SHARED;
-					case 2:
-					default:
-						return Skills.DEFENCE;
+				case 0:
+					return Skills.ATTACK;
+				case 1:
+					return SHARED;
+				case 2:
+				default:
+					return Skills.DEFENCE;
 				}
 			}
 			if (weaponName.contains("halberd")) {
 				switch (attackStyle) {
-					case 0:
-						return SHARED;
-					case 1:
-						return Skills.STRENGTH;
-					case 2:
-					default:
-						return Skills.DEFENCE;
+				case 0:
+					return SHARED;
+				case 1:
+					return Skills.STRENGTH;
+				case 2:
+				default:
+					return Skills.DEFENCE;
 				}
 			}
 			if (weaponName.contains("mindspike") || weaponName.contains("staff") || weaponName.contains("granite mace") || weaponName.contains("hammer") || weaponName.contains("tzhaar-ket-em") || weaponName.contains("tzhaar-ket-om") || weaponName.contains("maul")) {
 				switch (attackStyle) {
-					case 0:
-						return Skills.ATTACK;
-					case 1:
-						return Skills.STRENGTH;
-					case 2:
-					default:
-						return Skills.DEFENCE;
+				case 0:
+					return Skills.ATTACK;
+				case 1:
+					return Skills.STRENGTH;
+				case 2:
+				default:
+					return Skills.DEFENCE;
 				}
 			}
 			if (weaponName.contains("godsword") || weaponName.contains("sword") || weaponName.contains("2h")) {
 				switch (attackStyle) {
-					case 0:
-						return Skills.ATTACK;
-					case 1:
-						return Skills.STRENGTH;
-					case 2:
-						return Skills.STRENGTH;
-					case 3:
-					default:
-						return Skills.DEFENCE;
+				case 0:
+					return Skills.ATTACK;
+				case 1:
+					return Skills.STRENGTH;
+				case 2:
+					return Skills.STRENGTH;
+				case 3:
+				default:
+					return Skills.DEFENCE;
 				}
 			}
 		}
 		switch (weaponId) {
-			case -1:
-			case -2:
-				switch (attackStyle) {
-					case 0:
-						return Skills.ATTACK;
-					case 1:
-						return Skills.STRENGTH;
-					case 2:
-					default:
-						return Skills.DEFENCE;
-				}
+		case -1:
+		case -2:
+			switch (attackStyle) {
+			case 0:
+				return Skills.ATTACK;
+			case 1:
+				return Skills.STRENGTH;
+			case 2:
 			default:
-				switch (attackStyle) {
-					case 0:
-						return Skills.ATTACK;
-					case 1:
-						return Skills.STRENGTH;
-					case 2:
-						return SHARED;
-					case 3:
-					default:
-						return Skills.DEFENCE;
-				}
+				return Skills.DEFENCE;
+			}
+		default:
+			switch (attackStyle) {
+			case 0:
+				return Skills.ATTACK;
+			case 1:
+				return Skills.STRENGTH;
+			case 2:
+				return SHARED;
+			case 3:
+			default:
+				return Skills.DEFENCE;
+			}
 		}
 	}
 
 	public void setPlayer(Player player) {
 		this.player = player;
 		bonuses = new int[18];
-		if(getCombatMode() != LEGACY_COMBAT_MODE)
+		if (getCombatMode() != LEGACY_COMBAT_MODE)
 			specialAttackPercentage = 0;
 	}
 
@@ -257,28 +256,13 @@ public final class CombatDefinitions implements Serializable {
 	/*
 	 * stats
 	 *
-	 * 0 - mainhand damage
-	 * 1 - offhand accuracy
-	 * 2 - offhand damage
-	 * 3 - offhand accuracy
-	 * 5 - ability damage
-	 * 5 - health
-	 * 6 - prayer bonus
-	 * 7 - armor
-	 * 8 - armor melee weakness multiplier
-	 * 9 - armor range weakness multiplier
-	 * 10 - armor mage weakness multiplier
-	 * 11 - damage reduction multiplier (PvE)
-	 * 12 - damage reduction multiplier (PvP)
-	 * 13 - accuracy penalty
+	 * 0 - mainhand damage 1 - offhand accuracy 2 - offhand damage 3 - offhand accuracy 5 - ability damage 5 -
+	 * health 6 - prayer bonus 7 - armor 8 - armor melee weakness multiplier 9 - armor range weakness multiplier 10
+	 * - armor mage weakness multiplier 11 - damage reduction multiplier (PvE) 12 - damage reduction multiplier
+	 * (PvP) 13 - accuracy penalty
 	 */
 
-	public static final int MAINHAND_DAMAGE = 0, MAINHAND_ACCURACY = 1,
-			OFFHAND_DAMAGE = 2, OFFHAND_ACCURACY = 3, ABILITY_DAMAGE = 4,
-			HEALTH = 5, PRAYER_B = 6, ARMOR = 7, ARMOR_MELEE_WEAKNESS = 8,
-			ARMOR_RANGE_WEAKNESS = 9, ARMOR_MAGIC_WEAKNESS = 10,
-			MELEE_ACCURACY_PENALTY = 13, RANGE_ACCURACY_PENALTY = 14,
-			MAGE_ACCURACY_PENALTY = 15;
+	public static final int MAINHAND_DAMAGE = 0, MAINHAND_ACCURACY = 1, OFFHAND_DAMAGE = 2, OFFHAND_ACCURACY = 3, ABILITY_DAMAGE = 4, HEALTH = 5, PRAYER_B = 6, ARMOR = 7, ARMOR_MELEE_WEAKNESS = 8, ARMOR_RANGE_WEAKNESS = 9, ARMOR_MAGIC_WEAKNESS = 10, MELEE_ACCURACY_PENALTY = 13, RANGE_ACCURACY_PENALTY = 14, MAGE_ACCURACY_PENALTY = 15;
 
 	public int getType(int slot) {
 		Item item = player.getEquipment().getItem(slot);
@@ -293,14 +277,16 @@ public final class CombatDefinitions implements Serializable {
 		}
 		return Combat.ALL_TYPE;
 	}
-	
+
 	public void sendAbilityVars() {
-		player.getVarsManager().sendVarBit(22192, 1);//Combat stances for Barb assualt
-		player.getVarsManager().sendVarBit(18021, 250);//The 'sun shine' abilities
-		player.getVarsManager().sendVarBit(21067, 1);//Sacrifice
-		player.getVarsManager().sendVarBit(21068, 1);//Devotion
-		player.getVarsManager().sendVarBit(21069, 1);//Transfigure
-		player.getVarsManager().sendVarBit(22464, 1);//Tendrils
+		player.getVarsManager().sendVarBit(22192, 1);// Combat stances for Barb
+		// assualt
+		player.getVarsManager().sendVarBit(18021, 250);// The 'sun shine'
+		// abilities
+		player.getVarsManager().sendVarBit(21067, 1);// Sacrifice
+		player.getVarsManager().sendVarBit(21068, 1);// Devotion
+		player.getVarsManager().sendVarBit(21069, 1);// Transfigure
+		player.getVarsManager().sendVarBit(22464, 1);// Tendrils
 	}
 
 	public void unlockSheatheButton() {
@@ -311,22 +297,22 @@ public final class CombatDefinitions implements Serializable {
 		player.getPackets().sendIComponentSettings(1461, 1, 0, 175, 10320902);
 		player.getPackets().sendIComponentSettings(1461, 7, 6, 14, 2);
 	}
-	
+
 	public void unlockMeleeAbilities() {
 		player.getPackets().sendIComponentSettings(1460, 1, 0, 175, 10320902);
 		player.getPackets().sendIComponentSettings(1460, 5, 6, 14, 2);
 	}
-	
+
 	public void unlockRangeAbilities() {
 		player.getPackets().sendIComponentSettings(1452, 1, 0, 175, 10320902);
 		player.getPackets().sendIComponentSettings(1452, 7, 6, 14, 2);
 	}
-	
+
 	public void unlockDefenceAbilities() {
 		player.getPackets().sendIComponentSettings(1449, 1, 0, 175, 10320902);
 		player.getPackets().sendIComponentSettings(1449, 7, 6, 14, 2);
 	}
-	
+
 	public void refreshBonuses() {
 
 		stats = new int[16];
@@ -347,20 +333,32 @@ public final class CombatDefinitions implements Serializable {
 			if (i != Equipment.SLOT_SHIELD && !(i == Equipment.SLOT_ARROWS && mainHandType == Combat.RANGE_TYPE && player.getEquipment().getItem(Equipment.SLOT_WEAPON).getDefinitions().getCSOpcode(2940) != 0)) {
 
 				int damage = defs.getDamage(mainHandType);
-				if (i == Equipment.SLOT_ARROWS && item.getId() == 29617 && !Combat.hasDarkbow(player)) //dark arrow dmg reduction if not dark bow
+				if (i == Equipment.SLOT_ARROWS && item.getId() == 29617 && !Combat.hasDarkbow(player)) // dark
+					// arrow
+					// dmg
+					// reduction
+					// if
+					// not
+					// dark
+					// bow
 					damage /= 2;
-				else if (i == Equipment.SLOT_ARROWS && item.getId() == 28465 && !Combat.hasAscensionCrossbow(player, true)) //ascension bolts dmg reduction if not ancension crossbow
+				else if (i == Equipment.SLOT_ARROWS && item.getId() == 28465 && !Combat.hasAscensionCrossbow(player, true)) // ascension
+					// bolts
+					// dmg
+					// reduction
+					// if not
+					// ancension
+					// crossbow
 					damage /= 2;
-				//28465
-				
-				if(i == Equipment.SLOT_ARROWS) { //cap arrows
+				// 28465
+
+				if (i == Equipment.SLOT_ARROWS) { // cap arrows
 					Item weapon = player.getEquipment().getItem(Equipment.SLOT_WEAPON);
 					int maxDamage = weapon == null ? 0 : (int) (weapon.getDefinitions().getRangedLevel() * 96);
-					if(damage > maxDamage)
+					if (damage > maxDamage)
 						damage = maxDamage;
 				}
-				
-				
+
 				stats[MAINHAND_DAMAGE] += damage;
 				stats[MAINHAND_ACCURACY] += defs.getAccuracy(mainHandType);
 
@@ -370,12 +368,13 @@ public final class CombatDefinitions implements Serializable {
 
 					Item weapon = player.getEquipment().getItem(Equipment.SLOT_WEAPON);
 
-					//if weapon has its own ammo then treat as the same way as melee(weap instead of ammo 4 calc)
+					// if weapon has its own ammo then treat as the same way as
+					// melee(weap instead of ammo 4 calc)
 					if (mainHandType == Combat.RANGE_TYPE && weapon.getDefinitions().getCSOpcode(2940) == 0) {
 						Item ammo = player.getEquipment().getItem(Equipment.SLOT_ARROWS);
 						if (ammo != null) {
 							int ammoDamage = ammo.getDefinitions().getRangedLevel() * 96;
-							//caps dmg at weap lvl
+							// caps dmg at weap lvl
 							int maxDamage = weapon == null ? 0 : (int) (weapon.getDefinitions().getRangedLevel() * 96);
 							abilityDamage = ammoDamage > maxDamage ? maxDamage : ammoDamage;
 							if (player.getEquipment().hasTwoHandedWeapon())
@@ -386,8 +385,13 @@ public final class CombatDefinitions implements Serializable {
 								abilityDamage += (ammoDamage > maxDamage ? maxDamage : ammoDamage) / 2;
 							}
 						}
-					}
-					else if (mainHandType == Combat.RANGE_TYPE || mainHandType == Combat.MELEE_TYPE) { //melee and range(when weapon doesnt use ammo)
+					} else if (mainHandType == Combat.RANGE_TYPE || mainHandType == Combat.MELEE_TYPE) { // melee
+						// and
+						// range(when
+						// weapon
+						// doesnt
+						// use
+						// ammo)
 						abilityDamage = weapon == null ? 0 : (int) ((mainHandType == Combat.RANGE_TYPE ? weapon.getDefinitions().getRangedLevel() : weapon.getDefinitions().getAttackLevel()) * 96);
 						if (player.getEquipment().hasTwoHandedWeapon())
 							abilityDamage *= 1.5;
@@ -398,24 +402,37 @@ public final class CombatDefinitions implements Serializable {
 					}
 					stats[ABILITY_DAMAGE] += abilityDamage;
 
-				}
-				else if(i != Equipment.SLOT_ARROWS) {
-					//the extra bonuses from armor :p
+				} else if (i != Equipment.SLOT_ARROWS) {
+					// the extra bonuses from armor :p
 					stats[ABILITY_DAMAGE] += damage;
 				}
 			}
 			if (!hasShield && i != Equipment.SLOT_WEAPON && !(i == Equipment.SLOT_ARROWS && offHandType == Combat.RANGE_TYPE && player.getEquipment().getItem(Equipment.SLOT_SHIELD).getDefinitions().getCSOpcode(2940) != 0)) {
 
 				int damage = defs.getDamage(offHandType);
-				if (i == Equipment.SLOT_ARROWS && item.getId() == 29617) //dark arrow dmg reduction if not dark bow
+				if (i == Equipment.SLOT_ARROWS && item.getId() == 29617) // dark
+					// arrow
+					// dmg
+					// reduction
+					// if
+					// not
+					// dark
+					// bow
 					damage /= 2;
-				else if (i == Equipment.SLOT_ARROWS && item.getId() == 28465 && !Combat.hasAscensionCrossbow(player, false)) //ascension bolts dmg reduction if not ancension crossbow
+				else if (i == Equipment.SLOT_ARROWS && item.getId() == 28465 && !Combat.hasAscensionCrossbow(player, false)) // ascension
+					// bolts
+					// dmg
+					// reduction
+					// if
+					// not
+					// ancension
+					// crossbow
 					damage /= 2;
-				
-				if(i == Equipment.SLOT_ARROWS) { //cap arrows
+
+				if (i == Equipment.SLOT_ARROWS) { // cap arrows
 					Item weapon = player.getEquipment().getItem(Equipment.SLOT_SHIELD);
 					int maxDamage = weapon == null ? 0 : (int) (weapon.getDefinitions().getRangedLevel() * 96);
-					if(damage > maxDamage)
+					if (damage > maxDamage)
 						damage = maxDamage;
 				}
 
@@ -439,14 +456,11 @@ public final class CombatDefinitions implements Serializable {
 				}
 				if (type == Combat.ALL_TYPE) {
 					allGearArmor += armor;
-				}
-				else if (type == Combat.MELEE_TYPE) {
+				} else if (type == Combat.MELEE_TYPE) {
 					meleeGearArmor += armor;
-				}
-				else if (type == Combat.RANGE_TYPE) {
+				} else if (type == Combat.RANGE_TYPE) {
 					rangeGearArmor += armor;
-				}
-				else if (type == Combat.MAGIC_TYPE) {
+				} else if (type == Combat.MAGIC_TYPE) {
 					mageGearArmor += armor;
 				}
 			}
@@ -454,9 +468,7 @@ public final class CombatDefinitions implements Serializable {
 		stats[ARMOR_MELEE_WEAKNESS] = (int) (Combat.getWeaknessMultiplier(stats[ARMOR], rangeGearArmor, meleeGearArmor + allGearArmor, mageGearArmor) * 100);
 		stats[ARMOR_RANGE_WEAKNESS] = (int) (Combat.getWeaknessMultiplier(stats[ARMOR], mageGearArmor, rangeGearArmor + allGearArmor, meleeGearArmor) * 100);
 		stats[ARMOR_MAGIC_WEAKNESS] = (int) (Combat.getWeaknessMultiplier(stats[ARMOR], meleeGearArmor, mageGearArmor + allGearArmor, rangeGearArmor) * 100);
-		
-		
-		
+
 	}
 
 	public void resetSpecialAttack() {
@@ -479,10 +491,10 @@ public final class CombatDefinitions implements Serializable {
 		if (specialAttackPercentage >= 100 || player.getInterfaceManager().containsScreenInterface())
 			return;
 		specialAttackPercentage += specialAttackPercentage > (100 - percentage) ? 100 - specialAttackPercentage : percentage;
-		if(player.getCombatDefinitions().getCombatMode() != CombatDefinitions.LEGACY_COMBAT_MODE)
+		if (player.getCombatDefinitions().getCombatMode() != CombatDefinitions.LEGACY_COMBAT_MODE)
 			player.addAdrenalineBar();
 		refreshSpecialAttackPercentage();
-		
+
 	}
 
 	public void init() {
@@ -504,19 +516,18 @@ public final class CombatDefinitions implements Serializable {
 	}
 
 	/*
-	 * enables cast option manualy when not under combat
-	 * or if manual cast setted true
-	 *  (btw manual cast cant be switched in 812, rs added it in 815 anyway ima add option serversided)
+	 * enables cast option manualy when not under combat or if manual cast setted true (btw manual cast cant be
+	 * switched in 812, rs added it in 815 anyway ima add option serversided)
 	 */
 	public void refreshManualCast() {
 		player.getVarsManager().sendVar(616, !manualCast && currentTarget != null ? 0 : -1);
 		player.getVarsManager().sendVar(623, !manualCast && currentTarget != null ? 0 : -1);
 	}
-	
+
 	public void refreshManualSpellCasting() {
 		player.getVarsManager().sendVarBit(22843, manualCast ? 1 : 0);
 	}
-	
+
 	public void switchManualSpellCasting() {
 		manualCast = !manualCast;
 		refreshManualSpellCasting();
@@ -532,8 +543,6 @@ public final class CombatDefinitions implements Serializable {
 			setMagicCombatExperience(style == 0 ? 1 : style == 1 ? 0 : 2);
 	}
 
-
-	
 	public void setMeleeCombatExperience(int style) {
 		this.meleeCombatExperience = (byte) style;
 		refreshMeleeCombatExperience();
@@ -554,27 +563,28 @@ public final class CombatDefinitions implements Serializable {
 	}
 
 	public int getMeleeCombatExperience() {
-		return meleeCombatExperience;	
+		return meleeCombatExperience;
 	}
-	
+
 	public void refreshRangedCombatExperience() {
 		player.getVarsManager().sendVarBit(1907, rangedCombatExperience);
 	}
 
 	public int getRangedCombatExperience() {
-		return rangedCombatExperience;	
+		return rangedCombatExperience;
 	}
-	
+
 	public void refreshMagicCombatExperience() {
 		player.getVarsManager().sendVarBit(1908, magicCombatExperience);
 	}
-	
+
 	public int getMagicCombatExperience() {
-		return magicCombatExperience;	
+		return magicCombatExperience;
 	}
 
 	public void refreshCombatMode() {
-		//forcing atm due to inter being auto and legacy is setted in eoc. later on remove force
+		// forcing atm due to inter being auto and legacy is setted in eoc.
+		// later on remove force
 		player.getVarsManager().sendVarBit(21685, combatMode);
 	}
 
@@ -597,40 +607,46 @@ public final class CombatDefinitions implements Serializable {
 	}
 
 	public void setCombatMode(int mode) {
-		/*if (mode != LEGACY_COMBAT_MODE) {
-			player.getPackets().sendGameMessage("This mode is currently disabled.");
-			mode = LEGACY_COMBAT_MODE;
-		}*/
-		if(player.isLegacyMode() && mode != LEGACY_COMBAT_MODE) //someone trying to hack to use another mode while in legacy
+		/*
+		 * if (mode != LEGACY_COMBAT_MODE) { player.getPackets().
+		 * sendGameMessage("This mode is currently disabled."); mode = LEGACY_COMBAT_MODE; }
+		 */
+		if (player.isLegacyMode() && mode != LEGACY_COMBAT_MODE) // someone
+			// trying to
+			// hack to use
+			// another mode
+			// while in
+			// legacy
 			return;
 		int oldMode = combatMode;
 		combatMode = (byte) mode;
 		refreshCombatMode();
-		if(mode == oldMode)
+		if (mode == oldMode)
 			return;
-		if(oldMode == LEGACY_COMBAT_MODE || mode == LEGACY_COMBAT_MODE) {
-			sheathe = false; //turns it off by default, ofc u can turn on bk
+		if (oldMode == LEGACY_COMBAT_MODE || mode == LEGACY_COMBAT_MODE) {
+			sheathe = false; // turns it off by default, ofc u can turn on bk
 			specialAttackPercentage = (byte) (mode == LEGACY_COMBAT_MODE ? 100 : 0);
 			refreshSpecialAttackPercentage();
 			player.getInterfaceManager().sendMeleeAbilities();
-			player.getAppearence().generateAppearenceData(); //changes stance aswell
+			player.getAppearence().generateAppearenceData(); // changes stance
+			// aswell
 		}
-		if(mode == REVOLUTION_COMBAT_MODE) {
+		if (mode == REVOLUTION_COMBAT_MODE) {
 			player.getPackets().sendGameMessage("Revolution is now active.", true);
 			refreshAutoAbilityTrigger();
-		}else if(oldMode == REVOLUTION_COMBAT_MODE) {
+		} else if (oldMode == REVOLUTION_COMBAT_MODE) {
 			player.getPackets().sendEntityMessage(1, 0xFFFFFF, player, "Revolution is no longer active.");
 			refreshAutoAbilityTrigger();
 		}
-		if(mode == MOMENTUM_COMBAT_MODE)
+		if (mode == MOMENTUM_COMBAT_MODE)
 			player.getPackets().sendGameMessage("Momentum is now active.", true);
-		else if(oldMode == MOMENTUM_COMBAT_MODE) {
+		else if (oldMode == MOMENTUM_COMBAT_MODE) {
 			player.getPackets().sendEntityMessage(1, 0xFFFFFF, player, "Momentum is no longer active.");
 		}
 	}
 
 	public int getCombatMode() {
-		return player.isLegacyMode() ? LEGACY_COMBAT_MODE : combatMode; //legacy
+		return player.isLegacyMode() ? LEGACY_COMBAT_MODE : combatMode; // legacy
 	}
 
 	public void sendUnlockAttackStylesButtons() {
@@ -654,7 +670,7 @@ public final class CombatDefinitions implements Serializable {
 		if (amount > 0) {
 			specialAttackPercentage -= amount;
 			refreshSpecialAttackPercentage();
-			if(player.getCombatDefinitions().getCombatMode() != CombatDefinitions.LEGACY_COMBAT_MODE)
+			if (player.getCombatDefinitions().getCombatMode() != CombatDefinitions.LEGACY_COMBAT_MODE)
 				player.addAdrenalineBar();
 		}
 	}
@@ -664,7 +680,7 @@ public final class CombatDefinitions implements Serializable {
 			int spec = specialAttackPercentage + amount;
 			specialAttackPercentage = (byte) (spec < 0 ? 0 : spec > 100 ? 100 : spec);
 			refreshSpecialAttackPercentage();
-			if(player.getCombatDefinitions().getCombatMode() != CombatDefinitions.LEGACY_COMBAT_MODE)
+			if (player.getCombatDefinitions().getCombatMode() != CombatDefinitions.LEGACY_COMBAT_MODE)
 				player.addAdrenalineBar();
 		}
 	}
@@ -701,7 +717,7 @@ public final class CombatDefinitions implements Serializable {
 		return usingSpecialAttack;
 	}
 
-	//TODO remove this
+	// TODO remove this
 	public int getAttackStyle() {
 		return 0;
 	}
@@ -740,7 +756,7 @@ public final class CombatDefinitions implements Serializable {
 	public void setCombatStance(boolean combatStance) {
 		this.combatStance = combatStance;
 	}
-	
+
 	private boolean isForceNoSheathe() {
 		return player.isCanPvp() || player.getControlerManager().getControler() instanceof ClanWarRequestController;
 	}
@@ -748,28 +764,41 @@ public final class CombatDefinitions implements Serializable {
 	public void processCombatStance() {
 		boolean forceSheathe = isForceNoSheathe();
 		boolean underCombat = player.isUnderCombat();
-		if(forceNoSheathe != forceSheathe) {
+		if (forceNoSheathe != forceSheathe) {
 			forceNoSheathe = forceSheathe;
-			if(underCombat == combatStance)
+			if (underCombat == combatStance)
 				player.getAppearence().generateAppearenceData();
 		}
 		if (underCombat != combatStance) {
-			//wait until def emote performs, cuz render anims cant be delayed
+			// wait until def emote performs, cuz render anims cant be delayed
 			if (underCombat && player.getNextAnimation() == null)
 				return;
 			combatStance = underCombat;
 			if (!combatStance) {
-				if(isSheathe())
+				if (isSheathe())
 					player.setNextAnimationNoPriority(new Animation(18027));
 				else if (getCombatMode() != LEGACY_COMBAT_MODE)
 					player.setNextAnimationNoPriority(new Animation(player.getEquipment().getWeaponEndCombatEmote()));
 			}
-			player.getVarsManager().sendVarBit(1899, underCombat ? 1 : 0); //makes menus not open and say under combat when u try to open
+			player.getVarsManager().sendVarBit(1899, underCombat ? 1 : 0); // makes
+			// menus
+			// not
+			// open
+			// and
+			// say
+			// under
+			// combat
+			// when
+			// u
+			// try
+			// to
+			// open
 			if (player.getInterfaceManager().isMenuOpen())
 				player.getInterfaceManager().closeMenu();
-			//		player.getInterfaceManager().refreshInterface(); 
+			// player.getInterfaceManager().refreshInterface();
 			player.getDialogueManager().finishConfirmDialogue();
-			//TODO get animation from itemdefs and perform it here. taking out or in weapon.
+			// TODO get animation from itemdefs and perform it here. taking out
+			// or in weapon.
 			player.getAppearence().generateAppearenceData();
 			if (!underCombat && currentTarget != null)
 				setCurrentTarget(null);
@@ -778,17 +807,17 @@ public final class CombatDefinitions implements Serializable {
 			Entity target = player.getActionManager().getAction() instanceof PlayerCombatNew ? ((PlayerCombatNew) player.getActionManager().getAction()).getTarget() : null;
 			if (target != null && currentTarget != target) {
 				setCurrentTarget(target);
-			}else if (currentTarget != null && (currentTarget.hasFinished() || !player.withinDistance(currentTarget, 16)))
+			} else if (currentTarget != null && (currentTarget.hasFinished() || !player.withinDistance(currentTarget, 16)))
 				setCurrentTarget(null);
-		}else if(getCombatMode() != LEGACY_COMBAT_MODE && specialAttackPercentage > 0) {
+		} else if (getCombatMode() != LEGACY_COMBAT_MODE && specialAttackPercentage > 0) {
 			boolean hasRegen = player.getEffectsManager().hasActiveEffect(EffectType.REGENERATE);
 			increaseSpecialAttack(hasRegen ? -10 : -5);
-			if(hasRegen)
+			if (hasRegen)
 				player.heal((int) (player.getMaxHitpoints() * 0.02), 0, 0, true);
-			
+
 		}
 	}
-	
+
 	private void refreshCurrentTargetData() {
 		currentTargetData = getCurrentTargetData();
 		player.getPackets().sendExecuteScript(82, currentTarget.getName(), currentTarget.getCombatLevel(), getCurrentTargetWeakness(), 30, 30, 0);
@@ -797,35 +826,35 @@ public final class CombatDefinitions implements Serializable {
 
 	private void setCurrentTarget(Entity target) {
 		currentTarget = target;
-		refreshManualCast(); //makes cast spell appear or not
+		refreshManualCast(); // makes cast spell appear or not
 		player.getPackets().sendCurrentTarget(target);
 		if (target != null) {
 			player.getPackets().sendEntityInterface(target, true, 1488, 2, 1490);
 			refreshCurrentTargetData();
-		}else{
+		} else {
 			player.getPackets().closeInterface(InterfaceManager.getComponentUId(1488, 2));
 		}
 
 	}
-	
+
 	public Object[] getCurrentTargetData() {
-		Entity currentTarget = this.currentTarget; //to prevent syc issues
-		if(currentTarget == null)
-			return null;
-		return new Object[] {currentTarget.getIndex(), currentTarget.getName(), currentTarget.getCombatLevel(), getCurrentTargetWeakness()};
-	}
-	
-	private int getCurrentTargetWeakness() {
-		Entity currentTarget = this.currentTarget; //to prevent syc issues
+		Entity currentTarget = this.currentTarget; // to prevent syc issues
 		if (currentTarget == null)
-			return 9286; //none
+			return null;
+		return new Object[] { currentTarget.getIndex(), currentTarget.getName(), currentTarget.getCombatLevel(), getCurrentTargetWeakness() };
+	}
+
+	private int getCurrentTargetWeakness() {
+		Entity currentTarget = this.currentTarget; // to prevent syc issues
+		if (currentTarget == null)
+			return 9286; // none
 		int weakness = 0;
 		if (currentTarget instanceof NPC) {
 			weakness = ClientScriptMap.getMap(6745).getIntValue(((NPC) currentTarget).getWeaknessStyle());
-			if (weakness == 197) //mobs have no melee type(only styles), thats none
+			if (weakness == 197) // mobs have no melee type(only styles), thats
+				// none
 				weakness = 9286;
-		}
-		else {
+		} else {
 			int weaknessType = ((Player) currentTarget).getCombatDefinitions().getWeaknessType();
 			weakness = weaknessType == Combat.MELEE_TYPE ? 197 : weaknessType == Combat.RANGE_TYPE ? 200 : weaknessType == Combat.MAGIC_TYPE ? 202 : 9286;
 		}
@@ -833,17 +862,21 @@ public final class CombatDefinitions implements Serializable {
 	}
 
 	public void refreshTargetBuffs() {
-		Entity currentTarget = this.currentTarget; //to prevent syc issues
+		Entity currentTarget = this.currentTarget; // to prevent syc issues
 		if (currentTarget == null)
 			return;
 		Object[] data = getCurrentTargetData();
-		if(data == null)
+		if (data == null)
 			return;
-		if(!currentTargetData[0].equals(data[0])) //index changed such as disapearing for awhile(dig)
-			setCurrentTarget(currentTarget); //forces to even change index(move inter)
-		else if(!currentTargetData[1].equals(data[1]) || !currentTargetData[2].equals(data[2]) || !currentTargetData[3].equals(data[3])) 
-			refreshCurrentTargetData(); //forces to refresh name/lvl/weakness + forcebuff to appear
-		else //refresh buffs normaly if any changed
+		if (!currentTargetData[0].equals(data[0])) // index changed such as
+			// disapearing for
+			// awhile(dig)
+			setCurrentTarget(currentTarget); // forces to even change index(move
+		// inter)
+		else if (!currentTargetData[1].equals(data[1]) || !currentTargetData[2].equals(data[2]) || !currentTargetData[3].equals(data[3]))
+			refreshCurrentTargetData(); // forces to refresh name/lvl/weakness +
+		// forcebuff to appear
+		else // refresh buffs normaly if any changed
 			updateTargetBuffs(false);
 	}
 
@@ -852,11 +885,10 @@ public final class CombatDefinitions implements Serializable {
 			return;
 
 		Entity currentTarget = this.currentTarget;
-		if(currentTarget == null)//to prevent syc issues
+		if (currentTarget == null)// to prevent syc issues
 			return;
-		
+
 		Player targetPlayer = currentTarget instanceof Player ? (Player) currentTarget : null;
-		
 
 		if (targetPlayer != null) {
 			int maxHp = currentTarget.getMaxHitpoints();
@@ -866,7 +898,7 @@ public final class CombatDefinitions implements Serializable {
 			if (hp != currentTargetHP)
 				player.getPackets().sendCSVarInteger(3701, currentTargetHP = hp);
 		}
-		//prayer normal
+		// prayer normal
 		update |= player.getVarsManager().sendVarBit(1953, targetPlayer != null && targetPlayer.getPrayer().usingPrayer(0, 0) && player.getSkills().getLevel(Skills.PRAYER) < 10 ? 1 : 0);
 		update |= player.getVarsManager().sendVarBit(1954, targetPlayer != null && targetPlayer.getPrayer().usingPrayer(0, 0) && player.getSkills().getLevel(Skills.PRAYER) < 28 ? 1 : 0);
 		update |= player.getVarsManager().sendVarBit(1955, targetPlayer != null && targetPlayer.getPrayer().usingPrayer(0, 0) && player.getSkills().getLevel(Skills.PRAYER) >= 28 ? 1 : 0);
@@ -903,7 +935,7 @@ public final class CombatDefinitions implements Serializable {
 		update |= player.getVarsManager().sendVarBit(1986, targetPlayer != null && targetPlayer.getPrayer().usingPrayer(0, 18) ? 1 : 0);
 		update |= player.getVarsManager().sendVarBit(1987, targetPlayer != null && targetPlayer.getPrayer().usingPrayer(0, 21) ? 1 : 0);
 		update |= player.getVarsManager().sendVarBit(1988, targetPlayer != null && targetPlayer.getPrayer().usingPrayer(0, 20) ? 1 : 0);
-		//prayer curses
+		// prayer curses
 		update |= player.getVarsManager().sendVarBit(1989, targetPlayer != null && targetPlayer.getPrayer().usingPrayer(1, 8) ? 1 : 0);
 		update |= player.getVarsManager().sendVarBit(1990, targetPlayer != null && targetPlayer.getPrayer().usingPrayer(1, 3) ? 1 : 0);
 		update |= player.getVarsManager().sendVarBit(1991, targetPlayer != null && targetPlayer.getPrayer().usingPrayer(1, 5) ? 1 : 0);
@@ -933,31 +965,30 @@ public final class CombatDefinitions implements Serializable {
 		update |= player.getVarsManager().sendVarBit(2016, targetPlayer != null && targetPlayer.getPrayer().usingPrayer(1, 24) ? 1 : 0);
 		update |= player.getVarsManager().sendVarBit(2017, targetPlayer != null && targetPlayer.getPrayer().usingPrayer(1, 25) ? 1 : 0);
 
-		//stast boost / reduce
+		// stast boost / reduce
 		update |= player.getVarsManager().sendVarBit(2018, targetPlayer != null && !targetPlayer.getEffectsManager().hasActiveEffect(EffectType.OVERLOAD) && targetPlayer.getSkills().getLevel(Skills.ATTACK) > targetPlayer.getSkills().getLevelForXp(Skills.ATTACK) ? 1 : 0);
 		update |= player.getVarsManager().sendVarBit(2019, targetPlayer != null && targetPlayer.getSkills().getLevel(Skills.ATTACK) < targetPlayer.getSkills().getLevelForXp(Skills.ATTACK) ? 1 : 0);
-		update |= player.getVarsManager().sendVarBit(2020, targetPlayer != null && !targetPlayer.getEffectsManager().hasActiveEffect(EffectType.OVERLOAD)&& targetPlayer.getSkills().getLevel(Skills.STRENGTH) > targetPlayer.getSkills().getLevelForXp(Skills.STRENGTH) ? 1 : 0);
+		update |= player.getVarsManager().sendVarBit(2020, targetPlayer != null && !targetPlayer.getEffectsManager().hasActiveEffect(EffectType.OVERLOAD) && targetPlayer.getSkills().getLevel(Skills.STRENGTH) > targetPlayer.getSkills().getLevelForXp(Skills.STRENGTH) ? 1 : 0);
 		update |= player.getVarsManager().sendVarBit(2021, targetPlayer != null && targetPlayer.getSkills().getLevel(Skills.STRENGTH) < targetPlayer.getSkills().getLevelForXp(Skills.STRENGTH) ? 1 : 0);
-		update |= player.getVarsManager().sendVarBit(2022, targetPlayer != null && !targetPlayer.getEffectsManager().hasActiveEffect(EffectType.OVERLOAD)&& targetPlayer.getSkills().getLevel(Skills.DEFENCE) > targetPlayer.getSkills().getLevelForXp(Skills.DEFENCE) ? 1 : 0);
+		update |= player.getVarsManager().sendVarBit(2022, targetPlayer != null && !targetPlayer.getEffectsManager().hasActiveEffect(EffectType.OVERLOAD) && targetPlayer.getSkills().getLevel(Skills.DEFENCE) > targetPlayer.getSkills().getLevelForXp(Skills.DEFENCE) ? 1 : 0);
 		update |= player.getVarsManager().sendVarBit(2023, targetPlayer != null && targetPlayer.getSkills().getLevel(Skills.DEFENCE) < targetPlayer.getSkills().getLevelForXp(Skills.DEFENCE) ? 1 : 0);
-		update |= player.getVarsManager().sendVarBit(2024, targetPlayer != null && !targetPlayer.getEffectsManager().hasActiveEffect(EffectType.OVERLOAD)&& targetPlayer.getSkills().getLevel(Skills.RANGE) > targetPlayer.getSkills().getLevelForXp(Skills.RANGE) ? 1 : 0);
+		update |= player.getVarsManager().sendVarBit(2024, targetPlayer != null && !targetPlayer.getEffectsManager().hasActiveEffect(EffectType.OVERLOAD) && targetPlayer.getSkills().getLevel(Skills.RANGE) > targetPlayer.getSkills().getLevelForXp(Skills.RANGE) ? 1 : 0);
 		update |= player.getVarsManager().sendVarBit(2025, targetPlayer != null && targetPlayer.getSkills().getLevel(Skills.RANGE) < targetPlayer.getSkills().getLevelForXp(Skills.RANGE) ? 1 : 0);
 		update |= player.getVarsManager().sendVarBit(2026, targetPlayer != null && !targetPlayer.getEffectsManager().hasActiveEffect(EffectType.OVERLOAD) && targetPlayer.getSkills().getLevel(Skills.MAGIC) > targetPlayer.getSkills().getLevelForXp(Skills.MAGIC) ? 1 : 0);
 		update |= player.getVarsManager().sendVarBit(2027, targetPlayer != null && targetPlayer.getSkills().getLevel(Skills.MAGIC) < targetPlayer.getSkills().getLevelForXp(Skills.MAGIC) ? 1 : 0);
 
-		//prayer points boost/reduce
+		// prayer points boost/reduce
 		update |= player.getVarsManager().sendVarBit(2030, targetPlayer != null && targetPlayer.getPrayer().getPrayerpoints() > targetPlayer.getPrayer().getMaxPrayerpoints() ? 1 : 0);
-		//2031. prayer points reduced. not used
+		// 2031. prayer points reduced. not used
 
-		//poison delays
+		// poison delays
 		update |= player.getVarsManager().sendVarBit(2033, targetPlayer != null && targetPlayer.getEffectsManager().hasActiveEffect(EffectType.ANTIPOISON) ? 1 : 0);
 		update |= player.getVarsManager().sendVarBit(2037, targetPlayer != null && targetPlayer.getEffectsManager().hasActiveEffect(EffectType.PRAYER_RENEWAL) ? 1 : 0);
 		update |= player.getVarsManager().sendVarBit(20383, targetPlayer != null && targetPlayer.getEffectsManager().hasActiveEffect(EffectType.OVERLOAD) ? 1 : 0);
 		update |= player.getVarsManager().sendVarBit(2034, targetPlayer != null && targetPlayer.getEffectsManager().hasActiveEffect(EffectType.FIRE_IMMUNITY) ? 1 : 0);
 		update |= player.getVarsManager().sendVarBit(2035, targetPlayer != null && targetPlayer.getEffectsManager().hasActiveEffect(EffectType.SUPER_FIRE_IMMUNITY) ? 1 : 0);
-		
-		
-		//ratings boost / reduce
+
+		// ratings boost / reduce
 		update |= player.getVarsManager().sendVarBit(2038, targetPlayer != null && targetPlayer.getMeleeAttackRating() < 0 ? 1 : 0);
 		update |= player.getVarsManager().sendVarBit(2039, targetPlayer != null && targetPlayer.getMeleeAttackRating() > 0 ? 1 : 0);
 		update |= player.getVarsManager().sendVarBit(2040, targetPlayer != null && targetPlayer.getMeleeStrengthRating() < 0 ? 1 : 0);
@@ -965,17 +996,17 @@ public final class CombatDefinitions implements Serializable {
 		update |= player.getVarsManager().sendVarBit(2050, targetPlayer != null && targetPlayer.getDefenceRating() < 0 ? 1 : 0);
 		update |= player.getVarsManager().sendVarBit(2051, targetPlayer != null && targetPlayer.getDefenceRating() > 0 ? 1 : 0);
 
-		//hitpoints boost
+		// hitpoints boost
 		update |= player.getVarsManager().sendVarBit(2028, currentTarget.getHitpoints() > currentTarget.getMaxHitpoints() || (targetPlayer != null && targetPlayer.getVarsManager().getBitValue(16463) > 0) ? 1 : 0);
-		//hitpoints reduced 2029 not used
+		// hitpoints reduced 2029 not used
 
-		//other
+		// other
 		update |= player.getVarsManager().sendVarBit(2032, currentTarget.getEffectsManager().hasActiveEffect(EffectType.POISON) ? 1 : 0);
 		update |= player.getVarsManager().sendVarBit(1910, currentTarget.isStunned() ? 1 : 0);
 		update |= player.getVarsManager().sendVarBit(1911, currentTarget.isBound() ? 1 : 0);
 		update |= player.getVarsManager().sendVarBit(2055, currentTarget.isStunImmune() ? 1 : 0);
-		
-		//abilities
+
+		// abilities
 		update |= player.getVarsManager().sendVarBit(1912, currentTarget.getEffectsManager().hasActiveEffect(EffectType.SEVER) ? 1 : 0);
 		update |= player.getVarsManager().sendVarBit(1913, currentTarget.getEffectsManager().hasActiveEffect(EffectType.SLAUGHTER) ? 1 : 0);
 		update |= player.getVarsManager().sendVarBit(1914, currentTarget.getEffectsManager().hasActiveEffect(EffectType.MASSACRE) ? 1 : 0);
@@ -1024,7 +1055,8 @@ public final class CombatDefinitions implements Serializable {
 	}
 
 	/*
-	 *  //selects ur current target if u attacking, else selects last entity to attack you, and only when youre under combat
+	 * //selects ur current target if u attacking, else selects last entity to attack you, and only when youre
+	 * under combat
 	 */
 	public Entity getCurrentTarget() {
 		return currentTarget;
@@ -1067,26 +1099,21 @@ public final class CombatDefinitions implements Serializable {
 
 	public int getAbilitiesDamage() {
 		int mainHandType = getType(Equipment.SLOT_WEAPON);
-		
-	
-		if(mainHandType == Combat.MAGIC_TYPE && this.mainHandSpell != 0) {
-		/*	Item ammo = player.getEquipment().getItem(Equipment.SLOT_ARROWS);
-			if (ammo != null) {
-				int ammoDamage = ammo.getDefinitions().getRangedLevel() * 96;
-				//caps dmg at weap lvl
-				int maxDamage = weapon == null ? 0 : (int) (weapon.getDefinitions().getRangedLevel() * 96);
-				abilityDamage = ammoDamage > maxDamage ? maxDamage : ammoDamage;
-				if (player.getEquipment().hasTwoHandedWeapon())
-					abilityDamage *= 1.5;
-				else if (offHandType == Combat.RANGE_TYPE) {
-					Item offhand = player.getEquipment().getItem(Equipment.SLOT_SHIELD);
-					maxDamage = offhand == null ? 0 : (int) (offhand.getDefinitions().getRangedLevel() * 96);
-					abilityDamage += (ammoDamage > maxDamage ? maxDamage : ammoDamage) / 2;
-				}
-			}*/
+
+		if (mainHandType == Combat.MAGIC_TYPE && this.mainHandSpell != 0) {
+			/*
+			 * Item ammo = player.getEquipment().getItem(Equipment.SLOT_ARROWS); if (ammo != null) { int ammoDamage
+			 * = ammo.getDefinitions().getRangedLevel() * 96; //caps dmg at weap lvl int maxDamage = weapon == null
+			 * ? 0 : (int) (weapon.getDefinitions().getRangedLevel() * 96); abilityDamage = ammoDamage > maxDamage
+			 * ? maxDamage : ammoDamage; if (player.getEquipment().hasTwoHandedWeapon()) abilityDamage *= 1.5; else
+			 * if (offHandType == Combat.RANGE_TYPE) { Item offhand =
+			 * player.getEquipment().getItem(Equipment.SLOT_SHIELD); maxDamage = offhand == null ? 0 : (int)
+			 * (offhand.getDefinitions().getRangedLevel() * 96); abilityDamage += (ammoDamage > maxDamage ?
+			 * maxDamage : ammoDamage) / 2; } }
+			 */
 			int spell = getSpellId();
 			if (spell > 0) {
-				if (spell >= 256) //manual cast
+				if (spell >= 256) // manual cast
 					spell -= 256;
 				Item weapon = player.getEquipment().getItem(Equipment.SLOT_WEAPON);
 				if (weapon != null) {
@@ -1110,9 +1137,9 @@ public final class CombatDefinitions implements Serializable {
 					int damage = (spellDamage);
 					if (player.getEquipment().hasTwoHandedWeapon()) {
 						damage = (int) (damage * 1.5);
-					}else{
+					} else {
 						Item offhand = player.getEquipment().getItem(Equipment.SLOT_SHIELD);
-						if(offhand != null && getType(Equipment.SLOT_SHIELD) == Combat.MAGIC_TYPE && !player.getEquipment().hasShield()) {
+						if (offhand != null && getType(Equipment.SLOT_SHIELD) == Combat.MAGIC_TYPE && !player.getEquipment().hasShield()) {
 							weaponLvl = (Integer) offhand.getDefinitions().clientScriptData.get(750);
 							if (weaponLvl == null)
 								weaponLvl = 1;
@@ -1124,30 +1151,27 @@ public final class CombatDefinitions implements Serializable {
 						}
 					}
 
-					//skill bonus
+					// skill bonus
 					damage += (int) (Combat.getAccuracy(magicLevel) / (player.getEquipment().hasTwoHandedWeapon() ? 1.65 : 3.7));
 
-					//the extra stats from the armor
+					// the extra stats from the armor
 					return damage + stats[ABILITY_DAMAGE];
 
-					//return  9.6*spellLevel + (weaponLvl * 7.8);
+					// return 9.6*spellLevel + (weaponLvl * 7.8);
 				}
 			}
 			return (int) (Combat.getAccuracy(player.getSkills().getLevel(Skills.STRENGTH)) / 2.7);
 		}
-		
-		
+
 		return (int) (stats[ABILITY_DAMAGE] + (Combat.getAccuracy(player.getSkills().getLevel(mainHandType == Combat.RANGE_TYPE ? Skills.RANGE : Skills.STRENGTH)) / 2.7));
 	}
 
-
-	
 	public int getHandDamage(boolean offhand) {
 		int mainHandType = getType(offhand ? Equipment.SLOT_SHIELD : Equipment.SLOT_WEAPON);
 		if (mainHandType == Combat.MAGIC_TYPE && this.mainHandSpell != 0) {
 			int spell = getSpellId();
 			if (spell > 0) {
-				if (spell >= 256) //manual cast
+				if (spell >= 256) // manual cast
 					spell -= 256;
 
 				Item weapon = player.getEquipment().getItem(offhand ? Equipment.SLOT_SHIELD : Equipment.SLOT_WEAPON);
@@ -1173,24 +1197,26 @@ public final class CombatDefinitions implements Serializable {
 					if (player.getEquipment().hasTwoHandedWeapon())
 						damage = (int) (damage * 1.5) + (weaponLvl * 78);
 
-					//skill bonus
+					// skill bonus
 					damage += (int) (Combat.getAccuracy(magicLevel) / (player.getEquipment().hasTwoHandedWeapon() ? 1.65 : 3.7));
 
-					//the extra stats from the armor
+					// the extra stats from the armor
 					return damage + getStats()[offhand ? OFFHAND_DAMAGE : MAINHAND_DAMAGE];
 
-					//return  9.6*spellLevel + (weaponLvl * 7.8);
+					// return 9.6*spellLevel + (weaponLvl * 7.8);
 				}
 
-				/*		return (int) (Combat.getAccuracy(player.getSkills().getLevel(Skills.MAGIC))/2.7
-						+ Magic.getSpellDamage(Magic.getSpellData(spell))*(player.getEquipment().hasTwoHandedWeapon() ? 1 : 0.66));*/
+				/*
+				 * return (int) (Combat.getAccuracy(player.getSkills().getLevel(Skills.MAGIC) )/2.7 +
+				 * Magic.getSpellDamage(Magic.getSpellData(spell))*(player. getEquipment().hasTwoHandedWeapon() ? 1
+				 * : 0.66));
+				 */
 			}
 			return (int) (Combat.getAccuracy(player.getSkills().getLevel(Skills.STRENGTH)) / 2.7);
-		}
-		else if (mainHandType == Combat.RANGE_TYPE) {
+		} else if (mainHandType == Combat.RANGE_TYPE) {
 			return (int) (getStats()[offhand ? OFFHAND_DAMAGE : MAINHAND_DAMAGE] + (Combat.getAccuracy(player.getSkills().getLevel(Skills.RANGE)) / 2.7));
 		}
-		//melee
+		// melee
 		return (int) (getStats()[offhand ? OFFHAND_DAMAGE : MAINHAND_DAMAGE] + (Combat.getAccuracy(player.getSkills().getLevel(Skills.STRENGTH)) / 2.7));
 	}
 
@@ -1209,7 +1235,7 @@ public final class CombatDefinitions implements Serializable {
 			if (weapon.getDefinitions().isMagicTypeWeapon()) {
 				int spell = getSpellId();
 				if (spell > 0) {
-					if (spell >= 256) //manual cast
+					if (spell >= 256) // manual cast
 						spell -= 256;
 					int spellType = Magic.getSpellType(Magic.getSpellData(spell));
 					return spellType;
@@ -1240,15 +1266,15 @@ public final class CombatDefinitions implements Serializable {
 	public boolean onStrengthMenu() {
 		return player.getVarsManager().getBitValue(18787) == 1;
 	}
-	
+
 	public boolean onDefenceMenu() {
 		return player.getVarsManager().getBitValue(18793) == 0;
 	}
-	
+
 	public void setStrengthMenu(int menu) {
 		player.getVarsManager().setVarBit(18787, menu);
 	}
-	
+
 	public void setDefenceMenu(int menu) {
 		player.getVarsManager().setVarBit(18793, menu);
 	}

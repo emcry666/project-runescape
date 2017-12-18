@@ -18,38 +18,28 @@ public class LogEntry implements Serializable {
 	 * Date of the log.
 	 */
 	private long date;
-	
+
 	/**
 	 * String tags for this log entry.
 	 */
 	private String[] stags;
-	
+
 	/**
 	 * Int tags for this log entry.
 	 */
 	private int[] itags;
-	
-	
+
 	private LogEntry(int type) {
 		this.type = type;
 		this.date = Utils.currentTimeMillis();
 	}
-	
-	
-	
 
-
-	
-	
 	public int getType() {
 		return type;
 	}
 
-
 	public long getDate() {
 		return date;
 	}
-	
-	
 
 }

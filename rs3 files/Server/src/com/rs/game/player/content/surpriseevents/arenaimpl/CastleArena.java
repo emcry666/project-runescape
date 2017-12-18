@@ -6,12 +6,11 @@ import com.rs.game.player.content.surpriseevents.EventArena;
 import com.rs.utils.Utils;
 
 public class CastleArena extends EventArena {
-	
+
 	/**
 	 * Contains base positions.
 	 */
 	private int[] base;
-	
 
 	public CastleArena(boolean multicombat) {
 		super(multicombat);
@@ -27,13 +26,16 @@ public class CastleArena extends EventArena {
 			for (int y = 0; y < 8; y++) {
 				int chunkX = (base[0] >> 3) + x;
 				int chunkY = (base[1] >> 3) + y;
-				//MapBuilder.copyChunk(328 + x, 696 + y, 0, chunkX, chunkY, 0, 0);
-				//if (x >= 2 && y >= 2 && x <= 6 && y <= 6)
-				//	MapBuilder.copyChunk((3222 >> 3) + x, (3222 >> 3) + y, 0, chunkX, chunkY, 0, 0);
-				//else
-				//	MapBuilder.copyChunk((32 << 3) + x, (64 << 3) + y, 0, chunkX, chunkY, 0, 0);
+				// MapBuilder.copyChunk(328 + x, 696 + y, 0, chunkX, chunkY, 0,
+				// 0);
+				// if (x >= 2 && y >= 2 && x <= 6 && y <= 6)
+				// MapBuilder.copyChunk((3222 >> 3) + x, (3222 >> 3) + y, 0,
+				// chunkX, chunkY, 0, 0);
+				// else
+				// MapBuilder.copyChunk((32 << 3) + x, (64 << 3) + y, 0, chunkX,
+				// chunkY, 0, 0);
 				MapBuilder.copyChunk((44 << 3) + x, (79 << 3) + y, 0, chunkX, chunkY, 0, 0);
-				
+
 			}
 		}
 		registerArena();
@@ -71,9 +73,7 @@ public class CastleArena extends EventArena {
 	@Override
 	public WorldTile randomSpawn() {
 		return new WorldTile(minX() + 29 + Utils.random(6), minY() + 12 + Utils.random(6), 0);
-		
+
 	}
-
-
 
 }

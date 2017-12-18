@@ -23,75 +23,75 @@ public class RevenantCombat extends CombatScript {
 
 	public int getMagicAnimation(NPC npc) {
 		switch (npc.getId()) {
-			case 13465:
-				return 7500;
-			case 13466:
-			case 13467:
-			case 13468:
-			case 13469:
-				return 7499;
-			case 13470:
-			case 13471:
-				return 7506;
-			case 13472:
-				return 7503;
-			case 13473:
-				return 7507;
-			case 13474:
-				return 7496;
-			case 13475:
-				return 7497;
-			case 13476:
-				return 7515;
-			case 13477:
-				return 7498;
-			case 13478:
-				return 7505;
-			case 13479:
-				return 7515;
-			case 13480:
-				return 7508;
-			case 13481:
-			default:
-				// melee emote, better than 0
-				return npc.getCombatDefinitions().getAttackEmote();
+		case 13465:
+			return 7500;
+		case 13466:
+		case 13467:
+		case 13468:
+		case 13469:
+			return 7499;
+		case 13470:
+		case 13471:
+			return 7506;
+		case 13472:
+			return 7503;
+		case 13473:
+			return 7507;
+		case 13474:
+			return 7496;
+		case 13475:
+			return 7497;
+		case 13476:
+			return 7515;
+		case 13477:
+			return 7498;
+		case 13478:
+			return 7505;
+		case 13479:
+			return 7515;
+		case 13480:
+			return 7508;
+		case 13481:
+		default:
+			// melee emote, better than 0
+			return npc.getCombatDefinitions().getAttackEmote();
 		}
 	}
 
 	public int getRangeAnimation(NPC npc) {
 		switch (npc.getId()) {
-			case 13465:
-				return 7501;
-			case 13466:
-			case 13467:
-			case 13468:
-			case 13469:
-				return 7513;
-			case 13470:
-			case 13471:
-				return 7519;
-			case 13472:
-				return 7516;
-			case 13473:
-				return 7520;
-			case 13474:
-				return 7521;
-			case 13475:
-				return 7510;
-			case 13476:
-				return 7501;
-			case 13477:
-				return 7512;
-			case 13478:
-				return 7518;
-			case 13479:
-				return 7514;
-			case 13480:
-				return 7522;
-			case 13481:
-			default:
-				// melee emote, better than 0
-				return npc.getCombatDefinitions().getAttackEmote();
+		case 13465:
+			return 7501;
+		case 13466:
+		case 13467:
+		case 13468:
+		case 13469:
+			return 7513;
+		case 13470:
+		case 13471:
+			return 7519;
+		case 13472:
+			return 7516;
+		case 13473:
+			return 7520;
+		case 13474:
+			return 7521;
+		case 13475:
+			return 7510;
+		case 13476:
+			return 7501;
+		case 13477:
+			return 7512;
+		case 13478:
+			return 7518;
+		case 13479:
+			return 7514;
+		case 13480:
+			return 7522;
+		case 13481:
+		default:
+			// melee emote, better than 0
+			return npc.getCombatDefinitions().getAttackEmote();
 		}
 	}
 
@@ -123,37 +123,37 @@ public class RevenantCombat extends CombatScript {
 				noDamage = true;
 		}
 		switch (attackStyle) {
-			case 0: // magic
-				int damage = noDamage ? 0 : getMaxHit(npc, NPCCombatDefinitions.MAGE, target);
-				Projectile projectile = World.sendProjectileNew(npc, target, 1276, 34, 16, 35, 2, 10, 0);
-				int endTime = Utils.projectileTimeToCycles(projectile.getEndTime()) - 1;
-				delayHit(npc, endTime, target, getMagicHit(npc, damage));
-				if (damage > 0) {
-					WorldTasksManager.schedule(new WorldTask() {
+		case 0: // magic
+			int damage = noDamage ? 0 : getMaxHit(npc, NPCCombatDefinitions.MAGE, target);
+			Projectile projectile = World.sendProjectileNew(npc, target, 1276, 34, 16, 35, 2, 10, 0);
+			int endTime = Utils.projectileTimeToCycles(projectile.getEndTime()) - 1;
+			delayHit(npc, endTime, target, getMagicHit(npc, damage));
+			if (damage > 0) {
+				WorldTasksManager.schedule(new WorldTask() {
 
-						@Override
-						public void run() {
-							target.setNextGraphics(new Graphics(1277, 0, 100));
-							if (Utils.random(5) == 0) { // 1/5 prob freezing
-								// while maging
-								target.setNextGraphics(new Graphics(363));
-								target.setBoundDelay(8);
-							}
+					@Override
+					public void run() {
+						target.setNextGraphics(new Graphics(1277, 0, 100));
+						if (Utils.random(5) == 0) { // 1/5 prob freezing
+							// while maging
+							target.setNextGraphics(new Graphics(363));
+							target.setBoundDelay(8);
 						}
+					}
 
-					}, endTime);
-				}
-				npc.setNextAnimation(new Animation(getMagicAnimation(npc)));
-				break;
-			case 1: // range
-				npc.setNextAnimation(new Animation(getRangeAnimation(npc)));
-				projectile = World.sendProjectileNew(npc, target, 1278, 34, 16, 35, 2, 10, 0);
-				delayHit(npc, Utils.projectileTimeToCycles(projectile.getEndTime()) - 1, target, getRangeHit(npc, noDamage ? 0 : getMaxHit(npc, NPCCombatDefinitions.RANGE, target)));
-				break;
-			case 2: // melee
-				npc.setNextAnimation(new Animation(defs.getAttackEmote()));
-				delayHit(npc, 0, target, getMeleeHit(npc, noDamage ? 0 : getMaxHit(npc, NPCCombatDefinitions.MELEE, target)));
-				break;
+				}, endTime);
+			}
+			npc.setNextAnimation(new Animation(getMagicAnimation(npc)));
+			break;
+		case 1: // range
+			npc.setNextAnimation(new Animation(getRangeAnimation(npc)));
+			projectile = World.sendProjectileNew(npc, target, 1278, 34, 16, 35, 2, 10, 0);
+			delayHit(npc, Utils.projectileTimeToCycles(projectile.getEndTime()) - 1, target, getRangeHit(npc, noDamage ? 0 : getMaxHit(npc, NPCCombatDefinitions.RANGE, target)));
+			break;
+		case 2: // melee
+			npc.setNextAnimation(new Animation(defs.getAttackEmote()));
+			delayHit(npc, 0, target, getMeleeHit(npc, noDamage ? 0 : getMaxHit(npc, NPCCombatDefinitions.MELEE, target)));
+			break;
 		}
 		return npc.getAttackSpeed();
 	}

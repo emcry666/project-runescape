@@ -16,8 +16,7 @@ public class GlaciesCombat extends CombatScript {
 
 	@Override
 	public Object[] getKeys() {
-		return new Object[]
-		{ 13454 };
+		return new Object[] { 13454 };
 	}
 
 	@Override

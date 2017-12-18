@@ -108,8 +108,6 @@ public class WorldTile implements Serializable {
 	public int getRegionId() {
 		return ((getRegionX() << 8) + getRegionY());
 	}
-	
-	
 
 	public int getChunkXInScene(Entity entity) {
 		return getChunkX() - MapUtils.decode(Structure.CHUNK, entity.getSceneBaseChunkId())[0];
@@ -118,15 +116,14 @@ public class WorldTile implements Serializable {
 	public int getChunkYInScene(Entity entity) {
 		return getChunkY() - MapUtils.decode(Structure.CHUNK, entity.getSceneBaseChunkId())[1];
 	}
-	
+
 	public int getXInScene(Entity entity) {
-		return getX() - MapUtils.decode(Structure.CHUNK, entity.getSceneBaseChunkId())[0]*8;
+		return getX() - MapUtils.decode(Structure.CHUNK, entity.getSceneBaseChunkId())[0] * 8;
 	}
 
 	public int getYInScene(Entity entity) {
-		return getY() - MapUtils.decode(Structure.CHUNK, entity.getSceneBaseChunkId())[1]*8;
+		return getY() - MapUtils.decode(Structure.CHUNK, entity.getSceneBaseChunkId())[1] * 8;
 	}
-
 
 	public int getRegionHash() {
 		return getRegionY() + (getRegionX() << 8) + (plane << 16);
@@ -135,7 +132,7 @@ public class WorldTile implements Serializable {
 	public int getTileHash() {
 		return y + (x << 14) + (plane << 28);
 	}
-	
+
 	public boolean withinDistance(WorldTile tile, int distance) {
 		if (tile.plane != plane)
 			return false;
@@ -178,8 +175,7 @@ public class WorldTile implements Serializable {
 	/**
 	 * Checks if this world tile's coordinates match the other world tile.
 	 * 
-	 * @param other
-	 *            The world tile to compare with.
+	 * @param other The world tile to compare with.
 	 * @return {@code True} if so.
 	 */
 	public boolean matches(WorldTile other) {

@@ -46,7 +46,13 @@ public final class DungeonPartyManager {
 			player.getDungManager().refreshPartyDetailsComponents();
 			player.getPackets().sendGameMessage("You leave the party.");
 			if (dungeon != null && team.size() == 0) {
-				if (dungeon.hasLoadedNoRewardScreen() && logout) //destroy timer cant exist with a party member on anyway, team must be 0
+				if (dungeon.hasLoadedNoRewardScreen() && logout) // destroy
+					// timer cant
+					// exist with a
+					// party member
+					// on anyway,
+					// team must be
+					// 0
 					dungeon.setDestroyTimer();
 				else
 					dungeon.destroy();
@@ -179,10 +185,10 @@ public final class DungeonPartyManager {
 		int average = getAverageCombatLevel();
 		int cb = player.getSkills().getCombatLevelWithSummoning();
 		double diff = Math.abs(cb - average);
-		return  (diff > 50 ? ((diff - 50)*0.01) : 0);
-		
+		return (diff > 50 ? ((diff - 50) * 0.01) : 0);
+
 	}
-	
+
 	public int getMaxLevelDiference() {
 		if (team.size() <= 1)
 			return 0;

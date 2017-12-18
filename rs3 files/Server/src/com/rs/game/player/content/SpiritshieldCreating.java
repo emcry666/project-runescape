@@ -10,8 +10,7 @@ public class SpiritshieldCreating {
 
 	public static final int SPIRIT_SHIELD = 13734, HOLY_ELIXIR = 13754, BLESSED_SPIRIT_SHIELD = 13736;
 
-	private static final int[] SIGILGS = new int[]
-	{ 13746, 13748, 13750, 13752 };
+	private static final int[] SIGILGS = new int[] { 13746, 13748, 13750, 13752 };
 
 	public static boolean isSigil(int itemId) {
 		for (int item : SIGILGS)

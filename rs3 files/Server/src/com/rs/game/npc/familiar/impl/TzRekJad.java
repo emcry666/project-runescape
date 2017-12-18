@@ -20,10 +20,8 @@ public final class TzRekJad extends Familiar {
 	/**
 	 * Constructs a new {@code TzRekJad} {@code Object}.
 	 * 
-	 * @param owner
-	 *            The owner.
-	 * @param tile
-	 *            The world tile to spawn on.
+	 * @param owner The owner.
+	 * @param tile The world tile to spawn on.
 	 */
 	public TzRekJad(Player owner, WorldTile tile) {
 		super(owner, null, tile, -1, true);

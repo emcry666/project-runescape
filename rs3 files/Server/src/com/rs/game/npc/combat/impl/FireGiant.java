@@ -22,15 +22,15 @@ public class FireGiant extends CombatScript {
 		boolean isDistance = !Utils.isOnRange(npc, target, 0);
 		int style = Utils.random(isDistance ? 1 : 0, 2);
 		switch (style) {
-			case 0://MELEE
-				npc.setNextAnimation(new Animation(defs.getAttackEmote()));
-				delayHit(npc, 0, target, getMeleeHit(npc, getMaxHit(npc, NPCCombatDefinitions.MELEE, target)));
-				break;
-			case 1://RANGED
-				npc.setNextAnimation(new Animation(defs.getAttackEmote()));
-				Projectile projectile = World.sendProjectileNew(npc, target, 276, 40, 30, 30, 3, 0, 5);
-				delayHit(npc, Utils.projectileTimeToCycles(projectile.getEndTime()) - 1, target, getRangeHit(npc, getMaxHit(npc, NPCCombatDefinitions.RANGE, target)));
-				break;
+		case 0:// MELEE
+			npc.setNextAnimation(new Animation(defs.getAttackEmote()));
+			delayHit(npc, 0, target, getMeleeHit(npc, getMaxHit(npc, NPCCombatDefinitions.MELEE, target)));
+			break;
+		case 1:// RANGED
+			npc.setNextAnimation(new Animation(defs.getAttackEmote()));
+			Projectile projectile = World.sendProjectileNew(npc, target, 276, 40, 30, 30, 3, 0, 5);
+			delayHit(npc, Utils.projectileTimeToCycles(projectile.getEndTime()) - 1, target, getRangeHit(npc, getMaxHit(npc, NPCCombatDefinitions.RANGE, target)));
+			break;
 		}
 		return npc.getAttackSpeed();
 	}

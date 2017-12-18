@@ -52,8 +52,7 @@ public class StealingCreationGame {
 	 */
 	private long endTime;
 	/**
-	 * Contains game state. 0 - Not started 1 - Starting 2 - Running 3 - Ending
-	 * 4 - Ended
+	 * Contains game state. 0 - Not started 1 - Starting 2 - Running 3 - Ending 4 - Ended
 	 */
 	private volatile int state;
 

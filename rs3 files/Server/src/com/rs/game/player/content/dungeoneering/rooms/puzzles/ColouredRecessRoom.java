@@ -17,19 +17,12 @@ import com.rs.utils.Utils;
 
 public class ColouredRecessRoom extends PuzzleRoom {
 
-	public static final int[] SHELVES =
-	{ 35243, 35242, 35241, 35245, 35246 };
+	public static final int[] SHELVES = { 35243, 35242, 35241, 35245, 35246 };
 
-	//+1-4 for colors
-	public static final int[] BASE_BLOCKS =
-	{ 13024, 13029, 13034, 13039, 13044 };
+	// +1-4 for colors
+	public static final int[] BASE_BLOCKS = { 13024, 13029, 13034, 13039, 13044 };
 
-	public static final int[][] LOCATIONS =
-	{
-	{ 5, 10 },
-	{ 10, 10 },
-	{ 10, 5 },
-	{ 5, 5 }, };
+	public static final int[][] LOCATIONS = { { 5, 10 }, { 10, 10 }, { 10, 5 }, { 5, 5 }, };
 
 	private Block[] blocks;
 	private boolean[] used;
@@ -58,7 +51,7 @@ public class ColouredRecessRoom extends PuzzleRoom {
 	}
 
 	public void checkComplete() {
-		if(isComplete())
+		if (isComplete())
 			return;
 		outer: for (Block block : blocks) {
 			for (int tileColor = 0; tileColor < LOCATIONS.length; tileColor++) {
@@ -87,7 +80,8 @@ public class ColouredRecessRoom extends PuzzleRoom {
 		}
 
 		public void handle(final Player player, final boolean push) {
-			//TODO: make sure 2 players can't move 2 statues ontop of eachother in the same tick? although it doesn't really matter
+			// TODO: make sure 2 players can't move 2 statues ontop of eachother
+			// in the same tick? although it doesn't really matter
 			boolean pull = !push;
 
 			int[] nPos = manager.getRoomPos(this);
@@ -97,7 +91,7 @@ public class ColouredRecessRoom extends PuzzleRoom {
 			final int dy = push ? getY() - player.getY() : player.getY() - getY();
 			final int ldx = push ? nPos[0] - pPos[0] : pPos[0] - nPos[0];
 			final int ldy = push ? nPos[1] - pPos[1] : pPos[1] - nPos[1];
-			
+
 			if (nPos[0] + ldx < 4 || nPos[0] + ldx > 11 || nPos[1] + ldy < 4 || nPos[1] + ldy > 11) {
 				player.getPackets().sendGameMessage("You cannot push the block there.");
 				return;
@@ -178,7 +172,7 @@ public class ColouredRecessRoom extends PuzzleRoom {
 	@Override
 	public boolean processObjectClick1(Player p, WorldObject object) {
 		if (object.getId() == SHELVES[type]) {
-			p.getDialogueManager().startDialogue("ColouredRecessShelvesD", (Object[])null);
+			p.getDialogueManager().startDialogue("ColouredRecessShelvesD", (Object[]) null);
 			return false;
 		}
 		return true;

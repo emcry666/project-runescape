@@ -12,11 +12,11 @@ public class SurokMagis extends Dialogue {
 	public void start() {
 		npcId = (Integer) parameters[0];
 		bork = (BorkController) parameters[1];
-		if(player.getLastBork() == 0) {
+		if (player.getLastBork() == 0) {
 			sendPlayerDialogue(NORMAL, "Oh boy...");
 			stage = -2;
-		}else
-			sendNPCDialogue(npcId, MAD, "Our Lord Zamorak has power over life and death, "+player.getDisplayName()+"! He has seen fit to resurrect Bork to continue his great work...and now you will fall before him!");
+		} else
+			sendNPCDialogue(npcId, MAD, "Our Lord Zamorak has power over life and death, " + player.getDisplayName() + "! He has seen fit to resurrect Bork to continue his great work...and now you will fall before him!");
 	}
 
 	@Override

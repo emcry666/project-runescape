@@ -147,19 +147,14 @@ public class HomeCutScene3 extends Cutscene {
 		actionsList.add(new NPCForceTalkAction(ORACLE, "Play minigames with your loyal friends.", 5));
 
 		actionsList.add(new MovePlayerAction(2925, 5203, 0, Player.TELE_MOVE_TYPE, -1));
-		/*actionsList.add(new CutsceneCodeAction(new Runnable() {
-		    @Override
-		    public void run() {
-			    ZarosGodwars.addPlayer(player);
-			    WorldTasksManager.schedule(new WorldTask() {
-
-				@Override
-				public void run() {
-				    ZarosGodwars.removePlayer(player);  
-				}	
-			    }, 9);
-		    }
-		}, -1));*/
+		/*
+		 * actionsList.add(new CutsceneCodeAction(new Runnable() {
+		 * 
+		 * @Override public void run() { ZarosGodwars.addPlayer(player); WorldTasksManager.schedule(new WorldTask()
+		 * {
+		 * 
+		 * @Override public void run() { ZarosGodwars.removePlayer(player); } }, 9); } }, -1));
+		 */
 		actionsList.add(new NPCForceTalkAction(ORACLE, "Fight for your faction at godwars.", 8));
 
 		actionsList.add(new MovePlayerAction(3129, 3711, 0, Player.TELE_MOVE_TYPE, -1));
@@ -189,18 +184,20 @@ public class HomeCutScene3 extends Cutscene {
 				player.setNextForceTalk(new ForceTalk("That was a strange dream."));
 			}
 		}, -1));
-		//2937 3430 0
+		// 2937 3430 0
 
-		//actionsList.add(new NPCForceTalkAction(ADVERTISER, "Dragonkk!@!@!@!", -1));
+		// actionsList.add(new NPCForceTalkAction(ADVERTISER, "Dragonkk!@!@!@!",
+		// -1));
 
-		/*    actionsList.add(new CutsceneCodeAction(new Runnable() {
-		@Override
-		public void run() {
-		    player.getInterfaceManager().setOverlay(660, true);
-			//player.getDialogueManager().startDialogue("SimpleNPCMessage", 15158, "Welcome to CorruptionX!", "If you have any questions make sure to read guide book in your inventory.");
-		    
-		}
-		    }, 10));*/
+		/*
+		 * actionsList.add(new CutsceneCodeAction(new Runnable() {
+		 * 
+		 * @Override public void run() { player.getInterfaceManager().setOverlay(660, true);
+		 * //player.getDialogueManager().startDialogue("SimpleNPCMessage", 15158, "Welcome to CorruptionX!",
+		 * "If you have any questions make sure to read guide book in your inventory." );
+		 * 
+		 * } }, 10));
+		 */
 
 		return actionsList.toArray(new CutsceneAction[actionsList.size()]);
 	}

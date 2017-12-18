@@ -24,224 +24,175 @@ public class Test {
 	/**
 	 * @param args
 	 * @throws IOException
-	 * @throws NoSuchProviderException 
+	 * @throws NoSuchProviderException
 	 */
-	
 
 	public static void main(String[] args) throws IOException, NoSuchProviderException {
-	//	Cache.init();
-		
+		// Cache.init();
 
-		
-		//System.out.println(Cache.STORE.getIndexes()[3].getTable().isNamed());
-		/*Cache.init();
-		ItemDefinitions defs = ItemDefinitions.getItemDefinitions(1359);
-		System.out.println(defs.clientScriptData);*/
+		// System.out.println(Cache.STORE.getIndexes()[3].getTable().isNamed());
+		/*
+		 * Cache.init(); ItemDefinitions defs = ItemDefinitions.getItemDefinitions(1359);
+		 * System.out.println(defs.clientScriptData);
+		 */
 		Cache.init();
 		NPCDefinitions defs = NPCDefinitions.getNPCDefinitions(6146);
 		System.out.println(defs.clientScriptData);
-		
-		//System.out.println(Cache.STORE.getIndexes()[40].getLastArchiveId());
-		
-		
-	/*	int i = 0; 
-		for(int archiveId : Cache.STORE.getIndexes()[40].getTable().getValidArchiveIds()) {
-			if(archiveId % 5000 == 0) {
-				Cache.STORE.getIndexes()[40].resetCachedFiles();
-				Cache.STORE.getIndexes()[40].getMainFile().resetCachedArchives();
-			}
-			byte[] data = Cache.STORE.getIndexes()[40].getFile(archiveId);
-			InputStream stream = new InputStream(data);
-			  if (stream.readUnsignedByte() != 74
-				      || stream.readUnsignedByte() != 65
-				      || stream.readUnsignedByte() != 71
-				      || stream.readUnsignedByte() != 65)
-				  continue;
-			  if(ClientScriptMap.getMap(1351).getKeyForValue(archiveId) != -1) {
-				  continue;
-			  }
-			  System.out.println("archiveId: "+archiveId+", "+(i++));
-		}
-		Cache.STORE.getIndexes()[40].resetCachedFiles();
-		Cache.STORE.getIndexes()[40].getMainFile().resetCachedArchives();*/
-		
-		/*ItemDefinitions defs = ItemDefinitions.getItemDefinitions(31268);
-		System.out.println(defs.modelId);
-		System.out.println(defs.maleEquip1);
-		System.out.println(defs.maleEquip2);
-		System.out.println(defs.maleEquipModelId3);
-		System.out.println(defs.femaleEquip1);
-		System.out.println(defs.femaleEquip2);
-		System.out.println(defs.femaleEquipModelId3);*/
 
-		//23659
-		//System.out.println(Utils.getNPCDefinitionsSize());
-		//System.out.println(ItemDefinitions.getItemDefinitions(31268).); 
+		// System.out.println(Cache.STORE.getIndexes()[40].getLastArchiveId());
 
-		//Cache.STORE = new Store(System.getProperty("user.home") + "/812_cache/812_cache/");
-		//ItemDefinitions.clearItemsDefinitions();
-		//	AnimationDefinitions defs = new Animation(23941).getDefinitions();
-		//Integer startGfx = (Integer) defs.clientScriptData.get(2920);
-		//Integer startGfxHeight = (Integer) defs.clientScriptData.get(4339/*4090*/);
-		//if (startGfx != null)
-		//	System.out.println(startGfx);
-
-		//ItemDefinitions defs = ItemDefinitions.getItemDefinitions(-1);
-
-		//Animation attackAnim = new Animation(23941);
-		//int projectileDelay = attackAnim.getDefinitions().getEmoteClientCycles();
-
-		//System.out.println(projectileDelay);
-
-		/*List<Integer> usedMaps = new LinkedList<Integer>();
-		int mapIdx = 0;
-
-		System.out.print("private static final int[] PRODUCTS = {");
-		outerLoop : for (int item = 0; item < Utils.getItemDefinitionsSize(); item++) {
-			ItemDefinitions defs = ItemDefinitions.getItemDefinitions(item);
-			if (defs.getCSOpcode(2696) == 19 && !defs.isNoted()) {
-				if (defs.getCSOpcode(2650) == 0 && defs.getCSOpcode(2656) == 0 && defs.getCSOpcode(2653) == 0)
-					continue;
-				SkillDialogue d = SkillsDialogue.findSkillDialogueByProduce(item);
-				if (d == null)
-					continue;
-				innerLoop : for (SkillCategory c : d.getCategorys()) {
-					for(int id : c.getItems())
-						if(item == id) {
-							if (usedMaps.contains(c.getItemsCSMapId()))
-								continue outerLoop;
-							else {
-								usedMaps.add(c.getItemsCSMapId());
-								break innerLoop;
-							}
-						}
-				}
-
-				ClientScriptMap map = ClientScriptMap.getMap(usedMaps.get(mapIdx));
-				System.out.print(map.getIntValueAtIndex(0)+", ");
-				mapIdx++;
-			}
-		}
-		System.out.println("};");*/
-		/*	
-		for (int item = 0; item < Utils.getItemDefinitionsSize(); item++) {
-			ItemDefinitions defs = ItemDefinitions.getItemDefinitions(item);
-			if (defs.isNoted() || defs.getCSOpcode(2696) != 19)
-				continue;
-			if (defs.clientScriptData != null) {
-				innerLoop: for (int key : defs.clientScriptData.keySet()) {
-					int value = defs.getCSOpcode(key);
-					if (value == 0)
-						continue innerLoop;
-					if (value == 1777)
-						System.out.println("Key: "+item+", "+key+", "+value);
-				}
-			}
-		}
-
-		ItemDefinitions defs = ItemDefinitions.getItemDefinitions(50);
-		System.out.println(defs.clientScriptData);*/
-
-
-		//	System.out.println(Arrays.toString(Cache.STORE.getIndexes()[2].getFile(60, 0).length));
-		//		System.out.println(ItemDefinitions.getItemDefinitions(11694).getCombatOpcode(4369));
-		/*	System.out.println(ItemDefinitions.getItemDefinitions(861).clientScriptData); //magic shortbow
-			System.out.println(ItemDefinitions.getItemDefinitions(892).clientScriptData); //rune arrow
-			System.out.println(ItemDefinitions.getItemDefinitions(830).clientScriptData); //javelin
-			System.out.println(ItemDefinitions.getItemDefinitions(11235).clientScriptData); //d bow
-			System.out.println(ItemDefinitions.getItemDefinitions(25917).clientScriptData); //dragon crossbow
-			System.out.println(ItemDefinitions.getItemDefinitions(9244).clientScriptData); //dragon bolt 
-			System.out.println("whip"); //dragon bolt 
-			System.out.println(ItemDefinitions.getItemDefinitions(28617).clientScriptData); //dragon bolt */
-
-		/*		System.out.println(NPCDefinitions.getNPCDefinitions(6260).clientScriptData);
-			System.out.println(NPCDefinitions.getNPCDefinitions(8133).clientScriptData);
-			System.out.println(NPCDefinitions.getNPCDefinitions(50).clientScriptData);
-			System.out.println(NPCDefinitions.getNPCDefinitions(6229).clientScriptData);*/
-
-		//{3=1829, 2865=1694, 2848=8, 26=3, 29=1829, 641=12500, 14=4, 965=12500}
-		//{2852=30, 3=1132, 2848=0, 2865=1132, 2864=150, 2849=50, 2850=50, 2851=40, 2890=1, 26=3, 2892=1, 965=6000, 14=8}
-		//{3=1783, 4=1783, 2848=5, 2865=1694, 26=2, 29=1783, 641=5000, 965=5000, 643=5000, 14=4}
-
-
-		//2892 - flag is stun imune
-		/*NPCDefinitions n2 = NPCDefinitions.getNPCDefinitions(1);
-		System.out.println(n2.clientScriptData);
-
-		//2850, 2851 - data. 2890, 2892 - flags.
-		for(int i = 0; i < Utils.getNPCDefinitionsSize(); i++) {
-			if(i == 10000)
-				break;
-			NPCDefinitions n = NPCDefinitions.getNPCDefinitions(i);
-			if(n.clientScriptData == null)
-				continue;
-			if(n.clientScriptData.containsKey(2864))
-				System.out.println(i+", "+n.name+", "+n.clientScriptData);
-		}*/
-
-		//System.out.println(NPCDefinitions.getNPCDefinitions(8349).clientScriptData);
-		/*System.out.println(NPCDefinitions.getNPCDefinitions(20).clientScriptData);
-			System.out.println(NPCDefinitions.getNPCDefinitions(3495 ).clientScriptData);
-
-
-			int i = 79560723;
-			int i2 = i >> 16;
-			int i3 = i - (i2 << 16);
-			//9 emotes.
-			System.out.println(i2+", "+i3);
-
-			System.out.println((327 << 16 | 3));
+		/*
+		 * int i = 0; for(int archiveId : Cache.STORE.getIndexes()[40].getTable().getValidArchiveIds()) {
+		 * if(archiveId % 5000 == 0) { Cache.STORE.getIndexes()[40].resetCachedFiles();
+		 * Cache.STORE.getIndexes()[40].getMainFile().resetCachedArchives(); } byte[] data =
+		 * Cache.STORE.getIndexes()[40].getFile(archiveId); InputStream stream = new InputStream(data); if
+		 * (stream.readUnsignedByte() != 74 || stream.readUnsignedByte() != 65 || stream.readUnsignedByte() != 71
+		 * || stream.readUnsignedByte() != 65) continue; if(ClientScriptMap.getMap(1351).getKeyForValue(archiveId)
+		 * != -1) { continue; } System.out.println("archiveId: "+archiveId+", "+(i++)); }
+		 * Cache.STORE.getIndexes()[40].resetCachedFiles();
+		 * Cache.STORE.getIndexes()[40].getMainFile().resetCachedArchives();
 		 */
-		/*List<Integer> addedmaps = new ArrayList<Integer>();
-		for(int i = 0; i < Utils.getInterfaceDefinitionsSize(); i++) {
-			ItemDefinitions defs = ItemDefinitions.getItemDefinitions(i);
-			if(defs.clientScriptData == null)
-				continue;
-			Integer scriptId = (Integer) defs.clientScriptData.get(686);
-			if(scriptId != null && !addedmaps.contains(scriptId)) {
-				addedmaps.add(scriptId);
-				System.out.println(scriptId);
-		//		cache812.getIndexes()[22].putFile(scriptId / 32, scriptId & 31, rscache.getIndexes()[22].getFile(scriptId / 32, scriptId & 31));
-			}
 
-		}*/
-		//750 - tier.
-		//118 - max dmg
-		//staff
+		/*
+		 * ItemDefinitions defs = ItemDefinitions.getItemDefinitions(31268); System.out.println(defs.modelId);
+		 * System.out.println(defs.maleEquip1); System.out.println(defs.maleEquip2);
+		 * System.out.println(defs.maleEquipModelId3); System.out.println(defs.femaleEquip1);
+		 * System.out.println(defs.femaleEquip2); System.out.println(defs.femaleEquipModelId3);
+		 */
 
-		//System.out.println(ItemDefinitions.getItemDefinitions(1379).clientScriptData);
-		//118 - mage weapon damage
+		// 23659
+		// System.out.println(Utils.getNPCDefinitionsSize());
+		// System.out.println(ItemDefinitions.getItemDefinitions(31268).);
 
-		/*	System.out.println(i2+" "+i3);
-			System.out.println(1489 << 16 | 17);
+		// Cache.STORE = new Store(System.getProperty("user.home") +
+		// "/812_cache/812_cache/");
+		// ItemDefinitions.clearItemsDefinitions();
+		// AnimationDefinitions defs = new Animation(23941).getDefinitions();
+		// Integer startGfx = (Integer) defs.clientScriptData.get(2920);
+		// Integer startGfxHeight = (Integer)
+		// defs.clientScriptData.get(4339/*4090*/);
+		// if (startGfx != null)
+		// System.out.println(startGfx);
 
-			System.out.println((14 << 4 | 7));
+		// ItemDefinitions defs = ItemDefinitions.getItemDefinitions(-1);
 
+		// Animation attackAnim = new Animation(23941);
+		// int projectileDelay =
+		// attackAnim.getDefinitions().getEmoteClientCycles();
 
+		// System.out.println(projectileDelay);
 
+		/*
+		 * List<Integer> usedMaps = new LinkedList<Integer>(); int mapIdx = 0;
+		 * 
+		 * System.out.print("private static final int[] PRODUCTS = {"); outerLoop : for (int item = 0; item <
+		 * Utils.getItemDefinitionsSize(); item++) { ItemDefinitions defs =
+		 * ItemDefinitions.getItemDefinitions(item); if (defs.getCSOpcode(2696) == 19 && !defs.isNoted()) { if
+		 * (defs.getCSOpcode(2650) == 0 && defs.getCSOpcode(2656) == 0 && defs.getCSOpcode(2653) == 0) continue;
+		 * SkillDialogue d = SkillsDialogue.findSkillDialogueByProduce(item); if (d == null) continue; innerLoop :
+		 * for (SkillCategory c : d.getCategorys()) { for(int id : c.getItems()) if(item == id) { if
+		 * (usedMaps.contains(c.getItemsCSMapId())) continue outerLoop; else { usedMaps.add(c.getItemsCSMapId());
+		 * break innerLoop; } } }
+		 * 
+		 * ClientScriptMap map = ClientScriptMap.getMap(usedMaps.get(mapIdx));
+		 * System.out.print(map.getIntValueAtIndex(0)+", "); mapIdx++; } } System.out.println("};");
+		 */
+		/*
+		 * for (int item = 0; item < Utils.getItemDefinitionsSize(); item++) { ItemDefinitions defs =
+		 * ItemDefinitions.getItemDefinitions(item); if (defs.isNoted() || defs.getCSOpcode(2696) != 19) continue;
+		 * if (defs.clientScriptData != null) { innerLoop: for (int key : defs.clientScriptData.keySet()) { int
+		 * value = defs.getCSOpcode(key); if (value == 0) continue innerLoop; if (value == 1777)
+		 * System.out.println("Key: "+item+", "+key+", "+value); } } }
+		 * 
+		 * ItemDefinitions defs = ItemDefinitions.getItemDefinitions(50);
+		 * System.out.println(defs.clientScriptData);
+		 */
 
-		/*	int key = 3555  ;
+		// System.out.println(Arrays.toString(Cache.STORE.getIndexes()[2].getFile(60,
+		// 0).length));
+		// System.out.println(ItemDefinitions.getItemDefinitions(11694).getCombatOpcode(4369));
+		/*
+		 * System.out.println(ItemDefinitions.getItemDefinitions(861). clientScriptData); //magic shortbow
+		 * System.out.println(ItemDefinitions.getItemDefinitions(892). clientScriptData); //rune arrow
+		 * System.out.println(ItemDefinitions.getItemDefinitions(830). clientScriptData); //javelin
+		 * System.out.println(ItemDefinitions.getItemDefinitions(11235). clientScriptData); //d bow
+		 * System.out.println(ItemDefinitions.getItemDefinitions(25917). clientScriptData); //dragon crossbow
+		 * System.out.println(ItemDefinitions.getItemDefinitions(9244). clientScriptData); //dragon bolt
+		 * System.out.println("whip"); //dragon bolt System.out.println(ItemDefinitions.getItemDefinitions(28617).
+		 * clientScriptData); //dragon bolt
+		 */
 
-			for(int i = 0; i < Utils.getInterfaceDefinitionsSize(); i++) {
-				ItemDefinitions defs = ItemDefinitions.getItemDefinitions(i);
+		/*
+		 * System.out.println(NPCDefinitions.getNPCDefinitions(6260). clientScriptData);
+		 * System.out.println(NPCDefinitions.getNPCDefinitions(8133). clientScriptData);
+		 * System.out.println(NPCDefinitions.getNPCDefinitions(50). clientScriptData);
+		 * System.out.println(NPCDefinitions.getNPCDefinitions(6229). clientScriptData);
+		 */
 
-				if(defs.clientScriptData != null) {
-					int data = defs.getCSOpcode(key);
-					if(data != 0) {
-						System.out.println(i+", "+defs.name+", "+data);
-					}
-				}
-			}
-			for(int i = 0; i < 20000; i++) {
-				GeneralRequirementMap defs = GeneralRequirementMap.getMap(i);
+		// {3=1829, 2865=1694, 2848=8, 26=3, 29=1829, 641=12500, 14=4,
+		// 965=12500}
+		// {2852=30, 3=1132, 2848=0, 2865=1132, 2864=150, 2849=50, 2850=50,
+		// 2851=40, 2890=1, 26=3, 2892=1, 965=6000, 14=8}
+		// {3=1783, 4=1783, 2848=5, 2865=1694, 26=2, 29=1783, 641=5000,
+		// 965=5000, 643=5000, 14=4}
 
-				//if(defs.clientScriptData != null) {
-					Object data = defs.getValue(key);
-					if(data != null) {
-						System.out.println("gr: "+i+", "+", "+data+", "+defs.getValues().toString());
-					}
-				//}
-			}*/
+		// 2892 - flag is stun imune
+		/*
+		 * NPCDefinitions n2 = NPCDefinitions.getNPCDefinitions(1); System.out.println(n2.clientScriptData);
+		 * 
+		 * //2850, 2851 - data. 2890, 2892 - flags. for(int i = 0; i < Utils.getNPCDefinitionsSize(); i++) { if(i
+		 * == 10000) break; NPCDefinitions n = NPCDefinitions.getNPCDefinitions(i); if(n.clientScriptData == null)
+		 * continue; if(n.clientScriptData.containsKey(2864))
+		 * System.out.println(i+", "+n.name+", "+n.clientScriptData); }
+		 */
+
+		// System.out.println(NPCDefinitions.getNPCDefinitions(8349).clientScriptData);
+		/*
+		 * System.out.println(NPCDefinitions.getNPCDefinitions(20). clientScriptData);
+		 * System.out.println(NPCDefinitions.getNPCDefinitions(3495 ).clientScriptData);
+		 * 
+		 * 
+		 * int i = 79560723; int i2 = i >> 16; int i3 = i - (i2 << 16); //9 emotes. System.out.println(i2+", "+i3);
+		 * 
+		 * System.out.println((327 << 16 | 3));
+		 */
+		/*
+		 * List<Integer> addedmaps = new ArrayList<Integer>(); for(int i = 0; i <
+		 * Utils.getInterfaceDefinitionsSize(); i++) { ItemDefinitions defs =
+		 * ItemDefinitions.getItemDefinitions(i); if(defs.clientScriptData == null) continue; Integer scriptId =
+		 * (Integer) defs.clientScriptData.get(686); if(scriptId != null && !addedmaps.contains(scriptId)) {
+		 * addedmaps.add(scriptId); System.out.println(scriptId); // cache812.getIndexes()[22].putFile(scriptId /
+		 * 32, scriptId & 31, rscache.getIndexes()[22].getFile(scriptId / 32, scriptId & 31)); }
+		 * 
+		 * }
+		 */
+		// 750 - tier.
+		// 118 - max dmg
+		// staff
+
+		// System.out.println(ItemDefinitions.getItemDefinitions(1379).clientScriptData);
+		// 118 - mage weapon damage
+
+		/*
+		 * System.out.println(i2+" "+i3); System.out.println(1489 << 16 | 17);
+		 * 
+		 * System.out.println((14 << 4 | 7));
+		 * 
+		 * 
+		 * 
+		 * 
+		 * /* int key = 3555 ;
+		 * 
+		 * for(int i = 0; i < Utils.getInterfaceDefinitionsSize(); i++) { ItemDefinitions defs =
+		 * ItemDefinitions.getItemDefinitions(i);
+		 * 
+		 * if(defs.clientScriptData != null) { int data = defs.getCSOpcode(key); if(data != 0) {
+		 * System.out.println(i+", "+defs.name+", "+data); } } } for(int i = 0; i < 20000; i++) {
+		 * GeneralRequirementMap defs = GeneralRequirementMap.getMap(i);
+		 * 
+		 * //if(defs.clientScriptData != null) { Object data = defs.getValue(key); if(data != null) {
+		 * System.out.println("gr: "+i+", "+", "+data+", "+defs.getValues(). toString()); } //} }
+		 */
 
 	}
 
@@ -271,57 +222,57 @@ public class Test {
 		else if (arrowId == 19162)
 			return 97;
 
-		else if (arrowId == 15947 || arrowId == 16427)//NOVITE
+		else if (arrowId == 15947 || arrowId == 16427)// NOVITE
 			return 2466;
 		else if (arrowId == 15958 || arrowId == 15969 || arrowId == 15980 || arrowId == 16482 || arrowId == 16537 || arrowId == 16592)
 			return 2488;
 
-		else if (arrowId == 15948 || arrowId == 16432)//BATHUS
+		else if (arrowId == 15948 || arrowId == 16432)// BATHUS
 			return 2468;
 		else if (arrowId == 15959 || arrowId == 15970 || arrowId == 15981 || arrowId == 16487 || arrowId == 16542 || arrowId == 16597)
 			return 2490;
 
-		else if (arrowId == 15949 || arrowId == 16437)//MARMAROS
+		else if (arrowId == 15949 || arrowId == 16437)// MARMAROS
 			return 2470;
 		else if (arrowId == 15960 || arrowId == 15971 || arrowId == 15982 || arrowId == 16492 || arrowId == 16547 || arrowId == 16602)
 			return 2492;
 
-		else if (arrowId == 15950 || arrowId == 16442)//Kratonite
+		else if (arrowId == 15950 || arrowId == 16442)// Kratonite
 			return 2472;
 		else if (arrowId == 15961 || arrowId == 15972 || arrowId == 15983 || arrowId == 16497 || arrowId == 16552 || arrowId == 16607)
 			return 2494;
 
-		else if (arrowId == 15951 || arrowId == 16447)//Fractite
+		else if (arrowId == 15951 || arrowId == 16447)// Fractite
 			return 2474;
 		else if (arrowId == 15962 || arrowId == 15973 || arrowId == 15984 || arrowId == 16502 || arrowId == 16557 || arrowId == 16612)
 			return 2496;
 
-		else if (arrowId == 15952 || arrowId == 16452)//Zephyrium
+		else if (arrowId == 15952 || arrowId == 16452)// Zephyrium
 			return 2476;
 		else if (arrowId == 15963 || arrowId == 15974 || arrowId == 15985 || arrowId == 16507 || arrowId == 16562 || arrowId == 16617)
 			return 2498;
 
-		else if (arrowId == 15953 || arrowId == 16457)//Argonite
+		else if (arrowId == 15953 || arrowId == 16457)// Argonite
 			return 2478;
 		else if (arrowId == 15964 || arrowId == 15975 || arrowId == 15986 || arrowId == 16512 || arrowId == 16567 || arrowId == 16622)
 			return 2500;
 
-		else if (arrowId == 15954 || arrowId == 16462)//Katagon
+		else if (arrowId == 15954 || arrowId == 16462)// Katagon
 			return 2480;
 		else if (arrowId == 15965 || arrowId == 15976 || arrowId == 15987 || arrowId == 16517 || arrowId == 16572 || arrowId == 16627)
 			return 2502;
 
-		else if (arrowId == 15955 || arrowId == 16467)//Gorgonite
+		else if (arrowId == 15955 || arrowId == 16467)// Gorgonite
 			return 2482;
 		else if (arrowId == 15966 || arrowId == 15977 || arrowId == 15988 || arrowId == 16522 || arrowId == 16577 || arrowId == 16632)
 			return 2504;
 
-		else if (arrowId == 15956 || arrowId == 16472)//Promethium
+		else if (arrowId == 15956 || arrowId == 16472)// Promethium
 			return 2484;
 		else if (arrowId == 15967 || arrowId == 15978 || arrowId == 15989 || arrowId == 16527 || arrowId == 16582 || arrowId == 16637)
 			return 2506;
 
-		else if (arrowId == 15957 || arrowId == 16477)//Sagittarian
+		else if (arrowId == 15957 || arrowId == 16477)// Sagittarian
 			return 2486;
 		else if (arrowId == 15968 || arrowId == 15979 || arrowId == 15990 || arrowId == 16532 || arrowId == 16587 || arrowId == 16642)
 			return 2508;
@@ -340,28 +291,14 @@ public class Test {
 	}
 
 	/*
-	 * types:
-	 * c - component uid
-	 * I - component uid(interface)
-	 * s - string
-	 * S - skill
-	 * i - integer
-	 * o - item
-	 * n - npc
-	 * g - clientscriptmap
-	 * m - model
-	 * t - gfx
-	 * J - general req map
-	 * d - sprite
-	 * A - animation
-	 * â - stance
-	 * t - gfx
+	 * types: c - component uid I - component uid(interface) s - string S - skill i - integer o - item n - npc g -
+	 * clientscriptmap m - model t - gfx J - general req map d - sprite A - animation â - stance t - gfx
 	 */
 	public static void mainrrrr(String[] args) throws IOException {
 		Cache.init();
 		int total = 0;
 		List<Integer> menus = new ArrayList<Integer>();
-		//contains all existing categories
+		// contains all existing categories
 		ClientScriptMap options = ClientScriptMap.getMap(6816);
 
 		l: for (int i = 0; i < 9000; i++) {
@@ -375,14 +312,11 @@ public class Test {
 				int map = scmap.getIntValue(i2);
 				if (!options.getValues().containsKey((long) map))
 					continue l;
-				/*ClientScriptMap scmapitem = ClientScriptMap.getMap(map);
-				if(scmapitem.getDefaultIntValue() != -1 || scmapitem.getSize() == 0) 
-					continue l;
-				for(int i3 = 0; i3 < scmapitem.getSize(); i3++) {
-					int item = scmapitem.getIntValue(i3);
-					if(item == -1)
-						continue l;
-				}*/
+				/*
+				 * ClientScriptMap scmapitem = ClientScriptMap.getMap(map); if(scmapitem.getDefaultIntValue() != -1
+				 * || scmapitem.getSize() == 0) continue l; for(int i3 = 0; i3 < scmapitem.getSize(); i3++) { int
+				 * item = scmapitem.getIntValue(i3); if(item == -1) continue l; }
+				 */
 			}
 			ClientScriptMap scmapnamef = null;
 			int i3;
@@ -393,12 +327,13 @@ public class Test {
 				scmapnamef = scmapname;
 				break;
 			}
-			/*if(scmapnamef == null)
-				continue l;*/
+			/*
+			 * if(scmapnamef == null) continue l;
+			 */
 			System.out.println(i + ", " + (scmapnamef == null ? null : scmapnamef.getValues()) + ", " + (++total) + ", trys: " + i3);
 			menus.add(i);
 		}
-		//System.out.println(menus);
+		// System.out.println(menus);
 
 	}
 
@@ -422,24 +357,14 @@ public class Test {
 	}
 
 	/*
-	public boolean packIndex(int id, Store originalStore, boolean checkCRC) {
-
-		Index originalIndex = originalStore.getIndexes()[id];
-		for (int archiveId : originalIndex.table.getValidArchiveIds()) {
-			if (checkCRC
-					&& archiveExists(archiveId)
-					&& originalIndex.table.getArchives()[archiveId]
-							.getCRC() == table.getArchives()[archiveId]
-							.getCRC())
-				continue;
-			if (!putArchive(id, archiveId, originalStore, false, false))
-				return false;
-		}
-		if (!rewriteTable())
-			return false;
-		resetCachedFiles();
-		return true;
-	}*/
+	 * public boolean packIndex(int id, Store originalStore, boolean checkCRC) {
+	 * 
+	 * Index originalIndex = originalStore.getIndexes()[id]; for (int archiveId :
+	 * originalIndex.table.getValidArchiveIds()) { if (checkCRC && archiveExists(archiveId) &&
+	 * originalIndex.table.getArchives()[archiveId] .getCRC() == table.getArchives()[archiveId] .getCRC())
+	 * continue; if (!putArchive(id, archiveId, originalStore, false, false)) return false; } if (!rewriteTable())
+	 * return false; resetCachedFiles(); return true; }
+	 */
 
 	public static int getChanceOld(int level) {
 
@@ -449,8 +374,8 @@ public class Test {
 
 	public static int getChance(int level) {
 
-		//	return (int) (0.0008d*Math.pow(level, 3) + 4*level + 40);
-		//efficient
+		// return (int) (0.0008d*Math.pow(level, 3) + 4*level + 40);
+		// efficient
 		return (int) (Math.sqrt(level * 100) * 10);
 
 	}
@@ -475,19 +400,17 @@ public class Test {
 
 	public static void checkArchiveKeyWords(int index, int archiveId) {
 		for (int id = 0; id < Cache.STORE.getIndexes()[index].getLastFileId(archiveId) + 1; id++) {
-			/*if(id > 1000)
-				break;*/
+			/*
+			 * if(id > 1000) break;
+			 */
 			byte[] data = Cache.STORE.getIndexes()[index].getFile(archiveId, id);
 			if (data == null)
 				continue;
 			String test = new String(data).toLowerCase().trim();
-			/*	String filtered = "";
-				for(char c : test.toCharArray()) {
-					if(!Utils.containsInvalidCharacter(c) || c == ' ') {
-						filtered += c;
-					}
-				}
-				if(filtered.length() > 2)*/
+			/*
+			 * String filtered = ""; for(char c : test.toCharArray()) { if(!Utils.containsInvalidCharacter(c) || c
+			 * == ' ') { filtered += c; } } if(filtered.length() > 2)
+			 */
 			if (test.contains("tolna"))
 				System.out.println("index " + index + ", archive " + archiveId + ", file " + id + " data: " + test);
 		}

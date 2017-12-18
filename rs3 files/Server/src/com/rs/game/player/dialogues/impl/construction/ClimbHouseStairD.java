@@ -20,7 +20,14 @@ public class ClimbHouseStairD extends Dialogue {
 	@Override
 	public void run(int interfaceId, int componentId) {
 		end();
-		if (componentId != OPTION_3 && house.containsPlayer(player)) //cuz player might have left with dialogue open
+		if (componentId != OPTION_3 && house.containsPlayer(player)) // cuz
+			// player
+			// might
+			// have
+			// left
+			// with
+			// dialogue
+			// open
 			house.climbStaircase(player, object, componentId == OPTION_1, false);
 
 	}

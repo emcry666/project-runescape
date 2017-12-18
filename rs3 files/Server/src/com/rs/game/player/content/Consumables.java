@@ -138,14 +138,14 @@ public class Consumables {
 				player.getPackets().sendGameMessage("You must really be hungry.");
 			}
 		},
-		
+
 		ROCKTAIL_EFFECT(15272) {
 			@Override
 			public int getHitpointsModification(Player player) {
 				return (int) (player.getMaxHitpoints() * 0.10);
 			}
 		},
-		
+
 		ROCKTAIL_SOUP_EFFECT(26313) {
 			@Override
 			public int getHitpointsModification(Player player) {
@@ -158,14 +158,14 @@ public class Consumables {
 		private Effect(int... id) {
 			this.id = id;
 		}
-		
+
 		public int getHitpointsModification(Player player) {
 			return 0;
 		}
 
 		public void activateEffect(Player player) {
 		}
-		
+
 		public static Effect forId(int id) {
 			for (Effect effect : Effect.values()) {
 				for (int requestId : effect.id)
@@ -189,7 +189,7 @@ public class Consumables {
 
 		int pieces = item.getDefinitions().getCSOpcode(2970);
 		player.addFoodDelay(pieces == 2 ? 600 : 1800);
-		PlayerCombatNew.addCombatDelay(player, 3);//TODO test
+		PlayerCombatNew.addCombatDelay(player, 3);// TODO test
 
 		int nextId = item.getId() + 2, nextOpcode = ItemDefinitions.getItemDefinitions(nextId).getCSOpcode(2281);
 		if (nextOpcode == 0 || nextOpcode != item.getDefinitions().getCSOpcode(2281))
@@ -217,7 +217,7 @@ public class Consumables {
 		}
 		player.heal(heal, hpMod, 0, true);
 		player.getInventory().replaceItem(nextId, item.getAmount(), slot);
-		if(player.getCombatDefinitions().getCurrentTarget() != null && player.getCombatDefinitions().getCombatMode() != CombatDefinitions.LEGACY_COMBAT_MODE)
+		if (player.getCombatDefinitions().getCurrentTarget() != null && player.getCombatDefinitions().getCombatMode() != CombatDefinitions.LEGACY_COMBAT_MODE)
 			PlayerCombatNew.addAdrenaline(player, -10);
 		return true;
 	}
@@ -229,7 +229,7 @@ public class Consumables {
 		int maxHeal = player.getSkills().getLevel(Skills.HITPOINTS) * HEAL_MODIFIER;
 		if (heal > maxHeal)
 			heal = maxHeal;
-		if(pieces > 0)
+		if (pieces > 0)
 			heal /= pieces;
 		if (heal < 200)
 			heal = 200;

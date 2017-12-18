@@ -2,15 +2,14 @@ package com.rs.game;
 
 import com.rs.game.player.Player;
 
-
 public class EntityHitBar extends HitBar {
 
-	
 	public EntityHitBar(Entity entity) {
 		this.entity = entity;
 	}
 
 	private Entity entity;
+
 	@Override
 	public int getPercentage() {
 		int hp = entity.getHitpoints();
@@ -25,8 +24,7 @@ public class EntityHitBar extends HitBar {
 		int size = entity.getSize();
 		return size >= 5 ? 3 : size >= 3 ? 4 : 0;
 	}
-	
-	
+
 	@Override
 	public boolean display(Player player) {
 		return !player.isAlwaysShowTargetInformation() || player.getCombatDefinitions().getCurrentTarget() != entity;

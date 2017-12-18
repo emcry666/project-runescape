@@ -15,34 +15,31 @@ public class CombinationsD extends Dialogue {
 
 	private static final int PUT = 0, MIX = 1, COMBINE = 2, CUTT = 3;
 	private static final int BOWL = 1923, POT = 1931, KNIFE = 946, BUCKET = 1925, JUG = 1935;
-	//private Combinations combination;
+	// private Combinations combination;
 
 	@Override
 	public void start() {
 		Combinations combination = (Combinations) parameters[0];
 		SkillsDialogue.sendSkillDialogueByProduce(player, combination.getProducedNodes()[0].getId());
-		/*int[] ids = new int[combination.getProducedNodes().length];
-		for (int i = 0; i < ids.length; i++)
-			ids[i] = combination.getProducedNodes()[i].getId();
-		/*SkillsDialogue.sendSkillsDialogue(player, SkillsDialogue.MAKE, "How many would you like to make?<br>Choose a number, then click the hide to begin.", 28, ids, new ItemNameFilter() {
+		/*
+		 * int[] ids = new int[combination.getProducedNodes().length]; for (int i = 0; i < ids.length; i++) ids[i]
+		 * = combination.getProducedNodes()[i].getId(); /*SkillsDialogue.sendSkillsDialogue(player,
+		 * SkillsDialogue.MAKE,
+		 * "How many would you like to make?<br>Choose a number, then click the hide to begin." , 28, ids, new
+		 * ItemNameFilter() {
+		 * 
+		 * @Override public String rename(String name) { int levelRequired = combination.getRequiredLevel(); if
+		 * (player.getSkills().getLevel(Skills.COOKING) < levelRequired) name = "<col=ff0000>" + name +
+		 * "<br><col=ff0000>Level " + levelRequired; return name; } });
+		 */
 
-			@Override
-			public String rename(String name) {
-				int levelRequired = combination.getRequiredLevel();
-				if (player.getSkills().getLevel(Skills.COOKING) < levelRequired)
-					name = "<col=ff0000>" + name + "<br><col=ff0000>Level " + levelRequired;
-				return name;
-			}
-		});*/
-		
 	}
-	
-	
+
 	public Object[] getCombination(int product) {
-		for(Combinations combination : Combinations.values()) {
-			for(int i = 0; i < combination.getProducedNodes().length; i++) {
-				if( combination.getProducedNodes()[i].getId() == product) {
-					return new Object[] {combination, i};
+		for (Combinations combination : Combinations.values()) {
+			for (int i = 0; i < combination.getProducedNodes().length; i++) {
+				if (combination.getProducedNodes()[i].getId() == product) {
+					return new Object[] { combination, i };
 				}
 			}
 		}
@@ -51,22 +48,23 @@ public class CombinationsD extends Dialogue {
 
 	@Override
 	public void run(int interfaceId, int componentId) {
-		/*final int componentIndex = SkillsDialogue.getItemSlot(componentId);
-		if (componentIndex > combination.getProducedNodes().length) {
-			return;
-		}*/
+		/*
+		 * final int componentIndex = SkillsDialogue.getItemSlot(componentId); if (componentIndex >
+		 * combination.getProducedNodes().length) { return; }
+		 */
 		SkillDialogueResult result = SkillsDialogue.getResult(player);
 		end();
 		Object[] data = getCombination(result.getProduce());
-		if(data == null)
+		if (data == null)
 			return;
 		final Combinations combination = (Combinations) data[0];
 		final int componentIndex = (int) data[1];
 		final int quantity = result.getQuantity();
-	
+
 		player.getActionManager().setAction(new Action() {
 
 			int quantityLeft;
+
 			@Override
 			public boolean start(Player player) {
 				quantityLeft = quantity;
@@ -75,7 +73,7 @@ public class CombinationsD extends Dialogue {
 
 			@Override
 			public boolean process(Player player) {
-				if(quantityLeft == 0)
+				if (quantityLeft == 0)
 					return false;
 				if (player.getSkills().getLevel(Skills.COOKING) < combination.getRequiredLevel()) {
 					player.getPackets().sendGameMessage("You need a cooking level of " + combination.getRequiredLevel() + " in order to be able to create this.");
@@ -196,23 +194,16 @@ public class CombinationsD extends Dialogue {
 
 		ANCHOVY_PIZZA(55, 39, new Item(319), new Item(2297), COMBINE, new Item(2289)),
 
-		PINEAPPLE_PIZZA1(65, 52, new Item(2116), new Item(2301), COMBINE, new Item(2289)),
-		PINEAPPLE_PIZZA2(65, 52, new Item(2118), new Item(2301), COMBINE, new Item(2289)),
-		PINEAPPLE(1, new double[]
-		{ 0, 0 }, new Item(2114), new Item[]
-		{ new Item(2116), new Item(2118, 4) }, CUTT, new Item(KNIFE)),
+		PINEAPPLE_PIZZA1(65, 52, new Item(2116), new Item(2301), COMBINE, new Item(2289)), PINEAPPLE_PIZZA2(65, 52, new Item(2118), new Item(2301), COMBINE, new Item(2289)), PINEAPPLE(1, new double[] { 0, 0 }, new Item(2114), new Item[] { new Item(2116), new Item(2118, 4) }, CUTT, new Item(KNIFE)),
 
 		/**
 		 * Cakes yum :)
 		 */
 		RAW_FISH_CAKE1(1, 0, new Item(7528), new Item(7529), COMBINE, new Item(7527), new Item(7517), new Item(7515)),
 
-		NORMAL_CAKE1_POT(1, 0, new Item(1887), new Item(1889), PUT, new Item(1933), new Item(1944), new Item(1927)),
-		NORMAL_CAKE2_POT(1, 0, new Item(1887), new Item(1889), PUT, new Item(1944), new Item(1933), new Item(1927)),
-		NORMAL_CAKE3_POT(1, 0, new Item(1887), new Item(1889), PUT, new Item(1927), new Item(1944), new Item(1933)),
+		NORMAL_CAKE1_POT(1, 0, new Item(1887), new Item(1889), PUT, new Item(1933), new Item(1944), new Item(1927)), NORMAL_CAKE2_POT(1, 0, new Item(1887), new Item(1889), PUT, new Item(1944), new Item(1933), new Item(1927)), NORMAL_CAKE3_POT(1, 0, new Item(1887), new Item(1889), PUT, new Item(1927), new Item(1944), new Item(1933)),
 
-		CHOCOLATE_CAKE1(50, 210, new Item(1891), new Item(1897), COMBINE, new Item(1973)),
-		CHOCOLATE_CAKE2(50, 210, new Item(1891), new Item(1897), COMBINE, new Item(1975)),
+		CHOCOLATE_CAKE1(50, 210, new Item(1891), new Item(1897), COMBINE, new Item(1973)), CHOCOLATE_CAKE2(50, 210, new Item(1891), new Item(1897), COMBINE, new Item(1975)),
 
 		/**
 		 * Pies Apple and cherry (Y)
@@ -226,36 +217,20 @@ public class CombinationsD extends Dialogue {
 
 		APPLE_PIE(1, 0, new Item(2315), new Item(2317), COMBINE, new Item(1955)),
 
-		GARDEN_PART1(1, 0, new Item(2315), new Item(7172), COMBINE, new Item(1982)),
-		GARDEN_PART2(1, 0, new Item(7174), new Item(7174), COMBINE, new Item(1957)),
-		GARDEN_PART3(1, 0, new Item(7174), new Item(7176), COMBINE, new Item(1965)),
+		GARDEN_PART1(1, 0, new Item(2315), new Item(7172), COMBINE, new Item(1982)), GARDEN_PART2(1, 0, new Item(7174), new Item(7174), COMBINE, new Item(1957)), GARDEN_PART3(1, 0, new Item(7174), new Item(7176), COMBINE, new Item(1965)),
 
-		FISH_PART1(1, 0, new Item(2315), new Item(7182), COMBINE, new Item(333)),
-		FISH_PART2(1, 0, new Item(7182), new Item(7184), COMBINE, new Item(339)),
-		FISH_PART3(1, 0, new Item(7184), new Item(7186), COMBINE, new Item(1942)),
+		FISH_PART1(1, 0, new Item(2315), new Item(7182), COMBINE, new Item(333)), FISH_PART2(1, 0, new Item(7182), new Item(7184), COMBINE, new Item(339)), FISH_PART3(1, 0, new Item(7184), new Item(7186), COMBINE, new Item(1942)),
 
-		ADMIRAL_PART1(1, 0, new Item(2315), new Item(7192), COMBINE, new Item(329)),
-		ADMIRAL_PART2(1, 0, new Item(7192), new Item(7194), COMBINE, new Item(361)),
-		ADMIRAL_PART3(1, 0, new Item(7194), new Item(7196), COMBINE, new Item(1942)),
+		ADMIRAL_PART1(1, 0, new Item(2315), new Item(7192), COMBINE, new Item(329)), ADMIRAL_PART2(1, 0, new Item(7192), new Item(7194), COMBINE, new Item(361)), ADMIRAL_PART3(1, 0, new Item(7194), new Item(7196), COMBINE, new Item(1942)),
 
-		WILD_PART1(1, 0, new Item(2315), new Item(7202), COMBINE, new Item(2136)),
-		WILD_PART2(1, 0, new Item(7202), new Item(7204), COMBINE, new Item(2876)),
-		WILD_PART3(1, 0, new Item(7204), new Item(7206), COMBINE, new Item(3226)),
+		WILD_PART1(1, 0, new Item(2315), new Item(7202), COMBINE, new Item(2136)), WILD_PART2(1, 0, new Item(7202), new Item(7204), COMBINE, new Item(2876)), WILD_PART3(1, 0, new Item(7204), new Item(7206), COMBINE, new Item(3226)),
 
-		SUMMER_PART1(1, 0, new Item(2315), new Item(7212), COMBINE, new Item(5504)),
-		SUMMER_PART2(1, 0, new Item(7212), new Item(7214), COMBINE, new Item(5982)),
-		SUMMER_PART3(1, 0, new Item(7214), new Item(7216), COMBINE, new Item(1955)),
+		SUMMER_PART1(1, 0, new Item(2315), new Item(7212), COMBINE, new Item(5504)), SUMMER_PART2(1, 0, new Item(7212), new Item(7214), COMBINE, new Item(5982)), SUMMER_PART3(1, 0, new Item(7214), new Item(7216), COMBINE, new Item(1955)),
 
 		/**
 		 * Breads
 		 */
-		BREAD_JUG_POT(1, new double[]
-		{ 0, 0, 0 }, new Item(1933), new Item[]
-		{ new Item(2307), new Item(1863), new Item(1953) }, PUT, new Item(1937)),
-		BREAD_BUCKET_POT(1, new double[]
-		{ 0, 0, 0 }, new Item(1933), new Item[]
-		{ new Item(2307), new Item(1863), new Item(1953) }, PUT, new Item(1929)),
-		BREADCRUMBS(1, 0, new Item(2309), new Item(7515), CUTT, new Item(KNIFE)),
+		BREAD_JUG_POT(1, new double[] { 0, 0, 0 }, new Item(1933), new Item[] { new Item(2307), new Item(1863), new Item(1953) }, PUT, new Item(1937)), BREAD_BUCKET_POT(1, new double[] { 0, 0, 0 }, new Item(1933), new Item[] { new Item(2307), new Item(1863), new Item(1953) }, PUT, new Item(1929)), BREADCRUMBS(1, 0, new Item(2309), new Item(7515), CUTT, new Item(KNIFE)),
 
 		CLAY_BUCKET(1, 0, new Item(434), new Item(1761), PUT, new Item(1929)),
 
@@ -346,9 +321,7 @@ public class CombinationsD extends Dialogue {
 		}
 
 		Combinations(int requiredLevel, double experience, Item initialNode, Item producedNode, Object... parameters) {
-			this(requiredLevel, new double[]
-			{ experience }, initialNode, new Item[]
-			{ producedNode }, parameters);
+			this(requiredLevel, new double[] { experience }, initialNode, new Item[] { producedNode }, parameters);
 		}
 
 		public static Combinations isCombining(int initialNode, int appliedNode) {

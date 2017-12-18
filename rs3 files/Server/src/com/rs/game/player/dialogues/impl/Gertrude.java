@@ -9,17 +9,17 @@ import com.rs.utils.ShopsHandler;
 public class Gertrude extends Dialogue {
 
 	private int npcId;
-	
+
 	@Override
 	public void start() {
-		this.npcId = (Integer)parameters[0];
+		this.npcId = (Integer) parameters[0];
 		sendPlayerDialogue(NORMAL, "Hello again.");
-		
+
 	}
 
 	@Override
 	public void run(int interfaceId, int componentId) {
-		switch(stage) {
+		switch (stage) {
 		case -1:
 			stage = 8;
 			sendNPCDialogue(npcId, NORMAL, "Hello, my dear. How are things?");
@@ -29,7 +29,7 @@ public class Gertrude extends Dialogue {
 			stage = 0;
 			break;
 		case 0:
-			switch(componentId) {
+			switch (componentId) {
 			case OPTION_1:
 				stage = 1;
 				sendPlayerDialogue(NORMAL, "I'm fine thanks.");
@@ -50,11 +50,11 @@ public class Gertrude extends Dialogue {
 			player.getInterfaceManager().sendDialogueInterface(737);
 			break;
 		case 3:
-			if(componentId >= 3 && componentId <= 8) {
+			if (componentId >= 3 && componentId <= 8) {
 				selectedCat = 1555 + (componentId - 3);
 				sendPlayerDialogue(NORMAL, "This one please.");
 				stage = 4;
-			}else
+			} else
 				end();
 			break;
 		case 4:
@@ -66,25 +66,25 @@ public class Gertrude extends Dialogue {
 			sendOptionsDialogue(DEFAULT_OPTIONS_TITLE, "Okay, I'll take the cat.", "No thanks.");
 			break;
 		case 6:
-			switch(componentId) {
+			switch (componentId) {
 			case OPTION_1:
 				stage = 7;
-				sendPlayerDialogue(NORMAL,  "Okay, I'll take the cat.");
+				sendPlayerDialogue(NORMAL, "Okay, I'll take the cat.");
 				break;
 			case OPTION_2:
 			default:
 				stage = -2;
-				sendPlayerDialogue(NORMAL,  "No thanks.");
+				sendPlayerDialogue(NORMAL, "No thanks.");
 				break;
 			}
 			break;
 		case 7:
-			if(player.getInventory().getCoinsAmount() < 500) {
+			if (player.getInventory().getCoinsAmount() < 500) {
 				end();
 				player.getPackets().sendGameMessage("You don't have enough coins.");
 				return;
 			}
-			if(!player.getInventory().hasFreeSlots()) {
+			if (!player.getInventory().hasFreeSlots()) {
 				end();
 				player.getPackets().sendGameMessage("Not enough space in your inventory.");
 				return;
@@ -98,35 +98,34 @@ public class Gertrude extends Dialogue {
 			end();
 			break;
 		}
-		
+
 	}
-	
+
 	private int selectedCat;
 
 	public static void sellShards(Player player) {
 		int shardsCount = player.getInventory().getAmountOf(12183);
-		if(shardsCount == 0) {
+		if (shardsCount == 0) {
 			player.getPackets().sendGameMessage("You do not have any spirit shards.");
 			return;
 		}
-		player.getPackets().sendInputIntegerScript("How many will you sell? (25 each, you have "+shardsCount+")");
+		player.getPackets().sendInputIntegerScript("How many will you sell? (25 each, you have " + shardsCount + ")");
 		player.getTemporaryAttributtes().put(Key.SELL_SPIRIT_SHARDS, Boolean.TRUE);
 	}
-	
+
 	public static void sellShards(Player player, int quantity) {
 		int shardsCount = player.getInventory().getAmountOf(12183);
-		if(quantity > shardsCount)  {
+		if (quantity > shardsCount) {
 			quantity = shardsCount;
 			player.getPackets().sendGameMessage("You do not have that many spirit shards.");
 		}
 		player.getInventory().deleteItem(new Item(12183, quantity));
 		int money = quantity * 25;
 		player.getInventory().addItemMoneyPouch(new Item(995, money));
-		player.getPackets().sendGameMessage("You sell "+quantity+" spirit shard for "+money+" coins.");
-		
-		
+		player.getPackets().sendGameMessage("You sell " + quantity + " spirit shard for " + money + " coins.");
+
 	}
-	
+
 	public static void openShop(Player player) {
 		ShopsHandler.openShop(player, 57);
 	}

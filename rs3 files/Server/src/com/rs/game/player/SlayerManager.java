@@ -15,16 +15,8 @@ public class SlayerManager implements Serializable {
 
 	private static final long serialVersionUID = -3935672307271551069L;
 
-	private transient final static Object[][] ABILITY =
-	{
-	{ 84, 91, 50, "to receive aquantities as a task from the slayer master Kuradal" },
-	{ 85, 97, 400, "to use certain items on npcs in order to speed their death rates" },
-	{ 86, 98, 2000, "to be assigned Ice Strykewyrms without owning a Fire cape" },
-	{ 83, 90, 300, "to attach broad-tips to bolts and arrows by using them together" },
-	{ 87, 99, 300, "to make a ring of slaying by joining an enchanted gem, a gold bar, and a ring mold together" },
-	{ 88, 100, 400, "to make a full slayer helment by combining a spiny helmet, a pair of earmuffs, a nose peg, a face mask, and a black mask" } };
-	public transient final static int BUY_INTERFACE = 164, ABILITIES_INTERFACE = 378, ASSIGNMENT_INTERFACE = 161, AQUANTITIES = 0, QUICK_BLOWS = 1, ICE_STYKE = 2, BROAD_TIPS = 3, RING_OF_SLAYING = 4,
-			SLAYER_HELMET = 5;
+	private transient final static Object[][] ABILITY = { { 84, 91, 50, "to receive aquantities as a task from the slayer master Kuradal" }, { 85, 97, 400, "to use certain items on npcs in order to speed their death rates" }, { 86, 98, 2000, "to be assigned Ice Strykewyrms without owning a Fire cape" }, { 83, 90, 300, "to attach broad-tips to bolts and arrows by using them together" }, { 87, 99, 300, "to make a ring of slaying by joining an enchanted gem, a gold bar, and a ring mold together" }, { 88, 100, 400, "to make a full slayer helment by combining a spiny helmet, a pair of earmuffs, a nose peg, a face mask, and a black mask" } };
+	public transient final static int BUY_INTERFACE = 164, ABILITIES_INTERFACE = 378, ASSIGNMENT_INTERFACE = 161, AQUANTITIES = 0, QUICK_BLOWS = 1, ICE_STYKE = 2, BROAD_TIPS = 3, RING_OF_SLAYING = 4, SLAYER_HELMET = 5;
 
 	private transient Player player;
 	private transient Player socialPlayer;
@@ -233,8 +225,7 @@ public class SlayerManager implements Serializable {
 			if (!hasRequirement(player, task) || (socialPlayer != null && !hasRequirement(socialPlayer, task))) {
 				continue;
 			}
-			return new Object[]
-			{ task, (int) Utils.random(currentMaster.getTasksRange()[0] * task.getTaskFactor(), currentMaster.getTasksRange()[1] * task.getTaskFactor()) };
+			return new Object[] { task, (int) Utils.random(currentMaster.getTasksRange()[0] * task.getTaskFactor(), currentMaster.getTasksRange()[1] * task.getTaskFactor()) };
 		}
 	}
 

@@ -14,48 +14,35 @@ import com.rs.game.tasks.WorldTasksManager;
 
 public class ReturnTheFlowRoom extends PuzzleRoom {
 
-	//private static final int[] PEDESTAL =
-	//{ 54110, 54111, 54112, 54113, 37202 };
-	private static final int[] PEDESTAL_FLOW =
-	{ 54114, 54115, 54116, 54117, 37203 };
+	// private static final int[] PEDESTAL =
+	// { 54110, 54111, 54112, 54113, 37202 };
+	private static final int[] PEDESTAL_FLOW = { 54114, 54115, 54116, 54117, 37203 };
 
-	//private static final int[] PILLAR =
-	//{ 54118, 54119, 54120, 54121, 37204 };
-	private static final int[] PILLAR_BROKEN =
-	{ 54122, 54123, 54124, 54125, 37207 };
-	private static final int[] PILLAR_REPAIRED =
-	{ 54126, 54127, 54128, 54129, 37219 };
+	// private static final int[] PILLAR =
+	// { 54118, 54119, 54120, 54121, 37204 };
+	private static final int[] PILLAR_BROKEN = { 54122, 54123, 54124, 54125, 37207 };
+	private static final int[] PILLAR_REPAIRED = { 54126, 54127, 54128, 54129, 37219 };
 
-	//Rubble pieces receiving no flow (each rooms seems to have a few of these prespawned)
-	private static final int[] RUBBLE_PIECE =
-	{ 54130, 54131, 54132, 54133, 37220 };
-	private static final int[] RUBBLE_PIECE_CLEARED =
-	{ 54134, 54135, 54136, 54137, 37229 };
-	//Cleared rubble pieces receiving flow (they still have remnants on them)
-	private static final int[] RUBBLE_PIECE_FLOW =
-	{ 54138, 54139, 54140, 54141, 37232 };
-	private static final int[] RUBBLE_PIECE_CLEARED_FLOW =
-	{ 54142, 54143, 54144, 54145, 37249 };
+	// Rubble pieces receiving no flow (each rooms seems to have a few of these
+	// prespawned)
+	private static final int[] RUBBLE_PIECE = { 54130, 54131, 54132, 54133, 37220 };
+	private static final int[] RUBBLE_PIECE_CLEARED = { 54134, 54135, 54136, 54137, 37229 };
+	// Cleared rubble pieces receiving flow (they still have remnants on them)
+	private static final int[] RUBBLE_PIECE_FLOW = { 54138, 54139, 54140, 54141, 37232 };
+	private static final int[] RUBBLE_PIECE_CLEARED_FLOW = { 54142, 54143, 54144, 54145, 37249 };
 
-	//Clean straight pieces
+	// Clean straight pieces
 	private static final int[] STRAIGHT_PIECE_PATH =
-	//This must also be used as a base for the rubble pieces to make a groove in the ground
-	{ 54146, 54147, 54148, 54149, 37250 };
-	private static final int[] STRAIGHT_PIECE_PATH_FLOW =
-	{ 54150, 54151, 54152, 54153, 37251 };
+			// This must also be used as a base for the rubble pieces to make a
+			// groove in the ground
+			{ 54146, 54147, 54148, 54149, 37250 };
+	private static final int[] STRAIGHT_PIECE_PATH_FLOW = { 54150, 54151, 54152, 54153, 37251 };
 
-	//Clean corner pieces
-	private static final int[] CORNER_PIECE_PATH =
-	{ 54154, 54155, 54156, 54157, 37252 };
-	private static final int[] CORNER_PIECE_PATH_FLOW =
-	{ 54158, 54159, 54160, 54161, 37253 };
+	// Clean corner pieces
+	private static final int[] CORNER_PIECE_PATH = { 54154, 54155, 54156, 54157, 37252 };
+	private static final int[] CORNER_PIECE_PATH_FLOW = { 54158, 54159, 54160, 54161, 37253 };
 
-	private static final int[][] pillars = new int[][]
-	{
-	{ 5, 5 },
-	{ 5, 10 },
-	{ 10, 10 },
-	{ 10, 5 } };
+	private static final int[][] pillars = new int[][] { { 5, 5 }, { 5, 10 }, { 10, 10 }, { 10, 5 } };
 
 	private int roomRotation;
 	private Flow[] flows;
@@ -131,7 +118,7 @@ public class ReturnTheFlowRoom extends PuzzleRoom {
 			pillarPtr++;
 			pillarPtr &= 0x3;
 		}
-		//very small chance to have it not generate anything at the start
+		// very small chance to have it not generate anything at the start
 		if (tasks == 0) {
 			setComplete();
 			manager.spawnObject(reference, PEDESTAL_FLOW[type], 10, 0, 7, 7);
@@ -158,7 +145,7 @@ public class ReturnTheFlowRoom extends PuzzleRoom {
 				public void run() {
 					final int[] coords = manager.getRoomPos(object);
 					FlowPiece node = findFlowPiece(coords[0], coords[1]);
-					if (node.blocked) { //players might click in same tick
+					if (node.blocked) { // players might click in same tick
 						giveXP(player, Skills.MINING);
 						player.setNextAnimation(new Animation(-1));
 						WorldObject rubble = new WorldObject(object);
@@ -275,13 +262,13 @@ public class ReturnTheFlowRoom extends PuzzleRoom {
 						move(EAST);
 						continue;
 					}
-					//Else can't change X
+					// Else can't change X
 				}
 				if (curr.y == SIZE_Y) {
 					if (!used[curr.x][curr.y - 1]) {
 						move(SOUTH);
 					} else {
-						move(EAST); //rest is impossible
+						move(EAST); // rest is impossible
 					}
 				} else {
 					move(NORTH);
@@ -320,7 +307,7 @@ public class ReturnTheFlowRoom extends PuzzleRoom {
 				if (node.corner) {
 					node.rotation = 1 - node.rotation;
 				} else if (node.rotation == 1) {
-					//turn straight pieces in Y direction
+					// turn straight pieces in Y direction
 					node.rotation += 2;
 				}
 				node = node.next;

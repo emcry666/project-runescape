@@ -11,8 +11,7 @@ public class DrogoDwarf extends Dialogue {
 	@Override
 	public void start() {
 		npcId = (Integer) parameters[0];
-		sendEntityDialogue(SEND_1_TEXT_CHAT, new String[]
-		{ NPCDefinitions.getNPCDefinitions(npcId).name, "'Ello. Welcome to my Mining shop, friend." }, IS_NPC, npcId, 9827);
+		sendEntityDialogue(SEND_1_TEXT_CHAT, new String[] { NPCDefinitions.getNPCDefinitions(npcId).name, "'Ello. Welcome to my Mining shop, friend." }, IS_NPC, npcId, 9827);
 
 	}
 
@@ -37,12 +36,10 @@ public class DrogoDwarf extends Dialogue {
 			end();
 		} else if (stage == 3) {
 			stage = -2;
-			sendEntityDialogue(SEND_1_TEXT_CHAT, new String[]
-			{ NPCDefinitions.getNPCDefinitions(npcId).name, "I may be short but at least I've got manners." }, IS_NPC, npcId, 9827);
+			sendEntityDialogue(SEND_1_TEXT_CHAT, new String[] { NPCDefinitions.getNPCDefinitions(npcId).name, "I may be short but at least I've got manners." }, IS_NPC, npcId, 9827);
 		} else if (stage == 4) {
 			stage = -2;
-			sendEntityDialogue(SEND_1_TEXT_CHAT, new String[]
-			{ NPCDefinitions.getNPCDefinitions(npcId).name, "The only ores and bars I sell are those sold to me." }, IS_NPC, npcId, 9827);
+			sendEntityDialogue(SEND_1_TEXT_CHAT, new String[] { NPCDefinitions.getNPCDefinitions(npcId).name, "The only ores and bars I sell are those sold to me." }, IS_NPC, npcId, 9827);
 
 		} else
 			end();

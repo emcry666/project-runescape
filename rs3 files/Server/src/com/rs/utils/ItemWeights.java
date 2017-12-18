@@ -21,8 +21,7 @@ public class ItemWeights {
 	private final static String PACKED_PATH = "data/items/packedWeights.dat";
 	private final static String UNPACKED_PATH = "data/items/unpackedWeights.txt";
 
-	
-	private static final int[] NEGATIVE_WEIGHT_ITEMS = {88, 10553, 10069, 10071, 24210, 24208, 24206, 14936, 14938, 24560, 24561, 24562, 24563, 24564};
+	private static final int[] NEGATIVE_WEIGHT_ITEMS = { 88, 10553, 10069, 10071, 24210, 24208, 24206, 14936, 14938, 24560, 24561, 24562, 24563, 24564 };
 
 	public static final void init() {
 		if (new File(PACKED_PATH).exists())
@@ -35,11 +34,11 @@ public class ItemWeights {
 		if (item.getDefinitions().isNoted())
 			return 0;
 		Double weight = itemWeights.get(item.getId());
-		if(weight == null)
+		if (weight == null)
 			return 0;
-		if(equiped) {
-			for(int i : NEGATIVE_WEIGHT_ITEMS)
-				if(i == item.getId())
+		if (equiped) {
+			for (int i : NEGATIVE_WEIGHT_ITEMS)
+				if (i == item.getId())
 					return -weight;
 		}
 		return weight;

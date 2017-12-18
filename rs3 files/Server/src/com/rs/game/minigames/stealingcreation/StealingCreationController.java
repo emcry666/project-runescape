@@ -75,8 +75,7 @@ public class StealingCreationController extends Controller {
 			if (flagX >= 8 || flagY >= 8 || flagX < 0 || flagY < 0)
 				return;
 			if (area.getType(flagX, flagY) == 5) {
-				if (Helper.withinArea2(player, area, flagX, flagY, new int[]
-				{ 1, 1, 4, 4 })) {
+				if (Helper.withinArea2(player, area, flagX, flagY, new int[] { 1, 1, 4, 4 })) {
 					if (!player.getAppearence().isNPC()) {
 						player.resetReceivedHits();
 						player.getAppearence().transformIntoNPC(1957);
@@ -265,7 +264,7 @@ public class StealingCreationController extends Controller {
 			player.getPackets().sendGameMessage("You cannot pickpocket player that is on the same team!");
 			return false;
 		} else if (target.getTemporaryAttributtes().get("in_kiln") != null && (Long) target.getTemporaryAttributtes().get("in_kiln") >= Utils.currentTimeMillis()) {
-			player.getPackets().sendGameMessage("You cannot seem to access "+target.getDisplayName()+"'s pockets. He seems to be doing an action that prevents you reaching them.");
+			player.getPackets().sendGameMessage("You cannot seem to access " + target.getDisplayName() + "'s pockets. He seems to be doing an action that prevents you reaching them.");
 			return false;
 		} else if (target.getSkills().getLevel(Skills.THIEVING) - thievingLevel >= 20) {
 			player.getPackets().sendGameMessage("You need a theiving level of at least " + (target.getSkills().getLevel(Skills.THIEVING) - 20) + " to pickpocket " + Utils.formatPlayerNameForDisplay(target.getDisplayName() + "."));
@@ -353,7 +352,7 @@ public class StealingCreationController extends Controller {
 		}
 		return true;
 	}
-	
+
 	@Override
 	public boolean canRemoveEquip(int slot, int itemId) {
 		if (slot == Equipment.SLOT_CAPE) {
@@ -475,12 +474,13 @@ public class StealingCreationController extends Controller {
 			final int y = object.getChunkY() - (game.getArea().getMinY() >> 3);
 			final int weaponId = player.getEquipment().getWeaponId();
 			final int attackStyle = player.getCombatDefinitions().getStyle(true);
-			/*final int combatDelay = player.getCombatDefinitions().getAttackSpeed();
-			if (player.getActionManager().getAction() != null || player.getActionManager().getActionDelay() > 0)
-				return false;
-			player.getActionManager().addActionDelay(combatDelay);
-			player.setNextAnimation(new Animation(PlayerCombatNew.getAttackAnimation(player, true));
-			player.setNextAnimation(new Animation(PlayerCombat.getWeaponAttackEmote(weaponId, attackStyle)));*/
+			/*
+			 * final int combatDelay = player.getCombatDefinitions().getAttackSpeed(); if
+			 * (player.getActionManager().getAction() != null || player.getActionManager().getActionDelay() > 0)
+			 * return false; player.getActionManager().addActionDelay(combatDelay); player.setNextAnimation(new
+			 * Animation(PlayerCombatNew.getAttackAnimation(player, true)); player.setNextAnimation(new
+			 * Animation(PlayerCombat.getWeaponAttackEmote(weaponId, attackStyle)));
+			 */
 			WorldTasksManager.schedule(new WorldTask() {
 				@Override
 				public void run() {
@@ -691,8 +691,7 @@ public class StealingCreationController extends Controller {
 			for (Player otherPlayer : redTeam ? game.getBlueTeam() : game.getRedTeam()) {
 				if (otherPlayer == null || !otherPlayer.withinDistance(object, 6))
 					continue;
-				if (Helper.withinArea(otherPlayer, game.getArea(), x, y, new int[]
-				{ 2, 2 })) {
+				if (Helper.withinArea(otherPlayer, game.getArea(), x, y, new int[] { 2, 2 })) {
 					player.getPackets().sendGameMessage("You cannot build a barrier while players from the other team are near the pallet.");
 					return false;
 				}
@@ -792,7 +791,7 @@ public class StealingCreationController extends Controller {
 	}
 
 	public static void passWall(Player player, WorldObject object, final boolean red) {
-		if(player.isStunned()) 
+		if (player.isStunned())
 			return;
 		if (player.isBound()) {
 			player.getPackets().sendGameMessage("A mysterious force prevents you from moving.");
@@ -888,8 +887,7 @@ public class StealingCreationController extends Controller {
 		else if (packetId == WorldPacketsDecoder.ACTION_BUTTON3_PACKET) {
 			player.getTemporaryAttributtes().put("sc_component", componentId);
 			player.getTemporaryAttributtes().put("kilnX", true);
-			player.getPackets().sendExecuteScriptReverse(108, new Object[]
-			{ "Enter Amount:" });
+			player.getPackets().sendExecuteScriptReverse(108, new Object[] { "Enter Amount:" });
 		} else if (packetId == WorldPacketsDecoder.ACTION_BUTTON4_PACKET)
 			amount = player.getInventory().getAmountOf(clayId);
 		else

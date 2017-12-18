@@ -8,8 +8,7 @@ import com.rs.utils.Utils;
 /**
  * Ancient effifies dialogue handling.
  * 
- * @author Raghav/Own4g3 <Raghav_ftw@hotmail.com> Improved alot by Dragonkk as
- *         always...
+ * @author Raghav/Own4g3 <Raghav_ftw@hotmail.com> Improved alot by Dragonkk as always...
  * 
  */
 public class AncientEffigiesD extends Dialogue {
@@ -22,8 +21,7 @@ public class AncientEffigiesD extends Dialogue {
 	@Override
 	public void start() {
 		itemId = (Integer) parameters[0];
-		sendDialogue(new String[]
-		{ "As you inspect the ancient effigy, you begin to feel a", "strange sensation of the relic searching your mind,", "drawing on your knowledge." });
+		sendDialogue(new String[] { "As you inspect the ancient effigy, you begin to feel a", "strange sensation of the relic searching your mind,", "drawing on your knowledge." });
 		int random = Utils.random(8);
 		skill1 = AncientEffigies.SKILL_1[random];
 		skill2 = AncientEffigies.SKILL_2[random];
@@ -32,8 +30,7 @@ public class AncientEffigiesD extends Dialogue {
 	@Override
 	public void run(int interfaceId, int componentId) {
 		if (stage == -1) {
-			sendDialogue(new String[]
-			{ "Images from your experiences of " + AncientEffigies.getMessage(skill1), "fill your mind." });
+			sendDialogue(new String[] { "Images from your experiences of " + AncientEffigies.getMessage(skill1), "fill your mind." });
 			stage = 0;
 		} else if (stage == 0) {
 			sendOptionsDialogue("Which images do you wish to focus on?", Skills.SKILL_NAME[skill1], Skills.SKILL_NAME[skill2]);
@@ -44,13 +41,11 @@ public class AncientEffigiesD extends Dialogue {
 			if (player.getSkills().getLevelForXp(skill) < AncientEffigies.getRequiredLevel(itemId)) {
 				sendDialogue(
 
-				new String[]
-				{ "The images in your mind fade; the ancient effigy seems", "to desire knowledge of experiences you have not yet", "had." });
+						new String[] { "The images in your mind fade; the ancient effigy seems", "to desire knowledge of experiences you have not yet", "had." });
 				player.getPackets().sendGameMessage("You require at lest level " + AncientEffigies.getRequiredLevel(itemId) + " " + Skills.SKILL_NAME[skill1] + " to investigate the ancient effigy further.");
 				stage = -2;
 			} else {
-				sendDialogue(new String[]
-				{ "As you focus on your memories, you can almost hear a", "voice in the back of your mind whispering to you..." });
+				sendDialogue(new String[] { "As you focus on your memories, you can almost hear a", "voice in the back of your mind whispering to you..." });
 				stage = 2;
 			}
 		} else if (stage == 2) {
@@ -59,12 +54,10 @@ public class AncientEffigiesD extends Dialogue {
 			player.getSkills().addXp(skill, xp, true);
 			player.getPackets().sendGameMessage("You have gained " + xp + " " + Skills.SKILL_NAME[skill] + " experience!");
 			AncientEffigies.effigyInvestigation(player, itemId);
-			sendDialogue(new String[]
-			{ "The ancient effigy glows briefly; it seems changed", "somehow and no longer responds to the same memories", "as before." });
+			sendDialogue(new String[] { "The ancient effigy glows briefly; it seems changed", "somehow and no longer responds to the same memories", "as before." });
 			stage = 3;
 		} else if (stage == 3) {
-			sendDialogue(new String[]
-			{ "A sudden bolt of inspiration flashes through your mind,", "revealing new insight into your experiences!" });
+			sendDialogue(new String[] { "A sudden bolt of inspiration flashes through your mind,", "revealing new insight into your experiences!" });
 			stage = -2;
 		} else {
 			end();

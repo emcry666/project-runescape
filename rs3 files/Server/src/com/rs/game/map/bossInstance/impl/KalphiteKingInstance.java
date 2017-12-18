@@ -27,7 +27,7 @@ public class KalphiteKingInstance extends BossInstance {
 
 	@Override
 	public void leaveInstance(Player player, int type) {
-		player.getTimersManager().removeTimer(); //removes timer without saving
+		player.getTimersManager().removeTimer(); // removes timer without saving
 		super.leaveInstance(player, type);
 	}
 
@@ -39,9 +39,13 @@ public class KalphiteKingInstance extends BossInstance {
 			public void run() {
 				if (!KalphiteKingInstance.this.isInstanceReady())
 					return;
-				KalphiteKing king = (KalphiteKing) World.spawnNPC(16697+Utils.random(3), getTile(2974, 1759, 0), -1, true);// can spawn all colours
+				KalphiteKing king = (KalphiteKing) World.spawnNPC(16697 + Utils.random(3), getTile(2974, 1759, 0), -1, true);// can
+																																// spawn
+																																// all
+																																// colours
 				king.setBossInstance(KalphiteKingInstance.this);
-				king.addTimer(); //king wont set timer by itself first time due to boss instance not being added yet
+				king.addTimer(); // king wont set timer by itself first time due
+				// to boss instance not being added yet
 			}
 
 		}, 10);

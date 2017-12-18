@@ -21,7 +21,7 @@ public class GodwarsZammorakFaction extends NPC {
 
 	public GodwarsZammorakFaction(int id, WorldTile tile, int mapAreaNameHash, boolean canBeAttackFromOutOfArea, boolean spawned) {
 		super(id, tile, mapAreaNameHash, canBeAttackFromOutOfArea, spawned);
-		setLureDelay(6000);//Lurable boss
+		setLureDelay(6000);// Lurable boss
 	}
 
 	@Override

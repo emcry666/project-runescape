@@ -118,7 +118,7 @@ public class DungeonController extends Controller {
 	}
 
 	public void reset() {
-		//deaths = 0;
+		// deaths = 0;
 		voteStage = 0;
 		gatestone = null;
 		killedBossWithLessThan10HP = false;
@@ -138,7 +138,7 @@ public class DungeonController extends Controller {
 
 		VisibleRoom vr = dungeon.getVisibleRoom(dungeon.getCurrentRoomReference(player));
 		WorldTile to = new WorldTile(player.getX() + Utils.DIRECTION_DELTA_X[dir], player.getY() + Utils.DIRECTION_DELTA_Y[dir], 0);
-		if(vr != null && !vr.canMove(player, to)) {
+		if (vr != null && !vr.canMove(player, to)) {
 			return false;
 		}
 
@@ -171,7 +171,7 @@ public class DungeonController extends Controller {
 	}
 
 	/*
-	 *the dmg you receiving
+	 * the dmg you receiving
 	 */
 	@Override
 	public void processIngoingHit(Hit hit) {
@@ -296,7 +296,7 @@ public class DungeonController extends Controller {
 	}
 
 	private void refreshDeaths() {
-		player.getVarsManager().sendVarBit(2365, getDeaths()); //deaths
+		player.getVarsManager().sendVarBit(2365, getDeaths()); // deaths
 	}
 
 	private void increaseDeaths() {
@@ -306,7 +306,7 @@ public class DungeonController extends Controller {
 		else if (deaths == 15)
 			return;
 		dungeon.getPartyDeaths().put(player.getUsername(), deaths + 1);
-		//deaths++
+		// deaths++
 		refreshDeaths();
 	}
 
@@ -314,7 +314,7 @@ public class DungeonController extends Controller {
 		if (dungeon == null)
 			return 0;
 		Integer deaths = dungeon.getPartyDeaths().get(player.getUsername());
-		return deaths == null ? 0 : deaths;//deaths;
+		return deaths == null ? 0 : deaths;// deaths;
 	}
 
 	@Override
@@ -408,7 +408,8 @@ public class DungeonController extends Controller {
 				if (s.getFailAnim() == -1)
 					player.setNextAnimation(new Animation(-1));
 				if (!fail) {
-					if (room.getDoor(index) == null) //means someone else opeenda t same time
+					if (room.getDoor(index) == null) // means someone else
+						// opeenda t same time
 						return;
 					player.getSkills().addXp(s.getSkillId(), door.getLevel() * 5 + 10);
 					room.setDoor(index, null);
@@ -420,7 +421,8 @@ public class DungeonController extends Controller {
 				} else {
 					player.getPackets().sendGameMessage(s.getFailMessage());
 					player.applyHit(new Hit(player, door.getLevel() * 4, HitLook.REGULAR_DAMAGE));
-					if (room.getDoor(index) == null) //means someone else opeenda t same time
+					if (room.getDoor(index) == null) // means someone else
+						// opeenda t same time
 						return;
 					if (s.getFailObjectAnim() != -1)
 						World.sendObjectAnimation(object, new Animation(s.getFailObjectAnim()));
@@ -489,7 +491,8 @@ public class DungeonController extends Controller {
 				player.getPackets().sendGameMessage("Only your party's leader can mark a target!");
 				return false;
 			}
-			dungeon.setMark(npc, !player.getHintIconsManager().hasHintIcon(6)); //6th slot
+			dungeon.setMark(npc, !player.getHintIconsManager().hasHintIcon(6)); // 6th
+			// slot
 			return false;
 		} else if (npc.getId() == DungeonConstants.SMUGGLER) {
 			DungeonResourceShop.openResourceShop(player, dungeon.getParty().getComplexity());
@@ -554,7 +557,7 @@ public class DungeonController extends Controller {
 		}
 		if (object.getId() >= 54439 && object.getId() <= 54456 && object.getDefinitions().containsOption(0, "Cleanse")) {
 			@SuppressWarnings("deprecation")
-			NPC boss = dungeon.getTemporaryBoss();//getNPC(player, 11708);
+			NPC boss = dungeon.getTemporaryBoss();// getNPC(player, 11708);
 			if (boss == null || !(boss instanceof Gravecreeper))
 				return false;
 			return ((Gravecreeper) boss).cleanseTomb(player, object);
@@ -628,8 +631,13 @@ public class DungeonController extends Controller {
 			room.setDoor(index, null);
 			World.removeObject(object);
 			return false;
-		} else if (object.getId() == DungeonConstants.DUNGEON_DOORS[floorType] || object.getId() == DungeonConstants.DUNGEON_GUARDIAN_DOORS[floorType] || object.getId() == DungeonConstants.DUNGEON_BOSS_DOORS[floorType] || DungeonUtils.isOpenSkillDoor(object.getId(), floorType) || (object.getId() >= KeyDoors.getLowestDoorId(floorType) && object.getId() <= KeyDoors.getMaxDoorId(floorType)) || (object.getDefinitions().name.equals("Door") && object.getDefinitions().containsOption(0, "Enter")) //theres many ids for challenge doors
-				) {
+		} else if (object.getId() == DungeonConstants.DUNGEON_DOORS[floorType] || object.getId() == DungeonConstants.DUNGEON_GUARDIAN_DOORS[floorType] || object.getId() == DungeonConstants.DUNGEON_BOSS_DOORS[floorType] || DungeonUtils.isOpenSkillDoor(object.getId(), floorType) || (object.getId() >= KeyDoors.getLowestDoorId(floorType) && object.getId() <= KeyDoors.getMaxDoorId(floorType)) || (object.getDefinitions().name.equals("Door") && object.getDefinitions().containsOption(0, "Enter")) // theres
+		// many
+		// ids
+		// for
+		// challenge
+		// doors
+		) {
 			if (object.getId() == DungeonConstants.DUNGEON_BOSS_DOORS[floorType] && player.isUnderCombat()) {
 				player.getPackets().sendGameMessage("This door is too complex to unlock while in combat.");
 				return false;
@@ -692,136 +700,136 @@ public class DungeonController extends Controller {
 		}
 		String name = object.getDefinitions().name.toLowerCase();
 		switch (name) {
-			case "dungeon exit":
-				player.getDialogueManager().startDialogue("DungeonExit", this);
+		case "dungeon exit":
+			player.getDialogueManager().startDialogue("DungeonExit", this);
+			return false;
+		case "water trough":
+			WaterFilling.isFilling(player, 17490, false);
+			return false;
+		case "salve nettles":
+			DungeoneeringFarming.initHarvest(player, Harvest.SALVE_NETTLES, object);
+			return false;
+		case "wildercress":
+			DungeoneeringFarming.initHarvest(player, Harvest.WILDERCRESS, object);
+			return false;
+		case "blightleaf":
+			DungeoneeringFarming.initHarvest(player, Harvest.BLIGHTLEAF, object);
+			return false;
+		case "roseblood":
+			DungeoneeringFarming.initHarvest(player, Harvest.ROSEBLOOD, object);
+			return false;
+		case "bryll":
+			DungeoneeringFarming.initHarvest(player, Harvest.BRYLL, object);
+			return false;
+		case "duskweed":
+			DungeoneeringFarming.initHarvest(player, Harvest.DUSKWEED, object);
+			return false;
+		case "soulbell":
+			DungeoneeringFarming.initHarvest(player, Harvest.SOULBELL, object);
+			return false;
+		case "ectograss":
+			DungeoneeringFarming.initHarvest(player, Harvest.ECTOGRASS, object);
+			return false;
+		case "runeleaf":
+			DungeoneeringFarming.initHarvest(player, Harvest.RUNELEAF, object);
+			return false;
+		case "spiritbloom":
+			DungeoneeringFarming.initHarvest(player, Harvest.SPIRITBLOOM, object);
+			return false;
+		case "tangle gum tree":
+			player.getActionManager().setAction(new Woodcutting(object, TreeDefinitions.TANGLE_GUM_VINE));
+			return false;
+		case "seeping elm tree":
+			player.getActionManager().setAction(new Woodcutting(object, TreeDefinitions.SEEPING_ELM_TREE));
+			return false;
+		case "blood spindle tree":
+			player.getActionManager().setAction(new Woodcutting(object, TreeDefinitions.BLOOD_SPINDLE_TREE));
+			return false;
+		case "utuku tree":
+			player.getActionManager().setAction(new Woodcutting(object, TreeDefinitions.UTUKU_TREE));
+			return false;
+		case "spinebeam tree":
+			player.getActionManager().setAction(new Woodcutting(object, TreeDefinitions.SPINEBEAM_TREE));
+			return false;
+		case "bovistrangler tree":
+			player.getActionManager().setAction(new Woodcutting(object, TreeDefinitions.BOVISTRANGLER_TREE));
+			return false;
+		case "thigat tree":
+			player.getActionManager().setAction(new Woodcutting(object, TreeDefinitions.THIGAT_TREE));
+			return false;
+		case "corpsethorn tree":
+			player.getActionManager().setAction(new Woodcutting(object, TreeDefinitions.CORPESTHORN_TREE));
+			return false;
+		case "entgallow tree":
+			player.getActionManager().setAction(new Woodcutting(object, TreeDefinitions.ENTGALLOW_TREE));
+			return false;
+		case "grave creeper tree":
+			player.getActionManager().setAction(new Woodcutting(object, TreeDefinitions.GRAVE_CREEPER_TREE));
+			return false;
+		case "novite ore":
+			player.getActionManager().setAction(new DungeoneeringMining(object, DungeoneeringRocks.NOVITE_ORE));
+			return false;
+		case "bathus ore":
+			player.getActionManager().setAction(new DungeoneeringMining(object, DungeoneeringRocks.BATHUS_ORE));
+			return false;
+		case "marmaros ore":
+			player.getActionManager().setAction(new DungeoneeringMining(object, DungeoneeringRocks.MARMAROS_ORE));
+			return false;
+		case "kratonite ore":
+			player.getActionManager().setAction(new DungeoneeringMining(object, DungeoneeringRocks.KRATONIUM_ORE));
+			return false;
+		case "fractite ore":
+			player.getActionManager().setAction(new DungeoneeringMining(object, DungeoneeringRocks.FRACTITE_ORE));
+			return false;
+		case "zephyrium ore":
+			player.getActionManager().setAction(new DungeoneeringMining(object, DungeoneeringRocks.ZEPHYRIUM_ORE));
+			return false;
+		case "argonite ore":
+			player.getActionManager().setAction(new DungeoneeringMining(object, DungeoneeringRocks.AGRONITE_ORE));
+			return false;
+		case "katagon ore":
+			player.getActionManager().setAction(new DungeoneeringMining(object, DungeoneeringRocks.KATAGON_ORE));
+			return false;
+		case "gorgonite ore":
+			player.getActionManager().setAction(new DungeoneeringMining(object, DungeoneeringRocks.GORGONITE_ORE));
+			return false;
+		case "promethium ore":
+			player.getActionManager().setAction(new DungeoneeringMining(object, DungeoneeringRocks.PROMETHIUM_ORE));
+			return false;
+		case "furnace":
+			player.getDialogueManager().startDialogue("SingleSmithingD", object, DungeonConstants.SMELTING_BARS);
+			return false;
+		case "runecrafting altar":
+			player.getDialogueManager().startDialogue("DungRunecraftingD", 0);
+			return false;
+		case "spinning wheel":
+			player.getDialogueManager().startDialogue("SpinningD", true);
+			return false;
+		case "summoning obelisk":
+			Summoning.openInfusionInterface(player, false, true);
+			return false;
+		case "group gatestone portal":
+			portalGroupStoneTeleport();
+			return false;
+		case "sunken pillar":
+			Blink boss = (Blink) getNPC(player, 12865);
+			if (boss == null) {
+				player.getPackets().sendGameMessage("The mechanism doesn't respond.");
 				return false;
-			case "water trough":
-				WaterFilling.isFilling(player, 17490, false);
+			} else if (boss.hasActivePillar()) {
+				player.getPackets().sendGameMessage("The mechanism will not respond while the other pillar is raised.");
 				return false;
-			case "salve nettles":
-				DungeoneeringFarming.initHarvest(player, Harvest.SALVE_NETTLES, object);
-				return false;
-			case "wildercress":
-				DungeoneeringFarming.initHarvest(player, Harvest.WILDERCRESS, object);
-				return false;
-			case "blightleaf":
-				DungeoneeringFarming.initHarvest(player, Harvest.BLIGHTLEAF, object);
-				return false;
-			case "roseblood":
-				DungeoneeringFarming.initHarvest(player, Harvest.ROSEBLOOD, object);
-				return false;
-			case "bryll":
-				DungeoneeringFarming.initHarvest(player, Harvest.BRYLL, object);
-				return false;
-			case "duskweed":
-				DungeoneeringFarming.initHarvest(player, Harvest.DUSKWEED, object);
-				return false;
-			case "soulbell":
-				DungeoneeringFarming.initHarvest(player, Harvest.SOULBELL, object);
-				return false;
-			case "ectograss":
-				DungeoneeringFarming.initHarvest(player, Harvest.ECTOGRASS, object);
-				return false;
-			case "runeleaf":
-				DungeoneeringFarming.initHarvest(player, Harvest.RUNELEAF, object);
-				return false;
-			case "spiritbloom":
-				DungeoneeringFarming.initHarvest(player, Harvest.SPIRITBLOOM, object);
-				return false;
-			case "tangle gum tree":
-				player.getActionManager().setAction(new Woodcutting(object, TreeDefinitions.TANGLE_GUM_VINE));
-				return false;
-			case "seeping elm tree":
-				player.getActionManager().setAction(new Woodcutting(object, TreeDefinitions.SEEPING_ELM_TREE));
-				return false;
-			case "blood spindle tree":
-				player.getActionManager().setAction(new Woodcutting(object, TreeDefinitions.BLOOD_SPINDLE_TREE));
-				return false;
-			case "utuku tree":
-				player.getActionManager().setAction(new Woodcutting(object, TreeDefinitions.UTUKU_TREE));
-				return false;
-			case "spinebeam tree":
-				player.getActionManager().setAction(new Woodcutting(object, TreeDefinitions.SPINEBEAM_TREE));
-				return false;
-			case "bovistrangler tree":
-				player.getActionManager().setAction(new Woodcutting(object, TreeDefinitions.BOVISTRANGLER_TREE));
-				return false;
-			case "thigat tree":
-				player.getActionManager().setAction(new Woodcutting(object, TreeDefinitions.THIGAT_TREE));
-				return false;
-			case "corpsethorn tree":
-				player.getActionManager().setAction(new Woodcutting(object, TreeDefinitions.CORPESTHORN_TREE));
-				return false;
-			case "entgallow tree":
-				player.getActionManager().setAction(new Woodcutting(object, TreeDefinitions.ENTGALLOW_TREE));
-				return false;
-			case "grave creeper tree":
-				player.getActionManager().setAction(new Woodcutting(object, TreeDefinitions.GRAVE_CREEPER_TREE));
-				return false;
-			case "novite ore":
-				player.getActionManager().setAction(new DungeoneeringMining(object, DungeoneeringRocks.NOVITE_ORE));
-				return false;
-			case "bathus ore":
-				player.getActionManager().setAction(new DungeoneeringMining(object, DungeoneeringRocks.BATHUS_ORE));
-				return false;
-			case "marmaros ore":
-				player.getActionManager().setAction(new DungeoneeringMining(object, DungeoneeringRocks.MARMAROS_ORE));
-				return false;
-			case "kratonite ore":
-				player.getActionManager().setAction(new DungeoneeringMining(object, DungeoneeringRocks.KRATONIUM_ORE));
-				return false;
-			case "fractite ore":
-				player.getActionManager().setAction(new DungeoneeringMining(object, DungeoneeringRocks.FRACTITE_ORE));
-				return false;
-			case "zephyrium ore":
-				player.getActionManager().setAction(new DungeoneeringMining(object, DungeoneeringRocks.ZEPHYRIUM_ORE));
-				return false;
-			case "argonite ore":
-				player.getActionManager().setAction(new DungeoneeringMining(object, DungeoneeringRocks.AGRONITE_ORE));
-				return false;
-			case "katagon ore":
-				player.getActionManager().setAction(new DungeoneeringMining(object, DungeoneeringRocks.KATAGON_ORE));
-				return false;
-			case "gorgonite ore":
-				player.getActionManager().setAction(new DungeoneeringMining(object, DungeoneeringRocks.GORGONITE_ORE));
-				return false;
-			case "promethium ore":
-				player.getActionManager().setAction(new DungeoneeringMining(object, DungeoneeringRocks.PROMETHIUM_ORE));
-				return false;
-			case "furnace":
-				player.getDialogueManager().startDialogue("SingleSmithingD", object, DungeonConstants.SMELTING_BARS);
-				return false;
-			case "runecrafting altar":
-				player.getDialogueManager().startDialogue("DungRunecraftingD", 0);
-				return false;
-			case "spinning wheel":
-				player.getDialogueManager().startDialogue("SpinningD", true);
-				return false;
-			case "summoning obelisk":
-				Summoning.openInfusionInterface(player, false, true);
-				return false;
-			case "group gatestone portal":
-				portalGroupStoneTeleport();
-				return false;
-			case "sunken pillar":
-				Blink boss = (Blink) getNPC(player, 12865);
-				if (boss == null) {
-					player.getPackets().sendGameMessage("The mechanism doesn't respond.");
-					return false;
-				} else if (boss.hasActivePillar()) {
-					player.getPackets().sendGameMessage("The mechanism will not respond while the other pillar is raised.");
+			}
+			for (Entity t : boss.getPossibleTargets()) {
+				if (t.matches(object) || boss.matches(object)) {
+					player.getPackets().sendGameMessage("The mechanism cannot be activated while someone is standing there.");
 					return false;
 				}
-				for (Entity t : boss.getPossibleTargets()) {
-					if (t.matches(object) || boss.matches(object)) {
-						player.getPackets().sendGameMessage("The mechanism cannot be activated while someone is standing there.");
-						return false;
-					}
-				}
-				boss.raisePillar(object);
-				return false;
-			default:
-				return true;
+			}
+			boss.raisePillar(object);
+			return false;
+		default:
+			return true;
 		}
 	}
 
@@ -844,9 +852,9 @@ public class DungeonController extends Controller {
 		}
 		String name = object.getDefinitions().name.toLowerCase();
 		switch (name) {
-			case "runecrafting altar":
-				player.getDialogueManager().startDialogue("DungRunecraftingD", 1);
-				return false;
+		case "runecrafting altar":
+			player.getDialogueManager().startDialogue("DungRunecraftingD", 1);
+			return false;
 		}
 		return true;
 	}
@@ -864,9 +872,9 @@ public class DungeonController extends Controller {
 		}
 		String name = object.getDefinitions().name.toLowerCase();
 		switch (name) {
-			case "runecrafting altar":
-				player.getDialogueManager().startDialogue("DungRunecraftingD", 2);
-				return false;
+		case "runecrafting altar":
+			player.getDialogueManager().startDialogue("DungRunecraftingD", 2);
+			return false;
 		}
 		return true;
 	}
@@ -880,9 +888,9 @@ public class DungeonController extends Controller {
 		}
 		String name = object.getDefinitions().name.toLowerCase();
 		switch (name) {
-			case "runecrafting altar":
-				player.getDialogueManager().startDialogue("DungRunecraftingD", 3);
-				return false;
+		case "runecrafting altar":
+			player.getDialogueManager().startDialogue("DungRunecraftingD", 3);
+			return false;
 		}
 		return true;
 	}
@@ -896,9 +904,9 @@ public class DungeonController extends Controller {
 			return false;
 		String name = object.getDefinitions().name.toLowerCase();
 		switch (name) {
-			case "runecrafting altar":
-				player.getDialogueManager().startDialogue("DungRunecraftingD", 4);
-				return false;
+		case "runecrafting altar":
+			player.getDialogueManager().startDialogue("DungRunecraftingD", 4);
+			return false;
 		}
 		return true;
 	}
@@ -916,7 +924,6 @@ public class DungeonController extends Controller {
 		dungeon.voteToMoveOn(player);
 	}
 
-
 	@Override
 	public boolean handleItemOnObject(WorldObject object, Item item) {
 		if (dungeon == null || !dungeon.hasStarted() || dungeon.isAtRewardsScreen())
@@ -929,26 +936,25 @@ public class DungeonController extends Controller {
 		}
 		String name = object.getDefinitions().name.toLowerCase();
 		switch (name) {
-			case "farming patch":
-				DungeoneeringFarming.plantHarvest(item, player, object, dungeon);
-				return true;
-			case "furnace":
-				for (SmeltingBar bar : SmeltingBar.values()) {
-					if (bar.getItemsRequired()[0].getId() == item.getId()) {
-						player.getDialogueManager().startDialogue("SingleSmithingD", object, new SmeltingBar[]
-								{ bar });
-						break;
-					}
+		case "farming patch":
+			DungeoneeringFarming.plantHarvest(item, player, object, dungeon);
+			return true;
+		case "furnace":
+			for (SmeltingBar bar : SmeltingBar.values()) {
+				if (bar.getItemsRequired()[0].getId() == item.getId()) {
+					player.getDialogueManager().startDialogue("SingleSmithingD", object, new SmeltingBar[] { bar });
+					break;
 				}
-				return true;
-			case "anvil":
-				for (int index = 0; index < Smithing.BARS[1].length; index++) {
-					if (Smithing.BARS[1][index] == item.getId()) {
-						Smithing.sendForgingInterface(player, index, true);
-						break;
-					}
+			}
+			return true;
+		case "anvil":
+			for (int index = 0; index < Smithing.BARS[1].length; index++) {
+				if (Smithing.BARS[1][index] == item.getId()) {
+					Smithing.sendForgingInterface(player, index, true);
+					break;
 				}
-				return true;
+			}
+			return true;
 		}
 		return true;
 	}
@@ -1034,10 +1040,12 @@ public class DungeonController extends Controller {
 						// TODO cant open sound
 						player.getPackets().sendGameMessage("Please finish what you're doing before opening the dungeon map.");
 						return false;
-					} /*else if (player.getAttackedByDelay() >= Utils.currentTimeMillis()) {
-					  player.getPackets().sendGameMessage("You cannot be in combat while opening the dungeon map.");
-					  return false;
-					}*/
+					} /*
+						 * else if (player.getAttackedByDelay() >= Utils.currentTimeMillis()) {
+						 * player.getPackets().
+						 * sendGameMessage("You cannot be in combat while opening the dungeon map." ); return
+						 * false; }
+						 */
 					dungeon.openMap(player);
 					return false;
 				} else if (componentId == 25) {
@@ -1108,43 +1116,26 @@ public class DungeonController extends Controller {
 					DungeonResourceShop.handleSellOptions(player, slotId, slotId2, quantity);
 				}
 				return false;
-			} else if (interfaceId == 950) { //TODO dung spellbook
-				/*if (componentId == 2)
-					player.getCombatDefinitions().switchDefensiveCasting();
-				else if (componentId == 7)
-					player.getCombatDefinitions().switchShowCombatSpells();
-				else if (componentId == 9)
-					player.getCombatDefinitions().switchShowTeleportSkillSpells();
-				else if (componentId == 11)
-					player.getCombatDefinitions().switchShowMiscallaneousSpells();
-				else if (componentId == 13)
-					player.getCombatDefinitions().switchShowSkillSpells();
-				else if (componentId >= 15 & componentId <= 17)
-					player.getCombatDefinitions().setSortSpellBook(componentId - 15);
-				else if (componentId == 39 || componentId == 40)
-					stoneTeleport(componentId == 40);
-				else if (componentId == 38) {
-					if (packetId == WorldPacketsDecoder.ACTION_BUTTON2_PACKET) {
-						//Quick cast: delete current gatestone without asking
-						player.getInventory().deleteItem(DungeonConstants.GATESTONE, 1);
-						if (gatestone != null) {
-							FloorItem item = World.getRegion(gatestone.getRegionId()).getGroundItem(DungeonConstants.GATESTONE, gatestone, player);
-							if (item == null)
-								return false;
-							World.removeGroundItem(player, item, false);
-							setGatestone(null);
-						}
-					}
-					if (!canCreateGatestone()) {
-						//TODO: Dialogue to destroy current gatestone
-						return false;
-					}
-					player.getInventory().addItem(DungeonConstants.GATESTONE, 1);
-					player.getSkills().addXp(Skills.MAGIC, 43.5);
-					player.setNextAnimation(new Animation(713));
-					player.setNextGraphics(new Graphics(113));
-				} else
-					Magic.processDungSpell(player, componentId, packetId);*/
+			} else if (interfaceId == 950) { // TODO dung spellbook
+				/*
+				 * if (componentId == 2) player.getCombatDefinitions().switchDefensiveCasting(); else if
+				 * (componentId == 7) player.getCombatDefinitions().switchShowCombatSpells(); else if (componentId
+				 * == 9) player.getCombatDefinitions().switchShowTeleportSkillSpells() ; else if (componentId ==
+				 * 11) player.getCombatDefinitions().switchShowMiscallaneousSpells() ; else if (componentId == 13)
+				 * player.getCombatDefinitions().switchShowSkillSpells(); else if (componentId >= 15 & componentId
+				 * <= 17) player.getCombatDefinitions().setSortSpellBook(componentId - 15); else if (componentId ==
+				 * 39 || componentId == 40) stoneTeleport(componentId == 40); else if (componentId == 38) { if
+				 * (packetId == WorldPacketsDecoder.ACTION_BUTTON2_PACKET) { //Quick cast: delete current gatestone
+				 * without asking player.getInventory().deleteItem(DungeonConstants.GATESTONE, 1); if (gatestone !=
+				 * null) { FloorItem item = World.getRegion(gatestone.getRegionId()).getGroundItem(
+				 * DungeonConstants.GATESTONE, gatestone, player); if (item == null) return false;
+				 * World.removeGroundItem(player, item, false); setGatestone(null); } } if (!canCreateGatestone())
+				 * { //TODO: Dialogue to destroy current gatestone return false; }
+				 * player.getInventory().addItem(DungeonConstants.GATESTONE, 1);
+				 * player.getSkills().addXp(Skills.MAGIC, 43.5); player.setNextAnimation(new Animation(713));
+				 * player.setNextGraphics(new Graphics(113)); } else Magic.processDungSpell(player, componentId,
+				 * packetId);
+				 */
 				return false;
 			}
 			return true;
@@ -1196,9 +1187,11 @@ public class DungeonController extends Controller {
 			return;
 		Magic.sendTeleportSpell(player, 13288, 13285, 2516, 2517, group ? 64 : 32, 0, tile, 3, false, Magic.MAGIC_TELEPORT);
 		if (!group) {
-			//player.unlock(); TODO Fix the smuggle this unlocks which lets players be able to be kicked
+			// player.unlock(); TODO Fix the smuggle this unlocks which lets
+			// players be able to be kicked
 			player.setCantWalk(true);
-			player.getEmotesManager().setNextEmoteEnd(3000); //prevents dropping etc
+			player.getEmotesManager().setNextEmoteEnd(3000); // prevents
+			// dropping etc
 			WorldTasksManager.schedule(new WorldTask() {
 				@Override
 				public void run() {
@@ -1210,7 +1203,7 @@ public class DungeonController extends Controller {
 
 	private void portalGroupStoneTeleport() {
 		WorldTile tile = dungeon.getGroupGatestone();
-		if (tile == null) //cant happen
+		if (tile == null) // cant happen
 			return;
 		Magic.sendTeleportSpell(player, 14279, 13285, 2518, 2517, 1, 0, tile, 1, false, Magic.OBJECT_TELEPORT);
 	}
@@ -1247,7 +1240,7 @@ public class DungeonController extends Controller {
 	public void forceClose() {
 		if (dungeon != null)
 			dungeon.getParty().leaveParty(player, false);
-		else { //rollback prevent taking items
+		else { // rollback prevent taking items
 			player.getInventory().reset();
 			player.getEquipment().reset();
 			if (player.getFamiliar() != null)
@@ -1257,7 +1250,7 @@ public class DungeonController extends Controller {
 
 	@Override
 	public boolean logout() {
-		return false; //else removes katalaboss controller
+		return false; // else removes katalaboss controller
 	}
 
 	private void setGatestone(WorldTile gatestone) {

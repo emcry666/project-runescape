@@ -26,7 +26,7 @@ public final class NightGazerKhighorahk extends DungeonBoss {
 
 	public NightGazerKhighorahk(int id, WorldTile tile, DungeonManager manager, RoomReference reference) {
 		super(id, tile, manager, reference);
-		setCantFollowUnderCombat(true); //force cant walk
+		setCantFollowUnderCombat(true); // force cant walk
 	}
 
 	public boolean isSecondStage() {
@@ -39,7 +39,7 @@ public final class NightGazerKhighorahk extends DungeonBoss {
 			secondStage = true;
 			setNextAnimation(new Animation(getCombatDefinitions().getDeathEmote()));
 			setNextNPCTransformation(9739);
-			setCombatLevel((int) (getCombatLevel() * 0.85)); //15% nerf
+			setCombatLevel((int) (getCombatLevel() * 0.85)); // 15% nerf
 			setHitpoints(getMaxHitpoints());
 			resetBonuses();
 			return;
@@ -106,37 +106,18 @@ public final class NightGazerKhighorahk extends DungeonBoss {
 
 	}
 
-	/*  @Override
-	  public void sendDeath(final Entity source) {
-	final NPCCombatDefinitions defs = getCombatDefinitions();
-	resetWalkSteps();
-	getCombat().removeTarget();
-	setNextAnimation(null);
-	WorldTasksManager.schedule(new WorldTask() {
-	    int loop;
-
-	    @Override
-	    public void run() {
-		if (loop == 0) {
-		    setNextAnimation(new Animation(defs.getDeathEmote()));
-		} else if (loop >= defs.getDeathDelay()) {
-		    if (source instanceof Player)
-			((Player) source).getControlerManager().processNPCDeath(NightGazerKhighorahk.this);
-		    drop();
-		    reset();
-		    if (source.getAttackedBy() == NightGazerKhighorahk.this) { //no need to wait after u kill
-			source.setAttackedByDelay(0);
-			source.setAttackedBy(null);
-			source.setFindTargetDelay(0);
-		    }
-		    setCantInteract(true);
-		    setNextNPCTransformation(9781);
-		    stop();
-		}
-		loop++;
-	    }
-	}, 0, 1);
-	getManager().openStairs(getReference());
-	  }*/
+	/*
+	 * @Override public void sendDeath(final Entity source) { final NPCCombatDefinitions defs =
+	 * getCombatDefinitions(); resetWalkSteps(); getCombat().removeTarget(); setNextAnimation(null);
+	 * WorldTasksManager.schedule(new WorldTask() { int loop;
+	 * 
+	 * @Override public void run() { if (loop == 0) { setNextAnimation(new Animation(defs.getDeathEmote())); } else
+	 * if (loop >= defs.getDeathDelay()) { if (source instanceof Player) ((Player)
+	 * source).getControlerManager().processNPCDeath(NightGazerKhighorahk.this); drop(); reset(); if
+	 * (source.getAttackedBy() == NightGazerKhighorahk.this) { //no need to wait after u kill
+	 * source.setAttackedByDelay(0); source.setAttackedBy(null); source.setFindTargetDelay(0); }
+	 * setCantInteract(true); setNextNPCTransformation(9781); stop(); } loop++; } }, 0, 1);
+	 * getManager().openStairs(getReference()); }
+	 */
 
 }

@@ -12,8 +12,7 @@ public class LivingRockStrickerCombat extends CombatScript {
 	@Override
 	public Object[] getKeys() {
 
-		return new Object[]
-		{ 8833 };
+		return new Object[] { 8833 };
 	}
 
 	@Override

@@ -56,7 +56,7 @@ public class GameLauncher {
 	/**
 	 * Whether shutdown has been started
 	 */
-	public static volatile boolean shutdown; 
+	public static volatile boolean shutdown;
 	/**
 	 * Time when delayed shutdown started.
 	 */
@@ -77,10 +77,9 @@ public class GameLauncher {
 		Settings.SPAWN_WORLD = Boolean.parseBoolean(args[3]);
 		Settings.CX_HAMMERSHIELD_ENABLED = Boolean.parseBoolean(args[4]);
 		Settings.init();
-		
-		
+
 		long currentTime = Utils.currentTimeMillis();
-		Logger.log("Launcher", "Initing File System...");  
+		Logger.log("Launcher", "Initing File System...");
 		SerializableFilesManager.init();
 		Logger.log("Launcher", "Initing Cache...");
 		Cache.init();
@@ -323,15 +322,13 @@ public class GameLauncher {
 				continue;
 			PlayerHandlerThread.addSave(player.getUsername(), data);
 		}
-		//no point in saving ppl at lobby. not like they have important data in case of rollbk
-	/*	for (Player player : World.getLobbyPlayers()) {
-			if (player == null)
-				continue;
-			byte[] data = SerializationUtilities.tryStoreObject(player);
-			if (data == null || data.length <= 0)
-				continue;
-			PlayerHandlerThread.addSave(player.getUsername(), data);
-		}*/
+		// no point in saving ppl at lobby. not like they have important data in
+		// case of rollbk
+		/*
+		 * for (Player player : World.getLobbyPlayers()) { if (player == null) continue; byte[] data =
+		 * SerializationUtilities.tryStoreObject(player); if (data == null || data.length <= 0) continue;
+		 * PlayerHandlerThread.addSave(player.getUsername(), data); }
+		 */
 	}
 
 	private static void saveFiles() {
@@ -344,15 +341,14 @@ public class GameLauncher {
 			ItemDefinitions.clearItemsDefinitions();
 			NPCDefinitions.clearNPCDefinitions();
 			ObjectDefinitions.clearObjectDefinitions();
-			/*    skip:for (Region region : World.getRegions().values()) {
-				for(int regionId : MapBuilder.FORCE_LOAD_REGIONS)
-				    if(regionId == region.getRegionId())
-					continue skip;
-				region.unloadMap();
-			    }*/
+			/*
+			 * skip:for (Region region : World.getRegions().values()) { for(int regionId :
+			 * MapBuilder.FORCE_LOAD_REGIONS) if(regionId == region.getRegionId()) continue skip;
+			 * region.unloadMap(); }
+			 */
 		}
 		for (Index index : Cache.STORE.getIndexes())
-			if(index != null) {
+			if (index != null) {
 				index.resetCachedFiles();
 				index.getMainFile().resetCachedArchives();
 			}

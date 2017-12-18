@@ -15,8 +15,7 @@ import com.rs.utils.Utils;
 
 public class CompletionistCape extends Dialogue {
 
-	private static final int[] NPCS =
-	{ 6935, 3283, 4344, 6966 };
+	private static final int[] NPCS = { 6935, 3283, 4344, 6966 };
 
 	@Override
 	public void start() {

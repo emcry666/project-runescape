@@ -51,29 +51,31 @@ public class VoragoInstance extends BossInstance {
 
 	public void leaveBattle(Player player) {
 		synchronized (BossInstanceHandler.LOCK) {
-			player.getTimersManager().removeTimer(); //removes timer without saving, wont do anything if it wasnt enabled yet
+			player.getTimersManager().removeTimer(); // removes timer without
+			// saving, wont do anything
+			// if it wasnt enabled yet
 			playersOnBattle.remove(player);
 			if (playersOnBattle.isEmpty())
 				finishBattle();
 		}
 	}
 
-	//accept challenge
+	// accept challenge
 	public void enterBattle(Player player) {
 		playersOnBattle.add(player);
 		if (playersOnBattle.size() == 1) {
-			//vorago.startBattle(makes vorago head go into first stage)
+			// vorago.startBattle(makes vorago head go into first stage)
 		}
 	}
 
-	//clears the floor and deletes vorago
+	// clears the floor and deletes vorago
 	public void finishBattle() {
-		//vorago.endBattle(makes vorago head go into head)
+		// vorago.endBattle(makes vorago head go into head)
 	}
 
 	@Override
 	public void playMusic(Player player) {
-		if (!isPlayerOnBattle(player)) { //forces no music
+		if (!isPlayerOnBattle(player)) { // forces no music
 			player.getMusicsManager().forcePlayMusic(-2);
 			return;
 		}

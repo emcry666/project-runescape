@@ -21,13 +21,9 @@ import com.rs.utils.Utils;
 
 public class DwarfMultiCannon {
 
-	
-	private static int[] CANNON_PIECES =
-	{ 6, 8, 10, 12 };
-	private static int[] CANNON_OBJECTS =
-	{ 7, 8, 9, 6 };
-	private static int[] CANNON_EMOTES =
-	{ 303, 305, 307, 289, 184, 182, 178, 291 };
+	private static int[] CANNON_PIECES = { 6, 8, 10, 12 };
+	private static int[] CANNON_OBJECTS = { 7, 8, 9, 6 };
+	private static int[] CANNON_EMOTES = { 303, 305, 307, 289, 184, 182, 178, 291 };
 
 	public static void fire(Player player) {
 		if (player.getCannonBalls() < 30) {
@@ -55,7 +51,7 @@ public class DwarfMultiCannon {
 				player.getPackets().sendGameMessage("You need atleast " + space + " inventory spots to pickup your cannon.");
 				return;
 			}
-			if(!OwnedObjectManager.removeObject(player, object))
+			if (!OwnedObjectManager.removeObject(player, object))
 				return;
 			player.lock(3);
 			player.getPackets().sendGameMessage("You pick up the cannon. It's really heavy.");
@@ -65,14 +61,14 @@ public class DwarfMultiCannon {
 				player.getInventory().addItem(2, player.getCannonBalls());
 				player.removeCannonBalls();
 			}
-	
+
 		}
 	}
 
 	public static int getAngle(int i) {
 		return i * 360 / CANNON_EMOTES.length;
 	}
-	
+
 	public static void setUp(Player player) {
 		if (OwnedObjectManager.containsObjectValue(player, CANNON_OBJECTS)) {
 			player.getPackets().sendGameMessage("You can only have one cannon setted at same time.");
@@ -133,7 +129,7 @@ public class DwarfMultiCannon {
 			public void process(Player player, WorldObject currentObject) {
 				if (step != CANNON_PIECES.length || !player.clientHasLoadedMapRegion() || player.hasFinished())
 					return;
-				if (!warned && (disapearTime - Utils.currentTimeMillis()) < 5*1000*60) {
+				if (!warned && (disapearTime - Utils.currentTimeMillis()) < 5 * 1000 * 60) {
 					player.getPackets().sendGameMessage("<col=480000>Your cannon is about to decay!");
 					warned = true;
 				}
@@ -142,7 +138,7 @@ public class DwarfMultiCannon {
 				rotation++;
 				if (rotation == CANNON_EMOTES.length * 2)
 					rotation = 0;
-				if (rotation % 2 == 0) 
+				if (rotation % 2 == 0)
 					return;
 				World.sendObjectAnimation(player, currentObject, new Animation(CANNON_EMOTES[rotation / 2]));
 				NPC nearestN = null;
@@ -150,45 +146,45 @@ public class DwarfMultiCannon {
 				int angle = getAngle(rotation / 2);
 				int objectSizeX = currentObject.getDefinitions().sizeX;
 				int objectSizeY = currentObject.getDefinitions().sizeY;
-				for(int regionId : player.getMapRegionsIds()) {
+				for (int regionId : player.getMapRegionsIds()) {
 					Region region = World.getRegion(regionId);
 					List<Integer> npcIndexes = region.getNPCsIndexes();
 					if (npcIndexes == null)
 						continue;
 					for (int npcIndex : npcIndexes) {
 						NPC npc = World.getNPCs().get(npcIndex);
-						if(npc == null || npc == player.getFamiliar() || npc.isDead() || npc.hasFinished() ||  npc.getPlane() != currentObject.getPlane() || !Utils.isOnRange(npc.getX(), npc.getY(), npc.getSize(), currentObject.getX(), currentObject.getY(), objectSizeX, 10)
-								|| !npc.getDefinitions().hasAttackOption() || !npc.clipedProjectile(currentObject, false) || npc.isCantInteract())
+						if (npc == null || npc == player.getFamiliar() || npc.isDead() || npc.hasFinished() || npc.getPlane() != currentObject.getPlane() || !Utils.isOnRange(npc.getX(), npc.getY(), npc.getSize(), currentObject.getX(), currentObject.getY(), objectSizeX, 10) || !npc.getDefinitions().hasAttackOption() || !npc.clipedProjectile(currentObject, false) || npc.isCantInteract())
 							continue;
-						if(!player.getControlerManager().canHit(npc)) 
+						if (!player.getControlerManager().canHit(npc))
 							continue;
 						int size = npc.getSize();
-						double xOffset = (npc.getX()+size/2) - (currentObject.getX()+objectSizeX/2);
-						double yOffset = (npc.getY()+size/2) - (currentObject.getY()+objectSizeY/2);
+						double xOffset = (npc.getX() + size / 2) - (currentObject.getX() + objectSizeX / 2);
+						double yOffset = (npc.getY() + size / 2) - (currentObject.getY() + objectSizeY / 2);
 						double distance = Math.hypot(xOffset, yOffset);
 						double targetAngle = Math.toDegrees(Math.atan2(xOffset, yOffset));
-						if(targetAngle < 0)
+						if (targetAngle < 0)
 							targetAngle += 360;
-						double ratioAngle = 22.5;//Math.toDegrees(Math.atan(distance)) / 2;
-						if(targetAngle < angle-ratioAngle || targetAngle > angle+ratioAngle || lastD <= distance)
+						double ratioAngle = 22.5;// Math.toDegrees(Math.atan(distance))
+						// / 2;
+						if (targetAngle < angle - ratioAngle || targetAngle > angle + ratioAngle || lastD <= distance)
 							continue;
 						lastD = distance;
 						nearestN = npc;
 					}
 				}
-				if(nearestN != null) {
-				
+				if (nearestN != null) {
+
 					double hitChance = Combat.getHitChance(player, nearestN, player.getCombatDefinitions().getStyle(true), true);
-					
-					int damage = hitChance < Utils.random(100) ? 0 :  Utils.random(700);
-					World.sendProjectile(currentObject.transform(objectSizeX/2, objectSizeY/2, 0), nearestN, 53, 38, 38, 30, 40, 0, 0);
+
+					int damage = hitChance < Utils.random(100) ? 0 : Utils.random(700);
+					World.sendProjectile(currentObject.transform(objectSizeX / 2, objectSizeY / 2, 0), nearestN, 53, 38, 38, 30, 40, 0, 0);
 					nearestN.applyHit(new Hit(player, damage, HitLook.CANNON_DAMAGE, 60));
 					player.addCannonBalls(-1);
 					boolean twoBalls = player.getCannonBalls() > 0 && Utils.random(4) == 0;
 					player.getSkills().addXp(Skills.RANGE, damage / 5);
-					if(twoBalls) {
+					if (twoBalls) {
 						damage = hitChance < Utils.random(100) ? 0 : Utils.random(700);
-						World.sendProjectile(currentObject.transform(objectSizeX/2, objectSizeY/2, 0), nearestN, 53, 38, 38, 30, 60, 0, 0);
+						World.sendProjectile(currentObject.transform(objectSizeX / 2, objectSizeY / 2, 0), nearestN, 53, 38, 38, 30, 60, 0, 0);
 						nearestN.applyHit(new Hit(player, damage, HitLook.CANNON_DAMAGE, 80));
 						player.getSkills().addXp(Skills.RANGE, damage / 5);
 						player.addCannonBalls(-1);

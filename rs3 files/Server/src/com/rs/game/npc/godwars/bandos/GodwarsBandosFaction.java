@@ -44,7 +44,7 @@ public class GodwarsBandosFaction extends NPC {
 			if (item == null)
 				continue; // shouldn't happen
 			String name = item.getDefinitions().getName().toLowerCase();
-			if(name.contains("bandos") || name.contains("book of war") || name.contains("ancient mace") || name.contains("granite mace") || ZarosMinion.isNexArmour(name))
+			if (name.contains("bandos") || name.contains("book of war") || name.contains("ancient mace") || name.contains("granite mace") || ZarosMinion.isNexArmour(name))
 				return true;
 		}
 		return false;

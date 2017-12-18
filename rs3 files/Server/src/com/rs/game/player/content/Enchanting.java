@@ -13,62 +13,22 @@ public class Enchanting {
 	/**
 	 * Jewelry stuff
 	 */
-	private static byte[] JEWLERY_LEVELS =
-	{ 7, 27, 49, 57, 68, 87 };
-	private static short[][] JEWLERY_NODES =
-	{
-	{ 1694, 1637, 1658, 11072 },
-	{ 1639, 1658, 1696, 11076 },
-	{ 1641, 1660, 1698, 11086 },
-	{ 1643, 1662, 1700, 11092 },
-	{ 1645, 1664, 1702, 11115 },
-	{ 6575, 6581, 6577, 11130 } };
-	private static short[][] JEWLERY_PRODUCT =
-	{
-	{ 1727, 2550, 3853, 11074 },
-	{ 2552, 12622, 1729, 11079 },
-	{ 2568, 11194, 1725, 11088 },
-	{ 2570, 11090, 1731, 11095 },
-	{ 2572, 11105, 1712, 11118 },
-	{ 6583, 6585, 11128, 11133 } };
-	private static int[][] JEWLERY_RUNES =
-	{
-	{ 564, 1, 555, 1 },
-	{ 564, 1, 556, 1 },
-	{ 564, 1, 554, 5 },
-	{ 564, 1, 557, 10 },
-	{ 557, 15, 555, 15 },
-	{ 557, 20, 554, 20 }, };
-	private static short[] JEWLERY_ANIMATIONS =
-	{ 719, 720, 721, 719, 720, 720 };
-	private static short[] JEWLERY_GRAPHICS =
-	{ 114, 115, 115, 153, 154, 154 };
-	private static double[] JEWLERY_EXPERIENCE =
-	{ 17.5, 37, 59, 67, 78, 97 };
+	private static byte[] JEWLERY_LEVELS = { 7, 27, 49, 57, 68, 87 };
+	private static short[][] JEWLERY_NODES = { { 1694, 1637, 1658, 11072 }, { 1639, 1658, 1696, 11076 }, { 1641, 1660, 1698, 11086 }, { 1643, 1662, 1700, 11092 }, { 1645, 1664, 1702, 11115 }, { 6575, 6581, 6577, 11130 } };
+	private static short[][] JEWLERY_PRODUCT = { { 1727, 2550, 3853, 11074 }, { 2552, 12622, 1729, 11079 }, { 2568, 11194, 1725, 11088 }, { 2570, 11090, 1731, 11095 }, { 2572, 11105, 1712, 11118 }, { 6583, 6585, 11128, 11133 } };
+	private static int[][] JEWLERY_RUNES = { { 564, 1, 555, 1 }, { 564, 1, 556, 1 }, { 564, 1, 554, 5 }, { 564, 1, 557, 10 }, { 557, 15, 555, 15 }, { 557, 20, 554, 20 }, };
+	private static short[] JEWLERY_ANIMATIONS = { 719, 720, 721, 719, 720, 720 };
+	private static short[] JEWLERY_GRAPHICS = { 114, 115, 115, 153, 154, 154 };
+	private static double[] JEWLERY_EXPERIENCE = { 17.5, 37, 59, 67, 78, 97 };
 
 	/**
 	 * Bolt stuff
 	 */
-	private static short[] BOLT_NODES =
-	{ 879, 9337, 9335, 880, 9338, 9336, 9339, 9340, 9341, 9342 };
-	private static short[] BOLT_PRODCUTS =
-	{ 9236, 9240, 9237, 9238, 9241, 9239, 9242, 9243, 9244, 9245 };
-	private static int[][] BOLT_RUNES =
-	{
-	{ 564, 1, 556, 2 },
-	{ 564, 1, 555, 1, 558, 1 },
-	{ 564, 1, 557, 2 },
-	{ 564, 1, 555, 2 },
-	{ 564, 1, 556, 3, 561, 1 },
-	{ 564, 1, 554, 2 },
-	{ 564, 1, 554, 5, 565, 1 },
-	{ 564, 1, 557, 10, 563, 2 },
-	{ 564, 1, 557, 15, 566, 1 },
-	{ 564, 1, 554, 20, 560, 1 } };
-	private static double[] BOLT_EXPERIENCE =
-	{ 9, 17, 19, 29, 37, 33, 59, 67, 78, 97 };
-	private static byte[] BOLT_LEVELS =
-	{ 4, 7, 14, 24, 27, 29, 49, 57, 68, 87 };
+	private static short[] BOLT_NODES = { 879, 9337, 9335, 880, 9338, 9336, 9339, 9340, 9341, 9342 };
+	private static short[] BOLT_PRODCUTS = { 9236, 9240, 9237, 9238, 9241, 9239, 9242, 9243, 9244, 9245 };
+	private static int[][] BOLT_RUNES = { { 564, 1, 556, 2 }, { 564, 1, 555, 1, 558, 1 }, { 564, 1, 557, 2 }, { 564, 1, 555, 2 }, { 564, 1, 556, 3, 561, 1 }, { 564, 1, 554, 2 }, { 564, 1, 554, 5, 565, 1 }, { 564, 1, 557, 10, 563, 2 }, { 564, 1, 557, 15, 566, 1 }, { 564, 1, 554, 20, 560, 1 } };
+	private static double[] BOLT_EXPERIENCE = { 9, 17, 19, 29, 37, 33, 59, 67, 78, 97 };
+	private static byte[] BOLT_LEVELS = { 4, 7, 14, 24, 27, 29, 49, 57, 68, 87 };
 
 	public static void processMagicEnchantSpell(Player player, int slot, int primaryIndex) {
 		Item item = player.getInventory().getItem(slot);
@@ -82,8 +42,7 @@ public class Enchanting {
 		if (secondaryIndex == -1) {
 			player.getPackets().sendGameMessage("This spell can only be cast on amulets, necklaces, rings, braclets or shapes in the training arena.");
 			return;
-		}
-		else if (!Magic.checkRunes(player, true, JEWLERY_RUNES[primaryIndex]))
+		} else if (!Magic.checkRunes(player, true, JEWLERY_RUNES[primaryIndex]))
 			return;
 		player.lock(3);
 		player.setNextAnimation(new Animation(JEWLERY_ANIMATIONS[primaryIndex]));

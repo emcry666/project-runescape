@@ -26,7 +26,7 @@ public class Banker extends Dialogue {
 			} else if (componentId == OPTION_2) {
 				player.getBank().openPinSettings(false);
 				end();
-				//stage = 10;
+				// stage = 10;
 			} else if (componentId == OPTION_3) {
 				player.getGeManager().openCollectionBox();
 				end();

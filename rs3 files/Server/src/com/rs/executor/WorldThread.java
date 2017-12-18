@@ -20,9 +20,10 @@ public final class WorldThread extends Thread {
 	@Override
 	public final void run() {
 		while (!GameExecutorManager.executorShutdown) {
-			WORLD_CYCLE++; //made the cycle update at begin instead of end cuz at end theres 600ms then to next cycle
+			WORLD_CYCLE++; // made the cycle update at begin instead of end cuz
+			// at end theres 600ms then to next cycle
 			long currentTime = Utils.currentTimeMillis();
-			//     long debug = Utils.currentTimeMillis();
+			// long debug = Utils.currentTimeMillis();
 			WorldTasksManager.processTasks();
 			try {
 				for (Player player : World.getPlayers()) {
@@ -54,7 +55,8 @@ public final class WorldThread extends Thread {
 			}
 			try {
 				// //
-				// System.out.print(" ,NPCS PROCESS: "+(Utils.currentTimeMillis()-debug));
+				// System.out.print(" ,NPCS PROCESS:
+				// "+(Utils.currentTimeMillis()-debug));
 				// debug = Utils.currentTimeMillis();
 
 				for (Player player : World.getPlayers()) {
@@ -62,7 +64,8 @@ public final class WorldThread extends Thread {
 						continue;
 					player.getPackets().sendLocalPlayersUpdate();
 					player.getPackets().sendLocalNPCsUpdate();
-					player.processProjectiles();//waits for player to walk and so on
+					player.processProjectiles();// waits for player to walk and
+					// so on
 				}
 			} catch (Throwable e) {
 				Logger.handle(e);
@@ -73,7 +76,9 @@ public final class WorldThread extends Thread {
 				Logger.handle(e);
 			}
 			try {
-				// System.out.print(" ,PLAYER UPDATE: "+(Utils.currentTimeMillis()-debug)+", "+World.getPlayers().size()+", "+World.getNPCs().size());
+				// System.out.print(" ,PLAYER UPDATE:
+				// "+(Utils.currentTimeMillis()-debug)+",
+				// "+World.getPlayers().size()+", "+World.getNPCs().size());
 				// debug = Utils.currentTimeMillis();
 				for (Player player : World.getPlayers()) {
 					if (!player.hasStarted() || player.hasFinished())
@@ -94,20 +99,23 @@ public final class WorldThread extends Thread {
 					if (!player.hasStarted() || player.hasFinished())
 						continue;
 					if (!player.getSession().getChannel().isConnected())
-						player.finish(); //requests finish, wont do anything if already requested btw
+						player.finish(); // requests finish, wont do anything if
+					// already requested btw
 				}
 				for (Player player : World.getLobbyPlayers()) {
 					if (!player.hasStarted() || player.hasFinished())
 						continue;
 					if (!player.getSession().getChannel().isConnected())
-						player.finish(); //requests finish, wont do anything if already requested btw
+						player.finish(); // requests finish, wont do anything if
+					// already requested btw
 				}
 			} catch (Throwable e) {
 				Logger.handle(e);
 			}
 
 			// //
-			// Logger.log(this, "TOTAL: "+(Utils.currentTimeMillis()-currentTime));
+			// Logger.log(this, "TOTAL:
+			// "+(Utils.currentTimeMillis()-currentTime));
 			long sleepTime = Settings.WORLD_CYCLE_TIME + currentTime - Utils.currentTimeMillis();
 			if (sleepTime <= 0)
 				continue;

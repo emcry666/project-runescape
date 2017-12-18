@@ -19,8 +19,7 @@ public enum QueenState {
 	DEFAULT(15454, null),
 
 	/**
-	 * The crystal armour state (weak to physical attacks, strong against
-	 * magic).
+	 * The crystal armour state (weak to physical attacks, strong against magic).
 	 */
 	CRYSTAL_ARMOUR(15506, "<col=66FFFF>The Queen Black Dragon takes the consistency of crystal; she is more resistant to</col>(nl)<col=66FFFF>magic, but weaker to physical damage.</col>"),
 
@@ -42,10 +41,8 @@ public enum QueenState {
 	/**
 	 * Constructs a new {@code QueenState} {@code Object}.
 	 * 
-	 * @param npcId
-	 *            The NPC id.
-	 * @param message
-	 *            The message to send.
+	 * @param npcId The NPC id.
+	 * @param message The message to send.
 	 */
 	private QueenState(int npcId, String message) {
 		this.npcId = npcId;

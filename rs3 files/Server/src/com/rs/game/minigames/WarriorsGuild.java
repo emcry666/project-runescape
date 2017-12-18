@@ -41,8 +41,7 @@ public class WarriorsGuild extends Controller {
 	}
 
 	/**
-	 * Static timer used for accurate measure within the
-	 * "Warrior's Guild Minigame".
+	 * Static timer used for accurate measure within the "Warrior's Guild Minigame".
 	 * 
 	 * @author Khaled
 	 * 
@@ -60,8 +59,7 @@ public class WarriorsGuild extends Controller {
 		private double lastDummy;
 
 		/**
-		 * The projectile placeholder in order to properly check the
-		 * "Catapult Minigame".
+		 * The projectile placeholder in order to properly check the "Catapult Minigame".
 		 */
 		public byte projectileType;
 
@@ -97,43 +95,22 @@ public class WarriorsGuild extends Controller {
 	/**
 	 * Animation Activity (Combat)
 	 */
-	public static final double[] ARMOR_POINTS =
-	{ 5, 10, 15, 20, 50, 60, 80 };
-	public static final int[][] ARMOUR_SET =
-	{
-	{ 1155, 1117, 1075 },
-	{ 1153, 1115, 1067 },
-	{ 1157, 1119, 1069 },
-	{ 1165, 1125, 1077 },
-	{ 1159, 1121, 1071 },
-	{ 1161, 1123, 1073 },
-	{ 1163, 1127, 1079 } };
-	private static final String[] ARMOUR_TYPE =
-	{ "Bronze", "Iron", "Steel", "Black", "Mithril", "Adamant", "Rune" };
+	public static final double[] ARMOR_POINTS = { 5, 10, 15, 20, 50, 60, 80 };
+	public static final int[][] ARMOUR_SET = { { 1155, 1117, 1075 }, { 1153, 1115, 1067 }, { 1157, 1119, 1069 }, { 1165, 1125, 1077 }, { 1159, 1121, 1071 }, { 1161, 1123, 1073 }, { 1163, 1127, 1079 } };
+	private static final String[] ARMOUR_TYPE = { "Bronze", "Iron", "Steel", "Black", "Mithril", "Adamant", "Rune" };
 
 	/**
 	 * Dummy Activity (Attack)
 	 */
-	private static final WorldTile[] DUMMY_LOCATIONS =
-	{
-		new WorldTile(2860, 3549, 0),
-		new WorldTile(2860, 3547, 0),
-		new WorldTile(2859, 3545, 0),
-		new WorldTile(2857, 3545, 0),
-		new WorldTile(2855, 3546, 0),
-		new WorldTile(2855, 3548, 0),
-		new WorldTile(2856, 3550, 0),
-		new WorldTile(2858, 3550, 0) };
-	private static final int[] DUMMY_ROTATIONS =
-	{ 1, 1, 2, 2, 3, 3, 0, 0 };
+	private static final WorldTile[] DUMMY_LOCATIONS = { new WorldTile(2860, 3549, 0), new WorldTile(2860, 3547, 0), new WorldTile(2859, 3545, 0), new WorldTile(2857, 3545, 0), new WorldTile(2855, 3546, 0), new WorldTile(2855, 3548, 0), new WorldTile(2856, 3550, 0), new WorldTile(2858, 3550, 0) };
+	private static final int[] DUMMY_ROTATIONS = { 1, 1, 2, 2, 3, 3, 0, 0 };
 
 	/**
 	 * Catapult Activity (Defence)
 	 */
 	private static final WorldTile CATAPULT_TARGET = new WorldTile(2842, 3541, 1);
 	private static final NPC CATAPULT_PROJECTILE_BASE = new NPC(1957, new WorldTile(2842, 3550, 1), -1, false);
-	private static final Animation[] DEFENCIVE_ANIMATIONS = new Animation[]
-	{ new Animation(4169), new Animation(4168), new Animation(4171), new Animation(4170) };
+	private static final Animation[] DEFENCIVE_ANIMATIONS = new Animation[] { new Animation(4169), new Animation(4168), new Animation(4171), new Animation(4170) };
 	private static final WorldObject CATAPULT = new WorldObject(15616, 10, 0, 2840, 3548, 1);
 
 	/**
@@ -144,8 +121,7 @@ public class WarriorsGuild extends Controller {
 	/**
 	 * Cylopes Activity
 	 */
-	private static final int[] DEFENDERS =
-	{ 20072, 8850, 8849, 8848, 8847, 8846, 8845, 8844 };
+	private static final int[] DEFENDERS = { 20072, 8850, 8849, 8848, 8847, 8846, 8845, 8844 };
 	public static final WorldTile CYCLOPS_LOBBY = new WorldTile(2843, 3535, 2);
 
 	/**
@@ -164,13 +140,13 @@ public class WarriorsGuild extends Controller {
 	private transient double lastDummy;
 
 	/**
-     * 
-     */
+	* 
+	*/
 	private transient byte kegCount;
 
 	/**
-     * 
-     */
+	* 
+	*/
 	private transient int kegTicks;
 
 	public boolean inCyclopse;
@@ -179,8 +155,7 @@ public class WarriorsGuild extends Controller {
 	/**
 	 * If you have the required levels for proper enterance.
 	 * 
-	 * @param player
-	 *            The player we are checking.
+	 * @param player The player we are checking.
 	 * @return whether or not the door will open.
 	 */
 	public static boolean canEnter(Player player) {
@@ -197,8 +172,7 @@ public class WarriorsGuild extends Controller {
 	@Override
 	public void start() {
 		if (getArguments() == null || getArguments().length != 2)
-			setArguments(new Object[]
-			{ false, -1 });
+			setArguments(new Object[] { false, -1 });
 		if (amountOfPlayers == 0)
 			init();
 		inCyclopse = (boolean) getArguments()[0];
@@ -319,8 +293,8 @@ public class WarriorsGuild extends Controller {
 				return false;
 			player.lock(2);
 			WorldObject opened = new WorldObject(object.getId(), object.getType(), object.getRotation() - 1, object.getX(), object.getY(), object.getPlane());
-			//TODO: properly fix
-			//World.spawnObjectTemporary(opened, 600);
+			// TODO: properly fix
+			// World.spawnObjectTemporary(opened, 600);
 			boolean inLobby = player.getY() == object.getY();
 			if (object.getId() == 15647) {
 				if (!inLobby) {
@@ -341,7 +315,7 @@ public class WarriorsGuild extends Controller {
 				resetKegBalance();
 			player.lock(2);
 			WorldObject opened = new WorldObject(object.getId(), object.getType(), object.getRotation() - 1, object.getX(), object.getY(), object.getPlane());
-			//World.spawnObjectTemporary(opened, 600);
+			// World.spawnObjectTemporary(opened, 600);
 			player.addWalkSteps(player.getX() == object.getX() ? object.getX() + (object.getId() == 66758 ? -1 : 1) : object.getX(), object.getY(), 1, false);
 			return false;
 		} else if (object.getId() >= 15669 && object.getId() <= 15673) {
@@ -358,7 +332,7 @@ public class WarriorsGuild extends Controller {
 					return false;
 				player.lock(2);
 				WorldObject opened = new WorldObject(object.getId(), object.getType(), object.getRotation() - 1, object.getX(), object.getY(), object.getPlane());
-				//World.spawnObjectTemporary(opened, 600);
+				// World.spawnObjectTemporary(opened, 600);
 				player.addWalkSteps(withinArea ? object.getX() + 1 : object.getX(), object.getY(), 1, false);
 				inCyclopse = false;
 			} else
@@ -426,14 +400,29 @@ public class WarriorsGuild extends Controller {
 	private static int getIndex(Player player, int checkedId) {
 		for (int primaryLoop = 0; primaryLoop < ARMOUR_SET.length; primaryLoop++) {
 			for (int secondaryLoop = 0; secondaryLoop < ARMOUR_SET[primaryLoop].length; secondaryLoop++) {
-				if (ARMOUR_SET[primaryLoop][secondaryLoop] == checkedId) {//if ur item is this, we continue
-					for (int equipmentId : ARMOUR_SET[primaryLoop]) {//re-loops through items and checks
-						if (!player.getInventory().containsItem(equipmentId, 1)) {//if you don't have it
+				if (ARMOUR_SET[primaryLoop][secondaryLoop] == checkedId) {// if
+					// ur
+					// item
+					// is
+					// this,
+					// we
+					// continue
+					for (int equipmentId : ARMOUR_SET[primaryLoop]) {// re-loops
+						// through
+						// items
+						// and
+						// checks
+						if (!player.getInventory().containsItem(equipmentId, 1)) {// if
+							// you
+							// don't
+							// have
+							// it
 							player.getPackets().sendGameMessage("You need a full set of " + ARMOUR_TYPE[primaryLoop] + " to use the animator.");
 							return -1;// this stops it completely
 						}
 					}
-					return primaryLoop;//Once re-run loop ends it's obviously correct so we should give it ^.^
+					return primaryLoop;// Once re-run loop ends it's obviously
+					// correct so we should give it ^.^
 				}
 			}
 		}
@@ -443,8 +432,7 @@ public class WarriorsGuild extends Controller {
 	/**
 	 * Attacking a dummy during the "Dummy Activity".
 	 * 
-	 * @param object
-	 *            The object we are striking.
+	 * @param object The object we are striking.
 	 */
 	private void submitDummyHit(final WorldObject object) {
 		player.setNextAnimation(new Animation(PlayerCombatNew.getAttackAnimation(player, true)));
@@ -590,22 +578,19 @@ public class WarriorsGuild extends Controller {
 	 */
 	private void sendShieldInterfaces() {
 		player.getInterfaceManager().setWindowInterface(player.getInterfaceManager().hasRezizableScreen() ? 116 : 176, 411);
-	//	player.getInterfaceManager().closeCombatStyles();
-/*		player.getInterfaceManager().closeTaskSystem();
-		player.getInterfaceManager().closeSkills();
-		player.getInterfaceManager().closeInventory();
-		player.getInterfaceManager().closePrayerBook();
-		player.getInterfaceManager().closeMagicBook();
-		player.getInterfaceManager().closeEmotes();
-		player.getInterfaceManager().openGameTab(5);*/
+		// player.getInterfaceManager().closeCombatStyles();
+		/*
+		 * player.getInterfaceManager().closeTaskSystem(); player.getInterfaceManager().closeSkills();
+		 * player.getInterfaceManager().closeInventory(); player.getInterfaceManager().closePrayerBook();
+		 * player.getInterfaceManager().closeMagicBook(); player.getInterfaceManager().closeEmotes();
+		 * player.getInterfaceManager().openGameTab(5);
+		 */
 	}
 
 	/**
-	 * A check to see if the player is within the "Catapult Activity"
-	 * boundaries.
+	 * A check to see if the player is within the "Catapult Activity" boundaries.
 	 * 
-	 * @param player
-	 *            The player we are checking.
+	 * @param player The player we are checking.
 	 * @return If the player is within the "Catapult Activity".
 	 */
 	public static boolean inCatapultArea(Player player) {
@@ -626,8 +611,7 @@ public class WarriorsGuild extends Controller {
 	public boolean logout() {
 		resetKegBalance();
 		amountOfPlayers--;
-		this.setArguments(new Object[]
-		{ this.inCyclopse, this.cyclopseOption });
+		this.setArguments(new Object[] { this.inCyclopse, this.cyclopseOption });
 		return false;
 	}
 

@@ -14,8 +14,7 @@ public class AberrantSpectre extends CombatScript {
 
 	@Override
 	public Object[] getKeys() {
-		return new Object[]
-		{ "Aberrant spectre" };
+		return new Object[] { "Aberrant spectre" };
 	}
 
 	@Override

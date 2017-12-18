@@ -13,8 +13,7 @@ public class CutPlank extends Action {
 	private int amount;
 	private int type;
 
-	private static double[] XP =
-	{ 15, 18, 25, 22 };
+	private static double[] XP = { 15, 18, 25, 22 };
 
 	public CutPlank(int type, int amount, SawmillController sawmill) {
 		this.type = type;
@@ -41,12 +40,8 @@ public class CutPlank extends Action {
 	}
 
 	/*
-	 *   this.shortPlank = shortPlank;
-	    this.longPlank = longPlank;
-	    this.diagonalPlank = diagonalPlank;
-	    this.toothPlank = toothPlank;
-	    this.groovePlank = groovePlank;
-	    this.curvedPlank = curvedPlank;
+	 * this.shortPlank = shortPlank; this.longPlank = longPlank; this.diagonalPlank = diagonalPlank;
+	 * this.toothPlank = toothPlank; this.groovePlank = groovePlank; this.curvedPlank = curvedPlank;
 	 */
 
 	@Override

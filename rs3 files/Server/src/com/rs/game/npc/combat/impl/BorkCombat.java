@@ -11,10 +11,8 @@ public class BorkCombat extends CombatScript {
 
 	@Override
 	public Object[] getKeys() {
-		return new Object[]
-		{ "Bork" };
+		return new Object[] { "Bork" };
 	}
-
 
 	@Override
 	public int attack(NPC npc, Entity target) {

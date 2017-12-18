@@ -24,21 +24,21 @@ public class ItemConstants {
 		// Nex Armor
 		if (id == 20137 || id == 20141 || id == 20145 || id == 20149 || id == 20153 || id == 20157 || id == 20161 || id == 20165 || id == 20169)
 			return 60000 * Settings.getDegradeGearRate(); // 10 hour
-		//Crystal bow
+		// Crystal bow
 		if (id == 4214 || id == 4215 || id == 4216 || id == 4217 || id == 4218 || id == 4219 || id == 4220 || id == 4221 || id == 4222 || id == 4223)
 			return 250;
 		if (id == 4225 || id == 4226 || id == 4227 || id == 4228 || id == 4229 || id == 4230 || id == 4231 || id == 4232 || id == 4233 || id == 4234)
 			return 250;
-		//barrows degraded already
+		// barrows degraded already
 		if ((id >= 21762 && id <= 21765) || (id >= 21754 && id <= 21757) || (id >= 21746 && id <= 21749) || (id >= 21738 && id <= 21741) || (id >= 4856 && id <= 4859) || (id >= 4862 && id <= 4865) || (id >= 4868 && id <= 4871) || (id >= 4874 && id <= 4877) || (id >= 4880 && id <= 4883) || (id >= 4886 && id <= 4889) || (id >= 4892 && id <= 4895) || (id >= 4898 && id <= 4901) || (id >= 4904 && id <= 4907) || (id >= 4910 && id <= 4913) || (id >= 4916 && id <= 4919) || (id >= 4922 && id <= 4925) || (id >= 4928 && id <= 4931) || (id >= 4934 && id <= 4937) || (id >= 4940 && id <= 4943) || (id >= 4946 && id <= 4949) || (id >= 4952 && id <= 4955) || (id >= 4958 && id <= 4961) || (id >= 4964 && id <= 4967) || (id >= 4970 && id <= 4973) || (id >= 4976 && id <= 4979) || (id >= 4982 && id <= 4985) || (id >= 4988 && id <= 4991) || (id >= 4994 && id <= 4997))
 			return 30000 * Settings.getDegradeGearRate();
 		if (id >= 24450 && id <= 24454) // rouge gloves
 			return 6000;
 		if (id >= 22358 && id <= 22369) // dominion gloves
 			return 24000 * Settings.getDegradeGearRate();
-		if (id == 22444) //neem oil
+		if (id == 22444) // neem oil
 			return 2000;
-		//polipore armors
+		// polipore armors
 		if (id == 22460 || id == 22464 || id == 22468 || id == 22472 || id == 22476 || id == 22480 || id == 22484 || id == 22488 || id == 22492)
 			return 60000 * Settings.getDegradeGearRate(); // 10 hour
 		if (id == 18349 || id == 18351 || id == 18353 || id == 18355 || id == 18357 || id == 18359 || id == 18361 || id == 18363 || id == 18365 || id == 18367 || id == 18369 || id == 18371 || id == 18373)
@@ -57,9 +57,9 @@ public class ItemConstants {
 	 */
 	public static boolean itemDegradesInDeath(int id) {
 		if (id == 22460 || id == 22464 || id == 22468 || id == 22472 || id == 22476 || id == 22480 || id == 22484 || id == 22488 || id == 22492)
-			return false;//polypore
+			return false;// polypore
 		if (id == 18349 || id == 18351 || id == 18353 || id == 18355 || id == 18357 || id == 18359 || id == 18361 || id == 18363 || id == 18365 || id == 18367 || id == 18369 || id == 18371 || id == 18373)
-			return false;//choatics
+			return false;// choatics
 		return true;
 	}
 
@@ -68,41 +68,41 @@ public class ItemConstants {
 	public static int getItemDegrade(int id) {
 		if (id == 11283) // DFS
 			return 11284;
-		if (id == 22444) //neem oil
+		if (id == 22444) // neem oil
 			return 1935;
 		// nex armors
 		if (id == 20137 || id == 20141 || id == 20145 || id == 20149 || id == 20153 || id == 20157 || id == 20161 || id == 20165 || id == 20169)
 			return id + 1;
-		//dung items (chaotics)
+		// dung items (chaotics)
 		if (id == 18349 || id == 18351 || id == 18353 || id == 18355 || id == 18357 || id == 18359 || id == 18361 || id == 18363 || id == 18365 || id == 18367 || id == 18369 || id == 18371 || id == 18373)
 			return id + 1;
-		//new barrows equipment
+		// new barrows equipment
 		if (id == 4708 || id == 4710 || id == 4712 || id == 4714 || id == 4716 || id == 4718 || id == 4720 || id == 4722 || id == 4724 || id == 4726 || id == 4728 || id == 4730 || id == 4732 || id == 4734 || id == 4736 || id == 4738)
 			return 4856 + (((id - 4708) / 2) * 6);
 		if (id == 4745 || id == 4747 || id == 4749 || id == 4751 || id == 4753 || id == 4756 || id == 4759)
 			return 4952 + (((id - 4745) / 2) * 6);
 		if (id == 21736 || id == 21744 || id == 21752 || id == 21760)
 			return id + 2;
-		//barrows degraded
+		// barrows degraded
 		if ((id >= 4856 && id <= 4859) || (id >= 4862 && id <= 4865) || (id >= 4868 && id <= 4871) || (id >= 4874 && id <= 4877) || (id >= 4880 && id <= 4883) || (id >= 4886 && id <= 4889) || (id >= 4892 && id <= 4895) || (id >= 4898 && id <= 4901) || (id >= 4904 && id <= 4907) || (id >= 4910 && id <= 4913) || (id >= 4916 && id <= 4919) || (id >= 4922 && id <= 4925) || (id >= 4928 && id <= 4931) || (id >= 4934 && id <= 4937) || (id >= 4940 && id <= 4943) || (id >= 4946 && id <= 4949) || (id >= 4952 && id <= 4955) || (id >= 4958 && id <= 4961) || (id >= 4964 && id <= 4967) || (id >= 4970 && id <= 4973) || (id >= 4976 && id <= 4979) || (id >= 4982 && id <= 4985) || (id >= 4988 && id <= 4991) || (id >= 4994 && id <= 4997))
 			return id + 1;
-		//Crystal bow
+		// Crystal bow
 		if (id == 4214 || id == 4215 || id == 4216 || id == 4217 || id == 4218 || id == 4219 || id == 4220 || id == 4221 || id == 4222)
 			return id + 1;
-		//Crystal shield
+		// Crystal shield
 		if (id == 4225 || id == 4226 || id == 4227 || id == 4228 || id == 4229 || id == 4230 || id == 4231 || id == 4232 || id == 4233)
 			return id + 1;
 		if (id == 4223 || id == 4234)
 			return 4207;
-		//visor
+		// visor
 		if (id == 22460 || id == 22472 || id == 22484)
 			return 22452;
 		if (id == 22464 || id == 22476 || id == 22488)
 			return 22454;
 		if (id == 22468 || id == 22480 || id == 22492)
 			return 22456;
-		if (id == 22496) //polypore staff
-			return 22498; //stick
+		if (id == 22496) // polypore staff
+			return 22498; // stick
 		if (id == 20173)
 			return 20174;
 		return -1;
@@ -121,19 +121,19 @@ public class ItemConstants {
 		// Nex and Pvp
 		if (id == 20135 || id == 20139 || id == 20143 || id == 20147 || id == 20151 || id == 20155 || id == 20159 || id == 20163 || id == 20167 || id == 20171 || id == 13858 || id == 13861 || id == 13864 || id == 13867 || id == 13870 || id == 13873 || id == 13876 || id == 13884 || id == 13887 || id == 13890 || id == 13893 || id == 13896 || id == 13905 || id == 13902 || id == 13899)
 			return id + 2;
-		//polipore armors
+		// polipore armors
 		if (id == 22458 || id == 22462 || id == 22466 || id == 22470 || id == 22474 || id == 22478 || id == 22482 || id == 22486 || id == 22490)
 			return id + 2;
-		//Crystal bow new
+		// Crystal bow new
 		if (id == 4212)
 			return id + 2;
-		//Crystal bow shield new
+		// Crystal bow shield new
 		if (id == 4224)
 			return id + 1;
-		//polypore staff
+		// polypore staff
 		if (id == 22494)
 			return id + 2;
-		//new barrows equipment
+		// new barrows equipment
 		if (id == 4708 || id == 4710 || id == 4712 || id == 4714 || id == 4716 || id == 4718 || id == 4720 || id == 4722 || id == 4724 || id == 4726 || id == 4728 || id == 4730 || id == 4732 || id == 4734 || id == 4736 || id == 4738)
 			return 4856 + (((id - 4708) / 2) * 6);
 		if (id == 4745 || id == 4747 || id == 4749 || id == 4751 || id == 4753 || id == 4756 || id == 4759)
@@ -151,8 +151,9 @@ public class ItemConstants {
 
 	// removes a charge per ticket when wearing this
 	public static boolean itemDegradesWhileWearing(int id) {
-		//	String name = ItemDefinitions.getItemDefinitions(id).getName().toLowerCase();
-		if (id >= 13908 && id <= 13990) //pvp gear corrupt
+		// String name =
+		// ItemDefinitions.getItemDefinitions(id).getName().toLowerCase();
+		if (id >= 13908 && id <= 13990) // pvp gear corrupt
 			return true;
 		return false;
 	}
@@ -160,9 +161,9 @@ public class ItemConstants {
 	// removes a charge per ticket when wearing this and attacking
 	public static boolean itemDegradesWhileCombating(int id) {
 		// nex armors
-		if (id == 20135 || id == 20137 || id == 20139 || id == 20141  || id == 20143 || id == 20145 || id == 20147 || id == 20149 || id == 20151 || id == 20153 || id == 20155 || id == 20157 || id == 20159 || id == 20161 || id == 20163 || id == 20165 || id == 20167 || id == 20169)
+		if (id == 20135 || id == 20137 || id == 20139 || id == 20141 || id == 20143 || id == 20145 || id == 20147 || id == 20149 || id == 20151 || id == 20153 || id == 20155 || id == 20157 || id == 20159 || id == 20161 || id == 20163 || id == 20165 || id == 20167 || id == 20169)
 			return true; // 10 hour
-		//polypore gear
+		// polypore gear
 		if (id == 22460 || id == 22464 || id == 22468 || id == 22472 || id == 22476 || id == 22480 || id == 22484 || id == 22488 || id == 22492)
 			return true;
 		if (id == 20173) // zaryte bow
@@ -173,11 +174,11 @@ public class ItemConstants {
 				|| id >= 22358 && id <= 22369) // dominion gloves
 			return true;
 
-		if (id >= 13858 && id <= 13907) //pvp gear non corrupt
+		if (id >= 13858 && id <= 13907) // pvp gear non corrupt
 			return true;
 		if (id == 4745 || id == 4747 || id == 4749 || id == 4751 || id == 4753 || id == 4756 || id == 4759 || id == 21736 || id == 21744 || id == 21752 || id == 21760 || id == 4708 || id == 4710 || id == 4712 || id == 4714 || id == 4716 || id == 4718 || id == 4720 || id == 4722 || id == 4724 || id == 4726 || id == 4728 || id == 4730 || id == 4732 || id == 4734 || id == 4736 || id == 4738)
 			return true;
-		//barrows degraded already
+		// barrows degraded already
 		if ((id >= 21762 && id <= 21765) || (id >= 21754 && id <= 21757) || (id >= 21746 && id <= 21749) || (id >= 21738 && id <= 21741) || (id >= 4856 && id <= 4859) || (id >= 4862 && id <= 4865) || (id >= 4868 && id <= 4871) || (id >= 4874 && id <= 4877) || (id >= 4880 && id <= 4883) || (id >= 4886 && id <= 4889) || (id >= 4892 && id <= 4895) || (id >= 4898 && id <= 4901) || (id >= 4904 && id <= 4907) || (id >= 4910 && id <= 4913) || (id >= 4916 && id <= 4919) || (id >= 4922 && id <= 4925) || (id >= 4928 && id <= 4931) || (id >= 4934 && id <= 4937) || (id >= 4940 && id <= 4943) || (id >= 4946 && id <= 4949) || (id >= 4952 && id <= 4955) || (id >= 4958 && id <= 4961) || (id >= 4964 && id <= 4967) || (id >= 4970 && id <= 4973) || (id >= 4976 && id <= 4979) || (id >= 4982 && id <= 4985) || (id >= 4988 && id <= 4991) || (id >= 4994 && id <= 4997))
 			return true;
 		return false;
@@ -213,12 +214,11 @@ public class ItemConstants {
 		if (!item.getDefinitions().isWearItem())
 			return false;
 		else if (item.getId() == 20767) {
-			/*  if(Settings.SPAWN_WORLD && player.getKillCount() > 750)
-			return true;
-			  else if (Settings.SPAWN_WORLD) {
-			player.getPackets().sendGameMessage("You need to have killed at least 750 players to use this item.");
-			return false;
-			  } */
+			/*
+			 * if(Settings.SPAWN_WORLD && player.getKillCount() > 750) return true; else if (Settings.SPAWN_WORLD)
+			 * { player.getPackets().
+			 * sendGameMessage("You need to have killed at least 750 players to use this item." ); return false; }
+			 */
 			for (int skill = 0; skill < 25; skill++) {
 				if (player.getSkills().getLevelForXp(skill) < 99) {
 					player.getPackets().sendGameMessage("You must have the maximum level of each skill in order to use this cape.");
@@ -226,12 +226,12 @@ public class ItemConstants {
 				}
 			}
 		} else if ((item.getId() == 20769 || item.getId() == 20771)) {
-			/* if(Settings.SPAWN_WORLD && player.getKillCount() > (item.getId() == 20771 ? 2000 : 1500))
-			return true;
-			 else if (Settings.SPAWN_WORLD) {
-			player.getPackets().sendGameMessage("You need to have killed at least " + (item.getId() == 20771 ? 2000 : 1500) + " players to use this item.");
-			return false;
-			 } */
+			/*
+			 * if(Settings.SPAWN_WORLD && player.getKillCount() > (item.getId() == 20771 ? 2000 : 1500)) return
+			 * true; else if (Settings.SPAWN_WORLD) { player.getPackets().
+			 * sendGameMessage("You need to have killed at least " + (item.getId() == 20771 ? 2000 : 1500) +
+			 * " players to use this item."); return false; }
+			 */
 			for (int skill = 0; skill < 25; skill++) {
 				if (player.getSkills().getLevelForXp(skill) < (skill == Skills.DUNGEONEERING ? 120 : 99)) {
 					player.getPackets().sendGameMessage("You must have the maximum level of each skill in order to use this cape.");
@@ -283,12 +283,11 @@ public class ItemConstants {
 			else if (item.getId() == 20769 && hasCompletionistCapeTrimmedReqs(player, false))
 				item.setId(20771);
 		} else if (item.getId() == 6570 || item.getId() == 10566 || item.getId() == 10637) {
-			/*if(Settings.SPAWN_WORLD && player.getKillCount() > 500)
-			return true;
-			else if (Settings.SPAWN_WORLD) {
-			player.getPackets().sendGameMessage("You need to have killed at least 500 players to use this item.");
-			return false;
-			}*/
+			/*
+			 * if(Settings.SPAWN_WORLD && player.getKillCount() > 500) return true; else if (Settings.SPAWN_WORLD)
+			 * { player.getPackets().
+			 * sendGameMessage("You need to have killed at least 500 players to use this item." ); return false; }
+			 */
 			if (!player.isCompletedFightCaves()) {
 				player.getPackets().sendGameMessage("You need to complete at least once fight cave minigame to use this cape.");
 				return false;
@@ -302,12 +301,11 @@ public class ItemConstants {
 			}
 			return true;
 		} else if (item.getId() == 23659) {
-			/* if(Settings.SPAWN_WORLD && player.getKillCount() > 1000)
-			return true;
-			else if (Settings.SPAWN_WORLD) {
-			player.getPackets().sendGameMessage("You need to have killed at least 1000 players to use this cape.");
-			return false;
-			} */
+			/*
+			 * if(Settings.SPAWN_WORLD && player.getKillCount() > 1000) return true; else if (Settings.SPAWN_WORLD)
+			 * { player.getPackets().
+			 * sendGameMessage("You need to have killed at least 1000 players to use this cape." ); return false; }
+			 */
 			if (!player.isCompletedFightKiln()) {
 				player.getPackets().sendGameMessage("You need to complete at least once fight kiln minigame to use this cape.");
 				return false;
@@ -372,13 +370,13 @@ public class ItemConstants {
 				return false;
 		if (Slayer.isSlayerHelmet(item))
 			return false;
-		//1st dung update
+		// 1st dung update
 		if (item.getId() >= 18330 && item.getId() <= 18374)
 			return false;
-		//2nd dung update, warped
+		// 2nd dung update, warped
 		if (item.getId() >= 19669 && item.getId() <= 19675)
 			return false;
-		//3rd dung update, warped
+		// 3rd dung update, warped
 		if (item.getId() >= 19886 && item.getId() <= 19895)
 			return false;
 		if (OrnamentKits.getKit(item) != null)
@@ -387,8 +385,8 @@ public class ItemConstants {
 		switch (item.getId()) {
 		case Settings.VOTE_TOKENS_ITEM_ID:
 		case 13650:// <--- old vote tokens.
-		case 19467: //biscuits
-			//prayer books
+		case 19467: // biscuits
+			// prayer books
 		case 3839:
 		case 3840:
 		case 3841:
@@ -415,7 +413,7 @@ public class ItemConstants {
 		case 11676:
 		case 19711:
 		case 19712:
-			//vinewhip
+			// vinewhip
 		case 21371:
 		case 21372:
 		case 21373:
@@ -427,10 +425,10 @@ public class ItemConstants {
 		case 19043:
 		case 23193:
 		case 23194:
-		case 20763: //veteran cape
-		case 20767: //max cape and hood
+		case 20763: // veteran cape
+		case 20767: // max cape and hood
 		case 20768:
-		case 10844: //sq'irk
+		case 10844: // sq'irk
 		case 10845:
 		case 10846:
 		case 10847:
@@ -438,12 +436,12 @@ public class ItemConstants {
 		case 10849:
 		case 10850:
 		case 10581:
-		case 23044: //mindspike
+		case 23044: // mindspike
 		case 23045:
 		case 23046:
 		case 23047:
 		case 35: // excalibur
-		case 22496: //polypore degraded gear
+		case 22496: // polypore degraded gear
 		case 22492:
 		case 22488:
 		case 22484:
@@ -453,8 +451,8 @@ public class ItemConstants {
 		case 22468:
 		case 22464:
 		case 22460:
-		case 11283: //dragonfire shield
-		case 24444: //neem drupe stuff
+		case 11283: // dragonfire shield
+		case 24444: // neem drupe stuff
 		case 24445:
 		case 10588: // Salve amulet (e)
 		case 772: // dramen staff
@@ -499,65 +497,29 @@ public class ItemConstants {
 		}
 	}
 
-	private static final int[][] REPAIR =
-		{
-		{ 20135, 500000, 20000 },//nex helm
-		{ 20159, 500000, 20000 },//virtus helm
-		{ 20147, 500000, 20000 },//pernix helm
-		{ 20139, 2000000, 65000 },//torva platebody
-		{ 20163, 2000000, 65000 },//virtus body
-		{ 20151, 2000000, 65000 },//pernix body
-		{ 20143, 1000000, 40000 },//torva legs
-		{ 20167, 1000000, 40000 },//virtus legs
-		{ 20155, 1000000, 40000 },//pernix legs
-		{ 20171, 2000000, 65000 },//Zaryte bow
-		//barrows helms
-		{ 4708, 60000, 3000 },
-		{ 4716, 60000, 3000 },
-		{ 4724, 60000, 3000 },
-		{ 4732, 60000, 3000 },
-		{ 4745, 60000, 3000 },
-		{ 4753, 60000, 3000 },
-		{ 21736, 60000, 3000 },
-		//barrows weapons
-		{ 4710, 100000, 15000 },
-		{ 4718, 100000, 15000 },
-		{ 4726, 100000, 15000 },
-		{ 4734, 100000, 15000 },
-		{ 4747, 100000, 15000 },
-		{ 4755, 100000, 15000 },
-		{ 21744, 100000, 15000 },
-		//barrows body
-		{ 4712, 90000, 10000 },
-		{ 4720, 90000, 10000},
-		{ 4728, 90000, 10000 },
-		{ 4736, 90000, 10000 },
-		{ 4749, 90000, 10000 },
-		{ 4757, 90000, 10000 },
-		{ 21752, 90000, 10000 },
-		//barrows legs
-		{ 4714, 80000, 7000 },
-		{ 4722, 80000, 7000 },
-		{ 4730, 80000, 7000 },
-		{ 4738, 80000, 7000 },
-		{ 4751, 80000, 7000 },
-		{ 4759, 80000, 7000 },
-		{ 21762, 80000, 7000 },
-		//Chaotic weapons
-		{ 18349, 10000000, 50000 },
-		{ 18351, 10000000, 50000 },
-		{ 18353, 10000000, 50000 },
-		{ 18355, 10000000, 50000 },
-		{ 18357, 10000000, 50000 },
-		{ 18359, 10000000, 50000 },
-		{ 18361, 10000000, 50000 },
-		{ 18363, 10000000, 50000 },
-		//Gravite
-		{ 18365, 5000000, 25000 },
-		{ 18367, 5000000, 25000 },
-		{ 18369, 5000000, 25000 },
-		{ 18371, 5000000, 25000 },
-		{ 18373, 5000000, 25000 }, };
+	private static final int[][] REPAIR = { { 20135, 500000, 20000 }, // nex
+			// helm
+			{ 20159, 500000, 20000 }, // virtus helm
+			{ 20147, 500000, 20000 }, // pernix helm
+			{ 20139, 2000000, 65000 }, // torva platebody
+			{ 20163, 2000000, 65000 }, // virtus body
+			{ 20151, 2000000, 65000 }, // pernix body
+			{ 20143, 1000000, 40000 }, // torva legs
+			{ 20167, 1000000, 40000 }, // virtus legs
+			{ 20155, 1000000, 40000 }, // pernix legs
+			{ 20171, 2000000, 65000 }, // Zaryte bow
+			// barrows helms
+			{ 4708, 60000, 3000 }, { 4716, 60000, 3000 }, { 4724, 60000, 3000 }, { 4732, 60000, 3000 }, { 4745, 60000, 3000 }, { 4753, 60000, 3000 }, { 21736, 60000, 3000 },
+			// barrows weapons
+			{ 4710, 100000, 15000 }, { 4718, 100000, 15000 }, { 4726, 100000, 15000 }, { 4734, 100000, 15000 }, { 4747, 100000, 15000 }, { 4755, 100000, 15000 }, { 21744, 100000, 15000 },
+			// barrows body
+			{ 4712, 90000, 10000 }, { 4720, 90000, 10000 }, { 4728, 90000, 10000 }, { 4736, 90000, 10000 }, { 4749, 90000, 10000 }, { 4757, 90000, 10000 }, { 21752, 90000, 10000 },
+			// barrows legs
+			{ 4714, 80000, 7000 }, { 4722, 80000, 7000 }, { 4730, 80000, 7000 }, { 4738, 80000, 7000 }, { 4751, 80000, 7000 }, { 4759, 80000, 7000 }, { 21762, 80000, 7000 },
+			// Chaotic weapons
+			{ 18349, 10000000, 50000 }, { 18351, 10000000, 50000 }, { 18353, 10000000, 50000 }, { 18355, 10000000, 50000 }, { 18357, 10000000, 50000 }, { 18359, 10000000, 50000 }, { 18361, 10000000, 50000 }, { 18363, 10000000, 50000 },
+			// Gravite
+			{ 18365, 5000000, 25000 }, { 18367, 5000000, 25000 }, { 18369, 5000000, 25000 }, { 18371, 5000000, 25000 }, { 18373, 5000000, 25000 }, };
 
 	private static final int ITEMS_RANGE = 500;
 

@@ -23,8 +23,9 @@ public class Highscores {
 				try {
 					updateSkill(player);
 				} catch (Throwable e) {
-				//	e.printStackTrace();
-					//failed to update highscore, w/e, updaten ex time u logout then
+					// e.printStackTrace();
+					// failed to update highscore, w/e, updaten ex time u logout
+					// then
 				}
 			}
 		});
@@ -49,30 +50,26 @@ public class Highscores {
 		BufferedReader reader = new BufferedReader(new InputStreamReader(c.getInputStream()));
 		reader.close();
 	}
-	
-	
+
 	public static void openHighscoresWebPage(Player player) {
 		player.getPackets().sendOpenURL(Settings.HIGHSCORES_LINK);
 	}
-	
-	
+
 	private static void setHighscoreTable(Player player, int spriteId, int skillId, String[] lines) {
-		
-		
-		
-		int index = skillId == -1 ? 0 : (skillId+1);
-		
+
+		int index = skillId == -1 ? 0 : (skillId + 1);
+
 		int rank = lines == null || lines[index] == null ? -1 : (Integer.parseInt(lines[index].split("=")[1]) + 1);
-		
-		
+
 		player.getPackets().sendExecuteScript(7828, spriteId, skillId == -1 ? "Overall" : Skills.SKILL_NAME[skillId], rank, "Not Ranked");
 	}
+
 	/*
-	 * 0 - skill. 1 -  seasonal.  2 - activitiess
+	 * 0 - skill. 1 - seasonal. 2 - activitiess
 	 */
 	public static void loadHighscores(Player player, int menu) {
 		Integer currentMenu = (Integer) player.getTemporaryAttributtes().get(Key.HIGHSCORES);
-		if(currentMenu != null && currentMenu == menu)
+		if (currentMenu != null && currentMenu == menu)
 			return;
 		setLoadingStage(player, 0);
 		player.getTemporaryAttributtes().put(Key.HIGHSCORES, menu);
@@ -82,27 +79,28 @@ public class Highscores {
 				try {
 					if (menu == 0) {
 						Integer currentMenu = (Integer) player.getTemporaryAttributtes().get(Key.HIGHSCORES);
-						if(currentMenu == null || currentMenu != menu)
+						if (currentMenu == null || currentMenu != menu)
 							return;
 						setLoadingStage(player, 1);
-						URLConnection c = new URL(Settings.HIGHSCORES_LINK+"query_npe.php?getrank="+URLEncoder.encode(player.getUsername(), "UTF-8")).openConnection();
+						URLConnection c = new URL(Settings.HIGHSCORES_LINK + "query_npe.php?getrank=" + URLEncoder.encode(player.getUsername(), "UTF-8")).openConnection();
 						c.setConnectTimeout(3000);
 						BufferedReader reader = new BufferedReader(new InputStreamReader(c.getInputStream()));
 						String line = reader.readLine();
 						String[] lines = null;
-						if(line.startsWith("xpmode=")) {
-							lines = new String[Skills.SKILL_NAME.length+1];
-							for(int i = 0; i < lines.length; i++) {
+						if (line.startsWith("xpmode=")) {
+							lines = new String[Skills.SKILL_NAME.length + 1];
+							for (int i = 0; i < lines.length; i++) {
 								lines[i] = reader.readLine();
 							}
 						}
 						reader.close();
 						currentMenu = (Integer) player.getTemporaryAttributtes().get(Key.HIGHSCORES);
-						if(currentMenu == null || currentMenu != menu)
+						if (currentMenu == null || currentMenu != menu)
 							return;
 						player.getPackets().sendExecuteScript(7825, 0);
 						player.getPackets().sendIComponentText(1419, 34, "Skills");
-						//they get added by the order you send. this is rs order. not skills order(kinda separates by categories
+						// they get added by the order you send. this is rs
+						// order. not skills order(kinda separates by categories
 						setHighscoreTable(player, 20232, -1, lines);
 						setHighscoreTable(player, 1478, Skills.ATTACK, lines);
 						setHighscoreTable(player, 1479, Skills.STRENGTH, lines);
@@ -131,51 +129,57 @@ public class Highscores {
 						setHighscoreTable(player, 3032, Skills.DUNGEONEERING, lines);
 						setHighscoreTable(player, 9204, Skills.DIVINATION, lines);
 						setLoadingStage(player, 3);
-					}
-					else if (menu == 1) {
+					} else if (menu == 1) {
 						setLoadingStage(player, 1);
 						player.getPackets().sendIComponentText(1419, 34, "Seasonal");
 						player.getPackets().sendExecuteScript(7825, 1);
-						//player.getPackets().sendExecuteScript(7827, 24947, "Clue Scrolls", "The total number of Clue Scrolls completed.", -1, "Not Ranked", 0, 0, 0);
-					///	player.getPackets().sendExecuteScript(7827, 24948, "Time online", "The time you have been online.", -1, "Not Ranked", 0, 7, 0);
-					//	player.getPackets().sendExecuteScript(7827, 24948, "Deaths", "The total number of Deaths, not including safe minigames or Hardcore ironman mode.", -1, "Not Ranked", 0, 7, 0);
+						// player.getPackets().sendExecuteScript(7827, 24947,
+						// "Clue Scrolls", "The total number of Clue Scrolls
+						// completed.", -1, "Not Ranked", 0, 0, 0);
+						/// player.getPackets().sendExecuteScript(7827, 24948,
+						/// "Time online", "The time you have been online.", -1,
+						/// "Not Ranked", 0, 7, 0);
+						// player.getPackets().sendExecuteScript(7827, 24948,
+						/// "Deaths", "The total number of Deaths, not including
+						/// safe minigames or Hardcore ironman mode.", -1, "Not
+						/// Ranked", 0, 7, 0);
 						player.getPackets().sendExecuteScript(7827, 24948, "PVP Kills", "The total number of Kills, not including safe minigames or Hardcore ironman mode.", -1, "Not Ranked", 0, 0, 0);
-						//	player.getPackets().sendExecuteScript(7827, 18892, "Penance Kings Killed", "Total number of Penance King kills", -1, "Not Ranked", 8, 7, 0);
-					//	player.getPackets().sendExecuteScript(7827, 18891, "Penance Queens Killed", "Total number of Penance Queen kills.", -1, "Not Ranked", 8, 7, 0);
+						// player.getPackets().sendExecuteScript(7827, 18892,
+						// "Penance Kings Killed", "Total number of Penance King
+						// kills", -1, "Not Ranked", 8, 7, 0);
+						// player.getPackets().sendExecuteScript(7827, 18891,
+						// "Penance Queens Killed", "Total number of Penance
+						// Queen kills.", -1, "Not Ranked", 8, 7, 0);
 
 						player.getPackets().sendExecuteScript(7826, 1);
 						setLoadingStage(player, 4);
 
-					}else if(menu == 2) {
+					} else if (menu == 2) {
 						player.getPackets().sendExecuteScript(7825, 0);
 						player.getPackets().sendIComponentText(1419, 34, "Activities");
 						player.getPackets().sendExecuteScript(7826, 0);
 						setLoadingStage(player, 3);
 					}
-				}
-				catch (Throwable e) {
+				} catch (Throwable e) {
 					setLoadingStage(player, 2);
 
-					//e.printStackTrace();
+					// e.printStackTrace();
 				}
 			}
 		});
 	}
-	
+
 	/*
-	2-  highscores something has gone wrong
-	0 - Waiting for highscores to be calculated.
-	1 - highscores are being calculated
-	3 - highscore loaded
-	4 - seasonal highscore loaded
-	*/
+	 * 2- highscores something has gone wrong 0 - Waiting for highscores to be calculated. 1 - highscores are being
+	 * calculated 3 - highscore loaded 4 - seasonal highscore loaded
+	 */
 	private static void setLoadingStage(Player player, int stage) {
 		player.getPackets().sendHideIComponent(1419, 5, stage != 0);
 		player.getPackets().sendHideIComponent(1419, 6, stage != 1);
 		player.getPackets().sendHideIComponent(1419, 3, stage != 2);
 		player.getPackets().sendHideIComponent(1419, 8, stage != 3);
 		player.getPackets().sendHideIComponent(1419, 9, stage != 4);
-		
+
 	}
 
 }

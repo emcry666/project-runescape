@@ -46,8 +46,7 @@ public class SawmillController extends Controller {
 		private int[] planks;
 
 		private Jobs(int shortPlank, int longPlank, int diagonalPlank, int toothPlank, int groovePlank, int curvedPlank) {
-			planks = new int[]
-			{ shortPlank, longPlank, diagonalPlank, toothPlank, groovePlank, curvedPlank };
+			planks = new int[] { shortPlank, longPlank, diagonalPlank, toothPlank, groovePlank, curvedPlank };
 		}
 	}
 
@@ -176,12 +175,8 @@ public class SawmillController extends Controller {
 	}
 
 	/*
-	 *   this.shortPlank = shortPlank;
-	    this.longPlank = longPlank;
-	    this.diagonalPlank = diagonalPlank;
-	    this.toothPlank = toothPlank;
-	    this.groovePlank = groovePlank;
-	    this.curvedPlank = curvedPlank;
+	 * this.shortPlank = shortPlank; this.longPlank = longPlank; this.diagonalPlank = diagonalPlank;
+	 * this.toothPlank = toothPlank; this.groovePlank = groovePlank; this.curvedPlank = curvedPlank;
 	 */
 
 	@Override
@@ -198,8 +193,7 @@ public class SawmillController extends Controller {
 		player.getInterfaceManager().sendCentralInterface(902);
 	}
 
-	private static int[] INVESTIGATE_COMPONENT_IDS =
-	{ 75, 67, 57, 49, 41, 33 };
+	private static int[] INVESTIGATE_COMPONENT_IDS = { 75, 67, 57, 49, 41, 33 };
 
 	private void inspectCart() {
 		player.getInterfaceManager().sendCentralInterface(903);
@@ -275,8 +269,7 @@ public class SawmillController extends Controller {
 	}
 
 	private void setJob(Job job) {
-		setArguments(job == null ? null : new Object[]
-		{ job });
+		setArguments(job == null ? null : new Object[] { job });
 	}
 
 	@Override
@@ -315,11 +308,11 @@ public class SawmillController extends Controller {
 			player.getPackets().sendGameMessage("In the crate you find a saw.");
 			return false;
 		}
-		if (object.getId() == 46296) { //job board
+		if (object.getId() == 46296) { // job board
 			openSawmillBoard();
 			return false;
 		}
-		if (object.getId() == 46297) {//take logs
+		if (object.getId() == 46297) {// take logs
 			if (!hasJob()) {
 				player.getDialogueManager().startDialogue("SimpleMessage", "You should get a job from the job board first.");
 				return false;
@@ -375,11 +368,11 @@ public class SawmillController extends Controller {
 
 	@Override
 	public boolean processObjectClick2(final WorldObject object) {
-		if (object.getId() == 46296) { //job board
+		if (object.getId() == 46296) { // job board
 			takeJob(true);
 			return false;
 		}
-		if (object.getId() == 46297) {//take logs
+		if (object.getId() == 46297) {// take logs
 			if (!hasJob()) {
 				player.getDialogueManager().startDialogue("SimpleMessage", "You should get a job from the job board first.");
 				return false;
@@ -439,7 +432,7 @@ public class SawmillController extends Controller {
 
 	@Override
 	public boolean processObjectClick3(final WorldObject object) {
-		if (object.getId() == 46296) { //job board
+		if (object.getId() == 46296) { // job board
 			takeJob(false);
 			return false;
 		}

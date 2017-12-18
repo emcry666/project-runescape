@@ -18,8 +18,11 @@ public class BossInstanceController extends Controller {
 
 	@Override
 	public void start() {
-		instance = (BossInstance) getArguments()[0]; //cant save this as not serializable would null :L
-		getArguments()[0] = instance.getBoss(); //gotta save reference for which instance im at
+		instance = (BossInstance) getArguments()[0]; // cant save this as not
+		// serializable would null
+		// :L
+		getArguments()[0] = instance.getBoss(); // gotta save reference for
+		// which instance im at
 	}
 
 	@Override
@@ -30,12 +33,12 @@ public class BossInstanceController extends Controller {
 
 	@Override
 	public boolean login() {
-		//shouldnt happen but better be safe
+		// shouldnt happen but better be safe
 		if (getArguments() == null || getArguments().length == 0)
 			return true;
 		Boss boss = (Boss) getArguments()[0];
 		instance = BossInstanceHandler.joinInstance(player, boss, "", true);
-		return instance == null; //if failed. remove
+		return instance == null; // if failed. remove
 	}
 
 	public BossInstance getInstance() {
@@ -53,35 +56,32 @@ public class BossInstanceController extends Controller {
 			public void run() {
 				if (loop == 0) {
 					player.setNextAnimation(player.getDeathAnimation());
-				}
-				else if (loop == 1) {
+				} else if (loop == 1) {
 					player.getPackets().sendGameMessage("Oh dear, you have died.");
-				}
-				else if (loop == 3) {
+				} else if (loop == 3) {
 					instance.leaveInstance(player, BossInstance.DIED);
 					removeControler();
 					if (instance.getSettings().isPractiseMode()) {
 						player.reset();
 						player.setNextWorldTile(instance.getBoss().getOutsideTile());
-					}
-					else {
+					} else {
 
 						WorldTile graveStoneLoc = instance.getBoss().getGraveStoneTile();
 						if (graveStoneLoc == null)
 							graveStoneLoc = instance.isPublic() ? new WorldTile(player) : instance.getBoss().getOutsideTile();
 
-						if (instance.getBoss() == Boss.Corporeal_Beast) { //drop items instead
+						if (instance.getBoss() == Boss.Corporeal_Beast) { // drop
+							// items
+							// instead
 							player.reset();
 							Integer[][] slots = GraveStone.getItemSlotsKeptOnDeath(player, true, player.hasSkull(), player.getPrayer().isProtectingItem());
 							WorldTile respawnTile = DeathEvent.getRespawnHub(player);
 							player.sendItemsOnDeath(null, graveStoneLoc, respawnTile, true, slots, true);
 							player.setNextWorldTile(respawnTile);
-						}
-						else
+						} else
 							player.getControlerManager().startControler("DeathEvent", graveStoneLoc, player.hasSkull());
 					}
-				}
-				else if (loop == 4) {
+				} else if (loop == 4) {
 					player.getMusicsManager().playMusicEffect(MusicsManager.DEATH_MUSIC_EFFECT);
 					stop();
 				}
@@ -96,10 +96,10 @@ public class BossInstanceController extends Controller {
 		instance.leaveInstance(player, BossInstance.LOGGED_OUT);
 		if (!instance.isPublic())
 			removeControler();
-		return false; //false. it will remove script normaly if needed
+		return false; // false. it will remove script normaly if needed
 	}
 
-	//controller stopped for some reason or in purpose
+	// controller stopped for some reason or in purpose
 	@Override
 	public void forceClose() {
 		if (instance != null)

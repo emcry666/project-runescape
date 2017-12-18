@@ -41,7 +41,7 @@ public class Yt_HurKot extends FightCavesNPC {
 			}
 		}
 	}
-	
+
 	@Override
 	public ArrayList<Entity> getPossibleTargets() {
 		return super.getPossibleTargets(false, true);

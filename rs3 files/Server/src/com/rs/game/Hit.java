@@ -6,23 +6,16 @@ public final class Hit {
 
 	public static enum HitLook {
 
-		MISSED(141),
-		REGULAR_DAMAGE(144),
-		MELEE_DAMAGE(132),
-		RANGE_DAMAGE(135),
-		MAGIC_DAMAGE(138),
-		REFLECTED_DAMAGE(146),
-		ABSORB_DAMAGE(148),
-		POISON_DAMAGE(142),
-		DESEASE_DAMAGE(142), //rs removed desease
-		HEALED_DAMAGE(143),
-		CANNON_DAMAGE(145);
+		MISSED(141), REGULAR_DAMAGE(144), MELEE_DAMAGE(132), RANGE_DAMAGE(135), MAGIC_DAMAGE(138), REFLECTED_DAMAGE(146), ABSORB_DAMAGE(148), POISON_DAMAGE(142), DESEASE_DAMAGE(142), // rs
+		// removed
+		// desease
+		HEALED_DAMAGE(143), CANNON_DAMAGE(145);
 		private int mark;
 
 		private HitLook(int mark) {
 			this.mark = mark;
 		}
-		
+
 		public int getMark(boolean legacy) {
 			return mark;
 		}
@@ -30,7 +23,7 @@ public final class Hit {
 		public int getMark() {
 			return mark;
 		}
-		
+
 		public void setMark(int mark) {
 			this.mark = mark;
 		}
@@ -48,7 +41,7 @@ public final class Hit {
 		critical = true;
 		setAbilityMark();
 	}
-	
+
 	public void setAbilityMark() {
 		ability = true;
 	}
@@ -88,16 +81,16 @@ public final class Hit {
 		if (damage == 0) {
 			return HitLook.MISSED.getMark(player.isLegacyMode());
 		}
-		int mark = look.getMark(/*player.isLegacyMode()*/false);
-		if(look == HitLook.MELEE_DAMAGE || look == HitLook.RANGE_DAMAGE || look == HitLook.MAGIC_DAMAGE) {
+		int mark = look.getMark(/* player.isLegacyMode() */false);
+		if (look == HitLook.MELEE_DAMAGE || look == HitLook.RANGE_DAMAGE || look == HitLook.MAGIC_DAMAGE) {
 			if (critical)
 				mark++;
 			if (ability)
-				mark ++;
+				mark++;
 		}
 
 		if (!interactingWith(player, victm))
-			mark +=/* player.isLegacyMode() ? (critical ? 3 : 10) : */17;
+			mark += /* player.isLegacyMode() ? (critical ? 3 : 10) : */17;
 		return mark;
 	}
 
@@ -106,12 +99,12 @@ public final class Hit {
 	}
 
 	public int getDamage() {
-		return damage; 
+		return damage;
 	}
-	
+
 	public int getDamageDisplay(Player player) {
 		int dmg = damage;
-		if(dmg != 0 && dmg < 10 && player.isLegacyMode())
+		if (dmg != 0 && dmg < 10 && player.isLegacyMode())
 			dmg = 10;
 		return dmg;
 	}
@@ -119,7 +112,7 @@ public final class Hit {
 	public void setDamage(int damage) {
 		this.damage = damage;
 	}
-	
+
 	public void setDelay(int delay) {
 		this.delay = delay;
 	}
@@ -147,8 +140,8 @@ public final class Hit {
 	public int getDelay() {
 		return delay;
 	}
-	
+
 	public int getMSDelay() {
-		return delay*10;
+		return delay * 10;
 	}
 }

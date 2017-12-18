@@ -22,7 +22,7 @@ public final class GeneralRequirementMap {
 			GeneralRequirementMap map = getMap(i);
 			if (map == null)
 				continue;
-			
+
 			if (map.getIntValue(17648) != 0)
 				System.out.println(i + " - " + map.getValues().toString());
 		}
@@ -107,7 +107,7 @@ public final class GeneralRequirementMap {
 			}
 		}
 	}
-	
+
 	public int getId() {
 		return id;
 	}

@@ -36,40 +36,40 @@ public class PickPocketAction extends Action {
 	 */
 	private static final Animation STUN_ANIMATION = new Animation(422),
 
-	/**
-	 * The pick pocketing animation.
-	 */
-	PICKPOCKETING_ANIMATION = new Animation(881),
+			/**
+			 * The pick pocketing animation.
+			 */
+			PICKPOCKETING_ANIMATION = new Animation(881),
 
-	/**
-	 * The double loot animation.
-	 */
-	DOUBLE_LOOT_ANIMATION = new Animation(5074),
+			/**
+			 * The double loot animation.
+			 */
+			DOUBLE_LOOT_ANIMATION = new Animation(5074),
 
-	/**
-	 * The triple loot animation.
-	 */
-	TRIPLE_LOOT_ANIMATION = new Animation(5075),
+			/**
+			 * The triple loot animation.
+			 */
+			TRIPLE_LOOT_ANIMATION = new Animation(5075),
 
-	/**
-	 * The quadruple loot animation.
-	 */
-	QUADRUPLE_LOOT_ANIMATION = new Animation(5078);
+			/**
+			 * The quadruple loot animation.
+			 */
+			QUADRUPLE_LOOT_ANIMATION = new Animation(5078);
 
 	/**
 	 * The double loot gfx.
 	 */
 	private static final Graphics DOUBLE_LOOT_GFX = new Graphics(873),
 
-	/**
-	 * The triple loot gfx.
-	 */
-	TRIPLE_LOOT_GFX = new Graphics(874),
+			/**
+			 * The triple loot gfx.
+			 */
+			TRIPLE_LOOT_GFX = new Graphics(874),
 
-	/**
-	 * The quadruple loot gfx.
-	 */
-	QUADRUPLE_LOOT_GFX = new Graphics(875);
+			/**
+			 * The quadruple loot gfx.
+			 */
+			QUADRUPLE_LOOT_GFX = new Graphics(875);
 
 	/**
 	 * The index to use in the levels required arrays.
@@ -79,10 +79,8 @@ public class PickPocketAction extends Action {
 	/**
 	 * Constructs a new {@code PickpocketAction} {@code Object}.
 	 * 
-	 * @param npc
-	 *            The npc to whom the player is pickpocketing.
-	 * @param npcData
-	 *            Data of an npc.
+	 * @param npc The npc to whom the player is pickpocketing.
+	 * @param npcData Data of an npc.
 	 */
 	public PickPocketAction(NPC npc, PickPocketableNPC npcData) {
 		this.npc = npc;
@@ -164,25 +162,23 @@ public class PickPocketAction extends Action {
 	/**
 	 * Checks if the player is succesfull to thiev or not.
 	 * 
-	 * @param player
-	 *            The player.
+	 * @param player The player.
 	 * @return {@code True} if succesfull, {@code false} if not.
 	 */
 	private boolean isSuccesfull(Player player) {
-		/*int thievingLevel = player.getSkills().getLevel(Skills.THIEVING);
-		int increasedChance = getIncreasedChance(player);
-		int level = Utils.getRandom(thievingLevel + increasedChance);
-		double ratio = level / npcData.getThievingLevels()[0];
-		if (Math.round(ratio * thievingLevel) < npcData.getThievingLevels()[0] / player.getAuraManager().getThievingAccurayMultiplier())
-		    return false;*/
+		/*
+		 * int thievingLevel = player.getSkills().getLevel(Skills.THIEVING); int increasedChance =
+		 * getIncreasedChance(player); int level = Utils.getRandom(thievingLevel + increasedChance); double ratio =
+		 * level / npcData.getThievingLevels()[0]; if (Math.round(ratio * thievingLevel) <
+		 * npcData.getThievingLevels()[0] / player.getAuraManager().getThievingAccurayMultiplier()) return false;
+		 */
 		return Utils.random(4) != 0;
 	}
 
 	/**
 	 * Gets the increased chance for succesfully pickpocketing.
 	 * 
-	 * @param player
-	 *            The player.
+	 * @param player The player.
 	 * @return The amount of increased chance.
 	 */
 	@SuppressWarnings("unused")
@@ -206,8 +202,7 @@ public class PickPocketAction extends Action {
 	/**
 	 * Gets the message to send when finishing.
 	 * 
-	 * @param player
-	 *            The player.
+	 * @param player The player.
 	 * @return The message.
 	 */
 	private String getMessage(Player player) {
@@ -227,8 +222,7 @@ public class PickPocketAction extends Action {
 	/**
 	 * Checks everything before starting.
 	 * 
-	 * @param player
-	 *            The player.
+	 * @param player The player.
 	 * @return
 	 */
 	private boolean checkAll(Player player) {
@@ -259,8 +253,7 @@ public class PickPocketAction extends Action {
 	/**
 	 * Gets the animation to perform.
 	 * 
-	 * @param player
-	 *            The player.
+	 * @param player The player.
 	 * @return The animation.
 	 */
 	private Animation getAnimation() {
@@ -280,8 +273,7 @@ public class PickPocketAction extends Action {
 	/**
 	 * Gets the graphic to perform.
 	 * 
-	 * @param player
-	 *            The player.
+	 * @param player The player.
 	 * @return The graphic.
 	 */
 	private Graphics getGraphics() {

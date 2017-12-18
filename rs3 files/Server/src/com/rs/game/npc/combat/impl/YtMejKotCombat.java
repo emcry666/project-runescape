@@ -34,8 +34,7 @@ public class YtMejKotCombat extends CombatScript {
 						n.heal(100);
 					}
 				}
-			}
-			else
+			} else
 				npc.getTemporaryAttributtes().put("Heal", Boolean.TRUE);
 		}
 		return npc.getAttackSpeed();

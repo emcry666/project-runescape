@@ -16,7 +16,7 @@ public class DungeonPartyPlayer {
 	}
 
 	public void refreshDeaths() {
-		player.getVarsManager().sendVarBit(2365, deaths); //deaths
+		player.getVarsManager().sendVarBit(2365, deaths); // deaths
 	}
 
 	public void increaseDeaths() {

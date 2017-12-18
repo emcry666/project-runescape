@@ -26,13 +26,13 @@ public class Dreadnaut extends DungeonBoss {
 		super(id, tile, manager, reference);
 		setForceFollowClose(true);
 		setRun(true);
-		setLureDelay(6000);//6 seconds
+		setLureDelay(6000);// 6 seconds
 		puddles = new CopyOnWriteArrayList<>();
 	}
 
 	@Override
 	public void processNPC() {
-		if (puddles == null) //still loading
+		if (puddles == null) // still loading
 			return;
 		super.processNPC();
 		if (!reduceMagicLevel) {

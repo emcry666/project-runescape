@@ -26,8 +26,8 @@ public class BossRoom extends HandledRoom {
 		return false;
 	}
 
-//	@Override
-//	public final boolean allowSpecialDoors() {
-//		return false;
-//	}
+	// @Override
+	// public final boolean allowSpecialDoors() {
+	// return false;
+	// }
 }

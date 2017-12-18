@@ -21,8 +21,7 @@ public class FrostDragonCombat extends CombatScript {
 
 	@Override
 	public Object[] getKeys() {
-		return new Object[]
-		{ "Frost dragon" };
+		return new Object[] { "Frost dragon" };
 	}
 
 	@Override
@@ -40,7 +39,8 @@ public class FrostDragonCombat extends CombatScript {
 				public void run() {
 					ticks++;
 					World.sendGraphics(dragon, new Graphics(2875, 0, 750), new WorldTile(dragon.getMiddleWorldTile()));
-					//World.sendProjectile(dragon, dragon, new WorldTile(dragon), 2875, 50, 28, 15, ticks * 15, 0, 4);
+					// World.sendProjectile(dragon, dragon, new
+					// WorldTile(dragon), 2875, 50, 28, 15, ticks * 15, 0, 4);
 					if (ticks == 8) {
 						dragon.setOrb(false);
 						stop();
@@ -51,14 +51,14 @@ public class FrostDragonCombat extends CombatScript {
 		}
 		dragon.setAttackStage(dragon.getAttackStage() + 1);
 
-		if (Utils.random(5) == 0) { //regular dragonfire
+		if (Utils.random(5) == 0) { // regular dragonfire
 			npc.setNextAnimation(new Animation(13155));
 			World.sendProjectile(npc, target, 2464, 28, 28, 50, 41, 16, 0);
 			delayHit(npc, 2, target, getRegularHit(npc, getBreathDamage(npc, target)));
 		} else {
 			boolean meleeAttack = Utils.random(2) == 0 && Utils.isOnRange(npc.getX(), npc.getY(), npc.getSize(), target.getX(), target.getY(), target.getSize(), 0);
 			if (meleeAttack) {
-				if (Utils.random(5) == 0) {//Fire breath swipe
+				if (Utils.random(5) == 0) {// Fire breath swipe
 					npc.setNextAnimation(new Animation(13152));
 					npc.setNextGraphics(new Graphics(2465));
 					delayHit(npc, 1, target, getRegularHit(npc, getBreathDamage(npc, target)));
@@ -83,7 +83,7 @@ public class FrostDragonCombat extends CombatScript {
 		int damage = getMaxHit(npc, NPCCombatDefinitions.MAGE, target);
 		if (damage > 200 && target instanceof Player) {
 			Player player = (Player) target;
-			//Rest should all be types of dragon-fire.
+			// Rest should all be types of dragon-fire.
 
 			boolean hasSuperPot = player.getEffectsManager().hasActiveEffect(EffectType.SUPER_FIRE_IMMUNITY);
 			boolean hasRegularPot = player.getEffectsManager().hasActiveEffect(EffectType.FIRE_IMMUNITY);

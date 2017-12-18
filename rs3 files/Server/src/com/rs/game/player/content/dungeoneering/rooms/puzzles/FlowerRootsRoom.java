@@ -18,57 +18,40 @@ import com.rs.game.tasks.WorldTasksManager;
 
 public class FlowerRootsRoom extends PuzzleRoom {
 
-	//order: blue, purple, red, yellow, big plant 7 ticks, small plants 14 ticks
+	// order: blue, purple, red, yellow, big plant 7 ticks, small plants 14
+	// ticks
 
-	//bprybpry
-	//BbpprryY
-	//pPRryybb
-	//rryYBbpp
-	//yybbpPRr
+	// bprybpry
+	// BbpprryY
+	// pPRryybb
+	// rryYBbpp
+	// yybbpPRr
 
-
-	private static final int[] DOOR_LEAVES =
-	{ 35838, 35839, 35842, 35847, 35849 };
-	private static final int[][][] PLANTS =
-	{
-	{
-		//LARGE
-		{ 35507, 35520 },
-		{ 35523, 35525 },
-		{ 35562, 35568 },
-		{ 35569, 35576 } },
-	{
-		//SMALL 1
-		{ 35577, 35588 },
-		{ 35602, 35604 },
-		{ 35606, 35609 },
-		{ 35611, 35613 } },
-	{
-		//SMALL 2
-		{ 35616, 35625 },
-		{ 35655, 35685 },
-		{ 35689, 35708 },
-		{ 35709, 35712 } },
-	{
-		//SMALL 3
-		{ 35715, 35718 },
-		{ 35719, 35720 },
-		{ 35734, 35739 },
-		{ 35778, 35780 } },
-	{
-		//SMALL 4
-		{ 35799, 35800 },
-		{ 35804, 35808 },
-		{ 35809, 35812 },
-		{ 35830, 35835 } },
+	private static final int[] DOOR_LEAVES = { 35838, 35839, 35842, 35847, 35849 };
+	private static final int[][][] PLANTS = {
+			{
+					// LARGE
+					{ 35507, 35520 }, { 35523, 35525 }, { 35562, 35568 }, { 35569, 35576 } },
+			{
+					// SMALL 1
+					{ 35577, 35588 }, { 35602, 35604 }, { 35606, 35609 }, { 35611, 35613 } },
+			{
+					// SMALL 2
+					{ 35616, 35625 }, { 35655, 35685 }, { 35689, 35708 }, { 35709, 35712 } },
+			{
+					// SMALL 3
+					{ 35715, 35718 }, { 35719, 35720 }, { 35734, 35739 }, { 35778, 35780 } },
+			{
+					// SMALL 4
+					{ 35799, 35800 }, { 35804, 35808 }, { 35809, 35812 }, { 35830, 35835 } },
 
 	};
-	
-	//TODO: need end animations: tested 14900-15200 14954 could be useable
+
+	// TODO: need end animations: tested 14900-15200 14954 could be useable
 	private static final int BIG_FLOWER_DESPAWN = 14954;
 	private static final int SMALL_FLOWER_DESPAWN = 14954;
 	private static final int LEAF_DESPAWN = 14954;
-	
+
 	private Plant[][] plants;
 	private WorldTask colorTask;
 	private WorldTask objectTask;
@@ -106,14 +89,21 @@ public class FlowerRootsRoom extends PuzzleRoom {
 		colorTask = new ChangeColorTask();
 		objectTask = new ChangeObjectTask();
 		WorldTasksManager.schedule(colorTask, 0, 6);
-		WorldTasksManager.schedule(objectTask, 4, 6); //color animation is 3 ticks
+		WorldTasksManager.schedule(objectTask, 4, 6); // color animation is 3
+		// ticks
 	}
 
 	@Override
 	public boolean processObjectClick1(final Player player, final WorldObject object) {
 		for (int type = 0; type < 5; type++) {
 			for (int color = 0; color < 4; color++) {
-				if (object.getId() == PLANTS[type][color][0] || object.getId() == PLANTS[type][color][1]) { //[1] is clickable for big plant aswell
+				if (object.getId() == PLANTS[type][color][0] || object.getId() == PLANTS[type][color][1]) { // [1]
+					// is
+					// clickable
+					// for
+					// big
+					// plant
+					// aswell
 					final int[] coords = manager.getRoomPos(object);
 					if (type == 0) {
 						if (!hasRequirement(player, Skills.FARMING)) {
@@ -136,7 +126,7 @@ public class FlowerRootsRoom extends PuzzleRoom {
 							return false;
 						}
 						if (plants[coords[0]][coords[1]].locked) {
-							//already being used by other player
+							// already being used by other player
 							return false;
 						}
 						plants[coords[0]][coords[1]].locked = true;
@@ -171,7 +161,7 @@ public class FlowerRootsRoom extends PuzzleRoom {
 		if (manager.isDestroyed()) {
 			return;
 		}
-		
+
 		for (Player team : manager.getParty().getTeam()) {
 			for (int x = 0; x < 16; x++) {
 				for (int y = 0; y < 16; y++) {

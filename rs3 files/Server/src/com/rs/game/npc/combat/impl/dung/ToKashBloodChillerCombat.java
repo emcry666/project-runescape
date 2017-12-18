@@ -22,8 +22,7 @@ public class ToKashBloodChillerCombat extends CombatScript {
 
 	@Override
 	public Object[] getKeys() {
-		return new Object[]
-		{ 10024 };
+		return new Object[] { 10024 };
 	}
 
 	@Override

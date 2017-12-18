@@ -24,8 +24,7 @@ public class StealingCreationClay extends Dialogue {
 				player.getTemporaryAttributtes().put("sc_request", 14190);
 			}
 			end();
-			player.getPackets().sendExecuteScriptReverse(108, new Object[]
-			{ "Enter Amount:" });
+			player.getPackets().sendExecuteScriptReverse(108, new Object[] { "Enter Amount:" });
 		}
 	}
 

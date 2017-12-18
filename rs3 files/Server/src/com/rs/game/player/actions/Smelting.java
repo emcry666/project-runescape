@@ -13,94 +13,69 @@ public class Smelting extends Action {
 
 	public enum SmeltingBar {
 
-		BRONZE(1, 6.2, new Item[]
-		{ new Item(436), new Item(438) }, new Item(2349), Skills.SMITHING),
+		BRONZE(1, 6.2, new Item[] { new Item(436), new Item(438) }, new Item(2349), Skills.SMITHING),
 
-		BLURITE(8, 8.0, new Item[]
-		{ new Item(668) }, new Item(9467), Skills.SMITHING),
+		BLURITE(8, 8.0, new Item[] { new Item(668) }, new Item(9467), Skills.SMITHING),
 
-		IRON(15, 12.5, new Item[]
-		{ new Item(440) }, new Item(2351), Skills.SMITHING),
+		IRON(15, 12.5, new Item[] { new Item(440) }, new Item(2351), Skills.SMITHING),
 
-		SILVER(20, 13.7, new Item[]
-		{ new Item(442) }, new Item(2355), Skills.SMITHING),
+		SILVER(20, 13.7, new Item[] { new Item(442) }, new Item(2355), Skills.SMITHING),
 
-		STEEL(30, 17.5, new Item[]
-		{ new Item(440), new Item(453, 2) }, new Item(2353), Skills.SMITHING),
+		STEEL(30, 17.5, new Item[] { new Item(440), new Item(453, 2) }, new Item(2353), Skills.SMITHING),
 
-		GOLD(40, 22.5, new Item[]
-		{ new Item(444) }, new Item(2357), Skills.SMITHING),
+		GOLD(40, 22.5, new Item[] { new Item(444) }, new Item(2357), Skills.SMITHING),
 
-		MITHRIL(50, 30, new Item[]
-		{ new Item(447), new Item(453, 4) }, new Item(2359), Skills.SMITHING),
+		MITHRIL(50, 30, new Item[] { new Item(447), new Item(453, 4) }, new Item(2359), Skills.SMITHING),
 
-		ADAMANT(70, 37.5, new Item[]
-		{ new Item(449), new Item(453, 6) }, new Item(2361), Skills.SMITHING),
+		ADAMANT(70, 37.5, new Item[] { new Item(449), new Item(453, 6) }, new Item(2361), Skills.SMITHING),
 
-		RUNE(85, 50, new Item[]
-		{ new Item(451), new Item(453, 8) }, new Item(2363), Skills.SMITHING),
+		RUNE(85, 50, new Item[] { new Item(451), new Item(453, 8) }, new Item(2363), Skills.SMITHING),
 
-		NOVITE(1, 7, new Item[]
-		{ new Item(17630) }, new Item(17650), Skills.SMITHING),
+		NOVITE(1, 7, new Item[] { new Item(17630) }, new Item(17650), Skills.SMITHING),
 
-		BATHUS(10, 13.3, new Item[]
-		{ new Item(17632) }, new Item(17652), Skills.SMITHING),
+		BATHUS(10, 13.3, new Item[] { new Item(17632) }, new Item(17652), Skills.SMITHING),
 
-		MARMAROS(20, 19.6, new Item[]
-		{ new Item(17634) }, new Item(17654), Skills.SMITHING),
+		MARMAROS(20, 19.6, new Item[] { new Item(17634) }, new Item(17654), Skills.SMITHING),
 
-		KRATONITE(30, 25.9, new Item[]
-		{ new Item(17636) }, new Item(17656), Skills.SMITHING),
+		KRATONITE(30, 25.9, new Item[] { new Item(17636) }, new Item(17656), Skills.SMITHING),
 
-		FRACTITE(40, 32.2, new Item[]
-		{ new Item(17638) }, new Item(17658), Skills.SMITHING),
+		FRACTITE(40, 32.2, new Item[] { new Item(17638) }, new Item(17658), Skills.SMITHING),
 
-		ZEPHYRIUM(50, 38.5, new Item[]
-		{ new Item(17640) }, new Item(17660), Skills.SMITHING),
+		ZEPHYRIUM(50, 38.5, new Item[] { new Item(17640) }, new Item(17660), Skills.SMITHING),
 
-		ARGONITE(60, 44.8, new Item[]
-		{ new Item(17642) }, new Item(17662), Skills.SMITHING),
+		ARGONITE(60, 44.8, new Item[] { new Item(17642) }, new Item(17662), Skills.SMITHING),
 
-		KATAGON(70, 51.1, new Item[]
-		{ new Item(17644) }, new Item(17664), Skills.SMITHING),
+		KATAGON(70, 51.1, new Item[] { new Item(17644) }, new Item(17664), Skills.SMITHING),
 
-		GORGONITE(80, 57.4, new Item[]
-		{ new Item(17646) }, new Item(17666), Skills.SMITHING),
+		GORGONITE(80, 57.4, new Item[] { new Item(17646) }, new Item(17666), Skills.SMITHING),
 
-		PROMETHIUM(90, 63.7, new Item[]
-		{ new Item(17648) }, new Item(17668), Skills.SMITHING),
+		PROMETHIUM(90, 63.7, new Item[] { new Item(17648) }, new Item(17668), Skills.SMITHING),
 
-		CANNON_BALLS(35, 25.6, new Item[]
-		{ new Item(2353, 1), new Item(4, 1) }, new Item(2, 4), Skills.SMITHING),
+		CANNON_BALLS(35, 25.6, new Item[] { new Item(2353, 1), new Item(4, 1) }, new Item(2, 4), Skills.SMITHING),
 
-		MOLTEN_GLASS(1, 20, new Item[]
-		{ new Item(1783, 1), new Item(1781, 1) }, new Item(1775, 1), Skills.CRAFTING),
+		MOLTEN_GLASS(1, 20, new Item[] { new Item(1783, 1), new Item(1781, 1) }, new Item(1775, 1), Skills.CRAFTING),
 
-		SILVER_SICKLE(18, 50, new Item[]
-		{ new Item(2355, 1), new Item(2976, 1) }, new Item(2961, 1), Skills.CRAFTING),
+		SILVER_SICKLE(18, 50, new Item[] { new Item(2355, 1), new Item(2976, 1) }, new Item(2961, 1), Skills.CRAFTING),
 
-		HOLY_SYMBOL(16, 50, new Item[]
-		{ new Item(2355, 1), new Item(1599, 1) }, new Item(1718, 1), Skills.CRAFTING),
+		HOLY_SYMBOL(16, 50, new Item[] { new Item(2355, 1), new Item(1599, 1) }, new Item(1718, 1), Skills.CRAFTING),
 
-		UNHOLY_SYMBOL(16, 50, new Item[]
-		{ new Item(2355, 1), new Item(1594, 1) }, new Item(1724, 1), Skills.CRAFTING),
+		UNHOLY_SYMBOL(16, 50, new Item[] { new Item(2355, 1), new Item(1594, 1) }, new Item(1724, 1), Skills.CRAFTING),
 
-		UNCHARGED_TIARA(23, 52.5, new Item[]
-		{ new Item(2355, 1), new Item(5523, 1) }, new Item(5525, 1), Skills.CRAFTING);
+		UNCHARGED_TIARA(23, 52.5, new Item[] { new Item(2355, 1), new Item(5523, 1) }, new Item(5525, 1), Skills.CRAFTING);
 
 		public static SmeltingBar getBarByProduce(int id) {
-			for(SmeltingBar bar : SmeltingBar.values()) {
-				if(bar.getProducedBar().getId() == id)
+			for (SmeltingBar bar : SmeltingBar.values()) {
+				if (bar.getProducedBar().getId() == id)
 					return bar;
 			}
 			return null;
 		}
-		
+
 		public static SmeltingBar getBar(int id) {
-			for(SmeltingBar bar : SmeltingBar.values()) {
-				for(Item item : bar.getItemsRequired())
-				if(item.getId() == id)
-					return bar;
+			for (SmeltingBar bar : SmeltingBar.values()) {
+				for (Item item : bar.getItemsRequired())
+					if (item.getId() == id)
+						return bar;
 			}
 			return null;
 		}

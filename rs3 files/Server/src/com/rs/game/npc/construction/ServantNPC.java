@@ -147,8 +147,7 @@ public class ServantNPC extends NPC {
 	}
 
 	/**
-	 * Types : 0 - Take item from bank, 1 - Logs to Plank, 2 - Notes to Item, 3
-	 * - Bank item
+	 * Types : 0 - Take item from bank, 1 - Logs to Plank, 2 - Notes to Item, 3 - Bank item
 	 * 
 	 * @param item
 	 * @param quantity
@@ -170,7 +169,7 @@ public class ServantNPC extends NPC {
 			return;
 		}
 		setNextNPCTransformation(1957);
-		
+
 		if (type == 1 || type == 2) {
 			int amountOwned = owner.getInventory().getAmountOf(item);
 			if (quantity > amountOwned) {
@@ -179,7 +178,7 @@ public class ServantNPC extends NPC {
 					quantity = inventorySize;
 			}
 		}
-		
+
 		final Plank plank = Sawmill.getPlankForLog(item);
 		if (plank != null && type == 1) {
 			final int cost = (int) ((plank.getCost() * 0.7) * quantity);

@@ -116,15 +116,12 @@ public class RouteEvent {
 
 	private RouteStrategy[] generateStrategies() {
 		if (object instanceof Entity) {
-			return new RouteStrategy[]
-			{ new EntityStrategy((Entity) object) };
+			return new RouteStrategy[] { new EntityStrategy((Entity) object) };
 		} else if (object instanceof WorldObject) {
-			return new RouteStrategy[]
-			{ new ObjectStrategy((WorldObject) object) };
+			return new RouteStrategy[] { new ObjectStrategy((WorldObject) object) };
 		} else if (object instanceof FloorItem) {
 			FloorItem item = (FloorItem) object;
-			return new RouteStrategy[]
-			{ new FixedTileStrategy(item.getTile().getX(), item.getTile().getY()), new FloorItemStrategy(item) };
+			return new RouteStrategy[] { new FixedTileStrategy(item.getTile().getX(), item.getTile().getY()), new FloorItemStrategy(item) };
 		} else {
 			throw new RuntimeException(object + " is not instanceof any reachable entity.");
 		}

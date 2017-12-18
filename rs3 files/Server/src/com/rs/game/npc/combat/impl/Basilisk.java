@@ -16,8 +16,7 @@ public class Basilisk extends CombatScript {
 
 	@Override
 	public Object[] getKeys() {
-		return new Object[]
-		{ "Basilisk" };
+		return new Object[] { "Basilisk" };
 	}
 
 	@Override

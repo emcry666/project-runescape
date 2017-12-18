@@ -18,66 +18,15 @@ import com.rs.utils.Utils;
  */
 public class Helper {
 
-	public static final int[] CLASS_ITEMS_BASE =
-	{
-		14132,
-		14122,
-		14142,
-		14152,
-		14172,
-		14162,
-		14367,
-		14357,
-		14347,
-		14411,
-		14401,
-		14391,
-		14337,
-		14327,
-		14317,
-		14297,
-		14287,
-		14307,
-		14192,
-		14202,
-		12850,
-		12851,
-		14422,
-		14377,
-		14421,
-		-1,
-		-1,
-		14215,
-		14225,
-		14235,
-		14245,
-		14255,
-		14265,
-		14275,
-		14285 };
-	public static final int[] SACRED_CLAY =
-	{ 14182, 14184, 14186, 14188, 14190 };
+	public static final int[] CLASS_ITEMS_BASE = { 14132, 14122, 14142, 14152, 14172, 14162, 14367, 14357, 14347, 14411, 14401, 14391, 14337, 14327, 14317, 14297, 14287, 14307, 14192, 14202, 12850, 12851, 14422, 14377, 14421, -1, -1, 14215, 14225, 14235, 14245, 14255, 14265, 14275, 14285 };
+	public static final int[] SACRED_CLAY = { 14182, 14184, 14186, 14188, 14190 };
 	public static final long DURATION = 20 * 60 * 1000;
 	public static final long PENALTY_DURATION = 10 * 60 * 1000;
 	public static final WorldTile EXIT = new WorldTile(2968, 9710, 0);
-	public static final int[] BASE_ENTRANCE_BLUE = new int[]
-	{ 4, 5 };
-	public static final int[] BASE_ENTRANCE_RED = new int[]
-	{ 4, 2 };
-	public static final int[][] PLOT_ENTRANCES = new int[][]
-	{
-	{ 2, 2 },
-	{ 2, 3 },
-	{ 2, 4 },
-	{ 3, 2 },
-	{ 3, 4 },
-	{ 4, 2 },
-	{ 4, 4 },
-	{ 5, 2 },
-	{ 5, 3 },
-	{ 5, 4 } };
-	public static final int[] PLOT_OBJECT_BASE = new int[]
-	{ 3, 3 };
+	public static final int[] BASE_ENTRANCE_BLUE = new int[] { 4, 5 };
+	public static final int[] BASE_ENTRANCE_RED = new int[] { 4, 2 };
+	public static final int[][] PLOT_ENTRANCES = new int[][] { { 2, 2 }, { 2, 3 }, { 2, 4 }, { 3, 2 }, { 3, 4 }, { 4, 2 }, { 4, 4 }, { 5, 2 }, { 5, 3 }, { 5, 4 } };
+	public static final int[] PLOT_OBJECT_BASE = new int[] { 3, 3 };
 	public static final int KILN = 39546;
 	public static final int KILN_CONFIG_BASE = 583;
 	public static final int KILN_SCRIPT_BASE = 1910;
@@ -86,97 +35,33 @@ public class Helper {
 	public static final int BLUE_DOOR_2 = 39768;
 	public static final int RED_DOOR_1 = 39767;
 	public static final int RED_DOOR_2 = 39769;
-	public static final int[] BLUE_DOOR_P1 = new int[]
-	{ 3, 7 };
-	public static final int[] BLUE_DOOR_P2 = new int[]
-	{ 4, 7 };
-	public static final int[] BLUE_DOOR_P3 = new int[]
-	{ 7, 4 };
-	public static final int[] BLUE_DOOR_P4 = new int[]
-	{ 7, 3 };
-	public static final int[] RED_DOOR_P1 = new int[]
-	{ 4, 0 };
-	public static final int[] RED_DOOR_P2 = new int[]
-	{ 3, 0 };
-	public static final int[] RED_DOOR_P3 = new int[]
-	{ 0, 3 };
-	public static final int[] RED_DOOR_P4 = new int[]
-	{ 0, 4 };
-	public static final int[] MANAGER_NPCS = new int[]
-	{ 8234, 8235, 8236, 8238 };
-	public static final int[] BLUE_MANAGER_P = new int[]
-	{ 4, 2 };
-	public static final int[] RED_MANAGER_P = new int[]
-	{ 3, 5 };
-	public static final int[] BARRIER_MIN = new int[]
-	{ 1, 1 };
-	public static final int[] BARRIER_MAX = new int[]
-	{ 6, 6 };
-	public static final int[] BARRIER_ITEMS = new int[]
-	{ 14172, 14174, 14176, 14178, 14180 };
+	public static final int[] BLUE_DOOR_P1 = new int[] { 3, 7 };
+	public static final int[] BLUE_DOOR_P2 = new int[] { 4, 7 };
+	public static final int[] BLUE_DOOR_P3 = new int[] { 7, 4 };
+	public static final int[] BLUE_DOOR_P4 = new int[] { 7, 3 };
+	public static final int[] RED_DOOR_P1 = new int[] { 4, 0 };
+	public static final int[] RED_DOOR_P2 = new int[] { 3, 0 };
+	public static final int[] RED_DOOR_P3 = new int[] { 0, 3 };
+	public static final int[] RED_DOOR_P4 = new int[] { 0, 4 };
+	public static final int[] MANAGER_NPCS = new int[] { 8234, 8235, 8236, 8238 };
+	public static final int[] BLUE_MANAGER_P = new int[] { 4, 2 };
+	public static final int[] RED_MANAGER_P = new int[] { 3, 5 };
+	public static final int[] BARRIER_MIN = new int[] { 1, 1 };
+	public static final int[] BARRIER_MAX = new int[] { 6, 6 };
+	public static final int[] BARRIER_ITEMS = new int[] { 14172, 14174, 14176, 14178, 14180 };
 	public static final int EMPTY_BARRIER1 = 39615;
 	public static final int EMPTY_BARRIER2 = 39616;
 	public static final int EMPTY_BARRIER3 = 39617;
-	public static final int[][] BLUE_BARRIER_WALLS = new int[][]
-	{
-	{ 39770, 39772, 39774, 39776 },
-	{ 39782, 39784, 39786, 39788 },
-	{ 39794, 39796, 39798, 39800 },
-	{ 39806, 39808, 39810, 39812 },
-	{ 39818, 39820, 39822, 39824 } };
-	public static final int[][] RED_BARRIER_WALLS = new int[][]
-	{
-	{ 39771, 39773, 39775, 39777 },
-	{ 39783, 39785, 39787, 39789 },
-	{ 39795, 39797, 39799, 39801 },
-	{ 39807, 39809, 39811, 39813 },
-	{ 39819, 39821, 39823, 39825 } };
-	public static final int[][] BLUE_BARRIER_GATES = new int[][]
-	{
-	{ 39778, 39780 },
-	{ 3990, 39792 },
-	{ 39802, 39804 },
-	{ 39814, 39816 },
-	{ 39826, 39828 } };
-	public static final int[][] RED_BARRIER_GATES = new int[][]
-	{
-	{ 39779, 39781 },
-	{ 3991, 39793 },
-	{ 39803, 39805 },
-	{ 39815, 39817 },
-	{ 39827, 39829 } };
-	public static final int[][] ROCK_SPOTS = new int[][]
-	{
-	{ 39548, 39548, 39549 },
-	{ 39550, 39554, 39558 },
-	{ 39551, 39555, 39559 },
-	{ 39552, 39556, 39560 },
-	{ 39553, 39557, 39561 } };
-	public static final int[][] POOL_SPOTS = new int[][]
-	{
-	{ 39548, 39548, 39549 },
-	{ 39565, 39569, 39573 },
-	{ 39564, 39568, 39572 },
-	{ 39563, 39567, 39571 },
-	{ 39562, 39566, 39570 } };
-	public static final int[][] SWARM_SPOTS = new int[][]
-	{
-	{ 39548, 39548, 39549 },
-	{ 39577, 39581, 39585 },
-	{ 39576, 39580, 39584 },
-	{ 39575, 39579, 39583 },
-	{ 39574, 39578, 39582 } };
-	public static final int[][] TREE_SPOTS = new int[][]
-	{
-	{ 39548, 39548, 39549 },
-	{ 39589, 39593, 39597 },
-	{ 39588, 39592, 39596 },
-	{ 39587, 39591, 39595 },
-	{ 39586, 39590, 39594 } };
-	public static final int[] TOOL_TIERS = new int[]
-	{ 20, 51, 65, 101, 151 };
-	public static final int[] OBJECT_TIERS = new int[]
-	{ 10, 90, 125, 175, 241 };
+	public static final int[][] BLUE_BARRIER_WALLS = new int[][] { { 39770, 39772, 39774, 39776 }, { 39782, 39784, 39786, 39788 }, { 39794, 39796, 39798, 39800 }, { 39806, 39808, 39810, 39812 }, { 39818, 39820, 39822, 39824 } };
+	public static final int[][] RED_BARRIER_WALLS = new int[][] { { 39771, 39773, 39775, 39777 }, { 39783, 39785, 39787, 39789 }, { 39795, 39797, 39799, 39801 }, { 39807, 39809, 39811, 39813 }, { 39819, 39821, 39823, 39825 } };
+	public static final int[][] BLUE_BARRIER_GATES = new int[][] { { 39778, 39780 }, { 3990, 39792 }, { 39802, 39804 }, { 39814, 39816 }, { 39826, 39828 } };
+	public static final int[][] RED_BARRIER_GATES = new int[][] { { 39779, 39781 }, { 3991, 39793 }, { 39803, 39805 }, { 39815, 39817 }, { 39827, 39829 } };
+	public static final int[][] ROCK_SPOTS = new int[][] { { 39548, 39548, 39549 }, { 39550, 39554, 39558 }, { 39551, 39555, 39559 }, { 39552, 39556, 39560 }, { 39553, 39557, 39561 } };
+	public static final int[][] POOL_SPOTS = new int[][] { { 39548, 39548, 39549 }, { 39565, 39569, 39573 }, { 39564, 39568, 39572 }, { 39563, 39567, 39571 }, { 39562, 39566, 39570 } };
+	public static final int[][] SWARM_SPOTS = new int[][] { { 39548, 39548, 39549 }, { 39577, 39581, 39585 }, { 39576, 39580, 39584 }, { 39575, 39579, 39583 }, { 39574, 39578, 39582 } };
+	public static final int[][] TREE_SPOTS = new int[][] { { 39548, 39548, 39549 }, { 39589, 39593, 39597 }, { 39588, 39592, 39596 }, { 39587, 39591, 39595 }, { 39586, 39590, 39594 } };
+	public static final int[] TOOL_TIERS = new int[] { 20, 51, 65, 101, 151 };
+	public static final int[] OBJECT_TIERS = new int[] { 10, 90, 125, 175, 241 };
 	public static final int BLUE_CAPE = 14387;
 	public static final int RED_CAPE = 14389;
 	public static final int PRAYER_ALTAR = 39547;
@@ -254,14 +139,11 @@ public class Helper {
 		int flagY = tile.getChunkY() - (area.getMinY() >> 3);
 		if (area.getType(flagX, flagY) == 1) {
 			if (team) {
-				if (Helper.withinArea(player, area, flagX, flagY, new int[]
-				{ 2, 2 }, 3))
+				if (Helper.withinArea(player, area, flagX, flagY, new int[] { 2, 2 }, 3))
 					return true;
-			} else if (Helper.withinArea(player, area, flagX, flagY, new int[]
-			{ 1, 1 }, 5))
+			} else if (Helper.withinArea(player, area, flagX, flagY, new int[] { 1, 1 }, 5))
 				return true;
-		} else if (Helper.withinArea(player, area, flagX, flagY, new int[]
-		{ 2, 2 }))
+		} else if (Helper.withinArea(player, area, flagX, flagY, new int[] { 2, 2 }))
 			return true;
 		return false;
 	}
@@ -546,8 +428,10 @@ public class Helper {
 		int redTotal = Score.totalXP(total, true, winner == 2);
 		player.getPackets().sendCSVarInteger(588, personal.getTeam() ? 2 : 1);
 		player.getPackets().sendCSVarInteger(589, winner);
-		player.getPackets().sendCSVarInteger(598, redTeam ? redTotal : blueTotal); // your team
-		player.getPackets().sendCSVarInteger(597, redTeam ? blueTotal : redTotal); // enemy team
+		player.getPackets().sendCSVarInteger(598, redTeam ? redTotal : blueTotal); // your
+		// team
+		player.getPackets().sendCSVarInteger(597, redTeam ? blueTotal : redTotal); // enemy
+		// team
 
 		// personal
 		player.getPackets().sendCSVarInteger(590, personal.getGathering());
@@ -629,7 +513,8 @@ public class Helper {
 			return;
 		}
 		player.getInterfaceManager().sendCentralInterface(813);
-		player.getPackets().sendExecuteScriptReverse(KILN_SCRIPT_BASE + 0); // + tabID
+		player.getPackets().sendExecuteScriptReverse(KILN_SCRIPT_BASE + 0); // +
+		// tabID
 		int quality = 0;
 		qualityLoop: for (int i = 4; i >= 0; i--) {
 			if (player.getInventory().containsOneItem(SACRED_CLAY[i])) {

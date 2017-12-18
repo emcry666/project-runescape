@@ -16,7 +16,7 @@ public final class StartRoom extends HandledRoom {
 				dungeon.linkPartyToDungeon();
 
 			}
-		}, new int[] {7, 7}, doorsDirections);
+		}, new int[] { 7, 7 }, doorsDirections);
 
 	}
 

@@ -9,12 +9,9 @@ import com.rs.game.player.dialogues.impl.dungeoneering.DungRunecraftingD;
 
 public class DungeoneeringStaves extends Action {
 
-	private static final int[] EMPTY_STAVES =
-	{ 16977, 16979, 16981, 16983, 16985, 16987, 16989, 16991, 16993, 16995 };
-	private static final int[] LEVELS =
-	{ 10, 20, 30, 40, 50, 60, 70, 80, 90, 99 };
-	private static final double[] EXPERIENCE =
-	{ 5.5, 12, 20.5, 29, 39.5, 51, 63.5, 76, 90.5, 106 };
+	private static final int[] EMPTY_STAVES = { 16977, 16979, 16981, 16983, 16985, 16987, 16989, 16991, 16993, 16995 };
+	private static final int[] LEVELS = { 10, 20, 30, 40, 50, 60, 70, 80, 90, 99 };
+	private static final double[] EXPERIENCE = { 5.5, 12, 20.5, 29, 39.5, 51, 63.5, 76, 90.5, 106 };
 
 	private final int index;
 	private int cycles;

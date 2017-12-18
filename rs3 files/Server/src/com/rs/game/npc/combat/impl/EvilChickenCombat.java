@@ -14,13 +14,12 @@ public class EvilChickenCombat extends CombatScript {
 
 	@Override
 	public Object[] getKeys() {
-		return new Object[]
-		{ "Evil Chicken" };
+		return new Object[] { "Evil Chicken" };
 	}
 
 	@Override
 	public int attack(final NPC npc, final Entity target) {
-		if(!Utils.isOnRange(npc, target, 0))
+		if (!Utils.isOnRange(npc, target, 0))
 			return 0;
 		final NPCCombatDefinitions defs = npc.getCombatDefinitions();
 		npc.setNextAnimation(new Animation(defs.getAttackEmote()));

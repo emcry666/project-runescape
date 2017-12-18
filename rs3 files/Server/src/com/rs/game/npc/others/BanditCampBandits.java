@@ -15,7 +15,7 @@ public class BanditCampBandits extends NPC {
 
 	public BanditCampBandits(int id, WorldTile tile, int mapAreaNameHash, boolean canBeAttackFromOutOfArea, boolean spawned) {
 		super(id, tile, mapAreaNameHash, canBeAttackFromOutOfArea, spawned);
-		setForceAgressive(true); //to ignore combat lvl
+		setForceAgressive(true); // to ignore combat lvl
 	}
 
 	@Override

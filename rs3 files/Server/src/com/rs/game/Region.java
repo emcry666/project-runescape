@@ -19,8 +19,7 @@ import com.rs.utils.ObjectSpawns;
 import com.rs.utils.Utils;
 
 public class Region {
-	public static final int[] OBJECT_SLOTS = new int[]
-	{ 0, 0, 0, 0, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 3 };
+	public static final int[] OBJECT_SLOTS = new int[] { 0, 0, 0, 0, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 3 };
 	public static final int OBJECT_SLOT_WALL = 0;
 	public static final int OBJECT_SLOT_WALL_DECORATION = 1;
 	public static final int OBJECT_SLOT_FLOOR = 2;
@@ -150,7 +149,7 @@ public class Region {
 	}
 
 	public void clip(WorldObject object, int x, int y) {
-		if (object.getId() == -1) //dont clip or noclip with id -1
+		if (object.getId() == -1) // dont clip or noclip with id -1
 			return;
 		if (map == null)
 			map = new RegionMap(regionId, false);
@@ -167,7 +166,12 @@ public class Region {
 		if (type == 22 ? objectDefinition.getClipType() != 1 : objectDefinition.getClipType() == 0)
 			return;
 		if (type >= 0 && type <= 3) {
-			if (!objectDefinition.ignoreClipOnAlternativeRoute) //disabled those walls for now since theyre guard corners, temporary fix
+			if (!objectDefinition.ignoreClipOnAlternativeRoute) // disabled
+				// those walls
+				// for now since
+				// theyre guard
+				// corners,
+				// temporary fix
 				map.addWall(plane, x, y, type, rotation, objectDefinition.isProjectileCliped(), !objectDefinition.ignoreClipOnAlternativeRoute);
 			if (objectDefinition.isProjectileCliped())
 				clipedOnlyMap.addWall(plane, x, y, type, rotation, objectDefinition.isProjectileCliped(), !objectDefinition.ignoreClipOnAlternativeRoute);
@@ -185,7 +189,9 @@ public class Region {
 			if (objectDefinition.isProjectileCliped())
 				clipedOnlyMap.addObject(plane, x, y, sizeX, sizeY, objectDefinition.isProjectileCliped(), !objectDefinition.ignoreClipOnAlternativeRoute);
 		} else if (type == 22) {
-			map.addFloor(plane, x, y); // dont ever fucking think about removing it..., some floor deco objects DOES BLOCK WALKING
+			map.addFloor(plane, x, y); // dont ever fucking think about removing
+			// it..., some floor deco objects DOES
+			// BLOCK WALKING
 		}
 	}
 
@@ -198,7 +204,7 @@ public class Region {
 	}
 
 	public void unclip(WorldObject object, int x, int y) {
-		if (object.getId() == -1) //dont clip or noclip with id -1
+		if (object.getId() == -1) // dont clip or noclip with id -1
 			return;
 		if (map == null)
 			map = new RegionMap(regionId, false);
@@ -303,7 +309,8 @@ public class Region {
 				original = o;
 			}
 			// found original object on this slot. removing it since requested
-		} else if (objects[plane][localX][localY][slot] == object) { // removes  original
+		} else if (objects[plane][localX][localY][slot] == object) { // removes
+			// original
 			unclip(object, localX, localY);
 			removedOriginalObjects.add(object);
 		} else {
@@ -437,52 +444,53 @@ public class Region {
 	public List<WorldObject> getRemovedOriginalObjects() {
 		return removedOriginalObjects;
 	}
-	
+
 	public boolean addProjectile(Projectile projectile) {
 		return projectiles.add(projectile);
 	}
-	
+
 	public List<Projectile> getProjectiles() {
 		return projectiles;
 	}
-	
+
 	public void removeProjectiles() {
 		projectiles.clear();
 	}
-	
-	
-    public static final int getRGB(int i, int i_1_, int i_2_) {
-	if (i_2_ > 243)
-	    i_1_ >>= 4;
-	else if (i_2_ > 217)
-	    i_1_ >>= 3;
-	else if (i_2_ > 192)
-	    i_1_ >>= 2;
-	else if (i_2_ > 179)
-	    i_1_ >>= 1;
-	return (i_2_ >> 1) + (((i & 0xff) >> 2 << 10) + (i_1_ >> 5 << 7));
-    }
-	
+
+	public static final int getRGB(int i, int i_1_, int i_2_) {
+		if (i_2_ > 243)
+			i_1_ >>= 4;
+		else if (i_2_ > 217)
+			i_1_ >>= 3;
+		else if (i_2_ > 192)
+			i_1_ >>= 2;
+		else if (i_2_ > 179)
+			i_1_ >>= 1;
+		return (i_2_ >> 1) + (((i & 0xff) >> 2 << 10) + (i_1_ >> 5 << 7));
+	}
+
 	public void loadRegionMap() {
-		int regionX = (regionId >> 8) ;
+		int regionX = (regionId >> 8);
 		int regionY = (regionId & 0xff);
 		int archiveId = Utils.getMapArchiveId(regionX, regionY);
-		
+
 		byte[] mapSettingsData = Cache.STORE.getIndexes()[5].getFile(archiveId, 3);
 		byte[][][] mapSettings = loadMapSettings(mapSettingsData);
-		if(mapSettingsData == null) 
+		if (mapSettingsData == null)
 			return;
-		//client returns if no map settings
-		
-		
+		// client returns if no map settings
+
 		byte[] objectsData = Cache.STORE.getIndexes()[5].getFile(archiveId, 0);
-		if(objectsData != null)
+		if (objectsData != null)
 			loadMapObjects(objectsData, regionX, regionY, mapSettings);
-		
-/*	if (Settings.DEBUG && landContainerData == null && landArchiveId != -1 && MapArchiveKeys.getMapKeys(regionId) != null)
-	    Logger.log(this, "Missing xteas for region " + regionId + ".");*/
+
+		/*
+		 * if (Settings.DEBUG && landContainerData == null && landArchiveId != -1 &&
+		 * MapArchiveKeys.getMapKeys(regionId) != null) Logger.log(this, "Missing xteas for region " + regionId +
+		 * ".");
+		 */
 	}
-	
+
 	public byte[][][] loadMapSettings(byte[] data) {
 		byte[][][] mapSettings;
 		if (data != null) {
@@ -491,24 +499,24 @@ public class Region {
 			for (int plane = 0; plane < 4; plane++) {
 				for (int x = 0; x < 64; x++) {
 					for (int y = 0; y < 64; y++) {
-						
+
 						int value = stream.readUnsignedByte();
-						if((value & 0x1) != 0) {
-							 stream.readUnsignedByte();
-							 stream.readUnsignedSmart();
+						if ((value & 0x1) != 0) {
+							stream.readUnsignedByte();
+							stream.readUnsignedSmart();
 
 						}
-						if((value & 0x2) != 0) {
+						if ((value & 0x2) != 0) {
 							mapSettings[plane][x][y] = (byte) stream.readByte();
 
 						}
-						if((value & 0x4) != 0) {
-							stream.readUnsignedSmart(); //setted to 30
-						
+						if ((value & 0x4) != 0) {
+							stream.readUnsignedSmart(); // setted to 30
+
 						}
-						if((value & 0x8) != 0) {
-							 stream.readUnsignedByte();
-	
+						if ((value & 0x8) != 0) {
+							stream.readUnsignedByte();
+
 						}
 					}
 				}
@@ -538,7 +546,7 @@ public class Region {
 		}
 		return mapSettings;
 	}
-	
+
 	public void loadMapObjects(byte[] data, int regionX, int regionY, byte[][][] mapSettings) {
 		InputStream landStream = new InputStream(data);
 		int objectId = -1;
@@ -562,7 +570,7 @@ public class Region {
 					objectPlane--;
 				if (objectPlane < 0 || objectPlane >= 4 || plane < 0 || plane >= 4)
 					continue;
-				spawnObject(new WorldObject(objectId, type, rotation, localX + regionX*64, localY + regionY*64, objectPlane), objectPlane, localX, localY, true);
+				spawnObject(new WorldObject(objectId, type, rotation, localX + regionX * 64, localY + regionY * 64, objectPlane), objectPlane, localX, localY, true);
 			}
 		}
 	}
@@ -572,8 +580,7 @@ public class Region {
 	}
 
 	/**
-	 * Get's ground item with specific id on the specific location in this
-	 * region.
+	 * Get's ground item with specific id on the specific location in this region.
 	 */
 	public FloorItem getGroundItem(int id, WorldTile tile, Player player) {
 		if (groundItems == null)
@@ -588,8 +595,8 @@ public class Region {
 	}
 
 	/**
-	 * Return's list of ground items that are currently loaded. List may be null
-	 * if there's no ground items. Modifying given list is prohibited.
+	 * Return's list of ground items that are currently loaded. List may be null if there's no ground items.
+	 * Modifying given list is prohibited.
 	 * 
 	 * @return
 	 */
@@ -598,9 +605,8 @@ public class Region {
 	}
 
 	/**
-	 * Return's list of ground items that are currently loaded. This method
-	 * ensures that returned list is not null. Modifying given list is
-	 * prohibited.
+	 * Return's list of ground items that are currently loaded. This method ensures that returned list is not null.
+	 * Modifying given list is prohibited.
 	 * 
 	 * @return
 	 */
@@ -650,10 +656,10 @@ public class Region {
 
 	public void loadMusicIds() {
 		String[] musicNames = getMusicNames(regionId);
-		if(musicNames.length == 0)
+		if (musicNames.length == 0)
 			return;
 		musicIds = new int[musicNames.length];
-		for(int i = 0; i < musicNames.length; i++)
+		for (int i = 0; i < musicNames.length; i++)
 			musicIds[i] = getMusicId(musicNames[i]);
 	}
 
@@ -662,7 +668,7 @@ public class Region {
 			return -1;
 		return musicIds[Utils.random(musicIds.length)];
 	}
-	
+
 	public int[] getMusicIds() {
 		return musicIds;
 	}
@@ -695,85 +701,83 @@ public class Region {
 		return regionId;
 	}
 
-	//use this one from nowon. 
+	// use this one from nowon.
 	public static final String[] getMusicNames(int regionId) {
-		
+
 		List<String> names = new ArrayList<String>();
-	
-		switch(regionId) {
-			case 11801: //exiled kalphite lair
-				names.add("Coleoptera");
-				break;
-			case 11578:
-				names.add("Frostbite");
-				break;
-			case 15173:
-				names.add("Faces Obscura");
-				break;
-			case 14917:
-				names.add("Dying Light");
-				break;
-			case 14916:
-				names.add("Cliffhanger");
-				break;
-			case 15172:
-				names.add("Empyrean Citadel");
-				break;
-			case 16738: //staff zone custom
-				names.add("End Song");
-				break;
-			case 9011:
-				names.add("Elven Elite");
-				break;
-			case 8244:
-			case 8499:
-			case 8500:
-			case 8501:
-			case 8755:
-			case 8756:
-			case 8757:
-			case 9012:
-			case 9013:
-				names.add("Elven Daffodil");
-				names.add("Elven Dhalia");
-				names.add("Elven Heart");
-				names.add("Elven Holly");
-				names.add("Elven Sunlight");
-				names.add("Elven Nightshade");
-				names.add("Elven Sunrise");
-				names.add("Elven Sunset");
-				names.add("Elven Voice");
-				names.add("Elven Rose");
-				names.add("Elven Snapegrass");
-				names.add("Elven Bluebell");
-				names.add("Elven Lily");
-				names.add("The Twilight Twain");
-				names.add("Henceward!");
-				names.add("Baxtorian's Hollow");
-				names.add("Among Tirannwn Trees");
-				break;
-			case 9266: // Underground Pass exit
-				names.add("Breeze");
-				names.add("Elven Mist");
-				break;
+
+		switch (regionId) {
+		case 11801: // exiled kalphite lair
+			names.add("Coleoptera");
+			break;
+		case 11578:
+			names.add("Frostbite");
+			break;
+		case 15173:
+			names.add("Faces Obscura");
+			break;
+		case 14917:
+			names.add("Dying Light");
+			break;
+		case 14916:
+			names.add("Cliffhanger");
+			break;
+		case 15172:
+			names.add("Empyrean Citadel");
+			break;
+		case 16738: // staff zone custom
+			names.add("End Song");
+			break;
+		case 9011:
+			names.add("Elven Elite");
+			break;
+		case 8244:
+		case 8499:
+		case 8500:
+		case 8501:
+		case 8755:
+		case 8756:
+		case 8757:
+		case 9012:
+		case 9013:
+			names.add("Elven Daffodil");
+			names.add("Elven Dhalia");
+			names.add("Elven Heart");
+			names.add("Elven Holly");
+			names.add("Elven Sunlight");
+			names.add("Elven Nightshade");
+			names.add("Elven Sunrise");
+			names.add("Elven Sunset");
+			names.add("Elven Voice");
+			names.add("Elven Rose");
+			names.add("Elven Snapegrass");
+			names.add("Elven Bluebell");
+			names.add("Elven Lily");
+			names.add("The Twilight Twain");
+			names.add("Henceward!");
+			names.add("Baxtorian's Hollow");
+			names.add("Among Tirannwn Trees");
+			break;
+		case 9266: // Underground Pass exit
+			names.add("Breeze");
+			names.add("Elven Mist");
+			break;
 		}
-		
-		
+
 		String name1 = getMusicName1(regionId);
-		if(name1 != null)
+		if (name1 != null)
 			names.add(name1);
 		String name2 = getMusicName2(regionId);
-		if(name2 != null)
+		if (name2 != null)
 			names.add(name2);
 		String name3 = getMusicName3(regionId);
-		if(name3 != null)
+		if (name3 != null)
 			names.add(name3);
-		
+
 		return names.toArray(new String[names.size()]);
-		
+
 	}
-	
-	
+
 	public static final String getMusicName3(int regionId) {
 		switch (regionId) {
 		case 13152: // crucible
@@ -815,9 +819,9 @@ public class Region {
 			return "Taverley Enchantment";
 		case 11575: // burthope
 			return "Taverley Adventure";
-			/*
-			 * kalaboss
-			 */
+		/*
+		 * kalaboss
+		 */
 		case 13626:
 		case 13627:
 		case 13882:
@@ -838,34 +842,34 @@ public class Region {
 
 	public static final String getMusicName1(int regionId) {
 		switch (regionId) {
-		case 9265: //ltdya
+		case 9265: // ltdya
 			return "Far Away";
-		case 9009: //south east isafdar
+		case 9009: // south east isafdar
 			return "Forest";
-		case 8001: //poison waste slayer dungeon
+		case 8001: // poison waste slayer dungeon
 			return "Waste Defaced";
-		case 9008: //poison waste
+		case 9008: // poison waste
 		case 9007:
 		case 9264:
-			return "Lost Soul"; 
-		case 8496: //port tyras
+			return "Lost Soul";
+		case 8496: // port tyras
 		case 8497:
 			return "Riverside";
-		case 8752: //south of tyras camp
+		case 8752: // south of tyras camp
 			return "Exposed";
-		case 8753: //tyras camp
+		case 8753: // tyras camp
 			return "Meridian";
-		case 9010: //south east prifinas
+		case 9010: // south east prifinas
 			return "Crystal Castle";
-		case 8498: //south west prifinas
+		case 8498: // south west prifinas
 			return "Everywhere";
-		case 8754: //elf camp
+		case 8754: // elf camp
 			return "Woodland";
-		case 9523: //arandar
+		case 9523: // arandar
 		case 9267:
 		case 9268:
 			return "Overpass";
-		case 10042: //waterbird island
+		case 10042: // waterbird island
 			return "The Desolate Isle";
 		case 9886:
 			return "The Monsters Below";
@@ -904,28 +908,28 @@ public class Region {
 			return "The Golem";
 		case 13871:
 			return "Kharidian Nights";
-		case 10537: //pest control island
+		case 10537: // pest control island
 			return "Null and Void";
-		case 6995: //ancient cavern
+		case 6995: // ancient cavern
 		case 6994:
 			return "Barb Wire";
-		case 6482: //kuradal dungeon
+		case 6482: // kuradal dungeon
 			return "Final Destination";
-		case 9526: //gnome ball field
+		case 9526: // gnome ball field
 			return "Gnomeball";
-		case 10034: //Battlefield north of Tree Gnome Village., 
+		case 10034: // Battlefield north of Tree Gnome Village.,
 			return "Attack I";
-		case 10033: //Tree Gnome Village
+		case 10033: // Tree Gnome Village
 			return "Emotion";
-		case 11418: //Dwarven tunnel under Wolf Mountain
+		case 11418: // Dwarven tunnel under Wolf Mountain
 			return "Beyond";
-		case 8774: //taverly slayer dungeon
+		case 8774: // taverly slayer dungeon
 			return "Taverley Lament";
 		case 11576:
 			return "Kingdom";
 		case 11320:
 			return "Tremble";
-		case 12616: //tarns lair
+		case 12616: // tarns lair
 			return "Undead Dungeon";
 		case 10388:
 			return "Cavern";
@@ -946,27 +950,27 @@ public class Region {
 			return "Hunting Dragons";
 		case 12115:
 			return "Dimension X";
-		case 8527: //braindeath island
+		case 8527: // braindeath island
 			return "Aye Car Rum Ba";
-		case 8528: //braindeath mountain
+		case 8528: // braindeath mountain
 			return "Blistering Barnacles";
-		case 13206: //goblin mines under lumby
+		case 13206: // goblin mines under lumby
 			return "The Lost Tribe";
 		case 12949:
 		case 12950:
 			return "Cave of the Goblins";
 		case 12948:
 			return "The Power of Tears";
-		case 11416: //dramen tree
+		case 11416: // dramen tree
 			return "Underground";
-		case 14638: //mosleharms
+		case 14638: // mosleharms
 			return "In the Brine";
 		case 14637:
 		case 14894:
 			return "Life's a Beach!";
-		case 14494: //mosleharms cave
+		case 14494: // mosleharms cave
 			return "Little Cave of Horrors";
-		case 11673: //taverly dungeon musics
+		case 11673: // taverly dungeon musics
 			return "Courage";
 		case 11672:
 			return "Dunjun";
@@ -982,20 +986,20 @@ public class Region {
 			return "Mausoleum";
 		case 10906:
 			return "Twilight";
-		case 12181: //Asgarnian Ice Dungeon's wyvern area
+		case 12181: // Asgarnian Ice Dungeon's wyvern area
 			return "Woe of the Wyvern";
-		case 11925: //Asgarnian Ice Dungeon
+		case 11925: // Asgarnian Ice Dungeon
 			return "Starlight";
-		case 13617: //abbey
+		case 13617: // abbey
 			return "Citharede Requiem";
-		case 13361: //desert verms
+		case 13361: // desert verms
 			return "Valerio's Song";
-		case 13910: //The Tale of the Muspah cave entrance
+		case 13910: // The Tale of the Muspah cave entrance
 		case 13654:
 			return "Rest for the Weary";
-		case 13656: //The Tale of the Muspah cave ice verms area
+		case 13656: // The Tale of the Muspah cave ice verms area
 			return "The Muspah's Tomb";
-		case 11057: //brimhaven and arroundd
+		case 11057: // brimhaven and arroundd
 			return "High Seas";
 		case 10802:
 			return "Jungly2";
@@ -1003,25 +1007,25 @@ public class Region {
 			return "Landlubber";
 		case 11058:
 			return "Jolly-R";
-		case 10901: //brimhaven dungeon entrance
+		case 10901: // brimhaven dungeon entrance
 			return "Pathways";
-		case 10645: //brimhaven dungeon
+		case 10645: // brimhaven dungeon
 		case 10644:
 		case 10900:
 			return "7th Realm";
-		case 11315: //crandor
+		case 11315: // crandor
 		case 11314:
 			return "The Shadow";
-		case 11414: //karanja underground
+		case 11414: // karanja underground
 		case 11413:
 			return "Dangerous Road";
-		case 7505: //strongholf of security war
+		case 7505: // strongholf of security war
 			return "Dogs of War";
-		case 8017: //strongholf of security famine
+		case 8017: // strongholf of security famine
 			return "Food for Thought";
-		case 8530: //strongholf of security pestile
+		case 8530: // strongholf of security pestile
 			return "Malady";
-		case 9297: //strongholf of security death
+		case 9297: // strongholf of security death
 			return "Dance of Death";
 		case 10040:
 			return "Lighthouse";
@@ -1122,7 +1126,7 @@ public class Region {
 			return "Lonesome";
 		case 12589: // granite mine
 			return "The Desert";
-		case 18517: //polipore dungeon
+		case 18517: // polipore dungeon
 		case 18516:
 		case 18773:
 		case 18775:
@@ -1133,7 +1137,7 @@ public class Region {
 			return "Dominion Lobby I";
 		case 11836: // lava maze near kbd entrance
 			return "Attack III";
-		case 11834: //forgotten cimitery
+		case 11834: // forgotten cimitery
 			return "Wilderness III";
 		case 12091: // lava maze west
 			return "Wilderness II";
@@ -1238,52 +1242,52 @@ public class Region {
 			return "The Sound of Guthix";
 		case 9033:
 			return "Attack V";
-			// godwars
+		// godwars
 		case 11603:
 			return "Zamorak Zoo";
 		case 11346:
 			return "Armadyl Alliance";
 		case 11347:
 			return "Armageddon";
-			// black kngihts fortess
+		// black kngihts fortess
 		case 12086:
 			return "Knightmare";
-			// tzaar
+		// tzaar
 		case 9552:
 			return "Fire and Brimstone";
-			// kq
+		// kq
 		case 13972:
 			return "Insect Queen";
-			// clan wars free for all:
+		// clan wars free for all:
 		case 11094:
 			return "Clan Wars";
-			/*
-			 * tutorial island
-			 */
+		/*
+		 * tutorial island
+		 */
 		case 12336:
 			return "Newbie Melody";
-			//dark warrior fortress
+		// dark warrior fortress
 		case 12088:
 			return "Army of Darkness";
-			/*
-			 * darkmeyer
-			 */
+		/*
+		 * darkmeyer
+		 */
 		case 14644:
 		case 14388:
 			return "Darkmeyer";
 		case 12183:
 			return "Metalwork";
-			/*
-			 * kalaboss
-			 */
+		/*
+		 * kalaboss
+		 */
 		case 13626:
 		case 13627:
 		case 13882:
 		case 13881:
 			return "Daemonheim Entrance";
-			/*
-			 * Lumbridge, falador and region.
-			 */
+		/*
+		 * Lumbridge, falador and region.
+		 */
 		case 11574: // heroes guild
 			return "Splendour";
 		case 12851:
@@ -1323,9 +1327,9 @@ public class Region {
 			return "Mad Eadgar";
 		case 10293: // at the Fishing Guild.
 			return "Mellow";
-		case 11837: //wild agility course
+		case 11837: // wild agility course
 			return "Scape Sad";
-		case 13117: //rouges castle
+		case 13117: // rouges castle
 			return "Regal";
 		case 11824:
 			return "Mudskipper Melody";
@@ -1355,9 +1359,9 @@ public class Region {
 			return "Attention";
 		case 11827: // north rimmigton
 			return "Nightfall";
-			/*
-			 * Camelot and region.
-			 */
+		/*
+		 * Camelot and region.
+		 */
 		case 11062:
 		case 10805:
 			return "Camelot";
@@ -1388,9 +1392,9 @@ public class Region {
 			return "Village";
 		case 13877: // canafis south
 			return "Waterlogged";
-			/*
-			 * Mobilies Armies.
-			 */
+		/*
+		 * Mobilies Armies.
+		 */
 		case 9516:
 			return "Command Centre";
 		case 12596: // champions guild

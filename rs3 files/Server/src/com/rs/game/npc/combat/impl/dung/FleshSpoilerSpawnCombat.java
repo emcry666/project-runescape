@@ -11,8 +11,7 @@ public class FleshSpoilerSpawnCombat extends CombatScript {
 
 	@Override
 	public Object[] getKeys() {
-		return new Object[]
-		{ 11910 };
+		return new Object[] { 11910 };
 	}
 
 	@Override

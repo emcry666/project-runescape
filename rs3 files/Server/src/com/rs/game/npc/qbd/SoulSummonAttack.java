@@ -16,12 +16,7 @@ public final class SoulSummonAttack implements QueenAttack {
 	/**
 	 * The spawn offset locations.
 	 */
-	private static final int[][] SPAWN_LOCATIONS =
-	{
-	{ 31, 35 },
-	{ 33, 35 },
-	{ 34, 33 },
-	{ 31, 29 } };
+	private static final int[][] SPAWN_LOCATIONS = { { 31, 35 }, { 33, 35 }, { 34, 33 }, { 31, 29 } };
 
 	@Override
 	public int attack(QueenBlackDragon npc, Player victim) {

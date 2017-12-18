@@ -24,8 +24,7 @@ public class HopeDevourerCombat extends CombatScript {
 
 	@Override
 	public Object[] getKeys() {
-		return new Object[]
-		{ 12886 };
+		return new Object[] { 12886 };
 	}
 
 	@Override

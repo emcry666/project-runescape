@@ -15,8 +15,7 @@ public class JadCombat extends CombatScript {
 	@Override
 	public Object[] getKeys() {
 
-		return new Object[]
-				{ 2745, 15208 };
+		return new Object[] { 2745, 15208 };
 	}
 
 	@Override
@@ -35,7 +34,10 @@ public class JadCombat extends CombatScript {
 		} else {
 			npc.setNextAnimation(new Animation(16195));
 			npc.setNextGraphics(new Graphics(2995));
-			Projectile projectile = World.sendProjectileNew(npc, target, 2996, 30, 30, 120, 2, 20, 5);//TODO check this out.
+			Projectile projectile = World.sendProjectileNew(npc, target, 2996, 30, 30, 120, 2, 20, 5);// TODO
+			// check
+			// this
+			// out.
 			target.setNextGraphics(new Graphics(2741, projectile.getEndTime(), 100));
 			delayHit(npc, Utils.projectileTimeToCycles(projectile.getEndTime()) - 1, target, getMagicHit(npc, getMaxHit(npc, 8500, NPCCombatDefinitions.MAGE, target)));
 		}

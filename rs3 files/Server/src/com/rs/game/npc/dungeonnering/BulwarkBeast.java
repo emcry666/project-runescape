@@ -38,7 +38,11 @@ public final class BulwarkBeast extends DungeonBoss {
 			return;
 		Player playerSource = (Player) source;
 		int weaponId = playerSource.getEquipment().getWeaponId();
-		if (weaponId != -1 && Mining.getPickAxeDefinitions(playerSource, true) != null/*(weaponId >= 16295 && weaponId <= 16315) || (weaponId >= 16142 && weaponId <= 16152)*/) {
+		if (weaponId != -1 && Mining.getPickAxeDefinitions(playerSource,
+				true) != null/*
+								 * (weaponId >= 16295 && weaponId <= 16315) || (weaponId >= 16142 && weaponId <=
+								 * 16152)
+								 */) {
 			hit.setDamage(Utils.random(50));
 			hit.setLook(HitLook.ABSORB_DAMAGE);
 			shieldHP -= hit.getDamage();

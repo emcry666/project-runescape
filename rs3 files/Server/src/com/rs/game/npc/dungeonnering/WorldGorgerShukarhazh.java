@@ -9,11 +9,7 @@ import com.rs.game.player.content.dungeoneering.RoomReference;
 @SuppressWarnings("serial")
 public class WorldGorgerShukarhazh extends DungeonBoss {
 
-	private static final int[][] EYE_COORDINATES =
-	{
-	{ 0, 7 },
-	{ 7, 15 },
-	{ 15, 8 } };
+	private static final int[][] EYE_COORDINATES = { { 0, 7 }, { 7, 15 }, { 15, 8 } };
 
 	private FamishedEye[] eyes;
 
@@ -50,12 +46,12 @@ public class WorldGorgerShukarhazh extends DungeonBoss {
 
 	@Override
 	public double getMagePrayerMultiplier() {
-		return 0.6;//reg
+		return 0.6;// reg
 	}
 
 	@Override
 	public double getMeleePrayerMultiplier() {
-		return 1.0;//prayer dun work m8t
+		return 1.0;// prayer dun work m8t
 	}
 
 	@Override

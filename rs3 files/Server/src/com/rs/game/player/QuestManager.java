@@ -12,23 +12,7 @@ public final class QuestManager implements Serializable {
 	private static final long serialVersionUID = -8085932531253271252L;
 
 	public static enum Quests {
-		THE_TALE_OF_THE_MUSPAH,
-		PERIL_OF_ICE_MONTAINS,
-		VOID_STARES_BACK,
-		NOMADS_REQUIEM,
-		KINGS_RANSOM,
-		ELEMENTAL_WORKSHOP_I,
-		IN_SEARCH_OF_THE_MYREQUE,
-		LEGENDS_QUEST,
-		HEROES_QUEST,
-		THE_SLUG_MENACE,
-		LUNAR_DIPLOMACY,
-		FAIRY_RING_III,
-		FAMILY_CREST,
-		THE_EYES_OF_GLOUPHIE,
-		AS_A_FIRST_RESORT,
-		RECIPE_FOR_DISASTER,
-		EASTER_2014;
+		THE_TALE_OF_THE_MUSPAH, PERIL_OF_ICE_MONTAINS, VOID_STARES_BACK, NOMADS_REQUIEM, KINGS_RANSOM, ELEMENTAL_WORKSHOP_I, IN_SEARCH_OF_THE_MYREQUE, LEGENDS_QUEST, HEROES_QUEST, THE_SLUG_MENACE, LUNAR_DIPLOMACY, FAIRY_RING_III, FAMILY_CREST, THE_EYES_OF_GLOUPHIE, AS_A_FIRST_RESORT, RECIPE_FOR_DISASTER, EASTER_2014;
 	}
 
 	private transient Player player;
@@ -72,7 +56,7 @@ public final class QuestManager implements Serializable {
 	}
 
 	public void checkCompleted() {
-		//note: these are all in cache
+		// note: these are all in cache
 		if (!completedQuests.contains(Quests.PERIL_OF_ICE_MONTAINS) && player.getSkills().hasRequiriments(Skills.CONSTRUCTION, 10, Skills.FARMING, 10, Skills.HUNTER, 10, Skills.THIEVING, 11))
 			completeQuest(Quests.PERIL_OF_ICE_MONTAINS);
 		if (!completedQuests.contains(Quests.VOID_STARES_BACK) && player.getSkills().hasRequiriments(Skills.MAGIC, 80, Skills.ATTACK, 78, Skills.STRENGTH, 78, Skills.FIREMAKING, 71, Skills.CONSTRUCTION, 70, Skills.CRAFTING, 70, Skills.SMITHING, 70, Skills.SUMMONING, 55, Skills.DEFENCE, 10))
@@ -146,11 +130,11 @@ public final class QuestManager implements Serializable {
 	private void sendStageData(Quests quest, int stage) {
 		switch (quest) {
 		case NOMADS_REQUIEM:
-				player.getVarsManager().sendVarBit(10095, 3);
+			player.getVarsManager().sendVarBit(10095, 3);
 			break;
 		case EASTER_2014:
 			if (stage == 0) {
-				//player.getCutscenesManager().play(EasterCutScene.class);
+				// player.getCutscenesManager().play(EasterCutScene.class);
 			}
 			break;
 		default:

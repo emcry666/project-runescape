@@ -21,8 +21,7 @@ public class FamishedEyeCombat extends CombatScript {
 
 	@Override
 	public Object[] getKeys() {
-		return new Object[]
-		{ 12436, 12451, 12466 };
+		return new Object[] { 12436, 12451, 12466 };
 	}
 
 	@Override

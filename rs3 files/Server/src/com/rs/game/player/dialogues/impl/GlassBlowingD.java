@@ -11,18 +11,9 @@ import com.rs.game.player.dialogues.Dialogue;
 
 public class GlassBlowingD extends Dialogue {
 
-	private static final int[][] LEVELS =
-	{
-	{ 1, 4, 12, 33, 42, 45, 49, 87 },
-	{ 89 } };
-	private static final double[][] EXPERIENCE =
-	{
-	{ 17.5, 19, 25, 35, 42.5, 52.5, 55, 70 },
-	{ 100 } };
-	private static final int[][] PRODUCTS =
-	{
-	{ 1919, 4527, 4522, 7534, 567, 4542, 10973 },
-	{ 23191 } };
+	private static final int[][] LEVELS = { { 1, 4, 12, 33, 42, 45, 49, 87 }, { 89 } };
+	private static final double[][] EXPERIENCE = { { 17.5, 19, 25, 35, 42.5, 52.5, 55, 70 }, { 100 } };
+	private static final int[][] PRODUCTS = { { 1919, 4527, 4522, 7534, 567, 4542, 10973 }, { 23191 } };
 
 	private int index;
 

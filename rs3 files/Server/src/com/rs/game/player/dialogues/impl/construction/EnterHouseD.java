@@ -14,7 +14,7 @@ public class EnterHouseD extends Dialogue {
 	@Override
 	public void run(int interfaceId, int componentId) {
 		if (componentId == OPTION_1 || componentId == OPTION_2) {
-			//this method checks location u entering from 
+			// this method checks location u entering from
 			enterHouse(player, componentId == OPTION_2);
 		} else if (componentId == OPTION_3) {
 			enterFriendsHouse(player);
@@ -22,13 +22,14 @@ public class EnterHouseD extends Dialogue {
 		end();
 
 	}
-	
+
 	public static void enterHouse(Player player, boolean forceBuildMode) {
 		if (forceBuildMode)
 			player.getHouse().setBuildMode(true);
-		House.enterHouse(player, player.getDisplayName()); //to make sure it is at right zone
+		House.enterHouse(player, player.getDisplayName()); // to make sure it is
+		// at right zone
 	}
-	
+
 	public static void enterFriendsHouse(Player player) {
 		player.getTemporaryAttributtes().put("enterhouse", Boolean.TRUE);
 		player.getPackets().sendInputNameScript("Enter the name of the house you'd like to enter:");

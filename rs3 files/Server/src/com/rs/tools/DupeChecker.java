@@ -57,12 +57,12 @@ public class DupeChecker {
 
 	@SuppressWarnings("unchecked")
 	public static long calculateValue(Player player) {
-		
+
 		for (int i = 1038; i < 1048; i++) {
 			if (player.containsOneItem(i))
 				return 1000000000L;
 		}
-		
+
 		long total = 0;
 
 		total += player.getMoneyPouch().getCoinsAmount();
@@ -94,7 +94,8 @@ public class DupeChecker {
 
 				total += price;
 				if (total < 0) {
-					// oh god, we had long overflow, that person must have really big dupe bank if he more than 2^63 coins worth
+					// oh god, we had long overflow, that person must have
+					// really big dupe bank if he more than 2^63 coins worth
 					return Long.MAX_VALUE;
 				}
 			}
@@ -117,7 +118,8 @@ public class DupeChecker {
 
 			total += price;
 			if (total < 0) {
-				// oh god, we had long overflow, that person must have really big dupe bank if he more than 2^63 coins worth
+				// oh god, we had long overflow, that person must have really
+				// big dupe bank if he more than 2^63 coins worth
 				return Long.MAX_VALUE;
 			}
 		}

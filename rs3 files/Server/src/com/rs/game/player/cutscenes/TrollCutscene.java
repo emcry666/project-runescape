@@ -34,7 +34,7 @@ public class TrollCutscene extends Cutscene {
 		actionsList.add(new CutsceneCodeAction(new Runnable() {
 			public void run() {
 				player.getDialogueManager().finishDialogue();
-				//Dialogue.sendEmptyDialogue(player);
+				// Dialogue.sendEmptyDialogue(player);
 			}
 		}, -1));
 		actionsList.add(new CreateNPCAction(DRAGONKK, 15784, 3092, 3497, 0, "Vision of dragonkk", 1337, -1));

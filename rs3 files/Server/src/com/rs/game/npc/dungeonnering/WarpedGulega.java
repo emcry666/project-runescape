@@ -13,21 +13,14 @@ public class WarpedGulega extends DungeonBoss {
 		super(id, tile, manager, reference);
 	}
 
-	//thats default lol
-	/* @Override
-	 public double getMeleePrayerMultiplier() {
-	return 0.0;//Fully block it.
-	 }
-	 
-	 @Override
-	 public double getRangePrayerMultiplier() {
-	return 0.0;//Fully block it.
-	 }
-	 
-	 @Override
-	 public double getMagePrayerMultiplier() {
-	return 0.0;//Fully block it.
-	 }*/
+	// thats default lol
+	/*
+	 * @Override public double getMeleePrayerMultiplier() { return 0.0;//Fully block it. }
+	 * 
+	 * @Override public double getRangePrayerMultiplier() { return 0.0;//Fully block it. }
+	 * 
+	 * @Override public double getMagePrayerMultiplier() { return 0.0;//Fully block it. }
+	 */
 
 	@Override
 	public void processHit(Hit hit) {

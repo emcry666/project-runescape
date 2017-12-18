@@ -6,8 +6,7 @@ public class PinMessageD extends Dialogue {
 
 	@Override
 	public void start() {
-		sendDialogue(new String[]
-		{ (String) this.parameters[0] });
+		sendDialogue(new String[] { (String) this.parameters[0] });
 	}
 
 	@Override

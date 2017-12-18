@@ -17,24 +17,15 @@ public class UnhappyGhostRoom extends PuzzleRoom {
 	public static final int RING = 19879;
 	public static final int GHOST = 11246;
 
-	private static final int[] COFFIN =
-	{ 54582, 54571, 40181, 54593, 55465 };
-	private static final int[] COFFIN_OPEN =
-	{ 54583, 54572, 55451, 54594, 55466 };
-	private static final int[] COFFIN_BLESSED =
-	{ 40172, 40175, 55452, 55463, 55467 };
-	private static final int[] JEWELLERY_BOX_EMPTY =
-	{ 54587, 54576, 55453, 54598, 55468 };
-	private static final int[] JEWELLERY_BOX =
-	{ 40173, 40180, 55454, 55464, 55469 };
-	private static final int[] BROKEN_POT =
-	{ 54588, 54577, 55455, 54599, 55470 };
-	private static final int[] FIXED_POT =
-	{ 54589, 54578, 55456, 54600, 55471 };
-	private static final int[] DAMAGED_PILLAR =
-	{ 54591, 54580, 55457, 54602, 55472 };
-	private static final int[] REPAIRED_PILLAR =
-	{ 54592, 54581, 55458, 54603, 55473 };
+	private static final int[] COFFIN = { 54582, 54571, 40181, 54593, 55465 };
+	private static final int[] COFFIN_OPEN = { 54583, 54572, 55451, 54594, 55466 };
+	private static final int[] COFFIN_BLESSED = { 40172, 40175, 55452, 55463, 55467 };
+	private static final int[] JEWELLERY_BOX_EMPTY = { 54587, 54576, 55453, 54598, 55468 };
+	private static final int[] JEWELLERY_BOX = { 40173, 40180, 55454, 55464, 55469 };
+	private static final int[] BROKEN_POT = { 54588, 54577, 55455, 54599, 55470 };
+	private static final int[] FIXED_POT = { 54589, 54578, 55456, 54600, 55471 };
+	private static final int[] DAMAGED_PILLAR = { 54591, 54580, 55457, 54602, 55472 };
+	private static final int[] REPAIRED_PILLAR = { 54592, 54581, 55458, 54603, 55473 };
 
 	private int stage = 0;
 
@@ -47,7 +38,7 @@ public class UnhappyGhostRoom extends PuzzleRoom {
 
 	@Override
 	public boolean processObjectClick1(Player player, WorldObject object) {
-		//TODO: You can fail skill related tasks
+		// TODO: You can fail skill related tasks
 		if (object.getId() == DAMAGED_PILLAR[type]) {
 			if (!hasRequirement(player, Skills.CONSTRUCTION)) {
 				player.getPackets().sendGameMessage("You need a construction level of " + getRequirement(Skills.CONSTRUCTION) + " to repair this pillar.");
@@ -97,7 +88,7 @@ public class UnhappyGhostRoom extends PuzzleRoom {
 				player.getPackets().sendGameMessage("You need a prayer level of " + getRequirement(Skills.PRAYER) + " to bless these remains.");
 				return false;
 			}
-			//TODO: failing drains prayer
+			// TODO: failing drains prayer
 			giveXP(player, Skills.PRAYER);
 			player.lock(3);
 			player.setNextAnimation(new Animation(833));

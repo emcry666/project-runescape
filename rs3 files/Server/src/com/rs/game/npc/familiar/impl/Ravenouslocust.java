@@ -63,7 +63,7 @@ public class Ravenouslocust extends Familiar {
 						target.setNextGraphics(new Graphics(1348));
 						if (target instanceof Player) {
 							Player playerTarget = (Player) target;
-							
+
 							int nextFoodSlot = Consumables.getNextFoodSlot(playerTarget);
 							if (nextFoodSlot == -1)
 								return;

@@ -58,7 +58,7 @@ public class Offer extends Item {
 			return;
 		owner.getPackets().sendItems(ClientScriptMap.getMap(1079).getIntValue(slot), receivedItems);
 	}
-	
+
 	public ItemsContainer<Item> getReceivedItems() {
 		return receivedItems;
 	}
@@ -154,23 +154,25 @@ public class Offer extends Item {
 		int leftFrom = fromOffer.getAmount() - fromOffer.totalAmmountSoFar;
 		int exchangeAmt = left > leftFrom ? leftFrom : left;
 		int totalPrice = exchangeAmt * fromOffer.price;
-		//int amtCoins = receivedItems.getNumberOf(995);
+		// int amtCoins = receivedItems.getNumberOf(995);
 		if (buying) {
-			/*if (fromOffer.receivedItems.getNumberOf(995) + totalPrice <= 0) // too
-										    // high
-			return;*/
+			/*
+			 * if (fromOffer.receivedItems.getNumberOf(995) + totalPrice <= 0) // too // high return;
+			 */
 			int leftcoins = exchangeAmt * price - totalPrice;
 			if (leftcoins > 0) {
-				/*if (amtCoins + leftcoins <= 0) // too high
-				    return;*/
+				/*
+				 * if (amtCoins + leftcoins <= 0) // too high return;
+				 */
 				receivedItems.add(new Item(995, leftcoins));
 			}
 			// offer sells for less or same as urs
 			receivedItems.add(buying ? new Item(getId(), exchangeAmt) : new Item(getId(), exchangeAmt));
 			fromOffer.receivedItems.add(new Item(995, totalPrice));
 		} else {
-			/*  if (amtCoins + totalPrice <= 0) // too high
-			return;*/
+			/*
+			 * if (amtCoins + totalPrice <= 0) // too high return;
+			 */
 			// offer buys for more or same as urs
 			fromOffer.receivedItems.add(new Item(getId(), exchangeAmt));
 			receivedItems.add(new Item(995, totalPrice));

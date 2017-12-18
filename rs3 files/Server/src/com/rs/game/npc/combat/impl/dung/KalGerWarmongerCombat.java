@@ -21,8 +21,7 @@ public class KalGerWarmongerCombat extends CombatScript {
 
 	@Override
 	public Object[] getKeys() {
-		return new Object[]
-				{ "Kal'Ger the Warmonger" };
+		return new Object[] { "Kal'Ger the Warmonger" };
 	}
 
 	@Override
@@ -33,7 +32,7 @@ public class KalGerWarmongerCombat extends CombatScript {
 			return 0;
 		if (boss.isUsingMelee()) {
 			boolean smash = false;
-			
+
 			for (Player player : manager.getParty().getTeam()) {
 				if (Utils.colides(player.getX(), player.getY(), player.getSize(), boss.getX(), boss.getY(), 5)) {
 					smash = true;
@@ -46,8 +45,11 @@ public class KalGerWarmongerCombat extends CombatScript {
 				for (Player player : manager.getParty().getTeam()) {
 					if (!manager.isAtBossRoom(player))
 						continue;
-					player.getPackets().sendCameraShake(3, 25, 50, 25, 50);//everyone's camera shakes
-					if (Utils.inCircle(player, boss, 5))//5 square radius (imperfect circle)
+					player.getPackets().sendCameraShake(3, 25, 50, 25, 50);// everyone's
+					// camera
+					// shakes
+					if (Utils.inCircle(player, boss, 5))// 5 square radius
+						// (imperfect circle)
 						player.applyHit(new Hit(boss, Utils.random(300, boss.getMaxHit()), HitLook.REGULAR_DAMAGE));
 				}
 				WorldTasksManager.schedule(new WorldTask() {
@@ -55,7 +57,14 @@ public class KalGerWarmongerCombat extends CombatScript {
 					@Override
 					public void run() {
 						boss.setPullTicks(0);
-						for (Player player : manager.getParty().getTeam())//we obv need to reset the camera ^.^
+						for (Player player : manager.getParty().getTeam())// we
+							// obv
+							// need
+							// to
+							// reset
+							// the
+							// camera
+							// ^.^
 							player.getPackets().sendStopCameraShake();
 					}
 				});
@@ -63,20 +72,20 @@ public class KalGerWarmongerCombat extends CombatScript {
 				return 0;
 		}
 		boss.setPullTicks(0);
-		if (boss.getAnnoyanceMeter() == 8) {//This part is essentially done
+		if (boss.getAnnoyanceMeter() == 8) {// This part is essentially done
 			boss.playSoundEffect(2986);
 			boss.setNextForceTalk(new ForceTalk("GRRRR!"));
 		} else if (boss.getAnnoyanceMeter() == 10) {
 			boss.playSoundEffect(3012);
 			boss.setNextForceTalk(new ForceTalk("ENOUGH!"));
 		}
-		if (boss.getType() == 1) {//NO WEAPONS HUR
+		if (boss.getType() == 1) {// NO WEAPONS HUR
 			npc.setNextAnimation(new Animation(14392));
 			delayHit(npc, 0, target, getMeleeHit(npc, getMaxHit(npc, boss.getMaxHit(), NPCCombatDefinitions.MELEE, target)));
-		} else if (boss.getType() == 2) {//LONG
+		} else if (boss.getType() == 2) {// LONG
 			npc.setNextAnimation(new Animation(14416));
 			delayHit(npc, 0, target, getMeleeHit(npc, getMaxHit(npc, boss.getMaxHit(), NPCCombatDefinitions.MELEE, target)));
-		} else if (boss.getType() == 3) {//STAFF
+		} else if (boss.getType() == 3) {// STAFF
 			npc.setNextAnimation(new Animation(14996));
 			npc.setNextGraphics(new Graphics(2874));
 			for (Entity t : boss.getPossibleTargets()) {
@@ -84,20 +93,20 @@ public class KalGerWarmongerCombat extends CombatScript {
 				t.setNextGraphics(new Graphics(2873));
 				delayHit(npc, 0, t, getMagicHit(npc, getMaxHit(npc, boss.getMaxHit(), NPCCombatDefinitions.MAGE, t)));
 			}
-		} else if (boss.getType() == 4) {//2H
+		} else if (boss.getType() == 4) {// 2H
 			npc.setNextAnimation(new Animation(14450));
 			delayHit(npc, 0, target, getMeleeHit(npc, getMaxHit(npc, boss.getMaxHit(), NPCCombatDefinitions.MELEE, target)));
-		} else if (boss.getType() == 5) {//BOW
+		} else if (boss.getType() == 5) {// BOW
 			npc.setNextAnimation(new Animation(14537));
 			npc.setNextGraphics(new Graphics(2885));
 			for (Entity t : boss.getPossibleTargets()) {
 				World.sendProjectile(boss, t, 2886, 75, 30, 50, 55, 2, 0);
 				delayHit(npc, 2, t, getRangeHit(npc, getMaxHit(npc, boss.getMaxHit(), NPCCombatDefinitions.RANGE, t)));
 			}
-		} else if (boss.getType() == 6) {//MAUL
+		} else if (boss.getType() == 6) {// MAUL
 			npc.setNextAnimation(new Animation(14963));
 			delayHit(npc, 0, target, getMeleeHit(npc, getMaxHit(npc, boss.getMaxHit(), NPCCombatDefinitions.MELEE, target)));
-			return 3;//SUPER OP MODE!
+			return 3;// SUPER OP MODE!
 		}
 		return 4;
 	}

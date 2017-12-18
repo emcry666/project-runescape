@@ -91,8 +91,8 @@ public class Nex extends NPC {
 		setCantInteract(true);
 		setCapDamage(5000);
 		setLureDelay(3000);
-		setDropRateFactor(8); //1 in 15
-		//set to 4 if u increase drop rates
+		setDropRateFactor(8); // 1 in 15
+		// set to 4 if u increase drop rates
 		setRun(true);
 		setIntelligentRouteFinder(true);
 		setForceFollowClose(true);
@@ -190,7 +190,8 @@ public class Nex extends NPC {
 			List<Player> players = FriendsChat.getLootSharingPeople(player);
 			if (players != null) {
 				for (Player p : players) {
-					if (p == null) continue;
+					if (p == null)
+						continue;
 					Controller controler = p.getControlerManager().getControler();
 					if (controler != null && controler instanceof GodWars) {
 						GodWars godControler = (GodWars) controler;
@@ -392,7 +393,7 @@ public class Nex extends NPC {
 	public void resetLastAttack() {
 		lastAttack = 0;
 	}
-	
+
 	public boolean isSiphioning() {
 		return getEffectsManager().hasActiveEffect(EffectType.SIPHIONING);
 	}

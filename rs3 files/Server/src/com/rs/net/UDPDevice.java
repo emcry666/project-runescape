@@ -75,7 +75,8 @@ public class UDPDevice {
 						DatagramPacket packet = new DatagramPacket(personalBuffer, personalBuffer.length);
 						socket.receive(packet);
 						if (space > 0) {
-							// if there's not enough space the packet will get dropped
+							// if there's not enough space the packet will get
+							// dropped
 							byte[] buf = new byte[packet.getLength()];
 							System.arraycopy(personalBuffer, 0, buf, 0, packet.getLength());
 
@@ -85,8 +86,8 @@ public class UDPDevice {
 							}
 						}
 
-						//try { Thread.sleep(20); }
-						//catch (InterruptedException i) { }
+						// try { Thread.sleep(20); }
+						// catch (InterruptedException i) { }
 					}
 				} catch (IOException e) {
 					Logger.handle(e);

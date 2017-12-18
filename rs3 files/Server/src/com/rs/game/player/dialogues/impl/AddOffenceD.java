@@ -103,7 +103,8 @@ public class AddOffenceD extends Dialogue {
 			return;
 		}
 
-		long expires = 1000l * 60l * 60l * 24l * 7l * 4l * 12l * 50l; // 50 years
+		long expires = 1000l * 60l * 60l * 24l * 7l * 4l * 12l * 50l; // 50
+		// years
 		if (time >= 0)
 			expires = Utils.currentTimeMillis() + time;
 		LoginClientChannelManager.sendUnreliablePacket(LoginChannelsPacketEncoder.encodeAddOffence(type, target, player.getUsername(), "Offence added by OffenceAddDialogue", expires).getBuffer());

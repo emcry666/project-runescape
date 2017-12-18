@@ -33,7 +33,7 @@ public class GuthixBlessing extends NPC {
 		nextHeal++;
 		sendFollow();
 	}
-	
+
 	private void sendFollow() {
 		if (getLastFaceEntity() != target.getClientIndex())
 			setNextFaceEntity(target);
@@ -62,7 +62,7 @@ public class GuthixBlessing extends NPC {
 			calcFollow(target, 2, true, false);
 	}
 
-	public Player getTarget() { 
+	public Player getTarget() {
 		return target;
 	}
 

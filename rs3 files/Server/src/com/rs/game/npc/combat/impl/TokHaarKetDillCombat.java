@@ -13,8 +13,7 @@ public class TokHaarKetDillCombat extends CombatScript {
 
 	@Override
 	public Object[] getKeys() {
-		return new Object[]
-		{ "TokHaar-Ket-Dill" };
+		return new Object[] { "TokHaar-Ket-Dill" };
 	}
 
 	@Override

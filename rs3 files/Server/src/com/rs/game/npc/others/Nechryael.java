@@ -37,7 +37,7 @@ public class Nechryael extends NPC {
 			npc.finish();
 		deathSpawns = null;
 	}
-	
+
 	@Override
 	public void sendDeath(Entity source) {
 		super.sendDeath(source);

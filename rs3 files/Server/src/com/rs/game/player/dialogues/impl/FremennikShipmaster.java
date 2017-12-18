@@ -15,11 +15,9 @@ public class FremennikShipmaster extends Dialogue {
 		npcId = (Integer) parameters[0];
 		backing = (Boolean) parameters[1];
 		if (backing) {
-			sendEntityDialogue(SEND_1_TEXT_CHAT, new String[]
-			{ NPCDefinitions.getNPCDefinitions(npcId).name, "Do you want a lift back to the south?" }, IS_NPC, npcId, 9827);
+			sendEntityDialogue(SEND_1_TEXT_CHAT, new String[] { NPCDefinitions.getNPCDefinitions(npcId).name, "Do you want a lift back to the south?" }, IS_NPC, npcId, 9827);
 		} else {
-			sendEntityDialogue(SEND_1_TEXT_CHAT, new String[]
-			{ NPCDefinitions.getNPCDefinitions(npcId).name, "You want passage to Daemonheim?" }, IS_NPC, npcId, 9827);
+			sendEntityDialogue(SEND_1_TEXT_CHAT, new String[] { NPCDefinitions.getNPCDefinitions(npcId).name, "You want passage to Daemonheim?" }, IS_NPC, npcId, 9827);
 		}
 
 	}
@@ -40,8 +38,7 @@ public class FremennikShipmaster extends Dialogue {
 					end();
 			} else if (stage == 1) {
 				stage = 2;
-				sendEntityDialogue(SEND_1_TEXT_CHAT, new String[]
-				{ NPCDefinitions.getNPCDefinitions(npcId).name, "All aboard, then." }, IS_NPC, npcId, 9827);
+				sendEntityDialogue(SEND_1_TEXT_CHAT, new String[] { NPCDefinitions.getNPCDefinitions(npcId).name, "All aboard, then." }, IS_NPC, npcId, 9827);
 			} else if (stage == 2) {
 				sail(player, backing);
 				end();
@@ -59,8 +56,7 @@ public class FremennikShipmaster extends Dialogue {
 					end();
 			} else if (stage == 1) {
 				stage = 2;
-				sendEntityDialogue(SEND_1_TEXT_CHAT, new String[]
-				{ NPCDefinitions.getNPCDefinitions(npcId).name, "Well, don't stand arround. Get on board." }, IS_NPC, npcId, 9827);
+				sendEntityDialogue(SEND_1_TEXT_CHAT, new String[] { NPCDefinitions.getNPCDefinitions(npcId).name, "Well, don't stand arround. Get on board." }, IS_NPC, npcId, 9827);
 			} else if (stage == 2) {
 				sail(player, backing);
 				end();

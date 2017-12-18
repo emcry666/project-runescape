@@ -26,15 +26,7 @@ import com.rs.utils.Utils;
 @SuppressWarnings("serial")
 public class TheDarkOracle extends NPC {
 
-	public static final String[] TEXTS = new String[]
-	{
-		"Your soul belongs to me!",
-		"Do you fear the dark abyss?",
-		"Weak fools!",
-		"The power of darkness is unstoppable!",
-		"Even Bo can't stop me!",
-		"I eat chaotics for lunch!",
-		"Your foolish prayers making me stronger!" };
+	public static final String[] TEXTS = new String[] { "Your soul belongs to me!", "Do you fear the dark abyss?", "Weak fools!", "The power of darkness is unstoppable!", "Even Bo can't stop me!", "I eat chaotics for lunch!", "Your foolish prayers making me stronger!" };
 
 	/**
 	 * Phase of the boss. 0 - Melee 1 - Ranged 2 - Magic 3 - Ultimate
@@ -89,7 +81,7 @@ public class TheDarkOracle extends NPC {
 	public TheDarkOracle(int id, WorldTile tile, int mapAreaNameHash, boolean canBeAttackFromOutOfArea, boolean spawned) {
 		super(id, tile, mapAreaNameHash, canBeAttackFromOutOfArea, spawned);
 		setLureDelay(0);
-	//	setCapDamage(500);
+		// setCapDamage(500);
 		setCombatLevel(9001);
 		setName("Oracle of Darkness");
 		setIntelligentRouteFinder(true);

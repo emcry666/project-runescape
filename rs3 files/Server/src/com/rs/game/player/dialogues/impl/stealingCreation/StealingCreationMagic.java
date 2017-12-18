@@ -18,13 +18,11 @@ public class StealingCreationMagic extends Dialogue {
 			} else if (componentId == OPTION_2) {
 				player.getTemporaryAttributtes().put("sc_request", 12850);
 				end();
-				player.getPackets().sendExecuteScriptReverse(108, new Object[]
-				{ "Enter Amount:" });
+				player.getPackets().sendExecuteScriptReverse(108, new Object[] { "Enter Amount:" });
 			} else {
 				player.getTemporaryAttributtes().put("sc_request", 12851);
 				end();
-				player.getPackets().sendExecuteScriptReverse(108, new Object[]
-				{ "Enter Amount:" });
+				player.getPackets().sendExecuteScriptReverse(108, new Object[] { "Enter Amount:" });
 			}
 		} else if (stage == 1) {
 			if (componentId == OPTION_1) {
@@ -39,8 +37,7 @@ public class StealingCreationMagic extends Dialogue {
 				player.getTemporaryAttributtes().put("sc_request", 14385);
 			}
 			end();
-			player.getPackets().sendExecuteScriptReverse(108, new Object[]
-			{ "Enter Amount:" });
+			player.getPackets().sendExecuteScriptReverse(108, new Object[] { "Enter Amount:" });
 		}
 	}
 

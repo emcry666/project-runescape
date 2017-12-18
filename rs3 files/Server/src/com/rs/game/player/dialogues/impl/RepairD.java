@@ -17,14 +17,11 @@ public class RepairD extends Dialogue {
 		prices = (int[]) this.parameters[1];
 		newId = (int) this.parameters[2];
 		dungeoneering = (boolean) this.parameters[3];
-		
+
 		if (dungeoneering) {
-			sendOptionsDialogue("Would you like to repair item?",
-					"Yes. Pay "+Utils.getFormattedNumber(prices[0])+" coins.",
-					"Yes. Pay "+Utils.getFormattedNumber(prices[1])+" tokens.",
-					"No way.");
+			sendOptionsDialogue("Would you like to repair item?", "Yes. Pay " + Utils.getFormattedNumber(prices[0]) + " coins.", "Yes. Pay " + Utils.getFormattedNumber(prices[1]) + " tokens.", "No way.");
 		} else
-			sendOptionsDialogue("Would you like to pay "+Utils.getFormattedNumber(prices[0])+" coins to repair item?", "Yes.", "No.");
+			sendOptionsDialogue("Would you like to pay " + Utils.getFormattedNumber(prices[0]) + " coins to repair item?", "Yes.", "No.");
 	}
 
 	@Override

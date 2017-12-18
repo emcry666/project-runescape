@@ -26,15 +26,18 @@ public class NPCSpawnsDumper {
 			int rx = archiveId & 0xff;
 			int ry = archiveId >> 7;
 			int regionId = ry | rx << 8;
-			//  System.out.println((mapIndex.getLastFileId(archiveId)+1)+", "+mapIndex.getValidFilesCount(archiveId));
+			// System.out.println((mapIndex.getLastFileId(archiveId)+1)+",
+			// "+mapIndex.getValidFilesCount(archiveId));
 			byte[] data = mapIndex.getFile(archiveId, 2);
-			/*  if(data != null && data.length != 0)
-			  System.out.println(archiveId+", "+rx+", "+ry+", "+regionId);*/
-			//   System.out.println(data == null);
+			/*
+			 * if(data != null && data.length != 0) System.out.println(archiveId+", "+rx+", "+ry+", "+regionId);
+			 */
+			// System.out.println(data == null);
 			int baseX = rx * 64;
 			int baseY = ry * 64;
 			if (data != null) {
-				//	    System.out.println("--------------------------------region "+regionId+", "+writtenCount);
+				// System.out.println("--------------------------------region
+				// "+regionId+", "+writtenCount);
 				InputStream stream = new InputStream(data);
 				while (stream.getRemaining() > 0) {
 					int hash = stream.readUnsignedShort();
@@ -45,7 +48,7 @@ public class NPCSpawnsDumper {
 					int localY = 0x3f & hash;
 					int y = baseY + localY;
 					writtenCount++;
-					//   System.out.println(npcId+". "+x+", "+y+", "+plane);
+					// System.out.println(npcId+". "+x+", "+y+", "+plane);
 				}
 			}
 

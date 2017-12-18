@@ -15,8 +15,7 @@ public class IronTitanCombat extends CombatScript {
 
 	@Override
 	public Object[] getKeys() {
-		return new Object[]
-		{ 7376, 7375 };
+		return new Object[] { 7376, 7375 };
 	}
 
 	@Override

@@ -27,8 +27,7 @@ public class YkLagorThunderousCombat extends CombatScript {
 
 	@Override
 	public Object[] getKeys() {
-		return new Object[]
-				{ 11872 };
+		return new Object[] { 11872 };
 	}
 
 	@Override
@@ -72,7 +71,7 @@ public class YkLagorThunderousCombat extends CombatScript {
 						}
 					}
 				}, 0, 0);
-			} else if (boss.getNextAttack() == 1) {//earthquake shit
+			} else if (boss.getNextAttack() == 1) {// earthquake shit
 				boss.setNextForceTalk(new ForceTalk("This is..."));
 				boss.playSoundEffect(1929);
 				WorldTasksManager.schedule(new WorldTask() {
@@ -187,10 +186,11 @@ public class YkLagorThunderousCombat extends CombatScript {
 				if (mage.isDead() || mage.hasFinished())
 					continue;
 				mage.applyHit(new Hit(npc, mage.getMaxHitpoints(), HitLook.MAGIC_DAMAGE, 60));
-				//delayHit(mage, 1, mage, getMagicHit(npc, mage.getMaxHitpoints()));
+				// delayHit(mage, 1, mage, getMagicHit(npc,
+				// mage.getMaxHitpoints()));
 				mage.setNextGraphics(new Graphics(2755, 85, 0));
 			}
-			//for mages kill blablalb,we dont want to kill familiars lol
+			// for mages kill blablalb,we dont want to kill familiars lol
 		}
 
 	}

@@ -6,7 +6,7 @@ import java.io.Serializable;
 public final class Graphics implements Serializable {
 
 	private static final long serialVersionUID = 90129437862239571L;
-	
+
 	private int id, height, speed, rotation;
 	private boolean forceRefresh;
 
@@ -70,7 +70,7 @@ public final class Graphics implements Serializable {
 		int hash = 0;
 		hash |= rotation & 0x7;
 		// hash |= value << 3;
-		hash |= (forceRefresh ? 1 : 0) << 7; 
+		hash |= (forceRefresh ? 1 : 0) << 7;
 		return hash;
 	}
 

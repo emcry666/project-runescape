@@ -8,8 +8,7 @@ public class HatiCombat extends CombatScript {
 
 	@Override
 	public Object[] getKeys() {
-		return new Object[]
-		{ "Hati" };
+		return new Object[] { "Hati" };
 	}
 
 	@Override

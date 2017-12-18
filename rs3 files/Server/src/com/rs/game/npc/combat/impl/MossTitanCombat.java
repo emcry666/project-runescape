@@ -31,8 +31,7 @@ public class MossTitanCombat extends CombatScript {
 				sendSpecialAttack(targets, npc);
 			}
 			sendSpecialAttack(target, npc);
-		}
-		else {
+		} else {
 			damage = getMaxHit(npc, NPCCombatDefinitions.MELEE, target);
 			npc.setNextAnimation(new Animation(8222));
 			delayHit(npc, 1, target, getMeleeHit(npc, damage));

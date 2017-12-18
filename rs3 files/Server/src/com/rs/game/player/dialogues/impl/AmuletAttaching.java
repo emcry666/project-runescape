@@ -9,54 +9,48 @@ import com.rs.game.player.dialogues.Dialogue;
 
 public class AmuletAttaching extends Dialogue {
 
-	private static final double[] EXPERIENCE =
-	{ 30, 65, 70, 85, 100, 150, 165 };
-	private static final int[] LEVELS =
-	{ 8, 24, 31, 50, 70, 80, 90 };
-	private static final int[] BASE =
-	{ 1673, 1675, 1677, 1679, 1681, 1683, 6579 };
-	private static final int[] PRODUCTS =
-	{ 1692, 1694, 1696, 1698, 1700, 1702, 6581 };
+	private static final double[] EXPERIENCE = { 30, 65, 70, 85, 100, 150, 165 };
+	private static final int[] LEVELS = { 8, 24, 31, 50, 70, 80, 90 };
+	private static final int[] BASE = { 1673, 1675, 1677, 1679, 1681, 1683, 6579 };
+	private static final int[] PRODUCTS = { 1692, 1694, 1696, 1698, 1700, 1702, 6581 };
 	private static final int STRING = 1759;
 
 	@Override
 	public void start() {
-		
-		
+
 		SkillsDialogue.sendSkillDialogueByProduce(player, PRODUCTS[0]);
-		
-	/*	SkillsDialogue.sendSkillsDialogue(player, SkillsDialogue.MAKE, "Choose how many you wish to make,<br>then click on the item to begin.", 28, PRODUCTS, new ItemNameFilter() {
 
-			int count = 0;
-
-			@Override
-			public String rename(String name) {
-				int levelRequired = LEVELS[count++];
-				if (player.getSkills().getLevel(Skills.CRAFTING) < levelRequired)
-					name = "<col=ff0000>" + name + "<br><col=ff0000>Level " + levelRequired;
-				return name;
-			}
-		});*/
+		/*
+		 * SkillsDialogue.sendSkillsDialogue(player, SkillsDialogue.MAKE,
+		 * "Choose how many you wish to make,<br>then click on the item to begin." , 28, PRODUCTS, new
+		 * ItemNameFilter() {
+		 * 
+		 * int count = 0;
+		 * 
+		 * @Override public String rename(String name) { int levelRequired = LEVELS[count++]; if
+		 * (player.getSkills().getLevel(Skills.CRAFTING) < levelRequired) name = "<col=ff0000>" + name +
+		 * "<br><col=ff0000>Level " + levelRequired; return name; } });
+		 */
 	}
 
 	private int getIndex(int productId) {
-		for(int i = 0; i < PRODUCTS.length; i++) {
-			if(PRODUCTS[i] == productId) {
+		for (int i = 0; i < PRODUCTS.length; i++) {
+			if (PRODUCTS[i] == productId) {
 				return i;
 			}
 		}
 		return -1;
 	}
-	
+
 	@Override
 	public void run(int interfaceId, int componentId) {
 		final SkillDialogueResult result = SkillsDialogue.getResult(player);
 		final int index = getIndex(result.getProduce());
-		if(index == -1) {
+		if (index == -1) {
 			end();
 			return;
 		}
-			
+
 		player.getActionManager().setAction(new Action() {
 
 			int ticks;

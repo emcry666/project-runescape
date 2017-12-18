@@ -41,8 +41,6 @@ public final class WarControler extends Controller {
 		moved();
 	}
 
-	
-	
 	@Override
 	public boolean sendDeath() {
 		player.lock(8);
@@ -66,7 +64,7 @@ public final class WarControler extends Controller {
 						}
 					}
 					player.reset();
-					if(player.isCanPvp()) {
+					if (player.isCanPvp()) {
 						player.setCanPvp(false);
 						if (player.getCurrentFriendsChat() != null && player.getCurrentFriendsChat().getClanWars() != null) {
 							if (clanWars.getFirstTeam() == player.getCurrentFriendsChat()) {
@@ -124,7 +122,7 @@ public final class WarControler extends Controller {
 		player.getPackets().sendGameMessage("You cannot teleport out of this arena.");
 		return false;
 	}
-	
+
 	@Override
 	public void sendInterfaces() {
 		player.getInterfaceManager().sendMinigameInterface(265);
@@ -168,25 +166,23 @@ public final class WarControler extends Controller {
 		}
 		return true;
 	}
-	
 
 	@Override
 	public boolean canHit(Entity target) {
-		if (!clanWars.getFirstPlayers().contains(player) && !clanWars.getSecondPlayers().contains(player)) 
+		if (!clanWars.getFirstPlayers().contains(player) && !clanWars.getSecondPlayers().contains(player))
 			return false;
-		if (clanWars.getFirstPlayers().contains(player) && clanWars.getFirstPlayers().contains(target)) 
+		if (clanWars.getFirstPlayers().contains(player) && clanWars.getFirstPlayers().contains(target))
 			return false;
-		if (clanWars.getSecondPlayers().contains(player) && clanWars.getSecondPlayers().contains(target)) 
+		if (clanWars.getSecondPlayers().contains(player) && clanWars.getSecondPlayers().contains(target))
 			return false;
-		if (!clanWars.getTimer().isStarted()) 
+		if (!clanWars.getTimer().isStarted())
 			return false;
 		return true;
 	}
 
 	@Override
 	public boolean keepCombating(Entity victim) {
-		boolean isRanging = player.getCombatDefinitions().getStyle(true) == Combat.RANGE_TYPE 
-				|| player.getCombatDefinitions().getStyle(false) == Combat.RANGE_TYPE;
+		boolean isRanging = player.getCombatDefinitions().getStyle(true) == Combat.RANGE_TYPE || player.getCombatDefinitions().getStyle(false) == Combat.RANGE_TYPE;
 		if (player.getCombatDefinitions().getSpellId() > 0) {
 			switch (clanWars.getMagicRuleCount()) {
 			case 1: // Standard spells only.
@@ -201,7 +197,7 @@ public final class WarControler extends Controller {
 					return false;
 				}
 				switch (player.getCombatDefinitions().getSpellId()) {
-				case 25: //updated rs3
+				case 25: // updated rs3
 				case 43:
 				case 70:
 					break;
@@ -232,12 +228,14 @@ public final class WarControler extends Controller {
 		switch (clanWars.getAreaType()) {
 		case PLATEAU:
 		case TURRETS:
-			//player.setForceMultiArea(true);
+			// player.setForceMultiArea(true);
 			break;
 		case FORSAKEN_QUARRY:
 			WorldTile northEast = clanWars.getBaseLocation().transform(clanWars.getAreaType().getNorthEastTile().getX() - clanWars.getAreaType().getSouthWestTile().getX(), clanWars.getAreaType().getNorthEastTile().getY() - clanWars.getAreaType().getSouthWestTile().getY(), 0).transform(-16, -16, 0);
 			WorldTile southWest = clanWars.getBaseLocation().transform(16, 16, 0);
-			//player.setForceMultiArea(player.getX() >= southWest.getX() && player.getY() >= southWest.getY() && player.getX() <= northEast.getX() && player.getY() <= northEast.getY());
+			// player.setForceMultiArea(player.getX() >= southWest.getX() &&
+			// player.getY() >= southWest.getY() && player.getX() <=
+			// northEast.getX() && player.getY() <= northEast.getY());
 			break;
 		}
 	}

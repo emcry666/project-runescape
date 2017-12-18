@@ -22,14 +22,10 @@ import com.rs.utils.Utils;
 public class ZarosGodwars {
 
 	private static final Animation START = new Animation(17412), SECOND_START = new Animation(17413), THIRD_START = new Animation(17414);
-	private static WorldTile[] MINION_SPAWNS =
-	{ new WorldTile(2913, 5215, 0), new WorldTile(2937, 5215, 0), new WorldTile(2937, 5191, 0), new WorldTile(2913, 5191, 0) };
-	private static Graphics[] MINION_GRAPHICS =
-	{ new Graphics(3359), new Graphics(3361), new Graphics(3358), new Graphics(3360) };
-	public static final int[] STAT_DRAIN =
-	{ 0, 1, 2, 4, 6 };
-	public static final int[] HIT_SOUNDS =
-	{ 3326, 3324, 3320, 3319, 3318, 3315, 3311, 3309, 3305, 3301, 3300, 3297 };
+	private static WorldTile[] MINION_SPAWNS = { new WorldTile(2913, 5215, 0), new WorldTile(2937, 5215, 0), new WorldTile(2937, 5191, 0), new WorldTile(2913, 5191, 0) };
+	private static Graphics[] MINION_GRAPHICS = { new Graphics(3359), new Graphics(3361), new Graphics(3358), new Graphics(3360) };
+	public static final int[] STAT_DRAIN = { 0, 1, 2, 4, 6 };
+	public static final int[] HIT_SOUNDS = { 3326, 3324, 3320, 3319, 3318, 3315, 3311, 3309, 3305, 3301, 3300, 3297 };
 	private static final List<Player> players = new LinkedList<Player>();
 	public static Nex nex;
 

@@ -29,7 +29,7 @@ import com.rs.utils.Logger;
 import com.rs.utils.Utils;
 
 public class DuelArena extends Controller {
-	
+
 	/**
 	 * script_1367() - CASTLE WARS
 	 */
@@ -38,20 +38,8 @@ public class DuelArena extends Controller {
 	private Player target;
 	private volatile boolean ifFriendly, isDueling;
 
-	private static final int[] FUN_WEAPONS =
-	{ 4566 };
-	private static final WorldTile[] LOBBY_TELEPORTS =
-	{
-		new WorldTile(3367, 3275, 0),
-		new WorldTile(3360, 3275, 0),
-		new WorldTile(3358, 3270, 0),
-		new WorldTile(3363, 3268, 0),
-		new WorldTile(3370, 3268, 0),
-		new WorldTile(3367, 3267, 0),
-		new WorldTile(3376, 3275, 0),
-		new WorldTile(3377, 3271, 0),
-		new WorldTile(3375, 3269, 0),
-		new WorldTile(3381, 3277, 0) };
+	private static final int[] FUN_WEAPONS = { 4566 };
+	private static final WorldTile[] LOBBY_TELEPORTS = { new WorldTile(3367, 3275, 0), new WorldTile(3360, 3275, 0), new WorldTile(3358, 3270, 0), new WorldTile(3363, 3268, 0), new WorldTile(3370, 3268, 0), new WorldTile(3367, 3267, 0), new WorldTile(3376, 3275, 0), new WorldTile(3377, 3271, 0), new WorldTile(3375, 3269, 0), new WorldTile(3381, 3277, 0) };
 
 	@Override
 	public void start() {
@@ -131,11 +119,13 @@ public class DuelArena extends Controller {
 							reset();
 							targetConfiguration.reset();
 							for (Item item : player.getDuelRules().getStake().getItems()) {
-								if (item == null) continue;
+								if (item == null)
+									continue;
 								player.getInventory().addItemMoneyPouch(item);
 							}
 							for (Item item : oldTarget.getDuelRules().getStake().getItems()) {
-								if (item == null) continue;
+								if (item == null)
+									continue;
 								oldTarget.getInventory().addItemMoneyPouch(item);
 							}
 							oldTarget.getDuelRules().getStake().clear();
@@ -272,13 +262,15 @@ public class DuelArena extends Controller {
 	}
 
 	private void sendRuleFlash(int componentId, int slot) {
-		//player.getPackets().sendInterFlashScript(ifFriendly ? 637 : 631, componentId, 11, 2, slot);
-		//target.getPackets().sendInterFlashScript(ifFriendly ? 637 : 631, componentId, 11, 2, slot);
+		// player.getPackets().sendInterFlashScript(ifFriendly ? 637 : 631,
+		// componentId, 11, 2, slot);
+		// target.getPackets().sendInterFlashScript(ifFriendly ? 637 : 631,
+		// componentId, 11, 2, slot);
 	}
 
 	private void refresh(int... slots) {
-		player.getPackets().sendUpdateItems(134, player.getDuelRules().getStake(), slots);
-		target.getPackets().sendUpdateItems(134, true, player.getDuelRules().getStake().getItems(), slots);
+		player.getPackets().sendUpdateItems(134, player.getDuelRules().getStake(), false, slots);
+		target.getPackets().sendUpdateItems(134, true, player.getDuelRules().getStake().getItems(), false, slots);
 	}
 
 	public void cancelAccepted() {
@@ -411,7 +403,7 @@ public class DuelArena extends Controller {
 	private boolean removeEquipment() {
 		int slot = 0;
 		for (int i = 10; i < 23; i++) {
-			if (i == 13 || i == 15) {//shield or wep
+			if (i == 13 || i == 15) {// shield or wep
 				if (player.getEquipment().hasTwoHandedWeapon()) {
 					if (!ButtonHandler.sendRemove(target, 3, false)) {
 						return false;
@@ -570,8 +562,7 @@ public class DuelArena extends Controller {
 		DuelRules rules = player.getDuelRules();
 		if (victim instanceof NPC && !(victim instanceof Familiar))
 			return true;
-		boolean isRanging = player.getCombatDefinitions().getStyle(true) == Combat.RANGE_TYPE
-				|| player.getCombatDefinitions().getStyle(false) == Combat.RANGE_TYPE;
+		boolean isRanging = player.getCombatDefinitions().getStyle(true) == Combat.RANGE_TYPE || player.getCombatDefinitions().getStyle(false) == Combat.RANGE_TYPE;
 		if (player.getTemporaryAttributtes().get("canFight") == Boolean.FALSE) {
 			player.getPackets().sendGameMessage("The duel hasn't started yet.");
 			return false;
@@ -616,11 +607,7 @@ public class DuelArena extends Controller {
 	}
 
 	// Regular, Summoning, Obsticals
-	private static final WorldTile[][] POSSIBLE_TILE_CENTRE =
-	{
-	{ new WorldTile(3346, 3251, 0), new WorldTile(3376, 3232, 0) },
-	{ new WorldTile(3346, 3214, 0) },
-	{ new WorldTile(3345, 3231, 0), new WorldTile(3376, 3213, 0), new WorldTile(3376, 3251, 0) } };
+	private static final WorldTile[][] POSSIBLE_TILE_CENTRE = { { new WorldTile(3346, 3251, 0), new WorldTile(3376, 3232, 0) }, { new WorldTile(3346, 3214, 0) }, { new WorldTile(3345, 3231, 0), new WorldTile(3376, 3213, 0), new WorldTile(3376, 3251, 0) } };
 
 	private static void battleTeleport(Player player, Player target) {
 		DuelRules rules = player.getDuelRules();

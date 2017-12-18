@@ -13,16 +13,16 @@ public final class DungeonUtils {
 
 	public static int getMaxFloor(int level) {
 		return (level + 1) / 2;
-		//return (level / 2) + 1;
+		// return (level / 2) + 1;
 	}
 
 	public static int getLevel(int floor) {
 		return (floor * 2) - 1;
-		//return (floor - 1) * 2;
+		// return (floor - 1) * 2;
 	}
 
 	public static boolean isBindAmmo(Item item) {
-		if (item.getId() == 19867 || item.getId() == 19868) //runes box
+		if (item.getId() == 19867 || item.getId() == 19868) // runes box
 			return true;
 		for (int id : DungeonConstants.ARROWS)
 			if (item.getId() == id)
@@ -211,17 +211,12 @@ public final class DungeonUtils {
 		for (int id : DungeonConstants.DUNGEON_DOORS)
 			if (id == objectId)
 				return true;
-		/*	for (int id : DungeonConstants.DUNGEON_SKILL_DOORS)
-			    if (id == objectId)
-				return true;
-			for (int id : DungeonConstants.THIEF_CHEST_OPEN)
-			    if (id == objectId)
-				return true;
-			for (int id : DungeonConstants.THIEF_CHEST_LOCKED)
-			    if (id == objectId)
-				return true;
-			if (objectId >= KeyDoors.ORANGE_TRIANGLE.getObjectId() && objectId <= KeyDoors.GOLD_SHIELD.getObjectId())
-				return true;*/
+		/*
+		 * for (int id : DungeonConstants.DUNGEON_SKILL_DOORS) if (id == objectId) return true; for (int id :
+		 * DungeonConstants.THIEF_CHEST_OPEN) if (id == objectId) return true; for (int id :
+		 * DungeonConstants.THIEF_CHEST_LOCKED) if (id == objectId) return true; if (objectId >=
+		 * KeyDoors.ORANGE_TRIANGLE.getObjectId() && objectId <= KeyDoors.GOLD_SHIELD.getObjectId()) return true;
+		 */
 		return false;
 	}
 
@@ -311,172 +306,172 @@ public final class DungeonUtils {
 
 	public static int getRandomGear(int tier) {
 		switch (Utils.random(29)) {
-			case 0:
-				return getLongbow(tier);
-			case 1:
-				return getShortbow(tier);
-			case 2:
-				return getChaps(tier);
-			case 3:
-				return getLeatherBoots(tier);
-			case 4:
-				return getVambrances(tier);
-			case 5:
-				return getLeatherBody(tier);
-			case 6:
-				return getCoif(tier);
-			case 7:
-				return getRobeTop(tier);
-			case 8:
-				return getElementalStaff(tier);
-			case 9:
-				return getBasicStaff(tier);
-			case 10:
-				return getGloves(tier);
-			case 11:
-				return getShoes(tier);
-			case 12:
-				return getRobeBottom(tier);
-			case 13:
-				return getHood(tier);
-			case 14:
-				return getKiteshield(tier);
-			case 15:
-				return getPlatebody(tier);
-			case 16:
-				return getSpear(tier);
-			case 17:
-				return getWarhammer(tier);
-			case 18:
-				return getRapier(tier);
-			case 19:
-				return get2HSword(tier);
-			case 20:
-				return getDagger(tier);
-			case 21:
-				return getChainbody(tier);
-			case 22:
-				return getFullHelm(tier);
-			case 23:
-				return getPlatelegs(tier, true);
-			case 24:
-				return getMaul(tier);
-			case 25:
-				return getLongsword(tier);
-			case 26:
-				return getBoots(tier);
-			case 27:
-				return getGauntlets(tier);
-			case 28:
-				return getBattleaxe(tier);
+		case 0:
+			return getLongbow(tier);
+		case 1:
+			return getShortbow(tier);
+		case 2:
+			return getChaps(tier);
+		case 3:
+			return getLeatherBoots(tier);
+		case 4:
+			return getVambrances(tier);
+		case 5:
+			return getLeatherBody(tier);
+		case 6:
+			return getCoif(tier);
+		case 7:
+			return getRobeTop(tier);
+		case 8:
+			return getElementalStaff(tier);
+		case 9:
+			return getBasicStaff(tier);
+		case 10:
+			return getGloves(tier);
+		case 11:
+			return getShoes(tier);
+		case 12:
+			return getRobeBottom(tier);
+		case 13:
+			return getHood(tier);
+		case 14:
+			return getKiteshield(tier);
+		case 15:
+			return getPlatebody(tier);
+		case 16:
+			return getSpear(tier);
+		case 17:
+			return getWarhammer(tier);
+		case 18:
+			return getRapier(tier);
+		case 19:
+			return get2HSword(tier);
+		case 20:
+			return getDagger(tier);
+		case 21:
+			return getChainbody(tier);
+		case 22:
+			return getFullHelm(tier);
+		case 23:
+			return getPlatelegs(tier, true);
+		case 24:
+			return getMaul(tier);
+		case 25:
+			return getLongsword(tier);
+		case 26:
+			return getBoots(tier);
+		case 27:
+			return getGauntlets(tier);
+		case 28:
+			return getBattleaxe(tier);
 		}
-		return getHatchet(tier); //shouldnt
+		return getHatchet(tier); // shouldnt
 	}
 
 	public static int getRandomRangeGear(int tier) {
 		switch (Utils.random(7)) {
-			case 0:
-				return getLongbow(tier);
-			case 1:
-				return getShortbow(tier);
-			case 2:
-				return getChaps(tier);
-			case 3:
-				return getLeatherBoots(tier);
-			case 4:
-				return getVambrances(tier);
-			case 5:
-				return getLeatherBody(tier);
-			case 6:
-				return getCoif(tier);
+		case 0:
+			return getLongbow(tier);
+		case 1:
+			return getShortbow(tier);
+		case 2:
+			return getChaps(tier);
+		case 3:
+			return getLeatherBoots(tier);
+		case 4:
+			return getVambrances(tier);
+		case 5:
+			return getLeatherBody(tier);
+		case 6:
+			return getCoif(tier);
 		}
-		return getHatchet(tier); //shouldnt
+		return getHatchet(tier); // shouldnt
 	}
 
 	public static int getRandomMagicGear(int tier) {
 		switch (Utils.random(7)) {
-			case 0:
-				return getRobeTop(tier);
-			case 1:
-				return getElementalStaff(tier);
-			case 2:
-				return getBasicStaff(tier);
-			case 3:
-				return getGloves(tier);
-			case 4:
-				return getShoes(tier);
-			case 5:
-				return getRobeBottom(tier);
-			case 6:
-				return getHood(tier);
+		case 0:
+			return getRobeTop(tier);
+		case 1:
+			return getElementalStaff(tier);
+		case 2:
+			return getBasicStaff(tier);
+		case 3:
+			return getGloves(tier);
+		case 4:
+			return getShoes(tier);
+		case 5:
+			return getRobeBottom(tier);
+		case 6:
+			return getHood(tier);
 		}
-		return getHatchet(tier); //shouldnt
+		return getHatchet(tier); // shouldnt
 	}
 
 	public static int getRandomMeleeGear(int tier) {
 		switch (Utils.random(15)) {
-			case 0:
-				return getKiteshield(tier);
-			case 1:
-				return getPlatebody(tier);
-			case 2:
-				return getSpear(tier);
-			case 3:
-				return getWarhammer(tier);
-			case 4:
-				return getRapier(tier);
-			case 5:
-				return get2HSword(tier);
-			case 6:
-				return getDagger(tier);
-			case 7:
-				return getChainbody(tier);
-			case 8:
-				return getFullHelm(tier);
-			case 9:
-				return getPlatelegs(tier, true);
-			case 10:
-				return getMaul(tier);
-			case 11:
-				return getLongsword(tier);
-			case 12:
-				return getBoots(tier);
-			case 13:
-				return getGauntlets(tier);
-			case 14:
-				return getBattleaxe(tier);
+		case 0:
+			return getKiteshield(tier);
+		case 1:
+			return getPlatebody(tier);
+		case 2:
+			return getSpear(tier);
+		case 3:
+			return getWarhammer(tier);
+		case 4:
+			return getRapier(tier);
+		case 5:
+			return get2HSword(tier);
+		case 6:
+			return getDagger(tier);
+		case 7:
+			return getChainbody(tier);
+		case 8:
+			return getFullHelm(tier);
+		case 9:
+			return getPlatelegs(tier, true);
+		case 10:
+			return getMaul(tier);
+		case 11:
+			return getLongsword(tier);
+		case 12:
+			return getBoots(tier);
+		case 13:
+			return getGauntlets(tier);
+		case 14:
+			return getBattleaxe(tier);
 		}
-		return getHatchet(tier); //shouldnt
+		return getHatchet(tier); // shouldnt
 	}
 
 	public static int getRandomWeapon(int tier) {
 		switch (Utils.random(12)) {
-			case 0:
-				return getLongbow(tier);
-			case 1:
-				return getShortbow(tier);
-			case 2:
-				return getElementalStaff(tier);
-			case 3:
-				return getBasicStaff(tier);
-			case 4:
-				return getSpear(tier);
-			case 5:
-				return getWarhammer(tier);
-			case 6:
-				return getRapier(tier);
-			case 7:
-				return get2HSword(tier);
-			case 8:
-				return getDagger(tier);
-			case 9:
-				return getMaul(tier);
-			case 10:
-				return getLongsword(tier);
-			case 11:
-				return getBattleaxe(tier);
+		case 0:
+			return getLongbow(tier);
+		case 1:
+			return getShortbow(tier);
+		case 2:
+			return getElementalStaff(tier);
+		case 3:
+			return getBasicStaff(tier);
+		case 4:
+			return getSpear(tier);
+		case 5:
+			return getWarhammer(tier);
+		case 6:
+			return getRapier(tier);
+		case 7:
+			return get2HSword(tier);
+		case 8:
+			return getDagger(tier);
+		case 9:
+			return getMaul(tier);
+		case 10:
+			return getLongsword(tier);
+		case 11:
+			return getBattleaxe(tier);
 		}
-		return getHatchet(tier); //shouldnt
+		return getHatchet(tier); // shouldnt
 	}
 
 	public static int get2HSword(int tier) {
@@ -548,15 +543,15 @@ public final class DungeonUtils {
 			return 17015; // empowered catalytic
 		if (tier == 11)
 			return 17017; // celestial catalytic
-		return 16997; //water
+		return 16997; // water
 	}
 
 	public static int getStartRunes(int level) {
 		if (level >= 41)
-			return DungeonConstants.RUNES[6]; //death
+			return DungeonConstants.RUNES[6]; // death
 		if (level >= 17)
-			return DungeonConstants.RUNES[5]; //chaos
-		return DungeonConstants.RUNES[4]; //mind
+			return DungeonConstants.RUNES[5]; // chaos
+		return DungeonConstants.RUNES[4]; // mind
 	}
 
 	public static int getRobeTop(int tier) {

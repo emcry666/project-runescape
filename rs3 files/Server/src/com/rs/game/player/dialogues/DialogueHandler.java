@@ -9,16 +9,15 @@ public final class DialogueHandler {
 
 	private static final HashMap<Object, Class<? extends Dialogue>> handledDialogues = new HashMap<Object, Class<? extends Dialogue>>();
 
-	@SuppressWarnings(
-	{ "unchecked" })
+	@SuppressWarnings({ "unchecked" })
 	public static final void init() {
 		try {
 			Class<Dialogue>[] classes = Utils.getClasses("com.rs.game.player.dialogues.impl");
 			for (Class<Dialogue> c : classes) {
 				if (c.isAnonymousClass()) // next
 					continue;
-				if(handledDialogues.put(c.getSimpleName(), c) != null)
-					Logger.log(DialogueHandler.class, "ERROR, double dialogue: "+c.getSimpleName());
+				if (handledDialogues.put(c.getSimpleName(), c) != null)
+					Logger.log(DialogueHandler.class, "ERROR, double dialogue: " + c.getSimpleName());
 			}
 		} catch (Throwable e) {
 			Logger.handle(e);

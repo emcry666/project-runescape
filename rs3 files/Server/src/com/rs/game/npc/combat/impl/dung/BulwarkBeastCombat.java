@@ -21,8 +21,7 @@ public class BulwarkBeastCombat extends CombatScript {
 
 	@Override
 	public Object[] getKeys() {
-		return new Object[]
-		{ "Bulwark beast" };
+		return new Object[] { "Bulwark beast" };
 	}
 
 	@Override
@@ -43,7 +42,7 @@ public class BulwarkBeastCombat extends CombatScript {
 			return npc.getAttackSpeed();
 		}
 
-		//mage, range, melee
+		// mage, range, melee
 		int attackStyle = Utils.random(Utils.isOnRange(target.getX(), target.getY(), target.getSize(), npc.getX(), npc.getY(), npc.getSize(), 0) ? 3 : 2);
 		switch (attackStyle) {
 		case 0:

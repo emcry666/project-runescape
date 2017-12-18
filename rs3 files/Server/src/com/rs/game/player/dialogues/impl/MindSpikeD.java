@@ -12,8 +12,7 @@ import com.rs.game.player.dialogues.Dialogue;
  */
 public class MindSpikeD extends Dialogue {
 
-	private static final String[] NAMES =
-	{ "Air", "Water", "Earth", "Fire" };
+	private static final String[] NAMES = { "Air", "Water", "Earth", "Fire" };
 
 	private int slot;
 	private List<String> options;

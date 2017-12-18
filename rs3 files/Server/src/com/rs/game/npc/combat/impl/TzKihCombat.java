@@ -12,8 +12,7 @@ public class TzKihCombat extends CombatScript {
 
 	@Override
 	public Object[] getKeys() {
-		return new Object[]
-		{ "Tz-Kih", 7361, 7362 };
+		return new Object[] { "Tz-Kih", 7361, 7362 };
 	}
 
 	@Override

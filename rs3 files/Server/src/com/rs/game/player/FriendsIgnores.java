@@ -108,16 +108,17 @@ public class FriendsIgnores {
 		player.getInterfaceManager().sendInputTextInterface();
 		player.getPackets().sendExecuteScript(remove ? 104 : 103);
 	}
-	
+
 	public void openInputIgnore(boolean remove) {
 		player.getInterfaceManager().sendInputTextInterface();
 		player.getPackets().sendExecuteScript(remove ? 1419 : 105);
 	}
-	
+
 	public void sendEditNote() {
-		//send dialogue inter 451
-		//sendExecuteScript([9206, 29556743, 29556742, 29556758, 0, 0]);
+		// send dialogue inter 451
+		// sendExecuteScript([9206, 29556743, 29556742, 29556758, 0, 0]);
 	}
+
 	/**
 	 * Set's our friends chat join requirement.
 	 */
@@ -347,56 +348,54 @@ public class FriendsIgnores {
 		player.getPackets().sendHideIComponent(1108, 77, true);
 		player.getPackets().sendHideIComponent(1108, 91, true);
 	}
-	
+
 	public void unlockFriendsIgnore(boolean menu) {
 		player.getPackets().sendIComponentSettings(menu ? 1441 : 550, menu ? 49 : 7, 0, 500, 510);
 		player.getPackets().sendIComponentSettings(menu ? 1441 : 550, menu ? 61 : 57, 0, 500, 6);
 	}
-	
+
 	public void handleFriendListButtons(int interfaceId, int componentId) {
-		if((interfaceId == 1441 && componentId == 28) || (interfaceId == 550 && componentId == 25) || (interfaceId == 550 && componentId == 41) || (interfaceId == 235 && componentId == 16))
+		if ((interfaceId == 1441 && componentId == 28) || (interfaceId == 550 && componentId == 25) || (interfaceId == 550 && componentId == 41) || (interfaceId == 235 && componentId == 16))
 			openInputFriend(false);
-		else if((interfaceId == 1441 && componentId == 22) || (interfaceId == 550 && componentId == 33) || (interfaceId == 235 && componentId == 10))
+		else if ((interfaceId == 1441 && componentId == 22) || (interfaceId == 550 && componentId == 33) || (interfaceId == 235 && componentId == 10))
 			openInputFriend(true);
-		else if((interfaceId == 1441 && componentId == 10) || (interfaceId == 550 && componentId == 67))
+		else if ((interfaceId == 1441 && componentId == 10) || (interfaceId == 550 && componentId == 67))
 			openInputIgnore(false);
-		else if((interfaceId == 1441 && componentId == 4) || (interfaceId == 550 && componentId == 75))
+		else if ((interfaceId == 1441 && componentId == 4) || (interfaceId == 550 && componentId == 75))
 			openInputIgnore(true);
-		else if((interfaceId == 1441 && componentId == 78) || (interfaceId == 550 && componentId == 43)) {
-			//TODO recruit a friend. opens website
-		}else if (interfaceId == 550 && componentId == 16) {
+		else if ((interfaceId == 1441 && componentId == 78) || (interfaceId == 550 && componentId == 43)) {
+			// TODO recruit a friend. opens website
+		} else if (interfaceId == 550 && componentId == 16) {
 			player.getInterfaceManager().sendExpandOptionsInterface(235, interfaceId, componentId, 64, 40);
 		}
 	}
-	
-	
+
 	public void openInputFriendChat() {
 		player.getInterfaceManager().sendInputTextInterface();
 		player.getPackets().sendExecuteScript(8537);
-		//sendExecuteScript([194, 1]);  forces last name entered(no need its auto)
-		//sendCSVarString(2508, fcname)  sets last name entered(no need its auto)
+		// sendExecuteScript([194, 1]); forces last name entered(no need its
+		// auto)
+		// sendCSVarString(2508, fcname) sets last name entered(no need its
+		// auto)
 	}
-	
+
 	public void openKickFriendChat() {
 		player.getInterfaceManager().sendInputTextInterface();
 		player.getPackets().sendExecuteScript(2688);
 	}
-	
+
 	/**
 	 * Handle's interface clicks.
 	 */
 	public void handleFriendChatButtons(int interfaceId, int componentId, int packetId) {
 		if (interfaceId == 1427 || interfaceId == 1109 || interfaceId == 1472 || interfaceId == 1468) {
-			if((interfaceId == 1427 && componentId == 10)
-					|| (interfaceId == 1109 && componentId == 10)
-					|| (interfaceId == 1472 && componentId == 227)
-					|| (interfaceId == 1468 && componentId == 2)) {
-				if(player.getCurrentFriendsChat() != null) {
+			if ((interfaceId == 1427 && componentId == 10) || (interfaceId == 1109 && componentId == 10) || (interfaceId == 1472 && componentId == 227) || (interfaceId == 1468 && componentId == 2)) {
+				if (player.getCurrentFriendsChat() != null) {
 					FriendsChat.requestLeave(player);
 					return;
 				}
 				openInputFriendChat();
-			}else if ((interfaceId == 1427 && componentId == 35) || (interfaceId == 1109 && componentId == 38)) {
+			} else if ((interfaceId == 1427 && componentId == 35) || (interfaceId == 1109 && componentId == 38)) {
 				if (player.getCurrentFriendsChat() == null) {
 					player.getPackets().sendGameMessage("You need to be in a Friends Chat channel to activate LootShare.");
 					player.refreshLootShare();

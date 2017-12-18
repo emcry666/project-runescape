@@ -20,12 +20,7 @@ public final class TimeStopAttack implements QueenAttack {
 	/**
 	 * The messages the soul says.
 	 */
-	private static final ForceTalk[] MESSAGES =
-	{
-		new ForceTalk("Kill me, mortal... quickly! HURRY! BEFORE THE SPELL IS COMPLETE!"),
-		new ForceTalk("Time is short!"),
-		new ForceTalk("She is pouring her energy into me... hurry!"),
-		new ForceTalk("The spell is nearly complete!") };
+	private static final ForceTalk[] MESSAGES = { new ForceTalk("Kill me, mortal... quickly! HURRY! BEFORE THE SPELL IS COMPLETE!"), new ForceTalk("Time is short!"), new ForceTalk("She is pouring her energy into me... hurry!"), new ForceTalk("The spell is nearly complete!") };
 
 	@Override
 	public int attack(final QueenBlackDragon npc, final Player victim) {

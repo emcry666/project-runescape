@@ -33,61 +33,51 @@ public final class GrabPacketsEncoder extends Encoder {
 	}
 
 	public final void sendStartUpPacket() {
-		OutputStream stream = new OutputStream(
-				1 + Settings.GRAB_SERVER_KEYS.length * 4);
+		OutputStream stream = new OutputStream(1 + Settings.GRAB_SERVER_KEYS.length * 4);
 		stream.writeByte(0);
 		for (int key : Settings.GRAB_SERVER_KEYS)
 			stream.writeInt(key);
 		session.write(stream);
 	}
 
-
-	
-
-	
 	public final void sendCacheArchiveWeb(ArchiveRequest request) {
 		byte[] archive = getArchive(request.getIndex(), request.getArchive());
-		if(archive == null)  { //test
-			Logger.log(GrabPacketsEncoder.class, "null web archive request : "+request.getIndex()+", "+request.getArchive());
+		if (archive == null) { // test
+			Logger.log(GrabPacketsEncoder.class, "null web archive request : " + request.getIndex() + ", " + request.getArchive());
 			return;
 		}
 		ChannelBuffer buffer = ChannelBuffers.dynamicBuffer();
 		int length = ((archive[1] & 0xff) << 24) + ((archive[2] & 0xff) << 16) + ((archive[3] & 0xff) << 8) + (archive[4] & 0xff) + 5;
-		if(archive[0] != 0)
+		if (archive[0] != 0)
 			length += 4;
-		//header
-		buffer.writeBytes(("HTTP/1.1 200 OK"
-				+"\n"+"Content-Type: text/html"+"\n"+"Content-Length: "+length
-				+ "\n\n").getBytes());
-		//content
-		buffer.writeBytes(archive,0, length);
+		// header
+		buffer.writeBytes(("HTTP/1.1 200 OK" + "\n" + "Content-Type: text/html" + "\n" + "Content-Length: " + length + "\n\n").getBytes());
+		// content
+		buffer.writeBytes(archive, 0, length);
 		session.write(buffer).addListener(ChannelFutureListener.CLOSE);
 	}
-	
-	
 
 	public final boolean sendCacheArchive(ArchiveRequest request, boolean priority) {
 		byte[] archive = getArchive(request.getIndex(), request.getArchive());
-		if(archive == null)  { //test
-			Logger.log(GrabPacketsEncoder.class, "null js5 archive request : "+request.getIndex()+", "+request.getArchive());
+		if (archive == null) { // test
+			Logger.log(GrabPacketsEncoder.class, "null js5 archive request : " + request.getIndex() + ", " + request.getArchive());
 			return true;
 		}
-		ChannelBuffer buffer = ChannelBuffers.buffer(512);
+		ChannelBuffer buffer = ChannelBuffers.buffer(102400);
 		int length = ((archive[1] & 0xff) << 24) + ((archive[2] & 0xff) << 16) + ((archive[3] & 0xff) << 8) + (archive[4] & 0xff) + 5;
-		if(archive[0] != 0)
+		if (archive[0] != 0)
 			length += 4;
 		buffer.writeByte(request.getIndex());
 		buffer.writeInt(request.getArchive() | (!priority ? ~0x7fffffff : 0));
-		
-		
+
 		for (int index = request.getBytesSent(); index < length; index++) {
 			buffer.writeByte(archive[index]);
-			if (buffer.writerIndex() == 512 || index == length - 1) {
+			if (buffer.writerIndex() == 102400 || index == length - 1) {
 				if (encryptionValue != 0) {
 					for (int i = 0; i < buffer.writerIndex(); i++)
 						buffer.setByte(i, buffer.getByte(i) ^ encryptionValue);
 				}
-				request.setBytesSent(index+1);
+				request.setBytesSent(index + 1);
 				session.write(buffer);
 				return request.getBytesSent() == length;
 			}
@@ -102,12 +92,11 @@ public final class GrabPacketsEncoder extends Encoder {
 	public int getEncryptionValue() {
 		return encryptionValue;
 	}
-	
-	
+
 	private static byte[] getArchive(int index, int id) {
 		return index == 255 && id == 255 ? getArchive255_255() : (index == 255 ? Cache.STORE.getIndex255() : Cache.STORE.getIndexes()[index].getMainFile()).getCachedArchiveData(id);
 	}
-	
+
 	private static byte[] getArchive255_255() {
 		if (F255_255 == null) {
 			byte[] file = Cache.generateUkeysFile();

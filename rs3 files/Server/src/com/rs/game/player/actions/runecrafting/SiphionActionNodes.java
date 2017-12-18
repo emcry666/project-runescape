@@ -20,41 +20,9 @@ public class SiphionActionNodes extends Action {
 	private WorldObject node;
 	private boolean started;
 
-	private static final WorldTile[][] NODE_TILES =
-	{
-		{
-			new WorldTile(4337, 6076, 1),
-			new WorldTile(4327, 6067, 1),
-			new WorldTile(4338, 6062, 1),
-			new WorldTile(4359, 6117, 1),
-			new WorldTile(4379, 6058, 1),
-			new WorldTile(4385, 6089, 1),
-			new WorldTile(4322, 6091, 1),
-			new WorldTile(4410, 6073, 1) },
+	private static final WorldTile[][] NODE_TILES = { { new WorldTile(4337, 6076, 1), new WorldTile(4327, 6067, 1), new WorldTile(4338, 6062, 1), new WorldTile(4359, 6117, 1), new WorldTile(4379, 6058, 1), new WorldTile(4385, 6089, 1), new WorldTile(4322, 6091, 1), new WorldTile(4410, 6073, 1) },
 
-		{
-			new WorldTile(3938, 6126, 1),
-			new WorldTile(3981, 6139, 1),
-			new WorldTile(3958, 6140, 1),
-			new WorldTile(3931, 6139, 1),
-			new WorldTile(3919, 6133, 1),
-			new WorldTile(3912, 6082, 1),
-			new WorldTile(3953, 6066, 1),
-			new WorldTile(3982, 6064, 1),
-			new WorldTile(4018, 6071, 1),
-			new WorldTile(4136, 6136, 1),
-			new WorldTile(4150, 6134, 1),
-			new WorldTile(4188, 6122, 1),
-			new WorldTile(4213, 6047, 1),
-			new WorldTile(4190, 6027, 1),
-			new WorldTile(4161, 6027, 1),
-			new WorldTile(4165, 6027, 1),
-			new WorldTile(4149, 6017, 1),
-			new WorldTile(4133, 6022, 1),
-			new WorldTile(4187, 6122, 1),
-			new WorldTile(4172, 6137, 1),
-			new WorldTile(4139, 6035, 1),
-			new WorldTile(4141, 6082, 1) } };
+			{ new WorldTile(3938, 6126, 1), new WorldTile(3981, 6139, 1), new WorldTile(3958, 6140, 1), new WorldTile(3931, 6139, 1), new WorldTile(3919, 6133, 1), new WorldTile(3912, 6082, 1), new WorldTile(3953, 6066, 1), new WorldTile(3982, 6064, 1), new WorldTile(4018, 6071, 1), new WorldTile(4136, 6136, 1), new WorldTile(4150, 6134, 1), new WorldTile(4188, 6122, 1), new WorldTile(4213, 6047, 1), new WorldTile(4190, 6027, 1), new WorldTile(4161, 6027, 1), new WorldTile(4165, 6027, 1), new WorldTile(4149, 6017, 1), new WorldTile(4133, 6022, 1), new WorldTile(4187, 6122, 1), new WorldTile(4172, 6137, 1), new WorldTile(4139, 6035, 1), new WorldTile(4141, 6082, 1) } };
 
 	public SiphionActionNodes(Nodes nodes, WorldObject node) {
 		this.nodes = nodes;
@@ -210,7 +178,7 @@ public class SiphionActionNodes extends Action {
 			return false;
 		}
 		if (!started && (!player.withinDistance(node, 6) || !player.clipedProjectile(node, true))) {
-			//  player.getPackets().sendGameMessage("You can't reach that!");
+			// player.getPackets().sendGameMessage("You can't reach that!");
 			player.calcFollow(node, true);
 			return true;
 		}

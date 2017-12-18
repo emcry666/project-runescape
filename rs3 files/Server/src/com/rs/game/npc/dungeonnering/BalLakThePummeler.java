@@ -23,7 +23,8 @@ public class BalLakThePummeler extends DungeonBoss {
 
 	public BalLakThePummeler(int id, WorldTile tile, DungeonManager manager, RoomReference reference) {
 		super(id, tile, manager, reference);
-		setLureDelay(6000); //this way you can lure him hehe, still not as much as outside dung npcs
+		setLureDelay(6000); // this way you can lure him hehe, still not as much
+		// as outside dung npcs
 	}
 
 	@Override

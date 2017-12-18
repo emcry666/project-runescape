@@ -18,7 +18,7 @@ public class MastyxTrap extends NPC {
 
 	@Override
 	public void processNPC() {
-		//Doesn't move or do anything so we don't process it.
+		// Doesn't move or do anything so we don't process it.
 		ticks++;
 		if (ticks == 500) {
 			finish();

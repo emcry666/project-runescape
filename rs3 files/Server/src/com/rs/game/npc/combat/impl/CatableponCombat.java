@@ -13,8 +13,7 @@ public class CatableponCombat extends CombatScript {
 
 	@Override
 	public Object[] getKeys() {
-		return new Object[]
-		{ 4397, 4398, 4399 };
+		return new Object[] { 4397, 4398, 4399 };
 	}
 
 	@Override

@@ -17,7 +17,7 @@ public class PoltergeistFarmD extends Dialogue {
 		PoltergeistRoom room = (PoltergeistRoom) parameters[0];
 		WorldObject object = (WorldObject) parameters[1];
 		if (!room.canTakeHerb()) {
-			//another player took all the herbs while dialogue was open
+			// another player took all the herbs while dialogue was open
 			end();
 		} else if (stage == -1) {
 			if (componentId == OPTION_1) {

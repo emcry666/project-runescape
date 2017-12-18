@@ -120,24 +120,14 @@ public class Rammernaut extends DungeonBoss {
 		}
 		super.processNPC();
 
-		/*int chargeCount = getChargeCount(npc);
-		if (chargeCount > 1) {
-		    if (chargeCount == 2) {
-			npc.setNextForceTalk(new ForceTalk("CHAAAAAARGE!"));
-			npc.setRun(true);
-			setChargeCount(npc, 3);
-			return defs.getAttackDelay();
-		    } else if (chargeCount == 3) {
-			npc.calcFollow(target, true); //gotta be changed later
-			if (Utils.isOnRange(npc.getX(), npc.getY(), npc.getSize(), target.getX(), target.getY(), target.getSize(), 0)) {
-			    npc.setNextAnimation(new Animation(13705));
-			    setChargeCount(npc, 0);
-			    return defs.getAttackDelay();
-			}
-		    }
-		//    System.out.println("Time to charge " + chargeCount);
-		    return 0;
-		}*/
+		/*
+		 * int chargeCount = getChargeCount(npc); if (chargeCount > 1) { if (chargeCount == 2) {
+		 * npc.setNextForceTalk(new ForceTalk("CHAAAAAARGE!")); npc.setRun(true); setChargeCount(npc, 3); return
+		 * defs.getAttackDelay(); } else if (chargeCount == 3) { npc.calcFollow(target, true); //gotta be changed
+		 * later if (Utils.isOnRange(npc.getX(), npc.getY(), npc.getSize(), target.getX(), target.getY(),
+		 * target.getSize(), 0)) { npc.setNextAnimation(new Animation(13705)); setChargeCount(npc, 0); return
+		 * defs.getAttackDelay(); } } // System.out.println("Time to charge " + chargeCount); return 0; }
+		 */
 	}
 
 	public void setChargeTarget(Player target) {

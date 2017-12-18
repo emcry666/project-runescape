@@ -62,10 +62,8 @@ public final class FireBreathAttack implements QueenAttack {
 	/**
 	 * Gets the dragonfire protect message.
 	 * 
-	 * @param player
-	 *            The player.
-	 * @return The message to send, or {@code null} if the player was
-	 *         unprotected.
+	 * @param player The player.
+	 * @return The message to send, or {@code null} if the player was unprotected.
 	 */
 	public static final String getProtectMessage(Player player) {
 		if (Combat.hasAntiDragProtection(player)) {

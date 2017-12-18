@@ -23,16 +23,16 @@ public class KalphiteQueenInstance extends BossInstance {
 
 	@Override
 	public void loadMapInstance() {
-		//guardian
+		// guardian
 		World.spawnNPC(1157, getTile(3493, 9493, 0), -1, true).setBossInstance(this);
 		World.spawnNPC(1157, getTile(3487, 9487, 0), -1, true).setBossInstance(this);
-		//larva
+		// larva
 		World.spawnNPC(1161, getTile(3483, 9505, 0), -1, true).setBossInstance(this);
 		World.spawnNPC(1161, getTile(3479, 9489, 0), -1, true).setBossInstance(this);
 		World.spawnNPC(1161, getTile(3496, 9515, 0), -1, true).setBossInstance(this);
 		World.spawnNPC(1161, getTile(3485, 9516, 0), -1, true).setBossInstance(this);
 		World.spawnNPC(1161, getTile(3470, 9489, 0), -1, true).setBossInstance(this);
-		//queen
+		// queen
 		World.spawnNPC(1158, getTile(3484, 9491, 0), -1, true).setBossInstance(this);
 	}
 

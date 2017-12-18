@@ -13,8 +13,7 @@ public class ThornySnailCombat extends CombatScript {
 
 	@Override
 	public Object[] getKeys() {
-		return new Object[]
-		{ 6807, 6806 };
+		return new Object[] { 6807, 6806 };
 	}
 
 	@Override

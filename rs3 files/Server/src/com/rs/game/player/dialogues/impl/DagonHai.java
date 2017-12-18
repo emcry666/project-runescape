@@ -16,19 +16,13 @@ public class DagonHai extends Dialogue {
 		stage = (byte) ((int) parameters[2]);
 		if (stage == 1) {
 			stage = 2;
-			sendEntityDialogue(SEND_1_TEXT_CHAT, new String[]
-			{ player.getDisplayName(), "That monk - he called to Zamorak for revenge." }, IS_PLAYER, player.getIndex(), 9827); // TODO
+			sendEntityDialogue(SEND_1_TEXT_CHAT, new String[] { player.getDisplayName(), "That monk - he called to Zamorak for revenge." }, IS_PLAYER, player.getIndex(), 9827); // TODO
 			// Need
 			// correct
 			// Animation
 			// ID.
 		} else {
-			sendEntityDialogue(SEND_3_TEXT_CHAT, new String[]
-			{
-				NPCDefinitions.getNPCDefinitions(npcId).name,
-				"Our Lord Zamorak has power over life and death,",
-				Utils.formatPlayerNameForDisplay(player.getDisplayName()) + "! He has seen fit to ressurect Bork to",
-				"continue his great work... and now you will fall before him!" }, IS_NPC, npcId, 9843); // TODO
+			sendEntityDialogue(SEND_3_TEXT_CHAT, new String[] { NPCDefinitions.getNPCDefinitions(npcId).name, "Our Lord Zamorak has power over life and death,", Utils.formatPlayerNameForDisplay(player.getDisplayName()) + "! He has seen fit to ressurect Bork to", "continue his great work... and now you will fall before him!" }, IS_NPC, npcId, 9843); // TODO
 			// Need
 			// correct
 			// Animation

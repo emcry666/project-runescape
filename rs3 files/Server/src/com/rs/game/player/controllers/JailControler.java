@@ -21,8 +21,7 @@ public class JailControler extends Controller {
 
 	@Override
 	public boolean logout() {
-		setArguments(new Object[]
-		{ time });
+		setArguments(new Object[] { time });
 		return false;
 	}
 
@@ -98,7 +97,7 @@ public class JailControler extends Controller {
 		player.setNextWorldTile(Settings.START_PLAYER_LOCATION);
 		player.getControlerManager().removeControlerWithoutCheck();
 	}
-	
+
 	public static void imprison(Player player, long time) {
 		player.stopAll();
 		player.lock(4);

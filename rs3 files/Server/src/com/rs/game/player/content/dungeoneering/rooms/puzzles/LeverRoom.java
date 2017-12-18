@@ -15,13 +15,15 @@ import com.rs.game.tasks.WorldTasksManager;
 public class LeverRoom extends PuzzleRoom {
 
 	/*
-	private static final int[] SWITCH_UP = {
-	49381, 49382, 49383, 54333, 33675
-	};
-	*/
+	 * private static final int[] SWITCH_UP = { 49381, 49382, 49383, 54333, 33675 };
+	 */
 
-	private static final int[] SWITCH_DOWN =
-	{ 49384, 49385, 49386, 49386, 49386 //TODO find down of 54333, 33675
+	private static final int[] SWITCH_DOWN = { 49384, 49385, 49386, 49386, 49386 // TODO
+			// find
+			// down
+			// of
+			// 54333,
+			// 33675
 	};
 
 	private int leverCount, leverTicks, maxTicks;
@@ -31,7 +33,7 @@ public class LeverRoom extends PuzzleRoom {
 	public void openRoom() {
 		manager.spawnRandomNPCS(reference);
 	}
-	
+
 	@Override
 	public boolean processObjectClick1(Player player, WorldObject object) {
 		if (object.getDefinitions().name.equals("Switch")) {
@@ -52,14 +54,15 @@ public class LeverRoom extends PuzzleRoom {
 	}
 
 	private void addResetTask() {
-		//Still want it to be possible when people leave a 5:5 (4:5), and very easy on a 5:1
-		int size =  manager.getParty().getTeam().size();
+		// Still want it to be possible when people leave a 5:5 (4:5), and very
+		// easy on a 5:1
+		int size = manager.getParty().getTeam().size();
 		int difficulty = Math.min(manager.getParty().getDificulty(), size);
-		//5 - 2.4 seconds
-		//4 - 3.6 seconds
-		//3 - 5.4 seconds
-		//2 - 7.2 seconds
-		//1 - 14.4 seconds
+		// 5 - 2.4 seconds
+		// 4 - 3.6 seconds
+		// 3 - 5.4 seconds
+		// 2 - 7.2 seconds
+		// 1 - 14.4 seconds
 		maxTicks = (6 - difficulty) + ((size == 1 ? 23 : 20) / difficulty);
 		resetTask = new ResetTask();
 		WorldTasksManager.schedule(resetTask, 0, 0);

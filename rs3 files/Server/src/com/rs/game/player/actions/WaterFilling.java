@@ -8,22 +8,7 @@ import com.rs.game.player.Player;
 public class WaterFilling extends Action {
 
 	public enum Fill {
-		VIAL(229, 227),
-		BOWL(1923, 1921),
-		BUCKET(1925, 1929),
-		JUG(1937, 1935),
-		VASE(3734, 3735),
-		PLANT_POT(5350, 5354),
-		CLAY(434, 1761),
-		WATERING_CAN_0(5331, 5340),
-		WATERING_CAN_1(5333, 5340),
-		WATERING_CAN_2(5334, 5340),
-		WATERING_CAN_3(5335, 5340),
-		WATERING_CAN_4(5336, 5340),
-		WATERING_CAN_5(5337, 5340),
-		WATERING_CAN_6(5338, 5340),
-		WATERING_CAN_7(5339, 5340),
-		DUNGEONEERING_VIAL(17490, 17492);
+		VIAL(229, 227), BOWL(1923, 1921), BUCKET(1925, 1929), JUG(1937, 1935), VASE(3734, 3735), PLANT_POT(5350, 5354), CLAY(434, 1761), WATERING_CAN_0(5331, 5340), WATERING_CAN_1(5333, 5340), WATERING_CAN_2(5334, 5340), WATERING_CAN_3(5335, 5340), WATERING_CAN_4(5336, 5340), WATERING_CAN_5(5337, 5340), WATERING_CAN_6(5338, 5340), WATERING_CAN_7(5339, 5340), DUNGEONEERING_VIAL(17490, 17492);
 
 		private int empty, full;
 
@@ -44,12 +29,12 @@ public class WaterFilling extends Action {
 
 	public static Fill getFillByProduce(int produce) {
 		for (Fill fill : Fill.values()) {
-			if(fill.full == produce)
+			if (fill.full == produce)
 				return fill;
 		}
 		return null;
 	}
-	
+
 	public static boolean isFilling(Player player, int empty, boolean isSpot) {
 		for (Fill fill : Fill.values()) {
 			if (fill.empty == empty) {

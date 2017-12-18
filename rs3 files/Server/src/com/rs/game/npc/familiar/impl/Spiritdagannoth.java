@@ -64,8 +64,8 @@ public class Spiritdagannoth extends Familiar {
 					@Override
 					public void run() {
 						int hitDamage = Utils.random(180);
-						if (hitDamage > 0) 
-								target.setStunDelay(10);
+						if (hitDamage > 0)
+							target.setStunDelay(10);
 						target.applyHit(new Hit(getOwner(), hitDamage, HitLook.MAGIC_DAMAGE));
 						target.setNextGraphics(new Graphics(1428));
 					}

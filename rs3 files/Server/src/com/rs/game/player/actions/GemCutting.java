@@ -104,8 +104,8 @@ public class GemCutting extends Action {
 		}
 		return false;
 	}
-	
-	public static Gem getGem( int gemId) {
+
+	public static Gem getGem(int gemId) {
 		for (Gem gem : Gem.values()) {
 			if (gem.uncut == gemId) {
 				return gem;
@@ -113,8 +113,8 @@ public class GemCutting extends Action {
 		}
 		return null;
 	}
-	
-	public static Gem getGemByProduce( int gemId) {
+
+	public static Gem getGemByProduce(int gemId) {
 		for (Gem gem : Gem.values()) {
 			if (gem.cut == gemId) {
 				return gem;

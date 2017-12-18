@@ -14,7 +14,7 @@ public class FamishedEye extends DungeonNPC {
 	private int weakness, type, sleepCycles;
 	private boolean firstHit;
 	private WorldGorgerShukarhazh boss;
-	
+
 	public FamishedEye(final WorldGorgerShukarhazh boss, int id, WorldTile tile, final DungeonManager manager, double multiplier) {
 		super(id, tile, manager, multiplier);
 		this.boss = boss;
@@ -31,13 +31,13 @@ public class FamishedEye extends DungeonNPC {
 
 	@Override
 	public boolean clipedProjectile(WorldTile tile, boolean checkClose, int size) {
-		//because npc is under cliped data
+		// because npc is under cliped data
 		return getManager().isAtBossRoom(tile);
 	}
 
 	@Override
 	public void setNextFaceEntity(Entity entity) {
-		//this boss doesnt face
+		// this boss doesnt face
 	}
 
 	@Override
@@ -74,7 +74,7 @@ public class FamishedEye extends DungeonNPC {
 
 	@Override
 	public void sendDeath(Entity source) {
-		sleepCycles++;//start the cycles
+		sleepCycles++;// start the cycles
 		boss.refreshCapDamage();
 		setCantInteract(true);
 		setNextAnimation(new Animation(14917));
@@ -90,7 +90,7 @@ public class FamishedEye extends DungeonNPC {
 	public WorldGorgerShukarhazh getBoss() {
 		return boss;
 	}
-	
+
 	public int getType() {
 		return type;
 	}
@@ -101,23 +101,23 @@ public class FamishedEye extends DungeonNPC {
 
 	private int findType(int rotation) {
 		switch (type) {
-		case 0: //mage
+		case 0: // mage
 			return 2;
-		case 1: //warrior
+		case 1: // warrior
 			return 0;
-		default: //range
+		default: // range
 			return 1;
 		}
 	}
-	
+
 	private int findWeakness(int type) {
 		switch (type) {
-		case 0: //mage
-			return 1; //range was mage 2
-		case 1: //warrior
-			return 2; //mage was melee 0
-		default: //range
-			return 0; //melee was range 1
+		case 0: // mage
+			return 1; // range was mage 2
+		case 1: // warrior
+			return 2; // mage was melee 0
+		default: // range
+			return 0; // melee was range 1
 		}
 	}
 

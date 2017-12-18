@@ -24,13 +24,12 @@ public class GraphicDefinitions {
 	public int anInt1454;
 	public short[] aShortArray1455;
 	public short[] aShortArray1456;
-	
 
 	// added
 	public byte byteValue;
 	// added
 	public int intValue;
-	//added
+	// added
 	private byte[] aByteArray8432;
 	private byte[] aByteArray8431;
 
@@ -52,28 +51,30 @@ public class GraphicDefinitions {
 	public static void main(String... s) {
 		try {
 			Cache.init();
-		}
-		catch (IOException e) {
+		} catch (IOException e) {
 			e.printStackTrace();
 		}
 		System.out.println(getGraphicDefinitions(3752).emoteId);
-		//System.out.println(getGraphicByModel(82794));
-		//	System.out.println(ItemDefinitions.getItemDefinitions(29617).maleEquip1);
+		// System.out.println(getGraphicByModel(82794));
+		// System.out.println(ItemDefinitions.getItemDefinitions(29617).maleEquip1);
 
-			for(int i = 19496 - 50; i < 19496 + 50; i++){
-				int gfx = getGfxByAnimation(i);
-				if(gfx == -1)
-					continue;
-			System.out.println(i+", " +gfx);
-			}
+		for (int i = 19496 - 50; i < 19496 + 50; i++) {
+			int gfx = getGfxByAnimation(i);
+			if (gfx == -1)
+				continue;
+			System.out.println(i + ", " + gfx);
+		}
 
-		/*System.out.println(AnimationDefinitions.getAnimationDefinitions(366).leftHandItem);
-		System.out.println(AnimationDefinitions.getAnimationDefinitions(366).rightHandItemId);
-		System.out.println(ItemDefinitions.getItemDefinitions(2476).modelId);
-		
-		System.out.println(getGfxByAnimation(23837));*/
-		/*	int gfx = getGfxByAnimation(anim);
-			System.out.println(gfx);*/
+		/*
+		 * System.out.println(AnimationDefinitions.getAnimationDefinitions(366). leftHandItem);
+		 * System.out.println(AnimationDefinitions.getAnimationDefinitions(366). rightHandItemId);
+		 * System.out.println(ItemDefinitions.getItemDefinitions(2476).modelId);
+		 * 
+		 * System.out.println(getGfxByAnimation(23837));
+		 */
+		/*
+		 * int gfx = getGfxByAnimation(anim); System.out.println(gfx);
+		 */
 	}
 
 	public static int getAnimationBySound(int id, boolean effect2Sound) {
@@ -97,7 +98,7 @@ public class GraphicDefinitions {
 			if (defs == null || defs.modelId != id)
 				continue;
 			System.out.println(i);
-			//return i;
+			// return i;
 		}
 		return -1;
 	}
@@ -115,12 +116,11 @@ public class GraphicDefinitions {
 	public static final void main2(String... s) {
 		try {
 			Cache.init();
-		}
-		catch (IOException e) {
+		} catch (IOException e) {
 			e.printStackTrace();
 		}
 		GraphicDefinitions original = GraphicDefinitions.getGraphicDefinitions(1896);
-		int model = original.modelId;//NPCDefinitions.getNPCDefinitions(3200).modelIds[0];
+		int model = original.modelId;// NPCDefinitions.getNPCDefinitions(3200).modelIds[0];
 		int emoteId = original.emoteId;
 
 		AnimationDefinitions defs = AnimationDefinitions.getAnimationDefinitions(emoteId);
@@ -137,7 +137,9 @@ public class GraphicDefinitions {
 			if (def == null)
 				continue;
 			if ((def.modelId >= model - offset && def.modelId <= model + offset)
-			/*(def.emoteId >= emoteId - offset2 && def.emoteId <= emoteId + offset2)*/) {
+			/*
+			 * (def.emoteId >= emoteId - offset2 && def.emoteId <= emoteId + offset2)
+			 */) {
 				System.out.println("Possible match [id=" + i + ", model=" + def.modelId + "]." + ", " + def.emoteId + ", " + def.anInt1446 + ", " + def.anInt1449 + ", " + def.anInt1454);
 				AnimationDefinitions defs2 = AnimationDefinitions.getAnimationDefinitions(def.emoteId);
 				if (defs2.handledSounds != null) {
@@ -182,16 +184,13 @@ public class GraphicDefinitions {
 			else if (9 == opcode) {
 				byteValue = (byte) 3;
 				intValue = 8224;
-			}
-			else if (opcode == 15) {
+			} else if (opcode == 15) {
 				byteValue = (byte) 3;
 				intValue = buffer.readUnsignedShort();
-			}
-			else if (16 == opcode) {
+			} else if (16 == opcode) {
 				byteValue = (byte) 3;
 				intValue = buffer.readInt();
-			}
-			else if (40 == opcode) {
+			} else if (40 == opcode) {
 				int i_60_ = buffer.readUnsignedByte();
 				aShortArray1438 = new short[i_60_];
 				aShortArray1456 = new short[i_60_];
@@ -199,8 +198,7 @@ public class GraphicDefinitions {
 					aShortArray1438[i_61_] = (short) buffer.readUnsignedShort();
 					aShortArray1456[i_61_] = (short) buffer.readUnsignedShort();
 				}
-			}
-			else if (41 == opcode) {
+			} else if (41 == opcode) {
 				int i_62_ = buffer.readUnsignedByte();
 				aShortArray1455 = new short[i_62_];
 				aShortArray1435 = new short[i_62_];
@@ -208,8 +206,7 @@ public class GraphicDefinitions {
 					aShortArray1455[i_63_] = (short) buffer.readUnsignedShort();
 					aShortArray1435[i_63_] = (short) buffer.readUnsignedShort();
 				}
-			}
-			else if (44 == opcode) {
+			} else if (44 == opcode) {
 				int i_64_ = buffer.readUnsignedShort();
 				int i_65_ = 0;
 				for (int i_66_ = i_64_; i_66_ > 0; i_66_ >>= 1)
@@ -220,12 +217,10 @@ public class GraphicDefinitions {
 					if ((i_64_ & 1 << i_68_) > 0) {
 						aByteArray8432[i_68_] = i_67_;
 						i_67_++;
-					}
-					else
+					} else
 						aByteArray8432[i_68_] = (byte) -1;
 				}
-			}
-			else if (opcode == 45) {
+			} else if (opcode == 45) {
 				int i_69_ = buffer.readUnsignedShort();
 				int i_70_ = 0;
 				for (int i_71_ = i_69_; i_71_ > 0; i_71_ >>= 1)
@@ -236,92 +231,38 @@ public class GraphicDefinitions {
 					if ((i_69_ & 1 << i_73_) > 0) {
 						aByteArray8431[i_73_] = i_72_;
 						i_72_++;
-					}
-					else
+					} else
 						aByteArray8431[i_73_] = (byte) -1;
 				}
-			}
-			else if (opcode == 46)
+			} else if (opcode == 46)
 				break;
-		}
-		while (false);
+		} while (false);
 	}
 
-	/*public void readValues(InputStream stream, int opcode) {
-		if (opcode != 1) {
-			if ((opcode ^ 0xffffffff) == -3)
-				emoteId = stream.readBigSmart();
-			else if (opcode == 4)
-				anInt1446 = stream.readUnsignedShort();
-			else if (opcode != 5) {
-				if ((opcode ^ 0xffffffff) != -7) {
-					if (opcode == 7)
-						anInt1440 = stream.readUnsignedByte();
-					else if ((opcode ^ 0xffffffff) == -9)
-						anInt1451 = stream.readUnsignedByte();
-					else if (opcode != 9) {
-						if (opcode != 10) {
-							if (opcode == 11) { // added opcode
-								// aBoolean1442 = true;
-								byteValue = (byte) 1;
-							} else if (opcode == 12) { // added opcode
-								// aBoolean1442 = true;
-								byteValue = (byte) 4;
-							} else if (opcode == 13) { // added opcode
-								// aBoolean1442 = true;
-								byteValue = (byte) 5;
-							} else if (opcode == 14) { // added opcode
-								// aBoolean1442 = true;
-								// aByte2856 = 2;
-								byteValue = (byte) 2;
-								intValue = stream.readUnsignedByte() * 256;
-							} else if (opcode == 15) {
-								// aByte2856 = 3;
-								byteValue = (byte) 3;
-								intValue = stream.readUnsignedShort();
-							} else if (opcode == 16) {
-								// aByte2856 = 3;
-								byteValue = (byte) 3;
-								intValue = stream.readInt();
-							} else if (opcode == 44) { //rs3 new
-								stream.readUnsignedShort(); //count
-							} else if (opcode == 45) { //rs3 new
-								stream.readUnsignedShort(); //count
-							} else if (opcode == 46) { //rs3 new
-								
-							} else if (opcode != 40) {
-								if ((opcode ^ 0xffffffff) == -42) {
-									int i = stream.readUnsignedByte();
-									aShortArray1455 = new short[i];
-									aShortArray1435 = new short[i];
-									for (int i_0_ = 0; i > i_0_; i_0_++) {
-										aShortArray1455[i_0_] = (short) (stream.readUnsignedShort());
-										aShortArray1435[i_0_] = (short) (stream.readUnsignedShort());
-									}
-								}
-							} else {
-								int i = stream.readUnsignedByte();
-								aShortArray1438 = new short[i];
-								aShortArray1456 = new short[i];
-								for (int i_1_ = 0; ((i ^ 0xffffffff) < (i_1_ ^ 0xffffffff)); i_1_++) {
-									aShortArray1438[i_1_] = (short) stream.readUnsignedShort();
-									aShortArray1456[i_1_] = (short) stream.readUnsignedShort();
-								}
-							}
-						} else
-							aBoolean1448 = true;
-					} else {
-						// aBoolean1442 = true;
-						byteValue = (byte) 3;
-						intValue = 8224;
-					}
-				} else
-					anInt1454 = stream.readUnsignedShort();
-			} else
-				anInt1449 = stream.readUnsignedShort();
-		} else
-			modelId = stream.readBigSmart();
-	}*/
+	/*
+	 * public void readValues(InputStream stream, int opcode) { if (opcode != 1) { if ((opcode ^ 0xffffffff) == -3)
+	 * emoteId = stream.readBigSmart(); else if (opcode == 4) anInt1446 = stream.readUnsignedShort(); else if
+	 * (opcode != 5) { if ((opcode ^ 0xffffffff) != -7) { if (opcode == 7) anInt1440 = stream.readUnsignedByte();
+	 * else if ((opcode ^ 0xffffffff) == -9) anInt1451 = stream.readUnsignedByte(); else if (opcode != 9) { if
+	 * (opcode != 10) { if (opcode == 11) { // added opcode // aBoolean1442 = true; byteValue = (byte) 1; } else if
+	 * (opcode == 12) { // added opcode // aBoolean1442 = true; byteValue = (byte) 4; } else if (opcode == 13) { //
+	 * added opcode // aBoolean1442 = true; byteValue = (byte) 5; } else if (opcode == 14) { // added opcode //
+	 * aBoolean1442 = true; // aByte2856 = 2; byteValue = (byte) 2; intValue = stream.readUnsignedByte() * 256; }
+	 * else if (opcode == 15) { // aByte2856 = 3; byteValue = (byte) 3; intValue = stream.readUnsignedShort(); }
+	 * else if (opcode == 16) { // aByte2856 = 3; byteValue = (byte) 3; intValue = stream.readInt(); } else if
+	 * (opcode == 44) { //rs3 new stream.readUnsignedShort(); //count } else if (opcode == 45) { //rs3 new
+	 * stream.readUnsignedShort(); //count } else if (opcode == 46) { //rs3 new
+	 * 
+	 * } else if (opcode != 40) { if ((opcode ^ 0xffffffff) == -42) { int i = stream.readUnsignedByte();
+	 * aShortArray1455 = new short[i]; aShortArray1435 = new short[i]; for (int i_0_ = 0; i > i_0_; i_0_++) {
+	 * aShortArray1455[i_0_] = (short) (stream.readUnsignedShort()); aShortArray1435[i_0_] = (short)
+	 * (stream.readUnsignedShort()); } } } else { int i = stream.readUnsignedByte(); aShortArray1438 = new
+	 * short[i]; aShortArray1456 = new short[i]; for (int i_1_ = 0; ((i ^ 0xffffffff) < (i_1_ ^ 0xffffffff));
+	 * i_1_++) { aShortArray1438[i_1_] = (short) stream.readUnsignedShort(); aShortArray1456[i_1_] = (short)
+	 * stream.readUnsignedShort(); } } } else aBoolean1448 = true; } else { // aBoolean1442 = true; byteValue =
+	 * (byte) 3; intValue = 8224; } } else anInt1454 = stream.readUnsignedShort(); } else anInt1449 =
+	 * stream.readUnsignedShort(); } else modelId = stream.readBigSmart(); }
+	 */
 
 	public GraphicDefinitions() {
 		byteValue = 0;

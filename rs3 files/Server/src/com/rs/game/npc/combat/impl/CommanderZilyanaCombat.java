@@ -13,13 +13,12 @@ public class CommanderZilyanaCombat extends CombatScript {
 
 	@Override
 	public Object[] getKeys() {
-		return new Object[]
-		{ 6247 };
+		return new Object[] { 6247 };
 	}
 
 	@Override
 	public int attack(final NPC npc, final Entity target) {
-		if(!Utils.isOnRange(npc, target, 0))
+		if (!Utils.isOnRange(npc, target, 0))
 			return 0;
 		final NPCCombatDefinitions defs = npc.getCombatDefinitions();
 		if (Utils.random(4) == 0) {

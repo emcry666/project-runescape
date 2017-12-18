@@ -24,7 +24,8 @@ public class FrostDragon extends NPC {
 	@Override
 	public void processHit(Hit hit) {
 		if (orb) {
-			hit.getSource().applyHit(new Hit(null, hit.getDamage(), HitLook.REFLECTED_DAMAGE));//Just incase
+			hit.getSource().applyHit(new Hit(null, hit.getDamage(), HitLook.REFLECTED_DAMAGE));// Just
+			// incase
 			return;
 		}
 		super.processHit(hit);
@@ -74,7 +75,7 @@ public class FrostDragon extends NPC {
 			public void run() {
 				setMagicOnly();
 				attackStage = 0;
-				orb = false;//Just incase idk
+				orb = false;// Just incase idk
 				setNextGraphics(new Graphics(1315));
 			}
 		}, getCombatDefinitions().getRespawnDelay() + 2);

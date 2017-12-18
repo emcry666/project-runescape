@@ -27,7 +27,7 @@ public class CastleWarsWaiting extends Controller {
 	public void sendInterfaces() {
 		player.getInterfaceManager().sendMinigameInterface(57);
 	}
-	
+
 	@Override
 	public boolean canRemoveEquip(int slot, int itemId) {
 		if (slot == Equipment.SLOT_HAT || slot == Equipment.SLOT_CAPE) {

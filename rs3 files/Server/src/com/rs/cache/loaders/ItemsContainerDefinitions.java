@@ -15,15 +15,13 @@ public final class ItemsContainerDefinitions {
 	public static void main(String[] args) throws Throwable {
 		Cache.init();
 
-		/*BufferedWriter writer = new BufferedWriter(new FileWriter("item_containers.txt"));
-		for (int i = 0; i < Cache.STORE.getIndexes()[2].getLastFileId(5); i++) {
-			ItemsContainerDefinitions def = getContainer(i);
-			writer.write("RS Shop " + i + ":");
-			for (int a = 0; def.ids != null && a < def.length && a < def.ids.length; a++)
-				writer.write(" " + def.ids[a] + " " + def.amounts[a]);
-			writer.write("\r\n");
-		}
-		writer.close();*/
+		/*
+		 * BufferedWriter writer = new BufferedWriter(new FileWriter("item_containers.txt")); for (int i = 0; i <
+		 * Cache.STORE.getIndexes()[2].getLastFileId(5); i++) { ItemsContainerDefinitions def = getContainer(i);
+		 * writer.write("RS Shop " + i + ":"); for (int a = 0; def.ids != null && a < def.length && a <
+		 * def.ids.length; a++) writer.write(" " + def.ids[a] + " " + def.amounts[a]); writer.write("\r\n"); }
+		 * writer.close();
+		 */
 		System.out.println(getContainer(623).length);
 	}
 

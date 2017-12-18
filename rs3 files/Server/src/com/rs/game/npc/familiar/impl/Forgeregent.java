@@ -62,9 +62,9 @@ public class Forgeregent extends Familiar {
 					Player playerTarget = (Player) target;
 					int weaponId = playerTarget.getEquipment().getWeaponId();
 					if (weaponId != -1) {
-						//if (PlayerCombatNew. != 423) {
-							ButtonHandler.sendRemove(playerTarget, 3, false);
-						//}
+						// if (PlayerCombatNew. != 423) {
+						ButtonHandler.sendRemove(playerTarget, 3, false);
+						// }
 					}
 					int shieldId = playerTarget.getEquipment().getShieldId();
 					if (shieldId != -1) {

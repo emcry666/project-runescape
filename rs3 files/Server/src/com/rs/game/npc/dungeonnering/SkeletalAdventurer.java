@@ -103,8 +103,10 @@ public final class SkeletalAdventurer extends DungeonBoss {
 		Drops drops = NPCDrops.getDrops(11985);
 		if (drops == null)
 			return;
-		Drop drop = drops.getDrop(Drops.COMMOM, Double.MAX_VALUE); //to make 100% chance
-		if (drop == null) //shouldnt
+		Drop drop = drops.getDrop(Drops.COMMOM, Double.MAX_VALUE); // to make
+		// 100%
+		// chance
+		if (drop == null) // shouldnt
 			return;
 		List<Player> players = getManager().getParty().getTeam();
 		if (players.size() == 0)

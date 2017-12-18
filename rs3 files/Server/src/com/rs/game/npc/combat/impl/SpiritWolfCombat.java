@@ -31,13 +31,11 @@ public class SpiritWolfCombat extends CombatScript {
 					target.setAttackedByDelay(3000);// three seconds
 				else
 					familiar.getOwner().getPackets().sendGameMessage("Your familiar cannot scare that monster.");
-			}
-			else if (target instanceof Player)
+			} else if (target instanceof Player)
 				familiar.getOwner().getPackets().sendGameMessage("Your familiar cannot scare a player.");
 			else if (target instanceof Familiar)
 				familiar.getOwner().getPackets().sendGameMessage("Your familiar cannot scare other familiars.");
-		}
-		else {
+		} else {
 			npc.setNextAnimation(new Animation(6829));
 			delayHit(npc, 1, target, getMagicHit(npc, getMaxHit(npc, NPCCombatDefinitions.MAGE, target)));
 		}

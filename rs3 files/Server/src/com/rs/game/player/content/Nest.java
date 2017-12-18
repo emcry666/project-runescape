@@ -7,14 +7,8 @@ import com.rs.utils.Utils;
 
 public class Nest {
 
-	public static final int[][] SEEDS =
-	{
-	{ 5312, 5283, 5284, 5313, 5285, 5286 },
-	{ 5314, 5288, 5287, 5315, 5289 },
-	{ 5316, 5290 },
-	{ 5317 } };
-	private static final int[] RINGS =
-	{ 1635, 1637, 1639, 1641, 1643 };
+	public static final int[][] SEEDS = { { 5312, 5283, 5284, 5313, 5285, 5286 }, { 5314, 5288, 5287, 5315, 5289 }, { 5316, 5290 }, { 5317 } };
+	private static final int[] RINGS = { 1635, 1637, 1639, 1641, 1643 };
 	public static int AMOUNT = 2147483647;
 
 	public static boolean isNest(int id) {

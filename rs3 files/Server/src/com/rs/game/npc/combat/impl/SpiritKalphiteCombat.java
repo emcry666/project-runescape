@@ -12,8 +12,7 @@ public class SpiritKalphiteCombat extends CombatScript {
 
 	@Override
 	public Object[] getKeys() {
-		return new Object[]
-		{ 6995, 6994 };
+		return new Object[] { 6995, 6994 };
 	}
 
 	@Override

@@ -25,7 +25,7 @@ public class Item implements Serializable {
 	public Item clone() {
 		return new Item(id, amount);
 	}
-	
+
 	public Item(int id) {
 		this(id, 1);
 	}
@@ -47,7 +47,7 @@ public class Item implements Serializable {
 	}
 
 	public Item(Item item) {
-		this.id =  item.getId();
+		this.id = item.getId();
 		this.amount = item.getAmount();
 	}
 
@@ -58,7 +58,7 @@ public class Item implements Serializable {
 	public void setAmount(int amount) {
 		this.amount = amount;
 	}
-	
+
 	public void setId(int id) {
 		this.id = id;
 	}
@@ -66,11 +66,11 @@ public class Item implements Serializable {
 	public int getAmount() {
 		return amount;
 	}
-	
+
 	public String getName() {
 		return getDefinitions().getName();
 	}
-	
+
 	@Override
 	public String toString() {
 		return "Item (" + id + ", " + amount + ")";

@@ -48,7 +48,9 @@ public class NPCDrops {
 					int min = buffer.getShort() & 0xffff;
 					int max = buffer.getShort() & 0xffff;
 					int rarity = buffer.get() & 0xff;
-					if (itemId > 25439 || (itemId == AncientEffigies.STARVED_ANCIENT_EFFIGY && NPCDefinitions.getNPCDefinitions(npcId).combatLevel < 100)) // DISABLE EOC DROPS
+					if (itemId > 25439 || (itemId == AncientEffigies.STARVED_ANCIENT_EFFIGY && NPCDefinitions.getNPCDefinitions(npcId).combatLevel < 100)) // DISABLE
+						// EOC
+						// DROPS
 						continue;
 					if (dList[rarity] == null)
 						dList[rarity] = new ArrayList<Drop>();

@@ -20,11 +20,11 @@ public class GrandExchangeManager implements Serializable {
 	private static final long serialVersionUID = -866326987352331696L;
 
 	/*
-	 * public static final int ITEMID_CONFIG = 1109, AMOUNT_CONFIG = 1110,
-	 * PRICE_PER_CONFIG = 1111, SLOT_CONFIG = 1112, TYPE_CONFIG = 1113;
+	 * public static final int ITEMID_CONFIG = 1109, AMOUNT_CONFIG = 1110, PRICE_PER_CONFIG = 1111, SLOT_CONFIG =
+	 * 1112, TYPE_CONFIG = 1113;
 	 */
 	public static final int ITEM_ID_VAR = 135, AMOUNT_VAR = 136, PRICE_PER_VAR = 137, SLOT_VAR = 138, TYPE_VAR = 139, MARKET_PRICE_VAR = 140;
-	
+
 	private transient Player player;
 
 	private long[] offerUIds;
@@ -79,11 +79,11 @@ public class GrandExchangeManager implements Serializable {
 		player.getInterfaceManager().sendCentralInterface(105);
 		player.getPackets().sendUnlockIComponentOptionSlots(105, 77, -1, 0, 0, 1);
 		player.getPackets().sendUnlockIComponentOptionSlots(105, 79, -1, 0, 0, 1);
-		
+
 		player.getInterfaceManager().sendInventoryInterface(107);
 		player.getPackets().sendUnlockIComponentOptionSlots(107, 4, 0, 27, 0, 1);
 		player.getPackets().sendInterSetItemsOptionsScript(107, 4, 93, 4, 7, "Offer", "Examine");
-		
+
 		cancelOffer();
 		player.setCloseInterfacesEvent(new Runnable() {
 			@Override
@@ -96,7 +96,7 @@ public class GrandExchangeManager implements Serializable {
 	public void openCollectionBox() {
 		if (!player.getBank().hasVerified(5))
 			return;
-		if(player.getControlerManager().getControler() instanceof DungeonController) {
+		if (player.getControlerManager().getControler() instanceof DungeonController) {
 			return;
 		}
 		player.getInterfaceManager().sendCentralInterface(109);
@@ -128,7 +128,6 @@ public class GrandExchangeManager implements Serializable {
 		return player.getVarsManager().getValue(SLOT_VAR);
 	}
 
-	
 	public void setItemId(int id) {
 		player.getVarsManager().sendVar(ITEM_ID_VAR, id);
 	}
@@ -156,197 +155,195 @@ public class GrandExchangeManager implements Serializable {
 	public void handleButtons(int interfaceId, int componentId, int slotId, int packetId) {
 		if (interfaceId == 105) {
 			switch (componentId) {
-			case 28: //converted
+			case 28: // converted
 				if (packetId == WorldPacketsDecoder.ACTION_BUTTON1_PACKET)
 					viewOffer(0);
 				else
 					abortOffer(0);
 				break;
-			case 30: //converted
+			case 30: // converted
 				if (packetId == WorldPacketsDecoder.ACTION_BUTTON1_PACKET)
 					viewOffer(1);
 				else
 					abortOffer(1);
 				break;
-			case 33: //converted
+			case 33: // converted
 				if (packetId == WorldPacketsDecoder.ACTION_BUTTON1_PACKET)
 					viewOffer(2);
 				else
 					abortOffer(2);
 				break;
-			case 34: //converted
+			case 34: // converted
 				if (packetId == WorldPacketsDecoder.ACTION_BUTTON1_PACKET)
 					viewOffer(3);
 				else
 					abortOffer(3);
 				break;
-			case 36: //converted
+			case 36: // converted
 				if (packetId == WorldPacketsDecoder.ACTION_BUTTON1_PACKET)
 					viewOffer(4);
 				else
 					abortOffer(4);
 				break;
-			case 38: //converted
+			case 38: // converted
 				if (packetId == WorldPacketsDecoder.ACTION_BUTTON1_PACKET)
 					viewOffer(5);
 				else
 					abortOffer(5);
 				break;
-			case 75: //converted
+			case 75: // converted
 				abortCurrentOffer();
 				break;
-			case 170: //converted
+			case 170: // converted
 				makeOffer(0, false);
 				break;
-			case 175: //converted
+			case 175: // converted
 				makeOffer(0, true);
 				break;
-			case 181: //converted
+			case 181: // converted
 				makeOffer(1, false);
 				break;
-			case 187: //converted
+			case 187: // converted
 				makeOffer(1, true);
 				break;
-			case 193: //converted
+			case 193: // converted
 				makeOffer(2, false);
 				break;
-			case 199: //converted
+			case 199: // converted
 				makeOffer(2, true);
 				break;
-			case 206: //converted
+			case 206: // converted
 				makeOffer(3, false);
 				break;
-			case 212: //converted
+			case 212: // converted
 				makeOffer(3, true);
 				break;
-			case 222: //converted
+			case 222: // converted
 				makeOffer(4, false);
 				break;
-			case 228: //converted
+			case 228: // converted
 				makeOffer(4, true);
 				break;
-			case 238: //converted
+			case 238: // converted
 				makeOffer(5, false);
 				break;
-			case 244: //converted
+			case 244: // converted
 				makeOffer(5, true);
 				break;
-			case 42: //converted
+			case 42: // converted
 				cancelOffer();
 				break;
-			case 98: //converted
+			case 98: // converted
 				modifyAmount(getAmount() - 1);
 				break;
-			case 101: //converted
+			case 101: // converted
 				modifyAmount(getAmount() + 1);
 				break;
-			case 105: //converted
+			case 105: // converted
 				modifyAmount(getAmount() + 1);
 				break;
-			case 111: //converted
+			case 111: // converted
 				modifyAmount(getAmount() + 10);
 				break;
-			case 117: //converted
+			case 117: // converted
 				modifyAmount(getAmount() + 100);
 				break;
-			case 123: //converted
+			case 123: // converted
 				modifyAmount(getType() == 0 ? getAmount() + 1000 : getItemAmount(new Item(getItemId())));
 				break;
-			case 129: //converted
+			case 129: // converted
 				editAmount();
 				break;
-			case 134: //converted
+			case 134: // converted
 				modifyPricePerItem(getPricePerItem() - 1);
 				break;
-			case 137: //converted
+			case 137: // converted
 				modifyPricePerItem(getPricePerItem() + 1);
 				break;
-			case 147: //converted
+			case 147: // converted
 				modifyPricePerItem(GrandExchange.getPrice(getItemId()));
 				break;
-			case 152: //converted
+			case 152: // converted
 				editPrice();
 				break;
-			case 158: //converted
+			case 158: // converted
 				modifyPricePerItem((int) (Math.ceil(getPricePerItem() * 1.05)));
 				break;
-			case 141: //converted
+			case 141: // converted
 				modifyPricePerItem((int) (getPricePerItem() * 0.95));
 				break;
-			case 164: //converted
+			case 164: // converted
 				confirmOffer();
 				break;
-			case 9: //converted
+			case 9: // converted
 				chooseItem();
 				break;
-			case 77: //converted
+			case 77: // converted
 				collectItems(getCurrentSlot(), 0, packetId == WorldPacketsDecoder.ACTION_BUTTON1_PACKET ? 0 : 1);
 				break;
-			case 79: //converted
+			case 79: // converted
 				collectItems(getCurrentSlot(), 1, packetId == WorldPacketsDecoder.ACTION_BUTTON1_PACKET ? 0 : 1);
 				break;
 			}
-		} else if (interfaceId == 107 && componentId == 4) {//converted
-			if(packetId == WorldPacketsDecoder.ACTION_BUTTON1_PACKET) {
+		} else if (interfaceId == 107 && componentId == 4) {// converted
+			if (packetId == WorldPacketsDecoder.ACTION_BUTTON1_PACKET) {
 				offer(slotId);
-			}else
+			} else
 				player.getInventory().sendExamine(slotId);
-		}else if (interfaceId == 389 && componentId == 8) //added
+		} else if (interfaceId == 389 && componentId == 8) // added
 			removeGEItemSearch();
 		else if (interfaceId == 109) {
 			switch (componentId) {
-			case 15: //converted
+			case 15: // converted
 				collectItems(0, slotId == 0 ? 0 : 1, packetId == WorldPacketsDecoder.ACTION_BUTTON1_PACKET ? 0 : 1);
 				break;
-			case 13: //converted
+			case 13: // converted
 				collectItems(1, slotId == 0 ? 0 : 1, packetId == WorldPacketsDecoder.ACTION_BUTTON1_PACKET ? 0 : 1);
 				break;
-			case 10: //converted
+			case 10: // converted
 				collectItems(2, slotId == 0 ? 0 : 1, packetId == WorldPacketsDecoder.ACTION_BUTTON1_PACKET ? 0 : 1);
 				break;
-			case 7: //converted
+			case 7: // converted
 				collectItems(3, slotId == 0 ? 0 : 1, packetId == WorldPacketsDecoder.ACTION_BUTTON1_PACKET ? 0 : 1);
 				break;
-			case 4: //converted
+			case 4: // converted
 				collectItems(4, slotId == 0 ? 0 : 1, packetId == WorldPacketsDecoder.ACTION_BUTTON1_PACKET ? 0 : 1);
 				break;
 			case 1:
 				collectItems(5, slotId == 0 ? 0 : 1, packetId == WorldPacketsDecoder.ACTION_BUTTON1_PACKET ? 0 : 1);
 				break;
 			case 48:
-			case 56: //added
+			case 56: // added
 				collectAll(componentId == 48);
 				break;
 			}
 		}
 	}
-	
 
 	public void collectAll(boolean bank) {
-		//kinda a cheat way to collect all to bank / inv
-		for(int i = 0; i < 6; i++) {
+		// kinda a cheat way to collect all to bank / inv
+		for (int i = 0; i < 6; i++) {
 			Offer offer = GrandExchange.getOffer(player, i);
-			if(offer == null)
+			if (offer == null)
 				continue;
 			if (!player.getInventory().hasFreeSlots()) {
 				player.getPackets().sendGameMessage("Not enough space in your inventory.");
 				return;
 			}
-			for(int i2 = 0; i2 < 2; i2++) {
+			for (int i2 = 0; i2 < 2; i2++) {
 				Item item = offer.getReceivedItems().get(i2);
-				if(item == null)
+				if (item == null)
 					continue;
-				collectItems(i, i2, 0); //tries to collect everything
-				if(bank) {
+				collectItems(i, i2, 0); // tries to collect everything
+				if (bank) {
 					int slot = player.getInventory().getItems().getThisItemSlot(item);
-					if(slot == -1)
+					if (slot == -1)
 						continue;
 					player.getBank().depositItem(slot, item.getAmount(), false);
 				}
 			}
 		}
 	}
-
 
 	public void cancelOffer() {
 		setItemId(-1);
@@ -451,13 +448,13 @@ public class GrandExchangeManager implements Serializable {
 		player.getInterfaceManager().sendInputTextInterface(389);
 		player.getPackets().sendExecuteScript(570, "Grand Exchange Item Search");
 	}
-	
+
 	public void removeGEItemSearch() {
 		if (getType() == 0)
 			player.getPackets().sendExecuteScriptReverse(571);
 		player.getInterfaceManager().removeInputTextInterface();
 	}
-	
+
 	public void offer(int slot) {
 		if (getType() == -1)
 			return;
@@ -550,7 +547,7 @@ public class GrandExchangeManager implements Serializable {
 		}
 		setType(sell ? 1 : 0);
 		setSlot(slot);
-		if (!sell) 
+		if (!sell)
 			sendGEItemSearch();
 	}
 

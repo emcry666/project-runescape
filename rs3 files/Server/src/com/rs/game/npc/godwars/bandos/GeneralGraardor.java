@@ -24,10 +24,10 @@ public class GeneralGraardor extends NPC {
 	public GeneralGraardor(int id, WorldTile tile, int mapAreaNameHash, boolean canBeAttackFromOutOfArea, boolean spawned) {
 		super(id, tile, mapAreaNameHash, canBeAttackFromOutOfArea, spawned);
 		setIntelligentRouteFinder(true);
-		setLureDelay(3000);//Very small delay
-		setDropRateFactor(3); //triples chances
+		setLureDelay(3000);// Very small delay
+		setDropRateFactor(3); // triples chances
 	}
-	
+
 	/*
 	 * gotta override else setRespawnTask override doesnt work
 	 */
@@ -50,7 +50,8 @@ public class GeneralGraardor extends NPC {
 						List<Player> players = FriendsChat.getLootSharingPeople(player);
 						if (players != null) {
 							for (Player p : players) {
-								if (p == null) continue;
+								if (p == null)
+									continue;
 								Controller controler = p.getControlerManager().getControler();
 								if (controler != null && controler instanceof GodWars) {
 									GodWars godControler = (GodWars) controler;

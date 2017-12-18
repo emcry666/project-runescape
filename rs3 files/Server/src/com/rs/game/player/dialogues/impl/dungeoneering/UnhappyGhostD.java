@@ -7,7 +7,7 @@ public class UnhappyGhostD extends Dialogue {
 
 	@Override
 	public void start() {
-		UnhappyGhostRoom puzzle = (UnhappyGhostRoom)parameters[0];
+		UnhappyGhostRoom puzzle = (UnhappyGhostRoom) parameters[0];
 		sendNPCDialogue(UnhappyGhostRoom.GHOST, puzzle.isComplete() ? NORMAL : SAD, "Woooo wooooo woooooooo wooo");
 	}
 

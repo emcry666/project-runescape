@@ -24,9 +24,9 @@ public abstract class PuzzleRoom extends VisibleRoom {
 
 	public final void giveXP(Player player, int skill) {
 		if (giveXPCount[skill] < 4) {
-			//You only gain xp for the first 4 times you do an action
+			// You only gain xp for the first 4 times you do an action
 			giveXPCount[skill]++;
-			player.getSkills().addXp(skill, getRequirement(skill) * 5 +10);
+			player.getSkills().addXp(skill, getRequirement(skill) * 5 + 10);
 		}
 	}
 
@@ -36,7 +36,7 @@ public abstract class PuzzleRoom extends VisibleRoom {
 	}
 
 	public void replaceObject(WorldObject object, int newId) {
-		if(object == null)
+		if (object == null)
 			return;
 		WorldObject newObject = new WorldObject(object);
 		newObject.setId(newId);

@@ -12,7 +12,7 @@ public class QuickTaskD extends Dialogue {
 		int npcId = master.getNPCId();
 		if (player.getSlayerManager().getCurrentTask() != null) {
 			if (master == SlayerMaster.TURAEL && player.getSlayerManager().getCurrentMaster() != SlayerMaster.TURAEL) {
-				//skip
+				// skip
 			} else {
 				sendNPCDialogue(npcId, NORMAL, "You're still hunting " + player.getSlayerManager().getCurrentTask().getName() + "; come back when you've finished your task.");
 				return;

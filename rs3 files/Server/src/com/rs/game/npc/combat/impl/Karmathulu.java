@@ -9,8 +9,7 @@ public class Karmathulu extends CombatScript {
 
 	@Override
 	public Object[] getKeys() {
-		return new Object[]
-		{ "karmathulu" };
+		return new Object[] { "karmathulu" };
 	}
 
 	@Override

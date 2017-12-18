@@ -15,12 +15,12 @@ public class EasterBunnyJrD extends Dialogue {
 	@Override
 	public void run(int interfaceId, int componentId) {
 		if (stage == 1) {
-			
+
 		}
 	}
 
 	@Override
 	public void finish() {
-		
+
 	}
 }

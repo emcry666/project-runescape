@@ -10,8 +10,7 @@ public class Mandrith_Nastroth extends Dialogue {
 
 	private int npcId;
 
-	public static int ARTEFACTS[] = new int[]
-	{ 14876, 14877, 14878, 14879, 14880, 14881, 14882, 14883, 14884, 14885, 14886, 14887, 14888, 14889, 14890, 14891, 14892 };
+	public static int ARTEFACTS[] = new int[] { 14876, 14877, 14878, 14879, 14880, 14881, 14882, 14883, 14884, 14885, 14886, 14887, 14888, 14889, 14890, 14891, 14892 };
 
 	@Override
 	public void start() {

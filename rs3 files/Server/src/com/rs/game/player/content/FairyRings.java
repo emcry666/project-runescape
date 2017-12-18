@@ -7,63 +7,13 @@ import com.rs.game.tasks.WorldTasksManager;
 
 public class FairyRings {
 
-	private final static String[][] LETTERS = new String[][]
-	{
-	{ "a", "b", "c", "d" },
-	{ "i", "j", "k", "l" },
-	{ "p", "q", "r", "s" } };
+	private final static String[][] LETTERS = new String[][] { { "a", "b", "c", "d" }, { "i", "j", "k", "l" }, { "p", "q", "r", "s" } };
 	private final static WorldTile FAIRY_SOURCE = new WorldTile(2412, 4434, 0);
 	private final static int FIRST_ANIMATION = 3254, SECOND_ANIMATION = 3255;
 	private final static int FIRST_GRAPHICS = 2670, SECOND_GRAPHICS = 2671;
 
 	public static enum Rings {
-		AIQ(new WorldTile(2996, 3114, 0)),
-		AJQ(new WorldTile(2735, 5221, 0)),
-		AJR(new WorldTile(2780, 3613, 0)),
-		AKQ(new WorldTile(2319, 3619, 0)),
-		AKS(new WorldTile(2571, 2956, 0)),
-		ALP(new WorldTile(2468, 4189, 0)),
-		ALQ(new WorldTile(3597, 3495, 0)),
-		ALS(new WorldTile(2644, 3495, 0)),
-		BIP(new WorldTile(3410, 3324, 0)),
-		BIQ(new WorldTile(3251, 3095, 0)),
-		BJQ(new WorldTile(1737, 5342, 0)),
-		BJR(new WorldTile(2650, 4730, 0)),
-		BKP(new WorldTile(2385, 3035, 0)),
-		BKR(new WorldTile(3469, 3431, 0)),
-		BLP(new WorldTile(4622, 5147, 0)),
-		BLR(new WorldTile(2740, 3351, 0)),
-		CIP(new WorldTile(2513, 3884, 0)),
-		CIQ(new WorldTile(2528, 3127, 0)),
-		CJR(new WorldTile(2705, 3576, 0)),
-		CKR(new WorldTile(2801, 3003, 0)),
-		CKS(new WorldTile(3447, 3470, 0)),
-		CLR(new WorldTile(2735, 2742, 0)),
-		CLS(new WorldTile(2682, 3081, 0)),
-		DIP(new WorldTile(3763, 2930, 0)),
-		DIS(new WorldTile(3108, 3149, 0)),
-		DJP(new WorldTile(2658, 3230, 0)),
-		DJR(new WorldTile(2676, 3587, 0)),
-		DKP(new WorldTile(2900, 3111, 0)),
-		DKQ(new WorldTile(4183, 5726, 0)),
-		DKR(new WorldTile(3129, 3496, 0)),
-		DKS(new WorldTile(2744, 3719, 0)),
-		DLQ(new WorldTile(3423, 3016, 0)),
-		DLS(new WorldTile(3501, 9821, 0)),
-		AIR(new WorldTile(2700, 3247, 0)),
-		AJS(new WorldTile(2500, 3896, 0)),
-		ALR(new WorldTile(3059, 4875, 0)),
-		BIR(new WorldTile(2455, 4396, 0)),
-		BIS(new WorldTile(2635, 3266, 0)),
-		BKQ(new WorldTile(3041, 4532, 0)),
-		BLQ(new WorldTile(2229, 4244, 0)),
-		CKP(new WorldTile(2075, 4848, 0)),
-		CLP(new WorldTile(3082, 3206, 0)),
-		DIR(new WorldTile(3038, 5348, 0)),
-		DLR(new WorldTile(2213, 3099, 0)),
-		AIS(null),
-		AIP(null),
-		AKP(null);
+		AIQ(new WorldTile(2996, 3114, 0)), AJQ(new WorldTile(2735, 5221, 0)), AJR(new WorldTile(2780, 3613, 0)), AKQ(new WorldTile(2319, 3619, 0)), AKS(new WorldTile(2571, 2956, 0)), ALP(new WorldTile(2468, 4189, 0)), ALQ(new WorldTile(3597, 3495, 0)), ALS(new WorldTile(2644, 3495, 0)), BIP(new WorldTile(3410, 3324, 0)), BIQ(new WorldTile(3251, 3095, 0)), BJQ(new WorldTile(1737, 5342, 0)), BJR(new WorldTile(2650, 4730, 0)), BKP(new WorldTile(2385, 3035, 0)), BKR(new WorldTile(3469, 3431, 0)), BLP(new WorldTile(4622, 5147, 0)), BLR(new WorldTile(2740, 3351, 0)), CIP(new WorldTile(2513, 3884, 0)), CIQ(new WorldTile(2528, 3127, 0)), CJR(new WorldTile(2705, 3576, 0)), CKR(new WorldTile(2801, 3003, 0)), CKS(new WorldTile(3447, 3470, 0)), CLR(new WorldTile(2735, 2742, 0)), CLS(new WorldTile(2682, 3081, 0)), DIP(new WorldTile(3763, 2930, 0)), DIS(new WorldTile(3108, 3149, 0)), DJP(new WorldTile(2658, 3230, 0)), DJR(new WorldTile(2676, 3587, 0)), DKP(new WorldTile(2900, 3111, 0)), DKQ(new WorldTile(4183, 5726, 0)), DKR(new WorldTile(3129, 3496, 0)), DKS(new WorldTile(2744, 3719, 0)), DLQ(new WorldTile(3423, 3016, 0)), DLS(new WorldTile(3501, 9821, 0)), AIR(new WorldTile(2700, 3247, 0)), AJS(new WorldTile(2500, 3896, 0)), ALR(new WorldTile(3059, 4875, 0)), BIR(new WorldTile(2455, 4396, 0)), BIS(new WorldTile(2635, 3266, 0)), BKQ(new WorldTile(3041, 4532, 0)), BLQ(new WorldTile(2229, 4244, 0)), CKP(new WorldTile(2075, 4848, 0)), CLP(new WorldTile(3082, 3206, 0)), DIR(new WorldTile(3038, 5348, 0)), DLR(new WorldTile(2213, 3099, 0)), AIS(null), AIP(null), AKP(null);
 
 		private WorldTile tile;
 

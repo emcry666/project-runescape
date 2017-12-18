@@ -24,8 +24,8 @@ public class XteaMaker {
 				int regionId = Integer.valueOf(spaceSplitLine[0]);
 				String[] xteaSplit = spaceSplitLine[3].split("\\.");
 				/*
-				 * for(byte c : spaceSplitLine[3].getBytes()) {
-				 * System.out.println(c); System.out.println((char) c); }
+				 * for(byte c : spaceSplitLine[3].getBytes()) { System.out.println(c); System.out.println((char)
+				 * c); }
 				 */
 
 				if (xteaSplit[0].equals("0") && xteaSplit[1].equals("0") && xteaSplit[2].equals("0") && xteaSplit[3].equals("0"))

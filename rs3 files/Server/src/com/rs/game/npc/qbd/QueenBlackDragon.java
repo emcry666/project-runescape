@@ -35,80 +35,64 @@ public final class QueenBlackDragon extends NPC {
 	/**
 	 * The attacks for the first phase.
 	 */
-	private static final QueenAttack[] PHASE_1_ATTACKS =
-	{ new FireBreathAttack(), new MeleeAttack(), new RangeAttack(), new FireWallAttack() };
+	private static final QueenAttack[] PHASE_1_ATTACKS = { new FireBreathAttack(), new MeleeAttack(), new RangeAttack(), new FireWallAttack() };
 
 	/**
 	 * The attacks for the second phase.
 	 */
-	private static final QueenAttack[] PHASE_2_ATTACKS =
-	{ new FireBreathAttack(), new MeleeAttack(), new RangeAttack(), new FireWallAttack(), new ChangeArmour(), new SoulSummonAttack() };
+	private static final QueenAttack[] PHASE_2_ATTACKS = { new FireBreathAttack(), new MeleeAttack(), new RangeAttack(), new FireWallAttack(), new ChangeArmour(), new SoulSummonAttack() };
 
 	/**
 	 * The attacks for the third phase.
 	 */
-	private static final QueenAttack[] PHASE_3_ATTACKS =
-	{ new FireBreathAttack(), new MeleeAttack(), new RangeAttack(), new FireWallAttack(), new ChangeArmour(), new SoulSummonAttack(), new SoulSiphonAttack() };
+	private static final QueenAttack[] PHASE_3_ATTACKS = { new FireBreathAttack(), new MeleeAttack(), new RangeAttack(), new FireWallAttack(), new ChangeArmour(), new SoulSummonAttack(), new SoulSiphonAttack() };
 
 	/**
 	 * The attacks for the last phase.
 	 */
-	private static final QueenAttack[] PHASE_4_ATTACKS =
-	{ // Super fire attack
-	// twice, to make it
-	// more often.
-		new FireBreathAttack(),
-		new TimeStopAttack(),
-		new MeleeAttack(),
-		new SuperFireAttack(),
-		new RangeAttack(),
-		new FireWallAttack(),
-		new SuperFireAttack(),
-		new ChangeArmour(),
-		new SoulSummonAttack(),
-		new SoulSiphonAttack(),
-		new TimeStopAttack() };
+	private static final QueenAttack[] PHASE_4_ATTACKS = { // Super fire attack
+			// twice, to make it
+			// more often.
+			new FireBreathAttack(), new TimeStopAttack(), new MeleeAttack(), new SuperFireAttack(), new RangeAttack(), new FireWallAttack(), new SuperFireAttack(), new ChangeArmour(), new SoulSummonAttack(), new SoulSiphonAttack(), new TimeStopAttack() };
 
 	/**
 	 * The rewards (average ratio: 28,5).
 	 */
-	private static final int[][] REWARDS =
-	{
-	{ 1149, 1, 1, 57 }, // Dragon helm
-		{ 1305, 1, 1, 29 }, // Dragon longsword
-		{ 1215, 1, 1, 32 }, // Dragon dagger
-		{ 1249, 1, 1, 17 }, // Dragon spear
-		{ 24365, 1, 1, 12 }, // Dragon kiteshield
-		{ 560, 500, 500, 31 }, // Death rune
-		{ 565, 500, 500, 30 }, // Blood rune
-		{ 566, 20, 100, 21 }, // Soul rune
-		{ 9342, 150, 150, 12 }, // Onyx bolts
-		{ 7936, 1480, 3500, 16 }, // Pure essence
-		{ 453, 300, 580, 18 }, // Coal
-		{ 449, 50, 50, 16 }, // Adamantite
-		{ 451, 30, 100, 13 }, // Runite ore
-		{ 5316, 1, 1, 21 }, // Magic seed
-		{ 5300, 5, 5, 18 }, // Snapdragon seed
-		{ 5321, 3, 3, 26 }, // Watermelon seed
-		{ 5304, 1, 5, 8 }, // Torstol seed
-		{ 371, 200, 200, 24 }, // Raw swordfish
-		{ 15272, 1, 9, 53 }, // Rocktail
-		{ 6689, 1, 10, 57 }, // Saradomin brew (2)
-		{ 3028, 1, 10, 34 }, // Super restore (2)
-		{ 995, 3000, 200000, 35 }, // Coins
-		{ 1513, 90, 120, 38 }, // Magic logs
-		{ 1515, 150, 500, 53 }, // Yew logs
-		{ 219, 10, 10, 19 }, // Grimy torstol
-		{ 2485, 50, 50, 18 }, // Grimy lantadyme
-		{ 1631, 1, 9, 35 }, // Uncut dragonstone
-		{ 2366, 1, 1, 21 }, // Shield left half
-		{ 9194, 30, 30, 17 }, // Onyx bolt tips
-		{ 24346, 1, 1, 15 }, // Royal torsion spring
-		{ 24344, 1, 1, 15 }, // Royal sight
-		{ 24342, 1, 1, 15 }, // Royal frame
-		{ 24340, 1, 1, 15 }, // Royal bolt stabiliser
-		{ 24352, 1, 1, 5 }, // Dragonbone upgrade kit
-		{ 11286, 1, 1, 4 }, // Draconic visage current: 850
+	private static final int[][] REWARDS = { { 1149, 1, 1, 57 }, // Dragon helm
+			{ 1305, 1, 1, 29 }, // Dragon longsword
+			{ 1215, 1, 1, 32 }, // Dragon dagger
+			{ 1249, 1, 1, 17 }, // Dragon spear
+			{ 24365, 1, 1, 12 }, // Dragon kiteshield
+			{ 560, 500, 500, 31 }, // Death rune
+			{ 565, 500, 500, 30 }, // Blood rune
+			{ 566, 20, 100, 21 }, // Soul rune
+			{ 9342, 150, 150, 12 }, // Onyx bolts
+			{ 7936, 1480, 3500, 16 }, // Pure essence
+			{ 453, 300, 580, 18 }, // Coal
+			{ 449, 50, 50, 16 }, // Adamantite
+			{ 451, 30, 100, 13 }, // Runite ore
+			{ 5316, 1, 1, 21 }, // Magic seed
+			{ 5300, 5, 5, 18 }, // Snapdragon seed
+			{ 5321, 3, 3, 26 }, // Watermelon seed
+			{ 5304, 1, 5, 8 }, // Torstol seed
+			{ 371, 200, 200, 24 }, // Raw swordfish
+			{ 15272, 1, 9, 53 }, // Rocktail
+			{ 6689, 1, 10, 57 }, // Saradomin brew (2)
+			{ 3028, 1, 10, 34 }, // Super restore (2)
+			{ 995, 3000, 200000, 35 }, // Coins
+			{ 1513, 90, 120, 38 }, // Magic logs
+			{ 1515, 150, 500, 53 }, // Yew logs
+			{ 219, 10, 10, 19 }, // Grimy torstol
+			{ 2485, 50, 50, 18 }, // Grimy lantadyme
+			{ 1631, 1, 9, 35 }, // Uncut dragonstone
+			{ 2366, 1, 1, 21 }, // Shield left half
+			{ 9194, 30, 30, 17 }, // Onyx bolt tips
+			{ 24346, 1, 1, 15 }, // Royal torsion spring
+			{ 24344, 1, 1, 15 }, // Royal sight
+			{ 24342, 1, 1, 15 }, // Royal frame
+			{ 24340, 1, 1, 15 }, // Royal bolt stabiliser
+			{ 24352, 1, 1, 5 }, // Dragonbone upgrade kit
+			{ 11286, 1, 1, 4 }, // Draconic visage current: 850
 	};
 
 	/**
@@ -189,12 +173,9 @@ public final class QueenBlackDragon extends NPC {
 	/**
 	 * Constructs a new {@code QueenBlackDragon} {@code Object}.
 	 * 
-	 * @param attacker
-	 *            The player.
-	 * @param tile
-	 *            The world tile to set the queen on.
-	 * @param base
-	 *            The dynamic region's base location.
+	 * @param attacker The player.
+	 * @param tile The world tile to set the queen on.
+	 * @param base The dynamic region's base location.
 	 */
 	public QueenBlackDragon(Player attacker, WorldTile tile, WorldTile base) {
 		super(15509, tile, -1, true, true);
@@ -359,8 +340,7 @@ public final class QueenBlackDragon extends NPC {
 	/**
 	 * Switches the queen state.
 	 * 
-	 * @param state
-	 *            The state.
+	 * @param state The state.
 	 */
 	public void switchState(QueenState state) {
 		this.state = state;
@@ -392,8 +372,7 @@ public final class QueenBlackDragon extends NPC {
 	/**
 	 * Opens the reward chest.
 	 * 
-	 * @param replace
-	 *            If the chest should be replaced with an opened one.
+	 * @param replace If the chest should be replaced with an opened one.
 	 */
 	public void openRewardChest(boolean replace) {
 		attacker.getInterfaceManager().sendCentralInterface(1284);
@@ -408,8 +387,7 @@ public final class QueenBlackDragon extends NPC {
 	/**
 	 * Sets the state.
 	 * 
-	 * @param state
-	 *            The state to set.
+	 * @param state The state to set.
 	 */
 	public void setState(QueenState state) {
 		this.state = state;
@@ -427,8 +405,7 @@ public final class QueenBlackDragon extends NPC {
 	/**
 	 * Sets the nextAttack value (current ticks + the given amount).
 	 * 
-	 * @param nextAttack
-	 *            The amount.
+	 * @param nextAttack The amount.
 	 */
 	public void setNextAttack(int nextAttack) {
 		this.nextAttack = ticks + nextAttack;
@@ -446,8 +423,7 @@ public final class QueenBlackDragon extends NPC {
 	/**
 	 * Sets the phase.
 	 * 
-	 * @param phase
-	 *            The phase to set.
+	 * @param phase The phase to set.
 	 */
 	public void setPhase(int phase) {
 		this.phase = phase;
@@ -558,8 +534,7 @@ public final class QueenBlackDragon extends NPC {
 	/**
 	 * Sets the spawningWorms.
 	 * 
-	 * @param spawningWorms
-	 *            The spawningWorms to set.
+	 * @param spawningWorms The spawningWorms to set.
 	 */
 	public void setSpawningWorms(boolean spawningWorms) {
 		if (!spawningWorms) {
@@ -589,8 +564,7 @@ public final class QueenBlackDragon extends NPC {
 	/**
 	 * Sets the activeArtifact.
 	 * 
-	 * @param activeArtifact
-	 *            The activeArtifact to set.
+	 * @param activeArtifact The activeArtifact to set.
 	 */
 	public void setActiveArtifact(WorldObject activeArtifact) {
 		this.activeArtifact = activeArtifact;

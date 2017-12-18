@@ -263,8 +263,8 @@ public abstract class RouteStrategy {
 	}
 
 	/**
-	 * Check's if we can interact filled rectangular (Might be ground object or
-	 * npc or player etc) from current position.
+	 * Check's if we can interact filled rectangular (Might be ground object or npc or player etc) from current
+	 * position.
 	 */
 	protected static boolean checkFilledRectangularInteract(int[][] clip, int currentX, int currentY, int sizeX, int sizeY, int targetX, int targetY, int targetSizeX, int targetSizeY, int accessBlockFlag) {
 		// TODO refactor
@@ -272,25 +272,41 @@ public abstract class RouteStrategy {
 		int srcEndY = currentY + sizeY;
 		int destEndX = targetX + targetSizeX;
 		int destEndY = targetY + targetSizeY;
-		if (destEndX == currentX && (accessBlockFlag & 0x2) == 0) { // can we enter from east ?
+		if (destEndX == currentX && (accessBlockFlag & 0x2) == 0) { // can we
+			// enter
+			// from east
+			// ?
 			int i_12_ = currentY > targetY ? currentY : targetY;
 			for (int i_13_ = srcEndY < destEndY ? srcEndY : destEndY; i_12_ < i_13_; i_12_++) {
 				if (((clip[destEndX - 1][i_12_]) & 0x8) == 0)
 					return true;
 			}
-		} else if (srcEndX == targetX && (accessBlockFlag & 0x8) == 0) { // can we enter from west ?
+		} else if (srcEndX == targetX && (accessBlockFlag & 0x8) == 0) { // can
+			// we
+			// enter
+			// from
+			// west
+			// ?
 			int i_14_ = currentY > targetY ? currentY : targetY;
 			for (int i_15_ = srcEndY < destEndY ? srcEndY : destEndY; i_14_ < i_15_; i_14_++) {
 				if (((clip[targetX][i_14_]) & 0x80) == 0)
 					return true;
 			}
-		} else if (currentY == destEndY && (accessBlockFlag & 0x1) == 0) { // can we enter from north?
+		} else if (currentY == destEndY && (accessBlockFlag & 0x1) == 0) { // can
+			// we
+			// enter
+			// from
+			// north?
 			int i_16_ = currentX > targetX ? currentX : targetX;
 			for (int i_17_ = srcEndX < destEndX ? srcEndX : destEndX; i_16_ < i_17_; i_16_++) {
 				if (((clip[i_16_][destEndY - 1]) & 0x2) == 0)
 					return true;
 			}
-		} else if (targetY == srcEndY && (accessBlockFlag & 0x4) == 0) { // can we enter from south?
+		} else if (targetY == srcEndY && (accessBlockFlag & 0x4) == 0) { // can
+			// we
+			// enter
+			// from
+			// south?
 			int i_18_ = currentX > targetX ? currentX : targetX;
 			for (int i_19_ = srcEndX < destEndX ? srcEndX : destEndX; i_18_ < i_19_; i_18_++) {
 				if (((clip[i_18_][targetY]) & 0x20) == 0)

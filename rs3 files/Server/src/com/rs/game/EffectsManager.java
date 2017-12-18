@@ -29,7 +29,8 @@ public class EffectsManager implements Serializable {
 
 	private List<Effect> effects = new CopyOnWriteArrayList<Effect>();
 
-	public EffectsManager() {}
+	public EffectsManager() {
+	}
 
 	public void setEntity(Entity entity) {
 		this.entity = entity;
@@ -58,13 +59,13 @@ public class EffectsManager implements Serializable {
 		for (Effect effect : effects) {
 			int action = effect.type.getAction();
 			if (effect.cycle != -1) {
-				effect.cycle--; 
+				effect.cycle--;
 				if (effect.cycle == 0) {
 					removeEffect(effect.type);
 					continue;
 				}
 			}
-			//already refreshes at both remove and add
+			// already refreshes at both remove and add
 			if (isPlayer)
 				processBuffTimer(effect, false);
 			if (action == BUFF) {
@@ -73,8 +74,7 @@ public class EffectsManager implements Serializable {
 					if (effect.type == EffectType.OVERLOAD) {
 						if (effect.cycle % 25 == 0)
 							Drinkables.applyOverLoadEffect(player);
-					}
-					else if (effect.type == EffectType.PRAYER_RENEWAL) {
+					} else if (effect.type == EffectType.PRAYER_RENEWAL) {
 						if (effect.cycle == 50)
 							player.getPackets().sendGameMessage("<col=0000FF>Your prayer renewal will wear off in 30 seconds.");
 						if (!player.getPrayer().hasFullPrayerpoints()) {
@@ -83,22 +83,19 @@ public class EffectsManager implements Serializable {
 							if (effect.cycle % 25 == 0)
 								player.setNextGraphics(new Graphics(1295));
 						}
-					}else if (effect.type == EffectType.REGENERATE &&(player.isUnderCombat() || player.getCombatDefinitions().getSpecialAttackPercentage() <= 5)) {
+					} else if (effect.type == EffectType.REGENERATE && (player.isUnderCombat() || player.getCombatDefinitions().getSpecialAttackPercentage() <= 5)) {
 						removeEffect(effect.type);
-					}else if (effect.type == EffectType.BONFIRE) {
+					} else if (effect.type == EffectType.BONFIRE) {
 						if (effect.cycle == 500)
 							player.getPackets().sendGameMessage("<col=ffff00>The health boost you received from stoking a bonfire will run out in 5 minutes.");
-					}
-					else if (effect.type == EffectType.FIRE_IMMUNITY || effect.type == EffectType.SUPER_FIRE_IMMUNITY) {
+					} else if (effect.type == EffectType.FIRE_IMMUNITY || effect.type == EffectType.SUPER_FIRE_IMMUNITY) {
 						if (effect.cycle == (effect.type == EffectType.FIRE_IMMUNITY ? 10 : 20))
 							player.getPackets().sendGameMessage("<col=480000>Your resistance to dragonfire is about to run out.</col>");
-					}
-					else if (effect.type == EffectType.WEAPON_POISON) {
+					} else if (effect.type == EffectType.WEAPON_POISON) {
 						if (player.isUnderCombat() && player.getEquipment().hasOffHand())
-							effect.cycle--;//Duel wielding makes it go twice as fast.
-					}
-					else if (effect.type == EffectType.METAMORPHISIS
-							|| effect.type == EffectType.DEATHS_SWIFTNESS || effect.type == EffectType.SUNSHINE) {
+							effect.cycle--;// Duel wielding makes it go twice as
+						// fast.
+					} else if (effect.type == EffectType.METAMORPHISIS || effect.type == EffectType.DEATHS_SWIFTNESS || effect.type == EffectType.SUNSHINE) {
 						if (player.getCombatDefinitions().getType(Equipment.SLOT_WEAPON) != (effect.type == EffectType.DEATHS_SWIFTNESS ? Combat.RANGE_TYPE : Combat.MAGIC_TYPE))
 							removeEffect(effect.type);
 						if (effect.type == EffectType.METAMORPHISIS) {
@@ -138,11 +135,9 @@ public class EffectsManager implements Serializable {
 						}
 					}
 				}
-			}
-			else if (action == DEBUFF) {
+			} else if (action == DEBUFF) {
 
-			}
-			else if (action == COMBO_BUFFS) {
+			} else if (action == COMBO_BUFFS) {
 				Player player = (Player) entity;
 				Action a = player.getActionManager().getAction();
 				if (!(a instanceof PlayerCombatNew)) {
@@ -156,17 +151,15 @@ public class EffectsManager implements Serializable {
 						PlayerCombatNew.delayHit(target, Utils.projectileTimeToCycles(projectile.getEndTime()) - 1, PlayerCombatNew.getHit(player, target, true, Combat.MAGIC_TYPE, 1.0, effect.cycle == 8 ? 0.75 : effect.cycle == 4 ? 0.82 : 0.87, false, true, false));
 						target.setNextGraphics(new Graphics((int) effect.args[1], projectile.getEndTime(), 0));
 					}
-				}
-				else if (effect.type == EffectType.ASPHYXIATE) {
+				} else if (effect.type == EffectType.ASPHYXIATE) {
 					if (effect.cycle == 9 || effect.cycle == 7 || effect.cycle == 5 || effect.cycle == 3) {
 						Projectile projectile = World.sendProjectileNew(player, target, (int) effect.args[0], 32, 42, 15, 5, 0, 10);
 						Hit hit = PlayerCombatNew.getHit(player, target, true, Combat.MAGIC_TYPE, 1.0, 1.88, false, true, false);
 						if (effect.cycle == 9 && hit.getDamage() > 0)
-							target.setBoundDelay(10);//Six seconds
+							target.setBoundDelay(10);// Six seconds
 						PlayerCombatNew.delayHit(target, Utils.projectileTimeToCycles(projectile.getEndTime()) - 1, hit);
 					}
-				}
-				else if (effect.type == EffectType.SNIPE) {
+				} else if (effect.type == EffectType.SNIPE) {
 					if (effect.cycle == 1) {
 						Entity[] targets = (boolean) effect.args[2] ? PlayerCombatNew.getMultiAttackTargets(player, target) : new Entity[] { target };
 						for (Entity t : targets) {
@@ -178,8 +171,7 @@ public class EffectsManager implements Serializable {
 								t.getEffectsManager().startEffect(new Effect(EffectType.PROTECTION_DISABLED, 8));
 						}
 					}
-				}
-				else if (effect.type == EffectType.RAPID_FIRE) {
+				} else if (effect.type == EffectType.RAPID_FIRE) {
 					if (effect.cycle > 1) {
 						Entity[] targets = (boolean) effect.args[3] ? PlayerCombatNew.getMultiAttackTargets(player, target) : new Entity[] { target };
 						entity.setNextAnimation(new Animation((int) effect.args[0]));
@@ -187,34 +179,36 @@ public class EffectsManager implements Serializable {
 							Projectile projectile = World.sendProjectileNew(t == target ? player : target, t, (int) effect.args[1], 41, 39, (int) effect.args[2], 8, 0, 0);
 							Hit hit = PlayerCombatNew.getHit(player, t, true, Combat.RANGE_TYPE, 1.0, 0.94, false, true, false);
 							if (effect.cycle == 9 && hit.getDamage() > 0)
-								t.setBoundDelay(10);//Six seconds
+								t.setBoundDelay(10);// Six seconds
 							PlayerCombatNew.delayHit(t, Utils.projectileTimeToCycles(projectile.getEndTime()) - 1, hit);
 						}
 					}
-				}
-				else if (effect.type == EffectType.UNLOAD) {
+				} else if (effect.type == EffectType.UNLOAD) {
 					if (effect.cycle == 8 || effect.cycle == 6 || effect.cycle == 4 || effect.cycle == 2) {
 						Entity[] targets = (boolean) effect.args[2] ? PlayerCombatNew.getMultiAttackTargets(player, target) : new Entity[] { target };
 						for (Entity t : targets) {
 							Projectile projectile = World.sendProjectileNew(t == target ? player : target, t, (int) effect.args[0], 41, 39, 10, 5, 0, 95);
 							for (Entity t2 : PlayerCombatNew.getMultiAttackTargets(player, t, 0, 9, true)) {
 								Hit hit = PlayerCombatNew.getHit(player, t2, true, Combat.RANGE_TYPE, 1.0, 1.50 + (double) effect.args[1], false, true, false);
-								if (t2 == target && hit.getDamage() > 0)//10% dmg increase each successful hit
+								if (t2 == target && hit.getDamage() > 0)// 10%
+									// dmg
+									// increase
+									// each
+									// successful
+									// hit
 									effect.args[1] = (double) effect.args[1] + 0.10;
 								PlayerCombatNew.delayHit(t2, Utils.projectileTimeToCycles(projectile.getEndTime()) - 1, hit);
 							}
 						}
 					}
-				}
-				else if (effect.type == EffectType.DETONATE) {
+				} else if (effect.type == EffectType.DETONATE) {
 					if (effect.cycle > 5)
 						effect.args[0] = new Integer(((Integer) effect.args[0]) + 1);
 					else if (effect.cycle == 5)
 						player.getHintIconsManager().addHintIcon(target, 3, -1, false);
 					else if (effect.cycle == 1)
 						effect.args = null;
-				}
-				else if (effect.type == EffectType.FLURRY) {
+				} else if (effect.type == EffectType.FLURRY) {
 					if (effect.cycle == 8 || effect.cycle == 6 || effect.cycle == 4 || effect.cycle == 2) {
 						for (Entity t : PlayerCombatNew.getMultiAttackTargets(player, target, 1, 9, true)) {
 							if (!((boolean) effect.args[0]) && t != target)
@@ -222,25 +216,23 @@ public class EffectsManager implements Serializable {
 							Hit hit = PlayerCombatNew.getHit(player, t, true, Combat.MELEE_TYPE, 1.0, 0.94, false, true, false);
 							if (t == target)
 								effect.args[0] = hit.getDamage() > 0;
-								PlayerCombatNew.delayHit(t, 0, hit);
+							PlayerCombatNew.delayHit(t, 0, hit);
 						}
 					}
-				}
-				else if (effect.type == EffectType.FURY) {
+				} else if (effect.type == EffectType.FURY) {
 					if (effect.cycle == 6 || effect.cycle == 4 || effect.cycle == 1) {
 						Hit hit = PlayerCombatNew.getHit(player, target, true, Combat.MELEE_TYPE, 1.0, 0.75 + (double) effect.args[0], false, true, false);
-						if (hit.getDamage() > 0)//10% dmg increase each successful hit
+						if (hit.getDamage() > 0)// 10% dmg increase each
+							// successful hit
 							effect.args[0] = (double) effect.args[0] + 0.10;
 						PlayerCombatNew.delayHit(target, 0, hit);
 					}
-				}
-				else if (effect.type == EffectType.ASSAULT) {
+				} else if (effect.type == EffectType.ASSAULT) {
 					if (effect.cycle == 7 || effect.cycle == 5 || effect.cycle == 3 || effect.cycle == 1) {
 						Hit hit = PlayerCombatNew.getHit(player, target, true, Combat.MELEE_TYPE, 1.0, 2.19, false, true, false);
 						PlayerCombatNew.delayHit(target, 0, hit);
 					}
-				}
-				else if (effect.type == EffectType.DESTROY) {
+				} else if (effect.type == EffectType.DESTROY) {
 					if (effect.cycle == 9 || effect.cycle == 8 || effect.cycle == 5 || effect.cycle == 4) {
 						if (effect.cycle == 9 || effect.cycle == 5) {
 							player.setNextAnimationNoPriority((Animation) effect.args[0]);
@@ -249,8 +241,7 @@ public class EffectsManager implements Serializable {
 						Hit hit = PlayerCombatNew.getHit(player, target, true, Combat.MELEE_TYPE, 1.0, 1.88, false, true, false);
 						PlayerCombatNew.delayHit(target, 0, hit);
 					}
-				}
-				else if (effect.type == EffectType.FRENZY) {
+				} else if (effect.type == EffectType.FRENZY) {
 					if (effect.cycle == 8 || effect.cycle == 6 || effect.cycle == 4 || effect.cycle == 2) {
 						int angle = (int) Math.round(Math.toDegrees(Math.atan2((player.getX() * 2 + player.getSize()) - (target.getX() * 2 + target.getSize()), (player.getY() * 2 + player.getSize()) - (target.getY() * 2 + target.getSize()))) / 45d) & 0x7;
 						for (Entity t : PlayerCombatNew.getMultiAttackTargets(player, target, 1, 9, true)) {
@@ -258,14 +249,17 @@ public class EffectsManager implements Serializable {
 							if (nextAngle != angle)
 								continue;
 							Hit hit = PlayerCombatNew.getHit(player, t, true, Combat.MELEE_TYPE, 1.0, 1.10 + (double) effect.args[0], false, true, false);
-							if (t == target && hit.getDamage() > 0)//10% dmg increase each successful hit
+							if (t == target && hit.getDamage() > 0)// 10% dmg
+								// increase
+								// each
+								// successful
+								// hit
 								effect.args[0] = (double) effect.args[0] + 0.10;
 							PlayerCombatNew.delayHit(t, 0, hit);
 						}
 					}
 				}
-			}
-			else if (action == HIT_MARK) {
+			} else if (action == HIT_MARK) {
 				HitLook look = (HitLook) effect.args[0];
 				Graphics graphics = (Graphics) effect.args[1];
 				int damage = (int) effect.args[2], effectDelay = (int) effect.args[3];
@@ -280,8 +274,7 @@ public class EffectsManager implements Serializable {
 							if (player.getAuraManager().hasPoisonPurge())
 								look = HitLook.HEALED_DAMAGE;
 						}
-					}
-					else if (effect.type == EffectType.COMBUST || effect.type == EffectType.FRAGMENTATION || effect.type == EffectType.SLAUGHTER) {
+					} else if (effect.type == EffectType.COMBUST || effect.type == EffectType.FRAGMENTATION || effect.type == EffectType.SLAUGHTER) {
 						WorldTile tile = (WorldTile) effect.args[5];
 						if (tile.getX() != entity.getX() || tile.getY() != entity.getY() || tile.getPlane() != entity.getPlane())
 							damage *= (effect.type == EffectType.SLAUGHTER ? 3 : 2);
@@ -301,7 +294,7 @@ public class EffectsManager implements Serializable {
 							hit.setSource((Entity) effect.args[4]);
 						}
 						entity.applyHit(hit);
-						if(hit.getSource() instanceof Player && effect.args.length >= 5)
+						if (hit.getSource() instanceof Player && effect.args.length >= 5)
 							PlayerCombatNew.autoRelatie((Player) effect.args[4], entity);
 					}
 					if (graphics != null)
@@ -330,13 +323,11 @@ public class EffectsManager implements Serializable {
 		if (type == EffectType.ADRENALINE_GAIN_DECREASE) {
 			if (player.getVarsManager().sendVarBit(2794, effect.cycle > 0 ? 1 : 0))
 				player.updateBuffs();
-		}
-		else if (type == EffectType.DRAGON_BATTLEAXE) {
+		} else if (type == EffectType.DRAGON_BATTLEAXE) {
 			player.refreshMeleeAttackRating();
 			player.refreshMeleeStrengthRating();
 			player.refreshDefenceRating();
-		}
-		else if (type == EffectType.BONFIRE)
+		} else if (type == EffectType.BONFIRE)
 			player.getEquipment().refreshConfigs(false);
 		else {
 			if (type.var != -1 || type.varbit != -1) {
@@ -362,7 +353,7 @@ public class EffectsManager implements Serializable {
 				if (effect.type == EffectType.DEVOTION) {
 					player.getPackets().sendCSVarInteger(4098, type.grMap);
 					player.getPackets().sendExecuteScript(9379, type.grMap, 0, effect.cycle);
-				} else 
+				} else
 					player.getPackets().sendExecuteScript(4252, type.grMap, effect.cycle);
 			}
 			player.updateBuffs();
@@ -537,7 +528,7 @@ public class EffectsManager implements Serializable {
 			}
 		},
 
-		VULNERABILITY_EFFECT(DEBUFF, -1, 2085, -1){
+		VULNERABILITY_EFFECT(DEBUFF, -1, 2085, -1) {
 			@Override
 			public boolean canStartEffect(Effect effect, Entity e) {
 				e.getEffectsManager().removeEffect(CURSE_EFFECT);
@@ -545,7 +536,7 @@ public class EffectsManager implements Serializable {
 			}
 		},
 
-		ENFEEBLE_EFFECT(DEBUFF, -1, 2086, -1){
+		ENFEEBLE_EFFECT(DEBUFF, -1, 2086, -1) {
 			@Override
 			public boolean canStartEffect(Effect effect, Entity e) {
 				e.getEffectsManager().removeEffect(WEAKEN_EFFECT);
@@ -553,7 +544,7 @@ public class EffectsManager implements Serializable {
 			}
 		},
 
-		STAGGER_EFFECT(DEBUFF, -1, 2087, -1){
+		STAGGER_EFFECT(DEBUFF, -1, 2087, -1) {
 			@Override
 			public boolean canStartEffect(Effect effect, Entity e) {
 				e.getEffectsManager().removeEffect(CONFUSE_EFFECT);
@@ -618,8 +609,9 @@ public class EffectsManager implements Serializable {
 
 			@Override
 			public boolean canStartEffect(Effect effect, Entity e) {
-				//if (e.getSize() == 1)//TODO not sure if this is used (old stun gfx)
-				//	e.setNextGraphics(new Graphics(254, 0, 92));
+				// if (e.getSize() == 1)//TODO not sure if this is used (old
+				// stun gfx)
+				// e.setNextGraphics(new Graphics(254, 0, 92));
 				return !e.isStunImmune();
 			}
 		},
@@ -727,7 +719,10 @@ public class EffectsManager implements Serializable {
 			@Override
 			public void onRemoval(Entity e) {
 				Effect currentEffect = e.getEffectsManager().getEffectForType(this);
-				if (currentEffect != null && currentEffect.args == null || currentEffect == null) //Just reset the animation.
+				if (currentEffect != null && currentEffect.args == null || currentEffect == null) // Just
+					// reset
+					// the
+					// animation.
 					e.setNextAnimation(new Animation(-1));
 				else {
 					e.setNextAnimation(new Animation(18360));
@@ -769,7 +764,7 @@ public class EffectsManager implements Serializable {
 				e.setNextGraphics(new Graphics(3475));
 				e.setNextGraphics(new Graphics(3476));
 
-				//TODO if someone atk you first you lose :)
+				// TODO if someone atk you first you lose :)
 				return true;
 			}
 		},
@@ -816,7 +811,7 @@ public class EffectsManager implements Serializable {
 
 		SEVER(DEBUFF, -1, 2056, -1),
 
-		//TODO CODE ADRENALINE POTION PREVENTION
+		// TODO CODE ADRENALINE POTION PREVENTION
 
 		METAMORPHISIS(BUFF, -1, 2081, -1) {
 
@@ -879,7 +874,7 @@ public class EffectsManager implements Serializable {
 		PROVOKE(BUFF, -1, 2064, -1) {
 			@Override
 			public boolean canStartEffect(Effect effect, Entity e) {
-				if (e instanceof NPC)//TODO exception for KK
+				if (e instanceof NPC)// TODO exception for KK
 					return false;
 				return true;
 			}
@@ -895,7 +890,7 @@ public class EffectsManager implements Serializable {
 				e.getEffectsManager().removeEffect(EffectType.COMBUST);
 				e.getEffectsManager().removeEffect(EffectType.FRAGMENTATION);
 				e.getEffectsManager().removeEffect(EffectType.SLAUGHTER);
-				//TODO find out the rest of these.
+				// TODO find out the rest of these.
 				return true;
 			}
 		},
@@ -932,7 +927,7 @@ public class EffectsManager implements Serializable {
 				e.setNextAnimation(new Animation(18087));
 				e.setNextGraphics(new Graphics(3617));
 
-				//Restores all skills
+				// Restores all skills
 				if (e instanceof Player) {
 					Player player = (Player) e;
 					for (int skill = 0; skill < 25; skill++) {
@@ -948,10 +943,10 @@ public class EffectsManager implements Serializable {
 		BARRICADE(SHIELD_BUFF, -1, 2070, -1) {
 			@Override
 			public boolean canStartEffect(Effect effect, Entity e) {
-				if(e instanceof KalphiteKing) {
+				if (e instanceof KalphiteKing) {
 					e.setNextAnimation(new Animation(19455));
 					e.setNextGraphics(new Graphics(3741));
-				}else{
+				} else {
 					e.setNextAnimation(new Animation(18091));
 					e.setNextGraphics(new Graphics(3632));
 				}
@@ -1048,7 +1043,8 @@ public class EffectsManager implements Serializable {
 			}
 		},
 
-		SIPHON_IMMUNITY(BUFF, -1, -1, -1) {//TODO find this var when im not tired as fuck
+		SIPHON_IMMUNITY(BUFF, -1, -1, -1) {// TODO find this var when im not
+			// tired as fuck
 			@Override
 			public boolean canStartEffect(Effect effect, Entity e) {
 				e.setNextAnimation(new Animation(18205));
@@ -1057,13 +1053,12 @@ public class EffectsManager implements Serializable {
 			}
 		},
 
-		//22461 - Shadow Tendrils
-		//22460 - Blood Tendrils
-		//22459 - Smoke Tendrils
-		//21454 - Adrenaline Prevention
-		//21024 - Transmutation
-		//21022 - Sacrifice
-
+		// 22461 - Shadow Tendrils
+		// 22460 - Blood Tendrils
+		// 22459 - Smoke Tendrils
+		// 21454 - Adrenaline Prevention
+		// 21024 - Transmutation
+		// 21022 - Sacrifice
 
 		;
 

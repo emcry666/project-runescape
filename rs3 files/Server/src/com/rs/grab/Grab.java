@@ -25,27 +25,24 @@ public class Grab {
 		if (index == 255 && archive != 255) {
 			if (archive < 0 || archive >= Cache.STORE.getIndexes().length || Cache.STORE.getIndexes()[archive] == null)
 				return;
-		}
-		else if (index != 255) {
-			if (index < 0 || index >= Cache.STORE.getIndexes().length || Cache.STORE.getIndexes()[index] == null || 
-				archive < 0 || !Cache.STORE.getIndexes()[index].archiveExists(archive))
+		} else if (index != 255) {
+			if (index < 0 || index >= Cache.STORE.getIndexes().length || Cache.STORE.getIndexes()[index] == null || archive < 0 || !Cache.STORE.getIndexes()[index].archiveExists(archive))
 				return;
 		}
-		
-		
+
 		if (!initialized) {
 			finish();
 			return;
 		}
-		
+
 		Queue<ArchiveRequest> requestList = priority ? priorityArchives : nonPriorityArchives;
-		if (requestList.size() >= 100) // in reality 100 prority 20 non
+		if (requestList.size() >= 500) // in reality 100 prority 20 non
 			return;
 
 		ArchiveRequest req = new ArchiveRequest(index, archive);
 		if (requestList.contains(req))
 			return;
-		
+
 		synchronized (requestList) {
 			requestList.add(req);
 		}
@@ -57,9 +54,8 @@ public class Grab {
 			return 0;
 		}
 		long total = 0;
-		
-		
-		if(priorityArchives.isEmpty()) {
+
+		if (priorityArchives.isEmpty()) {
 			synchronized (nonPriorityArchives) {
 				while (!nonPriorityArchives.isEmpty() && total < limit) {
 					ArchiveRequest request = nonPriorityArchives.peek();
@@ -69,7 +65,7 @@ public class Grab {
 					total += request.getBytesSent() - bytesSent;
 				}
 			}
-		}else{
+		} else {
 			synchronized (priorityArchives) {
 				while (!priorityArchives.isEmpty() && total < limit) {
 					ArchiveRequest request = priorityArchives.peek();
@@ -88,8 +84,12 @@ public class Grab {
 			finish();
 			return;
 		}
-		priorityArchives = new ConcurrentLinkedQueue<ArchiveRequest>();//Collections.synchronizedMap(new LinkedHashMap<Long, ArchiveRequest>(100));
-		nonPriorityArchives = new ConcurrentLinkedQueue<ArchiveRequest>();//Collections.synchronizedMap(new LinkedHashMap<Long, ArchiveRequest>(20));
+		priorityArchives = new ConcurrentLinkedQueue<ArchiveRequest>();// Collections.synchronizedMap(new
+		// LinkedHashMap<Long,
+		// ArchiveRequest>(100));
+		nonPriorityArchives = new ConcurrentLinkedQueue<ArchiveRequest>();// Collections.synchronizedMap(new
+		// LinkedHashMap<Long,
+		// ArchiveRequest>(20));
 		initialized = true;
 		GrabThread.add(this);
 	}

@@ -4,13 +4,11 @@ import com.rs.game.player.Player;
 
 public interface SurpriseEvent {
 
-	
 	/**
 	 * Start's event.
 	 */
 	public void start();
-	
-	
+
 	/**
 	 * Trie's to join the event.
 	 */

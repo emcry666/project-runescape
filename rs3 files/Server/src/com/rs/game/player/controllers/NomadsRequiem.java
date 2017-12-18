@@ -97,9 +97,8 @@ public class NomadsRequiem extends Controller {
 	}
 
 	/*
-	 * private void teletoDoor(Player player, int id) {
-	 * player.setNextWorldTile(new WorldTile(baseDoors[id*2], baseDoors[id*2]+1,
-	 * 0)); }
+	 * private void teletoDoor(Player player, int id) { player.setNextWorldTile(new WorldTile(baseDoors[id*2],
+	 * baseDoors[id*2]+1, 0)); }
 	 */
 
 	public void enterDoor(int doorIndex) {
@@ -171,8 +170,7 @@ public class NomadsRequiem extends Controller {
 					player.setNextForceTalk(new ForceTalk("What? Who are you?"));
 				} else if (stage == 12) {
 					/*
-					 * nomad.setNextAnimation(new Animation(12729));
-					 * nomad.setNextGraphics(new Graphics(1576));
+					 * nomad.setNextAnimation(new Animation(12729)); nomad.setNextGraphics(new Graphics(1576));
 					 */
 					WorldTile walk = new WorldTile(getBaseX() + 35, getBaseY() + 11, 0);
 					nomad.addWalkSteps(walk.getX(), walk.getY(), -1, false);

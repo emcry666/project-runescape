@@ -63,14 +63,13 @@ public abstract class Controller {
 	public boolean canEquip(int slotId, int itemId) {
 		return true;
 	}
-	
+
 	public boolean canRemoveEquip(int slotId, int itemId) {
 		return true;
 	}
 
 	/**
-	 * after the normal checks, extra checks, only called when you start trying
-	 * to attack
+	 * after the normal checks, extra checks, only called when you start trying to attack
 	 */
 	public boolean canAttack(Entity target) {
 		return true;
@@ -175,8 +174,7 @@ public abstract class Controller {
 	/**
 	 * return process normaly
 	 * 
-	 * @param slotId2
-	 *            TODO
+	 * @param slotId2 TODO
 	 */
 	public boolean processButtonClick(int interfaceId, int componentId, int slotId, int slotId2, int packetId) {
 		return true;

@@ -13,8 +13,7 @@ public class FleshspoilerHaasghenahkCombat extends CombatScript {
 
 	@Override
 	public Object[] getKeys() {
-		return new Object[]
-		{ 11925, 11895 };
+		return new Object[] { 11925, 11895 };
 	}
 
 	@Override

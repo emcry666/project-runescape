@@ -19,11 +19,11 @@ public final class SkillsDialogueOld {
 
 	public static void sendSkillsDialogue(Player player, int option, String explanation, int maxQuantity, int[] items, ItemNameFilter filter, boolean sendQuantitySelector) {
 		player.getPackets().sendGameMessage("This feature hasn't been converted yet.");
-		for(int i = 0; i < 15; i++) 
-			player.getPackets().sendCSVarInteger(1703+i, i >= items.length ? -1 : items[i]);
+		for (int i = 0; i < 15; i++)
+			player.getPackets().sendCSVarInteger(1703 + i, i >= items.length ? -1 : items[i]);
 		player.getPackets().sendIComponentText(1179, 0, explanation);
 		player.getInterfaceManager().sendCentralInterface(1179);
-		
+
 	}
 
 	public static int getMaxQuantity(Player player) {
@@ -31,7 +31,10 @@ public final class SkillsDialogueOld {
 	}
 
 	public static int getQuantity(Player player) {
-		player.getInterfaceManager().removeCentralInterface(); //temporarly fix for skills until all them converted
+		player.getInterfaceManager().removeCentralInterface(); // temporarly fix
+		// for skills
+		// until all them
+		// converted
 		return 28;
 	}
 

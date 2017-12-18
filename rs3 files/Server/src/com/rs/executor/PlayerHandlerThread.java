@@ -29,8 +29,7 @@ public final class PlayerHandlerThread extends Thread {
 	 */
 	private static Map<Integer, LoginDetails> waitingLoginSessions;
 	/**
-	 * Players that are logged out of this world, but still need to be sent to
-	 * login server.
+	 * Players that are logged out of this world, but still need to be sent to login server.
 	 */
 	private static List<Player> waitingLogoutPlayers;
 	/**
@@ -112,8 +111,7 @@ public final class PlayerHandlerThread extends Thread {
 	}
 
 	/**
-	 * Processe's given player logout. Return's true if player should be
-	 * removed.
+	 * Processe's given player logout. Return's true if player should be removed.
 	 */
 	private final boolean processLogoutPlayer(Player player) {
 		byte[] data = SerializationUtilities.tryStoreObject(player);
@@ -134,13 +132,19 @@ public final class PlayerHandlerThread extends Thread {
 		if (details.step == 0) { // send request to login server
 			LoginClientChannelManager.sendUnreliablePacket(LoginChannelsPacketEncoder.encodeLoginRequest(details.hashCode(), details.username, details.password, details.session.getIP(), details.lobby).getBuffer());
 			details.step = 1;
-		} else if (details.step == 1) { // while waiting request from login server
+		} else if (details.step == 1) { // while waiting request from login
+			// server
 			if ((Utils.currentTimeMillis() - details.creationTime) > Settings.LOGIN_SERVER_REQUEST_TIMEOUT) {
-				details.session.getLoginPackets().sendClosingPacket(23); // no reply from login server
+				details.session.getLoginPackets().sendClosingPacket(23); // no
+				// reply
+				// from
+				// login
+				// server
 				return true;
 			}
 		} else if (details.step == 2) { // login server response received
-			if (details.response_status == 255) { // we need to wait bit more and then retry
+			if (details.response_status == 255) { // we need to wait bit more
+				// and then retry
 				details.waitTime = Utils.currentTimeMillis() + Settings.LOGIN_SERVER_RETRY_DELAY;
 				details.step = 3;
 			} else if (details.response_status == 2) { // login accepted
@@ -159,7 +163,11 @@ public final class PlayerHandlerThread extends Thread {
 			}
 		} else if (details.step == 3) { // waiting before retry
 			if (Utils.currentTimeMillis() > details.waitTime) {
-				details.session.getLoginPackets().sendClosingPacket(23); // no reply from login server
+				details.session.getLoginPackets().sendClosingPacket(23); // no
+				// reply
+				// from
+				// login
+				// server
 				return true;
 			}
 		} else if (details.step == 4) { // waiting for file to arrive.
@@ -171,7 +179,7 @@ public final class PlayerHandlerThread extends Thread {
 			}
 
 			if (details.response_receivedamount == details.response_filelength) {
-				// we received full file	
+				// we received full file
 				Object o = SerializationUtilities.tryLoadObject(details.response_filebuffer);
 				if (o == null || !(o instanceof Player)) {
 					LoginClientChannelManager.sendReliablePacket(LoginChannelsPacketEncoder.encodeLogout(details.username).getBuffer());
@@ -187,7 +195,8 @@ public final class PlayerHandlerThread extends Thread {
 				return true;
 			}
 		} else {
-			details.session.getLoginPackets().sendClosingPacket(25); // unexpected response
+			details.session.getLoginPackets().sendClosingPacket(25); // unexpected
+			// response
 			return true;
 		}
 
@@ -208,11 +217,11 @@ public final class PlayerHandlerThread extends Thread {
 			} else {
 				details.session.getLoginPackets().sendILayoutVars(player);
 				details.session.getLoginPackets().sendLoginDetails(player);
-				details.session.setDecoder(4, player); //3
-				details.session.setEncoder(2, player); //2
+				details.session.setDecoder(4, player); // 3
+				details.session.setEncoder(2, player); // 2
 				player.start();
 			}
-		}catch(Throwable e) {
+		} catch (Throwable e) {
 			e.printStackTrace();
 		}
 	}

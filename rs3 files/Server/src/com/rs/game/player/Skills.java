@@ -15,45 +15,16 @@ public final class Skills implements Serializable {
 
 	public static final double MAXIMUM_EXP = 200000000;
 	public static final double RANDOM_EVENT_EXP = 50000;
-	
-	
-	public static final int ATTACK = 0, DEFENCE = 1, STRENGTH = 2, HITPOINTS = 3, RANGE = 4, PRAYER = 5, MAGIC = 6, COOKING = 7, WOODCUTTING = 8, FLETCHING = 9, FISHING = 10, FIREMAKING = 11,
-			CRAFTING = 12, SMITHING = 13, MINING = 14, HERBLORE = 15, AGILITY = 16, THIEVING = 17, SLAYER = 18, FARMING = 19, RUNECRAFTING = 20, CONSTRUCTION = 22, HUNTER = 21, SUMMONING = 23,
-			DUNGEONEERING = 24, DIVINATION = 25;
 
-	public static final String[] SKILL_NAME =
-	{
-		"Attack",
-		"Defence",
-		"Strength",
-		"Constitution",
-		"Ranged",
-		"Prayer",
-		"Magic",
-		"Cooking",
-		"Woodcutting",
-		"Fletching",
-		"Fishing",
-		"Firemaking",
-		"Crafting",
-		"Smithing",
-		"Mining",
-		"Herblore",
-		"Agility",
-		"Thieving",
-		"Slayer",
-		"Farming",
-		"Runecrafting",
-		"Hunter",
-		"Construction",
-		"Summoning",
-		"Dungeoneering",
-		"Divination" 
-		};
-	
-	public static int[] FIXED_SLOTS = { ATTACK, HITPOINTS, MINING, STRENGTH, AGILITY, SMITHING, DEFENCE, HERBLORE,
-		FISHING, RANGE, THIEVING, COOKING, PRAYER, CRAFTING, FIREMAKING, MAGIC, FLETCHING, WOODCUTTING, RUNECRAFTING,
-		SLAYER, FARMING, CONSTRUCTION, HUNTER, SUMMONING, DUNGEONEERING, DIVINATION };
+	private boolean[] enabledSkillsTargets;
+	private boolean[] skillsTargetsUsingLevelMode;
+	private int[] skillsTargetsValues;
+
+	public static final int ATTACK = 0, DEFENCE = 1, STRENGTH = 2, HITPOINTS = 3, RANGE = 4, PRAYER = 5, MAGIC = 6, COOKING = 7, WOODCUTTING = 8, FLETCHING = 9, FISHING = 10, FIREMAKING = 11, CRAFTING = 12, SMITHING = 13, MINING = 14, HERBLORE = 15, AGILITY = 16, THIEVING = 17, SLAYER = 18, FARMING = 19, RUNECRAFTING = 20, CONSTRUCTION = 22, HUNTER = 21, SUMMONING = 23, DUNGEONEERING = 24, DIVINATION = 25, INVENTION = 26;
+
+	public static final String[] SKILL_NAME = { "Attack", "Defence", "Strength", "Constitution", "Ranged", "Prayer", "Magic", "Cooking", "Woodcutting", "Fletching", "Fishing", "Firemaking", "Crafting", "Smithing", "Mining", "Herblore", "Agility", "Thieving", "Slayer", "Farming", "Runecrafting", "Hunter", "Construction", "Summoning", "Dungeoneering", "Divination", "Invention" };
+
+	public static int[] FIXED_SLOTS = { ATTACK, HITPOINTS, MINING, STRENGTH, AGILITY, SMITHING, DEFENCE, HERBLORE, FISHING, RANGE, THIEVING, COOKING, PRAYER, CRAFTING, FIREMAKING, MAGIC, FLETCHING, WOODCUTTING, RUNECRAFTING, SLAYER, FARMING, CONSTRUCTION, HUNTER, SUMMONING, DUNGEONEERING, DIVINATION, INVENTION };
 
 	private short level[];
 	private double xp[];
@@ -74,8 +45,8 @@ public final class Skills implements Serializable {
 	}
 
 	public Skills() {
-		level = new short[26];
-		xp = new double[26];
+		level = new short[27];
+		xp = new double[27];
 		for (int i = 0; i < level.length; i++) {
 			level[i] = 1;
 			xp[i] = 0;
@@ -89,6 +60,12 @@ public final class Skills implements Serializable {
 		trackSkills = new boolean[3];
 		trackSkillsIds = new byte[3];
 		trackSkills[0] = true;
+		if (enabledSkillsTargets == null)
+			enabledSkillsTargets = new boolean[27];
+		if (skillsTargetsUsingLevelMode == null)
+			skillsTargetsUsingLevelMode = new boolean[27];
+		if (skillsTargetsValues == null)
+			skillsTargetsValues = new int[27];
 		for (int i = 0; i < trackSkillsIds.length; i++)
 			trackSkillsIds[i] = 30;
 
@@ -104,7 +81,6 @@ public final class Skills implements Serializable {
 		refreshXPDisplay();
 		refreshCurrentCounter();
 	}
-
 
 	public void refreshCurrentCounter() {
 		player.getVarsManager().sendVar(96, currentCounter + 1);
@@ -165,11 +141,11 @@ public final class Skills implements Serializable {
 	public void unlockSkills(boolean menu) {
 		player.getPackets().sendIComponentSettings(menu ? 320 : 1466, menu ? 13 : 11, 0, 26, 30);
 	}
-	
+
 	public void refreshXpPopup() {
 		player.getVarsManager().sendVarBit(228, xpPopup ? 0 : 1);
 	}
-	
+
 	public void refreshXPDisplay() {
 		player.getVarsManager().sendVarBit(19964, xpDisplay ? 0 : 1);
 	}
@@ -204,10 +180,10 @@ public final class Skills implements Serializable {
 			for (int i = 0; i < trackSkillsIds.length; i++)
 				trackSkillsIds[i] = 30;
 		}
-		
-		if (xp.length != 26) {
-			xp = Arrays.copyOf(xp, 26);
-			level = Arrays.copyOf(level, 26);
+
+		if (xp.length != 27) {
+			xp = Arrays.copyOf(xp, 27);
+			level = Arrays.copyOf(level, 27);
 			level[DIVINATION] = 1;
 		}
 	}
@@ -319,9 +295,9 @@ public final class Skills implements Serializable {
 	}
 
 	public int getLevelForXp(int skill) {
-		return getLevelForXp(xp[skill], skill == DUNGEONEERING ? 120 : 99);
+		return getLevelForXp(xp[skill], skill == DUNGEONEERING || skill == INVENTION ? 120 : 99);
 	}
-	
+
 	public static int getLevelForXp(double exp, int max) {
 		int points = 0;
 		int output = 0;
@@ -333,12 +309,6 @@ public final class Skills implements Serializable {
 			}
 		}
 		return max;
-	}
-	
-	
-	
-	public static double getXPRate(int level, boolean combatSkill) {
-		return level >= 99 ? 10 : ((combatSkill ? 2 : 1) * ((double)level / 4d + 1d));
 	}
 
 	public int getHighestSkillLevel() {
@@ -355,25 +325,16 @@ public final class Skills implements Serializable {
 		for (int skill = 0; skill < level.length; skill++)
 			refresh(skill);
 		sendXPDisplay();
-		if (!Settings.XP_BONUS_ENABLED)
-			elapsedBonusMinutes = 0;
-		else
-			refreshXpBonus();
+		refreshXpBonus();
 	}
 
-	private double getXpBonusMultiplier() {
-		if (elapsedBonusMinutes >= 600)
-			return 1.1;
-		double hours = elapsedBonusMinutes / 60;
-		return Math.pow((hours - 10) / 7.5, 2) + 1.1;
-	}
-
+	@SuppressWarnings("deprecation")
 	public void refreshBonusXp() {
-		player.getVarsManager().sendVarOld(1878, (int) (xpBonusTrack * 10));
+		player.getVarsManager().sendVar(1878, (int) (xpBonusTrack * 10));
 	}
 
 	public void refreshXpBonus() {
-		player.getVarsManager().sendVarBitOld(7232, 1);
+		player.getVarsManager().sendVarBit(7232, 1);
 		refreshElapsedBonusMinutes();
 		refreshBonusXp();
 	}
@@ -384,7 +345,7 @@ public final class Skills implements Serializable {
 	}
 
 	public void refreshElapsedBonusMinutes() {
-		player.getVarsManager().sendVarBitOld(7233, elapsedBonusMinutes);
+		player.getVarsManager().sendVarBit(7233, elapsedBonusMinutes);
 	}
 
 	public void refresh(int skill) {
@@ -392,9 +353,8 @@ public final class Skills implements Serializable {
 	}
 
 	/*
-	 * if(componentId == 33) setCounterSkill(4); else if(componentId == 34)
-	 * setCounterSkill(2); else if(componentId == 35) setCounterSkill(3); else
-	 * if(componentId == 42) setCounterSkill(18); else if(componentId == 49)
+	 * if(componentId == 33) setCounterSkill(4); else if(componentId == 34) setCounterSkill(2); else if(componentId
+	 * == 35) setCounterSkill(3); else if(componentId == 42) setCounterSkill(18); else if(componentId == 49)
 	 * setCounterSkill(11);
 	 */
 
@@ -446,6 +406,8 @@ public final class Skills implements Serializable {
 			return 24;
 		case DIVINATION:
 			return 25;
+		case INVENTION:
+			return 26;
 		case MAGIC:
 			return 3;
 		case FLETCHING:
@@ -462,6 +424,11 @@ public final class Skills implements Serializable {
 		return addXp(skill, exp, false);
 	}
 
+	public static double getXPRate(int level, boolean combatSkill) {
+		return level >= 99 ? 10 : ((combatSkill ? 2 : 1) * ((double) level / 4d + 1d));
+	}
+
+	@SuppressWarnings("deprecation")
 	public double addXp(int skill, double exp, boolean forceRSXp) {
 		player.getControlerManager().trackXP(skill, (int) exp);
 		if (player.isXpLocked())
@@ -471,38 +438,31 @@ public final class Skills implements Serializable {
 		boolean combatSkill = skill == SUMMONING || (skill >= ATTACK && skill <= MAGIC);
 		double bonus = 0;
 		if (!forceRSXp && (!player.isCanPvp() || !combatSkill)) {
-			if(exp < RANDOM_EVENT_EXP && CombatEventNPC.canRandomEvent(player)) {
+			if (exp < RANDOM_EVENT_EXP && CombatEventNPC.canRandomEvent(player)) {
 				trackXPREvent += exp;
-				if(trackXPREvent >= RANDOM_EVENT_EXP) {
+				if (trackXPREvent >= RANDOM_EVENT_EXP) {
 					trackXPREvent = 0;
-					if(Utils.random(3) == 0) //random factor
+					if (Utils.random(3) == 0) // random factor
 						CombatEventNPC.startRandomEvent(player, skill);
 				}
 			}
-			exp *= getXPRate(getLevelForXp(skill), combatSkill);//combatSkill ? Settings.getCombatXpRate(player) : Settings.getXpRate(player);
-			
-	//		exp *= player.isExtremeDonator() ? rate + 2 : player.isDonator() ? rate + 1 : rate;
-			/*if (player.hasVotedInLast12Hours()) {
-				double oldExp = exp;
-				exp *= 1.25;
-				bonus += exp - oldExp;
-			}
-			if (player.isBeginningAccount()) {
-				double newexp = exp * 2.0;
-				double expDifference = newexp - exp;
-				bonus += expDifference;
-				refreshBonusXp();
-			} else if (Settings.XP_BONUS_ENABLED) {
-				double newexp = exp * getXpBonusMultiplier();
-				double expDifference = newexp - exp;
-				xpBonusTrack += expDifference;
-				bonus += expDifference;
-				exp = newexp;
-				refreshBonusXp();
-			}*/
+			exp *= getXPRate(getLevelForXp(skill), combatSkill);// combatSkill ?
+			// Settings.getCombatXpRate(player)
+			// :
+			// Settings.getXpRate(player);
+
+			// exp *= player.isExtremeDonator() ? rate + 2 : player.isDonator()
+			// ? rate + 1 : rate;
+			/*
+			 * if (player.hasVotedInLast12Hours()) { double oldExp = exp; exp *= 1.25; bonus += exp - oldExp; } if
+			 * (player.isBeginningAccount()) { double newexp = exp * 2.0; double expDifference = newexp - exp;
+			 * bonus += expDifference; refreshBonusXp(); } else if (Settings.XP_BONUS_ENABLED) { double newexp =
+			 * exp * getXpBonusMultiplier(); double expDifference = newexp - exp; xpBonusTrack += expDifference;
+			 * bonus += expDifference; exp = newexp; refreshBonusXp(); }
+			 */
 		}
 		player.getVarsManager().sendVarOld(2044, (int) (bonus * 10));
-		
+
 		int oldLevel = getLevelForXp(skill);
 		int oldCombatLevel = getCombatLevelWithSummoning();
 		for (int i = 0; i < trackSkills.length; i++) {
@@ -517,7 +477,7 @@ public final class Skills implements Serializable {
 			return 0;
 		double oldXp = xp[skill];
 		xp[skill] += exp;
-		if (xp[skill] > MAXIMUM_EXP) 
+		if (xp[skill] > MAXIMUM_EXP)
 			xp[skill] = MAXIMUM_EXP;
 		int newLevel = getLevelForXp(skill);
 		int levelDiff = newLevel - oldLevel;
@@ -526,7 +486,7 @@ public final class Skills implements Serializable {
 			sendLevelUpInterface(skill);
 			player.getAppearence().generateAppearenceData();
 			if (combatSkill) {
-				if(oldCombatLevel != getCombatLevelWithSummoning())
+				if (oldCombatLevel != getCombatLevelWithSummoning())
 					sendCombatLevel();
 				if (skill == HITPOINTS)
 					player.heal(levelDiff * 100);
@@ -540,26 +500,41 @@ public final class Skills implements Serializable {
 		refresh(skill);
 		return exp;
 	}
-	
+
 	public void sendCombatLevel() {
 		player.getPackets().sendCSVarInteger(1000, getCombatLevelWithSummoning());
 	}
-	
+
+	private void sendLevelUpInterface(int skill) {
+		int iconValue = getIconValue(skill);
+		player.getPackets().sendCSVarInteger(1756, iconValue);
+		player.getInterfaceManager().setWindowInterface(InterfaceManager.LEVEL_UP_COMPONENT_ID, 1216);
+		int level = player.getSkills().getLevelForXp(skill);
+		player.getTemporaryAttributtes().put("leveledUp", skill);
+		player.getTemporaryAttributtes().put("leveledUp[" + skill + "]", Boolean.TRUE);
+		player.setNextGraphics(new Graphics(199));
+		if (level == 99 || level == 120)
+			player.setNextGraphics(new Graphics(1765));
+		String name = Skills.SKILL_NAME[skill];
+		player.getPackets().sendGameMessage("You've just advanced a" + (name.startsWith("A") ? "n" : "") + " " + name + " level! You have reached level " + level + ".");
+		// player.getVarsManager().sendVarBit(3292, iconValue);
+		switchFlash(player, skill, true);
+		player.getPackets().sendMusicEffectOld(LEVEL_MUSIC[skill]);
+	}
+
 	public void sendNews(int skill, boolean levelUP, int combatLevelBefore, double oldXp) {
-		if (Settings.HOSTED)
-			return;
 		boolean combatSkill = skill == SUMMONING || (skill >= ATTACK && skill <= MAGIC);
-		if (combatSkill && Settings.SPAWN_WORLD)
+		if (combatSkill)
 			return;
 		if (!levelUP) {
-			if(xp[skill] > 50000000) { //50m
-				if(getLevelForXp(oldXp, 120) != 120 && getLevelForXp(xp[skill], 120) == 120) 
+			if (xp[skill] > 50000000) { // 50m
+				if (getLevelForXp(oldXp, 120) != 120 && getLevelForXp(xp[skill], 120) == 120)
 					World.sendNews(player, player.getDisplayName() + " has achieved true skill mastery in the " + Skills.SKILL_NAME[skill] + " skill.", World.WORLD_NEWS);
-				else{
+				else {
 					int next = (int) (xp[skill] / 50000000);
 					int xpachievement = next * 50000000;
-					if (oldXp < xpachievement && xp[skill] >= xpachievement) 
-						World.sendNews(player, player.getDisplayName() + " has achieved "+(next*50)+"m " + Skills.SKILL_NAME[skill] + " xp.", World.SERVER_NEWS);
+					if (oldXp < xpachievement && xp[skill] >= xpachievement)
+						World.sendNews(player, player.getDisplayName() + " has achieved " + (next * 50) + "m " + Skills.SKILL_NAME[skill] + " xp.", World.SERVER_NEWS);
 				}
 			}
 		} else {
@@ -583,25 +558,7 @@ public final class Skills implements Serializable {
 		}
 	}
 
-	public static final int[] LEVEL_MUSIC =
-	{ 30, 38, 66, 48, 58, 56, 52, 34, 70, 44, 42, 40, 36, 64, 54, 46, 28, 68, 61, 10, 60, 50, 32, 301, 417, -1 };
-
-	private void sendLevelUpInterface(int skill) {
-		int iconValue = getIconValue(skill);
-		player.getPackets().sendCSVarInteger(1756, iconValue);
-		player.getInterfaceManager().setWindowInterface(InterfaceManager.LEVEL_UP_COMPONENT_ID, 1216);
-		int level = player.getSkills().getLevelForXp(skill);
-		player.getTemporaryAttributtes().put("leveledUp", skill);
-		player.getTemporaryAttributtes().put("leveledUp[" + skill + "]", Boolean.TRUE);
-		player.setNextGraphics(new Graphics(199));
-		if (level == 99 || level == 120)
-			player.setNextGraphics(new Graphics(1765));
-		String name = Skills.SKILL_NAME[skill];
-		player.getPackets().sendGameMessage("You've just advanced a" + (name.startsWith("A") ? "n" : "") + " " + name + " level! You have reached level " + level + ".");
-		//player.getVarsManager().sendVarBit(3292, iconValue);
-		switchFlash(player, skill, true);
-		player.getPackets().sendMusicEffectOld(LEVEL_MUSIC[skill]);
-	}
+	public static final int[] LEVEL_MUSIC = { 30, 38, 66, 48, 58, 56, 52, 34, 70, 44, 42, 40, 36, 64, 54, 46, 28, 68, 61, 10, 60, 50, 32, 301, 417, -1 };
 
 	public static int getIconValue(int skill) {
 		if (skill == Skills.ATTACK)
@@ -654,7 +611,12 @@ public final class Skills implements Serializable {
 			return 24;
 		else if (skill == Skills.DUNGEONEERING)
 			return 25;
-		return 26;
+		else if (skill == Skills.DIVINATION)
+			return 26;
+		else if (skill == Skills.INVENTION) {
+			return 27;
+		}
+		return 27;
 	}
 
 	public static void switchFlash(Player player, int skill, boolean on) {
@@ -727,9 +689,8 @@ public final class Skills implements Serializable {
 			}
 		}
 
-		if (xp[skill] > MAXIMUM_EXP) {
+		if (xp[skill] > MAXIMUM_EXP)
 			xp[skill] = MAXIMUM_EXP;
-		}
 		int newLevel = getLevelForXp(skill);
 		int levelDiff = newLevel - oldLevel;
 		if (newLevel > oldLevel) {
@@ -812,5 +773,303 @@ public final class Skills implements Serializable {
 	public void setXp(double[] xp) {
 		// TODO remove
 		this.xp = xp;
+	}
+
+	public String getSkillName(int skill) {
+		String skillName = null;
+		switch (skill) {
+		case 0:
+			return "Attack";
+		case 1:
+			return "Defence";
+		case 2:
+			return "Strength";
+		case 3:
+			return "Constitution";
+		case 4:
+			return "Ranged";
+		case 5:
+			return "Prayer";
+		case 6:
+			return "Magic";
+		case 7:
+			return "Cooking";
+		case 8:
+			return "Woodcutting";
+		case 9:
+			return "Fletching";
+		case 10:
+			return "Fishing";
+		case 11:
+			return "Firemaking";
+		case 12:
+			return "Crafting";
+		case 13:
+			return "Smithing";
+		case 14:
+			return "Mining";
+		case 15:
+			return "Herblore";
+		case 16:
+			return "Agility";
+		case 17:
+			return "Thieving";
+		case 18:
+			return "Slayer";
+		case 19:
+			return "Farming";
+		case 20:
+			return "Runecrafting";
+		case 21:
+			return "Hunter";
+		case 22:
+			return "Construction";
+		case 23:
+			return "Summoning";
+		case 24:
+			return "Dungeoneering";
+		case 25:
+			return "Divination";
+		case 26:
+			return "Invention";
+		}
+		return skillName;
+	}
+
+	public boolean isMaxed() {
+		if (getLevelForXp(ATTACK) < 99 || getLevelForXp(STRENGTH) < 99 || getLevelForXp(DEFENCE) < 99 || getLevelForXp(RANGE) < 99 || getLevelForXp(PRAYER) < 99 || getLevelForXp(MAGIC) < 99 || getLevelForXp(RUNECRAFTING) < 99 || getLevelForXp(CONSTRUCTION) < 99 || getLevelForXp(DUNGEONEERING) < 99 || getLevelForXp(HITPOINTS) < 99 || getLevelForXp(AGILITY) < 99 || getLevelForXp(HERBLORE) < 99 || getLevelForXp(THIEVING) < 99 || getLevelForXp(CRAFTING) < 99 || getLevelForXp(FLETCHING) < 99 || getLevelForXp(SLAYER) < 99 || getLevelForXp(HUNTER) < 99 || getLevelForXp(MINING) < 99 || getLevelForXp(SMITHING) < 99 || getLevelForXp(FISHING) < 99 || getLevelForXp(COOKING) < 99 || getLevelForXp(FIREMAKING) < 99 || getLevelForXp(WOODCUTTING) < 99 || getLevelForXp(FARMING) < 99 || getLevelForXp(SUMMONING) < 99 || getLevelForXp(CONSTRUCTION) < 99 || getLevelForXp(DUNGEONEERING) < 120 || getLevelForXp(DIVINATION) < 99 || getLevelForXp(INVENTION) < 120) {
+			return true;
+		}
+		return false;
+	}
+
+	public int getSkill(int slotId) {
+		switch (slotId) {
+		case 0:
+			return 0;
+		case 6:
+			return 1;
+		case 3:
+			return 3;
+		case 1:
+			return 4;
+		case 9:
+			return 5;
+		case 12:
+			return 6;
+		case 15:
+			return 7;
+		case 11:
+			return 8;
+		case 17:
+			return 9;
+		case 16:
+			return 10;
+		case 8:
+			return 11;
+		case 14:
+			return 12;
+		case 13:
+			return 13;
+		case 5:
+			return 14;
+		case 2:
+			return 15;
+		case 7:
+			return 16;
+		case 4:
+			return 17;
+		case 10:
+			return 18;
+		case 18:
+			return 20;
+		case 19:
+			return 18;
+		case 20:
+			return 19;
+		case 21:
+			return 22;
+		case 22:
+			return 21;
+		case 23:
+			return 23;
+		case 24:
+			return 24;
+		case 25:
+			return 25;
+		default:
+			return -1;
+		}
+	}
+
+	public int getSkillIdByTargetId(int targetId) {
+		switch (targetId) {
+		case 0: // Attack
+			return ATTACK;
+		case 1: // Strength
+			return STRENGTH;
+		case 2: // Range
+			return RANGE;
+		case 3: // Magic
+			return MAGIC;
+		case 4: // Defence
+			return DEFENCE;
+		case 5: // Constitution
+			return HITPOINTS;
+		case 6: // Prayer
+			return PRAYER;
+		case 7: // Agility
+			return AGILITY;
+		case 8: // Herblore
+			return HERBLORE;
+		case 9: // Thieving
+			return THIEVING;
+		case 10: // Crafting
+			return CRAFTING;
+		case 11: // Runecrafting
+			return RUNECRAFTING;
+		case 12: // Mining
+			return MINING;
+		case 13: // Smithing
+			return SMITHING;
+		case 14: // Fishing
+			return FISHING;
+		case 15: // Cooking
+			return COOKING;
+		case 16: // Firemaking
+			return FIREMAKING;
+		case 17: // Woodcutting
+			return WOODCUTTING;
+		case 18: // Fletching
+			return FLETCHING;
+		case 19: // Slayer
+			return SLAYER;
+		case 20: // Farming
+			return FARMING;
+		case 21: // Construction
+			return CONSTRUCTION;
+		case 22: // Hunter
+			return HUNTER;
+		case 23: // Summoning
+			return SUMMONING;
+		case 24: // Dungeoneering
+			return DUNGEONEERING;
+		case 25: // Divination
+			return DIVINATION;
+		case 26:
+			return INVENTION;
+		default:
+			return -1;
+		}
+	}
+
+	public void refreshEnabledSkillsTargets() {
+
+		int value = Utils.get32BitValue(enabledSkillsTargets, true);
+		/*
+		 * int value = 0; if (enabledSkillsTargets[0]) // Attack. value += 2; if (enabledSkillsTargets[1]) //
+		 * Strength. value += 4; if (enabledSkillsTargets[2]) // Range. value += 8; if (enabledSkillsTargets[3]) //
+		 * Magic. value += 16; if (enabledSkillsTargets[4]) // Defence. value += 32; if (enabledSkillsTargets[5])
+		 * // Constitution. value += 64; if (enabledSkillsTargets[6]) // Prayer. value += 128; if
+		 * (enabledSkillsTargets[7]) // Agility. value += 256; if (enabledSkillsTargets[8]) // Herblore. value +=
+		 * 512; if (enabledSkillsTargets[9]) // Theiving. value += 1024; if (enabledSkillsTargets[10]) // Crafting.
+		 * value += 2048; if (enabledSkillsTargets[11]) // Runecrafting. value += 4096; if
+		 * (enabledSkillsTargets[12]) // Mining. value += 8192; if (enabledSkillsTargets[13]) // Smithing. value +=
+		 * 16384; if (enabledSkillsTargets[14]) // Fishing. value += 32768; if (enabledSkillsTargets[15]) //
+		 * Cooking. value += 65536; if (enabledSkillsTargets[16]) // Firemaking. value += 131072; if
+		 * (enabledSkillsTargets[17]) // Woodcutting. value += 262144; if (enabledSkillsTargets[18]) // Fletching.
+		 * value += 524288; if (enabledSkillsTargets[19]) // Slayer. value += 1048576; if
+		 * (enabledSkillsTargets[20]) // Farming. value += 2097152; if (enabledSkillsTargets[21]) // Construction.
+		 * value += 4194304; if (enabledSkillsTargets[22]) // Hunter. value += 8388608; if
+		 * (enabledSkillsTargets[23]) // Summoning. value += 16777216; if (enabledSkillsTargets[24]) //
+		 * Dungeoneering. value += 33554432;
+		 */
+		player.getVarsManager().sendVarBit(1966, value);
+	}
+
+	public void refreshUsingLevelTargets() {
+		// int value = Utils.get32BitValue(skillsTargetsUsingLevelMode, true);
+		int value = 0;
+		if (skillsTargetsUsingLevelMode[0]) // Attack.
+			value += 2;
+		if (skillsTargetsUsingLevelMode[1]) // Strength.
+			value += 4;
+		if (skillsTargetsUsingLevelMode[2]) // Range.
+			value += 8;
+		if (skillsTargetsUsingLevelMode[3]) // Magic.
+			value += 16;
+		if (skillsTargetsUsingLevelMode[4]) // Defence.
+			value += 32;
+		if (skillsTargetsUsingLevelMode[5]) // Constitution.
+			value += 64;
+		if (skillsTargetsUsingLevelMode[6]) // Prayer.
+			value += 128;
+		if (skillsTargetsUsingLevelMode[7]) // Agility.
+			value += 256;
+		if (skillsTargetsUsingLevelMode[8]) // Herblore.
+			value += 512;
+		if (skillsTargetsUsingLevelMode[9]) // Theiving.
+			value += 1024;
+		if (skillsTargetsUsingLevelMode[10]) // Crafting.
+			value += 2048;
+		if (skillsTargetsUsingLevelMode[11]) // Runecrafting.
+			value += 4096;
+		if (skillsTargetsUsingLevelMode[12]) // Mining.
+			value += 8192;
+		if (skillsTargetsUsingLevelMode[13]) // Smithing.
+			value += 16384;
+		if (skillsTargetsUsingLevelMode[14]) // Fishing.
+			value += 32768;
+		if (skillsTargetsUsingLevelMode[15]) // Cooking.
+			value += 65536;
+		if (skillsTargetsUsingLevelMode[16]) // Firemaking.
+			value += 131072;
+		if (skillsTargetsUsingLevelMode[17]) // Woodcutting.
+			value += 262144;
+		if (skillsTargetsUsingLevelMode[18]) // Fletching.
+			value += 524288;
+		if (skillsTargetsUsingLevelMode[19]) // Slayer.
+			value += 1048576;
+		if (skillsTargetsUsingLevelMode[20]) // Farming.
+			value += 2097152;
+		if (skillsTargetsUsingLevelMode[21]) // Construction.
+			value += 4194304;
+		if (skillsTargetsUsingLevelMode[22]) // Hunter.
+			value += 8388608;
+		if (skillsTargetsUsingLevelMode[23]) // Summoning.
+			value += 16777216;
+		if (skillsTargetsUsingLevelMode[24]) // Dungeoneering.
+			value += 33554432;
+		if (skillsTargetsUsingLevelMode[25]) // Divination.
+			value += 67108864;
+		if (skillsTargetsUsingLevelMode[26]) // Invention
+			value += 134217728;
+		player.getVarsManager().sendVarBit(1968, value);
+	}
+
+	public void refreshSkillsTargetsValues() {
+		for (int i = 0; i < 27; i++)
+			player.getVarsManager().sendVarBit(1969 + i, skillsTargetsValues[i]);
+	}
+
+	public void setSkillTargetEnabled(int id, boolean enabled) {
+		enabledSkillsTargets[id] = enabled;
+		refreshEnabledSkillsTargets();
+	}
+
+	public void setSkillTargetUsingLevelMode(int id, boolean using) {
+		skillsTargetsUsingLevelMode[id] = using;
+		refreshUsingLevelTargets();
+	}
+
+	public void setSkillTargetValue(int skillId, int value) {
+		skillsTargetsValues[skillId] = value;
+		refreshSkillsTargetsValues();
+	}
+
+	public void setSkillTarget(boolean usingLevel, int skillId, int target) {
+		setSkillTargetEnabled(skillId, true);
+		setSkillTargetUsingLevelMode(skillId, usingLevel);
+		setSkillTargetValue(skillId, target);
 	}
 }

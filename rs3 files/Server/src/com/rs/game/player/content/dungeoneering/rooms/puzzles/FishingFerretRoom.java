@@ -27,10 +27,8 @@ import com.rs.utils.Utils;
 public class FishingFerretRoom extends PuzzleRoom {
 
 	private static final int FERRET_ID = 11007, VILE_FISH = 17375;
-	private static final int[] PRESSURE_PLATE =
-	{ 49555, 49557, 49559, 54296, 54297 };
-	private static final int[] EMPTY_PLATE =
-	{ 49546, 49547, 49548, 54293, 35293 };
+	private static final int[] PRESSURE_PLATE = { 49555, 49557, 49559, 54296, 54297 };
+	private static final int[] EMPTY_PLATE = { 49546, 49547, 49548, 54293, 35293 };
 
 	private WorldTile pressurePlate;
 	private List<FloorItem> vileFishes;
@@ -45,7 +43,7 @@ public class FishingFerretRoom extends PuzzleRoom {
 
 		@Override
 		public void processNPC() {
-			if (isComplete())//We will keep it spawned but it won't do shit :D
+			if (isComplete())// We will keep it spawned but it won't do shit :D
 				return;
 			if (getWalkSteps().isEmpty()) {
 				if (getX() == pressurePlate.getX() && getY() == pressurePlate.getY()) {
@@ -55,7 +53,8 @@ public class FishingFerretRoom extends PuzzleRoom {
 					removeAllVileFish();
 					return;
 				} else if (vileFishes.size() > 0) {
-					FloorItem item = vileFishes.get(0);//Goes in chronological order
+					FloorItem item = vileFishes.get(0);// Goes in chronological
+					// order
 					WorldTile tile = item.getTile();
 					if (matches(tile)) {
 						removeVileFish();
@@ -100,10 +99,7 @@ public class FishingFerretRoom extends PuzzleRoom {
 			for (int y = 0; y < 15; y++) {
 				WorldObject object = manager.getObjectWithType(reference, 22, x, y);
 				if (object != null && (object.getDefinitions().name.equals("Tile") || object.getDefinitions().name.equals("Hole"))) {
-					possibleCorners = new int[][]
-					{
-					{ x + 6, y, x, y + 6 },
-					{ x, y, x + 6, y + 6 } };
+					possibleCorners = new int[][] { { x + 6, y, x, y + 6 }, { x, y, x + 6, y + 6 } };
 					break outer;
 				}
 			}
@@ -130,7 +126,8 @@ public class FishingFerretRoom extends PuzzleRoom {
 				player.getPackets().sendGameMessage("You need a Fishing level of " + requiredFishing + " to catch a raw vile fish.");
 				return false;
 			}
-			//giveXP(player, Skills.FISHING); //People can abuse this so we shouldn't add it FOR THIS PUZZLE
+			// giveXP(player, Skills.FISHING); //People can abuse this so we
+			// shouldn't add it FOR THIS PUZZLE
 			player.getActionManager().setAction(new DungeoneeringFishing(psuedoFishingSpot));
 			return false;
 		} else if (object.getDefinitions().name.equals("Fire")) {
@@ -139,12 +136,13 @@ public class FishingFerretRoom extends PuzzleRoom {
 				player.getPackets().sendGameMessage("You need a Cooking level of " + requiredCooking + " to cook a raw vile fish.");
 				return false;
 			}
-			//giveXP(player, Skills.COOKING); People can abuse this so we shouldn't add it FOR THIS PUZZLE
+			// giveXP(player, Skills.COOKING); People can abuse this so we
+			// shouldn't add it FOR THIS PUZZLE
 			return true;
 		}
 		return true;
 	}
-	
+
 	public static boolean handleFerretThrow(final Player player, final WorldObject object, final Item item) {
 		if (!object.getDefinitions().name.equals("Tile") && !object.getDefinitions().name.equals("Pressure plate") || item.getId() != VILE_FISH || player.getControlerManager().getControler() == null || !(player.getControlerManager().getControler() instanceof DungeonController)) {
 			return false;
@@ -195,5 +193,5 @@ public class FishingFerretRoom extends PuzzleRoom {
 	public String getCompleteMessage() {
 		return "You hear a click as the ferret steps on the pressure plate. All the doors in the room are now unlocked.";
 	}
-	
+
 }

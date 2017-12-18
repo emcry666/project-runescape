@@ -23,7 +23,7 @@ public class ForgottenWarrior extends Guardian {
 		super.drop();
 		int size = getSize();
 		ArrayList<Item> drops = new ArrayList<Item>();
-		//just 1 for now
+		// just 1 for now
 		for (int type = 0; type < DungeonConstants.FORGOTTEN_WARRIORS.length; type++) {
 			for (int id : DungeonConstants.FORGOTTEN_WARRIORS[type])
 				if (id == getId()) {
@@ -32,7 +32,7 @@ public class ForgottenWarrior extends Guardian {
 						tier = 10;
 					else if (tier < 1)
 						tier = 1;
-					//melee mage range
+					// melee mage range
 					if (type == 0)
 						drops.add(new Item(DungeonUtils.getRandomMeleeGear(Utils.random(tier) + 1)));
 					else if (type == 1)

@@ -36,8 +36,7 @@ public class GodswordCreating {
 		}
 	}
 
-	private static final Item[] SHARDS = new Item[]
-	{ new Item(11710, 1), new Item(11712, 1), new Item(11714, 1) };
+	private static final Item[] SHARDS = new Item[] { new Item(11710, 1), new Item(11712, 1), new Item(11714, 1) };
 
 	public static boolean isShard(int itemId) {
 		for (Item item : SHARDS)
@@ -46,8 +45,7 @@ public class GodswordCreating {
 		return false;
 	}
 
-	private static final int[] KEYS =
-	{ 20121, 20122, 20123, 20124 };
+	private static final int[] KEYS = { 20121, 20122, 20123, 20124 };
 
 	public static boolean isKey(int itemId) {
 		for (int key : KEYS) {
@@ -58,8 +56,7 @@ public class GodswordCreating {
 	}
 
 	public static void attachKeys(Player player) {
-		if (!player.getInventory().containsItems(KEYS, new int[]
-		{ 1, 1, 1, 1 })) {
+		if (!player.getInventory().containsItems(KEYS, new int[] { 1, 1, 1, 1 })) {
 			player.getPackets().sendGameMessage("You need all key peices in order to form a frozen key.");
 			return;
 		}

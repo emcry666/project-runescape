@@ -32,7 +32,7 @@ public class DungeonNPC extends NPC {
 			setHitpoints(getMaxHitpoints());
 			resetBonuses();
 		}
-		setForceTargetDistance(20); //includes whole room
+		setForceTargetDistance(20); // includes whole room
 	}
 
 	public void resetBonuses() {
@@ -107,7 +107,7 @@ public class DungeonNPC extends NPC {
 	public void drop() {
 		int size = getSize();
 		ArrayList<Item> drops = new ArrayList<Item>();
-		if (getId() != 10831 && getId() != 10821) //nature & ghost
+		if (getId() != 10831 && getId() != 10821) // nature & ghost
 			drops.add(new Item(getBones()));
 		for (int i = 0; i < 1 + Utils.random(10); i++)
 			drops.add(new Item(DungeonUtils.getFood(1 + Utils.random(8))));
@@ -118,43 +118,82 @@ public class DungeonNPC extends NPC {
 		if (Utils.random(5) == 0)
 			drops.add(new Item(DungeonConstants.RUNES[Utils.random(DungeonConstants.RUNES.length)], 90 + Utils.random(30)));
 
-		if (getManager().getParty().getComplexity() >= 5 && Utils.random(5) == 0) //torm bag, 1
+		if (getManager().getParty().getComplexity() >= 5 && Utils.random(5) == 0) // torm
+			// bag,
+			// 1
 			drops.add(new Item(DungeonUtils.getTornBag(1 + Utils.random(10))));
 
-		if (getManager().getParty().getComplexity() >= 3 && Utils.random(5) == 0) //ore, up to 10
+		if (getManager().getParty().getComplexity() >= 3 && Utils.random(5) == 0) // ore,
+			// up
+			// to
+			// 10
 			drops.add(new Item(DungeonUtils.getOre(1 + Utils.random(5)), 1 + Utils.random(10)));
 
-		if (getManager().getParty().getComplexity() >= 2 && Utils.random(5) == 0) //branche, up to 10
+		if (getManager().getParty().getComplexity() >= 2 && Utils.random(5) == 0) // branche,
+			// up
+			// to
+			// 10
 			drops.add(new Item(DungeonUtils.getBranche(1 + Utils.random(5)), 1 + Utils.random(10)));
 
-		if (getManager().getParty().getComplexity() >= 4 && Utils.random(5) == 0) //textile, up to 10
+		if (getManager().getParty().getComplexity() >= 4 && Utils.random(5) == 0) // textile,
+			// up
+			// to
+			// 10
 			drops.add(new Item(DungeonUtils.getTextile(1 + Utils.random(10)), 1 + Utils.random(10)));
 
-		if (getManager().getParty().getComplexity() >= 5 && Utils.random(5) == 0) //herb, up to 10
+		if (getManager().getParty().getComplexity() >= 5 && Utils.random(5) == 0) // herb,
+			// up
+			// to
+			// 10
 			drops.add(new Item(DungeonUtils.getHerb(1 + Utils.random(9)), 1 + Utils.random(10)));
 
-		if (getManager().getParty().getComplexity() >= 5 && Utils.random(5) == 0) //seed, up to 10
+		if (getManager().getParty().getComplexity() >= 5 && Utils.random(5) == 0) // seed,
+			// up
+			// to
+			// 10
 			drops.add(new Item(DungeonUtils.getSeed(1 + Utils.random(12)), 1 + Utils.random(10)));
 
-		if (getManager().getParty().getComplexity() >= 5 && Utils.random(3) == 0) //charms, depending in mob size
+		if (getManager().getParty().getComplexity() >= 5 && Utils.random(3) == 0) // charms,
+			// depending
+			// in
+			// mob
+			// size
 			drops.add(new Item(DungeonConstants.CHARMS[Utils.random(DungeonConstants.CHARMS.length)], size));
 
-		if (getManager().getParty().getComplexity() >= 2) //coins, 1000 up to 11000
+		if (getManager().getParty().getComplexity() >= 2) // coins, 1000 up to
+			// 11000
 			drops.add(new Item(DungeonConstants.RUSTY_COINS, 1000 + Utils.random(10001)));
 
-		if (getManager().getParty().getComplexity() >= 3 && Utils.random(5) == 0) //essence, 10 up to 300
+		if (getManager().getParty().getComplexity() >= 3 && Utils.random(5) == 0) // essence,
+			// 10
+			// up
+			// to
+			// 300
 			drops.add(new Item(DungeonConstants.RUNE_ESSENCE, 10 + Utils.random(300)));
-		if (getManager().getParty().getComplexity() >= 2 && Utils.random(5) == 0) //feather, 10 up to 300
+		if (getManager().getParty().getComplexity() >= 2 && Utils.random(5) == 0) // feather,
+			// 10
+			// up
+			// to
+			// 300
 			drops.add(new Item(DungeonConstants.FEATHER, 10 + Utils.random(300)));
-		if ((getManager().getParty().getComplexity() >= 5 && Utils.random(10) == 0)) //vial, 1
+		if ((getManager().getParty().getComplexity() >= 5 && Utils.random(10) == 0)) // vial,
+			// 1
 			drops.add(new Item(17490));
-		if ((Utils.random(10) == 0)) //anti dragon shield
+		if ((Utils.random(10) == 0)) // anti dragon shield
 			drops.add(new Item(16933));
-		if ((getManager().getParty().getComplexity() >= 4 && Utils.random(10) == 0)) //bowstring, 1
+		if ((getManager().getParty().getComplexity() >= 4 && Utils.random(10) == 0)) // bowstring,
+			// 1
 			drops.add(new Item(17752));
-		if ((getManager().getParty().getComplexity() >= 2 && Utils.random(10) == 0)) //fly fishing rod, 1
+		if ((getManager().getParty().getComplexity() >= 2 && Utils.random(10) == 0)) // fly
+			// fishing
+			// rod,
+			// 1
 			drops.add(new Item(17794));
-		if ((getManager().getParty().getComplexity() >= 4 && Utils.random(5) == 0)) //thread, 10 up to 300
+		if ((getManager().getParty().getComplexity() >= 4 && Utils.random(5) == 0)) // thread,
+			// 10
+			// up
+			// to
+			// 300
 			drops.add(new Item(17447, 10 + Utils.random(300)));
 
 		for (Item item : drops)

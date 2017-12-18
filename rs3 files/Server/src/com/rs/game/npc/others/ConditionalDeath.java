@@ -24,8 +24,7 @@ public class ConditionalDeath extends NPC {
 	}
 
 	public ConditionalDeath(int requiredItem, String deathMessage, boolean checkInventory, int id, WorldTile tile, int mapAreaNameHash, boolean canBeAttackFromOutOfArea) {
-		this(new int[]
-		{ requiredItem }, deathMessage, checkInventory, id, tile, mapAreaNameHash, canBeAttackFromOutOfArea);
+		this(new int[] { requiredItem }, deathMessage, checkInventory, id, tile, mapAreaNameHash, canBeAttackFromOutOfArea);
 	}
 
 	public int[] getRequiredItem() {

@@ -68,20 +68,19 @@ public class FriendsChat {
 			player.setCurrentFriendsChat(null);
 			chat.getLocalMembers().remove(player);
 			player.disableLootShare();
-			if (chat.clanWars != null) 
+			if (chat.clanWars != null)
 				chat.clanWars.leaveFC(player);
-			if (chat.getLocalMembers().size() <= 0) 
+			if (chat.getLocalMembers().size() <= 0)
 				removeChat(chat);
 
 		}
 	}
-	
+
 	public static void removeChat(FriendsChat chat) {
 		cache.remove(chat.getChannel());
-		if (chat.clanWars != null) 
+		if (chat.clanWars != null)
 			chat.clanWars.endWar();
 	}
-	
 
 	/**
 	 * Requests joining of specific channel.

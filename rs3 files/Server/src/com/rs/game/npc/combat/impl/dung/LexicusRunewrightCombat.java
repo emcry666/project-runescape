@@ -27,8 +27,7 @@ public class LexicusRunewrightCombat extends CombatScript {
 
 	@Override
 	public Object[] getKeys() {
-		return new Object[]
-		{ 9842 };
+		return new Object[] { 9842 };
 	}
 
 	@Override
@@ -53,10 +52,10 @@ public class LexicusRunewrightCombat extends CombatScript {
 
 		int attack = Utils.random(Utils.isOnRange(target.getX(), target.getY(), target.getSize(), npc.getX(), npc.getY(), npc.getSize(), 0) ? 5 : 4);
 		switch (attack) {
-		case 0://Range
+		case 0:// Range
 		case 1:
 		case 2:
-		case 3://Magic
+		case 3:// Magic
 			boolean range_style = attack == 0 || attack == 1;
 			boss.setNextAnimation(new Animation(13470));
 			boss.setNextGraphics(new Graphics(range_style ? 2408 : 2424));
@@ -67,7 +66,7 @@ public class LexicusRunewrightCombat extends CombatScript {
 				delayHit(npc, 1, target, getMagicHit(npc, getMaxHit(npc, NPCCombatDefinitions.MAGE, target)));
 			target.setNextGraphics(new Graphics(range_style ? 2410 : 2426, 75, 0));
 			break;
-		case 4://MELEE
+		case 4:// MELEE
 			boss.setNextAnimation(new Animation(13469));
 			delayHit(npc, 0, target, getMeleeHit(npc, getMaxHit(npc, NPCCombatDefinitions.MELEE, target)));
 			break;
@@ -136,6 +135,6 @@ public class LexicusRunewrightCombat extends CombatScript {
 
 			}
 		}, 0, 0);
-		//GFX 2421+
+		// GFX 2421+
 	}
 }

@@ -12,7 +12,7 @@ public class MeleeAviansie extends CombatScript {
 	public Object[] getKeys() {
 		return new Object[] { 6232, 6233, 6235, 6237, 6240, 6243, 6244 };
 	}
-	
+
 	@Override
 	public int attack(NPC npc, Entity target) {
 		NPCCombatDefinitions defs = npc.getCombatDefinitions();

@@ -52,7 +52,6 @@ public final class MapAreas {
 		mapAreas.put(areaNameHash, coordsList);
 	}
 
-
 	private static void loadUnpackedMapAreas() {
 		Logger.log("MapAreas", "Packing map areas...");
 		try {

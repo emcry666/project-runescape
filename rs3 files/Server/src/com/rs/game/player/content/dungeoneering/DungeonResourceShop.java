@@ -10,8 +10,7 @@ import com.rs.game.player.content.ItemConstants;
 public class DungeonResourceShop {
 
 	public static final int RESOURCE_SHOP = 956, RESOURCE_SHOP_INV = 957;
-	private static final int[] CS2MAPS =
-	{ 2989, 2991, 2993, 2987 };
+	private static final int[] CS2MAPS = { 2989, 2991, 2993, 2987 };
 
 	public static void openResourceShop(final Player player, int complexity) {
 		if (complexity <= 1) {
@@ -36,7 +35,7 @@ public class DungeonResourceShop {
 
 	public static void handlePurchaseOptions(Player player, int slotId, int quantity) {
 		Integer complexity = (Integer) player.getTemporaryAttributtes().get(Key.DUNG_COMPLEXITY);
-		if (complexity == null || complexity <= 1) //not error, just hacking
+		if (complexity == null || complexity <= 1) // not error, just hacking
 			return;
 		int baseMap = CS2MAPS[complexity >= 5 ? 3 : complexity - 2];
 		int slot = (slotId - 2) / 5;

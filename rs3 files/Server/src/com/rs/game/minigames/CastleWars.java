@@ -39,17 +39,15 @@ public final class CastleWars {
 	@SuppressWarnings("unchecked")
 	private static final List<Player>[] playing = new List[2];
 	private static int[] seasonWins = new int[2];
-	public static final WorldTile LOBBY = new WorldTile(2442, 3090, 0), SARA_WAITING = new WorldTile(2381, 9489, 0), ZAMO_WAITING = new WorldTile(2421, 9523, 0),
-			SARA_BASE = new WorldTile(2426, 3076, 1), ZAMO_BASE = new WorldTile(2373, 3131, 1);
+	public static final WorldTile LOBBY = new WorldTile(2442, 3090, 0), SARA_WAITING = new WorldTile(2381, 9489, 0), ZAMO_WAITING = new WorldTile(2421, 9523, 0), SARA_BASE = new WorldTile(2426, 3076, 1), ZAMO_BASE = new WorldTile(2373, 3131, 1);
 
 	private static PlayingGame playingGame;
 	private static final Map<Integer, Integer> rewards = new HashMap<Integer, Integer>();
 
 	/*
-	 * center, north west, south east, 
+	 * center, north west, south east,
 	 */
-	public static final WorldTile[] ORB_TELEPORTS =
-	{ new WorldTile(2399, 3104, 0), new WorldTile(2411, 3125, 0), new WorldTile(2426, 3078, 0), new WorldTile(2384, 3084, 0), new WorldTile(2373, 3129, 0) };
+	public static final WorldTile[] ORB_TELEPORTS = { new WorldTile(2399, 3104, 0), new WorldTile(2411, 3125, 0), new WorldTile(2426, 3078, 0), new WorldTile(2384, 3084, 0), new WorldTile(2373, 3129, 0) };
 
 	static {
 
@@ -154,7 +152,8 @@ public final class CastleWars {
 		player.getControlerManager().startControler("CastleWarsWaiting", team);
 		player.setNextWorldTile(new WorldTile(team == ZAMORAK ? ZAMO_WAITING : SARA_WAITING, 1));
 		player.getMusicsManager().playMusic(318); // temp testing else 5
-		if (playingGame == null && waiting[team].size() >= (Settings.DEBUG ? 1 : 3)) // at least
+		if (playingGame == null && waiting[team].size() >= (Settings.DEBUG ? 1 : 3)) // at
+			// least
 			// 9players to
 			// start
 			createPlayingGame();

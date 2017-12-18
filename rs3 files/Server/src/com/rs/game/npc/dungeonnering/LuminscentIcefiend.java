@@ -45,7 +45,9 @@ public class LuminscentIcefiend extends DungeonBoss {
 		int max_hp = getMaxHitpoints();
 		int current_hp = getHitpoints();
 
-		if (current_hp < max_hp * (.25 * specialStage) && !specialEnabled)//75, 50, 25
+		if (current_hp < max_hp * (.25 * specialStage) && !specialEnabled)// 75,
+			// 50,
+			// 25
 			prepareSpecial();
 	}
 
@@ -140,7 +142,8 @@ public class LuminscentIcefiend extends DungeonBoss {
 						player.setNextWorldTile(nextTile);
 						player.setNextForceMovement(new NewForceMovement(tile, 0, nextTile, 1, Utils.getAngle(tile.getX() - nextTile.getX(), tile.getY() - nextTile.getY())));
 						int damageCap = (int) (player.getMaxHitpoints() * .10);
-						if (player.getHitpoints() < damageCap)// If has 10% of HP.
+						if (player.getHitpoints() < damageCap)// If has 10% of
+							// HP.
 							continue;
 						int damage = Utils.random(20, 100);
 						if (player.getHitpoints() - damage <= damageCap)

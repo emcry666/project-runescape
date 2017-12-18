@@ -10,12 +10,9 @@ import com.rs.game.player.dialogues.Dialogue;
 
 public class PotteryWheel extends Dialogue {
 
-	private static final int[] PRODUCTS =
-	{ 1787, 1789, 1791, 5352 };
-	private static final int[] LEVELS =
-	{ 1, 7, 8, 19 };
-	private static final double[] EXPERIENCE =
-	{ 6.3, 15, 18, 20 };
+	private static final int[] PRODUCTS = { 1787, 1789, 1791, 5352 };
+	private static final int[] LEVELS = { 1, 7, 8, 19 };
+	private static final double[] EXPERIENCE = { 6.3, 15, 18, 20 };
 	private static final int SOFT_CLAY = 1761;
 
 	@Override

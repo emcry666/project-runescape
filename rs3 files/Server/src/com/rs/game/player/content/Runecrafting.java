@@ -15,10 +15,8 @@ public final class Runecrafting {
 
 	}
 
-	public final static int[] LEVEL_REQ =
-	{ 1, 25, 50, 75 };
-	public final static int RUNE_ESSENCE = 1436, PURE_ESSENCE = 7936, AIR_TIARA = 5527, MIND_TIARA = 5529, WATER_TIARA = 5531, BODY_TIARA = 5533, EARTH_TIARA = 5535, FIRE_TIARA = 5537,
-			COSMIC_TIARA = 5539, NATURE_TIARA = 5541, CHAOS_TIARA = 5543, LAW_TIARA = 5545, DEATH_TIARA = 5547, BLOOD_TIARA = 5549, SOUL_TIARA = 5551, ASTRAL_TIARA = 9106, OMNI_TIARA = 13655;
+	public final static int[] LEVEL_REQ = { 1, 25, 50, 75 };
+	public final static int RUNE_ESSENCE = 1436, PURE_ESSENCE = 7936, AIR_TIARA = 5527, MIND_TIARA = 5529, WATER_TIARA = 5531, BODY_TIARA = 5533, EARTH_TIARA = 5535, FIRE_TIARA = 5537, COSMIC_TIARA = 5539, NATURE_TIARA = 5541, CHAOS_TIARA = 5543, LAW_TIARA = 5545, DEATH_TIARA = 5547, BLOOD_TIARA = 5549, SOUL_TIARA = 5551, ASTRAL_TIARA = 9106, OMNI_TIARA = 13655;
 
 	public static boolean isTiara(int id) {
 		return id == AIR_TIARA || id == MIND_TIARA || id == WATER_TIARA || id == BODY_TIARA || id == EARTH_TIARA || id == FIRE_TIARA || id == COSMIC_TIARA || id == NATURE_TIARA || id == CHAOS_TIARA || id == LAW_TIARA || id == DEATH_TIARA || id == BLOOD_TIARA || id == SOUL_TIARA || id == ASTRAL_TIARA || id == OMNI_TIARA;
@@ -78,12 +76,11 @@ public final class Runecrafting {
 	}
 
 	//
-	public static final int[] OBJECTS =
-	{ 2478, 2481, 2482, 2480, 2483, 2479, 30624, 2487, 2484, 2488, 2485, 2478, 2486 };
-	private static final int[] TIARA =
-	{ AIR_TIARA, EARTH_TIARA, FIRE_TIARA, WATER_TIARA, BODY_TIARA, MIND_TIARA, BLOOD_TIARA, CHAOS_TIARA, COSMIC_TIARA, DEATH_TIARA, LAW_TIARA, SOUL_TIARA, NATURE_TIARA };
+	public static final int[] OBJECTS = { 2478, 2481, 2482, 2480, 2483, 2479, 30624, 2487, 2484, 2488, 2485, 2478, 2486 };
+	private static final int[] TIARA = { AIR_TIARA, EARTH_TIARA, FIRE_TIARA, WATER_TIARA, BODY_TIARA, MIND_TIARA, BLOOD_TIARA, CHAOS_TIARA, COSMIC_TIARA, DEATH_TIARA, LAW_TIARA, SOUL_TIARA, NATURE_TIARA };
 
-	public static void infuseTiara(Player player, int index) {//up to blood tiara
+	public static void infuseTiara(Player player, int index) {// up to blood
+		// tiara
 		int tiaraId = TIARA[index];
 		int talismanId = (index * 2) + 1438;
 		if (player.getInventory().containsItem(5525, 1) && player.getInventory().containsItem(talismanId, 1)) {
@@ -173,8 +170,7 @@ public final class Runecrafting {
 		p.getPackets().sendGameMessage("This pouch has " + p.getPouches()[i] + " rune essences in it.");
 	}
 
-	public static final int[] POUCH_SIZE =
-	{ 3, 6, 9, 12 };
+	public static final int[] POUCH_SIZE = { 3, 6, 9, 12 };
 
 	public static void fillPouch(Player p, int i) {
 		if (i < 0)

@@ -179,7 +179,7 @@ public class Trade {
 
 	public void refresh(int... slots) {
 		player.getPackets().sendUpdateItems(90, items, slots);
-		target.getPackets().sendUpdateItems(90, true, items.getItems(), slots);
+		target.getPackets().sendUpdateItems(90, true, items.getItems(), false, slots);
 	}
 
 	public void accept(boolean firstStage) {
@@ -190,8 +190,7 @@ public class Trade {
 				if (firstStage) {
 					if (nextStage())
 						target.getTrade().nextStage();
-				}
-				else {
+				} else {
 					player.setCloseInterfacesEvent(null);
 					player.closeInterfaces();
 					closeTrade(CloseTradeStage.DONE);
@@ -256,7 +255,9 @@ public class Trade {
 	}
 
 	public void refreshBothStageMessage(boolean firstStage) {
-		synchronized (target.getTrade()) { //if deadlock happen within a few days, gottam ake sure to rechec this
+		synchronized (target.getTrade()) { // if deadlock happen within a few
+			// days, gottam ake sure to rechec
+			// this
 			refreshStageMessage(firstStage);
 			target.getTrade().refreshStageMessage(firstStage);
 		}
@@ -332,8 +333,7 @@ public class Trade {
 					}
 					oldTarget.getTrade().items.clear();
 					items.clear();
-				}
-				else {
+				} else {
 					Logger.globalLog(player.getUsername(), player.getSession().getIP(), new String(" completed the trade with " + oldTarget.getUsername() + " items are as follows: " + Arrays.toString(items.getShiftedItem())));
 					Logger.globalLog(oldTarget.getUsername(), oldTarget.getSession().getIP(), new String(" completed the trade with " + player.getUsername() + " items are as follows " + Arrays.toString(oldTarget.getTrade().items.getShiftedItem()) + "."));
 					for (Item item : items.getItems()) {

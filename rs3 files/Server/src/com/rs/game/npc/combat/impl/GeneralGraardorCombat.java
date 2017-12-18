@@ -13,13 +13,12 @@ public class GeneralGraardorCombat extends CombatScript {
 
 	@Override
 	public Object[] getKeys() {
-		return new Object[]
-		{ 6260 };
+		return new Object[] { 6260 };
 	}
 
 	@Override
 	public int attack(final NPC npc, final Entity target) {
-		if(!Utils.isOnRange(npc, target, 0))
+		if (!Utils.isOnRange(npc, target, 0))
 			return 0;
 		final NPCCombatDefinitions defs = npc.getCombatDefinitions();
 		if (Utils.random(5) == 0) {
