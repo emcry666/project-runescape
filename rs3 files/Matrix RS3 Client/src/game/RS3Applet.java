@@ -53,7 +53,7 @@ public class RS3Applet extends Applet implements AppletStub {
 	/**
 	 * Chooses the Host
 	 */
-	public static String WORLD_HOST = !MODS ? "http://world58a.runescape.com" : "http://7.93.160.237";
+	public static String WORLD_HOST = !MODS ? "http://world58a.runescape.com" : "http://127.0.0.1";
 	public static final int MINOR_VERSION = 2;
 
 	/**

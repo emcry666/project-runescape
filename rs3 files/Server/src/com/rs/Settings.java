@@ -18,7 +18,7 @@ public final class Settings {
 	public static final String LOGIN_DATA_PATH = "data/accounts_data";
 	public static final String DATA_PATH = "data/server_data";
 
-	public static final InetSocketAddress GAME_ADDRESS_BASE = new InetSocketAddress("7.93.160.237", 11155);
+	public static final InetSocketAddress GAME_ADDRESS_BASE = new InetSocketAddress("7.93.160.237", 43594);
 	public static InetSocketAddress LOGIN_SERVER_ADDRESS_BASE;
 	public static InetSocketAddress LOGIN_CLIENT_ADDRESS_BASE;
 
@@ -27,8 +27,8 @@ public final class Settings {
 	public static void init() throws UnknownHostException {
 
 
-		LOGIN_SERVER_ADDRESS_BASE = new InetSocketAddress(Settings.HOSTED ? "7.93.160.237" : "7.93.160.237", 11155);
-		LOGIN_CLIENT_ADDRESS_BASE = new InetSocketAddress(Settings.HOSTED  ? "7.93.160.237" : "7.93.160.237", 11155);
+		LOGIN_SERVER_ADDRESS_BASE = new InetSocketAddress(Settings.HOSTED ? "7.93.160.237" : "7.93.160.237", 7777);
+		LOGIN_CLIENT_ADDRESS_BASE = new InetSocketAddress(Settings.HOSTED  ? "7.93.160.237" : "7.93.160.237", 7778);
 		
 		if(Settings.HOSTED) {
 			WORLDS_INFORMATION = new WorldInformation[] { 
