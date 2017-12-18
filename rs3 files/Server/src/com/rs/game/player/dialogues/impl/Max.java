@@ -16,7 +16,7 @@ public class Max extends Dialogue {
 	@Override
 	public void run(int interfaceId, int componentId) {
 		if (stage == -1) {
-			sendOptionsDialogue("What would you like to say?", "Who are you?", "That's a nice cape you have there.", "It's nothing, nevermind.");
+			sendOptionsDialogue("What would you like to say?", "Who are you?", "That's a nice cape you have there.", "Nothing, nevermind.");
 			stage = 0;
 		} else if (stage == 0) {
 			if (componentId == OPTION_1) {
