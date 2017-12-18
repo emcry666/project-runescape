@@ -1294,3 +1294,334 @@ Cannot run program "sn_which.sh": CreateProcess error=2, The system cannot find 
 
 !ENTRY ro.amiq.dvt 1 0 2017-12-18 09:09:49.872
 !MESSAGE DVT Logger: << Ended VLOGDT UI initialization.
+
+!ENTRY org.eclipse.core.jobs 4 2 2017-12-18 09:44:55.861
+!MESSAGE An internal error occurred during: "Updating Git status for repository project-scape".
+!STACK 0
+java.lang.NullPointerException
+	at org.eclipse.egit.core.internal.indexdiff.IndexDiffCacheEntry.getRepository(IndexDiffCacheEntry.java:184)
+	at org.eclipse.egit.core.internal.indexdiff.IndexDiffCacheEntry.access$1(IndexDiffCacheEntry.java:179)
+	at org.eclipse.egit.core.internal.indexdiff.IndexDiffCacheEntry$5.updateIndexDiff(IndexDiffCacheEntry.java:524)
+	at org.eclipse.egit.core.internal.indexdiff.IndexDiffUpdateJob.run(IndexDiffUpdateJob.java:75)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+
+!ENTRY ro.amiq.dvt 1 0 2017-12-18 09:44:55.977
+!MESSAGE DVT Logger: << Ended EDT Plugin.
+
+!ENTRY ro.amiq.dvt 1 0 2017-12-18 09:44:55.978
+!MESSAGE DVT Logger: << Ended SLNDT Plugin.
+
+!ENTRY ro.amiq.dvt 1 0 2017-12-18 09:44:55.979
+!MESSAGE DVT Logger: << Ended EDT Base Plugin.
+
+!ENTRY ro.amiq.dvt 1 0 2017-12-18 09:44:55.979
+!MESSAGE DVT Logger: << Ended VHDLDT Plugin.
+
+!ENTRY ro.amiq.dvt 1 0 2017-12-18 09:44:55.980
+!MESSAGE DVT Logger: << Ended VLOGDT Plugin.
+
+!ENTRY ro.amiq.dvt 1 0 2017-12-18 09:44:55.981
+!MESSAGE DVT Logger: << Ended DVT Plugin.
+!SESSION 2017-12-18 09:50:01.921 -----------------------------------------------
+eclipse.buildId=4.6.0.I20160606-1100
+java.version=1.8.0_144
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_US
+Framework arguments:  -product org.eclipse.epp.package.java.product
+Command-line arguments:  -os win32 -ws win32 -arch x86_64 -product org.eclipse.epp.package.java.product
+
+!ENTRY ro.amiq.dvt.patcher 1 0 2017-12-18 09:50:02.746
+!MESSAGE DVT Patcher: enabled
+
+!ENTRY ro.amiq.dvt.patcher 1 0 2017-12-18 09:50:02.747
+!MESSAGE DVT Patcher: begin initializing weaving hook
+
+!ENTRY ro.amiq.dvt.patcher 1 0 2017-12-18 09:50:02.748
+!MESSAGE DVT Patcher: reading patchset container [ C:\Users\clayt\Desktop\eclipse\plugins\ro.amiq.dvt.patcher_17.1.37.jar ]
+
+!ENTRY ro.amiq.dvt.patcher 1 0 2017-12-18 09:50:03.370
+!MESSAGE DVT Patcher: patchset [ shell-set-visible-hang ] in patchset container [ C:\Users\clayt\Desktop\eclipse\plugins\ro.amiq.dvt.patcher_17.1.37.jar ] is disabled by default
+
+!ENTRY ro.amiq.dvt.patcher 1 0 2017-12-18 09:50:03.371
+!MESSAGE DVT Patcher: patchset [ deadlock-on-startup-bug-502095 ] in patchset container [ C:\Users\clayt\Desktop\eclipse\plugins\ro.amiq.dvt.patcher_17.1.37.jar ] will be applied
+
+!ENTRY ro.amiq.dvt.patcher 1 0 2017-12-18 09:50:03.371
+!MESSAGE DVT Patcher: skipping patchset [ clipboard-wait-for-contents-hang-bug-241957 ] in patchset container [ C:\Users\clayt\Desktop\eclipse\plugins\ro.amiq.dvt.patcher_17.1.37.jar ] because no filter matches
+
+!ENTRY ro.amiq.dvt.patcher 1 0 2017-12-18 09:50:03.372
+!MESSAGE DVT Patcher: skipping filter in patchset [ compare-viewer-npe ] in patchset container [ C:\Users\clayt\Desktop\eclipse\plugins\ro.amiq.dvt.patcher_17.1.37.jar ] because there is no bundle [ org.eclipse.compare ] with version [ [3.5.501.v20140817-1445,3.5.501.v20140817-1445] ] for class [ org.eclipse.compare.contentmergeviewer.ContentMergeViewer$ContentMergeViewerLayout ]
+
+!ENTRY ro.amiq.dvt.patcher 1 0 2017-12-18 09:50:03.372
+!MESSAGE DVT Patcher: skipping patchset [ compare-viewer-npe ] in patchset container [ C:\Users\clayt\Desktop\eclipse\plugins\ro.amiq.dvt.patcher_17.1.37.jar ] because no filter matches
+
+!ENTRY ro.amiq.dvt.patcher 1 0 2017-12-18 09:50:03.372
+!MESSAGE DVT Patcher: skipping filter in patchset [ copy-paste-bug-368354-backport ] in patchset container [ C:\Users\clayt\Desktop\eclipse\plugins\ro.amiq.dvt.patcher_17.1.37.jar ] because there is no bundle [ org.eclipse.ui.workbench.texteditor ] with version [ [3.8.0.v20120523-1310,3.8.0.v20120523-1310] ] for class [ org.eclipse.ui.texteditor.AbstractTextEditor ]
+
+!ENTRY ro.amiq.dvt.patcher 1 0 2017-12-18 09:50:03.373
+!MESSAGE DVT Patcher: skipping patchset [ copy-paste-bug-368354-backport ] in patchset container [ C:\Users\clayt\Desktop\eclipse\plugins\ro.amiq.dvt.patcher_17.1.37.jar ] because no filter matches
+
+!ENTRY ro.amiq.dvt.patcher 1 0 2017-12-18 09:50:03.373
+!MESSAGE DVT Patcher: skipping filter in patchset [ marker-view-wrong-selection-update-bug-401632 ] in patchset container [ C:\Users\clayt\Desktop\eclipse\plugins\ro.amiq.dvt.patcher_17.1.37.jar ] because there is no bundle [ org.eclipse.ui.ide ] with version [ [3.10.1.v20140828-0944,3.10.1.v20140828-0944] ] for class [ org.eclipse.ui.internal.views.markers.ExtendedMarkersView$8 ]
+
+!ENTRY ro.amiq.dvt.patcher 1 0 2017-12-18 09:50:03.374
+!MESSAGE DVT Patcher: skipping patchset [ marker-view-wrong-selection-update-bug-401632 ] in patchset container [ C:\Users\clayt\Desktop\eclipse\plugins\ro.amiq.dvt.patcher_17.1.37.jar ] because no filter matches
+
+!ENTRY ro.amiq.dvt.patcher 1 0 2017-12-18 09:50:03.374
+!MESSAGE DVT Patcher: skipping filter in patchset [ npe-fix-showinmenu-bug-435284 ] in patchset container [ C:\Users\clayt\Desktop\eclipse\plugins\ro.amiq.dvt.patcher_17.1.37.jar ] because there is no bundle [ org.eclipse.ui.workbench ] with version [ [3.106.1.v20140827-1737,3.106.1.v20140827-1737] ] for class [ org.eclipse.ui.internal.ShowInMenu ]
+
+!ENTRY ro.amiq.dvt.patcher 1 0 2017-12-18 09:50:03.375
+!MESSAGE DVT Patcher: skipping patchset [ npe-fix-showinmenu-bug-435284 ] in patchset container [ C:\Users\clayt\Desktop\eclipse\plugins\ro.amiq.dvt.patcher_17.1.37.jar ] because no filter matches
+
+!ENTRY ro.amiq.dvt.patcher 1 0 2017-12-18 09:50:03.375
+!MESSAGE DVT Patcher: skipping filter in patchset [ block-selection-missing-keystrokes ] in patchset container [ C:\Users\clayt\Desktop\eclipse\plugins\ro.amiq.dvt.patcher_17.1.37.jar ] because there is no bundle [ org.eclipse.swt ] with version [ [3.8.1.v3834e,3.8.1.v3834e] ] for class [ org.eclipse.swt.custom.StyledText ]
+
+!ENTRY ro.amiq.dvt.patcher 1 0 2017-12-18 09:50:03.375
+!MESSAGE DVT Patcher: skipping filter in patchset [ block-selection-missing-keystrokes ] in patchset container [ C:\Users\clayt\Desktop\eclipse\plugins\ro.amiq.dvt.patcher_17.1.37.jar ] because there is no bundle [ org.eclipse.swt ] with version [ [3.103.0.v20140605-2008,3.103.0.v20140605-2008] ] for class [ org.eclipse.swt.custom.StyledText ]
+
+!ENTRY ro.amiq.dvt.patcher 1 0 2017-12-18 09:50:03.376
+!MESSAGE DVT Patcher: skipping patchset [ block-selection-missing-keystrokes ] in patchset container [ C:\Users\clayt\Desktop\eclipse\plugins\ro.amiq.dvt.patcher_17.1.37.jar ] because no filter matches
+
+!ENTRY ro.amiq.dvt.patcher 1 0 2017-12-18 09:50:03.376
+!MESSAGE DVT Patcher: skipping filter in patchset [ window-workingset-broken-e4 ] in patchset container [ C:\Users\clayt\Desktop\eclipse\plugins\ro.amiq.dvt.patcher_17.1.37.jar ] because there is no bundle [ org.eclipse.ui.workbench ] with version [ [3.106.1.v20140827-1737,3.106.1.v20140827-1737] ] for class [ org.eclipse.ui.internal.WorkbenchPage ]
+
+!ENTRY ro.amiq.dvt.patcher 1 0 2017-12-18 09:50:03.377
+!MESSAGE DVT Patcher: skipping filter in patchset [ window-workingset-broken-e4 ] in patchset container [ C:\Users\clayt\Desktop\eclipse\plugins\ro.amiq.dvt.patcher_17.1.37.jar ] because there is no bundle [ org.eclipse.ui.workbench ] with version [ [3.107.0.v20150825-2206,3.107.0.v20150825-2206] ] for class [ org.eclipse.ui.internal.WorkbenchPage ]
+
+!ENTRY ro.amiq.dvt.patcher 1 0 2017-12-18 09:50:03.377
+!MESSAGE DVT Patcher: skipping patchset [ window-workingset-broken-e4 ] in patchset container [ C:\Users\clayt\Desktop\eclipse\plugins\ro.amiq.dvt.patcher_17.1.37.jar ] because no filter matches
+
+!ENTRY ro.amiq.dvt.patcher 1 0 2017-12-18 09:50:03.378
+!MESSAGE DVT Patcher: skipping filter in patchset [ windows-private-fonts-gdip-fix ] in patchset container [ C:\Users\clayt\Desktop\eclipse\plugins\ro.amiq.dvt.patcher_17.1.37.jar ] because there is no bundle [ org.eclipse.swt ] with version [ [3.104.1.v20150825-0743,3.104.1.v20150825-0743] ] for class [ org.eclipse.swt.graphics.GC ]
+
+!ENTRY ro.amiq.dvt.patcher 1 0 2017-12-18 09:50:03.378
+!MESSAGE DVT Patcher: skipping filter in patchset [ windows-private-fonts-gdip-fix ] in patchset container [ C:\Users\clayt\Desktop\eclipse\plugins\ro.amiq.dvt.patcher_17.1.37.jar ] because there is no bundle [ org.eclipse.swt ] with version [ [3.104.2.v20160212-1350,3.104.2.v20160212-1350] ] for class [ org.eclipse.swt.graphics.GC ]
+
+!ENTRY ro.amiq.dvt.patcher 1 0 2017-12-18 09:50:03.378
+!MESSAGE DVT Patcher: patchset [ windows-private-fonts-gdip-fix ] in patchset container [ C:\Users\clayt\Desktop\eclipse\plugins\ro.amiq.dvt.patcher_17.1.37.jar ] will be applied
+
+!ENTRY ro.amiq.dvt.patcher 1 0 2017-12-18 09:50:03.379
+!MESSAGE DVT Patcher: skipping filter in patchset [ commands-on-non-ui-thread-preExecute-exception ] in patchset container [ C:\Users\clayt\Desktop\eclipse\plugins\ro.amiq.dvt.patcher_17.1.37.jar ] because there is no bundle [ com.perforce.team.ui ] for class [ com.perforce.team.ui.PerforceUIPlugin$1 ]
+
+!ENTRY ro.amiq.dvt.patcher 1 0 2017-12-18 09:50:03.379
+!MESSAGE DVT Patcher: skipping filter in patchset [ commands-on-non-ui-thread-preExecute-exception ] in patchset container [ C:\Users\clayt\Desktop\eclipse\plugins\ro.amiq.dvt.patcher_17.1.37.jar ] because there is no bundle [ com.perforce.team.ui ] for class [ com.perforce.team.ui.PerforceUIPlugin$1 ]
+
+!ENTRY ro.amiq.dvt.patcher 1 0 2017-12-18 09:50:03.380
+!MESSAGE DVT Patcher: skipping filter in patchset [ commands-on-non-ui-thread-preExecute-exception ] in patchset container [ C:\Users\clayt\Desktop\eclipse\plugins\ro.amiq.dvt.patcher_17.1.37.jar ] because there is no bundle [ com.perforce.team.ui ] for class [ com.perforce.team.ui.PerforceUIPlugin$1 ]
+
+!ENTRY ro.amiq.dvt.patcher 1 0 2017-12-18 09:50:03.380
+!MESSAGE DVT Patcher: skipping filter in patchset [ commands-on-non-ui-thread-preExecute-exception ] in patchset container [ C:\Users\clayt\Desktop\eclipse\plugins\ro.amiq.dvt.patcher_17.1.37.jar ] because there is no bundle [ com.perforce.team.ui ] for class [ com.perforce.team.ui.PerforceUIPlugin$1 ]
+
+!ENTRY ro.amiq.dvt.patcher 1 0 2017-12-18 09:50:03.381
+!MESSAGE DVT Patcher: skipping patchset [ commands-on-non-ui-thread-preExecute-exception ] in patchset container [ C:\Users\clayt\Desktop\eclipse\plugins\ro.amiq.dvt.patcher_17.1.37.jar ] because no filter matches
+
+!ENTRY ro.amiq.dvt.patcher 1 0 2017-12-18 09:50:03.381
+!MESSAGE DVT Patcher: skipping filter in patchset [ clearcase-activator-message-suppress ] in patchset container [ C:\Users\clayt\Desktop\eclipse\plugins\ro.amiq.dvt.patcher_17.1.37.jar ] because there is no bundle [ net.sourceforge.clearcase ] for class [ net.sourceforge.clearcase.ClearCaseCLIImpl ]
+
+!ENTRY ro.amiq.dvt.patcher 1 0 2017-12-18 09:50:03.382
+!MESSAGE DVT Patcher: skipping filter in patchset [ clearcase-activator-message-suppress ] in patchset container [ C:\Users\clayt\Desktop\eclipse\plugins\ro.amiq.dvt.patcher_17.1.37.jar ] because there is no bundle [ net.sourceforge.clearcase ] for class [ net.sourceforge.clearcase.ClearCaseCLIImpl ]
+
+!ENTRY ro.amiq.dvt.patcher 1 0 2017-12-18 09:50:03.382
+!MESSAGE DVT Patcher: skipping filter in patchset [ clearcase-activator-message-suppress ] in patchset container [ C:\Users\clayt\Desktop\eclipse\plugins\ro.amiq.dvt.patcher_17.1.37.jar ] because there is no bundle [ net.sourceforge.clearcase ] for class [ net.sourceforge.clearcase.ClearCaseCLIImpl ]
+
+!ENTRY ro.amiq.dvt.patcher 1 0 2017-12-18 09:50:03.382
+!MESSAGE DVT Patcher: skipping patchset [ clearcase-activator-message-suppress ] in patchset container [ C:\Users\clayt\Desktop\eclipse\plugins\ro.amiq.dvt.patcher_17.1.37.jar ] because no filter matches
+
+!ENTRY ro.amiq.dvt.patcher 1 0 2017-12-18 09:50:03.383
+!MESSAGE DVT Patcher: end initializing weaving hook
+
+!ENTRY ro.amiq.dvt.patcher 1 0 2017-12-18 09:50:04.209
+!MESSAGE DVT Patcher: patch applied for class [ org.eclipse.swt.graphics.GC ] in bundle [ org.eclipse.swt ] with version [ [3.105.0.v20160603-0902,3.105.0.v20160603-0902] ]
+
+!ENTRY ro.amiq.dvt.patcher 1 0 2017-12-18 09:50:05.923
+!MESSAGE DVT Patcher: patch applied for class [ org.eclipse.ui.internal.Workbench$StartupProgressBundleListener ] in bundle [ org.eclipse.ui.workbench ] with version [ [3.108.0.v20160602-1232,3.108.1.v20160819-2118] ]
+
+!ENTRY org.eclipse.jface 2 0 2017-12-18 09:50:07.744
+!MESSAGE Keybinding conflicts occurred.  They may interfere with normal accelerator operation.
+!SUBENTRY 1 org.eclipse.jface 2 0 2017-12-18 09:50:07.744
+!MESSAGE A conflict occurred for CTRL+U:
+Binding(CTRL+U,
+	ParameterizedCommand(Command(org.eclipse.jdt.debug.ui.commands.Execute,Execute,
+		Evaluate selected text,
+		Category(org.eclipse.debug.ui.category.run,Run/Debug,Run/Debug command category,true),
+		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@7320750c,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.ui.contexts.window,,,system)
+Binding(CTRL+U,
+	ParameterizedCommand(Command(ro.amiq.dvt.launch.QuickRun,Quick Run,
+		Quickly launch a Run Configuration,
+		Category(ro.amiq.dvt.launch.QuickRunCategory,Quick Run,null,true),
+		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@2570851e,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.ui.contexts.window,,,system)
+!SUBENTRY 1 org.eclipse.jface 2 0 2017-12-18 09:50:07.744
+!MESSAGE A conflict occurred for CTRL+SHIFT+T:
+Binding(CTRL+SHIFT+T,
+	ParameterizedCommand(Command(org.eclipse.jdt.ui.navigate.open.type,Open Type,
+		Open a type in a Java editor,
+		Category(org.eclipse.ui.category.navigate,Navigate,null,true),
+		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@67d8613,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.ui.contexts.window,,,system)
+Binding(CTRL+SHIFT+T,
+	ParameterizedCommand(Command(ro.amiq.dvt.ui.action.QuickRfType,Quick Types,
+		,
+		Category(ro.amiq.dvt.ui.quickview,DVT Quick Views,null,true),
+		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@5667dd90,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.ui.contexts.window,,,system)
+!SUBENTRY 1 org.eclipse.jface 2 0 2017-12-18 09:50:07.744
+!MESSAGE A conflict occurred for ALT+SHIFT+P:
+Binding(ALT+SHIFT+P,
+	ParameterizedCommand(Command(org.eclipse.m2e.core.ui.command.openPom,Open Maven POM,
+		,
+		Category(org.eclipse.ui.category.navigate,Navigate,null,true),
+		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@261f5a45,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.ui.contexts.window,,,system)
+Binding(ALT+SHIFT+P,
+	ParameterizedCommand(Command(ro.amiq.dvt.ui.actions.CopyFullPath,Copy Full Path,
+		Copy Full Path,
+		Category(ro.amiq.dvt.launch.CopyFullPath,Copy Full Path,null,true),
+		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@76673ed,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.ui.contexts.window,,,system)
+
+!ENTRY ro.amiq.dvt 1 0 2017-12-18 09:50:12.122
+!MESSAGE DVT Logger: >> Started DVT Plugin (version: 17.1.37).
+
+!ENTRY ro.amiq.dvt 1 0 2017-12-18 09:50:12.124
+!MESSAGE DVT Logger: >> Started DVT initialization.
+
+!ENTRY org.eclipse.core.variables 4 120 2017-12-18 09:50:12.212
+!MESSAGE Dynamic variable extension from bundle 'ro.amiq.slndt' overrides existing extension variable 'dvt_SPECMAN_PATH' from bundle 'ro.amiq.edt'
+
+!ENTRY org.eclipse.core.variables 4 120 2017-12-18 09:50:12.212
+!MESSAGE Dynamic variable extension from bundle 'ro.amiq.slndt' overrides existing extension variable 'dvt_load_specman_tops' from bundle 'ro.amiq.edt'
+
+!ENTRY org.eclipse.core.variables 4 120 2017-12-18 09:50:12.213
+!MESSAGE Dynamic variable extension from bundle 'ro.amiq.slndt' overrides existing extension variable 'dvt_load_specman_tests' from bundle 'ro.amiq.edt'
+
+!ENTRY ro.amiq.dvt 1 0 2017-12-18 09:50:12.230
+!MESSAGE DVT Logger: >> Started EDT Base Plugin (version: 17.1.37).
+
+!ENTRY ro.amiq.dvt 1 0 2017-12-18 09:50:12.231
+!MESSAGE DVT Logger: << Ended EDT Base initialization.
+
+!ENTRY ro.amiq.dvt 1 0 2017-12-18 09:50:12.233
+!MESSAGE DVT Logger: >> Started EDT Plugin (version: 17.1.37).
+
+!ENTRY ro.amiq.dvt 1 0 2017-12-18 09:50:12.246
+!MESSAGE DVT Logger: >> Started SLNDT Plugin (version: 17.1.37).
+
+!ENTRY ro.amiq.dvt 1 0 2017-12-18 09:50:12.250
+!MESSAGE DVT Logger: >> Started VHDLDT Plugin (version: 17.1.37).
+
+!ENTRY ro.amiq.dvt 1 0 2017-12-18 09:50:12.257
+!MESSAGE DVT Logger: >> Started VLOGVT Plugin (version: 17.1.37).
+
+!ENTRY ro.amiq.dvt 1 0 2017-12-18 09:50:12.264
+!MESSAGE DVT Logger: << Ended DVT initialization.
+
+!ENTRY ro.amiq.dvt 1 0 2017-12-18 09:50:12.266
+!MESSAGE DVT Logger: >> Started EDT initialization.
+
+!ENTRY ro.amiq.dvt 1 0 2017-12-18 09:50:12.298
+!MESSAGE DVT Logger: Using eParser version 20 (built 14-May-2016)
+
+!ENTRY ro.amiq.dvt 1 0 2017-12-18 09:50:12.300
+!MESSAGE DVT Logger: << Ended EDT initialization.
+
+!ENTRY ro.amiq.dvt 1 0 2017-12-18 09:50:12.300
+!MESSAGE DVT Logger: >> Started SLNDT initialization.
+
+!ENTRY ro.amiq.dvt 1 0 2017-12-18 09:50:12.306
+!MESSAGE DVT Logger: Using eParser version 20 (built 14-May-2016)
+
+!ENTRY ro.amiq.dvt 1 0 2017-12-18 09:50:12.308
+!MESSAGE DVT Logger: << Ended SLNDT initialization.
+
+!ENTRY ro.amiq.dvt 1 0 2017-12-18 09:50:12.308
+!MESSAGE DVT Logger: >> Started VHDLDT initialization.
+
+!ENTRY ro.amiq.dvt 1 0 2017-12-18 09:50:12.317
+!MESSAGE DVT Logger: << Ended VHDLDT initialization.
+
+!ENTRY ro.amiq.dvt 1 0 2017-12-18 09:50:12.318
+!MESSAGE DVT Logger: >> Started VLOGDT initialization.
+
+!ENTRY ro.amiq.dvt 1 0 2017-12-18 09:50:12.328
+!MESSAGE DVT Logger: << Ended VLOGDT initialization.
+
+!ENTRY org.eclipse.egit.ui 2 0 2017-12-18 09:50:15.142
+!MESSAGE Warning: The environment variable HOME is not set. The following directory will be used to store the Git
+user global configuration and to define the default location to store repositories: 'C:\Users\clayt'. If this is
+not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
+EGit might behave differently since they see different configuration options.
+This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+
+!ENTRY ro.amiq.dvt 1 0 2017-12-18 09:50:15.399
+!MESSAGE DVT Logger: >> Started DVT UI initialization.
+
+!ENTRY ro.amiq.dvt 1 0 2017-12-18 09:50:15.418
+!MESSAGE DVT Logger: The following error occured when trying to get the output of 'irun -location -nolog':
+Cannot run program "irun": CreateProcess error=2, The system cannot find the file specified
+
+!ENTRY ro.amiq.dvt 1 0 2017-12-18 09:50:15.421
+!MESSAGE DVT Logger: The following error occured when trying to get the output of 'sn_which.sh specman.h':
+Cannot run program "sn_which.sh": CreateProcess error=2, The system cannot find the file specified
+
+!ENTRY ro.amiq.dvt 1 0 2017-12-18 09:50:15.427
+!MESSAGE DVT Logger: The following error occured when trying to get the output of 'irun -version -nolog':
+Cannot run program "irun": CreateProcess error=2, The system cannot find the file specified
+
+!ENTRY ro.amiq.dvt 1 0 2017-12-18 09:50:15.633
+!MESSAGE DVT Logger: << Ended DVT UI initialization.
+
+!ENTRY ro.amiq.dvt 1 0 2017-12-18 09:50:16.051
+!MESSAGE DVT Logger: >> Started EDT UI initialization.
+
+!ENTRY ro.amiq.dvt 1 0 2017-12-18 09:50:16.120
+!MESSAGE DVT Logger: << Ended EDT UI initialization.
+
+!ENTRY ro.amiq.dvt 1 0 2017-12-18 09:50:16.140
+!MESSAGE DVT Logger: >> Started SLNDT UI initialization.
+
+!ENTRY ro.amiq.dvt 1 0 2017-12-18 09:50:16.168
+!MESSAGE DVT Logger: << Ended SLNDT UI initialization.
+
+!ENTRY ro.amiq.dvt 1 0 2017-12-18 09:50:16.174
+!MESSAGE DVT Logger: >> Started VHDLDT UI initialization.
+
+!ENTRY ro.amiq.dvt 1 0 2017-12-18 09:50:16.191
+!MESSAGE DVT Logger: << Ended VHDLDT UI initialization.
+
+!ENTRY ro.amiq.dvt 1 0 2017-12-18 09:50:16.193
+!MESSAGE DVT Logger: >> Started VLOGDT UI initialization.
+
+!ENTRY ro.amiq.dvt 1 0 2017-12-18 09:50:16.216
+!MESSAGE DVT Logger: << Ended VLOGDT UI initialization.
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-12-18 10:02:25.468
+!MESSAGE Internal Error
+!STACK 1
+Java Model Exception: Java Model Status [C:\Program Files\Java\jre1.8.0_144\lib\rt.jar is not on its project's build path]
+	at org.eclipse.jdt.internal.core.PackageFragmentRoot.getRawClasspathEntry(PackageFragmentRoot.java:562)
+	at org.eclipse.jdt.internal.core.JavaElement.getJavadocBaseLocation(JavaElement.java:728)
+	at org.eclipse.jdt.internal.core.BinaryType.getJavadocContents(BinaryType.java:1011)
+	at org.eclipse.jdt.internal.core.BinaryType.getAttachedJavadoc(BinaryType.java:997)
+	at org.eclipse.jdt.internal.ui.text.javadoc.JavadocContentAccess2.getHTMLContent(JavadocContentAccess2.java:538)
+	at org.eclipse.jdt.internal.ui.text.java.hover.JavadocHover.getHoverInfo(JavadocHover.java:717)
+	at org.eclipse.jdt.internal.ui.text.java.hover.JavadocHover.internalGetHoverInfo(JavadocHover.java:635)
+	at org.eclipse.jdt.internal.ui.text.java.hover.JavadocHover.getHoverInfo2(JavadocHover.java:627)
+	at org.eclipse.jdt.internal.ui.text.java.hover.BestMatchHover.getHoverInfo2(BestMatchHover.java:164)
+	at org.eclipse.jdt.internal.ui.text.java.hover.BestMatchHover.getHoverInfo2(BestMatchHover.java:130)
+	at org.eclipse.jdt.internal.ui.text.java.hover.JavaEditorTextHoverProxy.getHoverInfo2(JavaEditorTextHoverProxy.java:86)
+	at org.eclipse.jface.text.TextViewerHoverManager$4.run(TextViewerHoverManager.java:165)
+!SUBENTRY 1 org.eclipse.jdt.core 4 1006 2017-12-18 10:02:25.469
+!MESSAGE C:\Program Files\Java\jre1.8.0_144\lib\rt.jar is not on its project's build path

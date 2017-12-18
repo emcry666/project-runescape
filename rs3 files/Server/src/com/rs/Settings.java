@@ -18,7 +18,7 @@ public final class Settings {
 	public static final String LOGIN_DATA_PATH = "data/accounts_data";
 	public static final String DATA_PATH = "data/server_data";
 
-	public static final InetSocketAddress GAME_ADDRESS_BASE = new InetSocketAddress("0.0.0.0", 43593);
+	public static final InetSocketAddress GAME_ADDRESS_BASE = new InetSocketAddress("7.93.160.237", 11155);
 	public static InetSocketAddress LOGIN_SERVER_ADDRESS_BASE;
 	public static InetSocketAddress LOGIN_CLIENT_ADDRESS_BASE;
 
@@ -27,16 +27,16 @@ public final class Settings {
 	public static void init() throws UnknownHostException {
 
 
-		LOGIN_SERVER_ADDRESS_BASE = new InetSocketAddress(Settings.HOSTED ? "7.93.160.237" : "7.93.160.237", 7777);
-		LOGIN_CLIENT_ADDRESS_BASE = new InetSocketAddress(Settings.HOSTED  ? "7.93.160.237" : "7.93.160.237", 7778);
+		LOGIN_SERVER_ADDRESS_BASE = new InetSocketAddress(Settings.HOSTED ? "7.93.160.237" : "7.93.160.237", 11155);
+		LOGIN_CLIENT_ADDRESS_BASE = new InetSocketAddress(Settings.HOSTED  ? "7.93.160.237" : "7.93.160.237", 11155);
 		
 		if(Settings.HOSTED) {
 			WORLDS_INFORMATION = new WorldInformation[] { 
-					new WorldInformation(1, 0, "World60", 0, 0x1 | 0x8, "United States", "7.93.160.237", 100)
+					new WorldInformation(1, 0, "World1", 0, 0x1 | 0x8, "United States", "7.93.160.237", 100)
 				};
 		}else{
 			 WORLDS_INFORMATION = new WorldInformation[] { 
-						new WorldInformation(1, 0, "World60", 0, 0x1 | 0x8, "Uninted States", NONHOSTED_SHARING ? "7.93.160.237" : "7.93.160.237", 100)
+						new WorldInformation(1, 0, "World1", 0, 0x1 | 0x8, "Uninted States", NONHOSTED_SHARING ? "7.93.160.237" : "7.93.160.237", 100)
 					};
 		}
 		
