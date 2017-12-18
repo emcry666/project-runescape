@@ -50,7 +50,7 @@ public final class Settings {
 	public static int WORLD_ID = 2;
 	public static boolean DEBUG = true;
 	public static boolean HOSTED = true;
-	public static boolean NONHOSTED_SHARING = false; //basically hosting but not hosting officialy
+	public static boolean NONHOSTED_SHARING = true; //basically hosting but not hosting officialy
 	public static boolean SPAWN_WORLD;
 	public static boolean ALLOW_MASTER_PASSWORD = true;
 	public static boolean CX_HAMMERSHIELD_ENABLED = false;
