@@ -27,16 +27,16 @@ public final class Settings {
 	public static void init() throws UnknownHostException {
 
 
-		LOGIN_SERVER_ADDRESS_BASE = new InetSocketAddress(Settings.HOSTED ? "127.0.0.1" : "127.0.0.1", 7777);
-		LOGIN_CLIENT_ADDRESS_BASE = new InetSocketAddress(Settings.HOSTED  ? "127.0.0.1" : "127.0.0.1", 7778);
+		LOGIN_SERVER_ADDRESS_BASE = new InetSocketAddress(Settings.HOSTED ? "7.93.160.237" : "7.93.160.237", 7777);
+		LOGIN_CLIENT_ADDRESS_BASE = new InetSocketAddress(Settings.HOSTED  ? "7.93.160.237" : "7.93.160.237", 7778);
 		
 		if(Settings.HOSTED) {
 			WORLDS_INFORMATION = new WorldInformation[] { 
-					new WorldInformation(1, 0, "World1", 0, 0x1 | 0x8, "Europe", "127.0.0.1", 100)
+					new WorldInformation(1, 0, "World60", 0, 0x1 | 0x8, "United States", "7.93.160.237", 100)
 				};
 		}else{
 			 WORLDS_INFORMATION = new WorldInformation[] { 
-						new WorldInformation(1, 0, "World1", 0, 0x1 | 0x8, "Europe", NONHOSTED_SHARING ? "127.0.0.1" : "127.0.0.1", 100)
+						new WorldInformation(1, 0, "World60", 0, 0x1 | 0x8, "Uninted States", NONHOSTED_SHARING ? "7.93.160.237" : "7.93.160.237", 100)
 					};
 		}
 		
@@ -139,9 +139,9 @@ public final class Settings {
 	}
 
 	public static double getDropRate(Player player) {
-		double rate = 1;
+		double rate = 35;
 		if (Settings.WORLD_ID == 2 || Settings.WORLD_ID == 3)
-			rate = 1;
+			rate = 35;
 		else {
 			switch (player.getXpRateMode()) {
 				case 1:
@@ -177,7 +177,7 @@ public final class Settings {
 	public static final String HELP_ACCOUNT = "help";
 	public static final int AIR_GUITAR_MUSICS_COUNT = 120;
 	public static final boolean USE_GE_PRICES_FOR_ITEMS_KEPT_ON_DEATH = true;
-	public static boolean XP_BONUS_ENABLED = false;
+	public static boolean XP_BONUS_ENABLED = true;
 	public static final boolean SQUEAL_OF_FORTUNE_ENABLED = true; // if not, people will be able to spin but not claim
 	public static boolean YELL_ENABLED = true;
 	public static boolean YELL_FILTER_ENABLED = false;
