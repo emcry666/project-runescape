@@ -13,7 +13,7 @@ import com.rs.utils.Utils;
 
 public final class Settings {
 
-	public static final String SERVER_NAME = "Aegis NTX";
+	public static final String SERVER_NAME = "El Loco";
 	public static final String CACHE_PATH = System.getProperty("user.home") + "/830_cache/";
 	public static final String LOGIN_DATA_PATH = "data/accounts_data";
 	public static final String DATA_PATH = "data/server_data";
@@ -47,7 +47,7 @@ public final class Settings {
 	public static final int WEBSITE_CLIENT_PORT = 43598; 
 	public static final String WEBSITE_CLIENT_PASSWORD = "LLU7szMljNdJ5hZpOYpX38UEdOQi63fp7DjJrRR6MzCbtK";
 
-	public static int WORLD_ID = 0;
+	public static int WORLD_ID = 2;
 	public static boolean DEBUG = true;
 	public static boolean HOSTED = true;
 	public static boolean NONHOSTED_SHARING = false; //basically hosting but not hosting officialy
@@ -61,7 +61,7 @@ public final class Settings {
 	public static final long LOGIN_SERVER_REQUEST_TIMEOUT = 3000; // 3 seconds
 	public static final long LOGIN_AUTOSAVE_INTERVAL = 1000 * 60 * 5; // every 5 minutes
 	public static final long LOGIN_BLOCKER_RESET_TIME = 1000 * 60 * 5; // 5 minutes
-	public static final int LOGIN_BLOCKER_MINIMUM_COUNT = 10000; // minimum count of bad logins before it blocks ip
+	public static final int LOGIN_BLOCKER_MINIMUM_COUNT = 25; // minimum count of bad logins before it blocks ip
 	public static final long LOGIN_OFFENCES_CHECK_INTERVAL = 1000 * 60 * 30; // 30 minutes (good amount)
 	public static final long LOGIN_FRIEND_CHATS_CHECK_INTERVAL = 1000 * 60 * 1; // 1 minute
 
@@ -175,7 +175,7 @@ public final class Settings {
 	}
 
 	public static final String HELP_ACCOUNT = "help";
-	public static final int AIR_GUITAR_MUSICS_COUNT = 200;
+	public static final int AIR_GUITAR_MUSICS_COUNT = 120;
 	public static final boolean USE_GE_PRICES_FOR_ITEMS_KEPT_ON_DEATH = true;
 	public static boolean XP_BONUS_ENABLED = false;
 	public static final boolean SQUEAL_OF_FORTUNE_ENABLED = true; // if not, people will be able to spin but not claim
@@ -199,25 +199,25 @@ public final class Settings {
 	public static final BigInteger MODULUS = GRAB_SERVER_MODULUS;//new BigInteger("95720835570416985899400490754569138045725865592082646125487450401886338888215257179276891899111012353508438985259343056790713364871264399435578405897821486922433130643167463744417518558550213242326968653149550888512375521344226130902464806713613529709022931016487599303005089038541848901771383884719849582691");
 	public static final BigInteger PRIVATE_EXPONENT = GRAB_SERVER_PRIVATE_EXPONENT;//new BigInteger("36512583249536204441752183779749971497094784838129210529793258351721265634168381436818026772447261818901650459931005646836306871056300085775821666677443869298909627600772506253774971947219157507335391316915690690733292991869322029675534127626105710516394834274298806490982283541834879399392090212187842973217");
 
-	public static final String WEB_API_LINK = "http://corruptionx.com/matrix/auth.php";
-	public static final String HIGHSCORES_API_LINK = "http://corruptionx.net/highscores/insert.php";
+	public static final String WEB_API_LINK = "";
+	public static final String HIGHSCORES_API_LINK = "";
 
-	public static final String LATEST_UPDATE = "<col=7E2217>Latest Update: Nothing!";
-	public static final String WEBSITE_LINK = "http://www.corruptionx.com";
-	public static final String FORUMS_LINK = "http://www.corruptionx.com/cmps_index.php";
-	public static final String ITEMLIST_LINK = "http://www.mediafire.com/?znasre8sm11r2m9";
-	public static final String ITEMDB_LINK = "http://itemdb.biz/";
-	public static final String HIGHSCORES_LINK = "http://www.corruptionx.net/highscores/";
-	public static final String VOTE_LINK = "http://www.corruptionx.com/site/index.php?page=vote";
-	public static final String DONATE_LINK = "http://www.corruptionx.com/site/index.php?page=donate";
-	public static final String STORE_LINK = "http://www.corruptionx.com/site/index.php?page=store";
-	public static final String OFFENCES_LINK = "http://www.corruptionx.com/site/index.php?page=offences";
-	public static final String EMAIL_LINK = "http://www.corruptionx.com/site/index.php?page=change_email";
-	public static final String PASSWORD_LINK = "http://www.corruptionx.com/site/index.php?page=change_password";
-	public static final String COMMANDS_LINK = WEBSITE_LINK + "/showthread.php?t=69749";
-	public static final String SHOWTHREAD_LINK = WEBSITE_LINK + "/showthread.php?t=";
-	public static final String WIKI_LINK = "http://corruptionx.wikia.com/wiki/CorruptionX_Wiki";
-	public static final String HELP_LINK = "http://corruptionx.wikia.com/wiki/Beginners%27_Guide";
+	public static final String LATEST_UPDATE = "";
+	public static final String WEBSITE_LINK = "";
+	public static final String FORUMS_LINK = "";
+	public static final String ITEMLIST_LINK = "";
+	public static final String ITEMDB_LINK = "";
+	public static final String HIGHSCORES_LINK = "";
+	public static final String VOTE_LINK = "";
+	public static final String DONATE_LINK = "";
+	public static final String STORE_LINK = "";
+	public static final String OFFENCES_LINK = "";
+	public static final String EMAIL_LINK = "";
+	public static final String PASSWORD_LINK = "";
+	public static final String COMMANDS_LINK = WEBSITE_LINK + "";
+	public static final String SHOWTHREAD_LINK = WEBSITE_LINK + "";
+	public static final String WIKI_LINK = "";
+	public static final String HELP_LINK = "";
 
 	public static final int VOTE_MIN_AMOUNT = 190000;
 	public static final int VOTE_TOKENS_ITEM_ID = 6306;
@@ -328,9 +328,9 @@ public final class Settings {
 	// sof chances:
 	// 100% for common (It's a must to have 100% for common due to at least one
 	// reward must be picked)
-	// 35% for uncommon
-	// 0.089% for rare (0.08% was originally)
-	// 0.01% for jackpot
+	// 70% for uncommon
+	// 30% for rare (0.08% was originally)
+	// 5% for jackpot
 
 	// version of sof rewards
 	public static final int SOF_VERSION = 1;

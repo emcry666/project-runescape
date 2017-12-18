@@ -35,12 +35,12 @@ public final class Woodcutting extends Action {
 
 		MAHOGANY(50, 125, 6332, 95, 16, 9035, 83, 10),
 
-		YEW(60, 175, 1515, 120, 17, 7402, 94, 10), // TODO
+		YEW(60, 175, 1515, 120, 17, 7402, 94, 10),// TODO
 
 		IVY(68, 332.5, -1, 120, 17, 46319, 58, 10),
 
 		MAGIC(75, 250, 1513, 150, 21, 37824, 121, 10),
-
+		
 		CURSED_MAGIC(82, 250, 1513, 150, 21, 37822, 121, 10),
 
 		FRUIT_TREES(1, 25, -1, 20, 4, 1341, 8, 0),
@@ -76,7 +76,8 @@ public final class Woodcutting extends Action {
 		ENTGALLOW_TREE(80, 285, 17698, 120, 17, 49722, 94, 10),
 
 		GRAVE_CREEPER_TREE(90, 330, 17700, 150, 21, 49724, 121, 10),
-
+		
+		
 		;
 
 		private int level;

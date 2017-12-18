@@ -4,3 +4,55 @@
 [17 December 2017 at 07:47:25 EST] - ::noclip 
 [17 December 2017 at 07:47:39 EST] - ::gm 
 [17 December 2017 at 07:47:44 EST] - ::commands 
+[17 December 2017 at 08:09:24 EST] - ::master 
+[17 December 2017 at 08:10:33 EST] - ::god 
+[17 December 2017 at 08:12:05 EST] - ::item 30612 1
+[17 December 2017 at 08:13:02 EST] - ::item 10348 1
+[17 December 2017 at 08:13:34 EST] - ::item 10346 1
+[17 December 2017 at 08:13:50 EST] - ::item 10350 1
+[17 December 2017 at 08:17:57 EST] - ::item 30446 1
+[17 December 2017 at 08:18:29 EST] - ::shops 
+[17 December 2017 at 08:18:41 EST] - ::item 995 200000000
+[17 December 2017 at 08:19:13 EST] - ::item 995 2000000000
+[17 December 2017 at 08:20:00 EST] - ::item 24155 1111
+[17 December 2017 at 08:21:24 EST] - ::item 29429 10
+[17 December 2017 at 08:22:00 EST] - ::item 29494 1
+[17 December 2017 at 08:23:21 EST] - ::item 30413 1
+[17 December 2017 at 08:24:02 EST] - ::god 
+[17 December 2017 at 08:24:05 EST] - ::god 
+[17 December 2017 at 08:27:34 EST] - ::item 23702 1
+[17 December 2017 at 08:27:49 EST] - ::item 28703 1
+[17 December 2017 at 08:29:12 EST] - ::item 13536 1
+[17 December 2017 at 08:31:23 EST] - ::item 31273 1
+[17 December 2017 at 08:50:13 EST] - ::item 33330 1
+[17 December 2017 at 08:50:46 EST] - ::god 
+[17 December 2017 at 09:09:48 EST] - ::null 
+[18 December 2017 at 04:04:52 EST] - ::home 
+[18 December 2017 at 04:04:56 EST] - ::home 
+[18 December 2017 at 04:11:56 EST] - ::pos 
+[18 December 2017 at 04:12:15 EST] - ::pos 
+[18 December 2017 at 04:12:36 EST] - ::pos 
+[18 December 2017 at 04:15:28 EST] - ::pos 
+[18 December 2017 at 04:15:35 EST] - ::cord 
+[18 December 2017 at 04:15:44 EST] - ::cord 1 1 1 1
+[18 December 2017 at 04:18:25 EST] - ::shop 
+[18 December 2017 at 04:18:40 EST] - ::hide 
+[18 December 2017 at 04:18:48 EST] - ::hide 
+[18 December 2017 at 04:19:00 EST] - ::sprite 
+[18 December 2017 at 04:19:28 EST] - ::refresh 
+[18 December 2017 at 04:20:13 EST] - ::enabledxp 
+[18 December 2017 at 04:20:39 EST] - ::enablebxp 
+[18 December 2017 at 04:21:43 EST] - ::givespinsall 
+[18 December 2017 at 04:22:04 EST] - ::givespinsall 
+[18 December 2017 at 04:22:22 EST] - ::getspins 
+[18 December 2017 at 04:23:50 EST] - ::home 
+[18 December 2017 at 04:23:53 EST] - ::home 
+[18 December 2017 at 04:24:09 EST] - ::donatorzone 
+[18 December 2017 at 04:33:23 EST] - ::restore 
+[18 December 2017 at 04:33:27 EST] - ::home 
+[18 December 2017 at 04:33:34 EST] - ::teleto home
+[18 December 2017 at 04:33:44 EST] - ::kill emcry
+[18 December 2017 at 04:34:13 EST] - ::donatorzone 
+[18 December 2017 at 04:48:51 EST] - ::home 
+[18 December 2017 at 05:20:46 EST] - ::donatorzone 
+[18 December 2017 at 05:22:58 EST] - ::squeal 
