@@ -12,8 +12,7 @@ import com.rs.utils.Utils;
 
 public final class Woodcutting extends Action {
 
-	private static final int[] BIRD_NESTS =
-	{ 5070, 5071, 5072, 5073, 5074, 5075, 7413, 11966 };
+	private static final int[] BIRD_NESTS = { 5070, 5071, 5072, 5073, 5074, 5075, 7413, 11966 };
 
 	public static enum TreeDefinitions {
 
@@ -35,12 +34,12 @@ public final class Woodcutting extends Action {
 
 		MAHOGANY(50, 125, 6332, 95, 16, 9035, 83, 10),
 
-		YEW(60, 175, 1515, 120, 17, 7402, 94, 10),// TODO
+		YEW(60, 175, 1515, 120, 17, 7402, 94, 10), // TODO
 
 		IVY(68, 332.5, -1, 120, 17, 46319, 58, 10),
 
 		MAGIC(75, 250, 1513, 150, 21, 37824, 121, 10),
-		
+
 		CURSED_MAGIC(82, 250, 1513, 150, 21, 37822, 121, 10),
 
 		FRUIT_TREES(1, 25, -1, 20, 4, 1341, 8, 0),
@@ -49,13 +48,11 @@ public final class Woodcutting extends Action {
 
 		CURLY_VINE(83, 140, null, 83, 16, 12279, 72, 0),
 
-		CURLY_VINE_COLLECTABLE(83, 140, new int[]
-		{ 21350, 21350, 21350, 21350 }, 83, 16, 12283, 72, 0),
+		CURLY_VINE_COLLECTABLE(83, 140, new int[] { 21350, 21350, 21350, 21350 }, 83, 16, 12283, 72, 0),
 
 		STRAIT_VINE(83, 140, null, 83, 16, 12277, 72, 0),
 
-		STRAIT_VINE_COLLECTABLE(83, 140, new int[]
-		{ 21349, 21349, 21349, 21349 }, 83, 16, 12283, 72, 0),
+		STRAIT_VINE_COLLECTABLE(83, 140, new int[] { 21349, 21349, 21349, 21349 }, 83, 16, 12283, 72, 0),
 
 		TANGLE_GUM_VINE(1, 35, 17682, 20, 4, 49706, 8, 5),
 
@@ -76,8 +73,7 @@ public final class Woodcutting extends Action {
 		ENTGALLOW_TREE(80, 285, 17698, 120, 17, 49722, 94, 10),
 
 		GRAVE_CREEPER_TREE(90, 330, 17700, 150, 21, 49724, 121, 10),
-		
-		
+
 		;
 
 		private int level;
@@ -101,8 +97,7 @@ public final class Woodcutting extends Action {
 		}
 
 		private TreeDefinitions(int level, double xp, int logsId, int logBaseTime, int logRandomTime, int stumpId, int respawnDelay, int randomLifeProbability) {
-			this(level, xp, new int[]
-			{ logsId }, logBaseTime, logRandomTime, stumpId, respawnDelay, randomLifeProbability);
+			this(level, xp, new int[] { logsId }, logBaseTime, logRandomTime, stumpId, respawnDelay, randomLifeProbability);
 		}
 
 		public int getLevel() {
@@ -256,7 +251,10 @@ public final class Woodcutting extends Action {
 	}
 
 	public static HatchetDefinitions getHatchet(Player player, boolean dungeoneering) {
-		for (int i = dungeoneering ? 10 : HatchetDefinitions.values().length - 1; i >= (dungeoneering ? 0 : 11); i--) { //from best to worst
+		for (int i = dungeoneering ? 10 : HatchetDefinitions.values().length - 1; i >= (dungeoneering ? 0 : 11); i--) { // from
+			// best
+			// to
+			// worst
 			HatchetDefinitions def = HatchetDefinitions.values()[i];
 			if (player.getInventory().containsItemToolBelt(def.itemId) || player.getEquipment().getWeaponId() == def.itemId) {
 				if (player.getSkills().getLevel(Skills.WOODCUTTING) >= def.levelRequried)

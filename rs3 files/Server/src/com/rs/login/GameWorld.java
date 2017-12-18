@@ -29,7 +29,7 @@ public class GameWorld {
 
 	public GameWorld(WorldInformation information) {
 		this.information = information;
-		this.loginAddress = new InetSocketAddress(Settings.HOSTED ? information.getIp() : "7.93.160.249", Settings.LOGIN_CLIENT_ADDRESS_BASE.getPort() + information.getId());
+		this.loginAddress = new InetSocketAddress(Settings.HOSTED ? information.getIp() : "127.0.0.1", Settings.LOGIN_CLIENT_ADDRESS_BASE.getPort() + information.getId());
 		this.lobbyPlayers = new ArrayList<Account>();
 		this.gamePlayers = new ArrayList<Account>();
 	}
@@ -50,8 +50,7 @@ public class GameWorld {
 	}
 
 	/**
-	 * Fire's account pm status change event, informing every other account
-	 * thats logged in.
+	 * Fire's account pm status change event, informing every other account thats logged in.
 	 */
 	public void onAccountPmStatusChange(Account account, int previousStatus, int currentStatus) {
 		synchronized (lobbyPlayers) {
@@ -66,8 +65,7 @@ public class GameWorld {
 	}
 
 	/**
-	 * Fire's account display name change event, informing every other account
-	 * thats logged in.
+	 * Fire's account display name change event, informing every other account thats logged in.
 	 */
 	public void onAccountDisplayNameChange(Account account) {
 		synchronized (lobbyPlayers) {
