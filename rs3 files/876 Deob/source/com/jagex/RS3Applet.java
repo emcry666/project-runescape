@@ -74,7 +74,7 @@ public class RS3Applet extends Applet implements AppletStub {
 	/**
 	 * Chooses ip based on if Rs or Rsps
 	 */
-	public static String Host = RSPS ? "127.0.0.1" : "world2.runescape.com";
+	public static String Host = RSPS ? "127.0.0.1" : "127.0.0.1";
 
 	/**
 	 * Whether or not to dump info such as vars

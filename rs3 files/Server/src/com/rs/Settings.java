@@ -67,7 +67,7 @@ public final class Settings {
 	public static final WorldTile START_DZ_LOCATION = new WorldTile(3222, 3222, 1);
 	public static final String START_CONTROLLER = "";
 	public static final String SPAWN_WORLD_CONTROLLER = "";
-	public static final InetSocketAddress GAME_ADDRESS_BASE = new InetSocketAddress("127.0.0.1", 43593);
+	public static final InetSocketAddress GAME_ADDRESS_BASE = new InetSocketAddress("127.0.0.1", 11155);
 
 	public static void init() throws UnknownHostException {
 
